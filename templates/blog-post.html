@@ -27,7 +27,7 @@
                 {{ tag | slugify | replace(from="-", to=" ") | title }}
               </a>
             {% else %}
-              <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-{{ tag | slugify }}-plain">
+              <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-default-plain">
                 {{ tag | slugify | replace(from="-", to=" ") | title }}
               </a>
             {% endif %}
