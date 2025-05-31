@@ -34,16 +34,14 @@
         {% if post.taxonomies and post.taxonomies.tags %}
           <div class="blog-card-tags">
             {% for tag in post.taxonomies.tags %}
-              {% if tag | slugify == 'recommended' %}
-                <div class="blog-card-tag tag-{{ tag | slugify }} tag-recommended">
-                  {{ tag | slugify | replace(from="-", to=" ") | title }}
-                </div>
-              {% elif tag | slugify == 'for-beginners' %}
-                <div class="blog-card-tag tag-{{ tag | slugify }} tag-for-beginners">
+              {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
+                {# Main tag: keep its special color class #}
+                <div class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}">
                   {{ tag | slugify | replace(from="-", to=" ") | title }}
                 </div>
               {% else %}
-                <div class="blog-card-tag tag-{{ tag | slugify }} tag-default">
+                {# Secondary tags: always use default style #}
+                <div class="blog-card-tag tag-default">
                   {{ tag | slugify | replace(from="-", to=" ") | title }}
                 </div>
               {% endif %}
