@@ -2,6 +2,8 @@
 title = "Shared Styles in Monorepos"
 template = "blog-post.html"
 description = "Approaches to maintain consistent styles across multiple projects in a monorepo environment"
+[taxonomies]
+tags = ["frontend"]
 +++
 
 ![blog-cover](/images/blog/2024-09-01/shared-styles-monorepo.webp)

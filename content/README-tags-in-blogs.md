@@ -20,8 +20,8 @@ All blog posts must have at least one tag.
 
 ## 📝 Practical Examples
 ```less
-Frontend + Featured | Respond-To Mixin pattern
 Finance + For Beginners| How to analyze a stock
+Frontend + Featured | Respond-To Mixin pattern
 Architecture + Featured | SOLID Principles
 Architecture + Frontend | Optimizing Microfrontends with Turborepo
 Frontend | Shared Styles in Monorepos

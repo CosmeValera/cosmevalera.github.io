@@ -2,7 +2,10 @@
 title = "Optimizing Microfrontends with Turborepo"
 template = "blog-post.html"
 description = "Use Turborepo to improve microfrontend workflows with parallel tasks and caching"
+[taxonomies]
+tags = ["architecture"]
 +++
+<!-- tags = ["architecture", "frontend"] -->
 
 ![blog-cover](/images/blog/2024-10-04/turborepo.png)
 
