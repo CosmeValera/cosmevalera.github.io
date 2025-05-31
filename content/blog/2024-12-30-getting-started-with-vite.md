@@ -3,6 +3,7 @@ title = "Getting Started with Vite"
 template = "blog-post.html"
 description = "A beginner-friendly guide to starting your development workflow with Vite"
 date = 2024-12-30
+draft = true
 [taxonomies]
 tags = ["for-beginners"]
 +++
@@ -115,4 +116,4 @@ Ensure your app is transpiled for older browsers using the `@vitejs/plugin-legac
 <h4>Resources</h4>
 
 - <a target="_blank" href="https://vite.dev/"><span class="fas fa-book"></span> VITE DOC</a>
-- <a target="_blank" href="https://www.youtube.com/watch?v=t-nchkL9yIg"> <span class="fab fa-youtube"></span>**Learn VITE + Module Federation** </a> with this video tutorial   
+- <a target="_blank" href="https://www.youtube.com/watch?v=t-nchkL9yIg"> <span class="fab fa-youtube"></span>**Learn VITE + Module Federation** </a> with this video tutorial  
