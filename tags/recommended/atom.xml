@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - recommended</title>
+	<link href="https://cosmevalera.github.io/tags/recommended/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-04-22T00:00:00+00:00</updated>
+	<id>https://cosmevalera.github.io/tags/recommended/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Respond-To Mixin pattern (SCSS)</title>
+		<published>2025-04-22T00:00:00+00:00</published>
+		<updated>2025-04-22T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/blog/responsive-design-with-respond-to-mixin/" type="text/html"/>
+		<id>https://cosmevalera.github.io/blog/responsive-design-with-respond-to-mixin/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-04-22&#x2F;respond-to-pattern-3.png&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🤔 The Problem with Traditional Media Queries&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Let&#x27;s be honest, we&#x27;ve all written tons of repetitive media queries in our SCSS files. You know how this works: copy-paste the same breakpoints over and over, hoping you didn&#x27;t miss any or mess up the values. It&#x27;s tedious, error-prone, and a real pain to maintain when your design system changes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Here&#x27;s a pattern that probably looks familiar:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.button &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Default desktop styles
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;15&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Tablet styles
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;992&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;12&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Mobile styles
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;768&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;0.9&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This desktop-first approach with multiple &lt;code&gt;max-width&lt;&#x2F;code&gt; queries has several drawbacks:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;It follows an outdated desktop-first paradigm&lt;&#x2F;li&gt;
+&lt;li&gt;It lacks a standardized system for breakpoints&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;💡 A Better Way: The Respond-To Mixin Pattern&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;The &lt;code&gt;respond-to&lt;&#x2F;code&gt; mixin creates an abstraction for media queries that makes your code more maintainable, consistent, and follows modern mobile-first principles.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Step 1: Define your breakpoints in a central location&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span&gt;$breakpoints: (
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;sm&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;576&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;md&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;768&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;992&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;xl&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1200&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px
+&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Step 2: Create the respond-to mixin&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@mixin &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;respond-to&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;$breakpoint&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-has-key&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;min-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-get&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint)) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@content&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@warn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Breakpoint &amp;#39;#{$breakpoint}&amp;#39; not found in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;\$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;breakpoints map.&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Step 3: Use the mixin in your components&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.button &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Mobile-first base styles
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;0.9&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Tablet styles (min-width: 768px)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;md&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;12&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Desktop styles (min-width: 992px)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;15&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🌟 Benefits of the Mobile-First Approach&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Mobile-first has become the industry standard for responsive design because it aligns with how users access content today. With most web traffic coming from mobile devices, starting with the smallest viewport ensures optimal user experience across all screen sizes.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Benefits:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Progressive Enhancement:&lt;&#x2F;b&gt; Design for mobile first, then enhance for larger screens&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;b&gt;Simplified Code:&lt;&#x2F;b&gt; Less overriding of properties across breakpoints&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;b&gt;Better Performance:&lt;&#x2F;b&gt; Mobile users don&#x27;t download unnecessary styles for desktop&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🫠 Advanced: Desktop-First&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;While mobile-first is recommended for modern development, you might occasionally need max-width queries for specific use cases. Here&#x27;s how to extend our system:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Additional mixin for desktop first or edge cases
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@mixin &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;respond-to-max&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;$breakpoint&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-has-key&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-get&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@content&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;  } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@warn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Breakpoint &amp;#39;#{$breakpoint}&amp;#39; not found in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;\$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;breakpoints map.&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Example use case:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.special-element &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Default mobile-first styles
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Only apply these styles below the &amp;#39;lg&amp;#39; breakpoint
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to-max(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;none&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Important note:&lt;&#x2F;b&gt; You can use &lt;code&gt;respond-to-max&lt;&#x2F;code&gt; but be aware that doing so you are not following the mobile-first pattern. For most cases, stick with the mobile-first &lt;code&gt;respond-to&lt;&#x2F;code&gt; pattern for cleaner, more maintainable code.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🔄 Migrate from Desktop-First to Mobile-First + respond-to&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Here&#x27;s a practical guide to migrate your existing styles:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Before (Desktop-First):&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.card &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Desktop default
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;flex&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Tablet
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;992&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Mobile
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;768&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;block&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;After (Mobile-First with &lt;code&gt;respond-to&lt;&#x2F;code&gt;):&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.card &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Mobile default (smallest screen)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;block&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Tablet (min-width: 768px)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;md&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;flex&lt;&#x2F;span&gt;&lt;span&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; 💡 Key migration point! See explanation below
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Desktop (min-width: 992px)
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Remember to create the breakpoints and the &lt;code&gt;respond-to&lt;&#x2F;code&gt; mixin as stated above in &lt;code&gt;💡 A Better Way: The Respond-To Mixin Pattern&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;b&gt;Migration steps:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Move the mobile-specific styles to be the default styles (outside any media query)&lt;&#x2F;li&gt;
+&lt;li&gt;Replace &lt;code&gt;max-width&lt;&#x2F;code&gt; queries with &lt;code&gt;min-width&lt;&#x2F;code&gt; using the &lt;code&gt;respond-to&lt;&#x2F;code&gt; mixin&lt;&#x2F;li&gt;
+&lt;li&gt;Be careful with properties that apply across multiple breakpoints (explained in detail below)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;&lt;b&gt;Mind the Tricky Details&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Look at how we moved &lt;code&gt;display: flex&lt;&#x2F;code&gt; from the desktop default to the tablet breakpoint. This is a perfect example of the functional translation required:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;In the original desktop-first code, &lt;code&gt;display: flex&lt;&#x2F;code&gt; was applied to &lt;strong&gt;both desktop and tablet&lt;&#x2F;strong&gt; (it was overridden only for mobile)&lt;&#x2F;li&gt;
+&lt;li&gt;In our mobile-first version, we start with mobile styles (&lt;code&gt;display: block&lt;&#x2F;code&gt;), so &lt;code&gt;display: flex&lt;&#x2F;code&gt; needs to be applied at the tablet breakpoint to maintain the same visual outcome&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;This shift isn&#x27;t just about reorganizing code. It&#x27;s about preserving the same functionality while changing our starting point. In desktop-first, you subtract complexity for smaller screens; in mobile-first, you add enhancements as screens get larger.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;5&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img 
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.github.io&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-summer-spring.png&quot; 
+      alt=&quot;Spring&amp;amp;#x2F;Summer seasonal image&quot;&gt;
+  
+&lt;&#x2F;div&gt; &lt;h4&gt;&lt;b&gt;📚 Conclusion&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;The &lt;code&gt;respond-to&lt;&#x2F;code&gt; mixin pattern with a mobile-first approach is a powerful technique for creating clean, maintainable responsive designs. By centralizing your breakpoints and using a standardized system for applying media queries, you&#x27;ll improve your development process and create a more consistent user experience across devices.&lt;&#x2F;p&gt;
+&lt;p&gt;Give this pattern a try in your next project. I think you&#x27;ll be surprised at how much it simplifies responsive design! &lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>SOLID Principles</title>
+		<published>2024-11-22T00:00:00+00:00</published>
+		<updated>2024-11-22T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/blog/solid-principles/" type="text/html"/>
+		<id>https://cosmevalera.github.io/blog/solid-principles/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2024-11-22&#x2F;solid-principles.png&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;🧐 Why SOLID Principles?&lt;&#x2F;h4&gt;
+&lt;p&gt;As software developers, we strive to create systems that are robust, maintainable, and easy to scale. The SOLID principles offer a foundation for writing clean, well-structured code by encouraging single-purpose classes, extensible designs, and minimal dependencies.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s a breakdown of each principle with examples and insights into their application:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each principle includes a difficulty rating (&lt;code&gt;Easy&lt;&#x2F;code&gt;, &lt;code&gt;Medium&lt;&#x2F;code&gt;, or &lt;code&gt;Hard&lt;&#x2F;code&gt;) to reflect its understanding complexity.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;📜 1. Single Responsibility Principle (SRP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Medium&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; A class should have only one reason to change, meaning it should have a single responsibility or purpose.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Violates SRP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;User {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;saveToDatabase&lt;&#x2F;span&gt;&lt;span&gt;() {}
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;logUserActivity&lt;&#x2F;span&gt;&lt;span&gt;() {}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Follows SRP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserRepository {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;saveToDatabase&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;user&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User) {}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Logger {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;logUserActivity&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;user&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User) {}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;🚫 &lt;strong&gt;Violates SRP:&lt;&#x2F;strong&gt; Handles multiple responsabilities.&lt;br &#x2F;&gt;
+✅ &lt;strong&gt;Follows SRP:&lt;&#x2F;strong&gt; Separate concerns into different classes like &lt;code&gt;UserRepository&lt;&#x2F;code&gt; and &lt;code&gt;Logger&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;📦 2. Open&#x2F;Closed Principle (OCP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Hard&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; Software entities (classes, modules, functions) should be open for extension but closed for modification.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Violates OCP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Shape {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;shapeType&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(shapeType &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;circle&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;drawCircle&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;else if &lt;&#x2F;span&gt;&lt;span&gt;(shapeType &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;square&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;drawSquare&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Follows OCP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Shape {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Circle &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* draw circle *&#x2F; &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Square &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* draw square *&#x2F; &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;🚫 Violates OCP:&lt;&#x2F;strong&gt; Modifying existing code for new behaviours.&lt;br &#x2F;&gt;
+&lt;strong&gt;✅ Follows OCP:&lt;&#x2F;strong&gt; Add new behaviours without modifying existing code.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🔄 3. Liskov Substitution Principle (LSP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Hard&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; Subtypes must be substitutable for their base types without altering the correctness of the program. In other words, a derived class must be able to replace its parent class without causing unexpected behavior.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;How to identify a violation:&lt;&#x2F;strong&gt; If overriding a method in the subclass breaks assumptions about the parent class, this violates LSP. Subtypes must maintain the behavior expected by the base type.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Violates LSP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Rectangle {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;setWidth&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) { this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;width; }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;setHeight&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;height&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) { this.height &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;height; }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span&gt;this.height; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Square &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Rectangle &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;setWidth&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;width;
+&lt;&#x2F;span&gt;&lt;span&gt;    this.height &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;width; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Breaks LSP: unexpected behavior
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Follows LSP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Shape {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Rectangle &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;height&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    super();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span&gt;this.height; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Square &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;side&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    super();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.side &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span&gt;this.side; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Regarding this example:&lt;&#x2F;strong&gt; A &lt;code&gt;Square&lt;&#x2F;code&gt; class inheriting from &lt;code&gt;Rectangle&lt;&#x2F;code&gt; but behaving differently when setting its width or height. The base class assumes independent width and height, but the &lt;code&gt;Square&lt;&#x2F;code&gt; class enforces equal sides, leading to unexpected behavior.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;🚫 Violates LSP:&lt;&#x2F;strong&gt; When a derived class alters assumptions or expected behaviors defined in the base class, it breaks substitutability.&lt;br &#x2F;&gt;
+&lt;strong&gt;✅ Follows LSP:&lt;&#x2F;strong&gt; Ensure that subtypes maintain consistent behavior and respect the expectations set by their base type.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🎛️ 4. Interface Segregation Principle (ISP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Easy&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; A class should not be forced to implement interfaces it doesn&#x27;t use. Instead, create specific, smaller interfaces.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Violates ISP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;MultifunctionDevice {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;scan&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;fax&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Follows ISP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;Printer {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;Scanner {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;scan&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;🚫 Violates ISP:&lt;&#x2F;strong&gt; A single interface forcing implementations to include unused or irrelevant methods.&lt;br &#x2F;&gt;
+&lt;strong&gt;✅ Follows ISP:&lt;&#x2F;strong&gt; Divide interfaces into smaller, specific ones to ensure implementations only include relevant methods.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🔗 5. Dependency Inversion Principle (DIP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Medium&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces).&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Violates DIP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;EmailService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendEmail&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* email logic *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Notification {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span&gt;emailService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span&gt;EmailService();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;notify&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.emailService.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendEmail&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Follows DIP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;MessageService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendMessage&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;EmailService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;implements &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;MessageService &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendMessage&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* email logic *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Notification {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span&gt;messageService&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;MessageService;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;messageService&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;MessageService) {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.messageService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;messageService;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;notify&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.messageService.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendMessage&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;🚫 Violates DIP:&lt;&#x2F;strong&gt; High-level classes directly depend on low-level implementations.&lt;br &#x2F;&gt;
+&lt;strong&gt;✅ Follows DIP:&lt;&#x2F;strong&gt; Use abstractions to decouple dependencies.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;5&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img 
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.github.io&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-summer-spring.png&quot; 
+      alt=&quot;Spring&amp;amp;#x2F;Summer seasonal image&quot;&gt;
+  
+&lt;&#x2F;div&gt; &lt;h4&gt;Resources&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&amp;quot;Nothing is Something&amp;quot;:&lt;&#x2F;strong&gt; A &lt;code&gt;highly&lt;&#x2F;code&gt; recommended video that introduces the Null Object Pattern in a clear and practical way. It also features an excellent example of how inheritance can go wrong and the transitioning from inheritance to composition, making it a must-watch for anyone looking to deepen their understanding of clean design principles. &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=OMPfEXIlTVE&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt;Watch it here&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;quot;Uncle Bob on SOLID Principles&amp;quot;:&lt;&#x2F;strong&gt; A video that covers object-oriented design concepts and touches on the SOLID principles near the end. A good watch for understanding the foundations of clean code. &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zHiWqnTWsn4&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt;Watch it here&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Conclusion&lt;&#x2F;h4&gt;
+&lt;p&gt;🥰 By following these principles, you can create software that is easier to maintain, scale, and extend. Whether you&#x27;re building a small app or a complex system, SOLID principles serve as a guide to avoid technical debt and enhance code quality.&lt;&#x2F;p&gt;
+&lt;p&gt;Start applying them today and watch your codebase transform! 🎉&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
