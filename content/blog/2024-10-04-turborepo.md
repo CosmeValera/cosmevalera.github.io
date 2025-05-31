@@ -3,7 +3,7 @@ title = "Optimizing Microfrontends with Turborepo"
 template = "blog-post.html"
 description = "Use Turborepo to improve microfrontend workflows with parallel tasks and caching"
 [taxonomies]
-tags = ["architecture"]
+tags = ["architecture", "frontend"]
 +++
 <!-- tags = ["architecture", "frontend"] -->
 

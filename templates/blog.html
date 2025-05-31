@@ -32,21 +32,23 @@
       
       <a class="blog-card" href="{{ post.permalink }}">
         {% if post.taxonomies and post.taxonomies.tags %}
-          {% for tag in post.taxonomies.tags %}
-            {% if tag | slugify == 'recommended' %}
-              <div class="blog-card-tag tag-{{ tag | slugify }} tag-recommended">
-                {{ tag | slugify | replace(from="-", to=" ") | title }}
-              </div>
-            {% elif tag | slugify == 'for-beginners' %}
-              <div class="blog-card-tag tag-{{ tag | slugify }} tag-for-beginners">
-                {{ tag | slugify | replace(from="-", to=" ") | title }}
-              </div>
-            {% else %}
-              <div class="blog-card-tag tag-{{ tag | slugify }} tag-default">
-                {{ tag | slugify | replace(from="-", to=" ") | title }}
-              </div>
-            {% endif %}
-          {% endfor %}
+          <div class="blog-card-tags">
+            {% for tag in post.taxonomies.tags %}
+              {% if tag | slugify == 'recommended' %}
+                <div class="blog-card-tag tag-{{ tag | slugify }} tag-recommended">
+                  {{ tag | slugify | replace(from="-", to=" ") | title }}
+                </div>
+              {% elif tag | slugify == 'for-beginners' %}
+                <div class="blog-card-tag tag-{{ tag | slugify }} tag-for-beginners">
+                  {{ tag | slugify | replace(from="-", to=" ") | title }}
+                </div>
+              {% else %}
+                <div class="blog-card-tag tag-{{ tag | slugify }} tag-default">
+                  {{ tag | slugify | replace(from="-", to=" ") | title }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
         {% endif %}
         
         <h3 class="blog-title">{{ post.title }}</h3>

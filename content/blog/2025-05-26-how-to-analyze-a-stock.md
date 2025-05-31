@@ -4,9 +4,8 @@ template = "blog-post.html"
 description = "A practical, step-by-step guide to analyzing stocks using essential financial metrics, with clear explanations and actionable tips."
 date = 2025-05-26
 [taxonomies]
-tags = ["finance"]
+tags = ["finance", "for beginners"]
 +++
-<!-- tags = ["finance", "for beginners"] -->
 
 ![blog-cover](/images/blog/2025-05-26/finance.png)
 
