@@ -63,32 +63,62 @@
 @mixin tag-styling {
     min-width: fit-content;
 
-    &.tag-recommended {
-        background: $recommended-gradient;
-    }
-
-    &.tag-for-beginners {
-        background: $for-beginners-gradient;
-    }
-
     &.tag-default {
-        background: $default-tag-gradient;
+      background: $default-tag-gradient;
+    }
+    &.tag-recommended {
+        background: $recommended-tag-gradient;
+    }
+    &.tag-for-beginners {
+        background: $for-beginners-tag-gradient;
+    }
+
+    &.tag-frontend {
+        background: $frontend-tag-gradient;
+    }
+    &.tag-backend {
+        background: $backend-tag-gradient;
+    }
+    &.tag-architecture {
+        background: $architecture-tag-gradient;
+    }
+
+    &.tag-finance {
+      background: $finance-tag-gradient;
+    }
+    &.tag-bitcoin {
+      background: $bitcoin-tag-gradient;
     }
 }
 
 @mixin tag-styling-plain {
     min-width: fit-content;
     
-    &.tag-recommended-plain {
-        background-color: $recommended-plain;
-    }
-
-    &.tag-for-beginners-plain {
-        background-color: $for-beginners-plain;
-    }
-
     &.tag-default-plain {
         background-color: $default-tag-plain;
+    }
+    &.tag-recommended-plain {
+        background-color: $recommended-tag-plain;
+    }
+    &.tag-for-beginners-plain {
+        background-color: $for-beginners-tag-plain;
+    }
+
+    &.tag-frontend-plain {
+        background-color: $frontend-tag-plain;
+    }
+    &.tag-backend-plain {
+        background-color: $backend-tag-plain;
+    }
+    &.tag-architecture-plain {
+        background-color: $architecture-tag-plain;
+    }
+
+    &.tag-finance-plain {
+      background-color: $finance-tag-plain;
+    }
+    &.tag-bitcoin-plain {
+      background-color: $bitcoin-tag-plain;
     }
 }
 

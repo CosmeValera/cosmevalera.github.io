@@ -14,12 +14,8 @@
     <a href="/{{ taxonomy.name }}" class="back-link">← Back to all {{ taxonomy.name }}</a>
     <div class="tag-header">
       <h1>Posts tagged</h1>
-      {% if term.name | slugify == 'recommended' %}
-        <span class="current-tag tag-recommended-plain" data-tag="{{ term.name | slugify }}">
-          {{ term.name | slugify | replace(from="-", to=" ") | title }}
-        </span>
-      {% elif term.name | slugify == 'for-beginners' %}
-        <span class="current-tag tag-for-beginners-plain" data-tag="{{ term.name | slugify }}">
+      {% if term.name | slugify in config.extra.blog_post_tags %}
+        <span class="current-tag tag-{{ term.name | slugify }}-plain" data-tag="{{ term.name | slugify }}">
           {{ term.name | slugify | replace(from="-", to=" ") | title }}
         </span>
       {% else %}

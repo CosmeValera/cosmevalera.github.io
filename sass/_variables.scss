@@ -9,14 +9,30 @@ $accent-color: #4ff5f5;
 $active-color: #4ff54f;
 
 // Tag colors
-$recommended-plain: #2D8295;
-$recommended-gradient: linear-gradient(145deg, #1d4f6a, rgba($accent-color, 0.45));
+$recommended-tag-plain: #2D8295;
+$recommended-tag-gradient: linear-gradient(145deg, #1d4f6a, rgba($accent-color, 0.45));
 
-$for-beginners-plain: #A5439F;
-$for-beginners-gradient: linear-gradient(145deg, #7b3eb0, rgba(#f94d7e, 0.5));
+$for-beginners-tag-plain: #A5439F;
+$for-beginners-tag-gradient: linear-gradient(145deg, #7b3eb0, rgba(#f94d7e, 0.5));
+
+$finance-tag-plain: #B8860B;
+$finance-tag-gradient: linear-gradient(145deg, #8B6914, rgba(#FFD700, 0.45));
 
 $default-tag-plain: #555;
 $default-tag-gradient: linear-gradient(145deg, #444, #666);
+
+// Add primary tag color variables
+$frontend-tag-plain: #007acc;
+$frontend-tag-gradient: linear-gradient(145deg, #005f99, rgba(#007acc, 0.45));
+
+$backend-tag-plain: #28a745;
+$backend-tag-gradient: linear-gradient(145deg, #1c7430, rgba(#28a745, 0.45));
+
+$architecture-tag-plain: #6f42c1;
+$architecture-tag-gradient: linear-gradient(145deg, #593196, rgba(#6f42c1, 0.45));
+
+$bitcoin-tag-plain: #f7931a;
+$bitcoin-tag-gradient: linear-gradient(145deg, #d2691e, rgba(#f7931a, 0.45));
 
 // Fonts
 $sans-serif: Montserrat, 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;

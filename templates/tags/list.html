@@ -15,13 +15,8 @@
     <h1>Tags</h1>
     <div class="tags-cloud">
       {% for term in terms %}
-        {% if term.name | slugify == 'recommended' %}
-          <a class="tag tag-recommended-plain" href="{{ term.permalink }}">
-            {{ term.name | slugify | replace(from="-", to=" ") | title }}
-            <span class="tag-count">{{ term.pages | length }}</span>
-          </a>
-        {% elif term.name | slugify == 'for-beginners' %}
-          <a class="tag tag-for-beginners-plain" href="{{ term.permalink }}">
+        {% if term.name | slugify in config.extra.blog_post_tags %}
+          <a class="tag tag-{{ term.name | slugify }}-plain" href="{{ term.permalink }}">
             {{ term.name | slugify | replace(from="-", to=" ") | title }}
             <span class="tag-count">{{ term.pages | length }}</span>
           </a>

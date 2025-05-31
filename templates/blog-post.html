@@ -18,11 +18,7 @@
       {% if page.taxonomies and page.taxonomies.tags %}
         <div class="tags">
           {% for tag in page.taxonomies.tags %}
-            {% if tag | slugify == 'recommended' %}
-              <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-{{ tag | slugify }}-plain">
-                {{ tag | slugify | replace(from="-", to=" ") | title }}
-              </a>
-            {% elif tag | slugify == 'for-beginners' %}
+            {% if tag | slugify in config.extra.blog_post_tags %}
               <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-{{ tag | slugify }}-plain">
                 {{ tag | slugify | replace(from="-", to=" ") | title }}
               </a>
