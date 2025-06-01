@@ -37,7 +37,6 @@ main {
     // 💻 Tablet/Desktop overrides
     @include respond-to('lg') {
       flex-direction: row;
-      margin-top: 5vh;
   
       .column.left {
         align-items: center;
