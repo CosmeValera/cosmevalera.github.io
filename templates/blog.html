@@ -33,12 +33,14 @@
       <a class="blog-card" href="{{ post.permalink }}">
         {% if post.taxonomies and post.taxonomies.tags %}
           {% if post.taxonomies.tags | join(sep=",") | regex_replace(pattern="recommended", rep="MATCH", flags="i") != post.taxonomies.tags | join(sep=",") %}
-            <div class="blog-card-icon blog-card-recommended" title="Recommended">
+            <div class="blog-card-icon blog-card-recommended">
               <i class="fas fa-star"></i>
+              <span class="blog-card-tooltip">Highly recommended read</span>
             </div>
           {% elif post.taxonomies.tags | join(sep=",") | regex_replace(pattern="for[\s_-]*beginners", rep="MATCH", flags="i") != post.taxonomies.tags | join(sep=",") %}
-            <div class="blog-card-icon blog-card-for-beginners" title="For Beginners">
+            <div class="blog-card-icon blog-card-for-beginners">
               <i class="fas fa-book"></i>
+              <span class="blog-card-tooltip">Great for beginners</span>
             </div>
           {% endif %}
 
