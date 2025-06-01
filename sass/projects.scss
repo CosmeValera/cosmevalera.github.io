@@ -224,6 +224,7 @@ body {
         .project-image {
           transform: translateY(-10px);
           transition: transform 0.5s;
+          box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
         }
       }
     }
