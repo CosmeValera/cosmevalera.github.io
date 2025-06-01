@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block styles %}
-  <link rel="stylesheet" href="{{ get_url(path="blog.css") | safe }}"> 
+  <link rel="stylesheet" href="{{ get_url(path="blog.css") | safe }}">
 {% endblock %}
 
 {% block content %}
@@ -32,8 +32,22 @@
       
       <a class="blog-card" href="{{ post.permalink }}">
         {% if post.taxonomies and post.taxonomies.tags %}
+          {% if post.taxonomies.tags | join(sep=",") | regex_replace(pattern="recommended", rep="MATCH", flags="i") != post.taxonomies.tags | join(sep=",") %}
+            <div class="blog-card-icon blog-card-recommended" title="Recommended">
+              <i class="fas fa-star"></i>
+            </div>
+          {% elif post.taxonomies.tags | join(sep=",") | regex_replace(pattern="for[\s_-]*beginners", rep="MATCH", flags="i") != post.taxonomies.tags | join(sep=",") %}
+            <div class="blog-card-icon blog-card-for-beginners" title="For Beginners">
+              <i class="fas fa-book"></i>
+            </div>
+          {% endif %}
+
           <div class="blog-card-tags">
             {% for tag in post.taxonomies.tags %}
+              {% if tag | slugify | title == 'Recommended' or tag | slugify | replace(from="-", to=" ") | title == 'For Beginners' %}
+                {# Skip rendering these tags in the tag row #}
+                {% continue %}
+              {% endif %}
               {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
                 {# Main tag: keep its special color class #}
                 <div class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}">

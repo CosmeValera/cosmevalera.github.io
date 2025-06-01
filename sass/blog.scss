@@ -133,6 +133,28 @@
               }
             }
           }
+          .blog-card-icon {
+            position: absolute;
+            top: -16px;
+            left: 20px;
+            z-index: 3;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+            font-size: 1.3rem;
+          }
+          .blog-card-recommended {
+            background: linear-gradient(135deg, #ffe066, #ffd700);
+            color: #7a5c00;
+          }
+          .blog-card-for-beginners {
+            background: linear-gradient(135deg, #6ec6ff, #2196f3);
+            color: #fff;
+          }
         }
       
         // 🧾 TABLET overrides
