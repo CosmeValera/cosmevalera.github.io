@@ -91,6 +91,12 @@
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     
           @include tag-styling;
+          
+          /* Option 2: Desaturated with reduced opacity */
+          &.tag-secondary {
+            filter: saturate(0.5);
+            opacity: 0.7;
+          }
         }
       }
   

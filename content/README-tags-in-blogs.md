@@ -15,14 +15,14 @@ All blog posts must have at least one tag.
 - ...
 
 ### Secondary Tags (Optional)
-- **Recommended/Featured** - Showcase content (can be displayed with star ⭐ or different card styling) *// To be defined*
-- **For Beginners** - Entry-level explanations
+- **Recommended** - Showcase content (displays a star ⭐)
+- **For Beginners** - Entry-level explanations (displays a book 📕)
 
 ## 📝 Practical Examples
 ```less
-Finance + For Beginners| How to analyze a stock
-Frontend + Featured | Respond-To Mixin pattern
-Architecture + Featured | SOLID Principles
-Architecture + Frontend | Optimizing Microfrontends with Turborepo
-Frontend | Shared Styles in Monorepos
+["finance", "for beginners"] | How to analyze a stock
+["frontend", "recommended"] | Respond-To Mixin pattern
+["architecture", "recommended"] | SOLID Principles
+["architecture", "frontend"] | Optimizing Microfrontends with Turborepo
+["frontend"] | Shared Styles in Monorepos
 ```

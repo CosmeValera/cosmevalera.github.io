@@ -57,7 +57,7 @@
                 </div>
               {% else %}
                 {# Secondary tags: always use default style #}
-                <div class="blog-card-tag tag-default">
+                <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary">
                   {{ tag | slugify | replace(from="-", to=" ") | title }}
                 </div>
               {% endif %}
