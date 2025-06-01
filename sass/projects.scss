@@ -222,7 +222,7 @@ body {
         }
 
         .project-image {
-          transform: translateY(20px);
+          transform: translateY(-10px);
           transition: transform 0.5s;
         }
       }
@@ -239,7 +239,7 @@ body {
         display: flex;
         flex-direction: row;
         justify-content: center;
-        margin-bottom: 24px;
+        margin-bottom: 2.5rem;
 
         .toggle-buttons-wrapper {
             .filter-toggle-button, .toggle-hover-button {
@@ -254,7 +254,7 @@ body {
       .filter-dropdown {
         display: flex;
         justify-content: center;
-        margin-bottom: 24px;
+        margin-bottom: 2.5rem;
         flex-direction: row;
         background: $primary-bg;
         padding: 0;

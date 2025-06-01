@@ -24,7 +24,7 @@
     padding-top: 1.5rem;
     display: grid;
     grid-template-columns: 1fr; // 👉 Mobile default: 1 column
-    gap: 2.5rem 1.5rem;
+    gap: 2rem 1.5rem;
   
     a.blog-card {
       display: flex;
@@ -42,7 +42,7 @@
       margin: 0 auto;
   
       &:hover {
-        transform: translateY(20px);
+        transform: translateY(-10px);
         box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
       }
       
