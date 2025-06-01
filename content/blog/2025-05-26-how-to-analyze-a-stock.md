@@ -1,5 +1,5 @@
 +++
-title = "How to Analyze a Stock: Key Metrics and Practical Guide"
+title = "How to Analyze a Stock"
 template = "blog-post.html"
 description = "A practical, step-by-step guide to analyzing stocks using essential financial metrics, with clear explanations and actionable tips."
 date = 2025-05-26
