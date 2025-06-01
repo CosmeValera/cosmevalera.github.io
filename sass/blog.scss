@@ -1,264 +1,171 @@
 @import 'main';
+@import 'tooltip';
 
 .column.right {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+
+  .blog-intro {
+    max-width: 75vw;
+    text-wrap: balance;
+    margin: 0 auto 2rem;
+    text-align: center;
+    color: $text-color;
+    opacity: 0.9;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .blog-cards { 
     max-width: 900px;
-    margin: 0 auto;
-    width: 100%;
+    margin: 0 clamp(0.5rem, 2vw, 10rem);
+    padding-top: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr; // 👉 Mobile default: 1 column
+    gap: 2.5rem 1.5rem;
+  
+    a.blog-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(145deg, #0e3c3c, #232323cc);
+      border: 1px solid #124050;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      width: 90%;
+      max-width: 90%;
+      margin: 0 auto;
+  
+      &:hover {
+        transform: translateY(20px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+      }
+      
+      .blog-card-icon {
+        position: absolute;
+        top: -16px;
+        left: 20px;
+        z-index: 3;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+        font-size: 1.3rem;
 
-    .blog-intro {
-      max-width: 75vw;
-      text-wrap: balance;
-      margin: 0 auto 2rem;
-      text-align: center;
-      color: $text-color;
-      opacity: 0.9;
-      font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-      line-height: 1.6;
-      font-style: italic;
-    }
-
-    .blog-cards { 
-        max-width: 900px;
-        margin: 0 clamp(0.5rem, 2vw, 10rem);
-        padding-top: 1.5rem;
-        display: grid;
-        grid-template-columns: 1fr; // 👉 Mobile default: 1 column
-        gap: 2.5rem 1.5rem;
-      
-        a.blog-card {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          background: linear-gradient(145deg, #0e3c3c, #232323cc);
-          border: 1px solid #124050;
-          padding: 1.5rem;
-          border-radius: 12px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          transition: transform 0.3s, box-shadow 0.3s;
-          position: relative;
-          width: 90%;
-          max-width: 90%;
-          margin: 0 auto;
-      
-          &:hover {
-            transform: translateY(20px);
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-          }
-          
-          .blog-card-icon {
-            position: absolute;
-            top: -16px;
-            left: 20px;
-            z-index: 3;
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-            font-size: 1.3rem;
-
-            &.blog-card-recommended, &.blog-card-for-beginners {
-              background: linear-gradient(135deg, $accent-color, #2dd4d4);
-              color: #0e3c3c;
-              font-size: 1rem;
-            }
-
-            .blog-card-tooltip {
-              display: none;
-              position: absolute;
-              bottom: 42px;
-              left: 0%;
-              background: linear-gradient(135deg, $accent-color, #2dd4d4);
-              color: #0e3c3c;
-              font-weight: bold;
-              padding: 6px 14px;
-              border-radius: 6px;
-              font-size: 0.85rem;
-              white-space: nowrap;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-              opacity: 0;
-              pointer-events: none;
-              transition: opacity 0.2s;
-              z-index: 10;
-            
-              &::after {
-                content: '';
-                position: absolute;
-                top: 100%;
-                left: 11px; // Adjust to align with icon center
-                width: 0;
-                height: 0;
-                border-left: 6px solid transparent;
-                border-right: 6px solid transparent;
-                border-top: 6px solid #2dd4d4; // Match the gradient end color
-              }
-            }
-            
-            .blog-card-tooltip-right {
-              display: none;
-              position: absolute;
-              top: 50%;
-              left: 100%;
-              margin-left: 8px;
-              transform: translateY(-50%);
-              background: linear-gradient(135deg, $accent-color, #2dd4d4);
-              color: #0e3c3c;
-              font-weight: bold;
-              padding: 6px 14px;
-              border-radius: 6px;
-              font-size: 0.85rem;
-              white-space: nowrap;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-              opacity: 0;
-              pointer-events: none;
-              transition: opacity 0.2s;
-              z-index: 10;
-            
-              // Arrow pointing left to the icon
-              &::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: -6px;
-                transform: translateY(-50%);
-                width: 0;
-                height: 0;
-                border-top: 6px solid transparent;
-                border-bottom: 6px solid transparent;
-                border-right: 6px solid $accent-color;
-              }
-            }
-            
-            // If you want a subtle bounce animation on hover
-            .blog-card-icon:hover .blog-card-tooltip {
-              display: block;
-              opacity: 1;
-              animation: tooltipBounce 0.3s ease-out;
-            }
-            
-            @keyframes tooltipBounce {
-              0% {
-                opacity: 0;
-                transform: translateY(5px);
-              }
-              60% {
-                opacity: 1;
-                transform: translateY(-2px);
-              }
-              100% {
-                opacity: 1;
-                transform: translateY(0);
-              }
-            }
-            
-            &:hover .blog-card-tooltip,
-            &:focus .blog-card-tooltip {
-              display: block;
-              opacity: 1;
-              z-index: 10;
-            }
-          }
-
-          .blog-card-tags {
-            display: flex;
-            flex-direction: row-reverse;
-            gap: 1rem;
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            margin-bottom: 0;
-      
-            .blog-card-tag {
-              position: static;
-              top: unset;
-              right: unset;
-              margin: 0;
-              color: $text-color;
-              padding: 4px 12px;
-              border-radius: 12px;
-              font-size: 0.8rem;
-              font-weight: bold;
-              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        
-              @include tag-styling;
-            }
-          }
-      
-          .blog-title {
-            color: $accent-color;
-            font-family: Andika;
-            font-size: clamp(1.2rem, 3.8vw, 1.7rem);
-            margin-bottom: 1rem;
-            line-height: 1.3;
-          }
-      
-          .blog-card-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-      
-            .card-description {
-              color: $text-color;
-              opacity: 0.9;
-              font-size: clamp(0.9rem, 2.2vw, 1rem);
-              line-height: 1.6;
-            }
-      
-            .card-date-and-stats {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding-top: 0.8rem;
-              gap: 1.5rem;
-              border-top: 1px solid rgba($accent-color, 0.2);
-      
-              .card-date {
-                color: $accent-color;
-                font-family: "Roboto Mono", monospace;
-                font-size: clamp(0.6rem, 2vw, 0.8rem);
-                position: relative;
-      
-                &::after {
-                  content: '•';
-                  position: absolute;
-                  right: -1rem;
-                  top: -0.025rem;
-                  color: rgba($accent-color, 0.4);
-                }
-              }
-      
-              .card-stats {
-                color: $text-color;
-                opacity: 0.8;
-                font-family: "Roboto Mono", monospace;
-                font-size: clamp(0.5rem, 1.67vw, 0.65rem);
-                margin-left: auto;
-      
-                i {
-                  margin-right: 0.4rem;
-                }
-      
-                small {
-                  margin-left: 0.5rem;
-                  opacity: 0.7;
-                }
-              }
-            }
-          }
+        &.blog-card-recommended, &.blog-card-for-beginners {
+          background: linear-gradient(135deg, $accent-color, #2dd4d4);
+          color: #0e3c3c;
+          font-size: 1rem;
         }
-      
-        // 🧾 TABLET overrides
-        @include respond-to('md') {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-      
-          a.blog-card {
-            margin: unset;
-            max-width: 100%;
-            width: 100%;
+
+        @include tooltip-styles;
+      }
+
+      .blog-card-tags {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 1rem;
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        margin-bottom: 0;
+  
+        .blog-card-tag {
+          position: static;
+          top: unset;
+          right: unset;
+          margin: 0;
+          color: $text-color;
+          padding: 4px 12px;
+          border-radius: 12px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    
+          @include tag-styling;
+        }
+      }
+  
+      .blog-title {
+        color: $accent-color;
+        font-family: Andika;
+        font-size: clamp(1.2rem, 3.8vw, 1.7rem);
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+  
+      .blog-card-details {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+  
+        .card-description {
+          color: $text-color;
+          opacity: 0.9;
+          font-size: clamp(0.9rem, 2.2vw, 1rem);
+          line-height: 1.6;
+        }
+  
+        .card-date-and-stats {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-top: 0.8rem;
+          gap: 1.5rem;
+          border-top: 1px solid rgba($accent-color, 0.2);
+  
+          .card-date {
+            color: $accent-color;
+            font-family: "Roboto Mono", monospace;
+            font-size: clamp(0.6rem, 2vw, 0.8rem);
+            position: relative;
+  
+            &::after {
+              content: '•';
+              position: absolute;
+              right: -1rem;
+              top: -0.025rem;
+              color: rgba($accent-color, 0.4);
+            }
+          }
+  
+          .card-stats {
+            color: $text-color;
+            opacity: 0.8;
+            font-family: "Roboto Mono", monospace;
+            font-size: clamp(0.5rem, 1.67vw, 0.65rem);
+            margin-left: auto;
+  
+            i {
+              margin-right: 0.4rem;
+            }
+  
+            small {
+              margin-left: 0.5rem;
+              opacity: 0.7;
+            }
           }
         }
       }
-      
+    }
+    
+    // 🧾 TABLET overrides
+    @include respond-to('md') {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+  
+      a.blog-card {
+        margin: unset;
+        max-width: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
