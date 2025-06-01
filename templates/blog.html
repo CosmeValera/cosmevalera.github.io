@@ -32,12 +32,14 @@
       
       <a class="blog-card" href="{{ post.permalink }}">
         {% if post.taxonomies and post.taxonomies.tags %}
-          {% if post.taxonomies.tags | join(sep=",") | regex_replace(pattern="recommended", rep="MATCH", flags="i") != post.taxonomies.tags | join(sep=",") %}
+          {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
+          
+          {% if "recommended" in tags_string %}
             <div class="blog-card-icon blog-card-recommended">
               <i class="fas fa-star"></i>
               <span class="blog-card-tooltip">Highly recommended read</span>
             </div>
-          {% elif post.taxonomies.tags | join(sep=",") | regex_replace(pattern="for[\s_-]*beginners", rep="MATCH", flags="i") != post.taxonomies.tags | join(sep=",") %}
+          {% elif "beginner" in tags_string %} <!-- Checks contain "beginner", not "for-beginner"-->
             <div class="blog-card-icon blog-card-for-beginners">
               <i class="fas fa-book"></i>
               <span class="blog-card-tooltip">Great for beginners</span>
@@ -46,20 +48,19 @@
 
           <div class="blog-card-tags">
             {% for tag in post.taxonomies.tags %}
-              {% if tag | slugify | title == 'Recommended' or tag | slugify | replace(from="-", to=" ") | title == 'For Beginners' %}
-                {# Skip rendering these tags in the tag row #}
-                {% continue %}
-              {% endif %}
-              {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
-                {# Main tag: keep its special color class #}
-                <div class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}">
-                  {{ tag | slugify | replace(from="-", to=" ") | title }}
-                </div>
-              {% else %}
-                {# Secondary tags: always use default style #}
-                <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary">
-                  {{ tag | slugify | replace(from="-", to=" ") | title }}
-                </div>
+              {% set tag_lower = tag | lower %}
+              {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
+                {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
+                  {# Main tag: keep its special color class #}
+                  <div class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}">
+                    {{ tag | slugify | replace(from="-", to=" ") | title }}
+                  </div>
+                {% else %}
+                  {# Secondary tags: always use default style #}
+                  <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary">
+                    {{ tag | slugify | replace(from="-", to=" ") | title }}
+                  </div>
+                {% endif %}
               {% endif %}
             {% endfor %}
           </div>
