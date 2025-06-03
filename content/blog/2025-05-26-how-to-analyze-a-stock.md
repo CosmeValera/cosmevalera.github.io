@@ -26,10 +26,10 @@ All of these metrics can be found when evaluating a company using a page like <a
 
 **2️⃣ Enterprise Value (EV)**
 
-**Definition:** A more complete measure than Market Cap, as it includes debt and cash.  
+**Definition:** A more complete measure than Market Cap for the value of the company, as it includes debt and cash.  
 **Formula:** `EV = Market Cap + Debt - Cash`  
 - EV is like the price you'd pay to buy the whole company, including its debts.
-- Debt is added because when buying a company, you take on its obligations too.
+- In the formula the debt is added because if you were to buy a company, you have to take on its obligations too.
 > If the `EV` is much higher than the `Market Cap`, that's a bad sign because it means the company has a lot of debt.
 
 **3️⃣ Trailing P/E (Price/Earnings, last 12 months)**
@@ -47,11 +47,11 @@ Lower is generally better, since that means that the earnings are greater.
 
 **5️⃣ EV/EBITDA**
 
-This might be the single most important metric, so hold on a second. It may sound complicated at first, but once it clicks, it’s actually pretty intuitive.
+This might be the single most important metric, so stay with me for a second. It may sound complicated at first, but once it clicks, it’s actually pretty intuitive.
 - **Definition:** EV/EBITDA is the ratio of Enterprise Value (EV) to Earnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA).
 - To make it easy: **EV** is the company's total value and **EBITDA** is its operating benefits (before taxes and other stuff). So, you can think of it as the **company's price divided by its operating benefits**.
 - This metric tells you how many years it would take for the company to pay off its current valuation using its operating earnings.
-> For example, a EV/EBITDA of 10 means that the company would take 10 years to pay its current valoration (e.g., company is valued in $100M and generates $10M per year)
+> For example, a EV/EBITDA of 10 means that the company would need 10 years to pay its current valoration (e.g., company is valued in $100M and generates $10M per year)
 
 **How to interpret EV/EBITDA 🧐**
 > A value **below 10** might suggest the company is undervalued or a potentially good buy. But be careful, it can also mean the company is in trouble or that investors lack confidence in its future.
@@ -68,7 +68,7 @@ This might be the single most important metric, so hold on a second. It may soun
 - The higher, the better.
 - However, margins vary a lot by industry.
   - Supermarkets have low margins (~2%).
-  - Tech companies can have exceed 20%.  
+  - Tech companies can exceed 20%.  
 > As a general rule of thumb:
 > - 5–10% = Average
 > - 10–20% = Good
@@ -97,7 +97,7 @@ This might be the single most important metric, so hold on a second. It may soun
 **🔟 Total Debt**
 
 - The less, the better.
-> Check if the company can pay its debt with EBITDA. Fewer years to pay off debt is better.
+> Check how long does the company need to repay its debt with EBITDA. The fewer years to pay off its debt, the better.
 
 ---
 
@@ -133,7 +133,7 @@ This might be the single most important metric, so hold on a second. It may soun
 > 
 > Dividends are often seen as “free money" or passive income by inexperienced investors, but they aren’t inherently good or bad.
 > 
-> What really matters is the company’s quality. Excessively high dividends can be a red flag, signaling possible lack of reinvestment or deeper issues.
+> What really matters is the company’s quality. Excessively high dividends can be a red flag, it could signal a possible lack of reinvestment or deeper issues.
 
 ---
 <!-- Visual break before conclusion - changes based on time of year -->
@@ -145,4 +145,4 @@ Looking at all the metrics will give you a clearer, more objective view of a com
 
 That said, a good tip for beginners: the two most important metrics to focus on are `EV/EBITDA` and `P/E`.
 
-You can explore real examples (e.g., Apple or Tesla) on platforms like <a target="_blank" href="https://finance.yahoo.com">Yahoo finance</a> or <a target="_blank" href="https://www.investing.com">Investing</a> to get practice, and use these notes as your checklist! 😊
+You can explore real examples (e.g., Apple or Tesla) on platforms like <a target="_blank" href="https://finance.yahoo.com">Yahoo finance</a> or <a target="_blank" href="https://www.investing.com">Investing</a> to get practice. Use these notes as your checklist! 😊
