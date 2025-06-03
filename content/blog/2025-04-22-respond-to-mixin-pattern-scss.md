@@ -10,7 +10,7 @@ tags = ["frontend", "recommended"]
 
 <h4><b>🤔 The Problem with Traditional Media Queries</b></h4>
 
-Let's be honest, we've all written tons of repetitive media queries in our SCSS files. You know how this works: copy-paste the same breakpoints over and over, hoping you didn't miss any or mess up the values. It's tedious, error-prone, and a real pain to maintain when your design system changes.
+Let's be honest, we've all written tons of repetitive media queries in our SCSS files. It's the same every time: copy-paste the same breakpoints over and over, hoping you didn't miss any or mess up the values. It's tedious, error-prone, and a real pain to maintain when your design system changes.
 
 <b>Here's a pattern that probably looks familiar:</b>
 
