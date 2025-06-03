@@ -146,3 +146,5 @@ Looking at all the metrics will give you a clearer, more objective view of a com
 That said, a good tip for beginners: the two most important metrics to focus on are `EV/EBITDA` and `P/E`.
 
 You can explore real examples (e.g., Apple or Tesla) on platforms like <a target="_blank" href="https://finance.yahoo.com">Yahoo finance</a> or <a target="_blank" href="https://www.investing.com">Investing</a> to get practice. Use these notes as your checklist! 😊
+
+> ⚠️ Important: This guide is for educational purposes only and does not constitute financial advice. All investments carry risk, and it's important to do your own research before making any financial decisions.
