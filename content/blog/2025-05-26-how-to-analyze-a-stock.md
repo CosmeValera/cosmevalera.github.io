@@ -53,7 +53,7 @@ This might be the single most important metric, so hold on a second. It may soun
 - This metric tells you how many years it would take for the company to pay off its current valuation using its operating earnings.
 > For example, a EV/EBITDA of 10 means that the company would take 10 years to pay its current valoration (e.g., company is valued in $100M and generates $10M per year)
 
-**How to interpret EV/EBITDA**
+**How to interpret EV/EBITDA 🧐**
 > A value **below 10** might suggest the company is undervalued or a potentially good buy. But be careful, it can also mean the company is in trouble or that investors lack confidence in its future.
 > 
 > A value **above 10** could indicate the company is overvalued, or it might be seen as so innovative or promising that investors believe it deserves a premium price.
@@ -66,8 +66,8 @@ This might be the single most important metric, so hold on a second. It may soun
 
 - Measures how much profit a company makes from its revenue.
 - The higher, the better.
-- However, margins vary a lot by industry
-  - Supermarkets have low margins (~2%)
+- However, margins vary a lot by industry.
+  - Supermarkets have low margins (~2%).
   - Tech companies can have exceed 20%.  
 > As a general rule of thumb:
 > - 5–10% = Average
@@ -76,15 +76,15 @@ This might be the single most important metric, so hold on a second. It may soun
 
 ---
 
-<h4><b> 📈 Income Statement</b></h4>
+<h4><b> 📈 Income State</b></h4>
 
 **7️⃣ EBITDA Growth**
 
-- Look for positive and growing EBITDA.
+- Look for growing EBITDA.
 
 **8️⃣ Earnings Growth**
 
-- Consistent growth in earnings is a positive sign.
+- Look for a consistent growth in earnings.
 
 ---
 
@@ -97,36 +97,43 @@ This might be the single most important metric, so hold on a second. It may soun
 **🔟 Total Debt**
 
 - The less, the better.
-- Check if the company can pay its debt with EBITDA. Fewer years to pay off debt is better.
+> Check if the company can pay its debt with EBITDA. Fewer years to pay off debt is better.
 
 ---
 
 <h4><b> 📉 Stock Price History</b></h4>
 
-**1️⃣1️⃣ Beta**
+**`11` Beta**
 
-- Measures correlation of the stock's returns with the market.
+- Beta measures how much a stock’s price moves relative to the overall market.
   - **<1:** Defensive (less volatile)
   - **=1:** Neutral (moves with the market)
   - **>1:** Aggressive (more volatile)
-- Example: If Beta = 2, and the market rises 100, the stock rises 200 (and vice versa).
+> For example: if Beta = 2, and the market goes up by 100, the stock would go up by 200 (and vice versa).
 
 ---
 
 <h4><b> 📊 Insider Statistics</b></h4>
 
-**1️⃣2️⃣ % of Shares Held by Insiders**
+**`12` Percentage of Shares Held by Insiders**
 
 - The higher, the better. You want management to have skin in the game.
+- When insiders own a significant stake, it often means they’re more aligned with shareholders and confident in the company’s future.
 
 ---
 
 <h4><b> 💸 Dividends</b></h4>
 
-**1️⃣3️⃣ Dividend Yield and Payout**
+**`13` Dividend Yield and Payout**
 
-- Check the dividend yield and how sustainable it is.
-- Example: A 5% yield means you get $5 per $100 invested each year.
+- For example: A 5% yield means you get $5 per $100 invested each year.
+> When a company pays a dividend, its market capitalization typically drops by that amount. So you're not gaining free money, just shifting value from the company to your pocket.
+> 
+> A dividend doesn’t automatically make a company more attractive. With non-dividend stocks, you can always sell a portion (e.g., 3%) to create your own "custom dividend."
+> 
+> Dividends are often seen as “free money" or passive income by inexperienced investors, but they aren’t inherently good or bad.
+> 
+> What really matters is the company’s quality. Excessively high dividends can be a red flag, signaling possible lack of reinvestment or deeper issues.
 
 ---
 <!-- Visual break before conclusion - changes based on time of year -->
@@ -138,7 +145,4 @@ Looking at all the metrics will give you a clearer, more objective view of a com
 
 That said, a good tip for beginners: the two most important metrics to focus on are `EV/EBITDA` and `P/E`.
 
-
----
-
-> _This guide is based on practical notes and real-world experience. Use it as a checklist for your next stock analysis!_
+You can explore real examples (e.g., Apple or Tesla) on platforms like <a target="_blank" href="https://finance.yahoo.com">Yahoo finance</a> or <a target="_blank" href="https://www.investing.com">Investing</a> to get practice, and use these notes as your checklist! 😊
