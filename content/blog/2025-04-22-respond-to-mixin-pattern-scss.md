@@ -211,7 +211,7 @@ This shift isn't just about reorganizing code. It's about preserving the same fu
 <!-- Visual break before conclusion - changes based on time of year -->
 {{ seasonal_image() }}
 
-<h4><b>📚 Conclusion</b></h4>
+<h4><b>Conclusion</b></h4>
 
 The `respond-to` mixin pattern with a mobile-first approach is a powerful technique for creating clean, maintainable responsive designs. By centralizing your breakpoints and using a standardized system for applying media queries, you'll improve your development process and create a more consistent user experience across devices.
 

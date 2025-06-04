@@ -139,7 +139,11 @@ This might be the single most important metric, so stay with me for a second. It
 <!-- Visual break before conclusion - changes based on time of year -->
 {{ seasonal_image() }}
 
-<h4><b>📝 Conclusion</b></h4>
+<h4><b>Resources</b></h4>
+
+- Main reference for this post: **<a target="_blank" href="https://www.youtube.com/watch?v=_GotMa93C0I"><span class="fab fa-youtube"></span> How to analyze a stock in 2024 (Spanish)</a>** 
+
+<h4><b>Conclusion</b></h4>
 
 Looking at all the metrics will give you a clearer, more objective view of a company's value, profitability, and risk. Remember, no single metric tells the whole story.
 

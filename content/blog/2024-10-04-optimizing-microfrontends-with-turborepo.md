@@ -67,7 +67,7 @@ npm run build
 npm run dev 
 ```
 
-> Run any of these commands twice, and Turborepo will use its smart caching to speed up subsequent builds.
+> Run any of these commands once, and Turborepo will use its smart caching to speed up subsequent builds.
 
 ---
 
