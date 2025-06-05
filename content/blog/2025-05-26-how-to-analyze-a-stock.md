@@ -133,15 +133,17 @@ This might be the single most important metric, so stay with me for a second. It
 > 
 > Dividends are often seen as “free money" or passive income by inexperienced investors, but they aren’t inherently good or bad. What really matters is the company’s quality. Excessively high dividends can be a red flag, it could signal a possible lack of reinvestment or deeper issues.
 
----
-<!-- Visual break before conclusion - changes based on time of year -->
-{{ seasonal_image() }}
+
+<br/>
+<!-- Visual break for the practical example -->
+<img src="/images/blog/2025-05-26/apple-break-image.png" style="width: 100%; border-radius: 20px;" /><br/><br/><br/>
 
 <h4><b>🔍 Practical example:</b></h4>
 
-Let's take Apple (AAPL) as an example, visit <a target="_blank" href="https://finance.yahoo.com/quote/AAPL">its page in Yahoo Finance</a> and scroll down to the Statistics section.
+Let's take Apple (AAPL) as an example, visit <a target="_blank" href="https://finance.yahoo.com/quote/AAPL">its page in Yahoo Finance</a> and scroll down to the Statistics section. You should see something like this:
 
-<img src="/images/blog/2025-05-26/apple-image.png" width="100%"/><br/>
+<img src="/images/blog/2025-05-26/apple-statistics-image.png" style="width: 95%; border-radius: 10px; display: block; margin: 0 auto"/>
+<br/>
 
 **🏷️ Valuation Metrics Analysis 🏷️**
 
