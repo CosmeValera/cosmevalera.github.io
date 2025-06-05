@@ -7,7 +7,7 @@ date = 2025-05-26
 tags = ["finance", "for beginners"]
 +++
 
-![blog-cover](/images/blog/2025-05-26/analyze-stock.png)
+![blog-cover](/images/blog/2025-05-26-how-to-analyze-a-stock/analyze-stock.png)
 
 Analyzing a stock can be tricky at first, but this beginner-friendly and practical guide will help you make informed decisions when investing capital at risk. We'll explore the key metrics to look at when evaluating a company.
 
@@ -136,13 +136,13 @@ This might be the single most important metric, so stay with me for a second. It
 
 <br/>
 <!-- Visual break for the practical example -->
-<img src="/images/blog/2025-05-26/apple-break-image.png" style="width: 100%; border-radius: 20px;" /><br/><br/><br/>
+<img src="/images/blog/2025-05-26-how-to-analyze-a-stock/apple-break-image.png" style="width: 100%; border-radius: 20px;" /><br/><br/><br/>
 
 <h4><b>🔍 Practical example:</b></h4>
 
 Let's take Apple (AAPL) as an example, visit <a target="_blank" href="https://finance.yahoo.com/quote/AAPL">its page in Yahoo Finance</a> and scroll down to the Statistics section. You should see something like this:
 
-<img src="/images/blog/2025-05-26/apple-statistics-image.png" style="width: 95%; border-radius: 10px; display: block; margin: 0 auto"/>
+<img src="/images/blog/2025-05-26-how-to-analyze-a-stock/apple-statistics-image.png" style="width: 95%; border-radius: 10px; display: block; margin: 0 auto"/>
 <br/>
 
 **🏷️ Valuation Metrics Analysis 🏷️**
