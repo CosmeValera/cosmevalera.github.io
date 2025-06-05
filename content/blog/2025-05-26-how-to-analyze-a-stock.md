@@ -131,11 +131,44 @@ This might be the single most important metric, so stay with me for a second. It
 > 
 > A dividend doesn’t automatically make a company more attractive. With non-dividend stocks, you can always sell a portion (e.g., 3%) to create your own "custom dividend."
 > 
-> Dividends are often seen as “free money" or passive income by inexperienced investors, but they aren’t inherently good or bad.
-> 
-> What really matters is the company’s quality. Excessively high dividends can be a red flag, it could signal a possible lack of reinvestment or deeper issues.
+> Dividends are often seen as “free money" or passive income by inexperienced investors, but they aren’t inherently good or bad. What really matters is the company’s quality. Excessively high dividends can be a red flag, it could signal a possible lack of reinvestment or deeper issues.
 
 ---
+<!-- Visual break before conclusion - changes based on time of year -->
+{{ seasonal_image() }}
+
+<h4><b>🔍 Practical example:</b></h4>
+
+Let's take Apple (AAPL) as an example, visit <a target="_blank" href="https://finance.yahoo.com/quote/AAPL">its page in Yahoo Finance</a> and scroll down to the Statistics section.
+
+<img src="/images/blog/2025-05-26/apple-image.png" width="100%"/><br/>
+
+**🏷️ Valuation Metrics Analysis 🏷️**
+
+**Market Cap:** $3.03T <- *High capitalization, one of the world's largest companies.*
+
+**Enterprise Value:** $3.08T <- *Notice how EV ($3.08T) is slightly higher than Market Cap ($3.03T). This suggests Apple has more debt than cash, but the difference is relatively small, indicating a healthy balance sheet structure.*
+
+**Trailing P/E:** 31.59 <- *High premium above our 17-18 benchmark, suggesting overvaluation or strong investor confidence.*
+
+**Forward P/E:** 25.32 <- *The Forward P/E (25.32) is lower than the Trailing P/E (31.59), which is a positive sign. This indicates analysts expect Apple's earnings to grow over the next 12 months.*
+
+**EV/EBITDA:** 22.17 <- *Above our threshold of 10, trading at a premium. While this could indicate overvaluation, it might also reflect investor confidence in Apple's innovation, market position, and future growth prospects.*
+
+**💰 Profitability Analysis 💰**
+
+**Profit Margin:** 24.30% <- *Excellent (>20% category), showing strong operational efficiency.*
+
+**🏦 Balance Sheet Health 🏦**
+
+**Total Cash:** $48.5B <- *Strong cash position for flexibility.*
+
+---
+
+**Final thoughts 🤔 :** Apple shows excellent profitability but trades at premium valuations, requiring careful consideration of whether the price is justified.
+
+> Yahoo finance doesn't show all the metrics we discussed in this chart, only some of them. To find the rest, you’ll need to explore the site further.
+
 <!-- Visual break before conclusion - changes based on time of year -->
 {{ seasonal_image() }}
 
@@ -149,6 +182,6 @@ Looking at all the metrics will give you a clearer, more objective view of a com
 
 That said, a good tip for beginners: the two most important metrics to focus on are `EV/EBITDA` and `P/E`.
 
-You can explore real examples (e.g., Apple or Tesla) on platforms like <a target="_blank" href="https://finance.yahoo.com">Yahoo finance</a> or <a target="_blank" href="https://www.investing.com">Investing</a> to get practice. Use these notes as your checklist! 😊
+You can explore other real examples (e.g., Amazon or Tesla) on platforms like <a target="_blank" href="https://finance.yahoo.com">Yahoo finance</a> or <a target="_blank" href="https://www.investing.com">Investing</a> to get practice. Use these notes as your checklist! 😊
 
 > ⚠️ Important: This guide is for educational purposes only and does not constitute financial advice. All investments carry risk, and it's important to do your own research before making any financial decisions.
