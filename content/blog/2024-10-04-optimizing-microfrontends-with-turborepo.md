@@ -6,7 +6,7 @@ description = "Use Turborepo to improve microfrontend workflows with parallel ta
 tags = ["architecture", "frontend"]
 +++
 
-![blog-cover](/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/turborep.png)
+![blog-cover](/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/turborepo.png)
 
 <h4><b>🧐 Why Turborepo?</b></h4>
 

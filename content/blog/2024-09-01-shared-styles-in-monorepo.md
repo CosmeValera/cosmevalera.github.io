@@ -6,7 +6,7 @@ description = "Approaches to maintain consistent styles across multiple projects
 tags = ["frontend"]
 +++
 
-![blog-cover](/images/blog/2024-09-01-shared-styles-in-monorepo/shared-styles-monorep.png)
+![blog-cover](/images/blog/2024-09-01-shared-styles-in-monorepo/shared-styles-monorepo.png)
 
 <h4><b>🤔 Overview</b></h4>
 
