@@ -67,6 +67,10 @@ Immediate access to the latest styles without additional steps.
 Potential for accidental breaking changes if styles are updated.
 Need to have a monorepo structure; doesn't work if the projects are split into different repositories.
 
+---
+<!-- Visual break before conclusion - changes based on time of year -->
+{{ seasonal_image() }}
+
 <h4><b>❓ What to choose</b></h4>
 
 - Use a <b>npm package</b> if you want to have strict version control or you don't have all your projects in the same folder.

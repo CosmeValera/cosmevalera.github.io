@@ -70,5 +70,7 @@ npm run dev
 > Run any of these commands once, and Turborepo will use its smart caching to speed up subsequent builds.
 
 ---
+<!-- Visual break before conclusion - changes based on time of year -->
+{{ seasonal_image() }}
 
 Give it a try in your next project and experience the efficiency firsthand! 😍😍

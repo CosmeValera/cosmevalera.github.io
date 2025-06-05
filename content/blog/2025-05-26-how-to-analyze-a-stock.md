@@ -171,6 +171,7 @@ Let's take Apple (AAPL) as an example, visit <a target="_blank" href="https://fi
 
 > Yahoo finance doesn't show all the metrics we discussed in this chart, only some of them. To find the rest, you’ll need to explore the site further.
 
+---
 <!-- Visual break before conclusion - changes based on time of year -->
 {{ seasonal_image() }}
 
