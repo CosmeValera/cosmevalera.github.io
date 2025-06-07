@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="{{ get_url(path="tags.css") | safe }}">
 {% endblock %}
 
-<!-- Change the posts here and in list.html so that they look like in the blogs page -->
 {% block content %}
 <div class="column right">
   <div class="tag-single">
@@ -25,18 +24,67 @@
         </span>
       {% endif %}
     </div>
-    <div class="posts-list">
-      {% for page in term.pages %}
-        <a href="{{ page.permalink }}" class="post-preview-link">
-          <article class="post-preview">
-            <h2>{{ page.title }}</h2>
-            <div class="post-metadata">
-              <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
-            </div>
-            {% if page.description %}
-              <p class="post-description">{{ page.description }}</p>
+    <div class="blog-cards">
+      {% for post in term.pages %}
+        {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
+        {% set now_numeric = now() | date(format="%Y%m%d") | int %}
+
+        {% if post_date_numeric > now_numeric %}
+          {% set post_date_display = now() | date(format="%B %d, %Y") %}
+        {% else %}
+          {% set post_date_display = post.date | date(format="%B %d, %Y") %}
+        {% endif %}
+
+        {% if post.reading_time == 1 %}
+          {% set time_label = "min" %}
+        {% else %}
+          {% set time_label = "mins" %}
+        {% endif %}
+
+        <a class="blog-card" href="{{ post.permalink }}">
+          {% if post.taxonomies and post.taxonomies.tags %}
+            {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
+            
+            {% if "recommended" in tags_string %}
+              <div class="blog-card-icon blog-card-recommended">
+                <i class="fas fa-star"></i>
+                <span class="blog-card-tooltip">Highly recommended read</span>
+              </div>
+            {% elif "beginner" in tags_string %}
+              <div class="blog-card-icon blog-card-for-beginners">
+                <i class="fas fa-book"></i>
+                <span class="blog-card-tooltip">Great for beginners</span>
+              </div>
             {% endif %}
-          </article>
+
+            <div class="blog-card-tags">
+              {% for tag in post.taxonomies.tags %}
+                {% set tag_lower = tag | lower %}
+                {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
+                  {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
+                    <div class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}">
+                      {{ tag | slugify | replace(from="-", to=" ") | title }}
+                    </div>
+                  {% else %}
+                    <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary">
+                      {{ tag | slugify | replace(from="-", to=" ") | title }}
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          
+          <h3 class="blog-title">{{ post.title }}</h3>
+          <div class="blog-card-details">
+            <p class="card-description">{{ post.description }}</p>
+            <div class="card-date-and-stats">
+              <span class="card-date">{{ post_date_display }}</span>
+              <span class="card-stats">
+                <i class="fas fa-clock"></i> {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+              </span>
+            </div>
+          </div>
         </a>
       {% endfor %}
     </div>
