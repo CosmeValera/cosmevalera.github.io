@@ -12,7 +12,7 @@
 <div class="column right">
   <div class="tag-list">
     <a href="/blog" class="back-link">← Back to all posts</a>
-    <h1>Tags</h1>
+    <h1 class="tags-list-title">Tags</h1>
     <div class="tags-cloud">
       {% for term in terms %}
         {% if term.name | slugify in config.extra.blog_post_tags %}

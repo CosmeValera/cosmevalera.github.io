@@ -9,7 +9,7 @@
         color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
         margin-bottom: 2rem;
-        font-size: 1rem;
+        font-size: clamp(.8rem, 2vw, 1rem);
         transition: color 0.2s;
         min-width: fit-content;
 
@@ -27,7 +27,7 @@
             display: inline-block;
             padding: 0.35rem 1.25rem;
             border-radius: 999px;
-            font-size: 0.875rem;
+            font-size: clamp(.725rem, 1.75vw, .875rem);
             font-weight: 500;
             text-decoration: none;
             color: white;
@@ -40,7 +40,7 @@
     .blog-post-title {
         margin-top: 0.5rem;
         margin: 1rem 0;
-        font-size: 3rem;
+        font-size: calc(min(3rem, 6vw));
         line-height: 1.2;
         color: white;
         font-weight: 600;
@@ -52,12 +52,12 @@
         justify-content: space-between;
         color: rgba(255, 255, 255, 0.7);
         margin-bottom: 2rem;
-        font-size: 0.875rem;
+        font-size: clamp(.725rem, 1.75vw, .875rem);
     }
 
     .presentation-text {
         color: rgba(255, 255, 255, 0.9);
-        font-size: 1.1rem;
+        font-size: clamp(.9rem, 2.2vw, 1.1rem);
         line-height: 1.6;
         margin: 1.5rem 0;
         text-wrap: balance;

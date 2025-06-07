@@ -13,7 +13,7 @@
   <div class="tag-single">
     <a href="/{{ taxonomy.name }}" class="back-link">← See all {{ taxonomy.name }}</a>
     <div class="tag-header">
-      <h1>Posts tagged</h1>
+      <h1 class="tags-single-title">Posts tagged</h1>
       {% if term.name | slugify in config.extra.blog_post_tags %}
         <span class="current-tag tag-{{ term.name | slugify }}-plain" data-tag="{{ term.name | slugify }}">
           {{ term.name | slugify | replace(from="-", to=" ") | title }}

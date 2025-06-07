@@ -14,7 +14,7 @@
         color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
         margin-bottom: 2rem;
-        font-size: 1rem;
+        font-size: clamp(.8rem, 2vw, 1rem);
         transition: color 0.2s;
         min-width: fit-content;
 
@@ -23,10 +23,15 @@
         }
     }
 
-    h1 {
+    h1.tags-list-title {
         color: white;
         margin-bottom: 2rem;
-        font-size: 2.5rem;
+        font-size: clamp(1.75rem, 6vw, 3rem);
+        font-weight: 600;
+    }
+    h1.tags-single-title {
+        color: white;
+        font-size: clamp(1.75rem, 6vw, 3rem);
         font-weight: 600;
     }
 }
@@ -43,7 +48,7 @@
         gap: 0.5rem;
         padding: 0.35rem 1.25rem;
         border-radius: 999px;
-        font-size: 0.875rem;
+        font-size: clamp(.725rem, 1.75vw, .875rem);
         font-weight: 500;
         text-decoration: none;
         color: white;
@@ -80,7 +85,7 @@
         display: inline-block;
         padding: 0.35rem 1.25rem;
         border-radius: 999px;
-        font-size: 0.875rem;
+        font-size: clamp(.725rem, 1.75vw, .875rem);
         font-weight: 500;
         text-decoration: none;
         color: white;
