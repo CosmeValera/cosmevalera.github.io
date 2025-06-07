@@ -52,13 +52,15 @@
     </div>
     <!-- END: Lateral Floating Menu -->
 
-    <main>
-        {% block content %} {% endblock content %}
-    </main>
+    <div class="page-wrapper">
+      <main>
+          {% block content %} {% endblock content %}
+      </main>
 
-    <footer>
-      <a href="/sponsor"><i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> | © {{ now() | date(format="%Y") }} Cosme Valera Reales
-    </footer>
+      <footer>
+        <a href="/sponsor"><i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> | © {{ now() | date(format="%Y") }} Cosme Valera Reales
+      </footer>
+    </div>
 
     <!-- SCRIPTS -->
     <script src="{{ get_url(path="js/lateralMenu.js") | safe }}"></script>

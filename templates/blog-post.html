@@ -11,40 +11,38 @@
 {% endblock %}
 
 {% block content %}
-  <div class="column right">
-    <div class="blog-post">
-      <a href="/blog" class="back-link">← Back to all posts</a>
-      
-      {% if page.taxonomies and page.taxonomies.tags %}
-        <div class="tags">
-          {% for tag in page.taxonomies.tags %}
-            {% if tag | slugify in config.extra.blog_post_tags %}
-              <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-{{ tag | slugify }}-plain">
-                {{ tag | slugify | replace(from="-", to=" ") | title }}
-              </a>
-            {% else %}
-              <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-default-plain">
-                {{ tag | slugify | replace(from="-", to=" ") | title }}
-              </a>
-            {% endif %}
-          {% endfor %}
-        </div>
-      {% endif %}
-
-      <h1 class="blog-post-title">{{ page.title }}</h1>
-      <h3 class="presentation-text">{{ page.description }}</h3>
-      
-      <div class="post-metadata">
-        <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
-        <span class="reading-time">{{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words</span>
+  <div class="blog-post">
+    <a href="/blog" class="back-link">← Back to all posts</a>
+    
+    {% if page.taxonomies and page.taxonomies.tags %}
+      <div class="tags">
+        {% for tag in page.taxonomies.tags %}
+          {% if tag | slugify in config.extra.blog_post_tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-{{ tag | slugify }}-plain">
+              {{ tag | slugify | replace(from="-", to=" ") | title }}
+            </a>
+          {% else %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-default-plain">
+              {{ tag | slugify | replace(from="-", to=" ") | title }}
+            </a>
+          {% endif %}
+        {% endfor %}
       </div>
-      <div class="post-content">
-          {{ page.content | safe }}
-      </div>
+    {% endif %}
 
-      <hr class="footer-rule" />
-      {{ related::container(page=page,orderDesc=true) }}
-      <hr class="footer-rule-2" />
+    <h1 class="blog-post-title">{{ page.title }}</h1>
+    <h3 class="presentation-text">{{ page.description }}</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+      <span class="reading-time">{{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words</span>
     </div>
+    <div class="post-content">
+        {{ page.content | safe }}
+    </div>
+
+    <hr class="footer-rule" />
+    {{ related::container(page=page,orderDesc=true) }}
+    <hr class="footer-rule-2" />
   </div>
 {% endblock content %}

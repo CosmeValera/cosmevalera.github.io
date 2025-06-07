@@ -1,115 +1,144 @@
 @import 'main';
 
-.column.left {
-    img.portrait-index {
-        box-sizing: border-box;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 10px solid $text-color;
-        margin: 2em 3em;
-        width: 100%;
-        height: auto;
-        max-width: 300px;
-        max-height: 300px;
-    }
-}
+.home {
+    display: flex;
+    flex-direction: column; // Mobile first
+    
+    .column.left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
-.column.right {
-    margin: 0 clamp(0.5rem, 2vw, 10rem);
-    
-    h1.presentation-title {
-        font-weight: bold;
-        text-align: left;
-        margin-bottom: 28px;
-    }
-    
-    h2.presentation {
-        font-weight: bold;
-        margin-bottom: 1rem;
-        
-        span.less-opacity {
-            opacity: 0.7;
+        img.portrait-index {
+            box-sizing: border-box;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 10px solid $text-color;
+            margin: 2em 3em;
+            width: 100%;
+            height: auto;
+            max-width: 300px;
+            max-height: 300px;
+        }
+        nav.nav-index {
+            margin-bottom: 30px;
+
+            ul {
+            padding: 0;
+            margin: 0 0 16px 0;
+
+            li {
+                a.menu-item {
+                margin: auto;
+                }
+            }
+            }
+        }
+
+        img.portrait-index {
+            margin: 0;
         }
     }
-
-    p.description {
-        span.bold {
-            font-weight: bold;
-        }
-    }
-
-    // Container for quick-links and links sections when on large screens
+    // 💻 Tablet/Desktop overrides
     @include respond-to('lg') {
-        .sections-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-top: 1.75rem;
-            margin-bottom: 1.25rem;
-            
-            .quick-links,
-            .links {
-                flex: 1;
-                width: 50%;
+        flex-direction: row;
+
+        .column.left {
+            align-items: center;
+            justify-content: flex-end;
+            flex: 3;
+            text-align: end;
+            flex-direction: row; // Override mobile column
+        }
+
+        .column.right {
+            flex: 4;
+
+            h1 {
+                margin-bottom: 0.3em;
+            }
+
+            h2 {
                 margin-top: 0;
+                margin-bottom: 1.5rem;
             }
         }
     }
 
-    // Shared styles for section titles
-    .quick-links-title, p.call-to-action {
-        font-weight: bold;
-        font-family: Andika;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        
-        i {
-            margin-right: 0.4rem;
+    @include respond-to('md') {
+        .column.right .description {
+            padding-right: 5rem;
         }
     }
 
-    .quick-links {
-        margin-top: 2rem;
+    .column.right {
+        margin: 0 clamp(0.5rem, 2vw, 10rem);
         
-        .explore-options {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 0.8rem;
+        h1.presentation-title {
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 28px;
+        }
+        
+        h2.presentation {
+            font-weight: bold;
+            margin-bottom: 1rem;
             
-            .explore-option {
-                display: inline-flex;
-                align-items: center;
-                text-wrap: balance;
-                color: $accent-color;
-                gap: 0.5rem;
-                font-family: Andika;
-                font-size: 1.1rem;
-                width: fit-content;
+            span.less-opacity {
+                opacity: 0.7;
+            }
+        }
+
+        p.description {
+            span.bold {
+                font-weight: bold;
+            }
+        }
+
+        // Container for quick-links and links sections when on large screens
+        @include respond-to('lg') {
+            .sections-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 1.5rem;
+                margin-top: 1.75rem;
+                margin-bottom: 1.25rem;
                 
-                @include underline-effect(absolute, 0px, $accent-color);
-                
-                span {
-                    font-size: 1.1rem;
+                .quick-links,
+                .links {
+                    flex: 1;
+                    width: 50%;
+                    margin-top: 0;
                 }
             }
         }
-    }
 
-    .links {
-        margin-top: 2rem;
-        
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 0.8rem;
+        // Shared styles for section titles
+        .quick-links-title, p.call-to-action {
+            font-weight: bold;
+            font-family: Andika;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
             
-            .col-12 {
-                a {
+            i {
+                margin-right: 0.4rem;
+            }
+        }
+
+        .quick-links {
+            margin-top: 2rem;
+            
+            .explore-options {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 0.8rem;
+                
+                .explore-option {
                     display: inline-flex;
                     align-items: center;
+                    text-wrap: balance;
                     color: $accent-color;
                     gap: 0.5rem;
                     font-family: Andika;
@@ -120,6 +149,35 @@
                     
                     span {
                         font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+
+        .links {
+            margin-top: 2rem;
+            
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 0.8rem;
+                
+                .col-12 {
+                    a {
+                        display: inline-flex;
+                        align-items: center;
+                        color: $accent-color;
+                        gap: 0.5rem;
+                        font-family: Andika;
+                        font-size: 1.1rem;
+                        width: fit-content;
+                        
+                        @include underline-effect(absolute, 0px, $accent-color);
+                        
+                        span {
+                            font-size: 1.1rem;
+                        }
                     }
                 }
             }
