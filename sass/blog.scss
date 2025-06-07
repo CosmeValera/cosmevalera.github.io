@@ -26,7 +26,8 @@
     grid-template-columns: 1fr; // 👉 Mobile default: 1 column
     gap: 2rem 1.5rem;
   
-    a.blog-card {
+    // Used in blog.html and tags/single.html
+    a.blog-card, div.blog-card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -40,6 +41,7 @@
       width: 90%;
       max-width: 90%;
       margin: 0 auto;
+      cursor: pointer;
   
       &:hover {
         transform: translateY(-10px);
@@ -78,7 +80,7 @@
         right: 20px;
         margin-bottom: 0;
   
-        .blog-card-tag {
+        a.blog-card-tag, div.blog-card-tag {
           position: static;
           top: unset;
           right: unset;
@@ -167,7 +169,7 @@
     @include respond-to('md') {
       grid-template-columns: repeat(2, minmax(0, 1fr));
   
-      a.blog-card {
+      a.blog-card, div.blog-card {
         margin: unset;
         max-width: 100%;
         width: 100%;

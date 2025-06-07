@@ -41,20 +41,20 @@
           {% set time_label = "mins" %}
         {% endif %}
 
-        <a class="blog-card" href="{{ post.permalink }}">
+        <div class="blog-card" onclick="if(event.target.tagName !== 'A'){ window.location='{{ post.permalink }}'; }">
           {% if post.taxonomies and post.taxonomies.tags %}
             {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
-            
+
             {% if "recommended" in tags_string %}
-              <div class="blog-card-icon blog-card-recommended">
+              <a href="{{ get_taxonomy_url(kind='tags', name='recommended') }}" class="blog-card-icon blog-card-recommended" onclick="event.stopPropagation();">
                 <i class="fas fa-star"></i>
                 <span class="blog-card-tooltip">Highly recommended read</span>
-              </div>
+              </a>
             {% elif "beginner" in tags_string %}
-              <div class="blog-card-icon blog-card-for-beginners">
+              <a href="{{ get_taxonomy_url(kind='tags', name='for-beginners') }}" class="blog-card-icon blog-card-for-beginners" onclick="event.stopPropagation();">
                 <i class="fas fa-book"></i>
                 <span class="blog-card-tooltip">Great for beginners</span>
-              </div>
+              </a>
             {% endif %}
 
             <div class="blog-card-tags">
@@ -62,13 +62,13 @@
                 {% set tag_lower = tag | lower %}
                 {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
                   {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
-                    <div class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}">
+                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}" onclick="event.stopPropagation();">
                       {{ tag | slugify | replace(from="-", to=" ") | title }}
-                    </div>
+                    </a>
                   {% else %}
-                    <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary">
+                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" class="blog-card-tag tag-{{ tag | slugify }} tag-secondary" onclick="event.stopPropagation();">
                       {{ tag | slugify | replace(from="-", to=" ") | title }}
-                    </div>
+                    </a>
                   {% endif %}
                 {% endif %}
               {% endfor %}
@@ -85,7 +85,7 @@
               </span>
             </div>
           </div>
-        </a>
+        </div>
       {% endfor %}
     </div>
   </div>
