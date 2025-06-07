@@ -39,16 +39,19 @@
             margin: 0;
         }
     }
+
     // 💻 Tablet/Desktop overrides
     @include respond-to('lg') {
-        flex-direction: row;
+        flex-direction: row; // Override mobile column
+        align-items: center;
+        max-height: fit-content;
 
         .column.left {
-            align-items: center;
-            justify-content: flex-end;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             flex: 3;
-            text-align: end;
-            flex-direction: row; // Override mobile column
+            margin-top: 6.5rem;
         }
 
         .column.right {
