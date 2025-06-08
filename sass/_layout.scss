@@ -1,6 +1,5 @@
 main {
   display: flex;
-  flex-direction: column; // Mobile first
 
   .page-wrapper {
     h1 {
@@ -10,8 +9,6 @@ main {
 
   // 💻 Tablet/Desktop overrides
   @include respond-to('lg') {
-    flex-direction: row;
-
     .page-wrapper {
       flex: 4;
 

@@ -2,8 +2,8 @@
 
 .sponsor {
   max-width: 900px;
-  margin: 0 auto;
-
+  margin: 0 1.5rem;
+  
   #sponsor-inner {
     margin: 0 clamp(0.5rem, 2vw, 10rem);
     text-align: center;
@@ -150,5 +150,9 @@
         }
       }
     }
+  }
+  
+  @include respond-to('md') {
+    margin: 0 auto;
   }
 }

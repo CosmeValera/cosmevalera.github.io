@@ -3,6 +3,7 @@
 .home {
     display: flex;
     flex-direction: column; // Mobile first
+    margin-inline: 1.5rem;
     
     .column.left {
         display: flex;
