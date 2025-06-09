@@ -6,7 +6,6 @@
 .tag-single {
     max-width: 700px;
     width: 100%;
-    margin: 0 1.5rem;
     
     @include respond-to('md') {
         margin: 0 auto;
@@ -16,10 +15,11 @@
         display: block;
         color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
-        margin-bottom: 2rem;
+        margin: 0 0 2rem 1.5rem;
         font-size: clamp(.8rem, 2vw, 1rem);
         transition: color 0.2s;
         min-width: fit-content;
+
 
         &:hover {
             color: white;
@@ -30,7 +30,7 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-        margin-bottom: 3rem;
+        margin: 0 0 2rem 1.5rem;
 
         h1.tags-single-title {
             color: white;
@@ -55,7 +55,7 @@
 
     .blog-cards {
         max-width: 900px;
-        margin: 0 clamp(0.5rem, 2vw, 10rem);
+        margin: 0 0.5rem;
         padding-top: 1.5rem;
         display: grid;
         grid-template-columns: 1fr; // 👉 Always 1 column
