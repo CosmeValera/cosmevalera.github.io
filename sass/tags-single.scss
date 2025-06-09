@@ -1,0 +1,68 @@
+@import 'main';
+@import 'blog-cards';
+
+//////////////////
+////// Tags //////
+.tag-single {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 1.5rem;
+    
+    @include respond-to('md') {
+        margin: 0 auto;
+    }
+
+    .back-link {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin-bottom: 2rem;
+        font-size: clamp(.8rem, 2vw, 1rem);
+        transition: color 0.2s;
+        min-width: fit-content;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    .tag-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+
+        h1.tags-single-title {
+            color: white;
+            font-size: clamp(1.75rem, 6vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .current-tag {
+            display: inline-block;
+            padding: 0.35rem 1.25rem;
+            border-radius: 999px;
+            font-size: clamp(.725rem, 1.75vw, .875rem);
+            font-weight: 500;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.2s ease;
+            
+            @include tag-styling-plain;
+        }
+    }
+
+    .blog-cards {
+        max-width: 900px;
+        margin: 0 clamp(0.5rem, 2vw, 10rem);
+        padding-top: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr; // 👉 Always 1 column
+        gap: 2rem 1.5rem;
+        
+        @include blog-card-values("div");
+    }
+}
+////// END: Tags //////
+///////////////////////

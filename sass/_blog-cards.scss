@@ -1,0 +1,141 @@
+@import "tooltip";
+
+// Used in blog.html(a.blog-card) and tags/single.html(div.blog-card)
+@mixin blog-card-values($selector) {
+  #{$selector}.blog-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(145deg, #0e3c3c, #232323cc);
+    border: 1px solid #124050;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .blog-card-icon {
+      position: absolute;
+      top: -16px;
+      left: 20px;
+      z-index: 3;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+      font-size: 1.3rem;
+
+      &.blog-card-recommended, &.blog-card-for-beginners {
+        background: linear-gradient(135deg, $accent-color, #2dd4d4);
+        color: #0e3c3c;
+        font-size: 1rem;
+      }
+
+      @include tooltip-styles;
+    }
+
+    .blog-card-tags {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 1rem;
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      margin-bottom: 0;
+  
+      .blog-card-tag {
+        position: static;
+        top: unset;
+        right: unset;
+        margin: 0;
+        color: $text-color;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+        @include tag-styling;
+        
+        &.tag-secondary {
+          filter: saturate(0.5);
+          opacity: 0.7;
+        }
+      }
+    }
+
+    .blog-title {
+      color: $accent-color;
+      font-family: Andika;
+      font-size: clamp(1.2rem, 3.8vw, 1.7rem);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .blog-card-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+  
+      .card-description {
+        color: $text-color;
+        opacity: 0.9;
+        font-size: clamp(0.9rem, 2.2vw, 1rem);
+        line-height: 1.6;
+      }
+  
+      .card-date-and-stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 0.8rem;
+        gap: 1.5rem;
+        border-top: 1px solid rgba($accent-color, 0.2);
+
+        .card-date {
+          color: $accent-color;
+          font-family: "Roboto Mono", monospace;
+          font-size: clamp(0.6rem, 2vw, 0.8rem);
+          position: relative;
+  
+          &::after {
+            content: '•';
+            position: absolute;
+            right: -1rem;
+            top: -0.025rem;
+            color: rgba($accent-color, 0.4);
+          }
+        }
+
+        .card-stats {
+          color: $text-color;
+          opacity: 0.8;
+          font-family: "Roboto Mono", monospace;
+          font-size: clamp(0.5rem, 1.67vw, 0.65rem);
+          margin-left: auto;
+  
+          i {
+            margin-right: 0.4rem;
+          }
+  
+          small {
+            margin-left: 0.5rem;
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
