@@ -6,7 +6,7 @@ description = "Learn how SOLID principles can enhance your codebase by promoting
 tags = ["architecture", "recommended"]
 +++
 
-![blog-cover](/images/blog/2024-11-22-solid-principles/solid-principles.png)
+![blog-cover](/images/blog/2024-11-22-solid-principles/solid-principless.png)
 
 <h4>🧐 Why SOLID Principles?</h4>
 
