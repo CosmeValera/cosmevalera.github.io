@@ -4,6 +4,8 @@ template = "blog-post.html"
 description = "Learn how to simplify responsive design with a mobile-first approach using the respond-to mixin pattern in SCSS"
 [taxonomies]
 tags = ["frontend", "recommended"]
+[extra]
+cover_image = "/images/blog/2025-04-22-respond-to-mixin-pattern-scss/respond-to-pattern-3.png"
 +++
 
 ![blog-cover](/images/blog/2025-04-22-respond-to-mixin-pattern-scss/respond-to-pattern-3.png)

@@ -4,6 +4,8 @@ template = "blog-post.html"
 description = "Learn how SOLID principles can enhance your codebase by promoting maintainability, scalability, and clean design"
 [taxonomies]
 tags = ["architecture", "recommended"]
+[extra]
+cover_image = "/images/blog/2024-11-22-solid-principles/solid-principles.png"
 +++
 
 ![blog-cover](/images/blog/2024-11-22-solid-principles/solid-principles.png)

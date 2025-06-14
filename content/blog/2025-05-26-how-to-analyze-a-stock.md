@@ -5,6 +5,8 @@ description = "Valuation metrics and other parameters to consider when analyzing
 date = 2025-05-26
 [taxonomies]
 tags = ["finance", "for beginners"]
+[extra]
+cover_image = "/images/blog/2025-05-26-how-to-analyze-a-stock/analyze-stock.png"
 +++
 
 ![blog-cover](/images/blog/2025-05-26-how-to-analyze-a-stock/analyze-stock.png)
