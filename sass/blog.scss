@@ -24,7 +24,7 @@
     padding-top: 1.5rem;
     display: grid;
     grid-template-columns: 1fr; // 👉 Mobile default: 1 column
-    gap: 2rem 1.5rem;
+    gap: 2rem 0;
 
     @include blog-card-values("a");
     
