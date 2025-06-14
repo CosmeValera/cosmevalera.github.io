@@ -91,10 +91,3 @@
         display: none;
     }
 }
-
-// Ensure scrollbar is always visible on medium screens to prevent layout shifts
-@include respond-to('md') {
-    html {
-        overflow-y: scroll;
-    }
-} 
