@@ -216,32 +216,50 @@ body {
         }
       }
 
-      // For odd project cards (1st, 3rd, 5th, etc.)
-      &:nth-child(odd) {
-        &:hover,
-        &.hovered {
-          .project-details-overlay {
-            opacity: 1;
-          }
+      // Define the keyframes
+      @keyframes shadowFloat {
+        0% { box-shadow: 0 12px 20px rgba(79, 245, 245, 0.6); }
+        25% { box-shadow: 2px 10px 22px rgba(79, 245, 245, 0.5); }
+        50% { box-shadow: -1px 14px 18px rgba(79, 245, 245, 0.55); }
+        75% { box-shadow: 1px 8px 24px rgba(79, 245, 245, 0.45); }
+        100% { box-shadow: 0 12px 20px rgba(79, 245, 245, 0.6); }
+      }
 
+      @keyframes shadowFloatWhite {
+        0% { box-shadow: 0 12px 20px rgba(255, 255, 255, 0.6); }
+        25% { box-shadow: 2px 10px 22px rgba(255, 255, 255, 0.5); }
+        50% { box-shadow: -1px 14px 18px rgba(255, 255, 255, 0.55); }
+        75% { box-shadow: 1px 8px 24px rgba(255, 255, 255, 0.45); }
+        100% { box-shadow: 0 12px 20px rgba(255, 255, 255, 0.6); }
+      }
+
+      // This creates a random-feeling pattern: C W W C C W C W C W W C
+      &:nth-child(12n+1),   // Cyan
+      &:nth-child(12n+4),   // Cyan  
+      &:nth-child(12n+5),   // Cyan
+      &:nth-child(12n+7),   // Cyan
+      &:nth-child(12n+9),   // Cyan
+      &:nth-child(12n) {    // Cyan
+        &:hover, &.hovered {
+          .project-details-overlay { opacity: 1; }
           .project-image {
             transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(79, 245, 245, 0.6);
+            animation: shadowFloat 4s ease-in-out infinite;
           }
         }
       }
 
-      // For even project cards (2nd, 4th, 6th, etc.)
-      &:nth-child(even) {
-        &:hover,
-        &.hovered {
-          .project-details-overlay {
-            opacity: 1;
-          }
-
+      &:nth-child(12n+2),   // White
+      &:nth-child(12n+3),   // White
+      &:nth-child(12n+6),   // White
+      &:nth-child(12n+8),   // White
+      &:nth-child(12n+10),  // White
+      &:nth-child(12n+11) { // White
+        &:hover, &.hovered {
+          .project-details-overlay { opacity: 1; }
           .project-image {
             transform: translateY(-10px);
-            box-shadow: 0 12px 20px rgba(255, 255, 255, 0.6);
+            animation: shadowFloatWhite 4s ease-in-out infinite;
           }
         }
       }
