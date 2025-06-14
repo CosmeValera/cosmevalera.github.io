@@ -10,7 +10,8 @@
     padding-bottom: 2rem;
 
     #sponsor-title {
-      font-size: min(5rem, 8.8vw);
+      // Scape the min function to CSS because zola is having trouble in prod
+      font-size: #{"min(5rem, 8.8vw)"};
     }
 
     #section-contribution {
