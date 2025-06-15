@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="{{ get_url(path="blog.css") | safe }}">
 {% endblock %}
 
+{% block scripts %}
+  <script src="{{ get_url(path="js/blog-cards-timeout.js") | safe }}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="blog">
   <h1>Blog</h1>

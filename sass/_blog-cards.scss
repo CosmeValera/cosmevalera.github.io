@@ -181,15 +181,31 @@
         background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
         z-index: 1;
       }
+
+      // This timeout class is added with js to make the hover disappear after some seconds
+      &.timeout { 
+        display: none;
+      }
     }
 
     &:hover .blog-card-cover-preview {
       opacity: 1;
-      transform: translateX(-50%) translateY(calc(-100% - 20px)) scale(1); // scale(1)
+      transform: translateX(-50%) translateY(calc(-100% - 20px)) scale(1);
       pointer-events: auto;
     }
+
+    // First card shows preview below
+    &:first-child {
+      .blog-card-cover-preview {
+        transform: translateX(-50%) translateY(calc(100% + 50px)) scale(0.95);
+      }
+
+      &:hover .blog-card-cover-preview {
+        transform: translateX(-50%) translateY(calc(100% + 50px)) scale(1);
+      }
+    }
     
-    // In computer blog-card-cover-preview goes to the side instead of above
+    // In computer blog-card-cover-preview goes X axis instead of Y axis
     @include respond-to('md') {
       &:nth-child(odd) {
         .blog-card-cover-preview {
