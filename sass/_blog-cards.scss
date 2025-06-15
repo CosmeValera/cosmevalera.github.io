@@ -146,17 +146,14 @@
     }
     
     .blog-card-cover-preview {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%) translateY(calc(100% + 50px)) scale(0.95);
+      position: relative;
       width: 100%;
-      height: 200px;
+      height: 0;
       border-radius: 8px;
       overflow: hidden;
       opacity: 0;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: none;
+      margin-top: 1rem;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       border: 2px solid rgba($accent-color, 0.3);
 
@@ -165,57 +162,13 @@
         height: 100%;
         object-fit: cover;
         transition: transform 0.3s ease;
-
-        &:hover {
-          transform: scale(1.05);
-        }
-      }
-
-      // This timeout class is added with js to make the hover disappear after some seconds
-      &.timeout { 
-        display: none;
       }
     }
 
     &:hover .blog-card-cover-preview {
       opacity: 1;
-      transform: translateX(-50%) translateY(calc(100% + 50px)) scale(1);
+      height: 150px;
       pointer-events: auto;
-
-      &:hover {
-        display: none; // Avoid the preview card on hover from keeping the whole post card hovered
-      }
-    }
-
-    // First card shows preview below
-    &:last-child {
-      .blog-card-cover-preview {
-        transform: translateX(-50%) translateY(calc(-100% - 20px)) scale(0.95);
-      }
-
-      &:hover .blog-card-cover-preview {
-        transform: translateX(-50%) translateY(calc(-100% - 20px)) scale(1);
-      }
-    }
-    
-    // In computer blog-card-cover-preview goes X axis instead of Y axis
-    @include respond-to('md') {
-      &:nth-child(odd) {
-        .blog-card-cover-preview {
-          left: auto;
-          right: 0;
-          transform: translateX(calc(100% + 20px))!important;
-          width: 300px;
-        }
-      }
-      &:nth-child(even) {
-        .blog-card-cover-preview {
-          left: 0;
-          right: auto;
-          transform: translateX(calc(-100% - 20px))!important;
-          width: 300px;
-        }
-      }
     }
   }
 }
