@@ -129,12 +129,10 @@ This might be the single most important metric, so stay with me for a second. It
 **`13` Dividend Yield and Payout**
 
 - For example: A 5% yield means you get $5 per $100 invested each year.
+
 > When a company pays a dividend, its market capitalization typically drops by that amount. So you're not gaining free money, just shifting value from the company to your pocket.
 > 
-> A dividend doesn’t automatically make a company more attractive. With non-dividend stocks, you can always sell a portion (e.g., 3%) to create your own "custom dividend."
-> 
-> Dividends are often seen as “free money" or passive income by inexperienced investors, but they aren’t inherently good or bad. What really matters is the company’s quality. Excessively high dividends can be a red flag, it could signal a possible lack of reinvestment or deeper issues.
-
+> This is why dividends, while often seen as passive income, can be misleading, since they don't create value on their own. What really matters is the company’s quality.
 
 <br/>
 <!-- Visual break for the practical example -->
@@ -142,7 +140,7 @@ This might be the single most important metric, so stay with me for a second. It
 
 <h4><b>🔍 Practical example:</b></h4>
 
-Let's take Apple (AAPL) as an example, visit <a target="_blank" href="https://finance.yahoo.com/quote/AAPL">its page in Yahoo Finance</a> and scroll down to the Statistics section. You should see something like this:
+Let's take **Apple (AAPL)** as an example, visit <a target="_blank" href="https://finance.yahoo.com/quote/AAPL">its page in Yahoo Finance</a> and scroll down to the Statistics section. You should see something like this:
 
 <img src="/images/blog/2025-05-26-how-to-analyze-a-stock/apple-statistics-image.png" style="width: 95%; border-radius: 10px; display: block; margin: 0 auto"/>
 <br/>
