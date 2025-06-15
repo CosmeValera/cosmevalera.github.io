@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('touchstart', () => {
       clearTimeout(timeoutId);
       preview.classList.remove('timeout');
-      timeoutId = setTimeout(() => preview.classList.add('timeout'), 5000);
+      timeoutId = setTimeout(() => preview.classList.add('timeout'), 30000);
     });
     
     card.addEventListener('touchend', () => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseenter', () => {
       clearTimeout(timeoutId);
       preview.classList.remove('timeout');
-      timeoutId = setTimeout(() => preview.classList.add('timeout'), 5000);
+      timeoutId = setTimeout(() => preview.classList.add('timeout'), 30000);
     });
     
     card.addEventListener('mouseleave', () => {
