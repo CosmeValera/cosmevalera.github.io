@@ -84,6 +84,12 @@
               </span>
             </div>
           </div>
+          
+          {% if post.extra.cover_image %}
+            <div class="blog-card-cover-preview">
+              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
     </div>
