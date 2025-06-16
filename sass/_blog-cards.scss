@@ -159,7 +159,6 @@
       width: 100%;
       overflow: hidden;
       pointer-events: none;
-      opacity: 1;
       
       img {
         width: 100%;
@@ -184,9 +183,11 @@
         top: calc(100% + 1.5rem);
         left: -1.5rem;
         width: calc(100% + 3rem);
-        height: 210px;
+        height: 0;
         opacity: 0;
         margin-top: 0;
+        pointer-events: none;
+        transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 1rem;
       }
     }
@@ -203,8 +204,13 @@
           border: none;
           z-index: 9;
           opacity: 1;
-          pointer-events: none;
+          pointer-events: auto;
           z-index: 10;
+          height: 210px;
+          
+          &:hover {
+            display: none;
+          }
         }
       }
     }
