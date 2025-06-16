@@ -29,8 +29,7 @@
       
       // Desktop specific hover effects for preview integration
       @include respond-to('md') {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+        border-radius: 12px 12px 0 0;
       }
     }
 
@@ -197,18 +196,17 @@
     @include respond-to('md') {
       &:hover {
         .blog-card-cover-preview {
-          // Matching card background and border for seamless look
-          background: linear-gradient(145deg, #0e3c3c, #232323cc);
-          border-bottom-left-radius: 12px;
-          border-bottom-right-radius: 12px;
-          border-top-left-radius: 0;
-          border-top-right-radius: 0;
+          background: linear-gradient(145deg, #0e3c3c, #232323cc); // Matching
+          border-radius: 0 0 12px 12px;
           border: none;
-          z-index: 9;
           opacity: 1;
           pointer-events: none;
+          height: calc(200px + 2rem); // img height + padding
           z-index: 10;
-          height: 210px;
+
+          img {
+            height: 200px;
+          }
         }
       }
     }
