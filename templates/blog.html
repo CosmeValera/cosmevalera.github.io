@@ -73,6 +73,9 @@
         <h3 class="blog-title">{{ post.title }}</h3>
         <div class="blog-card-details">
           <p class="card-description">{{ post.description }}</p>
+          <div class="blog-card-cover-preview">
+            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+          </div>
           <div class="card-date-and-stats">
             <span class="card-date">{{ post_date_display }}</span>
             <span class="card-stats">
@@ -80,12 +83,6 @@
             </span>
           </div>
         </div>
-        
-        {% if post.extra.cover_image %}
-          <div class="blog-card-cover-preview">
-            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
-          </div>
-        {% endif %}
       </a>
     {% endfor %}
   </div>

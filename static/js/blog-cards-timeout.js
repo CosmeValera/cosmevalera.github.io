@@ -39,71 +39,12 @@ function equalizeBlogCardHeights() {
   }
 }
 
-// Function to manage the mobile blog card preview timeout
-const cardHandlers = new WeakMap(); // To store event handlers per card
-
-function setupMobileBlogCardTimeout() {
-  document.querySelectorAll('.blog-card').forEach(card => {
-    const preview = card.querySelector('.blog-card-cover-preview');
-    if (!preview) return;
-
-    // Get current handlers for this card, or initialize
-    let handlers = cardHandlers.get(card);
-    if (!handlers) {
-      handlers = {};
-      cardHandlers.set(card, handlers);
-    }
-
-    // Always clear any existing timeout for this card
-    if (handlers.timeoutId) {
-      clearTimeout(handlers.timeoutId);
-      handlers.timeoutId = null;
-    }
-    preview.classList.remove('timeout'); // Ensure it's not hidden if switching from mobile to desktop
-
-    // Define handlers once per card
-    if (!handlers.handleEnter) {
-      handlers.handleEnter = () => {
-        clearTimeout(handlers.timeoutId);
-        preview.classList.remove('timeout');
-        handlers.timeoutId = setTimeout(() => preview.classList.add('timeout'), 30000);
-      };
-      handlers.handleLeave = () => {
-        clearTimeout(handlers.timeoutId);
-        preview.classList.add('timeout');
-      };
-    }
-
-    // Remove previous listeners if they exist
-    if (handlers.listenersAttached) {
-      card.removeEventListener('touchstart', handlers.handleEnter);
-      card.removeEventListener('touchend', handlers.handleLeave);
-      card.removeEventListener('mouseenter', handlers.handleEnter);
-      card.removeEventListener('mouseleave', handlers.handleLeave);
-    }
-
-    if (window.innerWidth < 768) {
-      // Add listeners for mobile
-      card.addEventListener('touchstart', handlers.handleEnter);
-      card.addEventListener('touchend', handlers.handleLeave);
-      card.addEventListener('mouseenter', handlers.handleEnter); // Keep mouse for hybrid devices
-      card.addEventListener('mouseleave', handlers.handleLeave); // Keep mouse for hybrid devices
-      handlers.listenersAttached = true;
-    } else {
-      // If desktop, ensure no timeout class and no active listeners
-      handlers.listenersAttached = false;
-    }
-  });
-}
-
 // Initial setup on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-  setupMobileBlogCardTimeout();
   equalizeBlogCardHeights();
 });
 
 // Recalculate on window resize
 window.addEventListener('resize', () => {
-  setupMobileBlogCardTimeout();
   equalizeBlogCardHeights();
 });
