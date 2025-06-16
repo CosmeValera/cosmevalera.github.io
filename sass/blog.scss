@@ -32,12 +32,6 @@
     @include respond-to('md') {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       align-items: stretch;
-  
-      .blog-card {
-        margin: unset;
-        max-width: 100%;
-        width: 100%;
-      }
     }
   }
 }
