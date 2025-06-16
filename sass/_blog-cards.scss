@@ -169,20 +169,20 @@
         transition: transform 0.3s ease;
         border: 2px solid rgba(79, 245, 245, .3);
         border-radius: 8px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+        box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
       }
 
       // Mobile styles (always visible, expands card)
       position: relative;
       height: 150px;
       margin-top: 1rem;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+      box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
       transition: none;
 
       // Desktop styles (hidden by default, appears on hover, is ABSOLUTE for overlap)
       @include respond-to('md') {
         position: absolute;
-        top: calc(100% + 1.5rem);
+        top: calc(100% + 1.3rem);
         left: -1.5rem;
         width: calc(100% + 3rem);
         height: 0;
@@ -206,7 +206,7 @@
           border: none;
           z-index: 9;
           opacity: 1;
-          pointer-events: auto;
+          pointer-events: none;
           z-index: 10;
           height: 210px;
         }
