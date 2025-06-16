@@ -180,13 +180,14 @@
       @include respond-to('md') {
         position: absolute;
         top: calc(100% + 1.5rem);
-        left: 0;
-        width: 100%;
+        left: -1.5rem;
+        width: calc(100% + 3rem);
         height: 210px;
         opacity: 0;
         margin-top: 0;
         pointer-events: none;
         transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 1rem;
 
         // Matching card background and border for seamless look
         background: linear-gradient(145deg, #0e3c3c, #232323cc);
