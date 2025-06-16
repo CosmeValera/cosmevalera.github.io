@@ -17,7 +17,6 @@
     max-width: 90%;
     margin: 0 auto;
     cursor: pointer;
-    overflow: hidden;
 
     // Main card hover effect
     &:hover {
@@ -26,7 +25,7 @@
       z-index: 10;
       overflow: visible;
       
-      // Desktop specific hover effects for seamless preview integration
+      // Desktop specific hover effects for preview integration
       @include respond-to('md') {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
@@ -153,30 +152,33 @@
       }
     }
     
-    // Preview image styles
+    /////////////////////////////////////
+    // BLOG CARD COVER PREVIEW SECTION //
+    /////////////////////////////////////
     .blog-card-cover-preview {
       width: 100%;
       overflow: hidden;
-      pointer-events: auto;
+      pointer-events: none;
+      opacity: 1;
       
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.3s ease;
+        border: 2px solid rgba(79, 245, 245, .3);
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
       }
 
       // Mobile styles (always visible, expands card)
       position: relative;
       height: 150px;
-      opacity: 1;
       margin-top: 1rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
       transition: none;
-      border-radius: 8px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      border: 2px solid rgba($accent-color, 0.3);
 
-      // Desktop styles (hidden by default, appears on hover, is ABSOLUTE for overlap) and .is-hovered effects
+      // Desktop styles (hidden by default, appears on hover, is ABSOLUTE for overlap)
       @include respond-to('md') {
         position: absolute;
         top: calc(100% + 1.5rem);
@@ -185,26 +187,23 @@
         height: 210px;
         opacity: 0;
         margin-top: 0;
-        pointer-events: none;
-        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 1rem;
+      }
+    }
 
-        // Matching card background and border for seamless look
-        background: linear-gradient(145deg, #0e3c3c, #232323cc);
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        border: 1px solid #124050;
-        border-top: none;
-        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-        z-index: 9;
-        opacity: 1;
-
-        // When .blog-card has .is-hovered class
-        #{$selector}.blog-card.is-hovered & {
+    @include respond-to('md') {
+      &:hover {
+        .blog-card-cover-preview {
+          // Matching card background and border for seamless look
+          background: linear-gradient(145deg, #0e3c3c, #232323cc);
+          border-bottom-left-radius: 12px;
+          border-bottom-right-radius: 12px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          border: none;
+          z-index: 9;
           opacity: 1;
-          pointer-events: auto;
+          pointer-events: none;
           z-index: 10;
         }
       }
