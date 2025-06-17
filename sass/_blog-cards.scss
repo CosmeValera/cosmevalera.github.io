@@ -110,6 +110,34 @@
         font-size: clamp(0.9rem, 2.2vw, 1rem);
         line-height: 1.6;
       }
+
+      .preview-indicator {
+        display: none;
+        position: absolute;
+        bottom: -36px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $accent-color;
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 4px 12px;
+        background: linear-gradient(145deg, #0f2f2f, $secondary-bg);
+        border: 1px solid #124050;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+
+        i {
+          margin-right: 0.5rem;
+        }
+
+        // Only appear for laptop
+        @include respond-to('md') {
+          display: block;
+        }
+      }
   
       .card-date-and-stats {
         display: flex;
@@ -207,6 +235,11 @@
           img {
             height: 200px;
           }
+        }
+
+        // On card hover preview disappears
+        .preview-indicator {
+          opacity: 0;
         }
       }
     }

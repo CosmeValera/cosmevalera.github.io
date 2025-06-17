@@ -73,6 +73,9 @@
         <h3 class="blog-title">{{ post.title }}</h3>
         <div class="blog-card-details">
           <p class="card-description">{{ post.description }}</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Hover to preview
+          </div>
           <div class="blog-card-cover-preview">
             <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
           </div>
