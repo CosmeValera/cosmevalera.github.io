@@ -34,17 +34,6 @@
       }
     }
 
-    &:not(:hover) {
-      @include respond-to('md') {
-        animation: lower-card 0.3s forwards;
-
-        @keyframes lower-card {
-          from { z-index: 10; }
-          to { z-index: 1; }
-        }
-      }
-    }
-
     .blog-card-icon {
       position: absolute;
       top: -16px;
@@ -218,7 +207,7 @@
         box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
       }
 
-      // Mobile styles (always visible, expands card)
+      // Mobile styles (preview always visible)
       position: relative;
       height: 150px;
       box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
@@ -238,6 +227,7 @@
       }
     }
 
+    // Blog-card main desktop styles
     @include respond-to('md') {
       &:hover {
         .blog-card-cover-preview {
@@ -257,6 +247,15 @@
         // On card hover preview disappears
         .preview-indicator {
           opacity: 0;
+        }
+      }
+
+      &:not(:hover) {
+        animation: lower-card 0.3s forwards;
+
+        @keyframes lower-card {
+          from { z-index: 10; }
+          to { z-index: 1; }
         }
       }
     }
