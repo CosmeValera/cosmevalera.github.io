@@ -1,5 +1,7 @@
 @import "tooltip";
 
+$preview-offset: 25px; // Use integer px for pixel-perfect alignment
+
 // Used in blog.html(a.blog-card) and tags/single.html(div.blog-card)
 @mixin blog-card-values($selector) {
   #{$selector}.blog-card {
@@ -20,6 +22,7 @@
     margin: 0 auto;
     cursor: pointer;
     z-index: 1;
+    box-sizing: border-box;
 
     // Main card hover effect
     &:hover {
@@ -196,6 +199,7 @@
       width: 100%;
       overflow: hidden;
       pointer-events: none;
+      box-sizing: border-box;
       
       img {
         width: 100%;
@@ -216,9 +220,9 @@
       // Desktop styles (hidden by default, appears on hover, is ABSOLUTE for overlap)
       @include respond-to('md') {
         position: absolute;
-        top: calc(100% + 1.3rem);
-        left: -1.55rem;
-        width: calc(100% + 3.1rem);
+        top: calc(100% + #{$preview-offset} - 3px);
+        left: -#{$preview-offset};
+        width: calc(100% + #{$preview-offset} * 2);
         height: 0;
         opacity: 0;
         pointer-events: none;
