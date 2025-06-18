@@ -19,6 +19,7 @@
     max-width: 90%;
     margin: 0 auto;
     cursor: pointer;
+    z-index: 1;
 
     // Main card hover effect
     &:hover {
@@ -30,6 +31,17 @@
       // Desktop specific hover effects for preview integration
       @include respond-to('md') {
         border-radius: 12px 12px 0 0;
+      }
+    }
+
+    &:not(:hover) {
+      @include respond-to('md') {
+        animation: lower-card 0.3s forwards;
+
+        @keyframes lower-card {
+          from { z-index: 10; }
+          to { z-index: 1; }
+        }
       }
     }
 
