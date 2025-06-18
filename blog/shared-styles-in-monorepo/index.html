@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.github.io/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cosmevalera.github.io/fonts.css">
+    <link rel="stylesheet" href="https://cosmevalera.github.io/fontawesome/css/fontawesome.css">
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous"></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.github.io/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.github.io/blog-post.css">
+
+  </head>
+  <body>
+    <!-- Lateral Floating Menu -->
+    <div class="lateral-menu">
+      <div class="menu-item-container">
+        
+        <a class="menu-item " href="/">
+          <span class="menu-label">Home</span>
+          <i class="menu-icon fas fa-home"></i>
+        </a>
+      </div>
+      <div class="menu-item-container">
+        <a class="menu-item " href="/projects">
+          <span class="menu-label">Projects</span>
+          <i class="menu-icon fas fa-code"></i>
+        </a>
+      </div>
+      <div class="menu-item-container">
+        <a class="menu-item active-page" href="/blog">
+          <span class="menu-label">Blog</span>
+          <i class="menu-icon fas fa-newspaper"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="fab-button">
+      <i class="fab-button-i fas fa-ellipsis-v"></i>
+    </div>
+    <!-- END: Lateral Floating Menu -->
+
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    <a href="/blog" class="back-link">← Back to all posts</a>
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.github.io/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Shared Styles in Monorepos</h1>
+    <h3 class="presentation-text">Approaches to maintain consistent styles across multiple projects in a monorepo environment</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">September 01, 2024</span>
+      <span class="reading-time">2 min read • 381 words</span>
+    </div>
+    <div class="post-content">
+        <p><img src="/images/blog/2024-09-01-shared-styles-in-monorepo/shared-styles-monorepo.png" alt="blog-cover" /></p>
+<h4><b>🤔 Overview</b></h4>
+<p>In large-scale projects maintaining consistent styles across multiple applications is crucial. Here are two key approaches for managing shared styles:</p>
+<ol>
+<li>📦 Creating a shared styles library as a <b>npm package</b>.</li>
+<li>🔗 Directly importing styles from <b>a centralized directory</b> within the monorepo.</li>
+</ol>
+<hr />
+<h4><b>📦 1. Creating a Styles Library with npm</b></h4>
+<p><b>Overview:</b> This approach involves creating a dedicated styles library that is published as a npm package. The styles can then be imported into any project that needs them.</p>
+<p><b>Implementation:</b> For example, if you're working with custom theme styles for PrimeReact, you can create your styles in a library and export them using an <code>index.js</code> file like this:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>module.exports = {
+</span><span>  theme: require(</span><span style="color:#e6db74;">&#39;./style/themes/my-theme/theme.scss&#39;</span><span>),
+</span><span>}</span><span style="color:#f92672;">;
+</span></code></pre>
+<p>After publishing the package, you can install it in your projects using:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm i my-theme
+</span></code></pre>
+<p>Then, simply import the styles in your main JavaScript entry point:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>import </span><span style="color:#e6db74;">&#39;my-theme&#39;</span><span style="color:#f92672;">;
+</span></code></pre>
+<p><b>Pros:</b>
+Centralized version control of styles.
+Easy to update and distribute across multiple projects.</p>
+<p><b>Cons:</b>
+Requires publishing and versioning with each change.</p>
+<h4><b>🔗 2. Direct Import from a Centralized Directory</b></h4>
+<p><b>Overview:</b> If you’re using a monorepo setup, you can store your styles in a central directory and import them directly into each project.</p>
+<p><b>Implementation:</b> Place your styles in a folder at the root level, parallel to your apps, and import them in your projects:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>import </span><span style="color:#e6db74;">&#39;../style/themes/my-theme/theme.scss&#39;</span><span style="color:#f92672;">;
+</span></code></pre>
+<p><b>Pros:</b>
+No need to publish or manage versions.
+Immediate access to the latest styles without additional steps.</p>
+<p><b>Cons:</b>
+Potential for accidental breaking changes if styles are updated.
+Need to have a monorepo structure; doesn't work if the projects are split into different repositories.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>6</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img 
+      src="https://cosmevalera.github.io/images/blog/general/tree-summer-spring.png" 
+      alt="Spring&amp;#x2F;Summer seasonal image">
+  
+</div> <h4><b>❓ What to choose</b></h4>
+<ul>
+<li>Use a <b>npm package</b> if you want to have strict version control or you don't have all your projects in the same folder.</li>
+<li>Use direct importing from <b>a centralized directory</b> if you prefer a simpler solution and your code structure allows it.</li>
+</ul>
+
+    </div>
+
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+
+  
+  <div class="link">
+    <span>Next post</span>
+    <a href="https:&#x2F;&#x2F;cosmevalera.github.io&#x2F;blog&#x2F;optimizing-microfrontends-with-turborepo&#x2F;">Optimizing Microfrontends with Turborepo</a>
+  </div>
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+  </div>
+
+      </main>
+
+      <footer>
+        <a href="/sponsor"><i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> | © 2025 Cosme Valera Reales
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.github.io/js/lateralMenu.js"></script>
+     
+    <!-- END: SCRIPTS -->
+  </body>
+</html>
