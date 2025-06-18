@@ -217,8 +217,8 @@
       @include respond-to('md') {
         position: absolute;
         top: calc(100% + 1.3rem);
-        left: -1.5rem;
-        width: calc(100% + 3rem);
+        left: -1.55rem;
+        width: calc(100% + 3.1rem);
         height: 0;
         opacity: 0;
         pointer-events: none;
@@ -232,8 +232,11 @@
       &:hover {
         .blog-card-cover-preview {
           background: linear-gradient(90deg, #123434, $secondary-bg); // Matching
+          box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+          clip-path: inset(+1px -20px -40px -20px); // Remove box-shadow at the top
+          border: 1px solid #124050;
+          border-top: 0; // Remove border at the top
           border-radius: 0 0 12px 12px;
-          border: none;
           opacity: 1;
           pointer-events: none;
           height: calc(200px + 2rem); // img height + padding
@@ -258,6 +261,11 @@
           to { z-index: 1; }
         }
       }
+      // &:last-child {
+      //   .blog-card-cover-preview {
+      //     bottom: calc(100% + 1.3rem);
+      //   }
+      // }
     }
   }
 }
