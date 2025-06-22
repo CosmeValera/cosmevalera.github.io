@@ -13,7 +13,7 @@ function attachHoverToPreviewInPhone() {
             const docHeight = document.documentElement.scrollHeight;
   
             // If at (or very near) the bottom, show last card's preview
-            if (Math.abs(scrollBottom - docHeight) < 2) {
+            if (docHeight - scrollBottom < 50) {
                 previews.forEach((preview, idx) => {
                     if (idx === previews.length - 1) {
                         preview.classList.add('show-preview');
