@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="{{ get_url(path="tags-single.css") | safe }}">
 {% endblock %}
 
+{% block scripts %}
+  <script src="{{ get_url(path="js/tags-single.js") | safe }}"></script>
+{% endblock %}
+
 {% block content %}
   <div class="tag-single">
     <a href="/{{ taxonomy.name }}" class="back-link">← See all {{ taxonomy.name }}</a>
@@ -77,6 +81,12 @@
           <h3 class="blog-title">{{ post.title }}</h3>
           <div class="blog-card-details">
             <p class="card-description">{{ post.description }}</p>
+            <div class="preview-indicator">
+              <i class="fas fa-eye"></i> Hover to preview
+            </div>
+            <div class="blog-card-cover-preview">
+              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+            </div>
             <div class="card-date-and-stats">
               <span class="card-date">{{ post_date_display }}</span>
               <span class="card-stats">
@@ -84,12 +94,6 @@
               </span>
             </div>
           </div>
-          
-          {% if post.extra.cover_image %}
-            <div class="blog-card-cover-preview">
-              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
-            </div>
-          {% endif %}
         </div>
       {% endfor %}
     </div>
