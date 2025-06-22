@@ -25,6 +25,7 @@
     display: grid;
     grid-template-columns: 1fr; // 👉 Mobile default: 1 column
     gap: 2rem 0;
+    background-color: pink; // TODO: REMOVE this line
 
     @include blog-card-values("a");
     
