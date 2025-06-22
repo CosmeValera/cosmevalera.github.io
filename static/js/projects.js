@@ -37,13 +37,7 @@ function clickFilterRendersCards() {
 
     const filterButtons = document.querySelectorAll(".filter-button");
     const projectCards = document.querySelectorAll(".project-card");
-    const animationClasses = ["animate__bounceInLeft", "animate__bounceInRight"];
     let currentSelectedFilter = ALL_FILTER_VALUE; // Start with "All" selected initially
-    let previousVisibleCards = Array.from(projectCards).map((card, index) => ({
-        card: card,
-        position: index
-    })); // Initialize with the first set of visible cards and their positions
-
     
     filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -62,7 +56,7 @@ function clickFilterRendersCards() {
                 currentSelectedFilter = ALL_FILTER_VALUE;
             }
 
-            // Filter cards
+            // Calculate filtered cards
             const visibleCards = Array.from(projectCards).filter((card) => {
                 const cardTechnology = card.querySelector(".card-technology").textContent;
                 return currentSelectedFilter === ALL_FILTER_VALUE ||
@@ -70,33 +64,17 @@ function clickFilterRendersCards() {
                     !(currentSelectedFilter === JAVA_FILTER_VALUE && cardTechnology.includes(JAVASCRIPT_FILTER_VALUE)));
             });
 
-            // Cards reappear with their new animation, except those that have same the position
-            visibleCards.forEach((card, index) => {
-                const previousCardIndex = previousVisibleCards.findIndex(prevCard => prevCard.card === card);
-                if (previousCardIndex !== -1 && previousVisibleCards[previousCardIndex].position === index) {
-                    return; // Skip cards with unchanged position
-                }
-
-                card.style.display = "none";
-                setTimeout(() => {
-                    card.style.display = "block";
-                    card.classList.add(animationClasses[index % 2]);
-                    card.classList.remove(animationClasses[(index + 1) % 2]);
-                }, 1);
-            });
-
-            // Display none to not filtered cards
+            // Display the filtered cards without animations
             projectCards.forEach((card) => {
                 if (!visibleCards.includes(card)) {
                     card.style.display = "none";
+                } else if (visibleCards.includes(card)) {
+                    card.style.display = "block";
+
+                    // Remove animations
+                    card.classList.remove("animate__animated");
                 }
             });
-
-            // Update previousVisibleCards with current positions
-            previousVisibleCards = visibleCards.map((card, index) => ({
-                card: card,
-                position: index
-            }));
         });
     });
 }
@@ -106,9 +84,9 @@ function clickFilterRendersCards() {
 //////////
 document.addEventListener("DOMContentLoaded", function () {
 
-    clickFilterToggleButton() // PHONE: Makes filter buttons appear
+    clickFilterToggleButton() // PHONE: Makes 'Filter' buttons appear
     
-    clickToggleHoverButton()
+    clickToggleHoverButton()  // PHONE: Makes 'Quick View' button appear 
 
     clickFilterRendersCards() // REACT, ANGULAR, NODE ...
 
