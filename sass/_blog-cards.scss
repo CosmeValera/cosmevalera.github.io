@@ -273,11 +273,38 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
           to { z-index: 1; }
         }
       }
-      // &:last-child {
-      //   .blog-card-cover-preview {
-      //     bottom: calc(100% + 1.3rem);
-      //   }
-      // }
+      
+      // If card is in last row, pop preview upwards
+      &.preview-up {
+        @include respond-to('md') {
+          .blog-card-cover-preview {
+            top: auto !important;
+            bottom: calc(135% + 2* #{$preview-offset}) !important;
+            border-radius: 12px 12px 0 0;
+            border-bottom: 0;
+            border-top: 1px solid #124050;
+            box-shadow: 0 -8px 12px rgba(0, 0, 0, .3);
+            clip-path: inset(-20px -10px 0px -10px);
+          }
+
+          &:hover {
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);
+
+            .blog-card-tags {
+              top: 0;
+              z-index: 20;
+              opacity: 0.7;
+            }
+            .blog-card-icon {
+              top: -16px;
+              z-index: 20;
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+      
     }
   }
 }
