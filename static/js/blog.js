@@ -15,10 +15,10 @@ function attachHoverToPreviewInPhone() {
             const distanceFromBottom = docHeight - scrollBottom;
             
             // Anti-glitch logic: use different thresholds for entering vs exiting bottom state
-            if (!isAtBottom && distanceFromBottom < 50) {
+            if (!isAtBottom && distanceFromBottom < 80) {
                 // Entering bottom state
                 isAtBottom = true;
-            } else if (isAtBottom && distanceFromBottom > 80) {
+            } else if (isAtBottom && distanceFromBottom > 120) {
                 // Exiting bottom state (higher threshold to prevent bounce glitch)
                 isAtBottom = false;
             }
