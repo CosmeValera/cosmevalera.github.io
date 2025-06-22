@@ -9,11 +9,17 @@ function attachHoverToPreviewInPhone() {
             let centerCard = null;
   
             const viewportCenter = window.innerHeight / 2;
-            const scrollBottom = window.innerHeight + window.scrollY;
-            const docHeight = document.documentElement.scrollHeight;
   
-            // If at (or very near) the bottom, show last card's preview
-            if (docHeight - scrollBottom < 50) {
+            /////////////////////
+            // CASE: LAST CARD //
+            /////////////////////
+            // Get the last card's bounding rect
+            const lastCard = cards[cards.length - 1];
+            const lastCardRect = lastCard.getBoundingClientRect();
+
+            // Calculate a point one-third from the bottom (i.e., two-thirds from the top)
+            const lastCardThird = lastCardRect.top + (lastCardRect.height * 2 / 3);
+            if (lastCardThird > 0 && lastCardThird < window.innerHeight) {
                 previews.forEach((preview, idx) => {
                     if (idx === previews.length - 1) {
                         preview.classList.add('show-preview');
@@ -24,6 +30,10 @@ function attachHoverToPreviewInPhone() {
                 return;
             }
   
+            ///////////////////////////////////////////
+            // CASE: DEFAULT (ANY CARD BUT LAST ONE) //
+            ///////////////////////////////////////////
+            // Otherwise, use center card logic
             cards.forEach((card, idx) => {
                 const rect = card.getBoundingClientRect();
                 const cardCenter = rect.top + rect.height / 2;
