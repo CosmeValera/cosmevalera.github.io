@@ -72,7 +72,7 @@ function attachHoverToPreviewInPhone() {
 }
 
 function markLastRowCardsInDesktop() {
-    // Only run on mobile (min-width: 768px)
+    // Only run on desktop (min-width: 768px)
     if (!window.matchMedia('(min-width: 768px)').matches) {
         return;
     }
