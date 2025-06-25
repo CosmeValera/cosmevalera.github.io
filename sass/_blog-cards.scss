@@ -34,6 +34,8 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       // Desktop specific hover effects for preview integration
       @include respond-to('md') {
         border-radius: 12px 12px 0 0;
+
+        @include card-color-accent-based-on-primary-tag();
       }
     }
 
@@ -253,6 +255,8 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
           pointer-events: none;
           height: calc(200px + 2rem); // img height + padding
           z-index: 10;
+          
+          @include card-color-accent-based-on-primary-tag();
 
           img {
             height: 200px;

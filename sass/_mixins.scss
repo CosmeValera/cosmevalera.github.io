@@ -89,6 +89,44 @@
     }
 }
 
+@mixin card-color-accent-based-on-primary-tag {
+  &.tag-frontend {
+    background: 
+      linear-gradient(90deg, 
+        mix($frontend-tag-plain, #123434, 9%), 
+        #123434 65%, 
+        $secondary-bg);
+  }
+  &.tag-architecture {
+    background: 
+      linear-gradient(90deg, 
+        mix($architecture-tag-plain, #123434, 9%), 
+        #123434 65%, 
+        $secondary-bg);
+  }
+  &.tag-backend {
+    background: 
+      linear-gradient(90deg, 
+        mix($backend-tag-plain, #123434, 9%), 
+        #123434 65%,
+        $secondary-bg);
+  }
+  &.tag-finance {
+    background: 
+      linear-gradient(90deg, 
+        mix($finance-tag-plain, #123434, 9%), 
+        #123434 65%, 
+        $secondary-bg);
+  }
+  &.tag-bitcoin {
+    background: 
+      linear-gradient(90deg, 
+        mix($bitcoin-tag-plain, #123434, 9%), 
+        #123434 65%, 
+        $secondary-bg);
+  }
+}
+
 // Breakpoints map for responsive mixins
 $breakpoints: (
   'sm': $break-small,

@@ -44,7 +44,7 @@
           {% set time_label = "mins" %}
         {% endif %}
 
-        <div class="blog-card" onclick="if(event.target.tagName !== 'A'){ window.location='{{ post.permalink }}'; }">
+        <div class="blog-card{% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}" onclick="if(event.target.tagName !== 'A'){ window.location='{{ post.permalink }}'; }">
           {% if post.taxonomies and post.taxonomies.tags %}
             {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
 
@@ -84,7 +84,7 @@
             <div class="preview-indicator">
               <i class="fas fa-eye"></i> Hover to preview
             </div>
-            <div class="blog-card-cover-preview">
+            <div class="blog-card-cover-preview{% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}">
               <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
             </div>
             <div class="card-date-and-stats">
