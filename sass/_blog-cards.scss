@@ -8,7 +8,7 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(90deg, #123434, $secondary-bg);
+    background: linear-gradient(-90deg, $secondary-bg, #123434);
     border: 1px solid #124050;
     padding: 1.5rem;
     border-radius: 12px;
