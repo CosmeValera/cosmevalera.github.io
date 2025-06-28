@@ -1,0 +1,143 @@
+////////////////////////////////////////////////
+// BLOG-CARD BG COLOR EFFECT WHEN HOVERED //////
+@mixin card-color-accent-based-on-primary-tag {
+  &.tag-frontend {
+    background: 
+      linear-gradient(-90deg, 
+        mix($frontend-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
+  &.tag-architecture {
+    background: 
+      linear-gradient(-90deg, 
+        mix($architecture-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
+  &.tag-backend {
+    background: 
+      linear-gradient(-90deg, 
+        mix($backend-tag-plain, #123434, 10%), 
+        #123434 65%,
+        #123434);
+  }
+  &.tag-finance {
+    background: 
+      linear-gradient(-90deg, 
+        mix($finance-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
+  &.tag-bitcoin {
+    background: 
+      linear-gradient(-90deg, 
+        mix($bitcoin-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
+}
+// END: BLOG-CARD BG COLOR EFFECT WHEN HOVERED //////
+/////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////
+// BLOG-CARD BORDER COLOR FOR ICONS WHEN HOVERED //////
+@mixin card-border-when-has-icon-based-on-primary-tag {
+  &.tag-frontend {
+    box-shadow: 
+      0 0 0 2px rgba($frontend-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-frontend 2s ease-in-out infinite;
+  }
+  &.tag-architecture {
+    box-shadow: 
+      0 0 0 2px rgba($architecture-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-architecture 2s ease-in-out infinite;
+  }
+  &.tag-backend {
+    box-shadow: 
+      0 0 0 2px rgba($backend-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-backend 2s ease-in-out infinite;
+  }
+  &.tag-finance {
+    box-shadow: 
+      0 0 0 2px rgba($finance-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-finance 2s ease-in-out infinite;
+  }
+  &.tag-bitcoin {
+    box-shadow: 
+      0 0 0 2px rgba($bitcoin-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-bitcoin 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-border-frontend {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($frontend-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($frontend-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes pulse-border-architecture {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($architecture-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($architecture-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes pulse-border-backend {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($backend-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($backend-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes pulse-border-finance {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($finance-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($finance-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes pulse-border-bitcoin {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($bitcoin-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($bitcoin-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+// END: BLOG-CARD BORDER COLOR FOR ICONS WHEN HOVERED //////
+////////////////////////////////////////////////////////////

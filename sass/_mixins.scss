@@ -1,3 +1,5 @@
+@import "mixin-card-bg-color-and-border";
+
 @mixin underline-effect($after-position, $bottom, $hover-color) {
     position: relative;
 
@@ -87,44 +89,6 @@
     &.tag-bitcoin-plain {
       background-color: $bitcoin-tag-plain;
     }
-}
-
-@mixin card-color-accent-based-on-primary-tag {
-  &.tag-frontend {
-    background: 
-      linear-gradient(-90deg, 
-        mix($frontend-tag-plain, #123434, 9%), 
-        #123434 65%, 
-        #123434);
-  }
-  &.tag-architecture {
-    background: 
-      linear-gradient(-90deg, 
-        mix($architecture-tag-plain, #123434, 9%), 
-        #123434 65%, 
-        #123434);
-  }
-  &.tag-backend {
-    background: 
-      linear-gradient(-90deg, 
-        mix($backend-tag-plain, #123434, 9%), 
-        #123434 65%,
-        #123434);
-  }
-  &.tag-finance {
-    background: 
-      linear-gradient(-90deg, 
-        mix($finance-tag-plain, #123434, 9%), 
-        #123434 65%, 
-        #123434);
-  }
-  &.tag-bitcoin {
-    background: 
-      linear-gradient(-90deg, 
-        mix($bitcoin-tag-plain, #123434, 9%), 
-        #123434 65%, 
-        #123434);
-  }
 }
 
 // Breakpoints map for responsive mixins

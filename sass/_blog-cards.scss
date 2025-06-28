@@ -36,6 +36,12 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         border-radius: 12px 12px 0 0;
 
         @include card-color-accent-based-on-primary-tag();
+
+        &:has(.blog-card-recommended, .blog-card-for-beginners) {
+          &, .blog-card-cover-preview { // border to card and preview
+            @include card-border-when-has-icon-based-on-primary-tag();
+          }
+        }
       }
     }
 
