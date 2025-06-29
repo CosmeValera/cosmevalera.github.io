@@ -34,34 +34,45 @@
         {% set time_label = "mins" %}
       {% endif %}
       
+      {# Set up main tag and helper variables #}
+      {% set has_tags = post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
+      {% set main_tag = "" %}
+      {% set main_tag_class = "" %}
+      {% set tags_string = "" %}
       
-      <a class="blog-card{% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}" href="{{ post.permalink }}">
-        {% if post.taxonomies and post.taxonomies.tags %}
-          {% set main_tag = "" %}
-          {% if post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
-            {% set main_tag = post.taxonomies.tags[0] | slugify %}
-          {% endif %}
-          {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
-          
+      {% if has_tags %}
+        {% set main_tag = post.taxonomies.tags[0] | slugify %}
+        {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
+        {% if main_tag in config.extra.blog_post_tags %}
+          {% set main_tag_class = " tag-" ~ main_tag %}
+        {% endif %}
+      {% endif %}
+      
+      <a class="blog-card{{ main_tag_class }}" href="{{ post.permalink }}">
+        {% if has_tags %}
+          {# Show special icons based on tags #}
           {% if "recommended" in tags_string %}
-            <div class="blog-card-icon blog-card-recommended tag-{{ main_tag }}">
+            <div class="blog-card-icon blog-card-recommended {{ main_tag_class }}">
               <i class="fas fa-star"></i>
               <span class="blog-card-tooltip">Highly recommended read</span>
             </div>
           {% elif "beginner" in tags_string %} <!-- Checks contain "beginner", not "for-beginner"-->
-            <div class="blog-card-icon blog-card-for-beginners tag-{{ main_tag }}">
+            <div class="blog-card-icon blog-card-for-beginners {{ main_tag_class }}">
               <i class="fas fa-book"></i>
               <span class="blog-card-tooltip">Great for beginners</span>
             </div>
           {% endif %}
 
+          {# Display tags #}
           <div class="blog-card-tags">
             {% for tag in post.taxonomies.tags %}
               {% set tag_lower = tag | lower %}
+              
+              {# Skip special tags that are used for icons #}
               {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
                 {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
                   {# Main tag: keep its special color class #}
-                  <div class="blog-card-tag tag-{{ tag | slugify }} tag-{{ tag | slugify }}">
+                  <div class="blog-card-tag tag-{{ tag | slugify }}">
                     {{ tag | slugify | replace(from="-", to=" ") | title }}
                   </div>
                 {% else %}
@@ -81,7 +92,7 @@
           <div class="preview-indicator">
             <i class="fas fa-eye"></i> Hover to preview
           </div>
-          <div class="blog-card-cover-preview{% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}">
+          <div class="blog-card-cover-preview{{ main_tag_class }}">
             <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
           </div>
           <div class="card-date-and-stats">
