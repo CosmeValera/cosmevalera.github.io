@@ -141,3 +141,25 @@
 }
 // END: BLOG-CARD BORDER COLOR FOR ICONS WHEN HOVERED //////
 ////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////
+// BLOG-CARD ICON BORDER COLOR WHEN HOVERED ///////////////
+@mixin icon-border-when-has-icon-based-on-primary-tag {
+  &.tag-frontend {
+    box-shadow: 0 0 0 2px $frontend-tag-plain;
+  }
+  &.tag-architecture {
+    box-shadow: 0 0 0 2px $architecture-tag-plain;
+  }
+  &.tag-backend {
+    box-shadow: 0 0 0 2px $backend-tag-plain;
+  }
+  &.tag-finance {
+    box-shadow: 0 0 0 2px $finance-tag-plain;
+  }
+  &.tag-bitcoin {
+    box-shadow: 0 0 0 2px $bitcoin-tag-plain;
+  }
+}
+// END: BLOG-CARD ICON BORDER COLOR WHEN HOVERED ///////////
+////////////////////////////////////////////////////////////

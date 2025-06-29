@@ -1,4 +1,5 @@
 @import "tooltip";
+@import "mixin-card-bg-color-and-border";
 
 $preview-offset: 25px; // Use integer px for pixel-perfect alignment
 
@@ -31,13 +32,20 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       z-index: 10;
       overflow: visible;
       
-      // Desktop specific hover effects for preview integration
+      // Desktop specific hover effects
       @include respond-to('md') {
         border-radius: 12px 12px 0 0;
 
+        // Accent for card
         @include card-color-accent-based-on-primary-tag();
 
         &:has(.blog-card-recommended, .blog-card-for-beginners) {
+          // If icon: border permanent border
+          .blog-card-icon {
+            @include icon-border-when-has-icon-based-on-primary-tag();
+          }
+
+          // If icon: border to card and preview, animated
           &, .blog-card-cover-preview { // border to card and preview
             @include card-border-when-has-icon-based-on-primary-tag();
           }

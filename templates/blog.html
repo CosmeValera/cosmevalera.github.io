@@ -34,17 +34,22 @@
         {% set time_label = "mins" %}
       {% endif %}
       
+      
       <a class="blog-card{% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}" href="{{ post.permalink }}">
         {% if post.taxonomies and post.taxonomies.tags %}
+          {% set main_tag = "" %}
+          {% if post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
+            {% set main_tag = post.taxonomies.tags[0] | slugify %}
+          {% endif %}
           {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
           
           {% if "recommended" in tags_string %}
-            <div class="blog-card-icon blog-card-recommended">
+            <div class="blog-card-icon blog-card-recommended tag-{{ main_tag }}">
               <i class="fas fa-star"></i>
               <span class="blog-card-tooltip">Highly recommended read</span>
             </div>
           {% elif "beginner" in tags_string %} <!-- Checks contain "beginner", not "for-beginner"-->
-            <div class="blog-card-icon blog-card-for-beginners">
+            <div class="blog-card-icon blog-card-for-beginners tag-{{ main_tag }}">
               <i class="fas fa-book"></i>
               <span class="blog-card-tooltip">Great for beginners</span>
             </div>
