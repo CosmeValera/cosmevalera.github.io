@@ -146,19 +146,19 @@
 // BLOG-CARD ICON BORDER COLOR WHEN HOVERED ///////////////
 @mixin icon-border-when-has-icon-based-on-primary-tag {
   &.tag-frontend {
-    box-shadow: 0 0 0 2px $frontend-tag-plain;
+    box-shadow: 0 0 0 3px rgba($frontend-tag-plain, 0.8);
   }
   &.tag-architecture {
-    box-shadow: 0 0 0 2px $architecture-tag-plain;
+    box-shadow: 0 0 0 3px rgba($architecture-tag-plain, 0.8);
   }
   &.tag-backend {
-    box-shadow: 0 0 0 2px $backend-tag-plain;
+    box-shadow: 0 0 0 3px rgba($backend-tag-plain, 0.8);
   }
   &.tag-finance {
-    box-shadow: 0 0 0 2px $finance-tag-plain;
+    box-shadow: 0 0 0 3px rgba($finance-tag-plain, 0.8);
   }
   &.tag-bitcoin {
-    box-shadow: 0 0 0 2px $bitcoin-tag-plain;
+    box-shadow: 0 0 0 3px rgba($bitcoin-tag-plain, 0.8);
   }
 }
 // END: BLOG-CARD ICON BORDER COLOR WHEN HOVERED ///////////
