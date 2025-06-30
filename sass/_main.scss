@@ -7,8 +7,9 @@
 //
 // The common SCSS is divided in the next files, promoting SRP
 @import 'variables';
-@import 'mixins';
+@import "utils/mixin-card-bg-color-and-border";
+@import 'utils/mixins';
 @import 'base';
-@import 'helpers';
+@import 'utils/helpers';
 @import 'layout';
 @import 'lateral-menu';
