@@ -44,8 +44,8 @@ Lower is generally better, since that means that the earnings are greater.
 **4️⃣ Forward P/E (Price/Earnings, next 12 months)**
 
 **Definition:** Ratio of price to expected future earnings over the coming year.
-- If Forward P/E is **lower** than Trailing P/E, **worse** results are expected.
-- If Forward P/E is **higher** than Trailing P/E, **better** results are expected. 
+- If Forward P/E is **higher** than Trailing P/E, **worse** results are expected.
+- If Forward P/E is **lower** than Trailing P/E, **better** results are expected. 
 
 **5️⃣ EV/EBITDA**
 
