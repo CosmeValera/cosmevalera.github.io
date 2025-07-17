@@ -6,10 +6,10 @@ date = 2025-05-26
 [taxonomies]
 tags = ["finance", "for beginners"]
 [extra]
-cover_image = "/images/blog/2025-05-26-how-to-analyze-a-stock/analyze-stock.png"
+cover_image = "/images/blog/2025-05-26-how-to-analyze-a-stock/opt1.png"
 +++
 
-![blog-cover](/images/blog/2025-05-26-how-to-analyze-a-stock/analyze-stock.png)
+![blog-cover](/images/blog/2025-05-26-how-to-analyze-a-stock/opt1.png)
 
 Analyzing a stock can be tricky at first, but this beginner-friendly and practical guide will help you make informed decisions when investing capital at risk. We'll explore the key metrics to look at when evaluating a company.
 
