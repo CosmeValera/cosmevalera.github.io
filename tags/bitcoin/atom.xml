@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - bitcoin</title>
+	<link href="https://cosmevalera.github.io/tags/bitcoin/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-07-25T00:00:00+00:00</updated>
+	<id>https://cosmevalera.github.io/tags/bitcoin/atom.xml</id>
+	<entry xml:lang="en">
+		<title>BTC 101: Why Bitcoin?</title>
+		<published>2025-07-25T00:00:00+00:00</published>
+		<updated>2025-07-25T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/blog/bitcoin/" type="text/html"/>
+		<id>https://cosmevalera.github.io/blog/bitcoin/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;bitcoin-cover-3.png&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bitcoin is hard to understand because it involves different fields of knowledge such as: &lt;strong&gt;economics, technology, philosophy and incentives&lt;&#x2F;strong&gt;. However, I will try my best to explain my understanding of Bitcoin in just a few bullet points so perhaps I can awake your curiousity about this topic and also I&#x27;ll provide resources to deepen your knowledge.&lt;&#x2F;p&gt;
+&lt;p&gt;First of all, let&#x27;s talk about &lt;strong&gt;economics&lt;&#x2F;strong&gt;, how do current currencies like the dollar and euro compare to Bitcoin?&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Inflation&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;inflation.jpg&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;$100 in 1913 would only be worth about $3.87 today. Therefore, in around 100 years the dollar has lost 96.13% of its value &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;howmuch.net&#x2F;articles&#x2F;rise-and-fall-dollar&quot;&gt;[1]&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;p&gt;While the purchasing power of the dollar has fluctuated since 1913, it has never surpassed the purchasing power it had in 1913.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Understanding why inflation happens is a bit complex, but to summarize: central banks print money, at a more or less steady pace. However, during periods of war or conflict, this money creation accelerates significantly. As a result, people&#x27;s savings lose value, while the freshly printed money is often used to fund wars.&lt;&#x2F;p&gt;
+&lt;h4&gt;From the Gold Standard to Fiat money&lt;&#x2F;h4&gt;
+&lt;p&gt;The economic depression of the 1930s made countries enter a loop in which they would devaluate their currency (to promote exports) and push protectionist measures (to limit imports) that ultimately worsened the crisis by deterring international trade.&lt;&#x2F;p&gt;
+&lt;p&gt;Some years later, 44 countries, including the USA, recognized this detrimental loop, and their presidents held a meeting where they signed the Bretton Woods Agreements in 1944.&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;b&gt;Bretton Woods Agreements&lt;&#x2F;b&gt; created a new international monetary system &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.investopedia.com&#x2F;terms&#x2F;b&#x2F;brettonwoodsagreement.asp&quot;&gt;[2]&lt;&#x2F;a&gt;. In this new system:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The dollar became the central currency and the only one convertible to gold (at an exchange rate of $35 per ounce).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;All other currencies had fixed exchange rates to the dollar but were not directly convertible to gold (they had to be converted to dollars first and then to gold).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The system worked fairly well for some years but eventually, both the USA and the other countries began to take advantage:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The USA started printing more dollars than those that they could back up with its gold reserves.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Some of the other 43 countries purposely devalued their currencies to boost exports to the USA, causing trading surpluses. This worsened U.S. deficits and put the dollar under pressure, contributing to the system&#x27;s collapse.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Both sides tried to take advantage of the system and this finally led to its collapse. In 1965, France, under President Charles de Gaulle, grew suspicious about the system and demanded the USA to convert France&#x27;s dollar reserves into gold.&lt;&#x2F;p&gt;
+&lt;p&gt;Following in France&#x27;s footsteps, other countries also started requesting the USA to exchange their dollars back into gold. In 1971, U.S. President Richard Nixon put a final end to the dollar&#x27;s convertibility to gold.&lt;&#x2F;p&gt;
+&lt;h4&gt;Bitcoin vs. Fiat Currency&lt;&#x2F;h4&gt;
+&lt;p&gt;As we just saw, since Nixon detached the dollar from gold in 1971, fiat currencies are no longer convertible to gold; therefore, they are no longer backed by anything. You can&#x27;t go to a bank and exchange your currency for gold, it doesn&#x27;t work like that anymore.&lt;&#x2F;p&gt;
+&lt;p&gt;As a result, fiat currencies are just paper bills, which, as we&#x27;ve seen, central banks can print as much as they want, thus making your money worth less and less.&lt;&#x2F;p&gt;
+&lt;p&gt;Another way to look at it, is that fiat money has no intrinsic value, since it is no longer backed by anything. It is only based on the state&#x27;s violence, since if you don&#x27;t pay your taxes, you will be sent to jail.&lt;&#x2F;p&gt;
+&lt;p&gt;Many often say Bitcoin is not based on anything. Well, as I have just explained, nowadays fiat money is also not based on anything. So, does either Bitcoin or fiat money have intrinsic value? The answer is: neither do.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;So why would I invest in bitcoin&lt;&#x2F;b&gt; if it has no intrinsic value? Well, because in the same way that fiat money is backed by the state&#x27;s violence, Bitcoin is backed by electricity. Maintaining the network requires an enormous amount of computational power (hashrate) to mine blocks. In a way, all of that electricity is what gives bitcoin its &quot;intrinsic&quot; value. To put it that way, it&#x27;s like transforming the energy of the real world into value in the digital world &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=--IFcOIEfl4&quot;&gt;[3]&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt; 
+&lt;hr &#x2F;&gt;
+&lt;p&gt;We&#x27;ve covered a bit of economics, let&#x27;s see some &lt;b&gt;technology&lt;&#x2F;b&gt; and &lt;b&gt;incentives&lt;&#x2F;b&gt; behind Bitcoin.&lt;&#x2F;p&gt;
+&lt;h4&gt;The Basics of Bitcoin technology&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;technology.png&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bitcoin is both a network and a currency. &lt;b&gt;Bitcoin&lt;&#x2F;b&gt; (with an uppercase &#x27;B&#x27;) refers to the network, and &lt;b&gt;bitcoin&lt;&#x2F;b&gt; (lowercase &#x27;b&#x27;) refers to the currency.&lt;&#x2F;p&gt;
+&lt;p&gt;The Bitcoin network is built on maths and code. For it to work, it relies on its technology and its incentives, which both work in a synergic way to keep the system running &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bitcoin.org&#x2F;bitcoin.pdf&quot;&gt;[4]&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;When Bitcoin was created, there were two key challenges that had to be solved in order to build a working peer-to-peer electronic cash system. These challenges are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;double spending&lt;&#x2F;strong&gt; problem.&lt;&#x2F;li&gt;
+&lt;li&gt;The &lt;strong&gt;trusted third party&lt;&#x2F;strong&gt; problem.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The &lt;b&gt;double spending&lt;&#x2F;b&gt; problem refers to the challenge of preventing a user (User A) from transferring the same single coin to both User B and User C at the same time. Traditional currencies don&#x27;t face this issue, because physical bills cannot be used twice, and digital fiat money is controlled by the state.&lt;&#x2F;p&gt;
+&lt;p&gt;To address the double spending problem, one of the solutions is to have a trusted third party. However, this also introduces a new issue: the risk associated with relying on a centralized intermediary. The third party could be hacked or act maliciously, such as stealing users&#x27; funds. This leads to the second problem: the trusted third party problem.&lt;&#x2F;p&gt;
+&lt;p&gt;For the &lt;b&gt;trusted third party&lt;&#x2F;b&gt; problem, Bitcoin solves it by being a peer-to-peer network that doesn&#x27;t require trust. Since the same participants are responsible for both 1) mining new blocks and 2) verifying that the Bitcoin protocol is being followed and that no one is abusing the system.&lt;&#x2F;p&gt;
+&lt;h4&gt;How Bitcoin Works: Blockchain, Miners and Nodes&lt;&#x2F;h4&gt;
+&lt;p&gt;Some of the key implementations of this technology are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Blockchain&lt;&#x2F;strong&gt;: A blockchain is a series of blocks, where each new block contains the hash of the previous one, thus forming a chain. It acts as a timestamp server. Since we can&#x27;t trust any individual or organization to provide time for Bitcoin, the network creates its own time through the blockchain.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Miners&lt;&#x2F;strong&gt;: Miners are computers that rapidly perform calculations to solve complex cryptographic puzzles. When a block is successfully mined, the miner receives a reward. At the same time, the block is added to the blockchain, and all the transactions within it are confirmed.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Nodes&lt;&#x2F;strong&gt;: Nodes are computers that store the full copy of the blockchain and help validate transactions and blocks. To keep Bitcoin decentralized and secure, it&#x27;s essential that anyone can run a node. Nodes can leave and rejoin the network freely, accepting the longest proof-of-work chain as proof of what happened while they were gone.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Encryption&lt;&#x2F;strong&gt;: To mine a block, miners must find a number (called a nonce) that, when passed through the SHA-256 hashing algorithm, it produces a hash that is lower than a target value set by the Bitcoin network&#x27;s difficulty. Since there is no shortcut to find this nonce, miners use brute force, trying as many possible combinations as fast as possible until one solves the puzzle and earns the right to add the block and claim the reward.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Incentives&lt;&#x2F;h4&gt;
+&lt;p&gt;Incentives are very well aligned in Bitcoin, I can&#x27;t cover everything in this post, but to name a few:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bitcoin is scarce:&lt;&#x2F;strong&gt; This serves two purposes: 1) Its fixed supply makes it deflationary, so your long-term savings in bitcoin are likely to hold or increase in value, 2) it helps the network gain traction so people are incentivized to enter as soon as possible, since a perfect network with no users is like a library with no books.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Diminishing block rewards:&lt;&#x2F;strong&gt; Every 210000 blocks (≈4 years) the reward for mining a block is halved. This creates a strong incentive for people to adopt Bitcoin as early on as possible, since new issuance becomes progressively scarcer with each halving period.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Bitcoin&#x27;s supply is pre-established:&lt;&#x2F;strong&gt; Everyone knows that the total amount of bitcoins that will ever exist is 21 million, as well as the rate at which they will be mined. In the first halving period, each block mined rewards the miner 50 bitcoins; in the second halving period, 25 bitcoins; and so on. Around the year 2140, the reward will be reduced to zero &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.blockpit.io&#x2F;blog&#x2F;bitcoin-halving&quot;&gt;[5]&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Miner&#x27;s rewards:&lt;&#x2F;strong&gt; Nowadays, miners earn mostly from the block reward. As of the year 2025, which corresponds to the fourth halving, it is 3.125 BTC per block. As the reward decreases, miners will rely more on fees from the users who want to add transactions to the blockchain. Once the block reward reaches zero, they will depend solely on these fees.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Why run a node:&lt;&#x2F;strong&gt; Unlike miners, nodes don&#x27;t grant rewards. However, to be sure that your bitcoins are safe, it&#x27;s important to protect the network. There are currently around 23000 public nodes, but as long as even one node is running, the network can work. The Bitcoin network only depends on maths, the internet, and the existence of people with good will. So, the incentive here is that those who have a significant capital in bitcoin may buy a node, to protect the network and thus their wealth.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Why only 21 million bitcoins?&lt;&#x2F;strong&gt; The whole point of bitcoin is that its supply is limited, which protects the value of your investment from inflation. &lt;strong&gt;Could Bitcoin code be changed to increase the amount of bitcoins to more than 21 million?&lt;&#x2F;strong&gt; The answer is that technically yes, Bitcoin receives updates constantly; they are called BIPs (Bitcoin Improvement Proposals) &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bitcoin&#x2F;bips&quot;&gt;[6]&lt;&#x2F;a&gt;. However, realistically, it is not going to happen. BIPs are accepted or rejected based on community consensus and increasing the supply would dilute the wealth of bitcoin holders. Therefore, regarding incentives, those most involved in the network are the least interested in increasing the total supply of bitcoins.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Common doubts &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.marcialpons.es&#x2F;media&#x2F;pdf&#x2F;55178_La_filosofia_de_BITCOIN.pdf&quot;&gt;[7]&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;But Bitcoin is Volatile:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bitcoin&#x27;s volatility is one of the most common criticisms and they have a point. However, the price is extrinsic to it. It just means that the market still doesn&#x27;t know what value it has, and it&#x27;s still discovering its market value. As time goes on, its volatility decreases. In fact, volatility is good, since Bitcoin is not a company nor does it have a marketing department to promote it. If it weren&#x27;t for the volatility, Bitcoin would still be worth $1.&lt;&#x2F;p&gt;
+&lt;p&gt;The famous term &lt;b&gt;HODL&lt;&#x2F;b&gt; originated from a 2013 Reddit post uploaded by a drunk person, who said that he was a terrible trader and could not predict when the price of bitcoin was going to rise or fall in order to make a profit. But he realized that if he ignored the short-term swings and just held the asset, then the traders would not be able to profit from him.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a lot to learn about Bitcoin; therefore, there is a big asymmetry of knowledge between those who understand it and those who don&#x27;t. This causes people to feel envious when they miss opportunities to make a profit and panic-sell when the price goes down, because they don&#x27;t understand the asset. That&#x27;s why it&#x27;s important to focus on understanding the asset, keeping in mind the long-term value and not letting our emotions cloud our vision in the short term.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Why Bitcoin and not Crypto?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a fundamental flaw in grouping everything together under the term &quot;crypto&quot;, as it implies that all other crypto assets compete with Bitcoin. In reality, most of them don&#x27;t even &lt;i&gt;intend&lt;&#x2F;i&gt; to. As I have already talked about in this post, one of the most important virtues of Bitcoin is that there is no third party involvement. If you have a network that has been running on its own for over a decade, why would you choose a cheaper alternative that could be manipulated by any person or company at any given moment?&lt;&#x2F;p&gt;
+&lt;p&gt;Other projects don&#x27;t aim to become global monetary systems, rather, they aim to be entrepreneurial projects, or even worse, &lt;i&gt;neolottery&lt;&#x2F;i&gt;. Remember that if you think that a bitcoin is too expensive, you can always buy sats (satoshis, the smallest unit of bitcoin).&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;7&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img 
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.github.io&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-summer-spring.png&quot; 
+      alt=&quot;Spring&amp;amp;#x2F;Summer seasonal image&quot;&gt;
+  
+&lt;&#x2F;div&gt; &lt;h4&gt;&lt;b&gt;Resources&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Recommended videos:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1PkMFIa7rmQ&amp;t=2284s&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt; Michael Saylor at BTCPrague 2024&lt;&#x2F;a&gt;:&lt;&#x2F;strong&gt; The 21 Rules of Bitcoin.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=--IFcOIEfl4&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt; Jack Mallers at BTCPrague 2024&lt;&#x2F;a&gt;:&lt;&#x2F;strong&gt; The Intrinsic Value of Bitcoin and Proof of Work.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=Pef22g53zsg&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt; Jack Mallers at BTCPrague 2025&lt;&#x2F;a&gt;:&lt;&#x2F;strong&gt; About the struggles of the current generation, the impact of inflation, and the revolution of Bitcoin.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Recommended book:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Filosofía de Bitcoin (Spanish) by Álvaro D. Maria:&lt;&#x2F;strong&gt; A &lt;code&gt;highly&lt;&#x2F;code&gt; recommended book that explains how Bitcoin changes the way we relate to money, how it redefines the concept of property ownership, and how it can change the political system that we live in. &lt;strong&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.marcialpons.es&#x2F;media&#x2F;pdf&#x2F;55178_La_filosofia_de_BITCOIN.pdf&quot;&gt;&lt;span class=&quot;fas fa-book&quot;&gt;&lt;&#x2F;span&gt; Read the preview&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt; (The full book is available on &lt;strong&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.planetadelibros.com&#x2F;libro-la-filosofia-de-bitcoin&#x2F;387234&quot;&gt;PlanetadeLibros&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;).&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Mentioned sources:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Inflation - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;howmuch.net&#x2F;articles&#x2F;rise-and-fall-dollar&quot;&gt;[1]&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Bretton Woods Agreement - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.investopedia.com&#x2F;terms&#x2F;b&#x2F;brettonwoodsagreement.asp&quot;&gt;[2]&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Jack Mallers at BTCPrague 2024: The Intrinsic Value of Bitcoin and Proof of Work - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=--IFcOIEfl4&quot;&gt;[3]&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Bitcoin Whitepaper - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bitcoin.org&#x2F;bitcoin.pdf&quot;&gt;[4]&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Bitcoin halvings explained: The reward per block at each halving - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.blockpit.io&#x2F;blog&#x2F;bitcoin-halving&quot;&gt;[5]&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Bitcoin Improvement Proposals - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bitcoin&#x2F;bips&quot;&gt;[6]&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Preview: La Filosofía de Bitcoin - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.marcialpons.es&#x2F;media&#x2F;pdf&#x2F;55178_La_filosofia_de_BITCOIN.pdf&quot;&gt;[7]&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;!-- HERE TO ADD A REFERENCE TO THE BOOK Filosofía de bitcoin(cuando hecho), y cuando hecho también TODO: una mención al segundo post sobre como comprar y guardar tus bitcoins --&gt;
+</content>
+	</entry>
+</feed>
