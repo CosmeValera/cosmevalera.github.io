@@ -33,7 +33,6 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       
       // Desktop specific hover effects
       @include respond-to('md') {
-        border-radius: 12px 12px 0 0;
 
         // Accent for card
         @include card-color-accent-based-on-primary-tag();
@@ -45,7 +44,7 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
           }
 
           // If icon: border to card and preview, animated
-          &, .blog-card-cover-preview, .blog-card-cover-preview-up { // border to card and preview
+          &, .blog-card-cover-preview-down, .blog-card-cover-preview-up { // border to card and preview
             @include card-border-when-has-icon-based-on-primary-tag();
           }
         }
@@ -218,6 +217,7 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       pointer-events: none;
       box-sizing: border-box;
       box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+      border-radius: 0 0 12px 12px;
       height: 0;
       opacity: 0;
       transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -251,46 +251,6 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         pointer-events: none;
         transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 1rem;
-      }
-    }
-
-    // Blog-card main desktop styles
-    @include respond-to('md') {
-      &:not(.preview-up) {
-        &:hover {
-          .blog-card-cover-preview-down {
-            background: linear-gradient(90deg, #123434, $secondary-bg); // Matching
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-            clip-path: inset(+1px -20px -40px -20px); // Remove box-shadow at the top
-            border: 1px solid #124050;
-            border-top: 0; // Remove border at the top
-            border-radius: 0 0 12px 12px;
-            opacity: 1;
-            pointer-events: none;
-            height: calc(200px + 2rem); // img height + padding
-            z-index: 10;
-            
-            @include card-color-accent-based-on-primary-tag();
-
-            img {
-              height: 200px;
-            }
-          }
-
-          // On card hover preview disappears
-          .preview-indicator {
-            opacity: 0;
-          }
-        }
-
-        &:not(:hover) {
-          animation: lower-card 0.3s forwards;
-
-          @keyframes lower-card {
-            from { z-index: 10; }
-            to { z-index: 1; }
-          }
-        }
       }
     }
 
@@ -329,10 +289,14 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       }
     }
 
-    // Desktop styles (hidden by default, appears on hover, is ABSOLUTE for overlap)
+    // Blog-card main desktop styles
     @include respond-to('md') {
-      &.preview-up {
-        &:hover {
+      &:hover {
+      
+      //**** PREVIEW UP (HOVER) ****//
+        &.preview-up {
+          border-radius: 0 0 12px 12px; // Card's border-radius
+
          .blog-card-cover-preview-up-wrapper {
             opacity: 1;
             
@@ -346,11 +310,52 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
               transform: scaleY(1); // Scale to full size
               
               @include card-color-accent-based-on-primary-tag();
+              
+              img {
+                height: 200px;
+              }
             }
           }
         }
+
+        //**** PREVIEW DOWN (HOVER) ****//
+        &:not(.preview-up) {
+          border-radius: 12px 12px 0 0;  // Card's border-radius
+
+          .blog-card-cover-preview-down {
+            background: linear-gradient(90deg, #123434, $secondary-bg); // Matching
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+            clip-path: inset(+1px -20px -40px -20px); // Remove box-shadow at the top
+            border: 1px solid #124050;
+            border-top: 0; // Remove border at the top
+            opacity: 1;
+            pointer-events: none;
+            height: calc(200px + 2rem); // img height + padding
+            z-index: 10;
+            
+            @include card-color-accent-based-on-primary-tag();
+
+            img {
+              height: 200px;
+            }
+          }
+        }
+
+        // On card hover preview disappears
+        .preview-indicator {
+          opacity: 0;
+        }
+
+      }
+
+      &:not(:hover) {
+        animation: lower-card 0.3s forwards;
+
+        @keyframes lower-card {
+          from { z-index: 10; }
+          to { z-index: 1; }
+        }
       }
     }
-
   }
 }

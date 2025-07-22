@@ -5,7 +5,7 @@ function attachHoverToPreviewInPhone() {
     }
     
     const cards = Array.from(document.querySelectorAll('.blog-card'));
-    const previews = Array.from(document.querySelectorAll('.blog-card-cover-preview'));
+    const previews = Array.from(document.querySelectorAll('.blog-card-cover-preview-down'));
     
     let isAtBottom = false; // Track bottom state to prevent glitching
     
