@@ -210,7 +210,7 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     /////////////////////////////////////
     // BLOG CARD COVER PREVIEW SECTION //
     /////////////////////////////////////
-    .blog-card-cover-preview {
+    .blog-card-cover-preview-down {
       // Mobile styles (hidden by default, attached to hover)
       position: relative;
       width: 100%;
@@ -256,68 +256,39 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
 
     // Blog-card main desktop styles
     @include respond-to('md') {
-      &:hover {
-        .blog-card-cover-preview {
-          background: linear-gradient(90deg, #123434, $secondary-bg); // Matching
-          box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-          clip-path: inset(+1px -20px -40px -20px); // Remove box-shadow at the top
-          border: 1px solid #124050;
-          border-top: 0; // Remove border at the top
-          border-radius: 0 0 12px 12px;
-          opacity: 1;
-          pointer-events: none;
-          height: calc(200px + 2rem); // img height + padding
-          z-index: 10;
-          
-          @include card-color-accent-based-on-primary-tag();
-
-          img {
-            height: 200px;
-          }
-        }
-
-        // On card hover preview disappears
-        .preview-indicator {
-          opacity: 0;
-        }
-      }
-
-      &:not(:hover) {
-        animation: lower-card 0.3s forwards;
-
-        @keyframes lower-card {
-          from { z-index: 10; }
-          to { z-index: 1; }
-        }
-      }
-      
-      // If card is in last row, pop preview upwards
-      &.preview-up {
-        @include respond-to('md') {
-          .blog-card-cover-preview {
-            top: auto !important;
-            bottom: calc(135% + 2* #{$preview-offset}) !important;
-            border-radius: 12px 12px 0 0;
-            border-bottom: 0;
-            border-top: 1px solid #124050;
-            box-shadow: 0 -8px 12px rgba(0, 0, 0, .3);
-            clip-path: inset(-20px -10px 0px -10px);
-          }
-
-          &:hover {
+      &:not(.preview-up) {
+        &:hover {
+          .blog-card-cover-preview-down {
+            background: linear-gradient(90deg, #123434, $secondary-bg); // Matching
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+            clip-path: inset(+1px -20px -40px -20px); // Remove box-shadow at the top
+            border: 1px solid #124050;
+            border-top: 0; // Remove border at the top
             border-radius: 0 0 12px 12px;
-            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.5);
+            opacity: 1;
+            pointer-events: none;
+            height: calc(200px + 2rem); // img height + padding
+            z-index: 10;
+            
+            @include card-color-accent-based-on-primary-tag();
 
-            .blog-card-tags {
-              top: 0;
-              z-index: 20;
-              opacity: 0.7;
+            img {
+              height: 200px;
             }
-            .blog-card-icon {
-              top: -16px;
-              z-index: 20;
-              opacity: 0.6;
-            }
+          }
+
+          // On card hover preview disappears
+          .preview-indicator {
+            opacity: 0;
+          }
+        }
+
+        &:not(:hover) {
+          animation: lower-card 0.3s forwards;
+
+          @keyframes lower-card {
+            from { z-index: 10; }
+            to { z-index: 1; }
           }
         }
       }
@@ -360,20 +331,22 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
 
     // Desktop styles (hidden by default, appears on hover, is ABSOLUTE for overlap)
     @include respond-to('md') {
-      &:hover {
-        .blog-card-cover-preview-up-wrapper {
-          opacity: 1;
-          
-          .blog-card-cover-preview-up {
-            background: linear-gradient(90deg, #123434, $secondary-bg);
-            border: 1px solid #124050;
-            border-bottom: 0; // Remove bottom border
-            clip-path: inset(-20px -20px 1px -20px); // Clip bottom border
-            box-shadow: 0 -8px 12px rgba(0, 0, 0, .3);
+      &.preview-up {
+        &:hover {
+         .blog-card-cover-preview-up-wrapper {
             opacity: 1;
-            transform: scaleY(1); // Scale to full size
             
-            @include card-color-accent-based-on-primary-tag();
+            .blog-card-cover-preview-up {
+              background: linear-gradient(90deg, #123434, $secondary-bg);
+              border: 1px solid #124050;
+              border-bottom: 0; // Remove bottom border
+              clip-path: inset(-20px -20px 1px -20px); // Clip bottom border
+              box-shadow: 0 -8px 12px rgba(0, 0, 0, .3);
+              opacity: 1;
+              transform: scaleY(1); // Scale to full size
+              
+              @include card-color-accent-based-on-primary-tag();
+            }
           }
         }
       }
