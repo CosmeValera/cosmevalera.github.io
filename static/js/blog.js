@@ -77,20 +77,20 @@ function markLastRowCardsInDesktop() {
         return;
     }
     
-    const cards = Array.from(document.querySelectorAll('.blog-card'));
-    const total = cards.length;
+    // const cards = Array.from(document.querySelectorAll('.blog-card'));
+    // const total = cards.length;
 
-    // First remove the class from all cards
-    cards.forEach(card => card.classList.remove('preview-up'));
+    // // First remove the class from all cards
+    // cards.forEach(card => card.classList.remove('preview-up'));
     
-    // Even number: add class to last two cards
-    if (total % 2 === 0) {
-        cards[total - 1].classList.add('preview-up');
-        cards[total - 2].classList.add('preview-up');
-    } else {
-        // Odd number: add class to only the last card
-        cards[total - 1].classList.add('preview-up');
-    }
+    // // Even number: add class to last two cards
+    // if (total % 2 === 0) {
+    //     cards[total - 1].classList.add('preview-up');
+    //     cards[total - 2].classList.add('preview-up');
+    // } else {
+    //     // Odd number: add class to only the last card
+    //     cards[total - 1].classList.add('preview-up');
+    // }
 }
 
 
