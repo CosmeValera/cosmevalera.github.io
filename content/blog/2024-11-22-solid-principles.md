@@ -5,7 +5,7 @@ description = "Learn how SOLID principles can enhance your codebase by promoting
 [taxonomies]
 tags = ["architecture", "recommended"]
 [extra]
-cover_image = "/images/blog/2024-11-22-solid-principles/opt1.png"
+cover_image = "/images/blog/2024-11-22-solid-principles/opt1-comp.png"
 +++
 
 ![blog-cover](/images/blog/2024-11-22-solid-principles/opt1.png)

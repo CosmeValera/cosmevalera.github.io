@@ -5,7 +5,7 @@ description = "Learn how to simplify responsive design with a mobile-first appro
 [taxonomies]
 tags = ["frontend"]
 [extra]
-cover_image = "/images/blog/2025-04-22-respond-to-mixin-pattern-scss/respond-to-pattern-3.png"
+cover_image = "/images/blog/2025-04-22-respond-to-mixin-pattern-scss/respond-to-pattern-3-comp.png"
 +++
 
 ![blog-cover](/images/blog/2025-04-22-respond-to-mixin-pattern-scss/respond-to-pattern-3.png)

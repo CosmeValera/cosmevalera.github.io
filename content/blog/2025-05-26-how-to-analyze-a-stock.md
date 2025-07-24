@@ -6,7 +6,7 @@ date = 2025-05-26
 [taxonomies]
 tags = ["finance", "for beginners"]
 [extra]
-cover_image = "/images/blog/2025-05-26-how-to-analyze-a-stock/opt1.png"
+cover_image = "/images/blog/2025-05-26-how-to-analyze-a-stock/opt1-comp.png"
 +++
 
 ![blog-cover](/images/blog/2025-05-26-how-to-analyze-a-stock/opt1.png)
