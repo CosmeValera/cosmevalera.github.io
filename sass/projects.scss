@@ -59,48 +59,33 @@ body {
     }
 
     .filter-dropdown {
-        display: none;
-        flex-direction: column;
-        background: darken($accent-color, 47%);
-        padding: 10px;
-        margin: 0.4rem 0;
-        border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      background: darken($accent-color, 47%);
+      padding: 10px;
+      margin: 0.4rem 0;
+      border-radius: 8px;
 
-        &.show {
-            display: flex;
-        }
-
-        .filter-button {
-            margin: 5px 0;
-            border-radius: 5px;
-
-            &:not(.selected-filter) {
-                background-color: darken($accent-color, 33%) !important;
-                color: $primary-bg !important;
-            }
-        }
+      &.show {
+          display: flex;
+      }
     }
-
+    
     .filter-button {
-      background-color: darken($accent-color, 33%);
+      background-color: darken($accent-color, 30%);
+      color: $primary-bg;
       border: none;
-      cursor: pointer;
       padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
-      margin: 0 5px;
+      margin: 5px 0;
+      border-radius: 9999px;
       font-size: 0.9rem;
       font-weight: bold;
+      cursor: pointer;
       text-transform: uppercase;
-      color: $primary-bg;
-      border-radius: 9999px;
       transition: background-color 0.3s ease-in-out;
 
       &.selected-filter {
-        background-color: darken($accent-color, 17%);
-        color: $primary-bg;
-      }
-
-      &:hover {
-        background-color: $accent-color;
+        background-color: $active-color-tealish;
         color: $primary-bg;
       }
     }
@@ -299,27 +284,34 @@ body {
         border-radius: 0;
   
         .filter-button {
-            background-color: #0de1e1;
-            border: none;
-            cursor: pointer;
-            padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
-            margin: 0 5px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #006060;
-            border-radius: 9999px;
-            transition: background-color 0.3s ease-in-out;
+          border: none;
+          cursor: pointer;
+          padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+          margin: 0 5px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          border-radius: 9999px;
+          transition: background-color 0.3s ease-in-out;
+
+          
+          &:not(.selected-filter) {
+            background-color: darken($accent-color, 30%);
+            color: $primary-bg;
 
             &:hover {
-                background-color: #4ff5f5 !important;
-                color: $primary-bg !important;
+                background-color: $accent-color;
             }
-  
-            &:not(.selected-filter) {
-                background-color: darken($accent-color, 33%);
-                color: $primary-bg;
+          }
+
+          &.selected-filter {
+            background-color: $active-color-tealish;
+            color: $primary-bg;
+            
+            &:hover {
+              background-color: lighten($active-color-tealish, 8%);
             }
+          }
         }
       }
     }
