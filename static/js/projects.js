@@ -31,50 +31,52 @@ function clickToggleHoverButton() {
 }
 
 function clickFilterRendersCards() {
-    const ALL_FILTER_VALUE = "All";
     const JAVA_FILTER_VALUE = "Java";
     const JAVASCRIPT_FILTER_VALUE = "JavaScript";
 
     const filterButtons = document.querySelectorAll(".filter-button");
     const projectCards = document.querySelectorAll(".project-card");
-    let currentSelectedFilter = ALL_FILTER_VALUE; // Start with "All" selected initially
     
     filterButtons.forEach((button) => {
         button.addEventListener("click", () => {
             const selectedFilter = button.getAttribute("data-filter");
+            const isCurrentlySelected = button.classList.contains("selected-filter");
 
-            // When clicking a filter: 1st time-> blue, 2nd time-> All is triggered
-            if (currentSelectedFilter !== selectedFilter) {
-                const prevButton = document.querySelector(`[data-filter="${currentSelectedFilter}"]`);
-                prevButton.classList.remove("selected-filter");
-                button.classList.add("selected-filter");
-                currentSelectedFilter = selectedFilter;
-            } else if (currentSelectedFilter !== ALL_FILTER_VALUE) {
-                const allButton = document.querySelector(`[data-filter=${ALL_FILTER_VALUE}]`);
-                allButton.classList.add("selected-filter");
+            if (isCurrentlySelected) {
+                // If clicking on already selected filter, remove selection (show all)
                 button.classList.remove("selected-filter");
-                currentSelectedFilter = ALL_FILTER_VALUE;
-            }
-
-            // Calculate filtered cards
-            const visibleCards = Array.from(projectCards).filter((card) => {
-                const cardTechnology = card.querySelector(".card-technology").textContent;
-                return currentSelectedFilter === ALL_FILTER_VALUE ||
-                    (cardTechnology.includes(currentSelectedFilter) &&
-                    !(currentSelectedFilter === JAVA_FILTER_VALUE && cardTechnology.includes(JAVASCRIPT_FILTER_VALUE)));
-            });
-
-            // Display the filtered cards without animations
-            projectCards.forEach((card) => {
-                if (!visibleCards.includes(card)) {
-                    card.style.display = "none";
-                } else if (visibleCards.includes(card)) {
+                
+                // Show all cards
+                projectCards.forEach((card) => {
                     card.style.display = "block";
-
-                    // Remove animations
                     card.classList.remove("animate__animated");
-                }
-            });
+                });
+            } else {
+                // Remove selected class from all other buttons
+                filterButtons.forEach((btn) => {
+                    btn.classList.remove("selected-filter");
+                });
+                
+                // Add selected class to clicked button
+                button.classList.add("selected-filter");
+                
+                // Filter cards based on selected filter
+                const visibleCards = Array.from(projectCards).filter((card) => {
+                    const cardTechnology = card.querySelector(".card-technology").textContent;
+                    return cardTechnology.includes(selectedFilter) &&
+                        !(selectedFilter === JAVA_FILTER_VALUE && cardTechnology.includes(JAVASCRIPT_FILTER_VALUE));
+                });
+
+                // Display the filtered cards
+                projectCards.forEach((card) => {
+                    if (!visibleCards.includes(card)) {
+                        card.style.display = "none";
+                    } else {
+                        card.style.display = "block";
+                        card.classList.remove("animate__animated");
+                    }
+                });
+            }
         });
     });
 }
