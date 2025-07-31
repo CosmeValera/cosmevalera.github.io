@@ -1,8 +1,8 @@
 .lateral-menu {
     display: none;
     position: fixed;
-    top: 90px;
-    right: 24.5px;
+    bottom: 118px;
+    right: 29px;
     z-index: 999;
     flex-direction: column;
     gap: 10px;
@@ -178,6 +178,7 @@
         align-items: flex-end;
         position: fixed;
         top: 50%;
+        bottom: 0;
         right: 20px;
         transform: translateY(-50%);
         flex-direction: column;
@@ -262,10 +263,10 @@
 
 .fab-button {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
+    bottom: 32px;
+    right: 24px;
+    width: 72px;
+    height: 72px;
     opacity: 0.95;
     background: linear-gradient(135deg, $menu-item-bg 0%, lighten($menu-item-bg, 15%) 100%);
     border: 2px solid $accent-color;
