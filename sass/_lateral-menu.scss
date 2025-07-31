@@ -267,7 +267,7 @@
     right: 24px;
     width: 72px;
     height: 72px;
-    opacity: 0.95;
+    opacity: 0.8;
     background: linear-gradient(135deg, $menu-item-bg 0%, lighten($menu-item-bg, 15%) 100%);
     border: 2px solid $accent-color;
     border-radius: 50%;
@@ -289,6 +289,7 @@
     }
     
     &.active {
+        opacity: 0.9;
         background: linear-gradient(135deg, 
             rgba(0, 0, 0, 0.85) 0%, 
             rgba(0, 0, 0, 0.95) 100%
