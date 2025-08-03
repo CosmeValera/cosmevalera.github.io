@@ -23,33 +23,35 @@
   </head>
   <body>
     <!-- Lateral Floating Menu -->
-    <div class="lateral-menu">
-      <div class="menu-item-container">
-        {% if current_path == "/" %}
-        <span class="active-tooltip">You are here</span>
-        {% endif %}
-        <a class="menu-item {% if current_path == "/" %}active-page{% endif %}" href="/">
-          <span class="menu-label">Home</span>
-          <i class="menu-icon fas fa-home"></i>
-        </a>
+    <section class="lateral-menu-container">
+      <div class="lateral-menu">
+        <div class="menu-item-container">
+          {% if current_path == "/" %}
+          <span class="active-tooltip">You are here</span>
+          {% endif %}
+          <a class="menu-item {% if current_path == "/" %}active-page{% endif %}" href="/">
+            <i class="menu-icon fas fa-home"></i>
+            <span class="menu-label">Home</span>
+          </a>
+        </div>
+        <div class="menu-item-container">
+          <a class="menu-item {% if current_path and current_path is starting_with("/projects") %}active-page{% endif %}" href="/projects">
+            <i class="menu-icon fas fa-code"></i>
+            <span class="menu-label">Projects</span>
+          </a>
+        </div>
+        <div class="menu-item-container">
+          <a class="menu-item {% if current_path and current_path is starting_with("/blog") %}active-page{% endif %}" href="/blog">
+            <i class="menu-icon fas fa-newspaper"></i>
+            <span class="menu-label">Blog</span>
+          </a>
+        </div>
       </div>
-      <div class="menu-item-container">
-        <a class="menu-item {% if current_path and current_path is starting_with("/projects") %}active-page{% endif %}" href="/projects">
-          <span class="menu-label">Projects</span>
-          <i class="menu-icon fas fa-code"></i>
-        </a>
-      </div>
-      <div class="menu-item-container">
-        <a class="menu-item {% if current_path and current_path is starting_with("/blog") %}active-page{% endif %}" href="/blog">
-          <span class="menu-label">Blog</span>
-          <i class="menu-icon fas fa-newspaper"></i>
-        </a>
-      </div>
-    </div>
 
-    <div class="fab-button">
-      <i class="fab-button-i fas fa-bars"></i>
-    </div>
+      <div class="fab-button">
+        <i class="fab-button-i fas fa-bars"></i>
+      </div>
+    </section>
     <!-- END: Lateral Floating Menu -->
 
     <div class="page-wrapper">

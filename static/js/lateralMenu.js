@@ -6,13 +6,10 @@ const menuItems = document.querySelectorAll('.menu-item-container');
 // Toggle menu visibility when FAB button is clicked
 function initializeDesktopMenu() {
     if (window.innerWidth >= 768) { // $break-medium
-        menuItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateX(20px)';
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateX(0)';
-            }, 100 * (index + 1));
+        // No animation on desktop - just ensure visibility
+        menuItems.forEach((item) => {
+            item.style.opacity = '1';
+            item.style.transform = 'none';
         });
     }
 }
