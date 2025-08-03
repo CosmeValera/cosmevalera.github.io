@@ -240,7 +240,7 @@ body {
   .filter-modal {
     display: none;
     position: fixed;
-    bottom: 266px; // Align with the filter-menu-button position
+    top: 98px; // Align with the filter-menu-button position
     right: 120px;
     z-index: 10000;
     align-items: center;
