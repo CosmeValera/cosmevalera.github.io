@@ -17,46 +17,31 @@
   <h1>Projects</h1>
   <p class="projects-intro">Projects I've built using different technologies.</p>
 
-  <!-- FILTER -->
-  <div class="filter-buttons">
-    <div class="toggle-buttons-wrapper">
-      <button class="filter-toggle-button">
-        <i class="fas fa-filter filter-icon"></i>
-        <i class="fas fa-close close-icon no-show"></i>
-        <span>Filter</span>
-      </button>
-  
-      <button class="toggle-hover-button">
-        <i class="fas fa-eye"></i>
-        <i class="fas fa-eye-slash no-show"></i>
-        <span>Quick View</span>
-      </button>
-    </div>
-  
-    <div class="filter-dropdown">
+  <!-- FILTER (Desktop Only) -->
+  <div class="filter-buttons-desktop">
+    <div class="filter-dropdown-desktop">
       <button class="filter-button" data-filter="React">
         <i class="fab fa-react"></i>
         React
       </button>
-  
+
       <button class="filter-button" data-filter="Angular">
         <i class="fab fa-angular"></i>
         Angular
       </button>
-  
+
       <button class="filter-button" data-filter="Node">
         <i class="fab fa-node-js"></i>
         Node
       </button>
-  
+
       <button class="filter-button" data-filter="Java">
         <i class="fab fa-java"></i>
         Java
       </button>
     </div>
   </div>
-  
-  <!-- END: FILTER -->
+  <!-- END: FILTER (Desktop Only) -->
 
   <!-- CARDS -->
   <div class="row project-cards-row">
@@ -196,5 +181,36 @@
 
   </div>
   <!-- END: CARDS -->
+
+  <!-- Filter Modal (Mobile Only) -->
+  <div class="filter-modal" id="filter-modal">
+    <div class="filter-modal-content">
+      <div class="filter-modal-header">
+        <h3>Filter Projects</h3>
+        <button class="filter-modal-close" id="filter-modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="filter-modal-body">
+        <button class="filter-modal-option" data-filter="React">
+          <i class="fab fa-react"></i>
+          React
+        </button>
+        <button class="filter-modal-option" data-filter="Angular">
+          <i class="fab fa-angular"></i>
+          Angular
+        </button>
+        <button class="filter-modal-option" data-filter="Node">
+          <i class="fab fa-node-js"></i>
+          Node
+        </button>
+        <button class="filter-modal-option" data-filter="Java">
+          <i class="fab fa-java"></i>
+          Java
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- END: Filter Modal -->
 </div>
 {% endblock content %}

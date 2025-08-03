@@ -69,6 +69,120 @@ function showActiveTooltip() {
     }
 }
 
+// Quick View functionality
+function handleQuickView() {
+    const quickViewButton = document.querySelector('#quick-view-button');
+    if (!quickViewButton) return;
+
+    quickViewButton.addEventListener('click', () => {
+        const projectCards = document.querySelectorAll('.project-card');
+        const isActive = quickViewButton.classList.contains('active');
+        
+        if (isActive) {
+            // Deactivate Quick View
+            quickViewButton.classList.remove('active');
+            projectCards.forEach((card) => {
+                card.classList.remove('hovered');
+            });
+        } else {
+            // Activate Quick View
+            quickViewButton.classList.add('active');
+            projectCards.forEach((card) => {
+                card.classList.add('hovered');
+            });
+        }
+    });
+}
+
+// Filter functionality
+function handleFilter() {
+    const filterButton = document.querySelector('#filter-menu-button');
+    const filterModal = document.querySelector('#filter-modal');
+    const filterModalClose = document.querySelector('#filter-modal-close');
+    const filterModalOptions = document.querySelectorAll('.filter-modal-option');
+    
+    if (!filterButton || !filterModal) return;
+
+    // Toggle modal (open/close)
+    filterButton.addEventListener('click', () => {
+        const isModalVisible = filterModal.classList.contains('show');
+        if (isModalVisible) {
+            filterModal.classList.remove('show');
+            filterButton.classList.remove('active');
+        } else {
+            filterModal.classList.add('show');
+            filterButton.classList.add('active');
+        }
+    });
+
+    // Close modal with X button
+    filterModalClose.addEventListener('click', () => {
+        filterModal.classList.remove('show');
+        filterButton.classList.remove('active');
+    });
+
+    // Close modal when clicking outside
+    filterModal.addEventListener('click', (e) => {
+        if (e.target === filterModal) {
+            filterModal.classList.remove('show');
+            filterButton.classList.remove('active');
+        }
+    });
+
+    // Handle filter options
+    filterModalOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const selectedFilter = option.getAttribute('data-filter');
+            const isCurrentlySelected = option.classList.contains('selected');
+
+            if (isCurrentlySelected) {
+                // Remove selection
+                option.classList.remove('selected');
+                showAllProjects();
+            } else {
+                // Remove selection from all other options
+                filterModalOptions.forEach(opt => opt.classList.remove('selected'));
+                // Add selection to clicked option
+                option.classList.add('selected');
+                filterProjects(selectedFilter);
+            }
+            
+            // Don't close modal after selection - let user choose multiple or close manually
+        });
+    });
+}
+
+// Helper function to show all projects
+function showAllProjects() {
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.style.display = 'block';
+    });
+}
+
+// Helper function to filter projects
+function filterProjects(selectedFilter) {
+    const JAVA_FILTER_VALUE = "Java";
+    const JAVASCRIPT_FILTER_VALUE = "JavaScript";
+    
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    const visibleCards = Array.from(projectCards).filter((card) => {
+        const cardTechnology = card.querySelector(".card-technology").textContent;
+        return cardTechnology.includes(selectedFilter) &&
+            !(selectedFilter === JAVA_FILTER_VALUE && cardTechnology.includes(JAVASCRIPT_FILTER_VALUE));
+    });
+
+    // Display the filtered cards
+    projectCards.forEach((card) => {
+        if (!visibleCards.includes(card)) {
+            card.style.display = 'none';
+        } else {
+            card.style.display = 'block';
+        }
+    });
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     initializeDesktopMenu();
@@ -77,4 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add resize and click handlers
     window.addEventListener('resize', handleResize);
     fabButton.addEventListener('click', toggleMobileMenu);
+    
+    // Add handlers for new buttons
+    handleQuickView();
+    handleFilter();
 });

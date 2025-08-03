@@ -1,34 +1,4 @@
-function clickFilterToggleButton() {
-    const filterToggleButton = document.querySelector('.filter-toggle-button');
-    const filterDropdown = document.querySelector('.filter-dropdown');
-    const filterIcon = document.querySelector('.filter-icon');
-    const closeIcon = document.querySelector('.close-icon');
 
-    filterToggleButton.addEventListener('click', () => {
-        filterDropdown.classList.toggle('show'); // Toggle the "show" class to display/hide filters
-
-        // Toggle the "no-show" class on the icons to switch between filter and close icons
-        filterIcon.classList.toggle('no-show');
-        closeIcon.classList.toggle('no-show');
-    });
-}
-
-function clickToggleHoverButton() {
-    const toggleHoverButton = document.querySelector('.toggle-hover-button');
-    const projectCards = document.querySelectorAll('.project-card');
-    const eyeOpenIcon = toggleHoverButton.querySelector('.fa-eye');
-    const eyeClosedIcon = toggleHoverButton.querySelector('.fa-eye-slash');
-    
-    toggleHoverButton.addEventListener('click', () => {
-        projectCards.forEach((card) => {
-            card.classList.toggle('hovered'); // Toggle hover effect on each card
-        });
-
-        // Toggle the "no-show" class on the icons to switch between eyeOpen and eyeClosed icons
-        eyeOpenIcon.classList.toggle('no-show');
-        eyeClosedIcon.classList.toggle('no-show');
-    });
-}
 
 function clickFilterRendersCards() {
     const JAVA_FILTER_VALUE = "Java";
@@ -85,10 +55,6 @@ function clickFilterRendersCards() {
 // MAIN //
 //////////
 document.addEventListener("DOMContentLoaded", function () {
-
-    clickFilterToggleButton() // PHONE: Makes 'Filter' buttons appear
-    
-    clickToggleHoverButton()  // PHONE: Makes 'Quick View' button appear 
 
     clickFilterRendersCards() // REACT, ANGULAR, NODE ...
 

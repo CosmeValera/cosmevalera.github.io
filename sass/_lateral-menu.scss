@@ -74,6 +74,12 @@
             margin: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
 
+            &.mobile-only {
+                @include respond-to('md') {
+                    display: none;
+                }
+            }
+
             .menu-item {
                 display: flex;
                 flex-direction: column;
@@ -91,6 +97,7 @@
                 position: relative;
                 overflow: hidden;
                 border: 2px solid $accent-color;
+                cursor: pointer;
 
                 .menu-icon {
                     font-size: 28px;
@@ -123,6 +130,25 @@
                     font-size: .45rem;
                 }
 
+                // Active state for Quick View and Filter buttons (mobile)
+                &.quick-view-button.active,
+                &.filter-menu-button.active {
+                    background: linear-gradient(135deg, 
+                        rgba($active-color, 0.15) 0%, 
+                        rgba($active-color, 0.25) 100%
+                    );
+                    border-color: $active-color;
+
+                    .menu-label {
+                        color: $active-color;
+                        text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
+                    }
+                    .menu-icon {
+                        color: $active-color;
+                        text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
+                    }
+                }
+
 
                 &.active-page {
                     background: linear-gradient(135deg, 
@@ -135,7 +161,6 @@
                         color: $active-color;
                         text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
                     }
-                    
                     .menu-icon {
                         color: $active-color;
                         text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
