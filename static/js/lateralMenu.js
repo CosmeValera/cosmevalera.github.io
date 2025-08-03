@@ -24,7 +24,7 @@ function handleResize() {
         lateralMenu.classList.remove('active');
         fabButton.classList.remove('active');
         fabButtonIcon.classList.remove('fa-times');
-        fabButtonIcon.classList.add('fa-ellipsis-v');
+        fabButtonIcon.classList.add('fa-bars');
     }
 }
 
@@ -32,7 +32,7 @@ function handleResize() {
 function toggleMobileMenu() {
     fabButton.classList.toggle('active');
     lateralMenu.classList.toggle('active');
-    fabButtonIcon.classList.toggle('fa-ellipsis-v');
+    fabButtonIcon.classList.toggle('fa-bars');
     fabButtonIcon.classList.toggle('fa-times');
     
     if (lateralMenu.classList.contains('active')) {

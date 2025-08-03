@@ -1,6 +1,13 @@
 .fab-button {
     background: rgba(255,255,255,0.15);  /* translucent “glass” */
 
+    opacity: 0.7;
+    & .fab-button-i.fa-bars {
+        -webkit-text-fill-color: transparent; /* Makes the fill transparent, leaving only the stroke */
+        -webkit-text-stroke: 1px currentColor;
+        text-stroke: 1px currentColor; /* Standard property for future support */
+    }
+
     &.active {
         background: linear-gradient(135deg, 
             rgba(0,0,0, 0.35) 0%, 
