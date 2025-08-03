@@ -1,11 +1,12 @@
 .fab-button {
     background: rgba(255,255,255,0.15);  /* translucent “glass” */
 
-    opacity: 0.7;
+    opacity: 0.65;
+    
     & .fab-button-i.fa-bars {
         -webkit-text-fill-color: transparent; /* Makes the fill transparent, leaving only the stroke */
-        -webkit-text-stroke: 1px currentColor;
-        text-stroke: 1px currentColor; /* Standard property for future support */
+        -webkit-text-stroke: 2px currentColor;
+        text-stroke: 2px currentColor; /* Standard property for future support */
     }
 
     &.active {
