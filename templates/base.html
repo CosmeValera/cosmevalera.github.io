@@ -56,23 +56,17 @@
     <!-- Projects Actions Menu (Mobile Only) -->
     {% if current_path and current_path is starting_with("/projects") %}
     <section class="projects-actions-container">
-      <div class="projects-actions-menu">
-        <div class="menu-item-container mobile-only">
-          <button class="menu-item quick-view-button" id="quick-view-button">
-            <i class="menu-icon fas fa-eye"></i>
-            <span class="menu-label">View</span>
-          </button>
-        </div>
-        <div class="menu-item-container mobile-only">
-          <button class="menu-item filter-menu-button" id="filter-menu-button">
-            <i class="menu-icon fas fa-filter"></i>
-            <span class="menu-label">Filter</span>
-          </button>
-        </div>
+      <div class="menu-item-container mobile-only">
+        <button class="menu-item filter-menu-button" id="filter-menu-button">
+          <i class="menu-icon fas fa-filter"></i>
+          <span class="menu-label">Filter</span>
+        </button>
       </div>
-
-      <div class="projects-actions-button">
-        <i class="fa-solid fa-ellipsis-vertical"></i>
+      <div class="menu-item-container mobile-only">
+        <button class="menu-item quick-view-button" id="quick-view-button">
+          <i class="menu-icon fas fa-eye"></i>
+          <span class="menu-label">View</span>
+        </button>
       </div>
     </section>
     {% endif %}

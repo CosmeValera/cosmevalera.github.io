@@ -240,8 +240,8 @@ body {
   .filter-modal {
     display: none;
     position: fixed;
-    top: 98px; // Align with the filter-menu-button position
-    right: 120px;
+    top: 32px; // Align with the filter-menu-button position
+    right: 110px;
     z-index: 10000;
     align-items: center;
     justify-content: center;
@@ -256,7 +256,7 @@ body {
       border: 2px solid $accent-color;
       border-radius: 15px;
       padding: 15px;
-      width: calc(100dvw - 120px - 20px);
+      width: calc(100dvw - 110px - 20px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
       .filter-modal-header {
