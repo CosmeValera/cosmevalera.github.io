@@ -1,4 +1,5 @@
 @import 'main';
+@import 'utils/projects-actions-menu';
 
 // Prevent appearance of horizontal scrollbar with animations
 body {
@@ -24,48 +25,90 @@ body {
   // Desktop-only filter buttons
   .filter-buttons-desktop {
     display: none; // Hidden by default (mobile)
-    
-    @include respond-to('md') {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2.5rem;
+  }
+
+  // Filter Modal (Mobile Only)
+  .filter-modal {
+    display: none;
+    position: fixed;
+    top: 32px; // Align with the filter-menu-button position
+    right: 110px;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+
+    &.show {
+      display: block;
     }
 
-    .filter-dropdown-desktop {
-      display: flex;
-      justify-content: center;
-      flex-direction: row;
-      background: $primary-bg;
-      padding: 0;
-      margin: 0;
-      border-radius: 0;
+    .filter-modal-content {
+      background: rgba($secondary-bg, 0.65);
+      border: 2px solid $accent-color;
+      border-radius: 15px;
+      padding: 15px;
+      width: calc(100dvw - 110px - 20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 
-      .filter-button {
-        border: none;
-        cursor: pointer;
-        padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
-        margin: 0 5px;
-        font-size: 0.9rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 9999px;
-        transition: background-color 0.3s ease-in-out;
+      .filter-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid $accent-color;
 
-        &:not(.selected-filter) {
-          background-color: darken($accent-color, 30%);
-          color: $primary-bg;
-
-          &:hover {
-              background-color: $accent-color;
-          }
+        h3 {
+          color: $accent-color;
+          margin: 0;
+          font-size: 1rem;
+          font-weight: bold;
         }
 
-        &.selected-filter {
-          background-color: $active-color-tealish;
-          color: $primary-bg;
-          
+        .filter-modal-close {
+          background: none;
+          border: none;
+          color: $accent-color;
+          font-size: 1.2rem;
+          cursor: pointer;
+          padding: 2px;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+
           &:hover {
-            background-color: lighten($active-color-tealish, 8%);
+            background: rgba($accent-color, 0.1);
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .filter-modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .filter-modal-option {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px;
+          background: darken($accent-color, 25%);
+          border: none;
+          border-radius: 6px;
+          color: $primary-bg;
+          font-size: 0.85rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+
+          i {
+            font-size: 0.9rem;
+          }
+          
+          &.selected {
+            background: $active-color-tealish;
+            color: $primary-bg;
+            transform: translateX(2px);
           }
         }
       }
@@ -236,92 +279,49 @@ body {
     max-width: unset;
   }
 
-  // Filter Modal (Mobile Only)
-  .filter-modal {
-    display: none;
-    position: fixed;
-    top: 32px; // Align with the filter-menu-button position
-    right: 110px;
-    z-index: 10000;
-    align-items: center;
-    justify-content: center;
+  // 🧾 TABLET overrides
+  @include respond-to('md') {
+    .filter-buttons-desktop {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.5rem;
 
-    &.show {
-      display: block;
-    }
-
-    .filter-modal-content {
-      background: rgba($secondary-bg, 0.65);
-      border: 2px solid $accent-color;
-      border-radius: 15px;
-      padding: 15px;
-      width: calc(100dvw - 110px - 20px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-
-      .filter-modal-header {
+      .filter-dropdown-desktop {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 12px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid $accent-color;
+        justify-content: center;
+        flex-direction: row;
+        background: $primary-bg;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
 
-        h3 {
-          color: $accent-color;
-          margin: 0;
-          font-size: 1rem;
-          font-weight: bold;
-        }
-
-        .filter-modal-close {
-          background: none;
+        .filter-button {
           border: none;
-          color: $accent-color;
-          font-size: 1.2rem;
           cursor: pointer;
-          padding: 2px;
-          border-radius: 50%;
-          transition: all 0.3s ease;
-
-          &:hover {
-            background: rgba($accent-color, 0.1);
-            transform: scale(1.1);
-          }
-        }
-      }
-
-      .filter-modal-body {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-
-        .filter-modal-option {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          padding: 10px;
-          background: darken($accent-color, 30%);
-          border: none;
-          border-radius: 6px;
-          color: $primary-bg;
-          font-size: 0.85rem;
+          padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+          margin: 0 5px;
+          font-size: 0.9rem;
           font-weight: bold;
-          cursor: pointer;
-          transition: all 0.3s ease;
           text-transform: uppercase;
+          border-radius: 9999px;
+          transition: background-color 0.3s ease-in-out;
 
-          i {
-            font-size: 0.9rem;
-          }
-
-          &:hover {
-            background: $accent-color;
-            transform: translateX(2px);
-          }
-
-          &.selected {
-            background: $active-color-tealish;
+          &:not(.selected-filter) {
+            background-color: darken($accent-color, 30%);
             color: $primary-bg;
+
+            &:hover {
+                background-color: $accent-color;
+            }
+          }
+
+          &.selected-filter {
+            background-color: $active-color-tealish;
+            color: $primary-bg;
+            
+            &:hover {
+              background-color: lighten($active-color-tealish, 8%);
+            }
           }
         }
       }
