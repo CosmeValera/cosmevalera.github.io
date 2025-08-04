@@ -176,6 +176,7 @@ function showAllProjects() {
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
         card.style.display = 'block';
+        card.classList.remove('animate__animated');
     });
 }
 
@@ -198,6 +199,7 @@ function filterProjects(selectedFilter) {
             card.style.display = 'none';
         } else {
             card.style.display = 'block';
+            card.classList.remove('animate__animated');
         }
     });
 }
