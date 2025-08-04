@@ -105,7 +105,8 @@ function handleFilter() {
     if (!filterButton || !filterModal) return;
 
     // Toggle modal (open/close)
-    filterButton.addEventListener('click', () => {
+    filterButton.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event from bubbling up
         const isModalVisible = filterModal.classList.contains('show');
         if (isModalVisible) {
             filterModal.classList.remove('show');
@@ -117,22 +118,39 @@ function handleFilter() {
     });
 
     // Close modal with X button
-    filterModalClose.addEventListener('click', () => {
+    filterModalClose.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent event from bubbling up
         filterModal.classList.remove('show');
         filterButton.classList.remove('active');
     });
 
-    // Close modal when clicking outside
+    // Prevent clicks inside modal from closing it
     filterModal.addEventListener('click', (e) => {
-        if (e.target === filterModal) {
-            filterModal.classList.remove('show');
-            filterButton.classList.remove('active');
+        e.stopPropagation();
+    });
+
+    // Close modal when clicking outside
+    document.addEventListener('click', (e) => {
+        // Check if modal is visible
+        if (!filterModal.classList.contains('show')) return;
+        
+        // Check if click is outside the modal
+        if (!filterModal.contains(e.target)) {
+            // Check if click is on navigation menu or view button (don't close)
+            const isNavigationClick = e.target.closest('.lateral-menu-container');
+            const isViewButtonClick = e.target.closest('#quick-view-button');
+            
+            if (!isNavigationClick && !isViewButtonClick) {
+                filterModal.classList.remove('show');
+                filterButton.classList.remove('active');
+            }
         }
     });
 
     // Handle filter options
     filterModalOptions.forEach(option => {
-        option.addEventListener('click', () => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event from bubbling up
             const selectedFilter = option.getAttribute('data-filter');
             const isCurrentlySelected = option.classList.contains('selected');
 
