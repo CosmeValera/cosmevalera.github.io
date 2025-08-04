@@ -1,13 +1,14 @@
 const fabButton = document.querySelector('.fab-button');
 const fabButtonIcon = document.querySelector('.fab-button-i');
+
 const lateralMenu = document.querySelector('.lateral-menu');
-const menuItems = document.querySelectorAll('.menu-item-container');
+const menuNavItems = lateralMenu.querySelectorAll('.menu-item-container');
 
 // Toggle menu visibility when FAB button is clicked
 function initializeDesktopMenu() {
     if (window.innerWidth >= 768) { // $break-medium
         // No animation on desktop - just ensure visibility
-        menuItems.forEach((item) => {
+        menuNavItems.forEach((item) => {
             item.style.opacity = '1';
             item.style.transform = 'none';
         });
@@ -33,7 +34,7 @@ function toggleMobileMenu() {
     fabButtonIcon.classList.toggle('fa-times');
     
     if (lateralMenu.classList.contains('active')) {
-        menuItems.forEach((item, index) => {
+        menuNavItems.forEach((item, index) => {
             item.style.opacity = '0';
             item.style.transform = 'translateX(20px)';
             setTimeout(() => {

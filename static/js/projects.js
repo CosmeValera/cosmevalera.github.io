@@ -1,32 +1,107 @@
-function clickFilterToggleButton() {
-    const filterToggleButton = document.querySelector('.filter-toggle-button');
-    const filterDropdown = document.querySelector('.filter-dropdown');
-    const filterIcon = document.querySelector('.filter-icon');
-    const closeIcon = document.querySelector('.close-icon');
+// Quick View functionality
+function handleQuickView() {
+    const quickViewButton = document.querySelector('#quick-view-button');
+    if (!quickViewButton) return;
 
-    filterToggleButton.addEventListener('click', () => {
-        filterDropdown.classList.toggle('show'); // Toggle the "show" class to display/hide filters
-
-        // Toggle the "no-show" class on the icons to switch between filter and close icons
-        filterIcon.classList.toggle('no-show');
-        closeIcon.classList.toggle('no-show');
+    quickViewButton.addEventListener('click', () => {
+        const projectCards = document.querySelectorAll('.project-card');
+        const isActive = quickViewButton.classList.contains('active');
+        
+        if (isActive) {
+            // Deactivate Quick View
+            quickViewButton.classList.remove('active');
+            projectCards.forEach((card) => {
+                card.classList.remove('hovered');
+            });
+        } else {
+            // Activate Quick View
+            quickViewButton.classList.add('active');
+            projectCards.forEach((card) => {
+                card.classList.add('hovered');
+            });
+        }
     });
 }
 
-function clickToggleHoverButton() {
-    const toggleHoverButton = document.querySelector('.toggle-hover-button');
-    const projectCards = document.querySelectorAll('.project-card');
-    const eyeOpenIcon = toggleHoverButton.querySelector('.fa-eye');
-    const eyeClosedIcon = toggleHoverButton.querySelector('.fa-eye-slash');
-    
-    toggleHoverButton.addEventListener('click', () => {
-        projectCards.forEach((card) => {
-            card.classList.toggle('hovered'); // Toggle hover effect on each card
-        });
+// Filter functionality
+function handleFilter() {
+    // Helper functions
+    function toggleModal(isOpen) {
+        const action = isOpen ? 'add' : 'remove';
+        filterModal.classList[action]('show');
+        filterButton.classList[action]('active');
+    }
 
-        // Toggle the "no-show" class on the icons to switch between eyeOpen and eyeClosed icons
-        eyeOpenIcon.classList.toggle('no-show');
-        eyeClosedIcon.classList.toggle('no-show');
+    function filterProjects(selectedFilter) {
+        const JAVA_FILTER_VALUE = "Java";
+        const JAVASCRIPT_FILTER_VALUE = "JavaScript";
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        if (!selectedFilter) {
+            // Show all projects
+            projectCards.forEach(card => card.style.display = 'block');
+            return;
+        }
+        
+        // Filter projects
+        projectCards.forEach(card => {
+            const cardTechnology = card.querySelector(".card-technology").textContent;
+            const matches = cardTechnology.includes(selectedFilter) &&
+                !(selectedFilter === JAVA_FILTER_VALUE && cardTechnology.includes(JAVASCRIPT_FILTER_VALUE));
+            card.style.display = matches ? 'block' : 'none';
+        });
+    }
+
+    // Remove animations from all cards
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.classList.remove('animate__animated');
+    });
+
+    //////////////////////////
+    // MAIN FILTER FUNCTION //
+    //////////////////////////
+    const filterButton = document.querySelector('#filter-menu-button');
+    const filterModal = document.querySelector('#filter-modal');
+    const filterModalClose = document.querySelector('#filter-modal-close');
+    const filterModalOptions = document.querySelectorAll('.filter-modal-option');
+    
+    if (!filterButton || !filterModal) return;
+
+    // Event listeners
+    filterButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleModal(!filterModal.classList.contains('show'));
+    });
+
+    filterModalClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleModal(false);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (filterModal.classList.contains('show') && 
+            !filterModal.contains(e.target) && 
+            !e.target.closest('.lateral-menu-container .fab-button') && 
+            !e.target.closest('#quick-view-button')) {
+            toggleModal(false);
+        }
+    });
+
+    filterModalOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const selectedFilter = option.getAttribute('data-filter');
+            const isSelected = option.classList.contains('selected');
+
+            if (isSelected) {
+                option.classList.remove('selected');
+                filterProjects(); // Show all
+            } else {
+                filterModalOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                filterProjects(selectedFilter);
+            }
+        });
     });
 }
 
@@ -49,7 +124,6 @@ function clickFilterRendersCards() {
                 // Show all cards
                 projectCards.forEach((card) => {
                     card.style.display = "block";
-                    card.classList.remove("animate__animated");
                 });
             } else {
                 // Remove selected class from all other buttons
@@ -73,7 +147,6 @@ function clickFilterRendersCards() {
                         card.style.display = "none";
                     } else {
                         card.style.display = "block";
-                        card.classList.remove("animate__animated");
                     }
                 });
             }
@@ -86,9 +159,8 @@ function clickFilterRendersCards() {
 //////////
 document.addEventListener("DOMContentLoaded", function () {
 
-    clickFilterToggleButton() // PHONE: Makes 'Filter' buttons appear
-    
-    clickToggleHoverButton()  // PHONE: Makes 'Quick View' button appear 
+    handleQuickView();        // PHONE: QUICK VIEW BUTTON
+    handleFilter();           // PHONE: FILTER BUTTON
 
     clickFilterRendersCards() // REACT, ANGULAR, NODE ...
 

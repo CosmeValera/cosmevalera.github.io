@@ -91,6 +91,7 @@
                 position: relative;
                 overflow: hidden;
                 border: 2px solid $accent-color;
+                cursor: pointer;
 
                 .menu-icon {
                     font-size: 28px;
@@ -123,7 +124,6 @@
                     font-size: .45rem;
                 }
 
-
                 &.active-page {
                     background: linear-gradient(135deg, 
                         rgba($active-color, 0.15) 0%, 
@@ -135,7 +135,6 @@
                         color: $active-color;
                         text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
                     }
-                    
                     .menu-icon {
                         color: $active-color;
                         text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);

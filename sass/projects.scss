@@ -1,4 +1,5 @@
 @import 'main';
+@import 'utils/projects-actions-menu';
 
 // Prevent appearance of horizontal scrollbar with animations
 body {
@@ -21,72 +22,95 @@ body {
     font-style: italic;
   }
 
-  .filter-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin: 2vw 1.5rem 1.5rem;
+  // Desktop-only filter buttons
+  .filter-buttons-desktop {
+    display: none; // Hidden by default (mobile)
+  }
 
-    .toggle-buttons-wrapper {
+  // Filter Modal (Mobile Only)
+  .filter-modal {
+    display: none;
+    position: fixed;
+    top: 32px; // Align with the filter-menu-button position
+    right: 110px;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+
+    &.show {
+      display: block;
+    }
+
+    .filter-modal-content {
+      background: rgba($secondary-bg, 0.65);
+      border: 2px solid $accent-color;
+      border-radius: 15px;
+      padding: 15px;
+      width: calc(100dvw - 110px - 20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+      .filter-modal-header {
         display: flex;
-        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 12px;
-        justify-content: center;
+        padding-bottom: 8px;
+        border-bottom: 1px solid $accent-color;
 
-        .filter-toggle-button,
-        .toggle-hover-button {
-            display: block; // Visible on mobile
-            background: $accent-color;
-            color: $primary-bg;
-            padding: 8px 16px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 5px;
-
-            i.no-show {
-                display: none;
-            }
+        h3 {
+          color: $accent-color;
+          margin: 0;
+          font-size: 1rem;
+          font-weight: bold;
         }
 
-        .filter-toggle-button {
-            flex: 3;
+        .filter-modal-close {
+          background: none;
+          border: none;
+          color: $accent-color;
+          font-size: 1.2rem;
+          cursor: pointer;
+          padding: 2px;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba($accent-color, 0.1);
+            transform: scale(1.1);
+          }
         }
-
-        .toggle-hover-button {
-            flex: 5;
-        }
-    }
-
-    .filter-dropdown {
-      display: none;
-      flex-direction: column;
-      background: darken($accent-color, 47%);
-      padding: 10px;
-      margin: 0.4rem 0;
-      border-radius: 8px;
-
-      &.show {
-          display: flex;
       }
-    }
-    
-    .filter-button {
-      background-color: darken($accent-color, 30%);
-      color: $primary-bg;
-      border: none;
-      padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
-      margin: 5px 0;
-      border-radius: 9999px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: background-color 0.3s ease-in-out;
 
-      &.selected-filter {
-        background-color: $active-color-tealish;
-        color: $primary-bg;
+      .filter-modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .filter-modal-option {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px;
+          background: darken($accent-color, 25%);
+          border: none;
+          border-radius: 6px;
+          color: $primary-bg;
+          font-size: 0.85rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+
+          i {
+            font-size: 0.9rem;
+          }
+          
+          &.selected {
+            background: $active-color-tealish;
+            color: $primary-bg;
+            transform: translateX(2px);
+          }
+        }
       }
     }
   }
@@ -257,32 +281,20 @@ body {
 
   // 🧾 TABLET overrides
   @include respond-to('md') {
-    .filter-buttons {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin-bottom: 2.5rem;
+    .filter-buttons-desktop {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.5rem;
 
-        .toggle-buttons-wrapper {
-            .filter-toggle-button, .toggle-hover-button {
-                display: none;
-
-                i.no-show {
-                    display: inline;
-                }
-            }
-      }
-
-      .filter-dropdown {
+      .filter-dropdown-desktop {
         display: flex;
         justify-content: center;
-        margin-bottom: 2.5rem;
         flex-direction: row;
         background: $primary-bg;
         padding: 0;
         margin: 0;
         border-radius: 0;
-  
+
         .filter-button {
           border: none;
           cursor: pointer;
@@ -294,7 +306,6 @@ body {
           border-radius: 9999px;
           transition: background-color 0.3s ease-in-out;
 
-          
           &:not(.selected-filter) {
             background-color: darken($accent-color, 30%);
             color: $primary-bg;
