@@ -70,6 +70,34 @@
             }
         }
 
+        // Blog menu separators and labels
+        .blog-menu-separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 5px 0;
+            
+            .blog-menu-label {
+                color: $accent-color;
+                width: 72px;
+                text-align: center;
+                font-size: 0.6rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                opacity: 0.8;
+                text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
+                margin: -0.5rem auto -0.8rem;
+            }
+            
+            .separator-line {
+                width: 72px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, $accent-color, transparent);
+                border-radius: 1px;
+            }
+        }
+
         .menu-item-container {
             margin: 0;
             transition: opacity 0.3s ease, transform 0.3s ease;
@@ -140,6 +168,40 @@
                         text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
                     }
                 }
+
+                // Blog menu items styling
+                &.blog-menu-item {
+                    background: linear-gradient(135deg, 
+                        rgba($accent-color, 0.1) 0%, 
+                        rgba($accent-color, 0.2) 100%
+                    );
+                    border-color: rgba($accent-color, 0.6);
+                    
+                    .menu-icon {
+                        color: rgba($accent-color, 0.8);
+                    }
+                    
+                    .menu-label {
+                        color: rgba($accent-color, 0.8);
+                    }
+                    
+                    // &:hover {
+                    //     background: linear-gradient(135deg, 
+                    //         rgba($accent-color, 0.2) 0%, 
+                    //         rgba($accent-color, 0.3) 100%
+                    //     );
+                    //     border-color: $accent-color;
+                    //     transform: scale(1.05);
+                        
+                    //     .menu-icon {
+                    //         color: $accent-color;
+                    //     }
+                        
+                    //     .menu-label {
+                    //         color: $accent-color;
+                    //     }
+                    // }
+                }
             }
                     
             .active-tooltip {
@@ -193,6 +255,12 @@
             z-index: 1000;
             width: unset;
             background-color: transparent;
+
+            // Hide blog menu items on desktop
+            .blog-menu-separator,
+            .menu-item-container:has(.blog-menu-item) {
+                display: none;
+            }
 
             .menu-item-container {
                 margin: 10px 0;
