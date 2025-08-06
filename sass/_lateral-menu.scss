@@ -146,6 +146,23 @@
                     color: $accent-color;
                 }
 
+                // Blog menu items styling
+                &.blog-menu-item {
+                    background: linear-gradient(135deg, 
+                        rgba($accent-color, 0.1) 0%, 
+                        rgba($accent-color, 0.2) 100%
+                    );
+                    border-color: rgba($accent-color, 0.6);
+                    
+                    .menu-icon {
+                        color: rgba($accent-color, 0.8);
+                    }
+                    
+                    .menu-label {
+                        color: rgba($accent-color, 0.8);
+                    }
+                }
+
                 // Label of projects a bit smaller
                 & .fa-code + .menu-label {
                     bottom: 10px;    
@@ -169,39 +186,6 @@
                     }
                 }
 
-                // Blog menu items styling
-                &.blog-menu-item {
-                    background: linear-gradient(135deg, 
-                        rgba($accent-color, 0.1) 0%, 
-                        rgba($accent-color, 0.2) 100%
-                    );
-                    border-color: rgba($accent-color, 0.6);
-                    
-                    .menu-icon {
-                        color: rgba($accent-color, 0.8);
-                    }
-                    
-                    .menu-label {
-                        color: rgba($accent-color, 0.8);
-                    }
-                    
-                    // &:hover {
-                    //     background: linear-gradient(135deg, 
-                    //         rgba($accent-color, 0.2) 0%, 
-                    //         rgba($accent-color, 0.3) 100%
-                    //     );
-                    //     border-color: $accent-color;
-                    //     transform: scale(1.05);
-                        
-                    //     .menu-icon {
-                    //         color: $accent-color;
-                    //     }
-                        
-                    //     .menu-label {
-                    //         color: $accent-color;
-                    //     }
-                    // }
-                }
             }
                     
             .active-tooltip {
