@@ -1,0 +1,253 @@
+@import 'main';
+
+//////////////////////
+////// Reading Single //////
+.reading-single {
+    max-width: 800px;
+    width: 100%;
+    
+    @include respond-to('md') {
+        margin: 0 auto;
+    }
+
+    .back-link {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin: 0 0 2rem 1.5rem;
+        font-size: clamp(.8rem, 2vw, 1rem);
+        transition: color 0.2s;
+        min-width: fit-content;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    .reading-header {
+        margin-bottom: 3rem;
+        padding: 0 1.5rem;
+
+        .reading-title-section {
+            margin-bottom: 2rem;
+
+            .reading-title {
+                color: white;
+                font-size: clamp(2rem, 6vw, 3.5rem);
+                font-weight: 600;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+
+            .reading-author {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                font-style: italic;
+                margin-bottom: 1rem;
+            }
+
+            .reading-subtitle {
+                color: rgba(255, 255, 255, 0.8);
+                font-size: clamp(1rem, 2.5vw, 1.2rem);
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+        }
+
+        .reading-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+
+            @include respond-to('md') {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .reading-rating {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                .rating-label {
+                    color: rgba(255, 255, 255, 0.8);
+                    font-size: 0.9rem;
+                    font-weight: 500;
+                }
+
+                .stars {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.25rem;
+
+                    .star {
+                        font-size: 1.1rem;
+                        color: #ffd700;
+                    }
+
+                    .rating-text {
+                        color: rgba(255, 255, 255, 0.6);
+                        font-size: 0.85rem;
+                        margin-left: 0.5rem;
+                    }
+                }
+            }
+
+            .reading-stats {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5rem;
+
+                span {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    color: rgba(255, 255, 255, 0.6);
+                    font-size: 0.9rem;
+
+                    i {
+                        color: $accent-color;
+                        font-size: 0.85rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .reading-categories {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        padding: 0 1.5rem;
+        flex-wrap: wrap;
+
+        .categories-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .reading-category {
+            background: rgba($accent-color, 0.2);
+            color: $accent-color;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba($accent-color, 0.3);
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: rgba($accent-color, 0.3);
+                border-color: rgba($accent-color, 0.5);
+            }
+        }
+    }
+
+    .reading-content {
+        padding: 0 1.5rem;
+        margin-bottom: 3rem;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: white;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        ul, ol {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+
+            li {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        blockquote {
+            border-left: 4px solid $accent-color;
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.6;
+        }
+
+        strong {
+            color: white;
+            font-weight: 600;
+        }
+
+        em {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        a {
+            color: $accent-color;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s ease;
+
+            &:hover {
+                border-bottom-color: $accent-color;
+            }
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba($accent-color, 0.3), transparent);
+            margin: 3rem 0;
+        }
+    }
+
+    .reading-cover {
+        padding: 0 1.5rem;
+        margin-bottom: 3rem;
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            display: block;
+            margin: 0 auto;
+        }
+    }
+}
+////// END: Reading Single //////
+/////////////////////////////// 

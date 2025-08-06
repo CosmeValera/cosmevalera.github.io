@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ taxonomy.name | title }} | Cosme
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ get_url(path="readings-list.css") | safe }}">
+{% endblock %}
+
+{% block content %}
+  <div class="readings-list">
+    <a href="/blog" class="back-link">← Back to all posts</a>
+    <h1 class="readings-list-title">Readings</h1>
+    <p class="readings-description">A collection of books I've read and my thoughts on them. The idea is to keep track of my reading journey and share insights that might be valuable to others.</p>
+    
+    <div class="readings-grid">
+      {% for term in terms %}
+        <div class="reading-card" onclick="window.location='{{ term.permalink }}';">
+          <div class="reading-card-header">
+            <h3 class="reading-title">{{ term.name }}</h3>
+            <div class="reading-meta">
+              {% if term.pages and term.pages | length > 0 %}
+                {% set latest_page = term.pages | sort(attribute="date") | last %}
+                {% if latest_page.extra and latest_page.extra.author %}
+                  <span class="reading-author">by {{ latest_page.extra.author }}</span>
+                {% endif %}
+                                  {% if latest_page.extra and latest_page.extra.rating %}
+                    <div class="reading-rating">
+                      {% set rating = latest_page.extra.rating %}
+                      {% for i in range(end=rating) %}
+                        <span class="star">⭐</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+              {% endif %}
+            </div>
+          </div>
+          
+          {% if term.pages and term.pages | length > 0 %}
+            {% set latest_page = term.pages | sort(attribute="date") | last %}
+            {% if latest_page.description %}
+              <p class="reading-description">{{ latest_page.description }}</p>
+            {% endif %}
+            
+            <div class="reading-stats">
+              {% if latest_page.extra and latest_page.extra.reading_time %}
+                <span class="reading-time">
+                  <i class="fas fa-clock"></i> {{ latest_page.extra.reading_time }} min read
+                </span>
+              {% endif %}
+              {% if latest_page.extra and latest_page.extra.word_count %}
+                <span class="reading-words">
+                  <i class="fas fa-file-alt"></i> {{ latest_page.extra.word_count }} words
+                </span>
+              {% endif %}
+              <span class="reading-date">
+                <i class="fas fa-calendar"></i> {{ latest_page.date | date(format="%B %d, %Y") }}
+              </span>
+            </div>
+          {% endif %}
+          
+          <div class="reading-categories">
+            {% if term.pages and term.pages | length > 0 %}
+              {% set latest_page = term.pages | sort(attribute="date") | last %}
+              {% if latest_page.taxonomies and latest_page.taxonomies.readings %}
+                {% for category in latest_page.taxonomies.readings %}
+                  <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
+                {% endfor %}
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %} 

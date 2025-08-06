@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ term.name }} | {{ taxonomy.name | title }} | Cosme
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ get_url(path="readings-single.css") | safe }}">
+{% endblock %}
+
+{% block content %}
+  <div class="reading-single">
+    <a href="/{{ taxonomy.name }}" class="back-link">← See all {{ taxonomy.name }}</a>
+    
+    {% if term.pages and term.pages | length > 0 %}
+      {% set reading_page = term.pages | sort(attribute="date") | last %}
+      
+      <div class="reading-header">
+        <div class="reading-title-section">
+          <h1 class="reading-title">{{ reading_page.title }}</h1>
+          {% if reading_page.extra and reading_page.extra.author %}
+            <p class="reading-author">by {{ reading_page.extra.author }}</p>
+          {% endif %}
+          {% if reading_page.description %}
+            <p class="reading-subtitle">{{ reading_page.description }}</p>
+          {% endif %}
+        </div>
+        
+        <div class="reading-meta">
+                          {% if reading_page.extra and reading_page.extra.rating %}
+                  <div class="reading-rating">
+                    <span class="rating-label">Rating:</span>
+                    <div class="stars">
+                      {% set rating = reading_page.extra.rating %}
+                      {% for i in range(end=rating) %}
+                        <span class="star">⭐</span>
+                      {% endfor %}
+                      <span class="rating-text">({{ reading_page.extra.rating }}/5)</span>
+                    </div>
+                  </div>
+                {% endif %}
+          
+          <div class="reading-stats">
+            {% if reading_page.extra and reading_page.extra.reading_time %}
+              <span class="reading-time">
+                <i class="fas fa-clock"></i> {{ reading_page.extra.reading_time }} min read
+              </span>
+            {% endif %}
+            {% if reading_page.extra and reading_page.extra.word_count %}
+              <span class="reading-words">
+                <i class="fas fa-file-alt"></i> {{ reading_page.extra.word_count }} words
+              </span>
+            {% endif %}
+            <span class="reading-date">
+              <i class="fas fa-calendar"></i> {{ reading_page.date | date(format="%B %d, %Y") }}
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      {% if reading_page.taxonomies and reading_page.taxonomies.readings %}
+        <div class="reading-categories">
+          <span class="categories-label">Categories:</span>
+          {% for category in reading_page.taxonomies.readings %}
+            <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+      
+      <div class="reading-content">
+        {{ reading_page.content | safe }}
+      </div>
+      
+      {% if reading_page.extra and reading_page.extra.cover_image %}
+        <div class="reading-cover">
+          <img src="{{ reading_page.extra.cover_image }}" alt="Cover of {{ reading_page.title }}">
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="reading-header">
+        <h1 class="reading-title">{{ term.name }}</h1>
+        <p class="reading-subtitle">No reading content available yet.</p>
+      </div>
+    {% endif %}
+  </div>
+{% endblock content %} 
