@@ -27,7 +27,7 @@
       <div class="lateral-menu">
 
         <!-- Blog-specific menu items (only on blog pages) -->
-        {% if current_path and current_path is starting_with("/blog") %}
+        {% if current_path and current_path is starting_with("/blog") or current_path and current_path is starting_with("/tags") or current_path and current_path is starting_with("/readings") %}
         <div class="menu-item-container">
           <a class="menu-item blog-menu-item" href="/tags">
             <i class="menu-icon fas fa-tags"></i>
