@@ -54,14 +54,17 @@
         }
 
         .reading-card {
-            position: relative;
-            border-radius: 12px;
-            cursor: pointer;
-            overflow: hidden;
-            aspect-ratio: 2/3;
-            background: linear-gradient(145deg, rgba($secondary-bg, 0.8), rgba($tertiary-bg, 0.6));
-            border: 1px solid rgba($accent-color, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+                position: relative;
+                border-radius: 12px;
+                overflow: hidden;
+                aspect-ratio: 2/3;
+                background: linear-gradient(145deg, rgba($secondary-bg, 0.8), rgba($tertiary-bg, 0.6));
+                border: 1px solid rgba($accent-color, 0.2);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+                &[onclick] {
+                    cursor: pointer;
+                }
 
             &:hover {
                 transform: translateY(-4px);
@@ -142,7 +145,7 @@
 
                         .reading-rating {
                             .star {
-                                font-size: 1rem;
+                                font-size: 0.9rem;
                                 color: #ffd700;
                             }
                         }
@@ -150,27 +153,80 @@
                         .reading-categories {
                             display: flex;
                             flex-wrap: wrap;
-                            gap: 0.5rem;
+                            gap: 0.35rem;
 
                             .reading-category {
                                 background: rgba($accent-color, 0.2);
                                 color: $accent-color;
-                                padding: 0.25rem 0.75rem;
+                                padding: 0.15rem 0.5rem;
                                 border-radius: 999px;
-                                font-size: 0.8rem;
+                                font-size: 0.7rem;
                                 border: 1px solid rgba($accent-color, 0.3);
                             }
                         }
 
+                        .reading-insights {
+                            margin-top: 0.25rem;
+                            
+                            h4 {
+                                color: $accent-color;
+                                font-size: 0.8rem;
+                                margin-bottom: 0.35rem;
+                                font-weight: 600;
+                            }
+
+                            ul {
+                                list-style: none;
+                                padding: 0;
+                                margin: 0;
+
+                                li {
+                                    color: rgba(255, 255, 255, 0.9);
+                                    font-size: 0.75rem;
+                                    margin-bottom: 0.35rem;
+                                    padding-left: 1rem;
+                                    position: relative;
+                                    line-height: 1.3;
+
+                                    &::before {
+                                        content: '•';
+                                        color: $accent-color;
+                                        position: absolute;
+                                        left: 0.35rem;
+                                    }
+
+                                    &:last-child {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        .reading-personal-note {
+                            margin-top: 0.35rem;
+                            padding-top: 0.35rem;
+                            border-top: 1px solid rgba($accent-color, 0.2);
+
+                            p {
+                                color: rgba(255, 255, 255, 0.8);
+                                font-size: 0.75rem;
+                                font-style: italic;
+                                margin: 0;
+                                line-height: 1.3;
+                            }
+                        }
+
                         .reading-date {
-                            font-size: 0.85rem;
+                            font-size: 0.75rem;
                             color: rgba(255, 255, 255, 0.7);
                             display: flex;
                             align-items: center;
-                            gap: 0.5rem;
+                            gap: 0.35rem;
+                            margin-top: 0.35rem;
 
                             i {
                                 color: $accent-color;
+                                font-size: 0.75rem;
                             }
                         }
                     }

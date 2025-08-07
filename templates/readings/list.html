@@ -16,9 +16,13 @@
     
     <div class="readings-grid">
       {% for term in terms %}
-        <div class="reading-card" onclick="window.location='{{ term.permalink }}';">
-          {% if term.pages and term.pages | length > 0 %}
-            {% set latest_page = term.pages | sort(attribute="date") | last %}
+        {% if term.pages and term.pages | length > 0 %}
+          {% set latest_page = term.pages | sort(attribute="date") | last %}
+          {% if latest_page.extra and latest_page.extra.has_single_page is defined and latest_page.extra.has_single_page == false %}
+            <div class="reading-card">
+          {% else %}
+            <div class="reading-card" onclick="window.location='{{ term.permalink }}';">
+          {% endif %}
             {% if latest_page.extra and latest_page.extra.cover_image %}
               <div class="reading-card-cover">
                 <img src="{{ latest_page.extra.cover_image }}" alt="Cover of {{ latest_page.title }}">
@@ -56,14 +60,33 @@
                     </div>
                   {% endif %}
                   
+                  {% if latest_page.extra and latest_page.extra.has_single_page is defined and latest_page.extra.has_single_page == false %}
+                    {% if latest_page.extra.key_insights %}
+                      <div class="reading-insights">
+                        <h4>Key Insights</h4>
+                        <ul>
+                          {% for insight in latest_page.extra.key_insights %}
+                            <li>{{ insight }}</li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    {% endif %}
+                    
+                    {% if latest_page.extra.personal_note %}
+                      <div class="reading-personal-note">
+                        <p>{{ latest_page.extra.personal_note }}</p>
+                      </div>
+                    {% endif %}
+                  {% endif %}
+                  
                   <span class="reading-date">
                     <i class="fas fa-calendar"></i> {{ latest_page.date | date(format="%B %d, %Y") }}
                   </span>
                 </div>
               </div>
             </div>
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

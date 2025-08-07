@@ -8,8 +8,7 @@ readings = ["bitcoin"]
 author = "Álvaro D. María"
 cover_image = "/images/readings/filosofia-de-bitcoin/filosofia-de-bitcoin.jpg"
 rating = 5
-reading_time = 15
-word_count = 2500
+has_single_page = true
 +++
 
 *"Bitcoin is not just a new form of money, it's a new form of property that cannot be confiscated, a new form of speech that cannot be censored, and a new form of association that cannot be prohibited."* 
