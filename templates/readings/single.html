@@ -27,45 +27,37 @@
         </div>
         
         <div class="reading-meta">
-                          {% if reading_page.extra and reading_page.extra.rating %}
-                  <div class="reading-rating">
-                    <span class="rating-label">Rating:</span>
-                    <div class="stars">
-                      {% set rating = reading_page.extra.rating %}
-                      {% for i in range(end=rating) %}
-                        <span class="star">⭐</span>
-                      {% endfor %}
-                      <span class="rating-text">({{ reading_page.extra.rating }}/5)</span>
-                    </div>
+          <div class="reading-meta-row">
+            <div class="reading-meta-left">
+              <span class="reading-date">
+                <i class="fas fa-calendar"></i> {{ reading_page.date | date(format="%B %d, %Y") }}
+              </span>
+              
+              {% if reading_page.extra and reading_page.extra.rating %}
+                <div class="reading-rating">
+                  <span class="rating-label">Rating:</span>
+                  <div class="stars">
+                    {% set rating = reading_page.extra.rating %}
+                    {% for i in range(end=rating) %}
+                      <span class="star">⭐</span>
+                    {% endfor %}
+                    <span class="rating-text">({{ reading_page.extra.rating }}/5)</span>
                   </div>
-                {% endif %}
-          
-          <div class="reading-stats">
-            {% if reading_page.extra and reading_page.extra.reading_time %}
-              <span class="reading-time">
-                <i class="fas fa-clock"></i> {{ reading_page.extra.reading_time }} min read
-              </span>
+                </div>
+              {% endif %}
+            </div>
+            
+            {% if reading_page.taxonomies and reading_page.taxonomies.readings %}
+              <div class="reading-categories">
+                <span class="categories-label">Categories:</span>
+                {% for category in reading_page.taxonomies.readings %}
+                  <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
+                {% endfor %}
+              </div>
             {% endif %}
-            {% if reading_page.extra and reading_page.extra.word_count %}
-              <span class="reading-words">
-                <i class="fas fa-file-alt"></i> {{ reading_page.extra.word_count }} words
-              </span>
-            {% endif %}
-            <span class="reading-date">
-              <i class="fas fa-calendar"></i> {{ reading_page.date | date(format="%B %d, %Y") }}
-            </span>
           </div>
         </div>
       </div>
-      
-      {% if reading_page.taxonomies and reading_page.taxonomies.readings %}
-        <div class="reading-categories">
-          <span class="categories-label">Categories:</span>
-          {% for category in reading_page.taxonomies.readings %}
-            <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
-          {% endfor %}
-        </div>
-      {% endif %}
       
       {% if reading_page.extra and reading_page.extra.cover_image %}
         <div class="reading-cover reading-cover-header">

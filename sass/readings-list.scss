@@ -49,123 +49,130 @@
         margin: 0 1.5rem;
         
         @include respond-to('md') {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2.5rem;
         }
 
         .reading-card {
+            position: relative;
+            border-radius: 12px;
+            cursor: pointer;
+            overflow: hidden;
+            aspect-ratio: 2/3;
             background: linear-gradient(145deg, rgba($secondary-bg, 0.8), rgba($tertiary-bg, 0.6));
             border: 1px solid rgba($accent-color, 0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 3px;
-                background: linear-gradient(90deg, $accent-color, $active-color);
-                transform: scaleX(0);
-                transition: transform 0.3s ease;
-            }
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
 
             &:hover {
                 transform: translateY(-4px);
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-                border-color: rgba($accent-color, 0.4);
 
-                &::before {
-                    transform: scaleX(1);
+                .reading-card-overlay {
+                    opacity: 1;
                 }
             }
 
-            .reading-card-header {
-                margin-bottom: 1.5rem;
+            .reading-card-cover {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
 
-                .reading-title {
-                    color: white;
-                    font-size: clamp(1.25rem, 3vw, 1.5rem);
-                    font-weight: 600;
-                    margin-bottom: 0.5rem;
-                    line-height: 1.3;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .reading-card-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    to bottom,
+                    rgba($secondary-bg, 0.2) 0%,
+                    rgba($secondary-bg, 0.8) 50%,
+                    rgba($secondary-bg, 0.95) 100%
+                );
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 2rem;
+
+                @include respond-to('md') {
+                    opacity: 0;
                 }
 
-                .reading-meta {
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    flex-wrap: wrap;
+                .reading-card-content {
+                    color: white;
+
+                    .reading-title {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                        line-height: 1.3;
+                    }
 
                     .reading-author {
-                        color: rgba(255, 255, 255, 0.7);
+                        font-size: 1rem;
+                        color: rgba(255, 255, 255, 0.8);
+                        margin-bottom: 1rem;
+                    }
+
+                    .reading-description {
                         font-size: 0.9rem;
-                        font-style: italic;
+                        color: rgba(255, 255, 255, 0.9);
+                        margin-bottom: 1.5rem;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
                     }
 
-                    .reading-rating {
+                    .reading-meta {
                         display: flex;
-                        align-items: center;
-                        gap: 0.25rem;
+                        flex-direction: column;
+                        gap: 0.75rem;
 
-                        .star {
-                            font-size: 0.8rem;
-                            color: #ffd700;
+                        .reading-rating {
+                            .star {
+                                font-size: 1rem;
+                                color: #ffd700;
+                            }
                         }
-                    }
-                }
-            }
 
-            .reading-description {
-                color: rgba(255, 255, 255, 0.8);
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 1.5rem;
-            }
+                        .reading-categories {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 0.5rem;
 
-            .reading-stats {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1rem;
-                margin-bottom: 1.5rem;
+                            .reading-category {
+                                background: rgba($accent-color, 0.2);
+                                color: $accent-color;
+                                padding: 0.25rem 0.75rem;
+                                border-radius: 999px;
+                                font-size: 0.8rem;
+                                border: 1px solid rgba($accent-color, 0.3);
+                            }
+                        }
 
-                span {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    color: rgba(255, 255, 255, 0.6);
-                    font-size: 0.85rem;
+                        .reading-date {
+                            font-size: 0.85rem;
+                            color: rgba(255, 255, 255, 0.7);
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
 
-                    i {
-                        color: $accent-color;
-                        font-size: 0.8rem;
-                    }
-                }
-            }
-
-            .reading-categories {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.5rem;
-
-                .reading-category {
-                    background: rgba($accent-color, 0.2);
-                    color: $accent-color;
-                    padding: 0.25rem 0.75rem;
-                    border-radius: 999px;
-                    font-size: 0.75rem;
-                    font-weight: 500;
-                    border: 1px solid rgba($accent-color, 0.3);
-                    transition: all 0.2s ease;
-
-                    &:hover {
-                        background: rgba($accent-color, 0.3);
-                        border-color: rgba($accent-color, 0.5);
+                            i {
+                                color: $accent-color;
+                            }
+                        }
                     }
                 }
             }

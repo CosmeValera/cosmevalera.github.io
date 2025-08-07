@@ -17,66 +17,52 @@
     <div class="readings-grid">
       {% for term in terms %}
         <div class="reading-card" onclick="window.location='{{ term.permalink }}';">
-          <div class="reading-card-header">
-            <h3 class="reading-title">
-              {% if term.pages and term.pages | length > 0 %}
-                {% set latest_page = term.pages | sort(attribute="date") | last %}
-                {{ latest_page.title }}
-              {% else %}
-                {{ term.name }}
-              {% endif %}
-            </h3>
-            <div class="reading-meta">
-              {% if term.pages and term.pages | length > 0 %}
-                {% set latest_page = term.pages | sort(attribute="date") | last %}
+          {% if term.pages and term.pages | length > 0 %}
+            {% set latest_page = term.pages | sort(attribute="date") | last %}
+            {% if latest_page.extra and latest_page.extra.cover_image %}
+              <div class="reading-card-cover">
+                <img src="{{ latest_page.extra.cover_image }}" alt="Cover of {{ latest_page.title }}">
+              </div>
+            {% endif %}
+            
+            <div class="reading-card-overlay">
+              <div class="reading-card-content">
+                <h3 class="reading-title">
+                  {{ latest_page.title }}
+                </h3>
+                
                 {% if latest_page.extra and latest_page.extra.author %}
-                  <span class="reading-author">by {{ latest_page.extra.author }}</span>
+                  <p class="reading-author">by {{ latest_page.extra.author }}</p>
                 {% endif %}
-                                  {% if latest_page.extra and latest_page.extra.rating %}
+                
+                {% if latest_page.description %}
+                  <p class="reading-description">{{ latest_page.description }}</p>
+                {% endif %}
+                
+                <div class="reading-meta">
+                  {% if latest_page.extra and latest_page.extra.rating %}
                     <div class="reading-rating">
-                      {% set rating = latest_page.extra.rating %}
-                      {% for i in range(end=rating) %}
+                      {% for i in range(end=latest_page.extra.rating) %}
                         <span class="star">⭐</span>
                       {% endfor %}
                     </div>
                   {% endif %}
-              {% endif %}
-            </div>
-          </div>
-          
-          {% if term.pages and term.pages | length > 0 %}
-            {% set latest_page = term.pages | sort(attribute="date") | last %}
-            {% if latest_page.description %}
-              <p class="reading-description">{{ latest_page.description }}</p>
-            {% endif %}
-            
-            <div class="reading-stats">
-              {% if latest_page.extra and latest_page.extra.reading_time %}
-                <span class="reading-time">
-                  <i class="fas fa-clock"></i> {{ latest_page.extra.reading_time }} min read
-                </span>
-              {% endif %}
-              {% if latest_page.extra and latest_page.extra.word_count %}
-                <span class="reading-words">
-                  <i class="fas fa-file-alt"></i> {{ latest_page.extra.word_count }} words
-                </span>
-              {% endif %}
-              <span class="reading-date">
-                <i class="fas fa-calendar"></i> {{ latest_page.date | date(format="%B %d, %Y") }}
-              </span>
+                  
+                  {% if latest_page.taxonomies and latest_page.taxonomies.readings %}
+                    <div class="reading-categories">
+                      {% for category in latest_page.taxonomies.readings %}
+                        <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  
+                  <span class="reading-date">
+                    <i class="fas fa-calendar"></i> {{ latest_page.date | date(format="%B %d, %Y") }}
+                  </span>
+                </div>
+              </div>
             </div>
           {% endif %}
-          
-          <div class="reading-categories">
-            {% if term.pages and term.pages | length > 0 %}
-              {% set latest_page = term.pages | sort(attribute="date") | last %}
-              {% if latest_page.taxonomies and latest_page.taxonomies.readings %}
-                {% for category in latest_page.taxonomies.readings %}
-                  <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
-                {% endfor %}
-              {% endif %}
-            {% endif %}
-          </div>
         </div>
       {% endfor %}
     </div>
