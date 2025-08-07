@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  {{ term.name }} | {{ taxonomy.name | title }} | Cosme
+  {{ taxonomy.name | title }} | Cosme
 {% endblock %}
 
 {% block styles %}
@@ -67,15 +67,15 @@
         </div>
       {% endif %}
       
-      <div class="reading-content">
-        {{ reading_page.content | safe }}
-      </div>
-      
       {% if reading_page.extra and reading_page.extra.cover_image %}
-        <div class="reading-cover">
+        <div class="reading-cover reading-cover-header">
           <img src="{{ reading_page.extra.cover_image }}" alt="Cover of {{ reading_page.title }}">
         </div>
       {% endif %}
+
+      <div class="reading-content">
+        {{ reading_page.content | safe }}
+      </div>
     {% else %}
       <div class="reading-header">
         <h1 class="reading-title">{{ term.name }}</h1>

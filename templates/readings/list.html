@@ -12,13 +12,20 @@
   <div class="readings-list">
     <a href="/blog" class="back-link">← Back to all posts</a>
     <h1 class="readings-list-title">Readings</h1>
-    <p class="readings-description">A collection of books I've read and my thoughts on them. The idea is to keep track of my reading journey and share insights that might be valuable to others.</p>
+    <p class="readings-description">A collection of books I've read and my thoughts on them.</p>
     
     <div class="readings-grid">
       {% for term in terms %}
         <div class="reading-card" onclick="window.location='{{ term.permalink }}';">
           <div class="reading-card-header">
-            <h3 class="reading-title">{{ term.name }}</h3>
+            <h3 class="reading-title">
+              {% if term.pages and term.pages | length > 0 %}
+                {% set latest_page = term.pages | sort(attribute="date") | last %}
+                {{ latest_page.title }}
+              {% else %}
+                {{ term.name }}
+              {% endif %}
+            </h3>
             <div class="reading-meta">
               {% if term.pages and term.pages | length > 0 %}
                 {% set latest_page = term.pages | sort(attribute="date") | last %}
