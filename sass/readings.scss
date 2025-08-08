@@ -88,13 +88,13 @@
                 top: 0;
                 left: 0;
                 right: 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
                 padding: 0.75rem;
                 z-index: 10;
 
                 .review-badge {
+                    position: absolute;
+                    top: 0.75rem;
+                    left: 0.75rem;
                     background: rgba($accent-color, 0.2);
                     border: 1px solid rgba($accent-color, 0.4);
                     border-radius: 999px;
@@ -121,6 +121,9 @@
                 }
 
                 .reading-date-top {
+                    position: absolute;
+                    top: 0.75rem;
+                    right: 0.75rem;
                     font-size: 0.75rem;
                     color: rgba(255, 255, 255, 0.9);
                     display: flex;
@@ -130,9 +133,6 @@
                     padding: 0.5rem 0.75rem;
                     border-radius: 999px;
                     backdrop-filter: blur(4px);
-                    position: absolute;
-                    top: 1rem;
-                    right: 1rem;
 
                     i {
                         color: $accent-color;
