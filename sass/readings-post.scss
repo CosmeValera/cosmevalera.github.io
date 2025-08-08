@@ -5,7 +5,6 @@
 .reading-post {
     max-width: 700px;
     margin: 0 1.5rem;
-    width: 100%;
     
     @include respond-to('md') {
         margin: 0 auto;
@@ -15,7 +14,7 @@
         display: block;
         color: rgba(255, 255, 255, 0.7);
         text-decoration: none;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         font-size: clamp(.8rem, 2vw, 1rem);
         transition: color 0.2s;
         min-width: fit-content;
@@ -26,66 +25,105 @@
     }
 
     .reading-header {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
+
+        @include respond-to('md') {
+            margin-bottom: 3rem;
+        }
 
         .reading-title-section {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+
+            @include respond-to('md') {
+                margin-bottom: 2rem;
+            }
 
             .reading-title {
                 color: white;
-                font-size: clamp(2rem, 6vw, 3.5rem);
+                font-size: calc(min(2.5rem, 8vw));
                 font-weight: 600;
-                line-height: 1.4;
-                margin-bottom: 1rem;
+                line-height: 1.2;
+                margin-bottom: 0.75rem;
+                text-wrap: balance;
+
+                @include respond-to('md') {
+                    font-size: clamp(2rem, 6vw, 3.5rem);
+                    line-height: 1.4;
+                    margin-bottom: 1rem;
+                }
             }
 
             .reading-author {
                 color: rgba(255, 255, 255, 0.7);
-                font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                font-size: clamp(1rem, 2.2vw, 1.3rem);
                 font-style: italic;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem;
+                text-align: center;
+
+                @include respond-to('md') {
+                    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+                    margin-bottom: 1rem;
+                    text-align: left;
+                }
             }
 
             .reading-subtitle {
                 color: rgba(255, 255, 255, 0.8);
-                font-size: clamp(1rem, 2.5vw, 1.2rem);
-                line-height: 1.4;
+                font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+                line-height: 1.5;
                 margin-bottom: 0;
                 text-align: center;
-                // text-wrap: balance;
+                text-wrap: balance;
             }
         }
 
         .reading-meta {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
+            margin-top: 1rem;
+            padding: 1rem;
             background: rgba($secondary-bg, 0.3);
             border-radius: 12px;
             border: 1px solid rgba($accent-color, 0.1);
+            text-align: center;
+
+            @include respond-to('md') {
+                margin-top: 1.5rem;
+                padding: 1.5rem;
+            }
 
             .reading-meta-row {
                 display: flex;
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1rem;
 
                 @include respond-to('md') {
                     flex-direction: row;
                     align-items: center;
                     justify-content: space-between;
+                    gap: 1.5rem;
                 }
 
                 .reading-meta-left {
                     display: flex;
-                    align-items: center;
-                    gap: 2rem;
-                    flex-wrap: wrap;
+                    flex-direction: column;
+                    gap: 0.75rem;
+
+                    @include respond-to('md') {
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 2rem;
+                        flex-wrap: wrap;
+                    }
 
                     .reading-date {
                         display: flex;
                         align-items: center;
                         gap: 0.5rem;
                         color: rgba(255, 255, 255, 0.7);
-                        font-size: 0.9rem;
+                        font-size: 0.85rem;
+
+                        @include respond-to('md') {
+                            font-size: 0.9rem;
+                        }
 
                         i {
                             color: $accent-color;
@@ -95,12 +133,20 @@
                     .reading-rating {
                         display: flex;
                         align-items: center;
-                        gap: 1rem;
+                        gap: 0.5rem;
+
+                        @include respond-to('md') {
+                            gap: 1rem;
+                        }
 
                         .rating-label {
                             color: rgba(255, 255, 255, 0.8);
-                            font-size: 0.9rem;
+                            font-size: 0.85rem;
                             font-weight: 500;
+
+                            @include respond-to('md') {
+                                font-size: 0.9rem;
+                            }
                         }
 
                         .stars {
@@ -109,14 +155,22 @@
                             gap: 0.25rem;
 
                             .star {
-                                font-size: 1.1rem;
+                                font-size: 1rem;
                                 color: #ffd700;
+
+                                @include respond-to('md') {
+                                    font-size: 1.1rem;
+                                }
                             }
 
                             .rating-text {
                                 color: rgba(255, 255, 255, 0.6);
-                                font-size: 0.85rem;
+                                font-size: 0.8rem;
                                 margin-left: 0.5rem;
+
+                                @include respond-to('md') {
+                                    font-size: 0.85rem;
+                                }
                             }
                         }
                     }
@@ -124,14 +178,25 @@
 
                 .reading-categories {
                     display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                    flex-wrap: wrap;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    @include respond-to('md') {
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 1rem;
+                        flex-wrap: wrap;
+                    }
 
                     .categories-label {
                         color: rgba(255, 255, 255, 0.8);
-                        font-size: 0.9rem;
+                        font-size: 0.85rem;
                         font-weight: 500;
+                        text-align: left;
+
+                        @include respond-to('md') {
+                            font-size: 0.9rem;
+                        }
                     }
 
                     .reading-category {
@@ -139,10 +204,16 @@
                         color: $accent-color;
                         padding: 0.25rem 0.75rem;
                         border-radius: 999px;
-                        font-size: 0.85rem;
+                        font-size: 0.8rem;
                         font-weight: 500;
                         border: 1px solid rgba($accent-color, 0.3);
                         transition: all 0.2s ease;
+                        align-self: flex-start;
+
+                        @include respond-to('md') {
+                            font-size: 0.85rem;
+                            align-self: auto;
+                        }
 
                         &:hover {
                             background: rgba($accent-color, 0.3);
@@ -155,48 +226,71 @@
     }
 
     .reading-content {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
+
+        @include respond-to('md') {
+            margin-bottom: 3rem;
+        }
 
         h1, h2, h3, h4, h5, h6 {
             color: white;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.4;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+
+            @include respond-to('md') {
+                margin-top: 2.5rem;
+                margin-bottom: 1rem;
+                line-height: 1.4;
+            }
         }
 
         h1 {
-            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
             font-weight: 600;
         }
 
         h2 {
-            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            font-size: clamp(1.25rem, 3.5vw, 2rem);
             font-weight: 600;
         }
 
         h3 {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-size: clamp(1.1rem, 3vw, 1.75rem);
             font-weight: 600;
         }
 
         h4 {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
             font-weight: 600;
         }
 
         p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+
+            @include respond-to('md') {
+                font-size: clamp(1rem, 2.5vw, 1.1rem);
+                line-height: 1.4;
+                margin-bottom: 1.5rem;
+            }
         }
 
         ul, ol {
             color: rgba(255, 255, 255, 0.9);
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+
+            @include respond-to('md') {
+                font-size: clamp(1rem, 2.5vw, 1.1rem);
+                line-height: 1.4;
+                margin-bottom: 1.5rem;
+                padding-left: 2rem;
+            }
 
             li {
                 margin-bottom: 0.5rem;
@@ -205,12 +299,19 @@
 
         blockquote {
             border-left: 4px solid $accent-color;
-            padding-left: 1.5rem;
-            margin: 2rem 0;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
             font-style: italic;
             color: rgba(255, 255, 255, 0.8);
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            line-height: 1.4;
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            line-height: 1.5;
+
+            @include respond-to('md') {
+                padding-left: 1.5rem;
+                margin: 2rem 0;
+                font-size: clamp(1rem, 2.5vw, 1.1rem);
+                line-height: 1.4;
+            }
         }
 
         strong {
@@ -237,21 +338,34 @@
             border: none;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba($accent-color, 0.3), transparent);
-            margin: 3rem 0;
+            margin: 2rem 0;
+
+            @include respond-to('md') {
+                margin: 3rem 0;
+            }
         }
     }
 
     .reading-cover {
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
+
+        @include respond-to('md') {
+            margin-bottom: 3rem;
+        }
 
         img {
             width: 100%;
-            max-width: 400px;
+            max-width: 280px;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             display: block;
             margin: 0 auto;
+            object-fit: contain;
+
+            @include respond-to('md') {
+                max-width: 400px;
+            }
         }
     }
 }
