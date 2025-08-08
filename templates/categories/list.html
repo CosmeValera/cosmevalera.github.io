@@ -10,35 +10,30 @@
 
 {% block content %}
   <div class="readings-list">
-    <a href="/blog" class="back-link">← Back to all posts</a>
-    <h1 class="readings-list-title">Readings</h1>
-    <p class="readings-description">A collection of books I've read and my thoughts on them.</p>
+    <a href="/readings" class="back-link">← Back to all readings</a>
+    <h1 class="readings-list-title">{{ taxonomy.name | title }} Books</h1>
+    <p class="readings-description">Books in the {{ taxonomy.name | title }} category.</p>
     
     <div class="readings-grid">
       {% for term in terms %}
-        {% if term.pages and term.pages | length > 0 %}
-          {% set latest_page = term.pages | sort(attribute="date") | last %}
-          {% if latest_page.extra and latest_page.extra.has_single_page is defined and latest_page.extra.has_single_page == false %}
-            <div class="reading-card">
-          {% else %}
-            <div class="reading-card" onclick="window.location='{{ term.permalink }}';">
-          {% endif %}
-            {% if latest_page.extra and latest_page.extra.cover_image %}
+        {% for page in term.pages %}
+          <div class="reading-card{% if page.extra.has_single_page is defined and page.extra.has_single_page == true %}" onclick="window.location='{{ page.permalink }}';{% endif %}">
+            {% if page.extra and page.extra.cover_image %}
               <div class="reading-card-cover">
-                <img src="{{ latest_page.extra.cover_image }}" alt="Cover of {{ latest_page.title }}">
+                <img src="{{ page.extra.cover_image }}" alt="Cover of {{ page.title }}">
               </div>
             {% endif %}
             
             <!-- Always visible indicators -->
             <div class="card-indicators">
-              {% if latest_page.extra and latest_page.extra.has_single_page is defined and latest_page.extra.has_single_page == true %}
+              {% if page.extra and page.extra.has_single_page is defined and page.extra.has_single_page == true %}
                 <div class="review-badge">
                   <i class="fas fa-star"></i>
                   <span>Review</span>
                 </div>
               {% endif %}
               <div class="reading-date-top">
-                <i class="fas fa-calendar"></i> {{ latest_page.date | date(format="%B %d, %Y") }}
+                <i class="fas fa-calendar"></i> {{ page.date | date(format="%B %d, %Y") }}
               </div>
             </div>
             
@@ -50,20 +45,20 @@
                   <!-- Description Content (Always Visible) -->
                   <div class="content-section active" id="description">
                     <h3 class="reading-title">
-                      {{ latest_page.title }}
+                      {{ page.title }}
                     </h3>
                     
-                    {% if latest_page.extra and latest_page.extra.author %}
-                      <p class="reading-author">by {{ latest_page.extra.author }}</p>
+                    {% if page.extra and page.extra.author %}
+                      <p class="reading-author">by {{ page.extra.author }}</p>
                     {% endif %}
                     
-                    {% if latest_page.description %}
-                      <p class="reading-description">{{ latest_page.description }}</p>
+                    {% if page.description %}
+                      <p class="reading-description">{{ page.description }}</p>
                     {% endif %}
                     
-                    {% if latest_page.extra and latest_page.extra.rating %}
+                    {% if page.extra and page.extra.rating %}
                       <div class="reading-rating">
-                        {% for i in range(end=latest_page.extra.rating) %}
+                        {% for i in range(end=page.extra.rating) %}
                           <span class="star">⭐</span>
                         {% endfor %}
                       </div>
@@ -71,12 +66,12 @@
                   </div>
                   
                   <!-- Key Insights Content -->
-                  {% if latest_page.extra.key_insights %}
+                  {% if page.extra.key_insights %}
                   <div class="content-section" id="insights">
                     <div class="reading-insights">
                       <h4>Key Insights</h4>
                       <ul>
-                        {% for insight in latest_page.extra.key_insights %}
+                        {% for insight in page.extra.key_insights %}
                           <li>{{ insight }}</li>
                         {% endfor %}
                       </ul>
@@ -85,11 +80,11 @@
                   {% endif %}
                   
                   <!-- Personal Note Content -->
-                  {% if latest_page.extra.personal_note %}
+                  {% if page.extra.personal_note %}
                   <div class="content-section" id="personal">
                     <div class="reading-personal-note">
                       <h4>Personal Reflection</h4>
-                      <p>{{ latest_page.extra.personal_note }}</p>
+                      <p>{{ page.extra.personal_note }}</p>
                     </div>
                   </div>
                   {% endif %}
@@ -101,32 +96,32 @@
                     <div class="nav-square active" data-content="description">
                       <i class="fas fa-info-circle"></i>
                     </div>
-                    {% if latest_page.extra.key_insights %}
+                    {% if page.extra.key_insights %}
                     <div class="nav-square" data-content="insights">
                       <i class="fas fa-lightbulb"></i>
                     </div>
                     {% endif %}
-                    {% if latest_page.extra.personal_note %}
+                    {% if page.extra.personal_note %}
                     <div class="nav-square" data-content="personal">
                       <i class="fas fa-heart"></i>
                     </div>
                     {% endif %}
                   </div>
                   
-                                     <div class="bottom-right-content">
-                     {% if latest_page.taxonomies and latest_page.taxonomies.readings %}
-                       <div class="reading-categories">
-                         {% for category in latest_page.taxonomies.readings %}
-                           <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
-                         {% endfor %}
-                       </div>
-                     {% endif %}
-                   </div>
+                  <div class="bottom-right-content">
+                    {% if page.taxonomies and page.taxonomies.categories %}
+                      <div class="reading-categories">
+                        {% for category in page.taxonomies.categories %}
+                          <span class="reading-category">{{ category | slugify | replace(from="-", to=" ") | title }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        {% endif %}
+        {% endfor %}
       {% endfor %}
     </div>
   </div>
@@ -134,4 +129,4 @@
 
 {% block scripts %}
 <script src="{{ get_url(path="js/readings.js") | safe }}"></script>
-{% endblock %} 
+{% endblock %}

@@ -1,9 +1,10 @@
 +++
-title = "Filosofía de Bitcoin"
-description = "How Bitcoin changes the way we relate to money, redefines property ownership, and can transform our political system"
+title = "La Filosofía de Bitcoin"
+description = "How Bitcoin changes the way we relate to money, redefines property ownership, and can transform our political system."
 date = 2025-05-07
+template = "reading-post.html"
 [taxonomies]
-readings = ["bitcoin"]
+categories = ["bitcoin"]
 [extra]
 author = "Álvaro D. María"
 cover_image = "/images/readings/filosofia-de-bitcoin/filosofia-de-bitcoin.jpg"
@@ -45,4 +46,3 @@ What I love about this book is that it helps you understand why Bitcoin matters.
 - **Preview available:** <a href="https://www.marcialpons.es/media/pdf/55178_La_filosofia_de_BITCOIN.pdf" target="_blank">La Filosofía de Bitcoin</a>  
 - **Full book:** <a href="https://www.planetadelibros.com/libro-la-filosofia-de-bitcoin/387234" target="_blank">PlanetadeLibros</a>  
 - **Related blog post:** <a href="/blog/bitcoin/">BTC 101: Why Bitcoin?</a>
-

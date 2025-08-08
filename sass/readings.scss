@@ -2,54 +2,37 @@
 
 //////////////////////
 ////// Readings //////
-.readings-list {
-    max-width: 700px;
+.readings {
+    max-width: 900px;
+    margin: 0 auto;
     width: 100%;
-    
-    @include respond-to('md') {
-        margin: 0 auto;
-    }
 
-    .back-link {
-        display: block;
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        margin: 0 0 2rem 1.5rem;
-        font-size: clamp(.8rem, 2vw, 1rem);
-        transition: color 0.2s;
-        min-width: fit-content;
 
-        &:hover {
-            color: white;
-        }
-    }
-
-    h1.readings-list-title {
-        color: white;
-        margin-bottom: 1rem;
-        font-size: clamp(1.75rem, 6vw, 3rem);
-        font-weight: 600;
-    }
-
-    .readings-description {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: clamp(1rem, 2.5vw, 1.25rem);
-        line-height: 1.6;
-        margin-bottom: 3rem;
+    .readings-intro {
+        max-width: 75vw;
+        text-wrap: balance;
+        margin: 0 auto 2rem;
         text-align: center;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
+        color: $text-color;
+        opacity: 0.9;
+        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+        line-height: 1.6;
+        font-style: italic;
     }
 
     .readings-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
-        margin: 0 1.5rem;
+        margin: 0 clamp(1.5rem, 2vw, 10rem);
         
         @include respond-to('md') {
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+        
+        @include respond-to('lg') {
+            grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
         }
 
@@ -98,7 +81,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: flex-start;
-                padding: 1rem;
+                padding: 0.75rem;
                 z-index: 10;
 
                 .review-badge {
@@ -165,7 +148,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-end;
-                padding: 2rem;
+                padding: 1.5rem;
 
                 @include respond-to('md') {
                     opacity: 0;
@@ -218,15 +201,15 @@
                             }
 
                             .reading-author {
-                                font-size: 1rem;
+                                font-size: 1.1rem;
                                 color: rgba(255, 255, 255, 0.8);
                                 margin-bottom: 1rem;
                             }
 
                             .reading-description {
-                                font-size: 0.9rem;
+                                font-size: 1rem;
                                 color: rgba(255, 255, 255, 0.9);
-                                margin-bottom: 1.5rem;
+                                margin-bottom: 0;
                                 display: -webkit-box;
                                 -webkit-line-clamp: 3;
                                 -webkit-box-orient: vertical;
@@ -235,16 +218,57 @@
                             }
 
                             .reading-rating {
+                                // text-align: center;
+                                padding: 0.5rem 0;
+                                cursor: default;
+                                
                                 .star {
-                                    font-size: 0.9rem;
+                                    font-size: 1rem;
                                     color: #ffd700;
+                                    text-shadow: 
+                                        0 0 8px rgba(255, 215, 0, 0.6),
+                                        0 2px 4px rgba(0, 0, 0, 0.4);
+                                    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+                                    transition: all 0.3s ease;
+                                    display: inline-block;
+                                    margin: 0 1px;
+                                    
+                                    &:hover {
+                                        transform: scale(1.1);
+                                        text-shadow: 
+                                            0 0 12px rgba(255, 215, 0, 0.8),
+                                            0 2px 6px rgba(0, 0, 0, 0.5);
+                                    }
                                 }
+                                
+                                // Add a subtle background glow effect
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 80%;
+                                    height: 2rem;
+                                    background: radial-gradient(
+                                        ellipse at center,
+                                        rgba(255, 215, 0, 0.1) 0%,
+                                        rgba(255, 215, 0, 0.05) 50%,
+                                        transparent 70%
+                                    );
+                                    border-radius: 50%;
+                                    z-index: -1;
+                                    pointer-events: none;
+                                }
+                                
+                                // Position relative for the pseudo-element
+                                position: relative;
                             }
 
                             .reading-insights {
                                 h4 {
                                     color: $accent-color;
-                                    font-size: 1rem;
+                                    font-size: 1.1rem;
                                     margin-bottom: 0.75rem;
                                     font-weight: 600;
                                 }
@@ -256,7 +280,7 @@
 
                                     li {
                                         color: rgba(255, 255, 255, 0.9);
-                                        font-size: 0.9rem;
+                                        font-size: 1rem;
                                         margin-bottom: 0.5rem;
                                         padding-left: 1.25rem;
                                         position: relative;
@@ -279,17 +303,99 @@
                             .reading-personal-note {
                                 h4 {
                                     color: $accent-color;
-                                    font-size: 1rem;
+                                    font-size: 1.1rem;
                                     margin-bottom: 0.75rem;
                                     font-weight: 600;
                                 }
 
                                 p {
                                     color: rgba(255, 255, 255, 0.9);
-                                    font-size: 0.9rem;
+                                    font-size: 1rem;
                                     font-style: italic;
                                     margin: 0;
                                     line-height: 1.4;
+                                }
+                            }
+
+                            // Medium sizes for tablet (md)
+                            @include respond-to('md') {
+                                .reading-title {
+                                    font-size: 1.2rem;
+                                }
+
+                                .reading-author {
+                                    font-size: 0.85rem;
+                                }
+
+                                .reading-description {
+                                    font-size: 0.75rem;
+                                }
+
+                                .reading-rating {
+                                    .star {
+                                        font-size: 0.75rem;
+                                    }
+                                }
+
+                                .reading-insights {
+                                    h4 {
+                                        font-size: 0.85rem;
+                                    }
+
+                                    ul li {
+                                        font-size: 0.75rem;
+                                    }
+                                }
+
+                                .reading-personal-note {
+                                    h4 {
+                                        font-size: 0.85rem;
+                                    }
+
+                                    p {
+                                        font-size: 0.75rem;
+                                    }
+                                }
+                            }
+
+                            // Even smaller text for large screens (3 columns)
+                            @include respond-to('lg') {
+                                .reading-title {
+                                    font-size: 1.1rem;
+                                }
+
+                                .reading-author {
+                                    font-size: 0.8rem;
+                                }
+
+                                .reading-description {
+                                    font-size: 0.7rem;
+                                }
+
+                                .reading-rating {
+                                    .star {
+                                        font-size: 0.7rem;
+                                    }
+                                }
+
+                                .reading-insights {
+                                    h4 {
+                                        font-size: 0.8rem;
+                                    }
+
+                                    ul li {
+                                        font-size: 0.7rem;
+                                    }
+                                }
+
+                                .reading-personal-note {
+                                    h4 {
+                                        font-size: 0.8rem;
+                                    }
+
+                                    p {
+                                        font-size: 0.7rem;
+                                    }
                                 }
                             }
                         }
@@ -339,23 +445,16 @@
                             }
                         }
 
-                        .bottom-right-content {
-                            display: flex;
-                            align-items: center;
-                            gap: 1rem;
+                        // Adjust layout for large screens to prevent overlap
+                        @include respond-to('lg') {
+                            flex-direction: column;
+                            gap: 0.75rem;
+                            align-items: flex-start;
 
-                            .reading-categories {
-                                display: flex;
-                                gap: 0.35rem;
-
-                                .reading-category {
-                                    background: rgba($accent-color, 0.2);
-                                    color: $accent-color;
-                                    padding: 0.15rem 0.5rem;
-                                    border-radius: 999px;
-                                    font-size: 0.7rem;
-                                    border: 1px solid rgba($accent-color, 0.3);
-                                }
+                            .nav-squares {
+                                order: 1;
+                                width: 100%;
+                                justify-content: center;
                             }
                         }
                     }

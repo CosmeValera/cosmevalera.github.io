@@ -2,8 +2,9 @@
 title = "Atomic Habits"
 description = "An Easy & Proven Way to Build Good Habits & Break Bad Ones"
 date = 2024-03-15
+template = "reading-post.html"
 [taxonomies]
-readings = ["productivity"]
+categories = ["productivity"]
 [extra]
 author = "James Clear"
 cover_image = "/images/readings/atomic-habits/atomic-habits.jpg"

@@ -27,17 +27,11 @@
       <div class="lateral-menu">
 
         <!-- Blog-specific menu items (only on blog pages) -->
-        {% if current_path and current_path is starting_with("/blog") or current_path and current_path is starting_with("/tags") or current_path and current_path is starting_with("/readings") %}
+        {% if current_path and current_path is starting_with("/blog") or current_path and current_path is starting_with("/tags") %}
         <div class="menu-item-container">
           <a class="menu-item blog-menu-item" href="/tags">
             <i class="menu-icon fas fa-tags"></i>
             <span class="menu-label">Tags</span>
-          </a>
-        </div>
-        <div class="menu-item-container">
-          <a class="menu-item blog-menu-item" href="/readings">
-            <i class="menu-icon fas fa-book-open"></i>
-            <span class="menu-label">Readings</span>
           </a>
         </div>
         <div class="blog-menu-separator">
@@ -68,6 +62,12 @@
           <a class="menu-item {% if current_path and current_path is starting_with("/blog") %}active-page{% endif %}" href="/blog">
             <i class="menu-icon fas fa-newspaper"></i>
             <span class="menu-label">Blog</span>
+          </a>
+        </div>
+        <div class="menu-item-container">
+          <a class="menu-item {% if current_path and current_path is starting_with("/readings") %}active-page{% endif %}" href="/readings">
+            <i class="menu-icon fas fa-book-open"></i>
+            <span class="menu-label">Readings</span>
           </a>
         </div>
       </div>
