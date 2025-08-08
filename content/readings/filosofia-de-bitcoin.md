@@ -9,6 +9,12 @@ author = "Álvaro D. María"
 cover_image = "/images/readings/filosofia-de-bitcoin/filosofia-de-bitcoin.jpg"
 rating = 5
 has_single_page = true
+key_insights = [
+    "Money is a social construct reflecting power structures",
+    "Bitcoin redefines the concept of private property",
+    "Removes the state's monopoly on money creation"
+]
+personal_note = "This book fundamentally changed my understanding of what money actually is and how Bitcoin represents a paradigm shift in economic and political systems."
 +++
 
 *"Bitcoin is not just a new form of money, it's a new form of property that cannot be confiscated, a new form of speech that cannot be censored, and a new form of association that cannot be prohibited."* 

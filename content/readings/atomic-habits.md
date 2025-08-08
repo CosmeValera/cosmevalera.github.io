@@ -14,4 +14,5 @@ key_insights = [
     "1% better every day compounds to massive change",
     "Environment shapes behavior more than motivation"
 ]
+personal_note = "Changed my approach to professional projects by focusing on small, consistent improvements rather than big transformations."
 +++
