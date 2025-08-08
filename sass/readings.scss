@@ -58,6 +58,16 @@
                 }
             }
 
+            // Quick view functionality - show overlay when hovered class is applied
+            &.hovered {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+                .reading-card-overlay {
+                    opacity: 1;
+                }
+            }
+
             .reading-card-cover {
                 position: absolute;
                 top: 0;
@@ -218,9 +228,8 @@
                             }
 
                             .reading-rating {
-                                // text-align: center;
+                                text-align: center;
                                 padding: 0.5rem 0;
-                                cursor: default;
                                 
                                 .star {
                                     font-size: 1rem;
@@ -466,4 +475,87 @@
     }
 }
 ////// END: Readings //////
+
+// Readings Actions Menu (Mobile Only)
+.readings-actions-container {
+    position: fixed;
+    top: 32px;
+    right: 24px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .menu-item-container {
+        margin: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+            background: linear-gradient(135deg, $menu-item-bg 0%, lighten($menu-item-bg, 15%) 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            color: $text-color;
+            padding: 0;
+            border-radius: 999px;
+            transition: all 0.3s ease;
+            width: 72px;
+            height: 72px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid $accent-color;
+            cursor: pointer;
+
+            .menu-icon {
+                font-size: 28px;
+                color: $accent-color;
+                transition: all 0.3s ease;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .menu-label {
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                font-size: 0.5rem;
+                text-align: center;
+                line-height: 1;
+                position: absolute;
+                bottom: 9px;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0.8;
+                color: $accent-color;
+            }
+
+            // Active state for Quick View button
+            &.quick-view-button.active {
+                background: linear-gradient(135deg, 
+                    rgba($active-color, 0.15) 0%, 
+                    rgba($active-color, 0.25) 100%
+                );
+                border-color: $active-color;
+
+                .menu-label {
+                    color: $active-color;
+                    text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
+                }
+                .menu-icon {
+                    color: $active-color;
+                    text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
+                }
+            }
+        }
+    }
+    
+    @include respond-to('md') {
+        display: none;
+    }
+}
 /////////////////////////// 

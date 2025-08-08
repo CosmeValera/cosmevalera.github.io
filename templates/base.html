@@ -94,6 +94,18 @@
       </div>
     </section>
     {% endif %}
+
+    <!-- Readings Actions Menu (Mobile Only) -->
+    {% if current_path and current_path is starting_with("/readings") %}
+    <section class="readings-actions-container">
+      <div class="menu-item-container">
+        <button class="menu-item quick-view-button" id="readings-quick-view-button">
+          <i class="menu-icon fas fa-eye"></i>
+          <span class="menu-label">View</span>
+        </button>
+      </div>
+    </section>
+    {% endif %}
     <!-- END: Lateral Floating Menu -->
 
     <div class="page-wrapper">

@@ -1,9 +1,3 @@
-// Reading Cards Navigation System
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize navigation for reading cards
-    initializeReadingNavigation();
-});
-
 function initializeReadingNavigation() {
     const readingCards = document.querySelectorAll('.reading-card-navigation');
     
@@ -32,3 +26,39 @@ function initializeReadingNavigation() {
         });
     });
 }
+
+// Quick View functionality for readings
+function handleReadingsQuickView() {
+    const quickViewButton = document.querySelector('#readings-quick-view-button');
+    if (!quickViewButton) return;
+
+    quickViewButton.addEventListener('click', () => {
+        const readingCards = document.querySelectorAll('.reading-card');
+        const isActive = quickViewButton.classList.contains('active');
+        
+        if (isActive) {
+            // Deactivate Quick View
+            quickViewButton.classList.remove('active');
+            readingCards.forEach((card) => {
+                card.classList.remove('hovered');
+            });
+        } else {
+            // Activate Quick View
+            quickViewButton.classList.add('active');
+            readingCards.forEach((card) => {
+                card.classList.add('hovered');
+            });
+        }
+    });
+}
+
+
+////////////////////
+/////   MAIN   /////
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize navigation for reading cards
+    initializeReadingNavigation();
+    
+    // Initialize quick view functionality
+    handleReadingsQuickView();
+});
