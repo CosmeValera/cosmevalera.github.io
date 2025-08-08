@@ -1,0 +1,98 @@
+@import 'main';
+
+//////////////////////
+////// Categories //////
+.category-list {
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+
+    .back-link {
+        display: block;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        margin: 0 0 2rem 1.5rem;
+        font-size: clamp(.8rem, 2vw, 1rem);
+        transition: color 0.2s;
+        min-width: fit-content;
+
+        &:hover {
+            color: white;
+        }
+    }
+
+    h1.categories-list-title {
+        color: white;
+        margin-bottom: 1rem;
+        font-size: clamp(1.75rem, 6vw, 3rem);
+        font-weight: 600;
+        text-align: center;
+
+        @include respond-to('md') {
+            text-align: left;
+            margin-left: 1.5rem;
+        }
+    }
+
+    .categories-description {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+        line-height: 1.5;
+        margin-bottom: 2rem;
+        text-align: center;
+
+        @include respond-to('md') {
+            text-align: left;
+            margin-left: 1.5rem;
+        }
+    }
+
+    .categories-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 0 2rem 1.5rem;
+        gap: 1rem;
+        justify-content: center;
+
+        @include respond-to('md') {
+            justify-content: flex-start;
+        }
+
+        .category {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-size: clamp(.8rem, 1.75vw, .95rem);
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba($accent-color, 0.25), rgba($accent-color, 0.15));
+            border: 1px solid rgba($accent-color, 0.3);
+            box-shadow: 0 2px 8px rgba($accent-color, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+
+            &:hover {
+                background: linear-gradient(135deg, rgba($accent-color, 0.35), rgba($accent-color, 0.25));
+                border-color: rgba($accent-color, 0.5);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba($accent-color, 0.2);
+            }
+
+            .category-count {
+                background: rgba(255, 255, 255, 0.2);
+                color: white;
+                padding: 0.2rem 0.6rem;
+                border-radius: 8px;
+                font-size: 0.75rem;
+                font-weight: 600;
+                backdrop-filter: blur(4px);
+            }
+        }
+    }
+}
+////// END: Categories //////
+/////////////////////////////
