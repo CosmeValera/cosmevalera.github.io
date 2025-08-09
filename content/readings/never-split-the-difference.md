@@ -2,7 +2,7 @@
 title = "Never Split the Difference"
 description = "Learn the techniques used by FBI hostage negotiators to get what you want in any negotiation."
 date = 2025-05-05
-template = "reading-post.html"
+template = "readings-post.html"
 [taxonomies]
 categories = ["negotiation"]
 [extra]

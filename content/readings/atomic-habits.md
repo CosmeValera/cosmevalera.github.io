@@ -2,7 +2,7 @@
 title = "Atomic Habits"
 description = "An Easy & Proven Way to Build Good Habits & Break Bad Ones"
 date = 2024-03-15
-template = "reading-post.html"
+template = "readings-post.html"
 [taxonomies]
 categories = ["productivity"]
 [extra]

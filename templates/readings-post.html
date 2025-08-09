@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ page.title }} | Cosme
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ get_url(path="readings-post.css") | safe }}">
+{% endblock %}
+
+{% block content %}
+  <div class="reading-post">
+    <!-- 1. Back to all readings -->
+    <a href="/readings" class="back-link">← Back to all readings</a>
+    
+    <!-- 2-5. Header section with title, author, description, and metadata -->
+    <div class="reading-header">
+      <div class="reading-title-section">
+        <!-- 2. Title -->
+        <h1 class="reading-title">{{ page.title }}</h1>
+        
+        <!-- 3. Author -->
+        {% if page.extra and page.extra.author %}
+          <p class="reading-author">by {{ page.extra.author }}</p>
+        {% endif %}
+        
+        <!-- 4. Description -->
+        <p class="reading-subtitle">{{ page.description }}</p>
+      </div>
+      
+      <!-- 5. Metadata in one line: date, rating, category -->
+      <div class="reading-meta">
+        <div class="reading-meta-row">
+          <div class="reading-meta-left">
+            <span class="reading-date">
+              <i class="fas fa-calendar"></i>
+              {{ page.date | date(format="%B %d, %Y") }}
+            </span>
+            {% if page.extra and page.extra.rating %}
+              <div class="reading-rating">
+                <span class="rating-label">Rating:</span>
+                <div class="stars">
+                  {% for i in range(end=page.extra.rating) %}
+                    <span class="star">⭐</span>
+                  {% endfor %}
+                  <span class="rating-text">({{ page.extra.rating }}/5)</span>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          {% if page.taxonomies and page.taxonomies.categories %}
+            <div class="reading-categories">
+              <span class="categories-label">Categories:</span>
+              {% for category in page.taxonomies.categories %}
+                <a href="{{ get_taxonomy_url(kind="categories", name=category) }}" class="reading-category">
+                  {{ category | slugify | replace(from="-", to=" ") | title }}
+                </a>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <!-- 6. Cover image -->
+    {% if page.extra and page.extra.cover_image %}
+      <div class="reading-cover">
+        <img src="{{ page.extra.cover_image }}" alt="Cover of {{ page.title }}">
+      </div>
+    {% endif %}
+    
+    <!-- 7. Content -->
+    <div class="reading-content">
+      {{ page.content | safe }}
+    </div>
+  </div>
+{% endblock content %}
