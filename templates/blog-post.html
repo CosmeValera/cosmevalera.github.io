@@ -41,8 +41,21 @@
         {{ page.content | safe }}
     </div>
 
+    {% if page.taxonomies and page.taxonomies.tags and "bitcoin" in page.taxonomies.tags %}
+      <div class="readings-link">
+        <h3>Related Reading</h3>
+        <p>If you found this post interesting, you might want to check out my thoughts on:</p>
+        <a href="/readings/filosofia-de-bitcoin/" class="reading-link">
+          <i class="fas fa-book"></i>
+          <span>Filosofía de Bitcoin</span>
+          <small>by Álvaro D. María</small>
+        </a>
+      </div>
+    {% endif %}
+    
     <hr class="footer-rule" />
     {{ related::container(page=page,orderDesc=true) }}
     <hr class="footer-rule-2" />
+    
   </div>
 {% endblock content %}
