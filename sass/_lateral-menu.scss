@@ -146,6 +146,12 @@
                     color: $accent-color;
                 }
 
+                // Long labels a bit smaller
+                &.menu-item-smaller-label .menu-label {
+                    bottom: 10px;    
+                    font-size: 0.45rem;
+                }
+
                 // Blog menu items styling
                 &.blog-menu-item {
                     background: linear-gradient(135deg, 
@@ -161,12 +167,6 @@
                     .menu-label {
                         color: rgba($accent-color, 0.8);
                     }
-                }
-
-                // Label of projects a bit smaller
-                & .fa-code + .menu-label {
-                    bottom: 10px;    
-                    font-size: .45rem;
                 }
 
                 &.active-page {

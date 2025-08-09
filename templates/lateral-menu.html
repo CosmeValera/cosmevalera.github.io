@@ -22,7 +22,7 @@
     <!-- Readings-specific menu items (only on readings pages) -->
     {% if current_path and current_path is starting_with("/readings") or current_path and current_path is starting_with("/categories") %}
     <div class="menu-item-container">
-      <a class="menu-item blog-menu-item" href="/categories">
+      <a class="menu-item blog-menu-item menu-item-smaller-label" href="/categories">
         <i class="menu-icon fas fa-folder"></i>
         <span class="menu-label">Categories</span>
       </a>
@@ -46,7 +46,7 @@
       </a>
     </div>
     <div class="menu-item-container">
-      <a class="menu-item {% if current_path and current_path is starting_with("/projects") %}active-page{% endif %}" href="/projects">
+      <a class="menu-item menu-item-smaller-label {% if current_path and current_path is starting_with("/projects") %}active-page{% endif %}" href="/projects">
         <i class="menu-icon fas fa-code"></i>
         <span class="menu-label">Projects</span>
       </a>
@@ -58,7 +58,7 @@
       </a>
     </div>
     <div class="menu-item-container">
-      <a class="menu-item {% if current_path and current_path is starting_with("/readings") %}active-page{% endif %}" href="/readings">
+      <a class="menu-item menu-item-smaller-label {% if current_path and current_path is starting_with("/readings") %}active-page{% endif %}" href="/readings">
         <i class="menu-icon fas fa-book-open"></i>
         <span class="menu-label">Readings</span>
       </a>
