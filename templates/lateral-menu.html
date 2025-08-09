@@ -4,8 +4,8 @@
 
     <!-- Blog-specific menu items (only on blog pages) -->
     {% if current_path and current_path is starting_with("/blog") or current_path and current_path is starting_with("/tags") %}
-    <div class="menu-item-container">
-      <a class="menu-item blog-menu-item" href="/tags">
+    <div class="menu-item-container {% if current_path and current_path is starting_with("/tags") %}active{% endif %}">
+      <a class="menu-item blog-menu-item {% if current_path and current_path is starting_with("/tags") %}active-page{% endif %}" href="/tags">
         <i class="menu-icon fas fa-tags"></i>
         <span class="menu-label">Tags</span>
       </a>
@@ -21,8 +21,8 @@
 
     <!-- Readings-specific menu items (only on readings pages) -->
     {% if current_path and current_path is starting_with("/readings") or current_path and current_path is starting_with("/categories") %}
-    <div class="menu-item-container">
-      <a class="menu-item readings-menu-item menu-item-smaller-label" href="/categories">
+    <div class="menu-item-container {% if current_path and current_path is starting_with("/categories") %}active{% endif %}">
+      <a class="menu-item readings-menu-item menu-item-smaller-label {% if current_path and current_path is starting_with("/categories") %}active-page{% endif %}" href="/categories">
         <i class="menu-icon fas fa-folder"></i>
         <span class="menu-label">Categories</span>
       </a>
