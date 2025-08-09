@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ term.name | slugify | replace(from="-", to=" ") | title }} ({{ taxonomy.name | title }}) | Cosme
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ get_url(path="categories-single.css") | safe }}">
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ get_url(path="js/readings.js") | safe }}"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="category-single">
+    <a href="/categories" class="back-link">← See all categories</a>
+    <div class="category-header">
+      <h1 class="categories-single-title">Books in category</h1>
+      <span class="current-category category-{{ term.name | slugify }}-plain" data-category="{{ term.name | slugify }}">
+        {{ term.name | slugify | replace(from="-", to=" ") | title }}
+      </span>
+    </div>
+    
+    <div class="readings-grid">
+      {% for page in term.pages | sort(attribute="date") | reverse %}
+        {% if page.extra.has_single_page is defined and page.extra.has_single_page == true %}
+          <div class="reading-card" onclick="window.location='{{ page.permalink }}';">
+        {% else %}
+          <div class="reading-card">
+        {% endif %}
+          {% if page.extra and page.extra.cover_image %}
+            <div class="reading-card-cover">
+              <img src="{{ page.extra.cover_image }}" alt="Cover of {{ page.title }}">
+            </div>
+          {% endif %}
+          
+          <!-- Always visible indicators -->
+          <div class="card-indicators">
+            {% if page.extra and page.extra.has_single_page is defined and page.extra.has_single_page == true %}
+              <div class="review-badge">
+                <i class="fas fa-star"></i>
+                <span>Review</span>
+              </div>
+            {% endif %}
+            <div class="reading-date-top">
+              <i class="fas fa-calendar"></i> {{ page.date | date(format="%B %d, %Y") }}
+            </div>
+          </div>
+          
+          <div class="reading-card-overlay">
+            <!-- Interactive Navigation for All Books -->
+            <div class="reading-card-navigation">
+              <!-- Content Area -->
+              <div class="content-area">
+                <!-- Description Content (Always Visible) -->
+                <div class="content-section active" id="description">
+                  
+                  {% if page.extra and page.extra.rating %}
+                    <div class="reading-rating">
+                      {% for i in range(end=page.extra.rating) %}
+                        <span class="star">⭐</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  <h3 class="reading-title">
+                    {{ page.title }}
+                  </h3>
+                  
+                  {% if page.extra and page.extra.author %}
+                    <p class="reading-author">by {{ page.extra.author }}</p>
+                  {% endif %}
+                  
+                  {% if page.description %}
+                    <p class="reading-description">{{ page.description }}</p>
+                  {% endif %}
+                  
+                </div>
+                
+                <!-- Key Insights Content -->
+                {% if page.extra.key_insights %}
+                <div class="content-section" id="insights">
+                  <div class="reading-insights">
+                    <h4>Key Insights</h4>
+                    <ul>
+                      {% for insight in page.extra.key_insights %}
+                        <li>{{ insight }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                {% endif %}
+                
+                <!-- Personal Note Content -->
+                {% if page.extra.personal_note %}
+                <div class="content-section" id="personal">
+                  <div class="reading-personal-note">
+                    <h4>Personal Reflection</h4>
+                    <p>{{ page.extra.personal_note }}</p>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+              
+              <!-- Bottom Navigation -->
+              <div class="bottom-navigation">
+                <div class="nav-squares">
+                  <div class="nav-square active" data-content="description">
+                    <i class="fas fa-info-circle"></i>
+                  </div>
+                  {% if page.extra.key_insights %}
+                  <div class="nav-square" data-content="insights">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  {% endif %}
+                  {% if page.extra.personal_note %}
+                  <div class="nav-square" data-content="personal">
+                    <i class="fas fa-heart"></i>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ taxonomy.name | title }} | Cosme
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ get_url(path="categories-list.css") | safe }}">
+{% endblock %}
+
+{% block content %}
+  <div class="category-list">
+    <a href="/readings" class="back-link">← Back to all readings</a>
+    <h1 class="categories-list-title">{{ taxonomy.name | title }}</h1>
+    <p class="categories-description">Browse books by category.</p>
+    
+    <div class="categories-cloud">
+      {% for term in terms %}
+        <a class="category category-{{ term.name | slugify }}-plain" href="{{ term.permalink }}">
+          {{ term.name | slugify | replace(from="-", to=" ") | title }}
+          <span class="category-count">{{ term.pages | length }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}
