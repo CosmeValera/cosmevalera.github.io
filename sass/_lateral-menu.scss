@@ -231,14 +231,15 @@
             display: flex;
             align-items: flex-end;
             position: fixed;
-            top: 50%;
+            top: 0;
             bottom: 0;
             right: 20px;
-            transform: translateY(-50%);
+            transform: none;
             flex-direction: column;
             z-index: 1000;
             width: unset;
             background-color: transparent;
+            justify-content: center;
 
             // Hide blog menu items on desktop
             .blog-menu-separator,
@@ -247,7 +248,7 @@
             }
 
             .menu-item-container {
-                margin: 10px 0;
+                margin: 8px 0;
                 text-align: center;
                 
                 .menu-item {
@@ -333,6 +334,9 @@
                         }
                         &.fa-newspaper {
                             margin-right: 6px;
+                        }
+                        &.fa-book-open {
+                            margin-right: 5px;
                         }
                     }
 

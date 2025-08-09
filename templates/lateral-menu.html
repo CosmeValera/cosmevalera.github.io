@@ -1,0 +1,102 @@
+<!-- Lateral Floating Menu -->
+<section class="lateral-menu-container">
+  <div class="lateral-menu">
+
+    <!-- Blog-specific menu items (only on blog pages) -->
+    {% if current_path and current_path is starting_with("/blog") or current_path and current_path is starting_with("/tags") %}
+    <div class="menu-item-container">
+      <a class="menu-item blog-menu-item" href="/tags">
+        <i class="menu-icon fas fa-tags"></i>
+        <span class="menu-label">Tags</span>
+      </a>
+    </div>
+    <div class="blog-menu-separator">
+      <span class="blog-menu-label">Blog Links</span>
+    </div>
+    <div class="blog-menu-separator">
+      <span class="separator-line"></span>
+    </div>
+    {% endif %}
+    <!-- END: Blog-specific menu items -->
+
+    <!-- Readings-specific menu items (only on readings pages) -->
+    {% if current_path and current_path is starting_with("/readings") or current_path and current_path is starting_with("/categories") %}
+    <div class="menu-item-container">
+      <a class="menu-item blog-menu-item" href="/categories">
+        <i class="menu-icon fas fa-folder"></i>
+        <span class="menu-label">Categories</span>
+      </a>
+    </div>
+    <div class="blog-menu-separator">
+      <span class="blog-menu-label">Reading Links</span>
+    </div>
+    <div class="blog-menu-separator">
+      <span class="separator-line"></span>
+    </div>
+    {% endif %}
+    <!-- END: Readings-specific menu items -->
+    
+    <div class="menu-item-container">
+      {% if current_path == "/" %}
+      <span class="active-tooltip">You are here</span>
+      {% endif %}
+      <a class="menu-item {% if current_path == "/" %}active-page{% endif %}" href="/">
+        <i class="menu-icon fas fa-home"></i>
+        <span class="menu-label">Home</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item {% if current_path and current_path is starting_with("/projects") %}active-page{% endif %}" href="/projects">
+        <i class="menu-icon fas fa-code"></i>
+        <span class="menu-label">Projects</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item {% if current_path and current_path is starting_with("/blog") %}active-page{% endif %}" href="/blog">
+        <i class="menu-icon fas fa-newspaper"></i>
+        <span class="menu-label">Blog</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item {% if current_path and current_path is starting_with("/readings") %}active-page{% endif %}" href="/readings">
+        <i class="menu-icon fas fa-book-open"></i>
+        <span class="menu-label">Readings</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="fab-button">
+    <i class="fab-button-i fas fa-bars"></i>
+  </div>
+</section>
+
+<!-- Projects Actions Menu (Mobile Only) -->
+{% if current_path and current_path is starting_with("/projects") %}
+<section class="projects-actions-container">
+  <div class="menu-item-container">
+    <button class="menu-item filter-menu-button" id="filter-menu-button">
+      <i class="menu-icon fas fa-filter"></i>
+      <span class="menu-label">Filter</span>
+    </button>
+  </div>
+  <div class="menu-item-container">
+    <button class="menu-item quick-view-button" id="quick-view-button">
+      <i class="menu-icon fas fa-eye"></i>
+      <span class="menu-label">View</span>
+    </button>
+  </div>
+</section>
+{% endif %}
+
+<!-- Readings Actions Menu (Mobile Only) -->
+{% if current_path and current_path == "/readings/" %}
+<section class="readings-actions-container">
+  <div class="menu-item-container">
+    <button class="menu-item quick-view-button" id="readings-quick-view-button">
+      <i class="menu-icon fas fa-eye"></i>
+      <span class="menu-label">View</span>
+    </button>
+  </div>
+</section>
+{% endif %}
+<!-- END: Lateral Floating Menu -->
