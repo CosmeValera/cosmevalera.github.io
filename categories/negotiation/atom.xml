@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - negotiation</title>
+	<link href="https://cosmevalera.github.io/categories/negotiation/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-05-05T00:00:00+00:00</updated>
+	<id>https://cosmevalera.github.io/categories/negotiation/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Never Split the Difference</title>
+		<published>2025-05-05T00:00:00+00:00</published>
+		<updated>2025-05-05T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/never-split-the-difference/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/never-split-the-difference/</id>
+		<content type="html"></content>
+	</entry>
+</feed>

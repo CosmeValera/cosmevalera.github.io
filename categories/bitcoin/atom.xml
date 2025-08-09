@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - bitcoin</title>
+	<link href="https://cosmevalera.github.io/categories/bitcoin/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-05-07T00:00:00+00:00</updated>
+	<id>https://cosmevalera.github.io/categories/bitcoin/atom.xml</id>
+	<entry xml:lang="en">
+		<title>La Filosofía de Bitcoin</title>
+		<published>2025-05-07T00:00:00+00:00</published>
+		<updated>2025-05-07T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/filosofia-de-bitcoin/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/filosofia-de-bitcoin/</id>
+		<content type="html">&lt;p&gt;&lt;em&gt;&amp;quot;Bitcoin is not just a new form of money, it&#x27;s a new form of property that cannot be confiscated, a new form of speech that cannot be censored, and a new form of association that cannot be prohibited.&amp;quot;&lt;&#x2F;em&gt; &lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h1 id=&quot;filosofia-de-bitcoin&quot;&gt;Filosofía de Bitcoin&lt;&#x2F;h1&gt;
+&lt;p&gt;I picked up &lt;em&gt;Filosofía de Bitcoin&lt;&#x2F;em&gt; by Álvaro D. María expecting another technical explanation of how Bitcoin works. Instead, I found a profound philosophical exploration of what Bitcoin actually represents.&lt;&#x2F;p&gt;
+&lt;p&gt;The book starts with a powerful question: what is money, really? The author argues that money isn&#x27;t just a tool for exchange, it&#x27;s a social construct reflecting power structures. Traditional currencies are backed by state violence and controlled by central banks that can print unlimited amounts, creating a system where some benefit while everyone else suffers from inflation.&lt;&#x2F;p&gt;
+&lt;p&gt;The most eye-opening part was the discussion of property ownership. We think we own our bank accounts, digital assets, and online presence, but these can all be taken away by third parties. Bitcoin changes this fundamentally: your private keys are truly yours, impossible to confiscate or control without your consent. As the author states, Bitcoin redefines the concept of private property.&lt;&#x2F;p&gt;
+&lt;p&gt;The political implications are fascinating. Bitcoin represents a fundamental challenge by removing the state&#x27;s monopoly on money creation, potentially leading to more decentralized, voluntary forms of governance which are yet to be defined or discovered.&lt;&#x2F;p&gt;
+&lt;p&gt;The writing is accessible but deep. The author doesn&#x27;t shy away from 
+complex ideas but presents them in a way that makes you think rather 
+than just accept. I found myself stopping frequently to reflect on the 
+implications of what I was reading.&lt;&#x2F;p&gt;
+&lt;p&gt;What I love about this book is that it helps you understand why Bitcoin matters. In a world where central banks print unlimited money and financial privacy disappears, Bitcoin offers a different path where you can reclaim economic freedom. The writing is accessible yet deep, making you think rather than just accept.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Rating: ⭐⭐⭐⭐⭐ (5&#x2F;5)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;related-resources&quot;&gt;Related Resources&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Preview available:&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.marcialpons.es&#x2F;media&#x2F;pdf&#x2F;55178_La_filosofia_de_BITCOIN.pdf&quot; target=&quot;_blank&quot;&gt;La Filosofía de Bitcoin&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Full book:&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.planetadelibros.com&#x2F;libro-la-filosofia-de-bitcoin&#x2F;387234&quot; target=&quot;_blank&quot;&gt;PlanetadeLibros&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Related blog post:&lt;&#x2F;strong&gt; &lt;a href=&quot;&#x2F;blog&#x2F;bitcoin&#x2F;&quot;&gt;BTC 101: Why Bitcoin?&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>21 Lessons: What I&#x27;ve Learned from Falling Down the Bitcoin Rabbit Hole</title>
+		<published>2024-04-13T00:00:00+00:00</published>
+		<updated>2024-04-13T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/21-lessons/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/21-lessons/</id>
+		<content type="html"></content>
+	</entry>
+</feed>
