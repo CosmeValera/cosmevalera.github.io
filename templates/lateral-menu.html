@@ -89,7 +89,7 @@
 {% endif %}
 
 <!-- Readings Actions Menu (Mobile Only) -->
-{% if current_path and current_path == "/readings/" %}
+{% if current_path and current_path == "/readings/" or current_path and current_path is starting_with("/categories/") and current_path != "/categories/" %}
 <section class="readings-actions-container">
   <div class="menu-item-container">
     <button class="menu-item quick-view-button" id="readings-quick-view-button">
