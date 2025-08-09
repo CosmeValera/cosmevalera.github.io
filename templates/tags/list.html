@@ -12,6 +12,7 @@
   <div class="tag-list">
     <a href="/blog" class="back-link">← Back to all posts</a>
     <h1 class="tags-list-title">Tags</h1>
+    <p class="tags-description">Browse posts by tag.</p>
     <div class="tags-cloud">
       {% for term in terms %}
         {% if term.name | slugify in config.extra.blog_post_tags %}

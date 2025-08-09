@@ -1,6 +1,6 @@
 +++
 title = "Atomic Habits"
-description = "An Easy & Proven Way to Build Good Habits & Break Bad Ones"
+description = "An Easy & Proven Way to Build Good Habits & Break Bad Ones."
 date = 2024-03-15
 template = "readings-post.html"
 [taxonomies]
