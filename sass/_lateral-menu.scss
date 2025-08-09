@@ -71,13 +71,13 @@
         }
 
         // Blog menu separators and labels
-        .blog-menu-separator {
+        .blog-menu-separator, .readings-menu-separator {
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 5px 0;
             
-            .blog-menu-label {
+            .blog-menu-label, .readings-menu-label {
                 color: $accent-color;
                 width: 72px;
                 text-align: center;
@@ -88,6 +88,10 @@
                 opacity: 0.8;
                 text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
                 margin: -0.5rem auto -0.8rem;
+
+                &.readings-menu-label {
+                    font-size: 0.5rem;
+                }
             }
             
             .separator-line {
@@ -153,7 +157,7 @@
                 }
 
                 // Blog menu items styling
-                &.blog-menu-item {
+                &.blog-menu-item, &.readings-menu-item {
                     background: linear-gradient(135deg, 
                         rgba($accent-color, 0.1) 0%, 
                         rgba($accent-color, 0.2) 100%
@@ -243,7 +247,9 @@
 
             // Hide blog menu items on desktop
             .blog-menu-separator,
-            .menu-item-container:has(.blog-menu-item) {
+            .menu-item-container:has(.blog-menu-item),
+            .readings-menu-separator,
+            .menu-item-container:has(.readings-menu-item) {
                 display: none;
             }
 
