@@ -1,7 +1,7 @@
 +++
 title = "Java Head First"
 description = "A Brain-Friendly Guide to learning Java programming with a unique approach that engages multiple learning styles."
-date = 2024-03-08
+date = 2021-03-08
 template = "readings-post.html"
 [taxonomies]
 categories = ["programming", "java"]

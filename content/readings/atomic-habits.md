@@ -1,7 +1,7 @@
 +++
 title = "Atomic Habits"
 description = "An Easy & Proven Way to Build Good Habits & Break Bad Ones."
-date = 2024-03-15
+date = 2020-08-12
 template = "readings-post.html"
 [taxonomies]
 categories = ["productivity"]

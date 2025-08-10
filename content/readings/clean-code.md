@@ -1,7 +1,7 @@
 +++
 title = "Clean Code"
 description = "A handbook of agile software craftsmanship that teaches how to write code that is readable, maintainable, and professional."
-date = 2024-05-20
+date = 2022-05-20
 template = "readings-post.html"
 [taxonomies]
 categories = ["programming"]

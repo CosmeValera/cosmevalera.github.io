@@ -1,7 +1,7 @@
 +++
 title = "The Power of Habit"
 description = "Why We Do What We Do in Life and Business - Understanding the science of habit formation and how to change them."
-date = 2024-04-12
+date = 2020-11-02
 template = "readings-post.html"
 [taxonomies]
 categories = ["productivity", "psychology"]
