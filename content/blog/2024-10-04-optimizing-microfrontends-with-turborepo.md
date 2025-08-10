@@ -5,10 +5,10 @@ description = "Use Turborepo to improve microfrontend workflows with parallel ta
 [taxonomies]
 tags = ["architecture", "frontend"]
 [extra]
-cover_image = "/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/opt1-comp.png"
+cover_image = "/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/cover-webp.webp"
 +++
 
-![blog-cover](/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/opt1.png)
+![blog-cover](/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/cover-webp.webp)
 
 <h4><b>🧐 Why Turborepo?</b></h4>
 

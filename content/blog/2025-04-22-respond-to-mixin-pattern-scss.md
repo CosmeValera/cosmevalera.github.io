@@ -5,10 +5,10 @@ description = "Learn how to simplify responsive design with a mobile-first appro
 [taxonomies]
 tags = ["frontend"]
 [extra]
-cover_image = "/images/blog/2025-04-22-respond-to-mixin-pattern-scss/respond-to-pattern-3-comp.png"
+cover_image = "/images/blog/2025-04-22-respond-to-mixin-pattern-scss/cover-webp.webp"
 +++
 
-![blog-cover](/images/blog/2025-04-22-respond-to-mixin-pattern-scss/respond-to-pattern-3.png)
+![blog-cover](/images/blog/2025-04-22-respond-to-mixin-pattern-scss/cover-webp.webp)
 
 <h4><b>🤔 The Problem with Traditional Media Queries</b></h4>
 

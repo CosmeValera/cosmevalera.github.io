@@ -17,11 +17,11 @@
   {# Display appropriate image based on season and image availability #}
   {% if season == "autumn" or season == "winter" %}
     <img
-      src="{{ get_url(path=winter_image | default(value='images/blog/general/tree-autumn-winter.png')) }}" 
+      src="{{ get_url(path='images/blog/general/tree-autumn-winter-webp.webp') }}" 
       alt="{{ winter_alt | default(value='Autumn/Winter seasonal image') }}">
   {% elif season == "spring" or season == "summer" %}
     <img 
-      src="{{ get_url(path=spring_summer_image | default(value='images/blog/general/tree-summer-spring.png')) }}" 
+      src="{{ get_url(path='images/blog/general/tree-summer-spring-webp.webp') }}" 
       alt="{{ spring_summer_alt | default(value='Spring/Summer seasonal image') }}">
   {% endif %}
 </div> 

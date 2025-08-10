@@ -5,10 +5,10 @@ description = "Approaches to maintain consistent styles across multiple projects
 [taxonomies]
 tags = ["frontend"]
 [extra]
-cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-comp.png"
+cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp"
 +++
 
-![blog-cover](/images/blog/2024-09-01-shared-styles-in-monorepo/cover.png)
+![blog-cover](/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp)
 
 <h4><b>🤔 Overview</b></h4>
 
