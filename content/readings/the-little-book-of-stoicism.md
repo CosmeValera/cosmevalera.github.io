@@ -1,7 +1,7 @@
 +++
 title = "The Little Book of Stoicism"
 description = "Ancient wisdom for everyday life - practical Stoic philosophy for modern challenges and personal growth."
-date = 2021-09-25
+date = 2022-02-07
 template = "readings-post.html"
 [taxonomies]
 categories = ["philosophy", "self-help"]

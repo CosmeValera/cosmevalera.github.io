@@ -1,7 +1,7 @@
 +++
 title = "How to Win Friends and Influence People"
 description = "Timeless principles for building relationships and influencing others through genuine interest and understanding."
-date = 2025-03-10
+date = 2025-03-09
 template = "readings-post.html"
 [taxonomies]
 categories = ["relationships"]

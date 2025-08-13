@@ -1,7 +1,7 @@
 +++
 title = "The Subtle Art of Not Giving a F*ck"
 description = "A counterintuitive approach to living a good life by choosing what to care about and what to let go."
-date = 2022-09-15
+date = 2023-09-15
 template = "readings-post.html"
 [taxonomies]
 categories = ["self-help", "philosophy"]

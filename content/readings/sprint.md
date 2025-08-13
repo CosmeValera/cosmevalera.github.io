@@ -1,7 +1,7 @@
 +++
 title = "Sprint"
 description = "How to Solve Big Problems and Test New Ideas in Just Five Days - A practical guide to design sprints."
-date = 2021-05-30
+date = 2021-08-26
 template = "readings-post.html"
 [taxonomies]
 categories = ["design", "productivity"]

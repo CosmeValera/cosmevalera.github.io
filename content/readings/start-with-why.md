@@ -1,7 +1,7 @@
 +++
 title = "Start with Why"
 description = "How Great Leaders Inspire Everyone to Take Action - Understanding the power of purpose and the Golden Circle framework."
-date = 2022-02-03
+date = 2022-11-03
 template = "readings-post.html"
 [taxonomies]
 categories = ["leadership", "business"]

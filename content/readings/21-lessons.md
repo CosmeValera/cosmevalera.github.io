@@ -1,7 +1,7 @@
 +++
 title = "21 Lessons: What I've Learned from Falling Down the Bitcoin Rabbit Hole"
 description = "A dive into the philosophical, economic, and technological lessons learned from exploring Bitcoin's rabbit hole."
-date = 2023-12-20
+date = 2024-12-20
 template = "readings-post.html"
 [taxonomies]
 categories = ["bitcoin"]

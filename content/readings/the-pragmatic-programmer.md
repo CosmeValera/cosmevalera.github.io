@@ -1,7 +1,7 @@
 +++
 title = "The Pragmatic Programmer"
 description = "Your Journey to Mastery - A comprehensive guide to becoming a more effective and professional software developer."
-date = 2023-04-18
+date = 2024-04-18
 template = "readings-post.html"
 [taxonomies]
 categories = ["programming"]

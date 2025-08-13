@@ -1,7 +1,7 @@
 +++
 title = "97 Things Every Programmer Should Know"
 description = "Collective Wisdom from the Experts - A collection of programming wisdom from experienced developers covering various aspects of software development."
-date = 2024-08-15
+date = 2025-07-28
 template = "readings-post.html"
 [taxonomies]
 categories = ["programming", "software-engineering"]
