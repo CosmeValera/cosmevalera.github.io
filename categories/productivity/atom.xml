@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - productivity</title>
+	<link href="https://cosmevalera.github.io/categories/productivity/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-08-26T00:00:00+00:00</updated>
+	<id>https://cosmevalera.github.io/categories/productivity/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Sprint</title>
+		<published>2021-08-26T00:00:00+00:00</published>
+		<updated>2021-08-26T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/sprint/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/sprint/</id>
+		<content type="html"></content>
+	</entry>
+	<entry xml:lang="en">
+		<title>The Power of Habit</title>
+		<published>2020-11-02T00:00:00+00:00</published>
+		<updated>2020-11-02T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/the-power-of-habit/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/the-power-of-habit/</id>
+		<content type="html"></content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Atomic Habits</title>
+		<published>2020-08-12T00:00:00+00:00</published>
+		<updated>2020-08-12T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/atomic-habits/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/atomic-habits/</id>
+		<content type="html"></content>
+	</entry>
+</feed>

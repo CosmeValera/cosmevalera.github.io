@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - philosophy</title>
+	<link href="https://cosmevalera.github.io/categories/philosophy/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2024-08-08T00:00:00+00:00</updated>
+	<id>https://cosmevalera.github.io/categories/philosophy/atom.xml</id>
+	<entry xml:lang="en">
+		<title>The Obstacle Is The Way</title>
+		<published>2024-08-08T00:00:00+00:00</published>
+		<updated>2024-08-08T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/the-obstacle-is-the-way/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/the-obstacle-is-the-way/</id>
+		<content type="html"></content>
+	</entry>
+	<entry xml:lang="en">
+		<title>The Subtle Art of Not Giving a F*ck</title>
+		<published>2023-09-15T00:00:00+00:00</published>
+		<updated>2023-09-15T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/the-subtle-art-of-not-giving-a-fuck/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/the-subtle-art-of-not-giving-a-fuck/</id>
+		<content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;&#x2F;h2&gt;
+&lt;p&gt;&amp;quot;The Subtle Art of Not Giving a F*ck&amp;quot; by Mark Manson is a refreshing take on self-help that challenges conventional wisdom about positive thinking and happiness. Instead of promoting endless optimism, Manson argues that life is inherently difficult and that we should choose our struggles wisely rather than trying to avoid them entirely.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;key-concepts&quot;&gt;Key Concepts&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;the-value-of-problems&quot;&gt;The Value of Problems&lt;&#x2F;h3&gt;
+&lt;p&gt;Manson argues that problems are not things to be avoided but rather the source of meaning in our lives. The key is choosing which problems to solve and which to accept.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-feedback-loop-from-hell&quot;&gt;The Feedback Loop from Hell&lt;&#x2F;h3&gt;
+&lt;p&gt;The book identifies how our attempts to avoid negative emotions often create more problems than they solve, leading to a cycle of anxiety and dissatisfaction.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;taking-responsibility&quot;&gt;Taking Responsibility&lt;&#x2F;h3&gt;
+&lt;p&gt;True freedom comes from taking responsibility for our problems, even when they&#x27;re not entirely our fault. This gives us agency and control over our lives.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-importance-of-values&quot;&gt;The Importance of Values&lt;&#x2F;h3&gt;
+&lt;p&gt;We should choose our values carefully because they determine what we care about and what we&#x27;re willing to struggle for.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;personal-impact&quot;&gt;Personal Impact&lt;&#x2F;h2&gt;
+&lt;p&gt;This book helped me develop a more realistic and sustainable approach to life. Instead of constantly trying to be positive, I learned to accept that difficulties are part of growth. The concept of choosing my problems has been particularly valuable in my professional life, helping me focus on challenges that align with my values.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;controversial-but-effective&quot;&gt;Controversial but Effective&lt;&#x2F;h2&gt;
+&lt;p&gt;While the book&#x27;s title and language might seem gimmicky, the underlying philosophy is sound. Manson&#x27;s approach is particularly valuable in our current culture of toxic positivity, where people feel pressured to be happy all the time.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;recommended-for&quot;&gt;Recommended For&lt;&#x2F;h2&gt;
+&lt;p&gt;Anyone feeling overwhelmed by life&#x27;s challenges or stuck in cycles of negative thinking. The book is especially valuable for people who are tired of traditional self-help advice and want a more realistic approach to personal development.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>The Little Book of Stoicism</title>
+		<published>2022-02-07T00:00:00+00:00</published>
+		<updated>2022-02-07T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.github.io/readings/the-little-book-of-stoicism/" type="text/html"/>
+		<id>https://cosmevalera.github.io/readings/the-little-book-of-stoicism/</id>
+		<content type="html"></content>
+	</entry>
+</feed>
