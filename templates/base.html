@@ -37,13 +37,15 @@
           {% block content %} {% endblock content %}
       </main>
 
-      <footer>
-        <a href="/sponsor">
-          <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> |
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          <a href="/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> &nbsp;|&nbsp;
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" style="background:none;border:none;cursor:pointer;color:inherit;font-size:1em;padding:0 0em;">
             Theme: <i class="fa fa-moon"></i> <span class="theme-toggle-text">Dark</span>
-          </button> |
-          © {{ now() | date(format="%Y") }} Cosme Valera Reales
+          </button> <div class="footer-spacer"> | </div>
+        </span>
+        <span class="footer-copyright"> © {{ now() | date(format="%Y") }} Cosme Valera Reales</span>
       </footer>
     </div>
 
