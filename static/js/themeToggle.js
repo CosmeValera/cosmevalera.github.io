@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load preference
   const saved = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  let isDark = saved === 'dark' || (saved === null && prefersDark);
+  let isDark = saved === 'dark';
   setTheme(isDark);
 
   btn.addEventListener('click', function () {
