@@ -50,3 +50,18 @@ html {
         }
     }
 }
+
+body.dark-theme {
+  background-color: $primary-bg-dark;
+  color: $text-color-dark;
+
+  .page-wrapper {
+    color: $text-color-dark;
+    
+    footer {
+      a {
+        color: $accent-color-dark;
+      }
+    }
+  }
+}

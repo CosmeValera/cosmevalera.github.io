@@ -38,12 +38,18 @@
       </main>
 
       <footer>
-        <a href="/sponsor"><i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> | © {{ now() | date(format="%Y") }} Cosme Valera Reales
+        <a href="/sponsor">
+          <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> |
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" style="background:none;border:none;cursor:pointer;color:inherit;font-size:1em;padding:0 0em;">
+            Theme: <i class="fa fa-moon"></i> <span class="theme-toggle-text">Dark</span>
+          </button> |
+          © {{ now() | date(format="%Y") }} Cosme Valera Reales
       </footer>
     </div>
 
     <!-- SCRIPTS -->
     <script src="{{ get_url(path="js/lateralMenu.js") | safe }}"></script>
+    <script src="{{ get_url(path="js/themeToggle.js") | safe }}"></script>
     {% block scripts%} {% endblock %}
     <!-- END: SCRIPTS -->
   </body>
