@@ -93,6 +93,30 @@ function markLastRowCardsInDesktop() {
     }
 }
 
+function initializeTabletLayout() {
+    // Only run on tablet (min-width: 576px and max-width: 767px)
+    if (!window.matchMedia('(min-width: 576px) and (max-width: 767px)').matches) {
+        return;
+    }
+    
+    // Tablet layout is static, no JavaScript interaction needed
+    // The layout is handled entirely by CSS
+    // This function exists for potential future tablet-specific interactions
+    
+    const cards = Array.from(document.querySelectorAll('.blog-card'));
+    
+    // Ensure all cards have proper tablet structure
+    cards.forEach(card => {
+        const tabletWrapper = card.querySelector('.blog-card-tablet-wrapper');
+        const tabletContent = card.querySelector('.blog-card-tablet-content');
+        const tabletPreview = card.querySelector('.blog-card-cover-preview-tablet');
+        
+        // Verify tablet structure exists
+        if (!tabletWrapper || !tabletContent || !tabletPreview) {
+            console.warn('Tablet layout structure missing for card:', card);
+        }
+    });
+}
 
 //////////
 // MAIN //
@@ -102,5 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     attachHoverToPreviewInPhone();  // PHONE:   hover is attached to scroll
 
     markLastRowCardsInDesktop();    // DESKTOP: mark last cards to show preview up
+
+    initializeTabletLayout();       // TABLET:  static layout with image on right
 
 });

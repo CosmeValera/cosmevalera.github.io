@@ -78,8 +78,34 @@
             </div>
           {% endif %}
 
-          <h3 class="blog-title">{{ post.title }}</h3>
-          <div class="blog-card-details">
+          <!-- TABLET LAYOUT WRAPPER -->
+          <div class="blog-card-tablet-wrapper">
+            <!-- LEFT SIDE: Content -->
+            <div class="blog-card-tablet-content">
+              <h3 class="blog-title">{{ post.title }}</h3>
+              <div class="blog-card-details">
+                <p class="card-description">{{ post.description }}</p>
+                <div class="preview-indicator">
+                  <i class="fas fa-eye"></i> Hover to preview
+                </div>
+                <div class="card-date-and-stats">
+                  <span class="card-date">{{ post_date_display }}</span>
+                  <span class="card-stats">
+                    <i class="fas fa-clock"></i> {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- RIGHT SIDE: Tablet Preview -->
+            <div class="blog-card-cover-preview-tablet {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}">
+              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+            </div>
+          </div>
+
+          <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+          <h3 class="blog-title blog-title-mobile-desktop">{{ post.title }}</h3>
+          <div class="blog-card-details blog-card-details-mobile-desktop">
             <p class="card-description">{{ post.description }}</p>
             <div class="preview-indicator">
               <i class="fas fa-eye"></i> Hover to preview
