@@ -62,6 +62,73 @@
         gap: 2rem 1.5rem;
         
         @include blog-card-values("div");
+        
+        // TAGS SINGLE SPECIFIC OVERRIDES
+        // Desktop: Use tablet-style layout instead of hover effects
+        @include respond-to('md') {
+            div.blog-card {
+                // Add box shadow for desktop
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+                transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                
+                // Completely disable hover effects
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+                    z-index: 1 !important;
+                    overflow: visible;
+                    
+                    // Remove all desktop hover effects
+                    .blog-card-cover-preview-down,
+                    .blog-card-cover-preview-up-wrapper {
+                        display: none !important;
+                    }
+                    
+                    .preview-indicator {
+                        display: none !important;
+                    }
+                }
+                
+                // Force tablet-style layout on desktop
+                flex-direction: row;
+                align-items: stretch;
+                gap: 1rem;
+                padding: 1rem;
+                
+                // Hide mobile/desktop elements
+                .blog-title-mobile-desktop,
+                .blog-card-details-mobile-desktop {
+                    display: none !important;
+                }
+                
+                // Show tablet wrapper
+                .blog-card-tablet-wrapper {
+                    display: flex !important;
+                    width: 100%;
+                    gap: 1rem;
+                    align-items: stretch;
+                }
+                
+                // Remove preview-up class that affects desktop layout
+                &.preview-up {
+                    border-radius: 12px;
+                    
+                    .blog-card-cover-preview-up-wrapper {
+                        display: none !important;
+                    }
+                }
+                
+                // Hide preview indicator completely in desktop
+                .preview-indicator {
+                    display: none !important;
+                }
+                
+                // Prevent border-radius changes on hover
+                &:hover {
+                    border-radius: 12px !important;
+                }
+            }
+        }
     }
 }
 ////// END: Tags //////

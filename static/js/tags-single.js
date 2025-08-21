@@ -5,7 +5,7 @@ function attachHoverToPreviewInPhone() {
   }
   
   const cards = Array.from(document.querySelectorAll('.blog-card'));
-  const previews = Array.from(document.querySelectorAll('.blog-card-cover-preview'));
+  const previews = Array.from(document.querySelectorAll('.blog-card-cover-preview-down'));
   
   let isAtBottom = false; // Track bottom state to prevent glitching
   
@@ -71,23 +71,44 @@ function attachHoverToPreviewInPhone() {
   window.addEventListener('resize', updatePreviewVisibility);
 }
 
-function markLastRowCardsInDesktop() {
-  // Only run on mobile (min-width: 768px)
-  if (!window.matchMedia('(min-width: 768px)').matches) {
-      return;
-  }
-  
-  const cards = Array.from(document.querySelectorAll('.blog-card'));
-
-  // First remove the class from all cards
-  cards.forEach(card => card.classList.remove('preview-up'));
-  
-  // If there's more than one. Add '.preview-up' to the last card
-  if (cards.length > 1) {
-    cards[cards.length - 1].classList.add('preview-up');
-  }
+function initializeTabletLayout() {
+    // Only run on tablet (min-width: 576px and max-width: 767px)
+    if (!window.matchMedia('(min-width: 576px) and (max-width: 767px)').matches) {
+        return;
+    }
+    
+    // Tablet layout is static, no JavaScript interaction needed
+    // The layout is handled entirely by CSS
+    // This function exists for potential future tablet-specific interactions
+    
+    const cards = Array.from(document.querySelectorAll('.blog-card'));
+    
+    // Ensure all cards have proper tablet structure
+    cards.forEach(card => {
+        const tabletWrapper = card.querySelector('.blog-card-tablet-wrapper');
+        const tabletContent = card.querySelector('.blog-card-tablet-content');
+        const tabletPreview = card.querySelector('.blog-card-cover-preview-tablet');
+        
+        // Verify tablet structure exists
+        if (!tabletWrapper || !tabletContent || !tabletPreview) {
+            console.warn('Tablet layout structure missing for card:', card);
+        }
+    });
 }
 
+function initializeTagsSingleDesktop() {
+    // Only run on desktop (min-width: 768px) for tags-single
+    if (!window.matchMedia('(min-width: 768px)').matches) {
+        return;
+    }
+    
+    // Tags-single desktop uses tablet-style layout, no hover effects needed
+    // Remove any preview-up classes that might interfere
+    const cards = Array.from(document.querySelectorAll('.blog-card'));
+    cards.forEach(card => {
+        card.classList.remove('preview-up');
+    });
+}
 
 //////////
 // MAIN //
@@ -96,6 +117,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   attachHoverToPreviewInPhone();  // PHONE:   hover is attached to scroll
 
-  markLastRowCardsInDesktop();    // DESKTOP: mark last card to show preview up
+  initializeTabletLayout();       // TABLET:  static layout with image on right
+
+  initializeTagsSingleDesktop();  // DESKTOP: tablet-style layout, no hover
 
 });

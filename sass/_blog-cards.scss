@@ -115,6 +115,20 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       z-index: 2;
     }
 
+    // Mobile/Desktop specific elements - hide in tablet
+    .blog-title-mobile-desktop,
+    .blog-card-details-mobile-desktop {
+      // Show by default on mobile and desktop
+      display: block;
+      
+      // Hide in tablet view
+      @include respond-to('sm') {
+        @media (max-width: #{$break-medium - 1px}) {
+          display: none !important;
+        }
+      }
+    }
+
     .blog-card-details {
       display: flex;
       flex-direction: column;
@@ -207,6 +221,65 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     }
     
     /////////////////////////////////////
+    // TABLET LAYOUT SPECIFIC STYLES //
+    /////////////////////////////////////
+    .blog-card-tablet-wrapper {
+      .blog-card-tablet-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0; // Allow text to shrink
+        
+        .blog-title {
+          font-size: clamp(1rem, 2.5vw, 1.3rem);
+          margin-bottom: 0.8rem;
+        }
+        
+        .blog-card-details {
+          gap: 0.8rem;
+          
+          .card-description {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            line-height: 1.5;
+          }
+          
+          .card-date-and-stats {
+            padding-top: 0.5rem;
+            gap: 1rem;
+            
+            .card-date {
+              font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+            }
+            
+            .card-stats {
+              font-size: clamp(0.4rem, 1.2vw, 0.6rem);
+            }
+          }
+        }
+      }
+      
+      .blog-card-cover-preview-tablet {
+        flex: 0 0 50%;
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 6px;
+          border: 2px solid rgba(79, 245, 245, 0.3);
+        }
+      }
+    }
+    
+    /////////////////////////////////////
     // BLOG CARD COVER PREVIEW SECTION //
     /////////////////////////////////////
     .blog-card-cover-preview-down {
@@ -285,6 +358,41 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
           border: 2px solid rgba(79, 245, 245, .3);
           border-radius: 8px;
           box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+        }
+      }
+    }
+
+    // TABLET LAYOUT (sm to md)
+    @include respond-to('sm') {
+      @media (max-width: #{$break-medium - 1px}) {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 1rem;
+        
+        // Hide mobile/desktop elements on tablet
+        .blog-title-mobile-desktop,
+        .blog-card-details-mobile-desktop {
+          display: none !important;
+        }
+        
+        // Show tablet wrapper
+        .blog-card-tablet-wrapper {
+          display: flex;
+          width: 100%;
+          gap: 1rem;
+          align-items: stretch;
+        }
+      }
+    }
+
+    // Hide tablet layout on mobile and desktop
+    .blog-card-tablet-wrapper {
+      display: none;
+      
+      @include respond-to('sm') {
+        @media (max-width: #{$break-medium - 1px}) {
+          display: flex;
         }
       }
     }
