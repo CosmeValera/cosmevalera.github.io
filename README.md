@@ -2,7 +2,7 @@
 I love making new stuff, that's why I created this portfolio. Here I share a bit about my professional profile. This platform will also serve as a hub for my projects, allowing you to explore and engage with my work.
 
 ### 🔗 Link 
-Visit my portfolio: https://cosmevalera.github.io/
+Visit my portfolio: https://cosmevalera.dev
 
 ## Tech
 ### 📦 Prerequisites
