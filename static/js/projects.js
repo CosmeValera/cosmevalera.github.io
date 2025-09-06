@@ -35,10 +35,11 @@ function handleFilter() {
     function filterProjects(selectedFilter) {
         const JAVA_FILTER_VALUE = "Java";
         const JAVASCRIPT_FILTER_VALUE = "JavaScript";
+        const DEVOPS_FILTER_VALUE = "DevOps";
         const projectCards = document.querySelectorAll('.project-card');
         
+        // Show all projects if no filter selected
         if (!selectedFilter) {
-            // Show all projects
             projectCards.forEach(card => card.style.display = 'block');
             return;
         }
@@ -46,8 +47,26 @@ function handleFilter() {
         // Filter projects
         projectCards.forEach(card => {
             const cardTechnology = card.querySelector(".card-technology").textContent;
-            const matches = cardTechnology.includes(selectedFilter) &&
-                !(selectedFilter === JAVA_FILTER_VALUE && cardTechnology.includes(JAVASCRIPT_FILTER_VALUE));
+            let matches = false;
+
+            switch (selectedFilter) {
+                case DEVOPS_FILTER_VALUE:
+                    matches = cardTechnology.includes('K8s');
+                    break;
+                case JAVA_FILTER_VALUE:
+                    // Show Java projects but exclude those that also have JavaScript
+                    matches = cardTechnology.includes(JAVA_FILTER_VALUE) && 
+                           !cardTechnology.includes(JAVASCRIPT_FILTER_VALUE);
+                    break;
+                case JAVASCRIPT_FILTER_VALUE:
+                    matches = cardTechnology.includes(JAVASCRIPT_FILTER_VALUE);
+                    break;
+                default:
+                    // For any other filter, do a simple includes check
+                    matches = cardTechnology.includes(selectedFilter);
+                    break;
+            }
+            
             card.style.display = matches ? 'block' : 'none';
         });
     }
@@ -108,6 +127,7 @@ function handleFilter() {
 function clickFilterRendersCards() {
     const JAVA_FILTER_VALUE = "Java";
     const JAVASCRIPT_FILTER_VALUE = "JavaScript";
+    const DEVOPS_FILTER_VALUE = "DevOps";
 
     const filterButtons = document.querySelectorAll(".filter-button");
     const projectCards = document.querySelectorAll(".project-card");
@@ -137,8 +157,20 @@ function clickFilterRendersCards() {
                 // Filter cards based on selected filter
                 const visibleCards = Array.from(projectCards).filter((card) => {
                     const cardTechnology = card.querySelector(".card-technology").textContent;
-                    return cardTechnology.includes(selectedFilter) &&
-                        !(selectedFilter === JAVA_FILTER_VALUE && cardTechnology.includes(JAVASCRIPT_FILTER_VALUE));
+                    
+                    switch (selectedFilter) {
+                        case DEVOPS_FILTER_VALUE:
+                            return cardTechnology.includes('K8s');
+                        case JAVA_FILTER_VALUE:
+                            // Show Java projects but exclude those that also have JavaScript
+                            return cardTechnology.includes(JAVA_FILTER_VALUE) && 
+                                !cardTechnology.includes(JAVASCRIPT_FILTER_VALUE);
+                        case JAVASCRIPT_FILTER_VALUE:
+                            return cardTechnology.includes(JAVASCRIPT_FILTER_VALUE);
+                        default:
+                            // For any other filter, do a simple includes check
+                            return cardTechnology.includes(selectedFilter);
+                    }
                 });
 
                 // Display the filtered cards
