@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fontawesome/css/fontawesome.css">
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous"></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+
+  </head>
+  <body>
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<section class="lateral-menu-container">
+  <div class="lateral-menu">
+
+    <!-- Blog-specific menu items (only on blog pages) -->
+    
+    <div class="menu-item-container ">
+      <a class="menu-item blog-menu-item " href="/tags">
+        <i class="menu-icon fas fa-tags"></i>
+        <span class="menu-label">Tags</span>
+      </a>
+    </div>
+    <div class="blog-menu-separator">
+      <span class="blog-menu-label">Blog Links</span>
+    </div>
+    <div class="blog-menu-separator">
+      <span class="separator-line"></span>
+    </div>
+    
+    <!-- END: Blog-specific menu items -->
+
+    <!-- Readings-specific menu items (only on readings pages) -->
+    
+    <!-- END: Readings-specific menu items -->
+    
+    <div class="menu-item-container">
+      
+      <a class="menu-item " href="/">
+        <i class="menu-icon fas fa-home"></i>
+        <span class="menu-label">Home</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item menu-item-smaller-label " href="/projects">
+        <i class="menu-icon fas fa-code"></i>
+        <span class="menu-label">Projects</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item active-page" href="/blog">
+        <i class="menu-icon fas fa-newspaper"></i>
+        <span class="menu-label">Blog</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item menu-item-smaller-label " href="/readings">
+        <i class="menu-icon fas fa-book-open"></i>
+        <span class="menu-label">Readings</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="fab-button">
+    <i class="fab-button-i fas fa-bars"></i>
+  </div>
+</section>
+
+<!-- Projects Actions Menu (Mobile Only) -->
+
+
+<!-- Readings Actions Menu (Mobile Only) -->
+
+<!-- END: Lateral Floating Menu -->
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    <a href="/blog" class="back-link">← Back to all posts</a>
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/tags/architecture/" class="tag tag-architecture-plain">
+              Architecture
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Optimizing Microfrontends with Turborepo</h1>
+    <h3 class="presentation-text">Use Turborepo to improve microfrontend workflows with parallel tasks and caching</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">October 04, 2024</span>
+      <span class="reading-time">2 min read • 298 words</span>
+    </div>
+    <div class="post-content">
+        <p><img src="/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/cover-webp.webp" alt="blog-cover" /></p>
+<h4><b>🧐 Why Turborepo?</b></h4>
+<p>Managing multiple microfrontends within a monorepo can be challenging. Turborepo offers a powerful solution to optimize workflows, run tasks in parallel, and cache results for faster builds.</p>
+<p><b>Parallel Tasks:</b> Run builds and tests across multiple microfrontends simultaneously.</p>
+<p><b>Intelligent Caching:</b> Save time by reusing outputs from previous runs.</p>
+<p><b>Scalable:</b> Manage as many microfrontends as needed, all within a single monorepo.
+If you're working with multiple apps, Turborepo is a game-changer for streamlining your workflows.</p>
+<p>Here's how you can set up and use Turborepo in your project:</p>
+<hr />
+<h4><b>🔧 1. Creating a Turborepo Project</b></h4>
+<p><b>1.1 Create a New Turborepo Project:</b> </p>
+<p>Instead of manually setting up Turborepo, you can use the following command to quickly scaffold a new Turborepo:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npx create-turbo@latest
+</span></code></pre>
+<p><b>1.2 Place your microfrontends inside the <code>apps</code> directory:</b> </p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>apps/
+</span><span> ├── mfe1/
+</span><span> ├── mfe2/
+</span><span> └── mfe3/
+</span><span>package.json
+</span><span>turbo.json
+</span></code></pre>
+<h4><b>📄 2. Important Configuration Files</b></h4>
+<p><code>package.json</code> defines your scripts, dependencies, and workspace structure</p>
+<p><code>turbo.json</code> configures how tasks are run across your monorepo. It also includes caching settings to speed up subsequent runs.</p>
+<h4><b>⚡ 3. Running Turborepo Commands</b></h4>
+After setting up Turborepo, you can easily manage all apps and packages with a few simple commands:
+<p><b>Install dependencies:</b></p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm i 
+</span></code></pre>
+<p><b>Build all apps and packages:</b></p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm run build 
+</span></code></pre>
+<p><b>Start the development environment:</b></p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm run dev 
+</span></code></pre>
+<blockquote>
+<p>Run any of these commands once, and Turborepo will use its smart caching to speed up subsequent builds.</p>
+</blockquote>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>9</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image">
+  
+</div> 
+<p>Give it a try in your next project and experience the efficiency firsthand! 😍😍</p>
+
+    </div>
+
+    
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  <div class="link">
+    <span>Previous post</span>
+    <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">Shared Styles in Monorepos</a>
+  </div>
+  
+
+  
+  <div class="link">
+    <span>Next post</span>
+    <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;solid-principles&#x2F;">SOLID Principles</a>
+  </div>
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          <a href="/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> &nbsp;|&nbsp;
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" style="background:none;border:none;cursor:pointer;color:inherit;font-size:1em;padding:0 0em;">
+            Theme: <i class="fa fa-moon"></i> <span class="theme-toggle-text">Dark</span>
+          </button> <div class="footer-spacer"> | </div>
+        </span>
+        <span class="footer-copyright"> © 2025 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+     
+    <!-- END: SCRIPTS -->
+  </body>
+</html>
