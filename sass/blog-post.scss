@@ -82,6 +82,7 @@
         }
     }
 
+    //// Images ////
     .seasonal-image-container img {
         max-width: 100%;
         text-align: center;
@@ -98,6 +99,13 @@
             border-radius: 20px;
         }
     }
+
+    img.phone-image {
+        border-radius: 20px;
+        width: 225px;
+        height: 500px;
+    }
+    //// END: Images ////
 
     // Common headings styling
     h1, h2, h3, h4 {
