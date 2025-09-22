@@ -135,6 +135,13 @@
     100% { background-position: 5% 5%, 70% 15%; opacity: 0.62; }
   }
 
+  // Hide grid-ripple on blog post pages
+  .blog-post-page & {
+    .grid-ripple {
+      display: none;
+    }
+  }
+
   // Accessibility: respect reduced motion
   @media (prefers-reduced-motion: reduce) {
     &::after,

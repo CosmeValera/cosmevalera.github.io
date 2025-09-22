@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
   function setTheme(isDark) {
     document.body.classList.toggle(darkClass, isDark);
     if (isDark) {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-      text.textContent = lightLabel;
-    } else {
       icon.classList.remove('fa-sun');
       icon.classList.add('fa-moon');
       text.textContent = darkLabel;
+    } else {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      text.textContent = lightLabel;
     }
   }
 
