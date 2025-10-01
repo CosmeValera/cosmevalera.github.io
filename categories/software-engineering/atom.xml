@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - software-engineering</title>
+	<link href="https://cosmevalera.dev/categories/software-engineering/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-07-28T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/categories/software-engineering/atom.xml</id>
+	<entry xml:lang="en">
+		<title>97 Things Every Programmer Should Know</title>
+		<published>2025-07-28T00:00:00+00:00</published>
+		<updated>2025-07-28T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/readings/97-things/" type="text/html"/>
+		<id>https://cosmevalera.dev/readings/97-things/</id>
+		<content type="html"></content>
+	</entry>
+</feed>

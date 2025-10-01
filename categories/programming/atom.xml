@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - programming</title>
+	<link href="https://cosmevalera.dev/categories/programming/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-07-28T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/categories/programming/atom.xml</id>
+	<entry xml:lang="en">
+		<title>97 Things Every Programmer Should Know</title>
+		<published>2025-07-28T00:00:00+00:00</published>
+		<updated>2025-07-28T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/readings/97-things/" type="text/html"/>
+		<id>https://cosmevalera.dev/readings/97-things/</id>
+		<content type="html"></content>
+	</entry>
+	<entry xml:lang="en">
+		<title>The Pragmatic Programmer</title>
+		<published>2024-04-18T00:00:00+00:00</published>
+		<updated>2024-04-18T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/readings/the-pragmatic-programmer/" type="text/html"/>
+		<id>https://cosmevalera.dev/readings/the-pragmatic-programmer/</id>
+		<content type="html"></content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Clean Code</title>
+		<published>2023-05-23T00:00:00+00:00</published>
+		<updated>2023-05-23T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/readings/clean-code/" type="text/html"/>
+		<id>https://cosmevalera.dev/readings/clean-code/</id>
+		<content type="html">&lt;h2 id=&quot;overview&quot;&gt;Overview&lt;&#x2F;h2&gt;
+&lt;p&gt;&amp;quot;Clean Code&amp;quot; by Robert C. Martin (Uncle Bob) is a seminal work in software engineering that teaches developers how to write code that is not only functional but also readable, maintainable, and professional. The book presents practical guidelines and principles that transform messy, hard-to-understand code into clean, elegant solutions.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;core-principles&quot;&gt;Core Principles&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;meaningful-names&quot;&gt;Meaningful Names&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use intention-revealing names&lt;&#x2F;li&gt;
+&lt;li&gt;Avoid disinformation and noise words&lt;&#x2F;li&gt;
+&lt;li&gt;Make names pronounceable and searchable&lt;&#x2F;li&gt;
+&lt;li&gt;Use consistent naming conventions&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;functions&quot;&gt;Functions&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Functions should be small and do one thing&lt;&#x2F;li&gt;
+&lt;li&gt;Use descriptive names that explain what the function does&lt;&#x2F;li&gt;
+&lt;li&gt;Minimize the number of arguments&lt;&#x2F;li&gt;
+&lt;li&gt;Avoid flag arguments&lt;&#x2F;li&gt;
+&lt;li&gt;Extract try&#x2F;catch blocks&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;comments&quot;&gt;Comments&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Comments are often a failure to express intent in code&lt;&#x2F;li&gt;
+&lt;li&gt;Use comments only when necessary to explain &amp;quot;why&amp;quot; not &amp;quot;what&amp;quot;&lt;&#x2F;li&gt;
+&lt;li&gt;Keep comments up to date with code changes&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;formatting&quot;&gt;Formatting&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Use consistent formatting throughout the codebase&lt;&#x2F;li&gt;
+&lt;li&gt;Keep lines short and readable&lt;&#x2F;li&gt;
+&lt;li&gt;Use proper indentation and spacing&lt;&#x2F;li&gt;
+&lt;li&gt;Group related concepts together&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;practical-applications&quot;&gt;Practical Applications&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;code-smells-to-avoid&quot;&gt;Code Smells to Avoid&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Long functions and classes&lt;&#x2F;li&gt;
+&lt;li&gt;Duplicate code&lt;&#x2F;li&gt;
+&lt;li&gt;Inconsistent naming&lt;&#x2F;li&gt;
+&lt;li&gt;Too many parameters&lt;&#x2F;li&gt;
+&lt;li&gt;Commented-out code&lt;&#x2F;li&gt;
+&lt;li&gt;Magic numbers&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;refactoring-techniques&quot;&gt;Refactoring Techniques&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Extract methods to improve readability&lt;&#x2F;li&gt;
+&lt;li&gt;Rename variables and functions for clarity&lt;&#x2F;li&gt;
+&lt;li&gt;Break large classes into smaller, focused ones&lt;&#x2F;li&gt;
+&lt;li&gt;Remove dead code and unnecessary comments&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;impact-on-my-development&quot;&gt;Impact on My Development&lt;&#x2F;h2&gt;
+&lt;p&gt;This book revolutionized my approach to coding. I now write code with the understanding that it will be read many more times than it&#x27;s written. The principles have helped me create more maintainable codebases and improved collaboration with team members.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;professional-development&quot;&gt;Professional Development&lt;&#x2F;h2&gt;
+&lt;p&gt;Clean Code principles are essential for any serious software developer. They form the foundation of professional software craftsmanship and are widely adopted in the industry. The book&#x27;s lessons extend beyond individual coding to team practices and code review processes.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;recommended-for&quot;&gt;Recommended For&lt;&#x2F;h2&gt;
+&lt;p&gt;Essential reading for all software developers, from beginners to experienced professionals. The principles apply to any programming language and are fundamental to writing professional, maintainable software.&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>Java Head First</title>
+		<published>2021-03-08T00:00:00+00:00</published>
+		<updated>2021-03-08T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/readings/java-head-first/" type="text/html"/>
+		<id>https://cosmevalera.dev/readings/java-head-first/</id>
+		<content type="html"></content>
+	</entry>
+</feed>
