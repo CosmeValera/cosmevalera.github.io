@@ -100,10 +100,32 @@
         }
     }
 
-    img.phone-image {
-        border-radius: 20px;
-        width: 225px;
-        height: 500px;
+    .phone-images-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+
+        @include respond-to('sm') {
+            gap: 0.5rem;
+        }
+
+        img.phone-image {
+            flex-shrink: 0;
+            border-radius: 20px;
+            width: 80%;
+            
+            @include respond-to('sm') {
+                width: 31%;
+            }
+
+            @include respond-to('md') {
+                width: 225px;
+            }
+
+        }
     }
     //// END: Images ////
 
