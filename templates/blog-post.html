@@ -12,6 +12,7 @@
 
 {% block scripts %}
   <script src="{{ get_url(path="js/exchange-toggle.js") | safe }}"></script>
+  <script src="{{ get_url(path="js/blog-post-content-bar.js") | safe }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -55,6 +56,15 @@
           {{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words
         {% endif %}
       </span>
+    </div>
+    <!-- Mobile TOC with progress bar -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list">
+        <span class="toc-title">Table of Contents</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list" class="toc-list" role="list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
     </div>
     <div class="post-content">
         {{ page.content | safe }}
