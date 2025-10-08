@@ -49,8 +49,8 @@
     <div class="post-content">
         {{ page.content | safe }}
     </div>
-
-    {% if page.taxonomies and page.taxonomies.tags and "bitcoin" in page.taxonomies.tags %}
+  
+    {% if page.slug == "bitcoin" %}
       <div class="readings-link">
         <h3>Related Reading</h3>
         <p>If you found this post interesting, you might want to check out my thoughts on:</p>
