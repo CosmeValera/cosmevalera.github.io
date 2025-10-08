@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="{{ get_url(path="blog-post.css") | safe }}">
 {% endblock %}
 
+{% block scripts %}
+  <script src="{{ get_url(path="js/exchange-toggle.js") | safe }}"></script>
+{% endblock %}
+
 {% block content %}
   <div class="blog-post">
     {% set post_date_numeric = page.date | date(format="%Y%m%d") | int %}

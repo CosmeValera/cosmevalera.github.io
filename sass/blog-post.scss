@@ -127,6 +127,56 @@
 
         }
     }
+
+    // Exchange toggle system
+    .exchange-toggle-container {
+        margin: 2rem 0;
+        
+        .exchange-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            background: rgba($tertiary-bg, 0.3);
+            border-radius: 12px;
+            padding: 0.5rem;
+            border: 1px solid rgba($accent-color, 0.2);
+            
+            .toggle-option {
+                flex: 1;
+                padding: 0.75rem 1.5rem;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                font-weight: 500;
+                font-size: clamp(0.9rem, 2.2vw, 1rem);
+                color: rgba(255, 255, 255, 0.7);
+                position: relative;
+                
+                &.active {
+                    background: linear-gradient(145deg, rgba($accent-color, 0.2), rgba($active-color, 0.1));
+                    color: $accent-color;
+                    border: 1px solid rgba($accent-color, 0.3);
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                }
+                
+                &:hover:not(.active) {
+                    color: rgba(255, 255, 255, 0.9);
+                    background: rgba($tertiary-bg, 0.2);
+                }
+            }
+        }
+        
+        .exchange-images {
+            .image-set {
+                display: none;
+                
+                &.active {
+                    display: block;
+                }
+            }
+        }
+    }
     //// END: Images ////
 
     // Common headings styling
