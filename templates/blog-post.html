@@ -12,6 +12,15 @@
 
 {% block content %}
   <div class="blog-post">
+    {% set post_date_numeric = page.date | date(format="%Y%m%d") | int %}
+    {% set now_numeric = now() | date(format="%Y%m%d") | int %}
+    
+    {% if post_date_numeric > now_numeric %}
+      {% set post_date_display = now() | date(format="%B %d, %Y") %}
+    {% else %}
+      {% set post_date_display = page.date | date(format="%B %d, %Y") %}
+    {% endif %}
+
     <a href="/blog" class="back-link">← Back to all posts</a>
     
     {% if page.taxonomies and page.taxonomies.tags %}
@@ -34,7 +43,7 @@
     <h3 class="presentation-text">{{ page.description }}</h3>
     
     <div class="post-metadata">
-      <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+      <span class="post-date">{{ post_date_display }}</span>
       <span class="reading-time">{{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words</span>
     </div>
     <div class="post-content">
