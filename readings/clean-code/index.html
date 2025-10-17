@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Clean Code | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fontawesome/css/fontawesome.css">
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous"></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/readings-post.css">
+
+  </head>
+  <body>
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<section class="lateral-menu-container">
+  <div class="lateral-menu">
+
+    <!-- Blog-specific menu items (only on blog pages) -->
+    
+    <!-- END: Blog-specific menu items -->
+
+    <!-- Readings-specific menu items (only on readings pages) -->
+    
+    <div class="menu-item-container ">
+      <a class="menu-item readings-menu-item menu-item-smaller-label " href="/categories">
+        <i class="menu-icon fas fa-folder"></i>
+        <span class="menu-label">Categories</span>
+      </a>
+    </div>
+    <div class="readings-menu-separator">
+      <span class="readings-menu-label">Readings Links</span>
+    </div>
+    <div class="readings-menu-separator">
+      <span class="separator-line"></span>
+    </div>
+    
+    <!-- END: Readings-specific menu items -->
+    
+    <div class="menu-item-container">
+      
+      <a class="menu-item " href="/">
+        <i class="menu-icon fas fa-home"></i>
+        <span class="menu-label">Home</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item menu-item-smaller-label " href="/projects">
+        <i class="menu-icon fas fa-code"></i>
+        <span class="menu-label">Projects</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item " href="/blog">
+        <i class="menu-icon fas fa-newspaper"></i>
+        <span class="menu-label">Blog</span>
+      </a>
+    </div>
+    <div class="menu-item-container">
+      <a class="menu-item menu-item-smaller-label active-page" href="/readings">
+        <i class="menu-icon fas fa-book-open"></i>
+        <span class="menu-label">Readings</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="fab-button">
+    <i class="fab-button-i fas fa-bars"></i>
+  </div>
+</section>
+
+<!-- Projects Actions Menu (Mobile Only) -->
+
+
+<!-- Readings Actions Menu (Mobile Only) -->
+
+<!-- END: Lateral Floating Menu -->
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="reading-post">
+    <!-- 1. Back to all readings -->
+    <a href="/readings" class="back-link">← Back to all readings</a>
+    
+    <!-- 2-5. Header section with title, author, description, and metadata -->
+    <div class="reading-header">
+      <div class="reading-title-section">
+        <!-- 2. Title -->
+        <h1 class="reading-title">Clean Code</h1>
+        
+        <!-- 3. Author -->
+        
+          <p class="reading-author">by Robert C. Martin</p>
+        
+        
+        <!-- 4. Description -->
+        <p class="reading-subtitle">A handbook of agile software craftsmanship that teaches how to write code that is readable, maintainable, and professional.</p>
+      </div>
+      
+      <!-- 5. Metadata in one line: date, rating, category -->
+      <div class="reading-meta">
+        <div class="reading-meta-row">
+          <div class="reading-meta-left">
+            <span class="reading-date">
+              <i class="fas fa-calendar"></i>
+              May 23, 2023
+            </span>
+            
+              <div class="reading-rating">
+                <span class="rating-label">Rating:</span>
+                <div class="stars">
+                  
+                    <span class="star">⭐</span>
+                  
+                    <span class="star">⭐</span>
+                  
+                    <span class="star">⭐</span>
+                  
+                    <span class="star">⭐</span>
+                  
+                    <span class="star">⭐</span>
+                  
+                  <span class="rating-text">(5/5)</span>
+                </div>
+              </div>
+            
+          </div>
+          
+            <div class="reading-categories">
+              <span class="categories-label">Categories:</span>
+              
+                <a href="https://cosmevalera.dev/categories/programming/" class="reading-category">
+                  Programming
+                </a>
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <!-- 6. Cover image -->
+    
+      <div class="reading-cover">
+        <img src="&#x2F;images&#x2F;readings&#x2F;clean-code.jpg" alt="Cover of Clean Code">
+      </div>
+    
+    
+    <!-- 7. Content -->
+    <div class="reading-content">
+      <h2 id="overview">Overview</h2>
+<p>&quot;Clean Code&quot; by Robert C. Martin (Uncle Bob) is a seminal work in software engineering that teaches developers how to write code that is not only functional but also readable, maintainable, and professional. The book presents practical guidelines and principles that transform messy, hard-to-understand code into clean, elegant solutions.</p>
+<h2 id="core-principles">Core Principles</h2>
+<h3 id="meaningful-names">Meaningful Names</h3>
+<ul>
+<li>Use intention-revealing names</li>
+<li>Avoid disinformation and noise words</li>
+<li>Make names pronounceable and searchable</li>
+<li>Use consistent naming conventions</li>
+</ul>
+<h3 id="functions">Functions</h3>
+<ul>
+<li>Functions should be small and do one thing</li>
+<li>Use descriptive names that explain what the function does</li>
+<li>Minimize the number of arguments</li>
+<li>Avoid flag arguments</li>
+<li>Extract try/catch blocks</li>
+</ul>
+<h3 id="comments">Comments</h3>
+<ul>
+<li>Comments are often a failure to express intent in code</li>
+<li>Use comments only when necessary to explain &quot;why&quot; not &quot;what&quot;</li>
+<li>Keep comments up to date with code changes</li>
+</ul>
+<h3 id="formatting">Formatting</h3>
+<ul>
+<li>Use consistent formatting throughout the codebase</li>
+<li>Keep lines short and readable</li>
+<li>Use proper indentation and spacing</li>
+<li>Group related concepts together</li>
+</ul>
+<h2 id="practical-applications">Practical Applications</h2>
+<h3 id="code-smells-to-avoid">Code Smells to Avoid</h3>
+<ul>
+<li>Long functions and classes</li>
+<li>Duplicate code</li>
+<li>Inconsistent naming</li>
+<li>Too many parameters</li>
+<li>Commented-out code</li>
+<li>Magic numbers</li>
+</ul>
+<h3 id="refactoring-techniques">Refactoring Techniques</h3>
+<ul>
+<li>Extract methods to improve readability</li>
+<li>Rename variables and functions for clarity</li>
+<li>Break large classes into smaller, focused ones</li>
+<li>Remove dead code and unnecessary comments</li>
+</ul>
+<h2 id="impact-on-my-development">Impact on My Development</h2>
+<p>This book revolutionized my approach to coding. I now write code with the understanding that it will be read many more times than it's written. The principles have helped me create more maintainable codebases and improved collaboration with team members.</p>
+<h2 id="professional-development">Professional Development</h2>
+<p>Clean Code principles are essential for any serious software developer. They form the foundation of professional software craftsmanship and are widely adopted in the industry. The book's lessons extend beyond individual coding to team practices and code review processes.</p>
+<h2 id="recommended-for">Recommended For</h2>
+<p>Essential reading for all software developers, from beginners to experienced professionals. The principles apply to any programming language and are fundamental to writing professional, maintainable software.</p>
+
+    </div>
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          <a href="/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> &nbsp;|&nbsp;
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" style="background:none;border:none;cursor:pointer;color:inherit;font-size:1em;padding:0 0em;">
+            Theme: <i class="fa fa-sun"></i> <span class="theme-toggle-text">Light</span>
+          </button> <div class="footer-spacer"> | </div>
+        </span>
+        <span class="footer-copyright"> © 2025 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+     
+    <!-- END: SCRIPTS -->
+  </body>
+</html>
