@@ -107,7 +107,12 @@
               <div class="card-date-and-stats">
                 <span class="card-date">{{ post_date_display }}</span>
                 <span class="card-stats">
-                  <i class="fas fa-clock"></i> {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+                  <i class="fas fa-clock"></i> 
+                  {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
+                    {{ post.extra.custom_reading_time }} {{ time_label }} - <small>{{ post.extra.custom_word_count }} words</small>
+                  {% else %}
+                    {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+                  {% endif %}
                 </span>
               </div>
             </div>
@@ -132,7 +137,12 @@
           <div class="card-date-and-stats">
             <span class="card-date">{{ post_date_display }}</span>
             <span class="card-stats">
-              <i class="fas fa-clock"></i> {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+              <i class="fas fa-clock"></i> 
+              {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
+                {{ post.extra.custom_reading_time }} {{ time_label }} - <small>{{ post.extra.custom_word_count }} words</small>
+              {% else %}
+                {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+              {% endif %}
             </span>
           </div>
         </div>

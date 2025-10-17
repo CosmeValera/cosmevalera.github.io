@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="{{ get_url(path="blog-post.css") | safe }}">
 {% endblock %}
 
+{% block scripts %}
+  <script src="{{ get_url(path="js/exchange-toggle.js") | safe }}"></script>
+{% endblock %}
+
 {% block content %}
   <div class="blog-post">
     {% set post_date_numeric = page.date | date(format="%Y%m%d") | int %}
@@ -44,7 +48,13 @@
     
     <div class="post-metadata">
       <span class="post-date">{{ post_date_display }}</span>
-      <span class="reading-time">{{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words</span>
+      <span class="reading-time">
+        {% if page.extra.custom_reading_time and page.extra.custom_word_count %}
+          {{ page.extra.custom_reading_time }} min read • {{ page.extra.custom_word_count }} words
+        {% else %}
+          {{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words
+        {% endif %}
+      </span>
     </div>
     <div class="post-content">
         {{ page.content | safe }}
