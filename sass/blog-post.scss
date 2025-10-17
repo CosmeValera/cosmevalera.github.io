@@ -127,6 +127,7 @@
 
         }
     }
+    //// END: Images ////
 
     // Exchange toggle system
     .exchange-toggle-container {
@@ -166,9 +167,9 @@
                 }
             }
         }
-        
-        .exchange-images {
-            .image-set {
+
+        .exchange-container {
+            .exchange-content {
                 display: none;
                 
                 &.active {
@@ -177,7 +178,6 @@
             }
         }
     }
-    //// END: Images ////
 
     // Common headings styling
     h1, h2, h3, h4 {

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     exchangeToggles.forEach(toggle => {
         const container = toggle.closest('.exchange-toggle-container');
         const options = toggle.querySelectorAll('.toggle-option');
-        const imageSets = container.querySelectorAll('.image-set');
+        const exchangeContents = container.querySelectorAll('.exchange-content');
         
         // Set initial state (21Bitcoin active by default)
         options.forEach((option, index) => {
@@ -17,11 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        imageSets.forEach((imageSet, index) => {
+        exchangeContents.forEach((content, index) => {
             if (index === 0) {
-                imageSet.classList.add('active');
+                content.classList.add('active');
             } else {
-                imageSet.classList.remove('active');
+                content.classList.remove('active');
             }
         });
         
@@ -33,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add active class to clicked option
                 option.classList.add('active');
                 
-                // Hide all image sets
-                imageSets.forEach(set => set.classList.remove('active'));
-                // Show corresponding image set
-                if (imageSets[index]) {
-                    imageSets[index].classList.add('active');
+                // Hide all exchange contents
+                exchangeContents.forEach(content => content.classList.remove('active'));
+                // Show corresponding exchange content
+                if (exchangeContents[index]) {
+                    exchangeContents[index].classList.add('active');
                 }
             });
         });
