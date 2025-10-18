@@ -1,87 +1,280 @@
 @import 'main';
 @import 'utils/translucent-fab-icon';
 
-// TOC (mobile) and in-article progress bar
+// Enhanced TOC (mobile) and in-article progress bar
 .toc-mobile {
     position: sticky;
-    top: 0; // sits below any browser UI, inside content flow
+    top: 4px;
     z-index: 10;
-    background: rgba($primary-bg-dark, 0.6);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba($accent-color, 0.15);
-    border-radius: 12px;
-    padding: 0.5rem 0.75rem 0.5rem;
-    margin: 0 0 1rem 0;
+    background: rgba($primary-bg-dark, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba($accent-color, 0.2);
+    border-radius: 16px;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    @include transition(all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
 
-    .toc-header {
+    // Light theme support
+    body:not(.dark-theme) & {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba($accent-color, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        
+        // Add subtle border glow in light theme
+        &::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            background: linear-gradient(135deg, rgba($accent-color, 0.2), rgba($active-color, 0.1));
+            border-radius: 16px;
+            z-index: -1;
+            opacity: 0;
+            @include transition(opacity 0.3s ease);
+        }
+        
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+
+        .toc-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        background: transparent;
+        background: linear-gradient(135deg, rgba($accent-color, 0.1), rgba($active-color, 0.05));
         border: 0;
-        padding: 0.25rem 0.25rem;
+        padding: 1rem 1.25rem;
         color: white;
-        font-weight: 700;
+        font-weight: 600;
         font-size: clamp(1rem, 2.8vw, 1.1rem);
         text-align: left;
         cursor: pointer;
+        position: relative;
+        @include transition(all 0.2s ease);
 
-        .toc-title { margin-right: 0.5rem; }
+        // Light theme header
+        body:not(.dark-theme) & {
+            background: linear-gradient(135deg, rgba($accent-color, 0.15), rgba($active-color, 0.08));
+            color: $primary-bg;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, $accent-color, $active-color);
+            opacity: 0;
+            @include transition(opacity 0.3s ease);
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+
+        &:focus {
+            outline: 2px solid $accent-color;
+            outline-offset: 2px;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+
+        .toc-title { 
+            margin-right: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
         .toc-chevron {
-            width: 0.8rem;
-            height: 0.8rem;
+            width: 1rem;
+            height: 1rem;
             border-right: 2px solid rgba(255,255,255,0.8);
             border-bottom: 2px solid rgba(255,255,255,0.8);
             transform: rotate(-45deg);
-            @include transition(transform 0.15s ease);
+            @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+
+            body:not(.dark-theme) & {
+                border-color: rgba($primary-bg, 0.7);
+            }
         }
     }
 
-    &[data-collapsed] .toc-chevron { transform: rotate(45deg); }
+    &[data-collapsed] .toc-chevron { 
+        transform: rotate(45deg); 
+    }
 
     .toc-list {
         list-style: none;
-        padding: 0;
-        margin: 0.25rem 0 0.5rem 0;
+        padding: 0.75rem 0;
+        margin: 0;
         display: block;
+        max-height: 300px;
+        overflow-y: auto;
 
-        li { margin: 0.25rem 0; }
+        // Custom scrollbar
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba($accent-color, 0.5);
+            border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgba($accent-color, 0.7);
+        }
+
+        li { 
+            margin: 0.125rem 0;
+            position: relative;
+        }
 
         a {
             display: block;
-            padding: 0.25rem 0.25rem 0.25rem 0.5rem;
-            border-left: 3px solid transparent;
-            color: rgba(255,255,255,0.9);
+            padding: 0.75rem 1.25rem;
+            border-left: 4px solid transparent;
+            color: rgba(255,255,255,0.85);
             text-decoration: none;
             font-size: clamp(.9rem, 2.4vw, 1rem);
-            border-radius: 6px;
-            @include transition(color 0.15s ease, border-color 0.15s ease, background 0.15s ease);
+            font-weight: 500;
+            border-radius: 0;
+            position: relative;
+            @include transition(all 0.2s cubic-bezier(0.4, 0, 0.2, 1));
+
+            // Light theme links
+            body:not(.dark-theme) & {
+                color: rgba($primary-bg, 0.8);
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 0;
+                background: linear-gradient(135deg, rgba($accent-color, 0.2), rgba($active-color, 0.1));
+                @include transition(width 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+            }
 
             &:hover {
                 color: white;
-                background: rgba($tertiary-bg, 0.4);
+                background: rgba($tertiary-bg, 0.3);
                 border-left-color: $accent-color;
+                transform: translateX(4px);
+
+                body:not(.dark-theme) & {
+                    color: $primary-bg;
+                    background: rgba($accent-color, 0.1);
+                }
+
+                &::before {
+                    width: 100%;
+                }
+            }
+
+            &:focus {
+                outline: 2px solid $accent-color;
+                outline-offset: 2px;
+                color: white;
+                background: rgba($tertiary-bg, 0.3);
+                border-left-color: $accent-color;
+
+                body:not(.dark-theme) & {
+                    color: $primary-bg;
+                    background: rgba($accent-color, 0.1);
+                }
+            }
+
+            // Active state (current section)
+            &.active {
+                color: $accent-color;
+                border-left-color: $accent-color;
+                background: rgba($accent-color, 0.1);
+                font-weight: 600;
+
+                body:not(.dark-theme) & {
+                    color: $accent-color;
+                    background: rgba($accent-color, 0.15);
+                }
+
+                &::before {
+                    width: 100%;
+                }
             }
         }
     }
 
     // Collapsed state (hidden list, progress still visible)
-    &[data-collapsed] .toc-list { display: none; }
+    &[data-collapsed] .toc-list { 
+        display: none; 
+    }
 
     .reading-progress {
         position: relative;
         width: 0%;
-        height: 3px;
-        background-color: $accent-color;
-        border-radius: 999px;
-        transition: width 0.1s ease-out;
+        height: 4px;
+        background: linear-gradient(90deg, $accent-color, $active-color);
+        border-radius: 0 0 16px 16px;
+        transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 8px rgba($accent-color, 0.3);
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateY(-50%);
+            animation: pulse 2s infinite;
+        }
     }
 
     @include respond-to('md') {
         display: none; // mobile-only as requested
     }
+}
+
+// Animations for progress bar
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
 }
 
 .blog-post {
