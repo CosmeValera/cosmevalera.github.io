@@ -18,9 +18,9 @@
 
     // Light theme support
     body:not(.dark-theme) & {
-        background: rgba(255, 255, 255, 0.95);
-        border-color: rgba($accent-color, 0.3);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(135deg, rgba($accent-color, 0.15), rgba($active-color, 0.08));
+        border-color: rgba($accent-color, 0.4);
+        box-shadow: 0 8px 32px rgba($accent-color, 0.2);
         
         // Add subtle border glow in light theme
         &::before {
@@ -30,7 +30,7 @@
             left: -1px;
             right: -1px;
             bottom: -1px;
-            background: linear-gradient(135deg, rgba($accent-color, 0.2), rgba($active-color, 0.1));
+            background: linear-gradient(135deg, rgba($accent-color, 0.3), rgba($active-color, 0.2));
             border-radius: 16px;
             z-index: -1;
             opacity: 0;
@@ -60,8 +60,8 @@
 
         // Light theme header
         body:not(.dark-theme) & {
-            background: linear-gradient(135deg, rgba($accent-color, 0.15), rgba($active-color, 0.08));
-            color: $primary-bg;
+            background: linear-gradient(135deg, rgba($accent-color, 0.25), rgba($active-color, 0.15));
+            color: white;
         }
 
         &::before {
@@ -105,7 +105,7 @@
             @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
 
             body:not(.dark-theme) & {
-                border-color: rgba($primary-bg, 0.7);
+                border-color: rgba(255, 255, 255, 0.8);
             }
         }
     }
@@ -160,7 +160,7 @@
 
             // Light theme links
             body:not(.dark-theme) & {
-                color: rgba($primary-bg, 0.8);
+                color: rgba(255, 255, 255, 0.9);
             }
 
             &::before {
@@ -181,8 +181,8 @@
                 transform: translateX(4px);
 
                 body:not(.dark-theme) & {
-                    color: $primary-bg;
-                    background: rgba($accent-color, 0.1);
+                    color: white;
+                    background: rgba($accent-color, 0.2);
                 }
 
                 &::before {
@@ -198,8 +198,8 @@
                 border-left-color: $accent-color;
 
                 body:not(.dark-theme) & {
-                    color: $primary-bg;
-                    background: rgba($accent-color, 0.1);
+                    color: white;
+                    background: rgba($accent-color, 0.2);
                 }
             }
 
@@ -211,8 +211,8 @@
                 font-weight: 600;
 
                 body:not(.dark-theme) & {
-                    color: $accent-color;
-                    background: rgba($accent-color, 0.15);
+                    color: white;
+                    background: rgba($accent-color, 0.25);
                 }
 
                 &::before {
@@ -225,6 +225,11 @@
     // Collapsed state (hidden list, progress still visible)
     &[data-collapsed] .toc-list { 
         display: none; 
+    }
+
+    // Hide focus outline when collapsed
+    &[data-collapsed] .toc-header:focus {
+        outline: none !important;
     }
 
     .reading-progress {

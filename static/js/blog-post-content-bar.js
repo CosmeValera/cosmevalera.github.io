@@ -114,18 +114,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   
-    // Throttled scroll handler for better performance
-    let scrollTimeout;
+    // Instant scroll handler for immediate progress updates
     function handleScroll() {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      scrollTimeout = setTimeout(function() {
-        updateProgress();
-        updateActiveSection();
-      }, 10);
+      updateProgress();
+      updateActiveSection();
     }
-  
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', function() {
       updateProgress();
