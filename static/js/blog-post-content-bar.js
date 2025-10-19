@@ -30,11 +30,18 @@ document.addEventListener('DOMContentLoaded', function () {
         a.textContent = h.textContent || ('Section ' + (index + 1));
         a.addEventListener('click', function(e) {
           e.preventDefault();
-          smoothScrollTo(h);
-          // Close TOC after clicking on mobile
+          
+          // Close TOC first on mobile, then scroll
           if (window.innerWidth < 768) {
             tocContainer.setAttribute('data-collapsed', '');
             tocHeaderBtn.setAttribute('aria-expanded', 'false');
+            
+            // Wait a bit for the TOC to collapse, then scroll
+            setTimeout(() => {
+              smoothScrollTo(h);
+            }, 100);
+          } else {
+            smoothScrollTo(h);
           }
         });
         li.appendChild(a);
@@ -45,7 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Smooth scroll function
     function smoothScrollTo(element) {
-      const elementTop = element.getBoundingClientRect().top + window.pageYOffset - 100; // Offset for sticky header
+      // Get the TOC height to account for sticky positioning
+      const tocHeight = tocContainer ? tocContainer.offsetHeight : 0;
+      const elementTop = element.getBoundingClientRect().top + window.pageYOffset - tocHeight - 20;
+      
       window.scrollTo({
         top: elementTop,
         behavior: 'smooth'
