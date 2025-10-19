@@ -128,17 +128,34 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleScroll() {
       updateProgress();
       updateActiveSection();
+      checkTOCVisibility();
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', function() {
       updateProgress();
       updateActiveSection();
+      checkTOCVisibility();
     });
     
+    // Show TOC when user scrolls down 100px
+    function checkTOCVisibility() {
+      if (!tocContainer) return;
+      
+      const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Show TOC when user has scrolled down 100px
+      if (scrollY > 325) {
+        tocContainer.classList.add('visible');
+      } else {
+        tocContainer.classList.remove('visible');
+      }
+    }
+
     // Initial updates
     updateProgress();
     updateActiveSection();
+    checkTOCVisibility();
   
     // Enhanced toggle behavior with animation
     if (tocContainer && tocHeaderBtn) {

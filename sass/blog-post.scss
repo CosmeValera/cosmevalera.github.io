@@ -14,7 +14,13 @@
     margin: 0 0 1.5rem 0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    display: none;
     @include transition(all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+    
+    // Show TOC when it becomes visible
+    &.visible {
+        display: block;
+    }
 
     // Light theme support
     body:not(.dark-theme) & {
