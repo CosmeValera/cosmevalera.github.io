@@ -77,9 +77,6 @@
             outline-offset: 2px;
         }
 
-        &:active {
-            transform: scale(0.98);
-        }
 
         .toc-title { 
             margin-right: 0.75rem;
@@ -93,7 +90,7 @@
             height: 1rem;
             border-right: 2px solid rgba(255,255,255,0.8);
             border-bottom: 2px solid rgba(255,255,255,0.8);
-            transform: rotate(225deg); // Points down when expanded
+            transform: rotate(45deg); // Points down when expanded
             @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
 
             body:not(.dark-theme) & {
@@ -103,7 +100,7 @@
     }
 
     &[data-collapsed] .toc-chevron { 
-        transform: rotate(45deg); // Points up when collapsed
+        transform: rotate(-135deg); // Points up when collapsed
     }
 
     .toc-list {

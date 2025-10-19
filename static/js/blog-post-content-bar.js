@@ -132,7 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Enhanced toggle behavior with animation
     if (tocContainer && tocHeaderBtn) {
-      tocHeaderBtn.addEventListener('click', function () {
+      tocHeaderBtn.addEventListener('click', function (e) {
+        e.stopPropagation(); // Prevent event from bubbling up
         const isCollapsed = tocContainer.hasAttribute('data-collapsed');
         
         if (isCollapsed) {
@@ -144,6 +145,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
     }
+
+    // Close TOC when clicking outside
+    document.addEventListener('click', function (e) {
+      if (tocContainer && !tocContainer.contains(e.target)) {
+        // Clicked outside the TOC, close it if it's open
+        if (!tocContainer.hasAttribute('data-collapsed')) {
+          tocContainer.setAttribute('data-collapsed', '');
+          tocHeaderBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
     
     // Add keyboard navigation support
     if (tocContainer) {
