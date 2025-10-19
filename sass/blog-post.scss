@@ -112,7 +112,9 @@
             height: 1rem;
             border-right: 2px solid rgba(255,255,255,0.8);
             border-bottom: 2px solid rgba(255,255,255,0.8);
-            transform: rotate(45deg); // Points down when expanded
+            transform: rotate(-135deg) translateY(-0.4rem); // Points down when collapsed
+
+            transform-origin: center center; // Ensure rotation happens from center
             @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
 
             body:not(.dark-theme) & {
@@ -122,7 +124,7 @@
     }
 
     &[data-collapsed] .toc-chevron { 
-        transform: rotate(-135deg); // Points up when collapsed
+        transform: rotate(45deg) translateX(-0.4rem); // Points up when expanded
     }
 
     .toc-list {
