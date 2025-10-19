@@ -36,10 +36,6 @@
             opacity: 0;
             @include transition(opacity 0.3s ease);
         }
-        
-        &:hover::before {
-            opacity: 1;
-        }
     }
 
         .toc-header {
@@ -76,10 +72,6 @@
             @include transition(opacity 0.3s ease);
         }
 
-        &:hover::before {
-            opacity: 1;
-        }
-
         &:focus {
             outline: 2px solid $accent-color;
             outline-offset: 2px;
@@ -101,7 +93,7 @@
             height: 1rem;
             border-right: 2px solid rgba(255,255,255,0.8);
             border-bottom: 2px solid rgba(255,255,255,0.8);
-            transform: rotate(-45deg);
+            transform: rotate(225deg); // Points down when expanded
             @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
 
             body:not(.dark-theme) & {
@@ -111,7 +103,7 @@
     }
 
     &[data-collapsed] .toc-chevron { 
-        transform: rotate(45deg); 
+        transform: rotate(45deg); // Points up when collapsed
     }
 
     .toc-list {
@@ -174,21 +166,6 @@
                 @include transition(width 0.3s cubic-bezier(0.4, 0, 0.2, 1));
             }
 
-            &:hover {
-                color: white;
-                background: rgba($tertiary-bg, 0.3);
-                border-left-color: $accent-color;
-                transform: translateX(4px);
-
-                body:not(.dark-theme) & {
-                    color: white;
-                    background: rgba($accent-color, 0.2);
-                }
-
-                &::before {
-                    width: 100%;
-                }
-            }
 
             &:focus {
                 outline: 2px solid $accent-color;
