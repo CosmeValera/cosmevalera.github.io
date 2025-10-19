@@ -18,9 +18,23 @@
 
     // Light theme support
     body:not(.dark-theme) & {
-        background: linear-gradient(135deg, rgba($accent-color, 0.15), rgba($active-color, 0.08));
+        background: linear-gradient(135deg, rgba($accent-color, 0.4), rgba($active-color, 0.3));
         border-color: rgba($accent-color, 0.4);
         box-shadow: 0 8px 32px rgba($accent-color, 0.2);
+        
+        // Add a subtle dark overlay for better text contrast
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            pointer-events: none;
+            z-index: 1;
+        }
         
         // Add subtle border glow in light theme
         &::before {
@@ -52,12 +66,14 @@
         text-align: left;
         cursor: pointer;
         position: relative;
+        z-index: 2;
         @include transition(all 0.2s ease);
 
         // Light theme header
         body:not(.dark-theme) & {
             background: linear-gradient(135deg, rgba($accent-color, 0.25), rgba($active-color, 0.15));
             color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         &::before {
@@ -110,6 +126,8 @@
         display: block;
         max-height: 300px;
         overflow-y: auto;
+        position: relative;
+        z-index: 2;
 
         // Custom scrollbar
         &::-webkit-scrollbar {
@@ -145,11 +163,13 @@
             font-weight: 500;
             border-radius: 0;
             position: relative;
+            background: transparent; // Default transparent background
             @include transition(all 0.2s cubic-bezier(0.4, 0, 0.2, 1));
 
             // Light theme links
             body:not(.dark-theme) & {
                 color: rgba(255, 255, 255, 0.9);
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
             }
 
             &::before {
@@ -164,6 +184,7 @@
             }
 
 
+
             &:focus {
                 outline: 2px solid $accent-color;
                 outline-offset: 2px;
@@ -174,6 +195,7 @@
                 body:not(.dark-theme) & {
                     color: white;
                     background: rgba($accent-color, 0.2);
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
                 }
             }
 
@@ -186,7 +208,8 @@
 
                 body:not(.dark-theme) & {
                     color: white;
-                    background: rgba($accent-color, 0.25);
+                    background: rgba($accent-color, 0.3);
+                    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
                 }
 
                 &::before {
