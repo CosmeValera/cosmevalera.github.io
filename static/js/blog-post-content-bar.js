@@ -138,12 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isCollapsed) {
           tocContainer.removeAttribute('data-collapsed');
           tocHeaderBtn.setAttribute('aria-expanded', 'true');
-          
-          // Add a subtle bounce effect
-          tocContainer.style.transform = 'scale(1.02)';
-          setTimeout(() => {
-            tocContainer.style.transform = 'scale(1)';
-          }, 150);
         } else {
           tocContainer.setAttribute('data-collapsed', '');
           tocHeaderBtn.setAttribute('aria-expanded', 'false');
