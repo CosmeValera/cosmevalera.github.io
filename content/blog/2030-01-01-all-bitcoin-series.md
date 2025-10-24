@@ -29,22 +29,30 @@ Posts Order:
   - Seed phrase backup with metal plates (OneKey KeyTag)
   - Basic Sparrow wallet setup (Link to another Sparrow post maybe BTC-204 )
 
-* Quick notes. 1: The idea of 102 is to be as brief as possible, so people can actually start somewhere buying their first sats with just enough information. 2: BTC 103 Cold Storage could be 201 since it's more complicated. But I'll just say at the end of 102 to start small. And wait several months before going Cold Storage.
+* Quick notes. 1: The idea of 102 is to be as brief as possible, so people can actually start somewhere buying their first sats with just enough information. 2: BTC 103 Cold Storage could be 201 since it's more complicated. But I'll just say at the start of 103 to start small. And wait several months before going Cold Storage.
 
 200s Series - Advanced Bitcoin concepts
-- BTC 201: How Bitcoin Wallets Really Work
+- BTC 201: Bitcoin's Network Effect
+  - What is the network effect
+  - Decentralization
+  - Why the other crypto assets can not overcome Bitcoin
+  - References:
+    - https://river.com/learn/will-bitcoin-be-replaced/
+    - https://river.com/learn/bitcoins-network-effect/
+  - Mention this post in BTC 101 at the end with a short paragraph in common doubts about this whole thing of the Network Effect very summarised. And saying click here to go check BTC 201, where this is explained. (Be careful with redirects, if they go from 101 to 201, and then continue like 202, 203, etc. They will be missing 102 which is important to put it in practice and actually buy the bitcoin. Maybe in 201, remention that if they missed it, or just in general, they can always visit 102 to start buying sats)
+- BTC 202: How Bitcoin Wallets Really Work
   - The "empty space" concept - wallets as boxes in mathematical space
   - Why the astronomical number of possibilities makes Bitcoin secure (https://www.youtube.com/watch?v=S9JGmA5_unY)
   - Satoshi's unmoved coins as proof of security
   - Why it's more profitable to mine than to search for random wallets
   - The math behind private keys and addresses
-- BTC 202: UTXOs - Bitcoin's Unique Transaction Model
+- BTC 203: UTXOs - Bitcoin's Unique Transaction Model
   - UTXOs vs account model (Bitcoin vs Ethereum/banks)
   - Why Bitcoin chose the UTXO model (traceability, gold-like properties)
   - UTXO consolidation and management
   - Introduction to coin selection strategies
   - Basic privacy considerations
-- BTC 203: Sparrow in depth
+- BTC 204: Sparrow in depth
   - Introduction
     - Why Sparrow is the gold standard for Bitcoin desktop wallets
     - What makes it different from mobile wallets (cold wallets)
@@ -57,7 +65,7 @@ Posts Order:
   - Understanding Sparrow's Interface (Transactions, Send, Receive, UTXOs, Addresses)
   - UTXOs management basics (since it's been talked about in the previous post)
   - There are more advanced stuff like, multisig, Shamir, RBF, CPFP and so on. What fits okay, and what no, can be in BTC 204 or in other posts.
-- BTC 204: Advanced Security Concepts
+- BTC 205: Advanced Security Concepts
   - Passphrases (25th word) - when and how to use them
   - Basic multisig concepts and use cases
   - Inheritance planning for Bitcoin
@@ -69,7 +77,10 @@ Posts Order:
   - Mention how it works and what it is (everyday money)
   - Mention Muun for a simple setup
   - Mention AlbyHub (and chema post about how to set up yours)
-- BTC 302: More lighning network stuff, or maybe move the BTC 204: Advanced Security Concepts to here (?)
+- BTC 302: More lighning network stuff, or maybe move the BTC 205: Advanced Security Concepts to here (?)
+- BTC 303: What can do governments do against Bitcoin?
+  - Short version: Nothing 
+  - Long version: [Information from the book: La filosofía de bitcoin + my own research]
 
 ```
 
