@@ -19,22 +19,6 @@
     {% endif %}
     <!-- END: Blog-specific menu items -->
 
-    <!-- Readings-specific menu items (only on readings pages) -->
-    {% if current_path and current_path is starting_with("/readings") or current_path and current_path is starting_with("/categories") %}
-    <div class="menu-item-container {% if current_path and current_path is starting_with("/categories") %}active{% endif %}">
-      <a class="menu-item readings-menu-item menu-item-smaller-label {% if current_path and current_path is starting_with("/categories") %}active-page{% endif %}" href="/categories">
-        <i class="menu-icon fas fa-folder"></i>
-        <span class="menu-label">Categories</span>
-      </a>
-    </div>
-    <div class="readings-menu-separator">
-      <span class="readings-menu-label">Readings Links</span>
-    </div>
-    <div class="readings-menu-separator">
-      <span class="separator-line"></span>
-    </div>
-    {% endif %}
-    <!-- END: Readings-specific menu items -->
     
     <div class="menu-item-container">
       {% if current_path == "/" %}
@@ -89,7 +73,7 @@
 {% endif %}
 
 <!-- Readings Actions Menu (Mobile Only) -->
-{% if current_path and current_path == "/readings/" or current_path and current_path is starting_with("/categories/") and current_path != "/categories/" %}
+{% if current_path and current_path == "/readings/" %}
 <section class="readings-actions-container">
   <div class="menu-item-container">
     <button class="menu-item quick-view-button" id="readings-quick-view-button">

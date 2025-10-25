@@ -2,14 +2,10 @@
 title = "The Little Book of Stoicism"
 description = "Ancient wisdom for everyday life - practical Stoic philosophy for modern challenges and personal growth."
 date = 2022-02-07
-template = "readings-post.html"
-[taxonomies]
-categories = ["philosophy", "self-help"]
 [extra]
 author = "Jonas Salzgeber"
 cover_image = "/images/readings/the-little-book-of-soticism.jpg"
 rating = 4
-has_single_page = false
 key_insights = [
     "Focus on what you can control, accept what you cannot",
     "Virtue is the highest good and leads to eudaimonia",

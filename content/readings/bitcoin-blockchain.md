@@ -2,14 +2,10 @@
 title = "Bitcoin: La tecnología Blockchain y su investigación"
 description = "A technical exploration of Bitcoin's blockchain technology and its research applications."
 date = 2023-01-05
-template = "readings-post.html"
-[taxonomies]
-categories = ["bitcoin"]
 [extra]
 author = "Féliz Brezo Fernández and Yaiza Rubio Viñuela"
 cover_image = "/images/readings/bitcoin-blockchain.webp"
 rating = 3
-has_single_page = false
 key_insights = [
     "Blockchain provides a distributed system for transaction recording",
     "Bitcoin implements advanced cryptographic concepts for network security",
