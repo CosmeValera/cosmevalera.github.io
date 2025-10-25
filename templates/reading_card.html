@@ -1,9 +1,5 @@
 {% macro reading_card(page) %}
-  {% if page.extra.has_single_page is defined and page.extra.has_single_page == true %}
-    <div class="reading-card" onclick="window.location='{{ page.permalink }}';">
-  {% else %}
-    <div class="reading-card">
-  {% endif %}
+  <div class="reading-card">
     {% if page.extra and page.extra.cover_image %}
       <div class="reading-card-cover">
         <img src="{{ page.extra.cover_image }}" alt="Cover of {{ page.title }}">
@@ -12,12 +8,6 @@
     
     <!-- Always visible indicators -->
     <div class="card-indicators">
-      {% if page.extra and page.extra.has_single_page is defined and page.extra.has_single_page == true %}
-        <div class="review-badge">
-          <i class="fas fa-star"></i>
-          <span>Review</span>
-        </div>
-      {% endif %}
       <div class="reading-date-top">
         <i class="fas fa-calendar"></i> {{ page.date | date(format="%B %d, %Y") }}
       </div>

@@ -5,7 +5,6 @@ compile_sass = true
 
 taxonomies = [
     {name = "tags", feed = true},
-    {name = "categories", feed = true},
 ]
 
 [markdown]
