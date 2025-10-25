@@ -2,6 +2,7 @@
 title = "Java Head First"
 description = "A Brain-Friendly Guide to learning Java programming with a unique approach that engages multiple learning styles."
 date = 2021-03-08
+render = false
 [extra]
 author = "Kathy Sierra & Bert Bates"
 cover_image = "/images/readings/java-head-first.jpg"

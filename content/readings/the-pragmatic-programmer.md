@@ -2,6 +2,7 @@
 title = "The Pragmatic Programmer"
 description = "Your Journey to Mastery - A comprehensive guide to becoming a more effective and professional software developer."
 date = 2024-04-18
+render = false
 [extra]
 author = "Andrew Hunt & David Thomas"
 cover_image = "/images/readings/the-pragmatic-programmer.jpg"

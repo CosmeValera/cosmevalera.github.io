@@ -2,6 +2,7 @@
 title = "Clean Code"
 description = "A handbook of agile software craftsmanship that teaches how to write code that is readable, maintainable, and professional."
 date = 2023-05-23
+render = false
 [extra]
 author = "Robert C. Martin"
 cover_image = "/images/readings/clean-code.jpg"

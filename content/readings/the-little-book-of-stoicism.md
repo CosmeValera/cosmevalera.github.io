@@ -2,6 +2,7 @@
 title = "The Little Book of Stoicism"
 description = "Ancient wisdom for everyday life - practical Stoic philosophy for modern challenges and personal growth."
 date = 2022-02-07
+render = false
 [extra]
 author = "Jonas Salzgeber"
 cover_image = "/images/readings/the-little-book-of-soticism.jpg"

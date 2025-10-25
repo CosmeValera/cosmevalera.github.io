@@ -2,6 +2,7 @@
 title = "The Obstacle Is The Way"
 description = "The timeless art of turning trials into triumph through stoic philosophy and practical wisdom."
 date = 2024-08-08
+render = false
 [extra]
 author = "Ryan Holiday"
 cover_image = "/images/readings/the-obstacle-is-the-way.jpg"

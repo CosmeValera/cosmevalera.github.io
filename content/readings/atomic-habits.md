@@ -2,6 +2,7 @@
 title = "Atomic Habits"
 description = "An Easy & Proven Way to Build Good Habits & Break Bad Ones."
 date = 2020-08-12
+render = false
 [extra]
 author = "James Clear"
 cover_image = "/images/readings/atomic-habits.jpg"

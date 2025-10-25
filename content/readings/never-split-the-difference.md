@@ -2,6 +2,7 @@
 title = "Never Split the Difference"
 description = "Learn the techniques used by FBI hostage negotiators to get what you want in any negotiation."
 date = 2024-05-06
+render = false
 [extra]
 author = "Chris Voss"
 cover_image = "/images/readings/never-split-the-difference.jpg"
