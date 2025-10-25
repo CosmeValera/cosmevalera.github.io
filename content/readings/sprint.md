@@ -2,7 +2,6 @@
 title = "Sprint"
 description = "How to Solve Big Problems and Test New Ideas in Just Five Days - A practical guide to design sprints."
 date = 2021-08-26
-render = false
 [extra]
 author = "Jake Knapp"
 cover_image = "/images/readings/sprint.jpg"

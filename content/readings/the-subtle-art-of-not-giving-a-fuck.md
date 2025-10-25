@@ -2,7 +2,6 @@
 title = "The Subtle Art of Not Giving a F*ck"
 description = "A counterintuitive approach to living a good life by choosing what to care about and what to let go."
 date = 2023-09-15
-render = false
 [extra]
 author = "Mark Manson"
 cover_image = "/images/readings/the-subtle-art-of-not-giving-a-fuck.jpg"

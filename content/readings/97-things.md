@@ -2,7 +2,6 @@
 title = "97 Things Every Programmer Should Know"
 description = "Collective Wisdom from the Experts - A collection of programming wisdom from experienced developers covering various aspects of software development."
 date = 2025-07-28
-render = false
 [extra]
 author = "Kevlin Henney"
 cover_image = "/images/readings/97-things.jpg"

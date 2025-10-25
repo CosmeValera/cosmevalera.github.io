@@ -2,7 +2,6 @@
 title = "21 Lessons: What I've Learned from Falling Down the Bitcoin Rabbit Hole"
 description = "A dive into the philosophical, economic, and technological lessons learned from exploring Bitcoin's rabbit hole."
 date = 2024-12-20
-render = false
 [extra]
 author = "Gigi"
 cover_image = "/images/readings/21-lessons.jpg"

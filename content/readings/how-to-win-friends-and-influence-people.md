@@ -2,7 +2,6 @@
 title = "How to Win Friends and Influence People"
 description = "Timeless principles for building relationships and influencing others through genuine interest and understanding."
 date = 2025-03-09
-render = false
 [extra]
 author = "Dale Carnegie"
 cover_image = "/images/readings/how-to-win-friends-and-influence-people.jpg"

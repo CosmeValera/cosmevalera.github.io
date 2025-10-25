@@ -2,7 +2,6 @@
 title = "La Filosofía de Bitcoin"
 description = "How Bitcoin changes the way we relate to money, redefines property ownership, and can transform our political system."
 date = 2025-02-07
-render = false
 [extra]
 author = "Álvaro D. María"
 cover_image = "/images/readings/filosofia-de-bitcoin.jpg"

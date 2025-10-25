@@ -2,7 +2,6 @@
 title = "Start with Why"
 description = "How Great Leaders Inspire Everyone to Take Action - Understanding the power of purpose and the Golden Circle framework."
 date = 2022-11-03
-render = false
 [extra]
 author = "Simon Sinek"
 cover_image = "/images/readings/start-with-why.jpg"
