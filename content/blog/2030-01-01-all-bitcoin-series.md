@@ -22,9 +22,11 @@ Posts Order:
   - DCA vs lump sum vs timing the market
   - Setting up a hot wallet (Blue Wallet, etc.)
   - Basic security practices (Bitwarden)
+  - Hot vs cold wallet differences
   - Very brief mention to what is the mempool, and use it check transaction confirmation
 - BTC 103: Cold Storage Fundamentals 
-  - Hot vs cold wallet differences
+  - When to make the move from hot to cold storage
+  - Hot vs cold wallet differences (it's been already covered in 102, maybe mention again)
   - Setting up hardware wallets (Coldcard MK4/Q)
   - Seed phrase backup with metal plates (OneKey KeyTag)
   - Basic Sparrow wallet setup (Link to another Sparrow post maybe BTC-204 )
