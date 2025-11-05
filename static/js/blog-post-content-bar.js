@@ -1,29 +1,34 @@
 document.addEventListener('DOMContentLoaded', function () {
     const postContent = document.querySelector('.post-content');
-    const tocContainer = document.querySelector('.toc-mobile');
-    const tocList = tocContainer ? tocContainer.querySelector('.toc-list') : null;
-    const progressBar = tocContainer ? tocContainer.querySelector('.reading-progress') : null;
-    const tocHeaderBtn = tocContainer ? tocContainer.querySelector('.toc-header') : null;
+    const tocMobile = document.querySelector('.toc-mobile');
+    const tocDesktop = document.querySelector('.toc-desktop');
+    const tocHeaderBtn = tocMobile ? tocMobile.querySelector('.toc-header') : null;
+    const tocListMobile = tocMobile ? tocMobile.querySelector('#toc-list-mobile') : null;
+    const tocListDesktop = tocDesktop ? tocDesktop.querySelector('#toc-list-desktop') : null;
+    const progressBar = tocMobile ? tocMobile.querySelector('.reading-progress') : null;
+    const tocCloseBtn = tocMobile ? tocMobile.querySelector('.toc-close-icon') : null;
     
     let headings = [];
-    let tocLinks = [];
+    let tocLinks = []; // Will contain links from both mobile and desktop TOC
+    const isDesktop = window.innerWidth >= 768;
   
     // Build TOC from h4 headings
-    if (postContent && tocList) {
+    if (postContent && (tocListMobile || tocListDesktop)) {
       headings = Array.from(postContent.querySelectorAll('h4'));
       
       if (headings.length === 0) {
         // Hide TOC if no headings found
-        if (tocContainer) {
-          tocContainer.style.display = 'none';
+        if (tocMobile) {
+          tocMobile.style.display = 'none';
+        }
+        if (tocDesktop) {
+          tocDesktop.style.display = 'none';
         }
         return;
       }
       
-      headings.forEach(function (h, index) {
-        if (!h.id) {
-          h.id = 'section-' + (index + 1);
-        }
+      // Helper function to create a TOC link
+      function createTOCLink(h, index) {
         const li = document.createElement('li');
         const a = document.createElement('a');
         a.href = '#' + h.id;
@@ -31,12 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
         a.addEventListener('click', function(e) {
           e.preventDefault();
           
-          // Close TOC first on mobile, then scroll
-          if (window.innerWidth < 768) {
-            tocContainer.setAttribute('data-collapsed', '');
-            tocHeaderBtn.setAttribute('aria-expanded', 'false');
+          // Close TOC on mobile/tablet (not desktop wide screens), then scroll
+          if (window.innerWidth < 1200 && tocMobile) {
+            tocMobile.setAttribute('data-collapsed', '');
+            if (tocHeaderBtn) {
+              tocHeaderBtn.setAttribute('aria-expanded', 'false');
+            }
             
-            // Wait a bit for the TOC to collapse, then scroll
             setTimeout(() => {
               smoothScrollTo(h);
             }, 100);
@@ -45,15 +51,36 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         });
         li.appendChild(a);
-        tocList.appendChild(li);
         tocLinks.push(a);
+        return li;
+      }
+      
+      headings.forEach(function (h, index) {
+        if (!h.id) {
+          h.id = 'section-' + (index + 1);
+        }
+        
+        // Add to mobile TOC
+        if (tocListMobile) {
+          const liMobile = createTOCLink(h, index);
+          tocListMobile.appendChild(liMobile);
+        }
+        
+        // Add to desktop TOC
+        if (tocListDesktop) {
+          const liDesktop = createTOCLink(h, index);
+          // The link already has a click handler from createTOCLink that works for both mobile and desktop
+          // The link is already added to tocLinks array, so active state updates will work
+          tocListDesktop.appendChild(liDesktop);
+        }
       });
     }
   
     // Smooth scroll function
     function smoothScrollTo(element) {
-      // Get the TOC height to account for sticky positioning
-      const tocHeight = tocContainer ? tocContainer.offsetHeight : 0;
+      // Only account for TOC height on mobile (not desktop wide screens where TOC is on the left)
+      const isWideScreen = window.innerWidth >= 1200;
+      const tocHeight = isWideScreen ? 0 : (tocMobile ? tocMobile.offsetHeight : 0);
       const elementTop = element.getBoundingClientRect().top + window.pageYOffset - tocHeight - 20;
       
       window.scrollTo({
@@ -83,15 +110,34 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
       
-      // Update active states
+      // Update active states - remove from all links
       tocLinks.forEach(function(link) {
         link.classList.remove('active');
       });
       
+      // Add active state to all links matching the active heading (both mobile and desktop)
       if (activeHeading) {
-        const activeLink = tocLinks.find(link => link.getAttribute('href') === '#' + activeHeading.id);
-        if (activeLink) {
-          activeLink.classList.add('active');
+        const activeHref = '#' + activeHeading.id;
+        tocLinks.forEach(function(link) {
+          if (link.getAttribute('href') === activeHref) {
+            link.classList.add('active');
+          }
+        });
+        return;
+      }
+      
+      // If no active heading, check if user has scrolled past content start
+      // Only activate first element if scroll has passed the content offsetTop
+      if (postContent && tocListDesktop && tocLinks.length > 0) {
+        const contentOffsetTop = postContent.getBoundingClientRect().top + scrollY;
+        const hasScrolledPastContent = scrollY >= contentOffsetTop;
+        
+        if (hasScrolledPastContent) {
+          // Make the first desktop TOC link active
+          const firstDesktopLink = tocListDesktop.querySelector('a');
+          if (firstDesktopLink) {
+            firstDesktopLink.classList.add('active');
+          }
         }
       }
     }
@@ -107,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
       // Distance from top of document to top/bottom of content
       const contentTop = window.pageYOffset + rect.top;
       const contentHeight = postContent.offsetHeight;
-      const contentBottom = contentTop + contentHeight;
   
       // Calculate progress more accurately
       const scrollProgress = scrollY - contentTop;
@@ -138,17 +183,46 @@ document.addEventListener('DOMContentLoaded', function () {
       checkTOCVisibility();
     });
     
-    // Show TOC when user scrolls down 100px
+    // Show TOC when user scrolls down (mobile and desktop)
     function checkTOCVisibility() {
-      if (!tocContainer) return;
-      
+      const isWideScreen = window.innerWidth >= 1200;
+      const isMobile = window.innerWidth < 768;
       const scrollY = window.pageYOffset || document.documentElement.scrollTop;
       
-      // Show TOC when user has scrolled down 100px
-      if (scrollY > 325) {
-        tocContainer.classList.add('visible');
-      } else {
-        tocContainer.classList.remove('visible');
+      // Calculate content offsetTop if postContent exists
+      let contentOffsetTop = 0;
+      let hasScrolledPastContent = false;
+      
+      if (postContent) {
+        contentOffsetTop = postContent.getBoundingClientRect().top + scrollY;
+        hasScrolledPastContent = scrollY >= contentOffsetTop;
+      }
+      
+      // Mobile TOC visibility - show when scrolled past content offsetTop
+      if (tocMobile) {
+        if (isWideScreen) {
+          // Hide mobile TOC on desktop wide screens
+          tocMobile.classList.remove('visible');
+        } else if (!isMobile) {
+          // Hide mobile TOC on desktop narrow screens
+          tocMobile.classList.remove('visible');
+        } else {
+          // Mobile (< 768px): show when scrolled past content offsetTop
+          if (hasScrolledPastContent) {
+            tocMobile.classList.add('visible');
+          } else {
+            tocMobile.classList.remove('visible');
+          }
+        }
+      }
+      
+      // Desktop TOC visibility - show when scrolled past content offsetTop
+      if (tocDesktop && isWideScreen && postContent) {
+        if (hasScrolledPastContent) {
+          tocDesktop.classList.add('visible');
+        } else {
+          tocDesktop.classList.remove('visible');
+        }
       }
     }
 
@@ -156,41 +230,133 @@ document.addEventListener('DOMContentLoaded', function () {
     updateProgress();
     updateActiveSection();
     checkTOCVisibility();
+    
+    // Desktop wide screens: position wrapper
+    if (window.innerWidth >= 1200) {
+      // Position TOC wrapper to align with post-content start
+      positionTOCWrapper();
+    }
+    
+    // Function to position TOC wrapper at content start and set its height
+    function positionTOCWrapper() {
+      const tocWrapper = document.querySelector('.toc-desktop-wrapper');
+      
+      if (window.innerWidth < 1200) {
+        // Clean up wrapper styles when screen is too small
+        if (tocWrapper) {
+          tocWrapper.style.top = '';
+          tocWrapper.style.height = '';
+        }
+        return;
+      }
+      
+      const postContent = document.querySelector('.post-content');
+      const blogPost = document.querySelector('.blog-post');
+      
+      if (tocWrapper && postContent && blogPost) {
+        // Calculate offset from blog-post top to post-content top
+        const blogPostOffset = blogPost.offsetTop;
+        const postContentOffset = postContent.offsetTop;
+        const offsetTop = postContentOffset - blogPostOffset + 40;
+        tocWrapper.style.top = offsetTop + 'px';
+        
+        // Set wrapper height to match post-content height so sticky works properly
+        const postContentHeight = postContent.offsetHeight;
+        tocWrapper.style.height = postContentHeight + 'px';
+      }
+    }
   
-    // Enhanced toggle behavior with animation
-    if (tocContainer && tocHeaderBtn) {
+    // Toggle TOC collapse on mobile when header is clicked
+    if (tocHeaderBtn && tocMobile) {
       tocHeaderBtn.addEventListener('click', function (e) {
-        e.stopPropagation(); // Prevent event from bubbling up
-        const isCollapsed = tocContainer.hasAttribute('data-collapsed');
+        // Desktop wide screens (1200px+): header is hidden, don't toggle
+        if (window.innerWidth >= 1200) {
+          // Don't toggle on desktop wide screens
+          return;
+        }
+        
+        // Don't toggle if clicking the close button
+        if (e.target.classList.contains('toc-close-icon')) return;
+        
+        e.stopPropagation();
+        const isCollapsed = tocMobile.hasAttribute('data-collapsed');
         
         if (isCollapsed) {
-          tocContainer.removeAttribute('data-collapsed');
+          tocMobile.removeAttribute('data-collapsed');
           tocHeaderBtn.setAttribute('aria-expanded', 'true');
         } else {
-          tocContainer.setAttribute('data-collapsed', '');
+          tocMobile.setAttribute('data-collapsed', '');
           tocHeaderBtn.setAttribute('aria-expanded', 'false');
         }
       });
     }
 
-    // Close TOC when clicking outside
+    // Close TOC on desktop when close button is clicked
+    if (tocCloseBtn && tocMobile) {
+      tocCloseBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (window.innerWidth >= 768) {
+          // Desktop: hide TOC
+          tocMobile.style.display = 'none';
+        }
+      });
+    }
+
+    // Close TOC when clicking outside (mobile only, not desktop wide screens)
     document.addEventListener('click', function (e) {
-      if (tocContainer && !tocContainer.contains(e.target)) {
-        // Clicked outside the TOC, close it if it's open
-        if (!tocContainer.hasAttribute('data-collapsed')) {
-          tocContainer.setAttribute('data-collapsed', '');
-          tocHeaderBtn.setAttribute('aria-expanded', 'false');
+      if (window.innerWidth < 1200 && tocMobile && !tocMobile.contains(e.target)) {
+        // Clicked outside the TOC, close it if it's open (mobile/tablet)
+        if (!tocMobile.hasAttribute('data-collapsed')) {
+          tocMobile.setAttribute('data-collapsed', '');
+          if (tocHeaderBtn) {
+            tocHeaderBtn.setAttribute('aria-expanded', 'false');
+          }
         }
       }
     });
     
     // Add keyboard navigation support
-    if (tocContainer) {
-      tocContainer.addEventListener('keydown', function(e) {
+    if (tocHeaderBtn) {
+      tocHeaderBtn.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          tocHeaderBtn.click();
+          if (!isDesktop) {
+            tocHeaderBtn.click();
+          }
         }
       });
     }
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      const nowWideScreen = window.innerWidth >= 1200;
+      
+      checkTOCVisibility();
+      
+      // Always reposition/cleanup wrapper on resize
+      positionTOCWrapper();
+      
+      if (nowWideScreen) {
+        // Wide desktop: always show desktop TOC list
+        if (tocDesktop) {
+          tocDesktop.removeAttribute('data-collapsed');
+        }
+      }
+    });
+    
+    // Update wrapper height on scroll (content might have changed height)
+    let lastContentHeight = 0;
+    window.addEventListener('scroll', function() {
+      if (window.innerWidth >= 1200 && postContent) {
+        const currentHeight = postContent.offsetHeight;
+        // Update wrapper height if content height changed
+        if (currentHeight !== lastContentHeight) {
+          lastContentHeight = currentHeight;
+          const tocWrapper = document.querySelector('.toc-desktop-wrapper');
+          if (tocWrapper) {
+            tocWrapper.style.height = currentHeight + 'px';
+          }
+        }
+      }
+    }, { passive: true });
   });

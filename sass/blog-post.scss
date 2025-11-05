@@ -1,8 +1,9 @@
 @import 'main';
 @import 'utils/translucent-fab-icon';
 
-// Enhanced TOC (mobile) and in-article progress bar
+// Enhanced TOC - Mobile: sticky top, Desktop: fixed top-left
 .toc-mobile {
+    // Mobile styles (default - sticky top)
     position: sticky;
     top: 4px;
     z-index: 10;
@@ -17,11 +18,17 @@
     display: none;
     @include transition(all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
     
-    // Show TOC when it becomes visible
+    // Show TOC when it becomes visible (mobile only)
     &.visible {
         display: block;
     }
 
+    // Hide FAB button on mobile
+    .toc-fab-button {
+        display: none;
+    }
+
+    // Mobile header
     .toc-header {
         display: flex;
         align-items: center;
@@ -56,7 +63,6 @@
             outline-offset: 2px;
         }
 
-
         .toc-title { 
             margin-right: 0.75rem;
             display: flex;
@@ -70,14 +76,18 @@
             border-right: 2px solid rgba(255,255,255,0.8);
             border-bottom: 2px solid rgba(255,255,255,0.8);
             transform: rotate(-135deg) translateY(-0.4rem); // Points down when collapsed
-
-            transform-origin: center center; // Ensure rotation happens from center
+            transform-origin: center center;
             @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
         }
     }
 
+    // Collapsed state (mobile)
     &[data-collapsed] .toc-chevron { 
         transform: rotate(45deg) translateX(-0.4rem); // Points up when expanded
+    }
+
+    &[data-collapsed] .toc-header:focus {
+        outline: none !important;
     }
 
     .toc-list {
@@ -138,14 +148,6 @@
                 @include transition(width 0.3s cubic-bezier(0.4, 0, 0.2, 1));
             }
 
-            &:focus {
-                outline: 2px solid $accent-color;
-                outline-offset: 2px;
-                color: white;
-                background: rgba($tertiary-bg, 0.3);
-                border-left-color: $accent-color;
-            }
-
             // Active state (current section)
             &.active {
                 color: $accent-color;
@@ -160,16 +162,12 @@
         }
     }
 
-    // Collapsed state (hidden list, progress still visible)
+    // Collapsed state (hidden list, progress still visible) - mobile
     &[data-collapsed] .toc-list { 
         display: none; 
     }
 
-    // Hide focus outline when collapsed
-    &[data-collapsed] .toc-header:focus {
-        outline: none !important;
-    }
-
+    // Reading progress bar
     .reading-progress {
         position: relative;
         width: 0%;
@@ -204,8 +202,90 @@
         }
     }
 
-    @include respond-to('md') {
-        display: none; // mobile-only as requested
+    // Hide mobile TOC on desktop (xl and up)
+    @include respond-to('xl') {
+        display: none !important;
+    }
+}
+
+// Desktop TOC - sticky left of centered content
+.toc-desktop {
+    // Hidden on mobile/tablet by default
+    display: none;
+    
+    // Desktop styles (xl and up) - subtle, sticky left of centered content
+    @include respond-to('xl') {
+        position: sticky;
+        top: 24px; // Stick to top when scrolling
+        width: 200px;
+        max-height: calc(100vh - 48px);
+        margin: 0;
+        display: none; // Hidden by default, shown when scrolling past content
+        z-index: 10;
+        
+        // Show TOC when it becomes visible (after scrolling past content)
+        &.visible {
+            display: block;
+        }
+
+        // Subtle look: completely transparent container
+        background: transparent;
+        backdrop-filter: none;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        overflow: visible;
+
+        // TOC list styles - subtle and compact, completely transparent
+        .toc-list {
+            display: block;
+            max-height: calc(100vh - 80px);
+            padding: 0.25rem 0;
+            background: transparent;
+            border-radius: 0;
+            border: 0;
+            list-style: none;
+            margin: 0;
+
+            li { margin: 0; }
+
+            a {
+                display: block;
+                padding: 0.35rem 0.5rem;
+                color: rgba(255,255,255,0.7);
+                border-left: 2px solid transparent;
+                font-size: 0.75rem;
+                text-shadow: none;
+                background: transparent;
+                border-radius: 0;
+                text-decoration: none;
+                font-weight: 500;
+                cursor: pointer;
+                @include transition(all 0.2s ease);
+
+                &::before { display: none; }
+
+                // Hover effect: make text slightly more white
+                &:hover { 
+                    color: rgba(255,255,255,0.95) !important;
+                    background: transparent;
+                }
+
+                // Active state: blue accent color (primary-color)
+                &.active {
+                    color: $accent-color !important;
+                    border-left-color: $accent-color !important;
+                    background: transparent;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        // Collapsed state is ignored on desktop - always show list
+        &[data-collapsed] .toc-list { 
+            display: block !important; 
+        }
     }
 }
 
@@ -223,9 +303,63 @@
 .blog-post {
     max-width: 700px;
     margin: 0 1.5rem;
+    position: relative;
     
     @include respond-to('md') {
         margin: 0 auto;
+        position: relative;
+    }
+
+    // TOC desktop wrapper - positioned at content start, contains sticky TOC
+    .toc-desktop-wrapper {
+        // Mobile: normal flow, wrapper doesn't affect layout
+        // Desktop only styles (xl and up)
+        @include respond-to('xl') {
+            position: absolute;
+            // Position wrapper to the left of centered content (700px wide)
+            // Formula: center of viewport (50%) - half content width (350px) - TOC width (200px) - gap (30px)
+            left: calc(50% - 350px - 230px);
+            // Top will be set by JavaScript to align with post-content start
+            top: 0;
+            width: 200px;
+            // Height will be set by JavaScript to match post-content height
+            // This allows sticky to work properly
+            min-height: 100vh; // Minimum height to ensure sticky works
+            pointer-events: none; // Allow clicks to pass through wrapper
+        }
+        
+        // Ensure wrapper doesn't affect layout on smaller screens
+        @media (max-width: 1199px) {
+            position: static;
+            width: auto;
+            height: auto;
+            min-height: auto;
+            left: auto;
+            top: auto;
+        }
+    }
+
+    // TOC inside wrapper - visible and interactive (desktop only)
+    .toc-desktop-wrapper .toc-mobile {
+        @include respond-to('xl') {
+            pointer-events: auto; // Re-enable clicks on TOC
+        }
+    }
+    
+    // Desktop TOC inside wrapper - enable pointer events
+    .toc-desktop-wrapper .toc-desktop {
+        @include respond-to('xl') {
+            pointer-events: auto; // Re-enable clicks on desktop TOC
+        }
+    }
+
+    // Post content - keep centered independently
+    .post-content {
+        @include respond-to('xl') {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     .back-link {
