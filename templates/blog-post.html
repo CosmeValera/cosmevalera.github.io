@@ -12,6 +12,7 @@
 
 {% block scripts %}
   <script src="{{ get_url(path="js/exchange-toggle.js") | safe }}"></script>
+  <script src="{{ get_url(path="js/blog-post-content-bar.js") | safe }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -56,6 +57,23 @@
         {% endif %}
       </span>
     </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Table of Contents</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
     <div class="post-content">
         {{ page.content | safe }}
     </div>
