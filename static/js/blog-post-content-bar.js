@@ -128,15 +128,24 @@ document.addEventListener('DOMContentLoaded', function () {
       
       // If no active heading, check if user has scrolled past content start
       // Only activate first element if scroll has passed the content offsetTop
-      if (postContent && tocListDesktop && tocLinks.length > 0) {
+      if (postContent && tocLinks.length > 0) {
         const contentOffsetTop = postContent.getBoundingClientRect().top + scrollY;
         const hasScrolledPastContent = scrollY >= contentOffsetTop;
         
         if (hasScrolledPastContent) {
-          // Make the first desktop TOC link active
-          const firstDesktopLink = tocListDesktop.querySelector('a');
-          if (firstDesktopLink) {
-            firstDesktopLink.classList.add('active');
+          // Make the first desktop TOC link active (if present)
+          if (typeof tocListDesktop !== 'undefined' && tocListDesktop) {
+            const firstDesktopLink = tocListDesktop.querySelector('a');
+            if (firstDesktopLink) {
+              firstDesktopLink.classList.add('active');
+            }
+          }
+          // Make the first mobile TOC link active (if present)
+          if (typeof tocListMobile !== 'undefined' && tocListMobile) {
+            const firstMobileLink = tocListMobile.querySelector('a');
+            if (firstMobileLink) {
+              firstMobileLink.classList.add('active');
+            }
           }
         }
       }

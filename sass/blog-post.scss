@@ -3,24 +3,31 @@
 
 // Enhanced TOC - Mobile: sticky top, Desktop: fixed top-left
 .toc-mobile {
-    // Mobile styles (default - sticky top)
-    position: sticky;
-    top: 4px;
+    // Mobile styles (fixed - out of layout to avoid glitches at threshold)
+    position: fixed;
+    top: 8px;
+    left: 1rem;
+    right: 1rem;
     z-index: 10;
     background: rgba($primary-bg-dark, 0.85);
     backdrop-filter: blur(12px);
     border: 1px solid rgba($accent-color, 0.2);
     border-radius: 16px;
     padding: 0;
-    margin: 0 0 1.5rem 0;
+    margin: 0;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    display: none;
+    // Visually hidden by default, does not take layout space
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
     @include transition(all 0.3s cubic-bezier(0.4, 0, 0.2, 1));
     
-    // Show TOC when it becomes visible (mobile only)
+    // Show TOC when it becomes visible (mobile only) without toggling display
     &.visible {
-        display: block;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     // Hide FAB button on mobile
