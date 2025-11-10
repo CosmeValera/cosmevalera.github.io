@@ -181,7 +181,7 @@
         height: 4px;
         background: linear-gradient(90deg, $accent-color, $active-color);
         border-radius: 0 0 16px 16px;
-        transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: width 0s linear;
         box-shadow: 0 2px 8px rgba($accent-color, 0.3);
         overflow: hidden;
 
