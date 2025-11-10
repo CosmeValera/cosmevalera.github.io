@@ -168,7 +168,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const maxScroll = contentHeight - viewportHeight;
       const percent = Math.max(0, Math.min(100, (scrollProgress / maxScroll) * 100));
       
-      progressBar.style.width = percent + '%';
+      // Map real progress so the visual bar starts at 3% immediately and grows from there
+      // - 0% real -> 0% visual (no bar before any scroll)
+      // - (0,100]% real -> [3%, 100%] visual
+      const displayedPercent = percent === 0 ? 0 : Math.min(100, 3 + percent * 0.97);
+      progressBar.style.width = displayedPercent + '%';
       
       // Add a subtle glow effect when near completion
       if (percent > 90) {
