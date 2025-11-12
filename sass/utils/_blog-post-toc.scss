@@ -25,6 +25,20 @@
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
+        background: rgba($primary-bg-dark, 0.85); // Original background when scrolling up
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); // Original shadow intensity
+        
+        // Translucent when scrolling down
+        &.scrolling-down {
+            opacity: 0.65;
+            background: rgba(255, 255, 255, 0.1); // Translucent glass effect
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); // Reduced shadow intensity
+            
+            .toc-header {
+                opacity: 0.75;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+            }
+        }
     }
 
     // Hide FAB button on mobile

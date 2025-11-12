@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
     let headings = [];
     let tocLinks = []; // Will contain links from both mobile and desktop TOC
     const isDesktop = window.innerWidth >= 768;
+    let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    let tocScrollUpDistance = 0; // Track accumulated scroll-up distance
+    let tocScrollUpStartTime = null; // Track when continuous scroll-up started
+    let tocScrollDownDistance = 0; // Track accumulated scroll-down distance
+    let tocScrollDownStartTime = null; // Track when continuous scroll-down started
   
     // Build TOC from h4 headings
     if (postContent && (tocListMobile || tocListDesktop)) {
@@ -35,6 +40,17 @@ document.addEventListener('DOMContentLoaded', function () {
         a.textContent = h.textContent || ('Section ' + (index + 1));
         a.addEventListener('click', function(e) {
           e.preventDefault();
+          
+          // Make TOC more opaque when clicked
+          // Reset scroll distances and timers, immediately switch to scrolling-up
+          tocScrollUpDistance = 0;
+          tocScrollUpStartTime = null;
+          tocScrollDownDistance = 0;
+          tocScrollDownStartTime = null;
+          if (tocMobile && tocMobile.classList.contains('visible')) {
+            tocMobile.classList.add('scrolling-up');
+            tocMobile.classList.remove('scrolling-down');
+          }
           
           // Close TOC on mobile/tablet (not desktop wide screens), then scroll
           if (window.innerWidth < 1200 && tocMobile) {
@@ -184,9 +200,93 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Instant scroll handler for immediate progress updates
     function handleScroll() {
+      const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      const isScrollingDown = currentScrollY > lastScrollY;
+      
       updateProgress();
       updateActiveSection();
       checkTOCVisibility();
+      
+      // Update scroll direction class on mobile TOC after visibility check
+      // This ensures the class is set even if TOC just became visible
+      if (tocMobile && tocMobile.classList.contains('visible')) {
+        // Ensure at least one class is set (default to scrolling-down if neither exists)
+        if (!tocMobile.classList.contains('scrolling-up') && !tocMobile.classList.contains('scrolling-down')) {
+          tocMobile.classList.add('scrolling-down');
+        }
+        
+        if (isScrollingDown) {
+          // Initialize start time if this is the first scroll-down frame
+          if (tocScrollDownStartTime === null) {
+            tocScrollDownStartTime = Date.now();
+          }
+          
+          // Check if more than 2 seconds have passed since scroll-down started
+          const timeElapsed = Date.now() - tocScrollDownStartTime;
+          if (timeElapsed > 2000) {
+            // Reset counter if more than 2 seconds have passed
+            tocScrollDownDistance = 0;
+            tocScrollDownStartTime = Date.now();
+          }
+          
+          // Calculate scroll distance in this frame
+          const scrollDistance = currentScrollY - lastScrollY;
+          // Accumulate scroll-down distance
+          tocScrollDownDistance += scrollDistance;
+          
+          // If scrolled down more than 100px within 2 seconds, switch immediately
+          if (tocScrollDownDistance >= 100) {
+            tocMobile.classList.add('scrolling-down');
+            tocMobile.classList.remove('scrolling-up');
+            // Reset counters after switching
+            tocScrollDownDistance = 0;
+            tocScrollDownStartTime = null;
+            tocScrollUpDistance = 0;
+            tocScrollUpStartTime = null;
+          } else if (tocMobile.classList.contains('scrolling-down')) {
+            // Already scrolling-down, keep it that way
+            tocMobile.classList.add('scrolling-down');
+            tocMobile.classList.remove('scrolling-up');
+          }
+          // If still scrolling-up and distance < 100px, keep scrolling-up
+        } else {
+          // Initialize start time if this is the first scroll-up frame
+          if (tocScrollUpStartTime === null) {
+            tocScrollUpStartTime = Date.now();
+          }
+          
+          // Check if more than 2 seconds have passed since scroll-up started
+          const timeElapsed = Date.now() - tocScrollUpStartTime;
+          if (timeElapsed > 2000) {
+            // Reset counter if more than 2 seconds have passed
+            tocScrollUpDistance = 0;
+            tocScrollUpStartTime = Date.now();
+          }
+          
+          // Calculate scroll distance in this frame
+          const scrollDistance = lastScrollY - currentScrollY;
+          // Accumulate scroll-up distance
+          tocScrollUpDistance += scrollDistance;
+          
+          // If scrolled up more than 500px within 2 seconds, switch immediately
+          if (tocScrollUpDistance >= 500) {
+            tocMobile.classList.add('scrolling-up');
+            tocMobile.classList.remove('scrolling-down');
+            // Reset counters after switching
+            tocScrollUpDistance = 0;
+            tocScrollUpStartTime = null;
+            tocScrollDownDistance = 0;
+            tocScrollDownStartTime = null;
+          } else if (tocMobile.classList.contains('scrolling-up')) {
+            // Already scrolling-up, keep it that way
+            tocMobile.classList.add('scrolling-up');
+            tocMobile.classList.remove('scrolling-down');
+          }
+          // If still scrolling-down and distance < 500px, keep scrolling-down
+        }
+      }
+      
+      lastScrollY = currentScrollY;
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -222,7 +322,14 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
           // Mobile (< 768px): show when scrolled past content offsetTop
           if (hasScrolledPastContent) {
+            const wasVisible = tocMobile.classList.contains('visible');
             tocMobile.classList.add('visible');
+            // Set initial scroll direction class if TOC just became visible
+            if (!wasVisible) {
+              // Default to scrolling-down (translucent) when first appearing
+              tocMobile.classList.add('scrolling-down');
+              tocMobile.classList.remove('scrolling-up');
+            }
           } else {
             tocMobile.classList.remove('visible');
           }
@@ -293,6 +400,15 @@ document.addEventListener('DOMContentLoaded', function () {
         
         e.stopPropagation();
         const isCollapsed = tocMobile.hasAttribute('data-collapsed');
+        
+        // Make TOC more opaque when clicked
+        // Reset scroll distances and timers, immediately switch to scrolling-up
+        tocScrollUpDistance = 0;
+        tocScrollUpStartTime = null;
+        tocScrollDownDistance = 0;
+        tocScrollDownStartTime = null;
+        tocMobile.classList.add('scrolling-up');
+        tocMobile.classList.remove('scrolling-down');
         
         if (isCollapsed) {
           tocMobile.removeAttribute('data-collapsed');

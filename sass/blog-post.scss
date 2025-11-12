@@ -9,58 +9,17 @@
     
     @include respond-to('md') {
         margin: 0 auto;
-        position: relative;
     }
 
-    // TOC desktop wrapper - positioned at content start, contains sticky TOC
+    // TOC desktop wrapper: Positioned at content start with JavaScript
     .toc-desktop-wrapper {
-        // Mobile: normal flow, wrapper doesn't affect layout
-        // Desktop only styles (xl and up)
         @include respond-to('xl') {
-            position: absolute;
             // Position wrapper to the left of centered content (700px wide)
             // Formula: center of viewport (50%) - half content width (350px) - TOC width (200px) - gap (30px)
+            // Top and height will be set by JavaScript to align with post-content start and match post-content height
+            position: absolute;
             left: calc(50% - 350px - 230px);
-            // Top will be set by JavaScript to align with post-content start
-            top: 0;
             width: 200px;
-            // Height will be set by JavaScript to match post-content height
-            // This allows sticky to work properly
-            min-height: 100vh; // Minimum height to ensure sticky works
-            pointer-events: none; // Allow clicks to pass through wrapper
-        }
-        
-        // Ensure wrapper doesn't affect layout on smaller screens
-        @media (max-width: 1199px) {
-            position: static;
-            width: auto;
-            height: auto;
-            min-height: auto;
-            left: auto;
-            top: auto;
-        }
-    }
-
-    // TOC inside wrapper - visible and interactive (desktop only)
-    .toc-desktop-wrapper .toc-mobile {
-        @include respond-to('xl') {
-            pointer-events: auto; // Re-enable clicks on TOC
-        }
-    }
-    
-    // Desktop TOC inside wrapper - enable pointer events
-    .toc-desktop-wrapper .toc-desktop {
-        @include respond-to('xl') {
-            pointer-events: auto; // Re-enable clicks on desktop TOC
-        }
-    }
-
-    // Post content - keep centered independently
-    .post-content {
-        @include respond-to('xl') {
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
         }
     }
 
