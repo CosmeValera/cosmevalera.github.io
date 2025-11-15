@@ -255,11 +255,22 @@
         padding: 0;
         overflow: visible;
 
+        // Desktop TOC title - subtle and compact
+        .toc-desktop-title {
+            color: var(--text-color);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0 0 0.75rem 0;
+            padding: 0 0.5rem;
+            line-height: 1.2;
+        }
+
         // TOC list styles - subtle and compact, completely transparent
         .toc-list {
             display: block;
             max-height: calc(100vh - 80px);
-            padding: 0.25rem 0;
+            padding: 0rem 0rem 0 0.5rem;
             background: transparent;
             border-radius: 0;
             border: 0;
