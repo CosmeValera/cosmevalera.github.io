@@ -366,5 +366,30 @@
                 border: 2px $accent-color-bright dashed;
             }
         }
+
+        .exchange-toggle-container {
+            .exchange-toggle {
+                background: rgba(255, 255, 255, 0.95);
+                border: 1px solid rgba($accent-color-bright, 0.3);
+                box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+
+                .toggle-option {
+                    color: rgba($text-color-bright, 0.85);
+                    background: transparent;
+
+                    &.active {
+                        background: linear-gradient(145deg, rgba($accent-color-bright, 0.12), rgba($active-color-bright, 0.09));
+                        color: $accent-color-bright;
+                        border: 1px solid rgba($accent-color-bright, 0.14);
+                        box-shadow: 0 2px 8px rgba($accent-color-bright, 0.06);
+                    }
+
+                    &:hover:not(.active) {
+                        color: $text-color-bright;
+                        background: rgba(255,255,255,0.6);
+                    }
+                }
+            }
+        }
     }
 }
