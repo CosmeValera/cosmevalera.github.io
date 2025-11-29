@@ -363,4 +363,32 @@ body {
       }
     }
   }
+
+  // Bright theme: improve filter button contrast on light background
+  body.bright-theme & {
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-bright, 0.15);
+          color: $accent-color-bright;
+          border: 1px solid rgba($accent-color-bright, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-bright, 0.25);
+            border-color: $accent-color-bright;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-bright;
+          color: $primary-bg-bright;
+          border: 1px solid $active-color-bright;
+          
+          &:hover {
+            background-color: lighten($active-color-bright, 5%);
+          }
+        }
+      }
+    }
+  }
 }
