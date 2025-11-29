@@ -181,39 +181,55 @@ body.dark-theme {
   }
 }
 
-// Bright theme: ensure high contrast text on dark sponsor cards
+// Bright theme: light sponsor cards with proper contrast
 body.bright-theme {
   .sponsor {
     #sponsor-inner {
       #section-contribution {
         .contribution {
-          // Default text inside the contribution card
-          color: $text-color;
+          background: linear-gradient(135deg, $primary-bg-bright, $secondary-bg-bright);
+
+          .contribution-title {
+            color: #f7931a;
+          }
 
           .contribution-subtitle,
           .contribution-description {
-            color: $text-color;
+            color: $text-color-bright;
             opacity: 0.9;
+          }
+
+          .donation-options {
+            .btn-donate {
+              &.lightning {
+                background-color: #f7931a;
+                color: white;
+                
+                &:hover {
+                  background-color: #e5841a;
+                }
+              }
+            }
           }
         }
       }
 
       #section-reasons-sponsor {
-        // Make all copy inside the reasons card white by default
-        color: $text-color;
+        background: linear-gradient(135deg, $primary-bg-bright, $secondary-bg-bright);
+        border: 4px solid rgba($accent-color-bright, 0.3);
 
         .sponsor-title {
-          color: $text-color;
+          color: $text-color-bright;
         }
 
         .sponsor-features {
           .sponsor-feature {
             .feature-title {
-              color: $text-color;
+              color: $text-color-bright;
             }
 
             p {
-              color: rgba($text-color, 0.9);
+              color: rgba($text-color-bright, 0.8);
 
               a {
                 color: $accent-color-bright;

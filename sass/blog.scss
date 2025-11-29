@@ -18,7 +18,6 @@
     font-style: italic;
   }
 
-  // Bright theme: use dark text for readability on light background
   body.bright-theme & {
     .blog-intro {
       color: $text-color-bright;

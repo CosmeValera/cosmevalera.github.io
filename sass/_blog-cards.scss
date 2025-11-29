@@ -484,11 +484,12 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
 
       .blog-title {
         color: $text-color-bright;
+        font-weight: bold;
       }
 
       .blog-card-details {
         .card-description {
-          color: rgba($text-color-bright, 0.8);
+          color: $text-color-bright;
         }
 
         .preview-indicator {
