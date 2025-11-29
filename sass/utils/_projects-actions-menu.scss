@@ -74,8 +74,16 @@
                     text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
                 }
             }
+    
+            body.bright-theme & {
+                &.filter-menu-button, &.quick-view-button {
+                    background: linear-gradient(135deg, #fff 0%, #fff 100%);
+                    border: 2px solid #00b8b8;
+                }
+            }
         }
     }
+
     
     @include respond-to('md') {
         display: none;

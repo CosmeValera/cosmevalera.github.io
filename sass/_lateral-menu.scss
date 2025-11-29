@@ -476,6 +476,11 @@
                         }
                     }
 
+                    &.blog-menu-item {
+                        background: linear-gradient(135deg, #fff 0%, #fff 100%);
+                        border: 2px solid #00b8b8;
+                    }
+
                     &.active-page {
                         background: linear-gradient(135deg, 
                             rgba($active-color-bright, 0.2) 0%, 
