@@ -24,6 +24,17 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     z-index: 1;
     box-sizing: border-box;
 
+    // Dark theme: improve card contrast against dark background
+    body.dark-theme & {
+      background: linear-gradient(-90deg, #1a2d2d, #1f3a3a);
+      border: 1px solid rgba($accent-color-dark, 0.25);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+
+      &:hover {
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.8);
+      }
+    }
+
     // Main card hover effect
     &:hover {
       transform: translateY(-5px);

@@ -335,4 +335,32 @@ body {
       }
     }
   }
+
+  // Dark theme: improve filter button contrast
+  body.dark-theme & {
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-dark, 0.2);
+          color: $accent-color-dark;
+          border: 1px solid rgba($accent-color-dark, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-dark, 0.3);
+            border-color: $accent-color-dark;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-tealish;
+          color: $primary-bg-dark;
+          border: 1px solid $active-color-tealish;
+          
+          &:hover {
+            background-color: lighten($active-color-tealish, 8%);
+          }
+        }
+      }
+    }
+  }
 }
