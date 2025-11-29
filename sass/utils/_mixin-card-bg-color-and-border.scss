@@ -38,6 +38,46 @@
   }
 }
 // END: BLOG-CARD BG COLOR EFFECT WHEN HOVERED //////
+
+// BLOG-CARD BG COLOR EFFECT WHEN HOVERED (BRIGHT THEME) //////
+@mixin card-color-accent-based-on-primary-tag-bright {
+  &.tag-frontend {
+    background: 
+      linear-gradient(-90deg, 
+        mix($frontend-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
+  &.tag-architecture {
+    background: 
+      linear-gradient(-90deg, 
+        mix($architecture-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
+  &.tag-backend {
+    background: 
+      linear-gradient(-90deg, 
+        mix($backend-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%,
+        $secondary-bg-bright);
+  }
+  &.tag-finance {
+    background: 
+      linear-gradient(-90deg, 
+        mix($finance-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
+  &.tag-bitcoin {
+    background: 
+      linear-gradient(-90deg, 
+        mix($bitcoin-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
+}
+// END: BLOG-CARD BG COLOR EFFECT WHEN HOVERED (BRIGHT THEME) //////
 /////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////
