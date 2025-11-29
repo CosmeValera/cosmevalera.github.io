@@ -93,17 +93,6 @@ body.bright-theme {
         .tags-description {
             color: rgba($text-color-bright, 0.85);
         }
-
-        .tags-cloud {
-            .tag {
-                color: $text-color-bright;
-
-                .tag-count {
-                    background: rgba($text-color-bright, 0.08);
-                    color: $text-color-bright;
-                }
-            }
-        }
     }
 }
 ////// END: Tags //////
