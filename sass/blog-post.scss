@@ -306,4 +306,65 @@
     ////////////////////////////
     // END: RELATED-CONTAINER //
     ////////////////////////////
+
+    // Bright theme styles
+    body.bright-theme & {
+        // Global links inside post content
+        a {
+            color: $accent-color-bright;
+
+            &:hover {
+                text-decoration-color: $accent-color-bright;
+            }
+        }
+
+        // Back link at top
+        .back-link {
+            color: rgba($text-color-bright, 0.7);
+
+            &:hover {
+                color: $text-color-bright;
+            }
+        }
+
+        // Main post title
+        .blog-post-title {
+            color: $text-color-bright;
+        }
+
+        // Metadata row
+        .post-metadata {
+            color: rgba($text-color-bright, 0.7);
+        }
+
+        // Intro / presentation text
+        .presentation-text {
+            color: rgba($text-color-bright, 0.9);
+        }
+
+        pre {
+            border: 1px solid $tertiary-bg-bright;
+            background-color: rgba($tertiary-bg-bright, 0.8);
+            color: $text-color-bright;
+        }
+
+        :not(pre) > code {
+            color: $accent-color-bright;
+            background-color: rgba($accent-color-bright, 0.1);
+        }
+
+        blockquote {
+            border-left: 6px solid $accent-color-bright;
+        }
+
+        hr {
+            border: 1px solid rgba($text-color-bright, 0.2);
+
+            &.footer-rule,
+            &.footer-rule-2 {
+                background-color: $tertiary-bg-bright;
+                border: 2px $accent-color-bright dashed;
+            }
+        }
+    }
 }

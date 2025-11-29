@@ -161,3 +161,52 @@
     margin: 0 auto;
   }
 }
+
+// Bright theme: ensure high contrast text on dark sponsor cards
+body.bright-theme {
+  .sponsor {
+    #sponsor-inner {
+      #section-contribution {
+        .contribution {
+          // Default text inside the contribution card
+          color: $text-color;
+
+          .contribution-subtitle,
+          .contribution-description {
+            color: $text-color;
+            opacity: 0.9;
+          }
+        }
+      }
+
+      #section-reasons-sponsor {
+        // Make all copy inside the reasons card white by default
+        color: $text-color;
+
+        .sponsor-title {
+          color: $text-color;
+        }
+
+        .sponsor-features {
+          .sponsor-feature {
+            .feature-title {
+              color: $text-color;
+            }
+
+            p {
+              color: rgba($text-color, 0.9);
+
+              a {
+                color: $accent-color-bright;
+
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

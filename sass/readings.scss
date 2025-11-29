@@ -21,6 +21,14 @@
         font-style: italic;
     }
 
+    // Bright theme: use dark text for readability on light background
+    body.bright-theme & {
+        .readings-intro {
+        color: $text-color-bright;
+        font-weight: 500;
+        }
+    }
+
     .readings-grid {
         display: grid;
         grid-template-columns: 1fr;

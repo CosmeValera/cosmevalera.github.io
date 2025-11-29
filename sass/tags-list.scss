@@ -74,5 +74,37 @@
         }
     }
 }
+
+// Bright theme styles for tag list page
+body.bright-theme {
+    .tag-list {
+        .back-link {
+            color: rgba($text-color-bright, 0.7);
+
+            &:hover {
+                color: $text-color-bright;
+            }
+        }
+
+        h1.tags-list-title {
+            color: $text-color-bright;
+        }
+
+        .tags-description {
+            color: rgba($text-color-bright, 0.85);
+        }
+
+        .tags-cloud {
+            .tag {
+                color: $text-color-bright;
+
+                .tag-count {
+                    background: rgba($text-color-bright, 0.08);
+                    color: $text-color-bright;
+                }
+            }
+        }
+    }
+}
 ////// END: Tags //////
 ///////////////////////

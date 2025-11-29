@@ -466,4 +466,10 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       }
     }
   }
+
+  // Bright theme styles
+  body.bright-theme & {
+    background: linear-gradient(-90deg, $secondary-bg-bright);
+    border: 1px solid rgba($accent-color-bright, 0.3);
+  }
 }
