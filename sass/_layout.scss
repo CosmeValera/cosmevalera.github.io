@@ -66,6 +66,21 @@ body.dark-theme {
   }
 }
 
+body.bright-theme {
+  background-color: $primary-bg-bright;
+  color: $text-color-bright;
+
+  .page-wrapper {
+    color: $text-color-bright;
+    
+    footer {
+      a {
+        color: $accent-color-bright;
+      }
+    }
+  }
+}
+
 .footer-responsive {
   display: flex;
   flex-direction: column;

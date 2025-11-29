@@ -153,4 +153,34 @@
       opacity: 0.35 !important;
     }
   }
+
+  // Bright theme - darker grid lines for visibility on light background
+  body.bright-theme & {
+    &::before {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.02) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.02) 2px, transparent 2px),
+        radial-gradient(circle 2px at 20px 20px, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
+        radial-gradient(circle 2px at 60px 60px, rgba(0, 0, 0, 0.02) 0%, transparent 50%);
+    }
+
+    &::after {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.05) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.05) 2px, transparent 2px);
+    }
+
+    .grid-layer-3 {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.04) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.04) 2px, transparent 2px);
+    }
+
+    .grid-ripple {
+      background:
+        radial-gradient(circle, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.04) 22%, rgba(0, 0, 0, 0.02) 40%, transparent 70%),
+        radial-gradient(circle, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.03) 20%, transparent 55%);
+      mix-blend-mode: multiply;
+    }
+  }
 }

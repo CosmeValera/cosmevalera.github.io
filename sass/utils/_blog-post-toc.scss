@@ -41,6 +41,23 @@
         }
     }
 
+    // Bright theme styles
+    body.bright-theme & {
+        background: rgba($primary-bg-bright, 0.95);
+        border: 1px solid rgba($accent-color-bright, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+        &.visible {
+            background: rgba($primary-bg-bright, 0.95);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+            &.scrolling-down {
+                background: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            }
+        }
+    }
+
     // Hide FAB button on mobile
     .toc-fab-button {
         display: none;
@@ -63,6 +80,12 @@
         position: relative;
         z-index: 2;
         @include transition(all 0.2s ease);
+
+        // Bright theme header
+        body.bright-theme & {
+            background: linear-gradient(135deg, rgba($accent-color-bright, 0.15), rgba($active-color-bright, 0.1));
+            color: $text-color-bright;
+        }
 
         &::before {
             content: '';
@@ -96,6 +119,12 @@
             transform: rotate(-135deg) translateY(-0.4rem); // Points down when collapsed
             transform-origin: center center;
             @include transition(transform 0.3s cubic-bezier(0.4, 0, 0.2, 1));
+
+            // Bright theme chevron
+            body.bright-theme & {
+                border-right: 2px solid rgba($text-color-bright, 0.8);
+                border-bottom: 2px solid rgba($text-color-bright, 0.8);
+            }
         }
     }
 
@@ -175,6 +204,21 @@
 
                 &::before {
                     width: 100%;
+                }
+            }
+
+            // Bright theme link styles
+            body.bright-theme & {
+                color: rgba($text-color-bright, 0.85);
+
+                &::before {
+                    background: linear-gradient(135deg, rgba($accent-color-bright, 0.2), rgba($active-color-bright, 0.1));
+                }
+
+                &.active {
+                    color: $accent-color-bright;
+                    border-left-color: $accent-color-bright;
+                    background: rgba($accent-color-bright, 0.15);
                 }
             }
         }
@@ -264,6 +308,11 @@
             margin: 0 0 0.75rem 0;
             padding: 0 0.5rem;
             line-height: 1.2;
+
+            // Bright theme title
+            body.bright-theme & {
+                color: $text-color-bright;
+            }
         }
 
         // TOC list styles - subtle and compact, completely transparent
@@ -307,6 +356,20 @@
                     border-left-color: $accent-color !important;
                     background: transparent;
                     font-weight: 600;
+                }
+
+                // Bright theme desktop TOC links
+                body.bright-theme & {
+                    color: rgba($text-color-bright, 0.7);
+
+                    &:hover {
+                        color: rgba($text-color-bright, 0.95) !important;
+                    }
+
+                    &.active {
+                        color: $accent-color-bright !important;
+                        border-left-color: $accent-color-bright !important;
+                    }
                 }
             }
         }

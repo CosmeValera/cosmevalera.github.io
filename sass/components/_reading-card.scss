@@ -348,4 +348,91 @@
             }
         }
     }
+
+    // Bright theme styles
+    body.bright-theme & {
+        background: linear-gradient(145deg, rgba($secondary-bg-bright, 0.9), rgba($tertiary-bg-bright, 0.7));
+        border: 1px solid rgba($accent-color-bright, 0.3);
+
+        .card-indicators {
+            .review-badge {
+                background: rgba($accent-color-bright, 0.25);
+                border: 1px solid rgba($accent-color-bright, 0.5);
+                color: $text-color-bright;
+
+                span {
+                    color: $text-color-bright;
+                }
+            }
+
+            .reading-date-top {
+                color: $text-color-bright;
+                background: rgba(255, 255, 255, 0.9);
+
+                i {
+                    color: $accent-color-bright;
+                }
+            }
+        }
+
+        .reading-card-overlay {
+            background: linear-gradient(
+                to bottom,
+                rgba($secondary-bg-bright, 0.3) 0%,
+                rgba($secondary-bg-bright, 0.85) 50%,
+                rgba($secondary-bg-bright, 0.95) 100%
+            );
+
+            .reading-card-navigation {
+                .content-area .content-section {
+                    .reading-title,
+                    .reading-description,
+                    .reading-insights h4,
+                    .reading-insights ul li,
+                    .reading-personal-note h4,
+                    .reading-personal-note p {
+                        color: $text-color-bright;
+                    }
+
+                    .reading-title {
+                        color: $text-color-bright;
+                    }
+
+                    .reading-author {
+                        color: rgba($text-color-bright, 0.8);
+                    }
+
+                    .reading-insights,
+                    .reading-personal-note {
+                        h4 {
+                            color: $accent-color-bright;
+                        }
+                    }
+
+                    .reading-insights ul li::before {
+                        color: $accent-color-bright;
+                    }
+                }
+
+                .bottom-navigation .nav-squares .nav-square {
+                    background: rgba($accent-color-bright, 0.2);
+                    border: 2px solid rgba($accent-color-bright, 0.4);
+                    color: rgba($text-color-bright, 0.7);
+
+                    &:hover {
+                        background: rgba($accent-color-bright, 0.3);
+                        border-color: rgba($accent-color-bright, 0.6);
+                        color: $text-color-bright;
+                    }
+
+                    &.active {
+                        background: rgba($accent-color-bright, 0.4);
+                        border-color: $accent-color-bright;
+                        color: $text-color-bright;
+                        box-shadow: 0 2px 8px rgba($accent-color-bright, 0.3);
+                    }
+                }
+            }
+        }
+    }
 }

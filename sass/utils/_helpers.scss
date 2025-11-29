@@ -23,4 +23,17 @@
 ::-webkit-scrollbar-thumb:hover { /* Handle on hover */
     background-color: $accent-color;
 }
+
+// Bright theme scrollbar
+body.bright-theme {
+    &::-webkit-scrollbar-track {
+        background: rgba($primary-bg-dark, 0.1);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba($primary-bg-dark, 0.7);
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: rgba($primary-bg-dark, 0.9);
+    }
+}
 /* END: SCROLLBAR */

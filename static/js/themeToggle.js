@@ -3,30 +3,57 @@ document.addEventListener('DOMContentLoaded', function () {
   const text = btn.querySelector('.theme-toggle-text');
   const icon = btn.querySelector('i');
   const darkClass = 'dark-theme';
-  const darkLabel = 'Dark';
-  const lightLabel = 'Light';
+  const brightClass = 'bright-theme';
+  
+  const themes = {
+    light: { label: 'Light', icon: 'fa-sun' },
+    dark: { label: 'Dark', icon: 'fa-moon' },
+    bright: { label: 'Bright', icon: 'fa-star' }
+  };
 
-  function setTheme(isDark) {
-    document.body.classList.toggle(darkClass, isDark);
-    if (isDark) {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-      text.textContent = darkLabel;
-    } else {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-      text.textContent = lightLabel;
+  function getCurrentTheme() {
+    if (document.body.classList.contains(darkClass)) {
+      return 'dark';
+    } else if (document.body.classList.contains(brightClass)) {
+      return 'bright';
     }
+    return 'light';
+  }
+
+  function setTheme(theme) {
+    // Remove all theme classes
+    document.body.classList.remove(darkClass, brightClass);
+    
+    // Add appropriate class
+    if (theme === 'dark') {
+      document.body.classList.add(darkClass);
+    } else if (theme === 'bright') {
+      document.body.classList.add(brightClass);
+    }
+    
+    // Update icon and text
+    const themeConfig = themes[theme];
+    icon.className = 'fa ' + themeConfig.icon;
+    text.textContent = themeConfig.label;
+    
+    // Save to localStorage
+    localStorage.setItem('theme', theme);
+  }
+
+  function getNextTheme(currentTheme) {
+    const themeOrder = ['light', 'dark', 'bright'];
+    const currentIndex = themeOrder.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % themeOrder.length;
+    return themeOrder[nextIndex];
   }
 
   // Load preference
-  const saved = localStorage.getItem('theme');
-  let isDark = saved === 'dark';
-  setTheme(isDark);
+  const saved = localStorage.getItem('theme') || 'dark';
+  setTheme(saved);
 
   btn.addEventListener('click', function () {
-    isDark = !document.body.classList.contains(darkClass);
-    setTheme(isDark);
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    const currentTheme = getCurrentTheme();
+    const nextTheme = getNextTheme(currentTheme);
+    setTheme(nextTheme);
   });
 });

@@ -167,7 +167,7 @@
                 gap: 1rem;
                 margin-top: 0.8rem;
                 
-                .col-12 {
+                    .col-12 {
                     a {
                         display: inline-flex;
                         align-items: center;
@@ -181,6 +181,40 @@
                         
                         span {
                             font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Bright theme refinements for the home page
+body.bright-theme {
+    .home {
+        .column.left {
+            img.portrait-index {
+                // Softer, darker border so it stands out on the bright background
+                border: 10px solid rgb($text-color-bright, 0.3);
+            }
+        }
+
+        .column.right {
+            .quick-links {
+                .explore-options {
+                    .explore-option {
+                        color: $accent-color-bright;
+                        @include underline-effect(absolute, 0px, $accent-color-bright);
+                    }
+                }
+            }
+
+            .links {
+                .row {
+                    .col-12 {
+                        a {
+                            color: $accent-color-bright;
+                            @include underline-effect(absolute, 0px, $accent-color-bright);
                         }
                     }
                 }

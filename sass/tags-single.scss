@@ -131,5 +131,24 @@
         }
     }
 }
+
+// Bright theme styles for tag single page
+body.bright-theme {
+    .tag-single {
+        .back-link {
+            color: rgba($text-color-bright, 0.7);
+
+            &:hover {
+                color: $text-color-bright;
+            }
+        }
+
+        .tag-header {
+            h1.tags-single-title {
+                color: $text-color-bright;
+            }
+        }
+    }
+}
 ////// END: Tags //////
 ///////////////////////

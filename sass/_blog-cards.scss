@@ -24,6 +24,17 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     z-index: 1;
     box-sizing: border-box;
 
+    // Dark theme: improve card contrast against dark background
+    body.dark-theme & {
+      background: linear-gradient(-90deg, #1a2d2d, #1f3a3a);
+      border: 1px solid rgba($accent-color-dark, 0.25);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+
+      &:hover {
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.8);
+      }
+    }
+
     // Main card hover effect
     &:hover {
       transform: translateY(-5px);
@@ -460,8 +471,100 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         animation: lower-card 0.3s forwards;
 
         @keyframes lower-card {
-          from { z-index: 10; }
-          to { z-index: 1; }
+          from { z-index: 10; }          to { z-index: 1; }
+        }
+      }
+    }
+
+    // Bright theme styles
+    body.bright-theme & {
+      background: linear-gradient(135deg, $primary-bg-bright, $secondary-bg-bright);
+      border: 1px solid rgba($accent-color-bright, 0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+      .blog-title {
+        color: $text-color-bright;
+        font-weight: bold;
+      }
+
+      .blog-card-details {
+        .card-description {
+          color: $text-color-bright;
+        }
+
+        .preview-indicator {
+          background: linear-gradient(145deg, $tertiary-bg-bright, $secondary-bg-bright);
+          color: $accent-color-bright;
+          border: 1px solid rgba($accent-color-bright, 0.2);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-date-and-stats {
+          border-top-color: rgba($accent-color-bright, 0.15);
+
+          .card-date {
+            color: $accent-color-bright;
+          }
+
+          .card-stats {
+            color: rgba($text-color-bright, 0.8);
+            small {
+              color: black;
+            }
+          }
+        }
+      }
+
+      .blog-card-tags .blog-card-tag {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      
+      .blog-card-icon {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      // Tablet specific bright adjustments
+      .blog-card-tablet-wrapper .blog-card-cover-preview-tablet {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        img {
+          border-color: rgba($accent-color-bright, 0.3);
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+
+        @include respond-to('md') {
+          @include card-color-accent-based-on-primary-tag-bright();
+
+          &:has(.blog-card-recommended, .blog-card-for-beginners) {
+              .blog-card-icon {
+                  @include icon-border-when-has-icon-based-on-primary-tag();
+              }
+              &, .blog-card-cover-preview-down, .blog-card-cover-preview-up {
+                  @include card-border-when-has-icon-based-on-primary-tag();
+              }
+          }
+
+          // Preview Up Bright
+          &.preview-up .blog-card-cover-preview-up-wrapper .blog-card-cover-preview-up {
+            background: linear-gradient(135deg, $primary-bg-bright, $secondary-bg-bright);
+            border: 1px solid rgba($accent-color-bright, 0.2);
+            border-bottom: 0;
+            box-shadow: 0 -8px 12px rgba(0, 0, 0, 0.05);
+            
+            @include card-color-accent-based-on-primary-tag-bright();
+          }
+
+          // Preview Down Bright
+          &:not(.preview-up) .blog-card-cover-preview-down {
+            background: linear-gradient(135deg, $primary-bg-bright, $secondary-bg-bright);
+            border: 1px solid rgba($accent-color-bright, 0.2);
+            border-top: 0;
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+            
+            @include card-color-accent-based-on-primary-tag-bright();
+          }
         }
       }
     }

@@ -22,6 +22,14 @@ body {
     font-style: italic;
   }
 
+  // Bright theme: use dark text for readability on light background
+  body.bright-theme & {
+    .projects-intro {
+      color: $text-color-bright;
+      font-weight: 500;
+    }
+  }
+
   // Desktop-only filter buttons
   .filter-buttons-desktop {
     display: none; // Hidden by default (mobile)
@@ -322,6 +330,62 @@ body {
             &:hover {
               background-color: lighten($active-color-tealish, 8%);
             }
+          }
+        }
+      }
+    }
+  }
+
+  // Dark theme: improve filter button contrast
+  body.dark-theme & {
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-dark, 0.2);
+          color: $accent-color-dark;
+          border: 1px solid rgba($accent-color-dark, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-dark, 0.3);
+            border-color: $accent-color-dark;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-tealish;
+          color: $primary-bg-dark;
+          border: 1px solid $active-color-tealish;
+          
+          &:hover {
+            background-color: lighten($active-color-tealish, 8%);
+          }
+        }
+      }
+    }
+  }
+
+  // Bright theme: improve filter button contrast on light background
+  body.bright-theme & {
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-bright, 0.15);
+          color: $accent-color-bright;
+          border: 1px solid rgba($accent-color-bright, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-bright, 0.25);
+            border-color: $accent-color-bright;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-bright;
+          color: $primary-bg-bright;
+          border: 1px solid $active-color-bright;
+          
+          &:hover {
+            background-color: lighten($active-color-bright, 5%);
           }
         }
       }

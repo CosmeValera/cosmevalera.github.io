@@ -18,10 +18,18 @@
     font-style: italic;
   }
 
+  body.bright-theme & {
+    .blog-intro {
+      color: $text-color-bright;
+      font-weight: 500;
+    }
+  }
+
   .blog-cards { 
     max-width: 900px;
     margin: 0 clamp(0.5rem, 2vw, 10rem);
     padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     display: grid;
     grid-template-columns: 1fr; // 👉 Mobile default: 1 column
     gap: 2rem 0;

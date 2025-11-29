@@ -404,4 +404,134 @@
             }
         }
     }
+
+    // Bright theme styles
+    body.bright-theme & {
+        .fab-button {
+            background: linear-gradient(135deg, $menu-item-bg-bright 0%, lighten($menu-item-bg-bright, 5%) 100%);
+            border: 2px solid $accent-color-bright;
+            color: $accent-color-bright;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+            &.active {
+                background: linear-gradient(135deg, 
+                    rgba(255, 255, 255, 0.95) 0%, 
+                    rgba(255, 255, 255, 0.98) 100%
+                );
+                border-color: $accent-color-bright;
+            }
+        }
+
+        .lateral-menu {
+            .blog-menu-separator, .readings-menu-separator {
+                .blog-menu-label, .readings-menu-label {
+                    color: $accent-color-bright;
+                }
+
+                .separator-line {
+                    background: linear-gradient(90deg, transparent, $accent-color-bright, transparent);
+                }
+            }
+
+            .menu-item-container {
+                &.active {
+                    & ~ .blog-menu-separator .blog-menu-label,
+                    & ~ .readings-menu-separator .readings-menu-label {
+                        color: $active-color-bright;
+                    }
+
+                    & ~ .blog-menu-separator .separator-line,
+                    & ~ .readings-menu-separator .separator-line {
+                        background: linear-gradient(90deg, transparent, $active-color-bright, transparent);
+                    }
+                }
+
+                .menu-item {
+                    background: linear-gradient(135deg, $menu-item-bg-bright 0%, lighten($menu-item-bg-bright, 5%) 100%);
+                    color: $text-color-bright;
+                    border: 2px solid $accent-color-bright;
+                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+                    .menu-icon {
+                        color: $accent-color-bright;
+                    }
+
+                    .menu-label {
+                        color: $accent-color-bright;
+                    }
+
+                    &.blog-menu-item, &.readings-menu-item {
+                        background: linear-gradient(135deg, 
+                            rgba($accent-color-bright, 0.15) 0%, 
+                            rgba($accent-color-bright, 0.25) 100%
+                        );
+                        border-color: rgba($accent-color-bright, 0.6);
+                        
+                        .menu-icon {
+                            color: rgba($accent-color-bright, 0.9);
+                        }
+                        
+                        .menu-label {
+                            color: rgba($accent-color-bright, 0.9);
+                        }
+                    }
+
+                    &.active-page {
+                        background: linear-gradient(135deg, 
+                            rgba($active-color-bright, 0.2) 0%, 
+                            rgba($active-color-bright, 0.3) 100%
+                        );
+                        border-color: $active-color-bright;
+
+                        .menu-label {
+                            color: $active-color-bright;
+                        }
+                        .menu-icon {
+                            color: $active-color-bright;
+                        }
+                    }
+                }
+
+                .active-tooltip {
+                    background: $active-color-bright;
+                    color: $primary-bg-bright;
+
+                    &::after {
+                        border-left: 8px solid $active-color-bright;
+                    }
+                }
+            }
+
+            @include respond-to('md') {
+                .menu-item-container .menu-item {
+                    background-color: $menu-item-bg-bright;
+                    color: $text-color-bright;
+
+                    &.active-page {
+                        background: linear-gradient(135deg, 
+                            rgba($active-color-bright, 0.2) 0%, 
+                            rgba($active-color-bright, 0.3) 100%
+                        );
+                        border-color: $active-color-bright;
+
+                        .menu-icon {
+                            color: $active-color-bright;
+                        }
+
+                        &:hover {
+                            background: linear-gradient(135deg, 
+                                rgba($active-color-bright, 0.3) 0%, 
+                                rgba($active-color-bright, 0.4) 100%
+                            );
+                            border-color: $active-color-bright;
+                            
+                            .menu-icon {
+                                color: $active-color-bright;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
