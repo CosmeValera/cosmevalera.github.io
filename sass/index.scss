@@ -195,7 +195,7 @@ body.bright-theme {
         .column.left {
             img.portrait-index {
                 // Softer, darker border so it stands out on the bright background
-                border: 10px solid rgb($text-color-bright, 0.3);
+                border: 10px solid rgba($text-color-bright, 0.3);
             }
         }
 
