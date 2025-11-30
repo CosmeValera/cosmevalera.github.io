@@ -70,11 +70,6 @@
             width: 320px;
             height: 320px;
         }
-
-        @include respond-to('lg') {
-            width: 400px;
-            height: 400px;
-        }
     }
 }
 
@@ -103,10 +98,15 @@
         i {
             font-size: 0.9rem;
         }
+
+        a {
+            color: $accent-color;
+            text-decoration: none;
+        }
     }
 
     .presentation-title {
-        font-size: 6.5rem;
+        font-size: 6rem;
         font-weight: 800;
         line-height: 0.9;
         margin: 0;
@@ -116,7 +116,7 @@
     }
 
     .presentation {
-        font-size: 4.5rem;
+        font-size: 3.75rem;
         font-weight: 700;
         margin: 0;
         line-height: 1.1;
@@ -134,7 +134,7 @@
 
     .description {
         font-size: 1.25rem;
-        line-height: 1.6;
+        line-height: 1.4;
         color: rgba($text-color, 0.7);
         max-width: 650px;
         margin-top: 1rem;
@@ -156,7 +156,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1.2rem;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
 
         .btn {
             display: inline-flex;
@@ -171,14 +171,14 @@
             gap: 0.6rem;
 
             &.btn-primary {
-                background: $accent-color;
+                background: linear-gradient(135deg, $accent-color 0%, $active-color-tealish 100%);
                 color: $primary-bg;
                 box-shadow: 0 4px 20px rgba($accent-color, 0.4);
+                border: none;
 
                 &:hover {
                     transform: translateY(-3px);
                     box-shadow: 0 8px 25px rgba($accent-color, 0.5);
-                    background: lighten($accent-color, 5%);
                 }
             }
 
@@ -196,7 +196,7 @@
     }
 
     .social-links {
-        margin-top: 2.5rem;
+        margin-top: 1.5rem;
         display: flex;
         align-items: center;
         gap: 1.2rem;
@@ -205,7 +205,7 @@
             font-size: 1rem;
             color: rgba($text-color, 0.5);
             margin-bottom: 0;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .social-icons {
@@ -268,6 +268,10 @@ body.bright-theme {
                 background: rgba($accent-color-bright, 0.1);
                 border-color: rgba($accent-color-bright, 0.3);
                 color: darken($accent-color-bright, 10%);
+
+                a {
+                    color: darken($accent-color-bright, 10%);
+                }
             }
 
             .presentation-title {
@@ -301,12 +305,11 @@ body.bright-theme {
 
             .action-buttons {
                 .btn-primary {
-                    background: $accent-color-bright;
                     color: #fff;
                     box-shadow: 0 4px 20px rgba($accent-color-bright, 0.4);
-                    
+
                     &:hover {
-                        background: lighten($accent-color-bright, 5%);
+                        box-shadow: 0 8px 25px rgba($accent-color-bright, 0.8);
                     }
                 }
 
