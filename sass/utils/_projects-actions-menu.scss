@@ -1,91 +1,57 @@
-// Projects Actions Menu (Mobile Only)
-.projects-actions-container {
+// Mobile Filter Button Styles
+.mobile-filter-button-container {
     position: fixed;
-    top: 32px;
-    right: 24px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    .menu-item-container {
-        margin: 0;
-        transition: opacity 0.3s ease, transform 0.3s ease;
-
-        .menu-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.9;
-            background: linear-gradient(135deg, $menu-item-bg 0%, lighten($menu-item-bg, 15%) 100%);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            color: $text-color;
-            padding: 0;
-            border-radius: 999px;
-            transition: all 0.3s ease;
-            width: 72px;
-            height: 72px;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid $accent-color;
-            cursor: pointer;
-
-            .menu-icon {
-                font-size: 28px;
-                color: $accent-color;
-                transition: all 0.3s ease;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-
-            .menu-label {
-                font-weight: 600;
-                letter-spacing: 0.5px;
-                text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-                font-size: 0.5rem;
-                text-align: center;
-                line-height: 1;
-                position: absolute;
-                bottom: 9px;
-                left: 50%;
-                transform: translateX(-50%);
-                opacity: 0.8;
-                color: $accent-color;
-            }
-
-            // Active state for Quick View and Filter buttons
-            &.quick-view-button.active,
-            &.filter-menu-button.active {
-                background: linear-gradient(135deg, 
-                    rgba($active-color, 0.15) 0%, 
-                    rgba($active-color, 0.25) 100%
-                );
-                border-color: $active-color;
-
-                .menu-label {
-                    color: $active-color;
-                    text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
-                }
-                .menu-icon {
-                    color: $active-color;
-                    text-shadow: -1px 1px 1px rgba(0, 0, 0, 1);
-                }
-            }
-    
-            body.bright-theme & {
-                &.filter-menu-button, &.quick-view-button {
-                    background: linear-gradient(135deg, #fff 0%, #fff 100%);
-                    border: 2px solid #00b8b8;
-                }
-            }
-        }
-    }
-
+    top: 85px; // Below the header/theme toggle
+    right: 1.5rem;
+    z-index: 999; // Below modal (10000) but above content
     
     @include respond-to('md') {
         display: none;
+    }
+
+    .mobile-filter-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background: $menu-item-bg;
+        border: 1px solid rgba($accent-color, 0.3);
+        border-radius: 50%;
+        color: $accent-color;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        padding: 0;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba($accent-color, 0.2);
+            background: rgba($accent-color, 0.1);
+        }
+
+        &.active {
+            background: $accent-color;
+            color: $primary-bg;
+            box-shadow: 0 0 15px rgba($accent-color, 0.5);
+        }
+    }
+}
+
+// Bright theme overrides
+body.bright-theme .mobile-filter-button-container .mobile-filter-button {
+    background: $menu-item-bg-bright;
+    border-color: rgba($accent-color-bright, 0.3);
+    color: $accent-color-bright;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    &:hover {
+        background: rgba($accent-color-bright, 0.1);
+    }
+
+    &.active {
+        background: $accent-color-bright;
+        color: #fff;
     }
 }
