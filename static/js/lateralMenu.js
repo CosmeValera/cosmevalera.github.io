@@ -1,141 +1,59 @@
-const fabButton = document.querySelector('.fab-button');
-const fabButtonIcon = document.querySelector('.fab-button-i');
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const mobileMenuIcon = mobileMenuToggle ? mobileMenuToggle.querySelector('i') : null;
+const lateralMenuPill = document.querySelector('.lateral-menu-pill');
 
-const lateralMenu = document.querySelector('.lateral-menu');
-const menuNavItems = lateralMenu.querySelectorAll('.menu-item-container');
+// Toggle menu visibility when FAB button is clicked
+function toggleMobileMenu() {
+    if (!mobileMenuToggle || !lateralMenuPill) return;
 
-let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
-let fabScrollUpDistance = 0; // Track accumulated scroll-up distance
-let fabScrollUpStartTime = null; // Track when continuous scroll-up started
-let fabScrollDownDistance = 0; // Track accumulated scroll-down distance
-let fabScrollDownStartTime = null; // Track when continuous scroll-down started
+    mobileMenuToggle.classList.toggle('active');
+    lateralMenuPill.classList.toggle('active');
+    
+    // Toggle icon
+    if (mobileMenuIcon) {
+        if (mobileMenuToggle.classList.contains('active')) {
+            mobileMenuIcon.classList.remove('fa-bars');
+            mobileMenuIcon.classList.add('fa-times');
+        } else {
+            mobileMenuIcon.classList.remove('fa-times');
+            mobileMenuIcon.classList.add('fa-bars');
+        }
+    }
+}
 
 // Handle screen resize
 function handleResize() {
     if (window.innerWidth >= 768) { // $break-medium
         // Remove active states when transitioning to desktop
-        lateralMenu.classList.remove('active');
-        fabButton.classList.remove('active');
-        fabButtonIcon.classList.remove('fa-times');
-        fabButtonIcon.classList.add('fa-bars');
+        if (lateralMenuPill) lateralMenuPill.classList.remove('active');
+        if (mobileMenuToggle) {
+            mobileMenuToggle.classList.remove('active');
+            if (mobileMenuIcon) {
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            }
+        }
     }
 }
 
-// Toggle menu visibility when FAB button is clicked
-function toggleMobileMenu() {
-    // Make FAB button more opaque when clicked
-    // Reset scroll distances and timers, remove scrolling-down class (default = scrolling-up)
-    fabScrollUpDistance = 0;
-    fabScrollUpStartTime = null;
-    fabScrollDownDistance = 0;
-    fabScrollDownStartTime = null;
-    fabButton.classList.remove('scrolling-down');
+// Close menu when clicking outside
+function handleClickOutside(event) {
+    if (!lateralMenuPill || !mobileMenuToggle) return;
     
-    fabButton.classList.toggle('active');
-    lateralMenu.classList.toggle('active');
-    fabButtonIcon.classList.toggle('fa-bars');
-    fabButtonIcon.classList.toggle('fa-times');
+    const isClickInsideMenu = lateralMenuPill.contains(event.target);
+    const isClickOnToggle = mobileMenuToggle.contains(event.target);
     
-    if (lateralMenu.classList.contains('active')) {
-        menuNavItems.forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateX(20px)';
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateX(0)';
-            }, 100 * (index + 1));
-        });
+    if (!isClickInsideMenu && !isClickOnToggle && lateralMenuPill.classList.contains('active')) {
+        toggleMobileMenu();
     }
-}
-
-// Handle scroll direction for FAB button
-function handleScroll() {
-    if (!fabButton) return;
-    
-    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
-    const isScrollingDown = currentScrollY > lastScrollY;
-    
-    // Update scroll direction class on FAB button
-    if (isScrollingDown) {
-        // Initialize start time if this is the first scroll-down frame
-        if (fabScrollDownStartTime === null) {
-            fabScrollDownStartTime = Date.now();
-        }
-        
-        // Check if more than 2 seconds have passed since scroll-down started
-        const timeElapsed = Date.now() - fabScrollDownStartTime;
-        if (timeElapsed > 2000) {
-            // Reset counter if more than 2 seconds have passed
-            fabScrollDownDistance = 0;
-            fabScrollDownStartTime = Date.now();
-        }
-        
-        // Calculate scroll distance in this frame
-        const scrollDistance = currentScrollY - lastScrollY;
-        // Accumulate scroll-down distance
-        fabScrollDownDistance += scrollDistance;
-        
-        // If scrolled down more than 100px within 2 seconds, add scrolling-down class
-        if (fabScrollDownDistance >= 100) {
-            fabButton.classList.add('scrolling-down');
-            // Reset counters after switching
-            fabScrollDownDistance = 0;
-            fabScrollDownStartTime = null;
-            fabScrollUpDistance = 0;
-            fabScrollUpStartTime = null;
-        } else if (fabButton.classList.contains('scrolling-down')) {
-            // Already scrolling-down, keep it that way
-            fabButton.classList.add('scrolling-down');
-        }
-        // If still in default state (scrolling-up) and distance < 100px, keep default
-    } else {
-        // Initialize start time if this is the first scroll-up frame
-        if (fabScrollUpStartTime === null) {
-            fabScrollUpStartTime = Date.now();
-        }
-        
-        // Check if more than 2 seconds have passed since scroll-up started
-        const timeElapsed = Date.now() - fabScrollUpStartTime;
-        if (timeElapsed > 2000) {
-            // Reset counter if more than 2 seconds have passed
-            fabScrollUpDistance = 0;
-            fabScrollUpStartTime = Date.now();
-        }
-        
-        // Calculate scroll distance in this frame
-        const scrollDistance = lastScrollY - currentScrollY;
-        // Accumulate scroll-up distance
-        fabScrollUpDistance += scrollDistance;
-        
-        // If scrolled up more than 500px within 2 seconds, remove scrolling-down class (default = scrolling-up)
-        if (fabScrollUpDistance >= 500) {
-            fabButton.classList.remove('scrolling-down');
-            // Reset counters after switching
-            fabScrollUpDistance = 0;
-            fabScrollUpStartTime = null;
-            fabScrollDownDistance = 0;
-            fabScrollDownStartTime = null;
-        } else if (!fabButton.classList.contains('scrolling-down')) {
-            // Already in default state (scrolling-up), keep it that way
-            fabButton.classList.remove('scrolling-down');
-        }
-        // If still scrolling-down and distance < 500px, keep scrolling-down class
-    }
-    
-    lastScrollY = currentScrollY;
 }
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Add resize and click handlers
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
     window.addEventListener('resize', handleResize);
-    fabButton.addEventListener('click', toggleMobileMenu);
-    
-    // Add scroll handler for FAB button translucency
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Set initial scroll direction
-    handleScroll();
-
+    document.addEventListener('click', handleClickOutside);
 });

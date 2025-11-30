@@ -1,8 +1,7 @@
 .lateral-menu-pill {
     position: fixed;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+    bottom: 7rem; // Above the FAB
+    right: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -12,7 +11,18 @@
     border-radius: 50px;
     z-index: 1000;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    // Mobile state (hidden by default)
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px) scale(0.95);
+
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+    }
 
     .menu-item {
         display: flex;
@@ -25,6 +35,7 @@
         transition: all 0.3s ease;
         font-size: 1.2rem;
         position: relative;
+        text-decoration: none;
 
         &:hover {
             color: $accent-color;
@@ -37,19 +48,17 @@
             box-shadow: 0 0 15px rgba($accent-color, 0.5);
         }
     }
-    
-    // Mobile Toggle - placeholder removed
 }
 
 .mobile-menu-toggle {
-    display: none; // Hidden by default
+    display: flex;
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     background: $menu-item-bg;
-    border: 1px solid $accent-color;
+    border: 1px solid rgba($accent-color, 0.3);
     border-radius: 50%;
     z-index: 1001;
     justify-content: center;
@@ -57,19 +66,40 @@
     color: $accent-color;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
 
-    @include respond-to('md') {
-        // display: flex; // Show on mobile if needed
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba($accent-color, 0.2);
+    }
+
+    &.active {
+        background: $accent-color;
+        color: $primary-bg;
+        transform: rotate(90deg);
     }
 }
 
-// Responsive
+// Desktop Styles
 @include respond-to('md') {
     .lateral-menu-pill {
-        // Adjust for mobile if needed, maybe move to bottom
-        right: 1rem;
-        padding: 1rem 0.8rem;
-        gap: 1rem;
+        // Reset to desktop fixed position
+        top: 50%;
+        bottom: auto;
+        right: 2rem;
+        transform: translateY(-50%);
+        opacity: 1;
+        pointer-events: auto;
+        
+        // Disable the mobile toggle transform
+        &.active {
+            transform: translateY(-50%);
+        }
+    }
+
+    .mobile-menu-toggle {
+        display: none;
     }
 }
 
@@ -98,7 +128,12 @@ body.bright-theme {
     
     .mobile-menu-toggle {
         background: $menu-item-bg-bright;
-        border-color: $accent-color-bright;
+        border-color: rgba($accent-color-bright, 0.3);
         color: $accent-color-bright;
+
+        &.active {
+            background: $accent-color-bright;
+            color: #fff;
+        }
     }
 }
