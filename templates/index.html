@@ -9,58 +9,48 @@
 {% endblock %}
 
 {% block content %}
-<div class="home">
-    <div class="column left">
+<div class="home-container">
+    <div class="profile-section">
+        <div class="profile-glow"></div>
         <img class="portrait-index" src="{{ get_url(path='images/home/portrait.jpg') }}" alt="Portrait" />
     </div>
-    <div class="column right">
-        <h1 class="mt-5 presentation-title">Hello!</h1>
-        <h2 class="presentation"><span class="less-opacity">I am</span> Cosme</h2>
-        <p class="description">👉🏼 Motivated by a genuine love for software, I actively promote <span class="bold">clean code</span> and <span class="bold">agile dynamics.</span> I thrive in rapidly evolving environments, readily embracing new knowledge and translating it into impactful results.</p>
+    <div class="content-section">
+        <div class="status-badge">
+            <i class="fas fa-star"></i> Available for opportunities
+        </div>
         
-        <div class="sections-container">
-            <div class="quick-links">
-                <p class="quick-links-title">
-                    <i class="fas fa-search-plus"></i> See more!
-                </p>
-                <div class="explore-options">
-                    <a href="{{ get_url(path='projects') | safe }}" class="explore-option">
-                        <span class="fas fa-code"></span> Browse my projects
-                    </a>
-                    <a href="{{ get_url(path='blog') | safe }}" class="explore-option">
-                        <span class="fas fa-newspaper"></span> Check out my latest posts
-                    </a>
+        <h1 class="presentation-title">Hello!</h1>
+        <h2 class="presentation">I am <span class="highlight">Cosme</span></h2>
+        
+        <p class="description">
+            👉🏼 Motivated by a genuine love for software, I actively promote <span class="highlight-text">clean code</span> and <span class="highlight-text">agile dynamics.</span> I thrive in rapidly evolving environments, readily embracing new knowledge and translating it into impactful results.
+        </p>
+        
+        <div class="action-buttons">
+            <a href="{{ get_url(path='projects') | safe }}" class="btn btn-primary">
+                Browse my projects <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="{{ get_url(path='blog') | safe }}" class="btn btn-secondary">
+                Check out my latest posts
+            </a>
+        </div>
+
+        {% if config.extra.links %}
+            <div class="social-links">
+                <p class="connect-text">Connect with me</p>
+                <div class="social-icons">
+                    {% for link in config.extra.links %}
+                        <a rel="me" href="{{ link.url }}" title="{{ link.title }}" target="_blank" class="social-icon">
+                            {% if link.iconset %}
+                                <span class="{{ link.iconset }} {{ 'fa-' ~ link.icon }}"></span>
+                            {% else %}
+                                <span class="fab {{ 'fa-' ~ link.icon }}"></span>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
                 </div>
             </div>
-
-            <!-- THIS BIT FOR WHEN I WANT TO ADD SOMEWHERE SO That they go to my last blog -->
-            <!-- {% set posts = get_section(path="blog/_index.md") %}
-            {% set latest_post = posts.pages.0 %}
-            <a href="{{ latest_post.permalink }}" class="explore-option">
-                <span class="fas fa-newspaper"></span> Latest post: {{ latest_post.title }} -->
-            
-            {% if config.extra.links %}
-                <div class="links">
-                    <p class="call-to-action">
-                        <i class="fas fa-paper-plane"></i> Connect with me
-                    </p>
-                    <div class="row">
-                        {% for link in config.extra.links %}
-                            <div class="col-12">
-                                <a rel="me" href="{{ link.url }}" title="{{ link.title }}" target="_blank">
-                                    {% if link.iconset %}
-                                        <span class="{{ link.iconset }} {{ 'fa-' ~ link.icon }}"></span>
-                                    {% else %}
-                                        <span class="fab {{ 'fa-' ~ link.icon }}"></span>
-                                    {% endif %}
-                                    {{ link.title }}
-                                </a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
-        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

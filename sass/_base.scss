@@ -42,3 +42,33 @@ h2 {
         font-size: 3rem;
     }
 }
+
+.theme-toggle-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+
+    .theme-toggle-btn {
+        background: transparent;
+        border: none;
+        color: rgba($text-color, 0.5);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
+}
+
+body.bright-theme {
+    .theme-toggle-container .theme-toggle-btn {
+        color: rgba($text-color-bright, 0.5);
+        
+        &:hover {
+            color: $accent-color-bright;
+        }
+    }
+}
