@@ -86,33 +86,41 @@
   <!-- CARDS -->
   <div class="row project-cards-row">
 
-    <div class="project-card col-12 col-md-6 animate__animated animate__bounceInLeft">
-      <div class="project-image">
-        <img src="{{ get_url(path='images/projects/AquaMesh.png') }}" alt="AquaMesh" />
-        <div class="project-details-overlay">
+
+
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/AquaMesh.png') }}" alt="AquaMesh" />
+        </div>
+        <div class="project-content">
           <h3 class="card-title">AquaMesh</h3>
+          <p class="card-description">Microfrontend architecture with module federation and shared state management</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-react"></i>React</span>
             <span class="tag"><i class="fas fa-cube"></i>Turborepo</span>
             <span class="tag"><i class="fas fa-puzzle-piece"></i>Microfrontends</span>
           </p>
           <div class="card-buttons">
-            <a class="card-button" href="https://github.com/CosmeValera/AquaMesh" target="_blank">
-              <span class="tag"><i class="fab fa-github"></i>GitHub</span>
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/AquaMesh" target="_blank">
+              <i class="fab fa-github"></i>GitHub
             </a>
-            <a class="card-button" href="https://aquamesh.cosmevalera.dev/" target="_blank">
-              <span class="tag"><i class="fas fa-link"></i>Live Demo</span>
+            <a class="card-button demo-btn" href="https://aquamesh.cosmevalera.dev/" target="_blank">
+              <i class="fas fa-link"></i>Live Demo
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="project-card col-12 col-md-6 animate__animated animate__bounceInLeft">
-      <div class="project-image">
-        <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOpsLab" />
-        <div class="project-details-overlay">
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOpsLab" />
+        </div>
+        <div class="project-content">
           <h3 class="card-title">DevOps Lab</h3>
+          <p class="card-description">Complete DevOps pipeline with containerization, orchestration, and CI/CD automation</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-docker"></i>Docker</span>
             <span class="tag"><i class="fas fa-dharmachakra"></i>K8s</span>
@@ -122,41 +130,47 @@
             <span class="tag"><i class="fab fa-node-js"></i>Node</span>
           </p>
           <div class="card-buttons">
-            <a class="card-button" href="https://github.com/CosmeValera/DevOpsLab" target="_blank">
-              <span class="tag"><i class="fab fa-github"></i>GitHub</span>
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/DevOpsLab" target="_blank">
+              <i class="fab fa-github"></i>GitHub
             </a>
-            <a class="card-button" href="https://devopslab.cosmevalera.dev/" target="_blank">
-              <span class="tag"><i class="fas fa-link"></i>Live Demo</span>
+            <a class="card-button demo-btn" href="https://devopslab.cosmevalera.dev/" target="_blank">
+              <i class="fas fa-link"></i>Live Demo
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="project-card col-12 col-md-6 animate__animated animate__bounceInRight">
-      <div class="project-image">
-        <img src="{{ get_url(path='images/projects/FitCal.png') }}" alt="FitCal" />
-        <div class="project-details-overlay">
+    <div class="col-12 col-md-6 animate__animated animate__bounceInRight">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/FitCal.png') }}" alt="FitCal" />
+        </div>
+        <div class="project-content">
           <h3 class="card-title">FitCal</h3>
+          <p class="card-description">Fitness and nutrition tracking application with calorie management</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-angular"></i>Angular</span>
             <span class="tag"><i class="fas fa-code"></i>TypeScript</span>
             <span class="tag"><i class="fab fa-java"></i>Java (Spring)</span>
           </p>
           <div class="card-buttons">
-            <a class="card-button" href="https://github.com/CosmeValera/FitCal" target="_blank">
-              <span class="tag"><i class="fab fa-github"></i>GitHub</span>
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/FitCal" target="_blank">
+              <i class="fab fa-github"></i>GitHub
             </a>
           </div>
         </div>
       </div>
     </div>
   
-    <div class="project-card col-12 col-md-6 animate__animated animate__bounceInLeft">
-      <div class="project-image">
-        <img src="{{ get_url(path='images/projects/Sympho.png') }}" alt="Sympho" />
-        <div class="project-details-overlay">
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/Sympho.png') }}" alt="Sympho" />
+        </div>
+        <div class="project-content">
           <h3 class="card-title">Sympho</h3>
+          <p class="card-description">Music notation and composition tool with interactive sheet music rendering</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-square-js"></i>JavaScript</span>
             <span class="tag"><i class="fab fa-node-js"></i>Node</span>
@@ -164,61 +178,70 @@
             <span class="tag"><i class="fas fa-music"></i>Vexflow</span>
           </p>
           <div class="card-buttons">
-            <a class="card-button" href="https://github.com/CosmeValera/Sympho" target="_blank">
-              <span class="tag"><i class="fab fa-github"></i>GitHub</span>
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/Sympho" target="_blank">
+              <i class="fab fa-github"></i>GitHub
             </a>
           </div>
         </div>
       </div>
     </div>
   
-    <div class="project-card col-12 col-md-6 animate__animated animate__bounceInRight">
-      <div class="project-image">
-        <img src="{{ get_url(path='images/projects/LeagueOfPokemon.png') }}" alt="League of Pokemon" />
-        <div class="project-details-overlay">
+    <div class="col-12 col-md-6 animate__animated animate__bounceInRight">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/LeagueOfPokemon.png') }}" alt="League of Pokemon" />
+        </div>
+        <div class="project-content">
           <h3 class="card-title">League of Pokemon</h3>
+          <p class="card-description">Turn-based strategy game featuring Pokemon battles with custom mechanics.</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-java"></i>Java (Swing)</span>
           </p>
           <div class="card-buttons">
-            <a class="card-button" href="https://github.com/CosmeValera/LeagueOfPokemon" target="_blank">
-              <span class="tag"><i class="fab fa-github"></i>GitHub</span>
-            </div>
-          </a>
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/LeagueOfPokemon" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="project-card col-12 col-md-6 animate__animated animate__bounceInLeft">
-      <div class="project-image">
-        <img src="{{ get_url(path='images/projects/AndroidDepartmentQuest.jpg') }}" alt="AndroidDepartmentQuest" />
-        <div class="project-details-overlay">
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/AndroidDepartmentQuest.jpg') }}" alt="AndroidDepartmentQuest" />
+        </div>
+        <div class="project-content">
           <h3 class="card-title">Department Quest</h3>
+          <p class="card-description">An Android application for management of a department.</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-java"></i>Java (Android)</span>
           </p>
           <div class="card-buttons">
-            <a class="card-button" href="https://github.com/CosmeValera/AndroidDepartmentQuest" target="_blank">
-              <span class="tag"><i class="fab fa-github"></i>GitHub</span>
-            </div>
-          </a>
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/AndroidDepartmentQuest" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+          </div>
         </div>
       </div>
     </div>
   
-    <div class="project-card col-12 col-md-6 animate__animated animate__bounceInRight">
-      <div class="project-image">
-        <img src="{{ get_url(path='images/projects/Inventory.png') }}" alt="Inventory" />
-        <div class="project-details-overlay">
+    <div class="col-12 col-md-6 animate__animated animate__bounceInRight">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/Inventory.png') }}" alt="Inventory" />
+        </div>
+        <div class="project-content">
           <h3 class="card-title">Inventory</h3>
+          <p class="card-description">Inventory management system built with Node.js and MongoDB.</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-square-js"></i>JavaScript</span>
             <span class="tag"><i class="fab fa-node-js"></i>Node</span>
             <span class="tag"><i class="fas fa-leaf"></i>MongoDB</span>
           </p>
           <div class="card-buttons">
-            <a class="card-button" href="https://github.com/CosmeValera/Inventory" target="_blank">
-              <span class="tag"><i class="fab fa-github"></i>GitHub</span>
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/Inventory" target="_blank">
+              <i class="fab fa-github"></i>GitHub
             </a>
           </div>
         </div>

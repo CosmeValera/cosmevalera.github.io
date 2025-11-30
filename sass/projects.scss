@@ -125,159 +125,184 @@ body {
 
   .project-cards-row {
     margin: 0 clamp(0.5rem, 2vw, 10rem);
+    
+    // Ensure columns have equal height content
+    .col-12 {
+      display: flex;
+    }
 
     .project-card {
+      width: 100%;
       position: relative;
       margin-bottom: 2rem;
       cursor: default;
-      
-      &:last-child {
-        margin-bottom: 0; // Last card doesn't push footer
-      }
-      @include respond-to('md') { // Tablet -> 2 cards per row
-        &:nth-last-child(2) {
-          margin-bottom: 0; // 2 last cards don't push footer
-        }
+      background-color: #0b1116; // Dark background
+      border: 1px solid rgba($accent-color, 0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        border-color: rgba($accent-color, 0.5);
       }
 
-      .project-image {
-        position: relative;
+      .project-image-container {
+        width: 100%;
+        height: 220px;
         overflow: hidden;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.5s, box-shadow 1.5s;
-
-        a {
-          text-decoration: none;
-        }
-
+        border-bottom: 1px solid rgba($accent-color, 0.1);
+        position: relative;
+        
         img {
           width: 100%;
-          height: auto;
-          border-radius: 5px;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+      }
+
+      &:hover .project-image-container img {
+        transform: scale(1.05);
+      }
+
+      .project-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .card-title {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: $accent-color;
+          margin-bottom: 0.5rem;
         }
 
-        .project-details-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(to bottom, #4ff5f5cc, rgba(0, 0, 0, 0.7));
+        .card-description {
+          font-size: 0.9rem;
+          color: rgba($text-color, 0.8);
+          margin-bottom: 1rem;
+          line-height: 1.5;
+          flex-grow: 1; 
+        }
+
+        .card-technology {
           display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          text-align: left;
-          opacity: 0;
-          transition: opacity 0.3s ease-in-out;
-          padding-left: 2rem;
-          padding-right: 1rem;
-          padding-bottom: clamp(0.5vw, 2rem, 2vw);
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-bottom: 1.5rem;
 
-          h3.card-title {
-            font-weight: bold;
-            color: $text-color;
-            font-size: clamp(1rem, 4vw, 1.5rem);
-            margin: 0;
-          }
-
-          p.card-technology span.tag i,
-          .card-buttons .card-button i {
-            margin-right: 4px;
-          }
-
-          p.card-technology {
-            font-size: clamp(0.625rem, 1.2vw, 0.75rem);
-            font-weight: 600;
-            color: $text-color;
-            font-family: Andika;
+          .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            background: rgba($accent-color, 0.1);
+            color: $accent-color;
+            border: 1px solid rgba($accent-color, 0.3);
             display: flex;
-            flex-wrap: wrap-reverse;
-            gap: 0.5rem;
-            margin: 8px 0 8px;
+            align-items: center;
+            gap: 0.25rem;
+            font-weight: 600;
 
-            span.tag {
-              background-color: #4ff5f550;
-              padding: clamp(0.125rem, 1vw, 0.25rem) clamp(0.25rem, 2vw, 0.5rem);
-              border-radius: 9999px;
-              font-size: clamp(0.45rem, 2vw, 0.9rem);
-              color: $text-color;
-              min-width: fit-content;
+            i {
+              font-size: 0.8rem;
             }
           }
+        }
 
-          .card-buttons {
+        .card-buttons {
+          display: flex;
+          gap: 1rem;
+          margin-top: auto;
+
+          .card-button {
+            flex: 1;
             display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 0.5rem;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
 
-            .card-button {
-              font-size: clamp(0.45rem, 2vw, 0.9rem);
-              padding: 6px 10px;
-              color: $secondary-bg;
-              background-color: $accent-color;
-              font-weight: bold;
-              text-decoration: none;
-              margin: 0;
-              border-radius: 5px;
-              width: fit-content;
-
-              svg {
-                width: clamp(0.5rem, 2vw, 1rem);
-                height: clamp(0.5rem, 2vw, 1rem);
-              }
+            &.github-btn {
+              background: transparent;
+              border: 1px solid rgba($text-color, 0.3);
+              color: $text-color;
 
               &:hover {
-                background-color: #4ff5f5c0;
+                background: rgba($text-color, 0.1);
+                border-color: $text-color;
+              }
+            }
+
+            &.demo-btn {
+              background: $accent-color;
+              color: $primary-bg;
+              border: 1px solid $accent-color;
+
+              &:hover {
+                background: lighten($accent-color, 10%);
+                border-color: lighten($accent-color, 10%);
               }
             }
           }
         }
       }
+    }
+  }
 
-      // Define the keyframes
-      @keyframes shadowFloat {
-        0% { box-shadow: 0 12px 20px rgba(79, 245, 245, 0.15); }
-        25% { box-shadow: 2px 10px 22px rgba(79, 245, 245, 0.5); }
-        50% { box-shadow: -1px 14px 18px rgba(79, 245, 245, 0.35); }
-        75% { box-shadow: 1px 8px 24px rgba(79, 245, 245, 0.65); }
-        100% { box-shadow: 0 12px 20px rgba(79, 245, 245, 0.15); }
+  // Bright theme overrides for cards
+  body.bright-theme & {
+    .project-card {
+      background-color: $secondary-bg-bright;
+      border-color: rgba($accent-color-bright, 0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+      &:hover {
+        box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        border-color: rgba($accent-color-bright, 0.5);
       }
 
-      @keyframes shadowFloatWhite {
-        0% { box-shadow: 0 12px 20px rgba(255, 255, 255, 0.15); }
-        25% { box-shadow: 2px 10px 22px rgba(255, 255, 255, 0.5); }
-        50% { box-shadow: -1px 14px 18px rgba(255, 255, 255, 0.35); }
-        75% { box-shadow: 1px 8px 24px rgba(255, 255, 255, 0.65); }
-        100% { box-shadow: 0 12px 20px rgba(255, 255, 255, 0.15); }
+      .project-image-container {
+        border-bottom-color: rgba($accent-color-bright, 0.1);
       }
 
-      // This creates a random-feeling pattern: C W W C C W C W C W W C
-      &:nth-child(12n+1),   // Cyan
-      &:nth-child(12n+4),   // Cyan  
-      &:nth-child(12n+5),   // Cyan
-      &:nth-child(12n+7),   // Cyan
-      &:nth-child(12n+9),   // Cyan
-      &:nth-child(12n) {    // Cyan
-        &:hover, &.hovered {
-          .project-details-overlay { opacity: 1; }
-          .project-image {
-            transform: translateY(-10px);
-            animation: shadowFloat 6s ease-in-out infinite;
-          }
+      .project-content {
+        .card-title {
+          color: $accent-color-bright;
         }
-      }
-
-      &:nth-child(12n+2),   // White
-      &:nth-child(12n+3),   // White
-      &:nth-child(12n+6),   // White
-      &:nth-child(12n+8),   // White
-      &:nth-child(12n+10),  // White
-      &:nth-child(12n+11) { // White
-        &:hover, &.hovered {
-          .project-details-overlay { opacity: 1; }
-          .project-image {
-            transform: translateY(-10px);
-            animation: shadowFloatWhite 4s ease-in-out infinite;
+        .card-description {
+          color: rgba($text-color-bright, 0.8);
+        }
+        .card-technology .tag {
+          background: rgba($accent-color-bright, 0.1);
+          color: $accent-color-bright;
+          border-color: rgba($accent-color-bright, 0.3);
+        }
+        .card-buttons {
+          .card-button.github-btn {
+            border-color: rgba($text-color-bright, 0.3);
+            color: $text-color-bright;
+            &:hover {
+              background: rgba($text-color-bright, 0.05);
+              border-color: $text-color-bright;
+            }
+          }
+          .card-button.demo-btn {
+            background: $accent-color-bright;
+            color: #fff;
+            border-color: $accent-color-bright;
+            &:hover {
+              background: lighten($accent-color-bright, 10%);
+            }
           }
         }
       }
