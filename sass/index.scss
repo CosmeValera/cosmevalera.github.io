@@ -8,7 +8,7 @@
     min-height: 85vh;
     gap: 2rem;
     padding: 2rem;
-    max-width: 1400px; // Increased max-width for bigger layout
+    max-width: 1400px;
     margin: 0 auto;
 
     @include respond-to('lg') {
@@ -32,14 +32,23 @@
         padding-right: 3rem;
     }
 
+    .portrait-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // Levitation animation on the wrapper
+        animation: float 6s ease-in-out infinite;
+    }
+
     .profile-glow {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 140%; // Larger glow
+        width: 140%;
         height: 140%;
-        background: radial-gradient(circle, rgba($accent-color, 0.6) 0%, rgba($accent-color, 0) 70%); // Stronger glow
+        background: radial-gradient(circle, rgba($accent-color, 0.6) 0%, rgba($accent-color, 0) 70%);
         filter: blur(60px);
         z-index: 0;
         border-radius: 50%;
@@ -50,15 +59,12 @@
 
     .portrait-index {
         position: relative;
-        width: 280px; // Much bigger image
+        width: 280px;
         height: 280px;
         border-radius: 50%;
         object-fit: cover;
         z-index: 1;
-        box-shadow: 0 0 50px rgba($accent-color, 0.4); // Stronger shadow
-        
-        // Levitation animation
-        animation: float 6s ease-in-out infinite;
+        box-shadow: 0 0 50px rgba($accent-color, 0.4);
         
         @include respond-to('md') {
             width: 320px;
@@ -76,7 +82,7 @@
     flex: 1.2;
     display: flex;
     flex-direction: column;
-    gap: 1rem; // Tighter spacing
+    gap: 1rem;
     z-index: 1;
 
     .status-badge {
@@ -84,7 +90,7 @@
         align-items: center;
         gap: 0.5rem;
         padding: 0.6rem 1.2rem;
-        background: rgba($secondary-bg, 0.8); // Darker background
+        background: rgba($secondary-bg, 0.8);
         border: 1px solid rgba($accent-color, 0.5);
         border-radius: 999px;
         color: $accent-color;
@@ -100,9 +106,9 @@
     }
 
     .presentation-title {
-        font-size: 6.5rem; // Much bigger title
+        font-size: 6.5rem;
         font-weight: 800;
-        line-height: 0.9; // Compact line height
+        line-height: 0.9;
         margin: 0;
         color: $text-color;
         text-align: left;
@@ -110,27 +116,39 @@
     }
 
     .presentation {
-        font-size: 4.5rem; // Bigger subtitle
+        font-size: 4.5rem;
         font-weight: 700;
         margin: 0;
         line-height: 1.1;
-        color: rgba($text-color, 0.5); // Darker grey for "I am"
+        color: rgba($text-color, 0.5);
 
         .highlight {
-            color: $accent-color;
+            // Gradient text for "Cosme"
+            background: linear-gradient(135deg, $accent-color 0%, $active-color-tealish 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
         }
     }
 
     .description {
-        font-size: 1.25rem; // Slightly bigger description
+        font-size: 1.25rem;
         line-height: 1.6;
         color: rgba($text-color, 0.7);
         max-width: 650px;
         margin-top: 1rem;
         
         .highlight-text {
-            color: $accent-color;
             font-weight: 600;
+            
+            &.text-blue {
+                color: $accent-color; // Same cyan as accent
+            }
+
+            &.text-green {
+                color: $active-color-tealish; // Teal green
+            }
         }
     }
 
@@ -144,7 +162,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 2rem; // Bigger buttons
+            padding: 1rem 2rem;
             border-radius: 14px;
             font-weight: 700;
             font-size: 1.1rem;
@@ -153,8 +171,8 @@
             gap: 0.6rem;
 
             &.btn-primary {
-                background: $accent-color; // Solid accent color
-                color: $primary-bg; // Dark text
+                background: $accent-color;
+                color: $primary-bg;
                 box-shadow: 0 4px 20px rgba($accent-color, 0.4);
 
                 &:hover {
@@ -214,7 +232,7 @@
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-20px); // More movement
+        transform: translateY(-20px);
     }
     100% {
         transform: translateY(0px);
@@ -260,7 +278,11 @@ body.bright-theme {
                 color: rgba($text-color-bright, 0.5);
                 
                 .highlight {
-                    color: $accent-color-bright;
+                    // Bright theme gradient
+                    background: linear-gradient(135deg, $accent-color-bright 0%, darken($active-color-tealish, 10%) 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
                 }
             }
 
@@ -268,7 +290,12 @@ body.bright-theme {
                 color: rgba($text-color-bright, 0.7);
                 
                 .highlight-text {
-                    color: darken($accent-color-bright, 10%);
+                    &.text-blue {
+                        color: $accent-color-bright;
+                    }
+                    &.text-green {
+                        color: darken($active-color-tealish, 15%);
+                    }
                 }
             }
 
