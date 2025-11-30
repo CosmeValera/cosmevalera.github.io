@@ -5,15 +5,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 80vh;
-    gap: 2rem; // Reduced gap from 3rem
+    min-height: 85vh;
+    gap: 2rem;
     padding: 2rem;
-    max-width: 1200px;
+    max-width: 1400px; // Increased max-width for bigger layout
     margin: 0 auto;
 
     @include respond-to('lg') {
         flex-direction: row;
-        gap: 3rem; // Reduced gap from 5rem
+        gap: 4rem;
         align-items: center;
         text-align: left;
     }
@@ -25,12 +25,11 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    max-width: 400px;
     
-    // Align image to the right (closer to text) on large screens
+    // Align image to the right on large screens
     @include respond-to('lg') {
         justify-content: flex-end;
-        padding-right: 2rem;
+        padding-right: 3rem;
     }
 
     .profile-glow {
@@ -38,33 +37,37 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, rgba($accent-color, 0.5) 0%, rgba($accent-color, 0) 70%);
-        filter: blur(50px);
+        width: 140%; // Larger glow
+        height: 140%;
+        background: radial-gradient(circle, rgba($accent-color, 0.6) 0%, rgba($accent-color, 0) 70%); // Stronger glow
+        filter: blur(60px);
         z-index: 0;
         border-radius: 50%;
-        opacity: 0.6;
+        opacity: 0.7;
         transition: opacity 0.3s ease;
         animation: pulse-glow 4s ease-in-out infinite alternate;
     }
 
     .portrait-index {
         position: relative;
-        width: 300px;
-        height: 300px;
+        width: 280px; // Much bigger image
+        height: 280px;
         border-radius: 50%;
         object-fit: cover;
         z-index: 1;
-        // Glowy shadow effect
-        box-shadow: 0 0 40px rgba($accent-color, 0.3);
+        box-shadow: 0 0 50px rgba($accent-color, 0.4); // Stronger shadow
         
         // Levitation animation
         animation: float 6s ease-in-out infinite;
         
-        @include respond-to('sm') {
-            width: 200px;
-            height: 200px;
+        @include respond-to('md') {
+            width: 320px;
+            height: 320px;
+        }
+
+        @include respond-to('lg') {
+            width: 400px;
+            height: 400px;
         }
     }
 }
@@ -73,42 +76,45 @@
     flex: 1.2;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem; // Tighter spacing
     z-index: 1;
 
     .status-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: rgba($accent-color, 0.1);
-        border: 1px solid rgba($accent-color, 0.3);
+        padding: 0.6rem 1.2rem;
+        background: rgba($secondary-bg, 0.8); // Darker background
+        border: 1px solid rgba($accent-color, 0.5);
         border-radius: 999px;
         color: $accent-color;
-        font-size: 0.9rem;
-        font-weight: 500;
+        font-size: 1rem;
+        font-weight: 600;
         width: fit-content;
         margin-bottom: 0.5rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 
         i {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
     }
 
     .presentation-title {
-        font-size: 4rem;
+        font-size: 6.5rem; // Much bigger title
         font-weight: 800;
-        line-height: 1.1;
+        line-height: 0.9; // Compact line height
         margin: 0;
         color: $text-color;
-        text-align: start;
+        text-align: left;
+        letter-spacing: -2px;
     }
 
     .presentation {
-        font-size: 3rem;
+        font-size: 4.5rem; // Bigger subtitle
         font-weight: 700;
         margin: 0;
-        color: rgba($text-color, 0.6); // "I am" in grey
+        line-height: 1.1;
+        color: rgba($text-color, 0.5); // Darker grey for "I am"
 
         .highlight {
             color: $accent-color;
@@ -116,10 +122,11 @@
     }
 
     .description {
-        font-size: 1.1rem;
+        font-size: 1.25rem; // Slightly bigger description
         line-height: 1.6;
-        color: rgba($text-color, 0.8);
-        max-width: 600px;
+        color: rgba($text-color, 0.7);
+        max-width: 650px;
+        margin-top: 1rem;
         
         .highlight-text {
             color: $accent-color;
@@ -130,66 +137,71 @@
     .action-buttons {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 1rem;
+        gap: 1.2rem;
+        margin-top: 1.5rem;
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.8rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1rem;
+            padding: 1rem 2rem; // Bigger buttons
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1.1rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            gap: 0.5rem;
+            gap: 0.6rem;
 
             &.btn-primary {
-                background: linear-gradient(135deg, $accent-color 0%, darken($accent-color, 10%) 100%);
-                color: $primary-bg; // Dark text on bright button
-                box-shadow: 0 4px 15px rgba($accent-color, 0.3);
+                background: $accent-color; // Solid accent color
+                color: $primary-bg; // Dark text
+                box-shadow: 0 4px 20px rgba($accent-color, 0.4);
 
                 &:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 6px 20px rgba($accent-color, 0.4);
+                    transform: translateY(-3px);
+                    box-shadow: 0 8px 25px rgba($accent-color, 0.5);
+                    background: lighten($accent-color, 5%);
                 }
             }
 
             &.btn-secondary {
                 background: transparent;
-                border: 1px solid rgba($text-color, 0.2);
+                border: 2px solid rgba($text-color, 0.15);
                 color: $text-color;
 
                 &:hover {
                     background: rgba($text-color, 0.05);
-                    border-color: rgba($text-color, 0.5);
+                    border-color: $text-color;
                 }
             }
         }
     }
 
     .social-links {
-        margin-top: 2rem;
+        margin-top: 2.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
         
         .connect-text {
-            font-size: 0.9rem;
-            color: rgba($text-color, 0.6);
-            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: rgba($text-color, 0.5);
+            margin-bottom: 0;
+            font-weight: 500;
         }
 
         .social-icons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.8rem;
 
             .social-icon {
-                font-size: 1.5rem;
-                color: rgba($text-color, 0.6);
+                font-size: 1.8rem;
+                color: rgba($text-color, 0.5);
                 transition: all 0.2s ease;
 
                 &:hover {
                     color: $accent-color;
-                    transform: translateY(-2px);
+                    transform: translateY(-3px);
                 }
             }
         }
@@ -202,7 +214,7 @@
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-15px);
+        transform: translateY(-20px); // More movement
     }
     100% {
         transform: translateY(0px);
@@ -212,11 +224,11 @@
 @keyframes pulse-glow {
     0% {
         opacity: 0.5;
-        transform: translate(-50%, -50%) scale(0.95);
+        transform: translate(-50%, -50%) scale(0.9);
     }
     100% {
         opacity: 0.8;
-        transform: translate(-50%, -50%) scale(1.05);
+        transform: translate(-50%, -50%) scale(1.1);
     }
 }
 
@@ -225,11 +237,11 @@ body.bright-theme {
     .home-container {
         .profile-section {
             .profile-glow {
-                background: radial-gradient(circle, rgba($accent-color-bright, 0.4) 0%, rgba($accent-color-bright, 0) 70%);
+                background: radial-gradient(circle, rgba($accent-color-bright, 0.5) 0%, rgba($accent-color-bright, 0) 70%);
             }
             
             .portrait-index {
-                box-shadow: 0 0 40px rgba($accent-color-bright, 0.3);
+                box-shadow: 0 0 50px rgba($accent-color-bright, 0.4);
             }
         }
 
@@ -245,7 +257,7 @@ body.bright-theme {
             }
 
             .presentation {
-                color: rgba($text-color-bright, 0.6);
+                color: rgba($text-color-bright, 0.5);
                 
                 .highlight {
                     color: $accent-color-bright;
@@ -253,7 +265,7 @@ body.bright-theme {
             }
 
             .description {
-                color: rgba($text-color-bright, 0.8);
+                color: rgba($text-color-bright, 0.7);
                 
                 .highlight-text {
                     color: darken($accent-color-bright, 10%);
@@ -262,29 +274,32 @@ body.bright-theme {
 
             .action-buttons {
                 .btn-primary {
-                    background: linear-gradient(135deg, $accent-color-bright 0%, darken($accent-color-bright, 5%) 100%);
-                    color: #fff; // White text on teal button
-                    box-shadow: 0 4px 15px rgba($accent-color-bright, 0.3);
+                    background: $accent-color-bright;
+                    color: #fff;
+                    box-shadow: 0 4px 20px rgba($accent-color-bright, 0.4);
+                    
+                    &:hover {
+                        background: lighten($accent-color-bright, 5%);
+                    }
                 }
 
                 .btn-secondary {
-                    background: #fff;
                     border-color: rgba($text-color-bright, 0.2);
                     color: $text-color-bright;
 
                     &:hover {
                         background: rgba($text-color-bright, 0.05);
-                        border-color: rgba($text-color-bright, 0.5);
+                        border-color: $text-color-bright;
                     }
                 }
             }
 
             .social-links {
                 .connect-text {
-                    color: rgba($text-color-bright, 0.6);
+                    color: rgba($text-color-bright, 0.5);
                 }
                 .social-icons .social-icon {
-                    color: rgba($text-color-bright, 0.6);
+                    color: rgba($text-color-bright, 0.5);
                     &:hover {
                         color: $accent-color-bright;
                     }
