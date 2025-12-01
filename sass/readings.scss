@@ -5,7 +5,7 @@
 //////////////////////
 ////// Readings //////
 .readings {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 2rem 1rem;
     width: 100%;
@@ -151,15 +151,10 @@
         grid-template-columns: 1fr;
         gap: 2rem;
         margin: 0 auto;
-        max-width: 1200px;
+        max-width: 900px;
         
         @include respond-to('md') {
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-        
-        @include respond-to('lg') {
-            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
     }

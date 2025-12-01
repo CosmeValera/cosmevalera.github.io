@@ -5,6 +5,19 @@
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
+  padding: 2rem 0rem;
+
+  .blog-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    
+    svg {
+      width: 3rem;
+      height: 3rem;
+      color: $accent-color;
+      opacity: 0.8;
+    }
+  }
 
   .blog-intro {
     max-width: 75vw;
@@ -19,6 +32,10 @@
   }
 
   body.bright-theme & {
+    .blog-icon svg {
+      color: $accent-color-bright;
+    }
+    
     .blog-intro {
       color: $text-color-bright;
       font-weight: 500;

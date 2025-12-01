@@ -73,8 +73,8 @@
         }
 
         @include respond-to('lg') {
-            width: 400px;
-            height: 400px;
+            width: 380px;
+            height: 380px;
             box-shadow: 0 0 50px rgba($accent-color, 0.4);
         }
     }

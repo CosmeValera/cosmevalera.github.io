@@ -66,15 +66,18 @@ function initializeReadingSearch() {
 // Update book counter based on visible cards
 function updateBookCounter(searchTerm = '') {
     const counter = document.querySelector('.counter-number');
-    if (!counter) return;
+    const counterContainer = document.querySelector('.book-counter');
+    if (!counter || !counterContainer) return;
     
     const visibleCards = document.querySelectorAll('.reading-card:not([style*="display: none"])');
     const totalBooks = document.querySelectorAll('.reading-card').length;
     
     if (searchTerm) {
         counter.textContent = visibleCards.length;
+        counterContainer.innerHTML = `<span class="counter-number">${visibleCards.length}</span> books`;
     } else {
         counter.textContent = totalBooks;
+        counterContainer.innerHTML = `<span class="counter-number">${totalBooks}</span> books and counting`;
     }
 }
 
