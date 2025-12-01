@@ -83,8 +83,9 @@ function handleFilter() {
     });
 
     document.addEventListener('click', (e) => {
+        const modalContent = filterModal.querySelector('.filter-modal-content');
         if (filterModal.classList.contains('show') && 
-            !filterModal.contains(e.target) && 
+            modalContent && !modalContent.contains(e.target) && 
             !e.target.closest('.mobile-filter-button-container')) {
             toggleModal(false);
         }
@@ -105,6 +106,8 @@ function handleFilter() {
                 option.classList.add('selected');
                 filterProjects(selectedFilter);
             }
+            // Close modal after selection on mobile
+            toggleModal(false);
         });
     });
 }

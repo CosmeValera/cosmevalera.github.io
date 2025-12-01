@@ -23,6 +23,97 @@
   
   <h1>Blog</h1>
   <p class="blog-intro">I enjoy writing about topics that I find exciting and are worth sharing.</p>
+
+  <!-- FILTER (Desktop Only) -->
+  <div class="filter-buttons-desktop">
+    <div class="filter-dropdown-desktop">
+      <!-- <button class="filter-button" data-filter="recommended">
+        <i class="fas fa-star"></i>
+        Recommended
+      </button>
+
+      <button class="filter-button" data-filter="for-beginners">
+        <i class="fas fa-book"></i>
+        Beginners
+      </button> -->
+
+      <button class="filter-button" data-filter="frontend">
+        <i class="fas fa-laptop-code"></i>
+        Frontend
+      </button>
+
+      <!-- <button class="filter-button" data-filter="backend">
+        <i class="fas fa-server"></i>
+        Backend
+      </button> -->
+
+      <button class="filter-button" data-filter="architecture">
+        <i class="fas fa-sitemap"></i>
+        Architecture
+      </button>
+
+      <button class="filter-button" data-filter="finance">
+        <i class="fas fa-chart-line"></i>
+        Finance
+      </button>
+
+      <button class="filter-button" data-filter="bitcoin">
+        <i class="fab fa-bitcoin"></i>
+        Bitcoin
+      </button>
+    </div>
+  </div>
+  <!-- END: FILTER (Desktop Only) -->
+
+  <!-- Mobile Filter Button -->
+  <div class="mobile-filter-button-container">
+    <button id="filter-menu-button" class="mobile-filter-button" aria-label="Filter Blog Posts">
+      <i class="fas fa-filter"></i>
+    </button>
+  </div>
+
+  <!-- Filter Modal (Mobile Only) -->
+  <div class="filter-modal" id="filter-modal">
+    <div class="filter-modal-content">
+      <div class="filter-modal-header">
+        <h3>Filter Blog Posts</h3>
+        <button class="filter-modal-close" id="filter-modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="filter-modal-body">
+        <!-- <button class="filter-modal-option" data-filter="recommended">
+          <i class="fas fa-star"></i>
+          Recommended
+        </button>
+        <button class="filter-modal-option" data-filter="for-beginners">
+          <i class="fas fa-book"></i>
+          Beginners
+        </button> -->
+        <button class="filter-modal-option" data-filter="frontend">
+          <i class="fas fa-laptop-code"></i>
+          Frontend
+        </button>
+        <!-- <button class="filter-modal-option" data-filter="backend">
+          <i class="fas fa-server"></i>
+          Backend
+        </button> -->
+        <button class="filter-modal-option" data-filter="architecture">
+          <i class="fas fa-sitemap"></i>
+          Architecture
+        </button>
+        <button class="filter-modal-option" data-filter="finance">
+          <i class="fas fa-chart-line"></i>
+          Finance
+        </button>
+        <button class="filter-modal-option" data-filter="bitcoin">
+          <i class="fab fa-bitcoin"></i>
+          Bitcoin
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- END: Filter Modal (Mobile Only) -->
   
   <div class="blog-cards">
     {% for post in section.pages %}
