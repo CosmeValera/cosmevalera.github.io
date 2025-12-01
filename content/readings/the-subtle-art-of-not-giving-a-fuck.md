@@ -11,5 +11,4 @@ key_insights = [
     "Pain and struggle are necessary for growth and meaning",
     "Take responsibility for your problems to gain control over them"
 ]
-personal_note = "This book's blunt approach to life philosophy resonated with me. It helped me prioritize what truly matters and stop wasting energy on things I can't control."
 +++

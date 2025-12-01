@@ -11,5 +11,4 @@ key_insights = [
     "Simple solutions are often better than complex ones",
     "Continuous learning and adaptation are essential in software development"
 ]
-personal_note = "Good collection of programming wisdom, though some advice felt repetitive. Useful as a reference for best practices and reminders about fundamental principles."
 +++

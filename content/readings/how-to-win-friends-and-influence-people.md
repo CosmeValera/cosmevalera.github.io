@@ -11,5 +11,4 @@ key_insights = [
     "Remember that a person's name is the sweetest sound to them",
     "Avoid criticism and focus on positive reinforcement"
 ]
-personal_note = "This classic book contains timeless wisdom that has fundamentally shaped how I interact with people. The principles are simple but incredibly powerful when consistently applied."
 +++

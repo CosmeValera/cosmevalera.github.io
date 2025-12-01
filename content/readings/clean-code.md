@@ -11,5 +11,4 @@ key_insights = [
     "Functions should do one thing and do it well",
     "Meaningful names are crucial for code readability"
 ]
-personal_note = "This book fundamentally changed how I write code. The principles of clean code have made my software more maintainable and my team collaborations much more effective."
 +++

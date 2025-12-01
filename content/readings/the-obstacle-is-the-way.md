@@ -11,5 +11,4 @@ key_insights = [
     "Perception, action, and will are the three disciplines to overcome challenges",
     "What stands in the way becomes the way: embrace difficulties as fuel for growth"
 ]
-personal_note = "This book's stoic approach has been very interesting to read. It taught me to see challenges not as barriers but as a path to success."
 +++

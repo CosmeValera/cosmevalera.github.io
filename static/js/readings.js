@@ -6,6 +6,8 @@ function initializeReadingCards() {
         const readMoreBtn = card.querySelector('.read-more-btn');
         const expandedContent = card.querySelector('.reading-expanded-content');
         const readMoreText = card.querySelector('.read-more-text');
+        const title = card.querySelector('.reading-title');
+        const description = card.querySelector('.reading-description');
         
         if (readMoreBtn && expandedContent) {
             readMoreBtn.addEventListener('click', function(e) {
@@ -19,11 +21,15 @@ function initializeReadingCards() {
                     expandedContent.classList.remove('show');
                     readMoreBtn.classList.remove('expanded');
                     readMoreText.textContent = 'Show more';
+                    if (title) title.classList.remove('expanded');
+                    if (description) description.classList.remove('expanded');
                 } else {
                     // Expand
                     expandedContent.classList.add('show');
                     readMoreBtn.classList.add('expanded');
                     readMoreText.textContent = 'Show less';
+                    if (title) title.classList.add('expanded');
+                    if (description) description.classList.add('expanded');
                 }
             });
         }
@@ -97,11 +103,15 @@ function handleReadingsQuickView() {
                 const expandedContent = card.querySelector('.reading-expanded-content');
                 const readMoreBtn = card.querySelector('.read-more-btn');
                 const readMoreText = card.querySelector('.read-more-text');
+                const title = card.querySelector('.reading-title');
+                const description = card.querySelector('.reading-description');
                 
                 if (expandedContent && expandedContent.classList.contains('show')) {
                     expandedContent.classList.remove('show');
                     readMoreBtn.classList.remove('expanded');
                     readMoreText.textContent = 'Read more';
+                    if (title) title.classList.remove('expanded');
+                    if (description) description.classList.remove('expanded');
                 }
             });
         } else {
@@ -111,11 +121,15 @@ function handleReadingsQuickView() {
                 const expandedContent = card.querySelector('.reading-expanded-content');
                 const readMoreBtn = card.querySelector('.read-more-btn');
                 const readMoreText = card.querySelector('.read-more-text');
+                const title = card.querySelector('.reading-title');
+                const description = card.querySelector('.reading-description');
                 
                 if (expandedContent && !expandedContent.classList.contains('show')) {
                     expandedContent.classList.add('show');
                     readMoreBtn.classList.add('expanded');
                     readMoreText.textContent = 'Show less';
+                    if (title) title.classList.add('expanded');
+                    if (description) description.classList.add('expanded');
                 }
             });
         }

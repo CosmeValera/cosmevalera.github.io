@@ -11,5 +11,4 @@ key_insights = [
     "Bitcoin implements advanced cryptographic concepts for network security",
     "Research in blockchain opens up new possibilities for applications beyond cryptocurrencies"
 ]
-personal_note = "A technical book exploring Bitcoin and blockchain from a research perspective. However, being written in 2017, some of the content feels outdated given the rapid evolution of the blockchain space."
 +++

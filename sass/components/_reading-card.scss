@@ -1,13 +1,14 @@
 // Reading Card Component
 .reading-card {
     position: relative;
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
     background: rgba($secondary-bg, 0.3);
     border: 1px solid rgba($accent-color, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
 
     &:hover {
         transform: translateY(-4px);
@@ -17,8 +18,9 @@
     .reading-card-cover {
         position: relative;
         width: 100%;
-        aspect-ratio: 3/4;
+        aspect-ratio: 2/3;
         overflow: hidden;
+        background: rgba(0, 0, 0, 0.1);
 
         img {
             width: 100%;
@@ -28,13 +30,13 @@
 
         .reading-date-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 0.75rem;
+            right: 0.75rem;
             background: rgba(255, 255, 255, 0.95);
             color: #333;
-            padding: 0.5rem 0.85rem;
+            padding: 0.35rem 0.65rem;
             border-radius: 999px;
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             font-weight: 600;
             backdrop-filter: blur(8px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -42,7 +44,7 @@
     }
 
     .reading-card-content {
-        padding: 1.5rem;
+        padding: 1rem;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -54,46 +56,72 @@
 
         .reading-rating {
             text-align: left;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             
             .star {
-                font-size: 1rem;
+                font-size: 0.75rem;
                 display: inline-block;
-                margin-right: 2px;
+                margin-right: 1px;
             }
         }
 
         .reading-title {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
             line-height: 1.3;
             color: $text-color;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            
+            &.expanded {
+                display: block;
+                -webkit-line-clamp: unset;
+                line-clamp: unset;
+                overflow: visible;
+            }
         }
 
         .reading-author {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: rgba($text-color, 0.7);
-            margin-bottom: 1rem;
+            margin-bottom: 0.65rem;
             font-weight: 500;
         }
 
         .reading-description {
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.5;
             color: rgba($text-color, 0.75);
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.85rem;
             flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            
+            &.expanded {
+                display: block;
+                -webkit-line-clamp: unset;
+                line-clamp: unset;
+                overflow: visible;
+            }
         }
 
         .read-more-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.4rem;
             background: none;
             border: none;
             color: $accent-color;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
             padding: 0;
@@ -101,14 +129,14 @@
             align-self: flex-start;
 
             .read-more-arrow {
-                width: 1rem;
-                height: 1rem;
+                width: 0.85rem;
+                height: 0.85rem;
                 transition: transform 0.3s ease;
             }
 
             &:hover {
                 color: lighten($accent-color, 10%);
-                gap: 0.7rem;
+                gap: 0.6rem;
             }
 
             &.expanded {
@@ -128,12 +156,12 @@
             &.show {
                 max-height: 1000px;
                 opacity: 1;
-                margin-top: 1.5rem;
+                margin-top: 1rem;
             }
 
             .reading-insights,
             .reading-personal-note {
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem;
 
                 &:last-child {
                     margin-bottom: 0;
@@ -141,8 +169,8 @@
 
                 h4 {
                     color: $accent-color;
-                    font-size: 1rem;
-                    margin-bottom: 0.75rem;
+                    font-size: 0.9rem;
+                    margin-bottom: 0.5rem;
                     font-weight: 700;
                 }
             }
@@ -154,11 +182,11 @@
                     margin: 0;
 
                     li {
-                        font-size: 0.85rem;
-                        line-height: 1.6;
+                        font-size: 0.75rem;
+                        line-height: 1.5;
                         color: rgba($text-color, 0.8);
-                        margin-bottom: 0.65rem;
-                        padding-left: 1.25rem;
+                        margin-bottom: 0.5rem;
+                        padding-left: 1rem;
                         position: relative;
 
                         &::before {
@@ -178,8 +206,8 @@
 
             .reading-personal-note {
                 p {
-                    font-size: 0.85rem;
-                    line-height: 1.6;
+                    font-size: 0.75rem;
+                    line-height: 1.5;
                     color: rgba($text-color, 0.8);
                     font-style: italic;
                     margin: 0;

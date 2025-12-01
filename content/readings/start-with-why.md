@@ -11,5 +11,4 @@ key_insights = [
     "The Golden Circle: Why, How, What framework for communication",
     "Great leaders inspire action by starting with purpose"
 ]
-personal_note = "Powerful framework for understanding motivation and leadership. The Golden Circle concept has influenced how I approach communication and decision-making."
 +++

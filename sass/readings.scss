@@ -149,13 +149,16 @@
     .readings-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 2rem;
-        margin: 0 auto;
+        gap: 1.5rem;
+        margin: 0 clamp(.5rem, 2vw, 10rem);
         max-width: 900px;
         
-        @include respond-to('md') {
+        @include respond-to('sm') {
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+        }
+        
+        @include respond-to('md') {
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 }

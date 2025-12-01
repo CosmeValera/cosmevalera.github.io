@@ -11,5 +11,4 @@ key_insights = [
     "Bitcoin redefines the concept of private property",
     "Removes the state's monopoly on money creation"
 ]
-personal_note = "This book fundamentally changed my understanding of what money actually is and how Bitcoin represents a paradigm shift in economic and political systems."
 +++

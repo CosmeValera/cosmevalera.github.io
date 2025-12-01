@@ -11,5 +11,4 @@ key_insights = [
     "Keystone habits can trigger positive changes in other areas",
     "Willpower is a finite resource that can be strengthened"
 ]
-personal_note = "Interesting insights into habit formation, though some concepts felt repetitive. The scientific approach to understanding habits was valuable."
 +++

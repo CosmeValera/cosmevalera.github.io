@@ -11,5 +11,4 @@ key_insights = [
     "Virtue is the highest good and leads to eudaimonia",
     "Practice negative visualization to appreciate what you have"
 ]
-personal_note = "A concise introduction to Stoic philosophy with practical applications. The modern examples made ancient wisdom accessible and relevant."
 +++

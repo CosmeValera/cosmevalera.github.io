@@ -11,5 +11,4 @@ key_insights = [
     "Hands-on practice is crucial for programming mastery",
     "Understanding concepts before memorizing syntax"
 ]
-personal_note = "The Head First approach made learning Java much more engaging and memorable. The visual learning style really helped solidify concepts."
 +++

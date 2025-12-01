@@ -11,5 +11,4 @@ key_insights = [
     "Write code that's easy to change and maintain",
     "Think beyond the immediate problem to the bigger picture"
 ]
-personal_note = "Comprehensive guide that covers both technical and professional aspects of software development. The pragmatic approach resonates with real-world development challenges."
 +++

@@ -11,5 +11,4 @@ key_insights = [
     "The 21 million supply cap creates a new form of absolute scarcity in the digital age",
     "Bitcoin's proof-of-work transforms energy into digital value and security"
 ]
-personal_note = "This book offers a solid introduction to Bitcoin's philosophical and economic implications. Gigi does a good job breaking down complex concepts into accessible lessons, though some ideas felt repetitive or too shallow."
 +++

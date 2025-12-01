@@ -11,5 +11,4 @@ key_insights = [
     "Structured approach prevents common pitfalls in innovation",
     "Rapid prototyping and testing saves time and resources"
 ]
-personal_note = "Good framework for rapid problem-solving, though the rigid structure might not work for all teams. Useful for time-constrained projects."
 +++
