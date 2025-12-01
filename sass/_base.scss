@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6, p, b, a {
 
 h1 {
     text-align: center;
-    font-size: calc(min(5rem, 10vw));
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: bold;
     margin-bottom: 0.3em;
 }
@@ -34,11 +34,41 @@ h2 {
         font-size: 2.5rem;
     }
 
-    h1 {
-        font-size: 5rem;
-    }
+    // h1 {
+    //     font-size: 5rem;
+    // }
 
     h2 {
         font-size: 3rem;
+    }
+}
+
+.theme-toggle-container {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+
+    .theme-toggle-btn {
+        background: transparent;
+        border: none;
+        color: rgba($text-color, 0.5);
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $accent-color;
+        }
+    }
+}
+
+body.bright-theme {
+    .theme-toggle-container .theme-toggle-btn {
+        color: rgba($text-color-bright, 0.5);
+        
+        &:hover {
+            color: $accent-color-bright;
+        }
     }
 }

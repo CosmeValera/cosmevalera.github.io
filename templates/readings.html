@@ -15,8 +15,28 @@
 
 {% block content %}
   <div class="readings">
+    <div class="reading-library-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+    </div>
+    
     <h1>Readings</h1>
-    <p class="readings-intro">A collection of books I've read and my thoughts on them.</p>
+    <p class="readings-intro">A collection of books I've read and my thoughts on them. Each entry includes key insights and personal reflections.</p>
+    
+    <div class="readings-meta">
+      <div class="book-counter">
+        <span class="counter-number">{{ section.pages | length }}</span> books and counting
+      </div>
+      <div class="readings-search">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search books or authors...">
+      </div>
+    </div>
     
     <div class="readings-grid">
       {% for page in section.pages | sort(attribute="date") | reverse %}

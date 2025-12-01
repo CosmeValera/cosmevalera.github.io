@@ -22,6 +22,13 @@
     {% block styles%} {% endblock %}
   </head>
   <body{% if current_path and current_path is matching("^/blog/.+") %} class="blog-post-page"{% endif %}>
+    <!-- Theme Toggle (Top Right) -->
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
     <!-- Grid Background - Consistent across all pages -->
     <div class="grid-background">
       <div class="grid-layer-3"></div>
@@ -40,10 +47,7 @@
       <footer class="footer-responsive">
         <span class="footer-main">
           <a href="/sponsor">
-            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a> &nbsp;|&nbsp;
-          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" style="background:none;border:none;cursor:pointer;color:inherit;font-size:1em;padding:0 0em;">
-            Theme: <i class="fa fa-sun"></i> <span class="theme-toggle-text">Light</span>
-          </button> <div class="footer-spacer"> | </div>
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a>
         </span>
         <span class="footer-copyright"> © {{ now() | date(format="%Y") }} Cosme Valera Reales</span>
       </footer>

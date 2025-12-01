@@ -1,27 +1,28 @@
 // Variables
-$primary-bg: #006060;
-$secondary-bg: #0e3c3c;
-$tertiary-bg: #185146;
-$menu-item-bg: #000000;
+$primary-bg: #0b1116; // Dark Blue/Black
+$secondary-bg: #151b21; // Slightly lighter for menu/cards
+$tertiary-bg: #1f2933;
+
+$menu-item-bg: #151b21;
 
 $text-color: #ffffff;
-$accent-color: #4ff5f5;
-$active-color: #4ff54f;
+$accent-color: #4ff5f5; // Cyan/Teal glow
+$active-color: #4ff5f5;
 $active-color-tealish: #40d060;
 
-// Dark theme variables
-$primary-bg-dark: #181c1f;
-$text-color-dark: #e0e0e0;
+// Dark theme variables (Default is dark now)
+$primary-bg-dark: #0b1116;
+$text-color-dark: #ffffff;
 $accent-color-dark: #4ff5f5;
 
-// Bright theme variables (light-light mode)
-$primary-bg-bright: #f5fdfd;
-$secondary-bg-bright: #e8f8f8;
-$tertiary-bg-bright: #daf5f5;
+// Bright theme variables
+$primary-bg-bright: #f0f8ff; // Light Blueish White
+$secondary-bg-bright: #ffffff;
+$tertiary-bg-bright: #e6f7f8;
 $menu-item-bg-bright: #ffffff;
 $text-color-bright: #1a3a3a;
-$accent-color-bright: #00b8b8;
-$active-color-bright: #00cc66;
+$accent-color-bright: #00b8b8; // Darker teal for contrast
+$active-color-bright: #00b8b8;
 
 ////////////////
 // Tag colors //
@@ -53,7 +54,7 @@ $bitcoin-tag-gradient: linear-gradient(145deg, #f7931a, rgba(#f7931a, 0.45));
 /////////////////////
 
 // Fonts
-$sans-serif: Montserrat, 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+$sans-serif: 'Inter', Montserrat, 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 
 @mixin transition($args...) {
   -webkit-transition: $args;
