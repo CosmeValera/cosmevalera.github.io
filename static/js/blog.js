@@ -118,6 +118,176 @@ function initializeTabletLayout() {
     });
 }
 
+// Filter functionality
+function handleFilter() {
+    // Helper functions
+    function toggleModal(isOpen) {
+        const action = isOpen ? 'add' : 'remove';
+        filterModal.classList[action]('show');
+        filterButton.classList[action]('active');
+    }
+
+    function filterBlogPosts(selectedFilter) {
+        const blogCards = document.querySelectorAll('.blog-card');
+        
+        // Show all posts if no filter selected
+        if (!selectedFilter) {
+            blogCards.forEach(card => {
+                card.style.display = 'flex';
+            });
+            return;
+        }
+        
+        // Filter posts
+        blogCards.forEach(card => {
+            // Get all tags from the card
+            const tags = Array.from(card.querySelectorAll('.blog-card-tag'))
+                .map(tag => tag.textContent.trim().toLowerCase());
+            
+            // Normalize selected filter
+            const filter = selectedFilter.toLowerCase();
+            
+            let matches = false;
+            
+            matches = tags.some(tagText => {
+                // Simple normalization: remove spaces, lowercase
+                const normalizedTag = tagText.replace(/\s+/g, '-').toLowerCase();
+                return normalizedTag === filter || normalizedTag.includes(filter);
+            });
+            
+            if (!matches) {
+                if (card.classList.contains(`tag-${filter}`)) {
+                    matches = true;
+                }
+                // Also check for "beginner" if filter is "for-beginners"
+                if (filter === 'for-beginners' && (card.classList.contains('tag-beginner') || card.classList.contains('tag-for-beginners'))) {
+                    matches = true;
+                }
+                
+                // Check if the card has the specific icon wrapper
+                if (filter === 'recommended' && card.querySelector('.blog-card-recommended')) {
+                    matches = true;
+                }
+                if (filter === 'for-beginners' && card.querySelector('.blog-card-for-beginners')) {
+                    matches = true;
+                }
+            }
+
+            card.style.display = matches ? 'flex' : 'none';
+        });
+    }
+
+    //////////////////////////
+    // MAIN FILTER FUNCTION //
+    //////////////////////////
+    const filterButton = document.querySelector('#filter-menu-button');
+    const filterModal = document.querySelector('#filter-modal');
+    const filterModalClose = document.querySelector('#filter-modal-close');
+    const filterModalOptions = document.querySelectorAll('.filter-modal-option');
+    
+    if (!filterButton || !filterModal) return;
+
+    // Event listeners
+    filterButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleModal(!filterModal.classList.contains('show'));
+    });
+
+    filterModalClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleModal(false);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (filterModal.classList.contains('show') && 
+            !filterModal.contains(e.target) && 
+            !e.target.closest('.mobile-filter-button-container')) {
+            toggleModal(false);
+        }
+    });
+
+    filterModalOptions.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const selectedFilter = option.getAttribute('data-filter');
+            const isSelected = option.classList.contains('selected');
+
+            if (isSelected) {
+                option.classList.remove('selected');
+                filterBlogPosts(); // Show all
+            } else {
+                filterModalOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                filterBlogPosts(selectedFilter);
+            }
+            // Close modal after selection on mobile
+            // toggleModal(false);
+        });
+    });
+}
+
+function clickFilterRendersCards() {
+    const filterButtons = document.querySelectorAll(".filter-button");
+    const blogCards = document.querySelectorAll(".blog-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+          const selectedFilter = button.getAttribute("data-filter");
+          const isCurrentlySelected = button.classList.contains("selected-filter");
+
+            if (isCurrentlySelected) {
+                // If clicking on already selected filter, remove selection (show all)
+                button.classList.remove("selected-filter");
+                
+                // Show all cards
+                blogCards.forEach((card) => {
+                    card.style.display = "flex";
+                });
+            } else {
+                // Remove selected class from all other buttons
+                filterButtons.forEach((btn) => {
+                    btn.classList.remove("selected-filter");
+                });
+                
+                // Add selected class to clicked button
+                button.classList.add("selected-filter");
+                
+                // Filter cards based on selected filter
+                blogCards.forEach((card) => {
+                    // Logic duplicated from handleFilter - ideally should be shared but keeping it simple
+                    const tags = Array.from(card.querySelectorAll('.blog-card-tag'))
+                        .map(tag => tag.textContent.trim().toLowerCase());
+                    
+                    const filter = selectedFilter.toLowerCase();
+                    let matches = false;
+                    
+                    matches = tags.some(tagText => {
+                        const normalizedTag = tagText.replace(/\s+/g, '-').toLowerCase();
+                        return normalizedTag === filter || normalizedTag.includes(filter);
+                    });
+                    
+                    if (!matches) {
+                        if (card.classList.contains(`tag-${filter}`)) {
+                            matches = true;
+                        }
+                        if (filter === 'for-beginners' && (card.classList.contains('tag-beginner') || card.classList.contains('tag-for-beginners'))) {
+                            matches = true;
+                        }
+                        if (filter === 'recommended' && card.querySelector('.blog-card-recommended')) {
+                            matches = true;
+                        }
+                        if (filter === 'for-beginners' && card.querySelector('.blog-card-for-beginners')) {
+                            matches = true;
+                        }
+                    }
+
+                    card.style.display = matches ? "flex" : "none";
+                });
+            }
+        });
+    });
+}
+
 //////////
 // MAIN //
 //////////
@@ -128,5 +298,9 @@ document.addEventListener('DOMContentLoaded', function () {
     markLastRowCardsInDesktop();    // DESKTOP: mark last cards to show preview up
 
     initializeTabletLayout();       // TABLET:  static layout with image on right
+
+    handleFilter();                 // PHONE: FILTER BUTTON
+
+    clickFilterRendersCards();      // DESKTOP: FILTER BUTTONS
 
 });

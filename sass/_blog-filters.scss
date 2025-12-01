@@ -1,0 +1,255 @@
+.blog {
+  // Desktop-only filter buttons
+  .filter-buttons-desktop {
+    display: none; // Hidden by default (mobile)
+  }
+
+  // Filter Modal (Mobile Only)
+  .filter-modal {
+    display: none;
+    position: fixed;
+    top: 32px; // Align with the filter-menu-button position
+    right: 110px;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+
+    &.show {
+      display: block;
+    }
+
+    .filter-modal-content {
+      background: rgba($secondary-bg, 0.65);
+      border: 2px solid $accent-color;
+      border-radius: 15px;
+      padding: 15px;
+      width: calc(100dvw - 110px - 20px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+      .filter-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid $accent-color;
+
+        h3 {
+          color: $accent-color;
+          margin: 0;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+
+        .filter-modal-close {
+          background: none;
+          border: none;
+          color: $accent-color;
+          font-size: 1.2rem;
+          cursor: pointer;
+          padding: 2px;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba($accent-color, 0.1);
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .filter-modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        .filter-modal-option {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px;
+          background: darken($accent-color, 25%);
+          border: none;
+          border-radius: 6px;
+          color: $primary-bg;
+          font-size: 0.85rem;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+
+          i {
+            font-size: 0.9rem;
+          }
+          
+          &.selected {
+            background: $active-color-tealish;
+            color: $primary-bg;
+            transform: translateX(2px);
+          }
+        }
+      }
+    }
+  }
+
+  // Mobile Filter Button Styles
+  .mobile-filter-button-container {
+      position: fixed;
+      top: 85px; // Below the header/theme toggle
+      right: 1.5rem;
+      z-index: 999; // Below modal (10000) but above content
+      
+      @include respond-to('md') {
+          display: none;
+      }
+
+      .mobile-filter-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50px;
+          height: 50px;
+          background: $menu-item-bg;
+          border: 1px solid rgba($accent-color, 0.3);
+          border-radius: 50%;
+          color: $accent-color;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 1.1rem;
+          padding: 0;
+
+          &:hover {
+              transform: scale(1.05);
+              box-shadow: 0 8px 20px rgba($accent-color, 0.2);
+              background: rgba($accent-color, 0.1);
+          }
+
+          &.active {
+              background: $accent-color;
+              color: $primary-bg;
+              box-shadow: 0 0 15px rgba($accent-color, 0.5);
+          }
+      }
+  }
+
+  // 🧾 TABLET overrides
+  @include respond-to('md') {
+    .filter-buttons-desktop {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+
+      .filter-dropdown-desktop {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+
+        .filter-button {
+          border: none;
+          cursor: pointer;
+          padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+          margin: 0 5px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          border-radius: 9999px;
+          transition: background-color 0.3s ease-in-out;
+
+          &:not(.selected-filter) {
+            background-color: darken($accent-color, 30%);
+            color: $primary-bg;
+
+            &:hover {
+                background-color: $accent-color;
+            }
+          }
+
+          &.selected-filter {
+            background-color: $active-color-tealish;
+            color: $primary-bg;
+            
+            &:hover {
+              background-color: lighten($active-color-tealish, 8%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Dark theme: improve filter button contrast
+  body.dark-theme & {
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-dark, 0.2);
+          color: $accent-color-dark;
+          border: 1px solid rgba($accent-color-dark, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-dark, 0.3);
+            border-color: $accent-color-dark;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-tealish;
+          color: $primary-bg-dark;
+          border: 1px solid $active-color-tealish;
+          
+          &:hover {
+            background-color: lighten($active-color-tealish, 8%);
+          }
+        }
+      }
+    }
+  }
+
+  // Bright theme: improve filter button contrast on light background
+  body.bright-theme & {
+    .mobile-filter-button-container .mobile-filter-button {
+        background: $menu-item-bg-bright;
+        border-color: rgba($accent-color-bright, 0.3);
+        color: $accent-color-bright;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        &:hover {
+            background: rgba($accent-color-bright, 0.1);
+        }
+
+        &.active {
+            background: $accent-color-bright;
+            color: #fff;
+        }
+    }
+
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-bright, 0.15);
+          color: $accent-color-bright;
+          border: 1px solid rgba($accent-color-bright, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-bright, 0.25);
+            border-color: $accent-color-bright;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-bright;
+          color: $primary-bg-bright;
+          border: 1px solid $active-color-bright;
+          
+          &:hover {
+            background-color: lighten($active-color-bright, 5%);
+          }
+        }
+      }
+    }
+  }
+}
