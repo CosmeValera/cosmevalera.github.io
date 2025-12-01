@@ -60,4 +60,364 @@
       align-items: stretch;
     }
   }
+
+  // Filter Modal (Mobile Only)
+  .filter-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6); // Dark overlay
+    backdrop-filter: blur(5px); // Blur the background behind the modal
+
+    &.show {
+      display: flex; // Flex to center content
+      animation: fadeInOverlay 0.3s ease-out forwards;
+    }
+
+    .filter-modal-content {
+      background: rgba($secondary-bg, 0.9);
+      border: 1px solid rgba($accent-color, 0.5);
+      border-radius: 20px;
+      padding: 24px;
+      width: 85%;
+      max-width: 340px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      position: relative;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: popInModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      
+      // Glassmorphism
+      @supports (backdrop-filter: blur(10px)) {
+        background: rgba($secondary-bg, 0.8);
+        backdrop-filter: blur(20px);
+      }
+
+      .filter-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba($accent-color, 0.3);
+
+        h3 {
+          color: $accent-color;
+          margin: 0;
+          font-size: 1.3rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .filter-modal-close {
+          background: none;
+          border: none;
+          color: rgba($accent-color, 0.8);
+          font-size: 1.5rem;
+          cursor: pointer;
+          padding: 4px;
+          border-radius: 50%;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+
+          &:hover {
+            background: rgba($accent-color, 0.15);
+            color: $accent-color;
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      .filter-modal-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .filter-modal-option {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 14px 18px;
+          background: rgba($accent-color, 0.08);
+          border: 1px solid rgba($accent-color, 0.15);
+          border-radius: 12px;
+          color: rgba($text-color, 0.9);
+          font-size: 1rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+
+          i {
+            font-size: 1.1rem;
+            color: $accent-color;
+            width: 24px;
+            text-align: center;
+            transition: color 0.2s ease;
+          }
+          
+          &:hover {
+            background: rgba($accent-color, 0.15);
+            transform: translateX(4px);
+            border-color: rgba($accent-color, 0.3);
+          }
+          
+          &.selected {
+            background: $accent-color;
+            color: $primary-bg;
+            border-color: $accent-color;
+            box-shadow: 0 6px 15px rgba($accent-color, 0.3);
+            transform: scale(1.02);
+            
+            i {
+              color: $primary-bg;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Animations
+  @keyframes fadeInOverlay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes popInModal {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  // Mobile Filter Button Styles
+  .mobile-filter-button-container {
+      position: fixed;
+      top: 85px; // Below the header/theme toggle
+      right: 1.5rem;
+      z-index: 999; // Below modal (10000) but above content
+      
+      @include respond-to('md') {
+          display: none;
+      }
+
+      .mobile-filter-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50px;
+          height: 50px;
+          background: $menu-item-bg;
+          border: 1px solid rgba($accent-color, 0.3);
+          border-radius: 50%;
+          color: $accent-color;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 1.1rem;
+          padding: 0;
+
+          &:hover {
+              transform: scale(1.05);
+              box-shadow: 0 8px 20px rgba($accent-color, 0.2);
+              background: rgba($accent-color, 0.1);
+          }
+
+          &.active {
+              background: $accent-color;
+              color: $primary-bg;
+              box-shadow: 0 0 15px rgba($accent-color, 0.5);
+          }
+      }
+  }
+
+  // 🧾 TABLET overrides
+  @include respond-to('md') {
+    .filter-buttons-desktop {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+
+      .filter-dropdown-desktop {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+
+        .filter-button {
+          border: none;
+          cursor: pointer;
+          padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+          margin: 0 5px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          border-radius: 9999px;
+          transition: background-color 0.3s ease-in-out;
+
+          &:not(.selected-filter) {
+            background-color: darken($accent-color, 30%);
+            color: $primary-bg;
+
+            &:hover {
+                background-color: $accent-color;
+            }
+          }
+
+          &.selected-filter {
+            background-color: $active-color-tealish;
+            color: $primary-bg;
+            
+            &:hover {
+              background-color: lighten($active-color-tealish, 8%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Dark theme: improve filter button contrast
+  body.dark-theme & {
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-dark, 0.2);
+          color: $accent-color-dark;
+          border: 1px solid rgba($accent-color-dark, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-dark, 0.3);
+            border-color: $accent-color-dark;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-tealish;
+          color: $primary-bg-dark;
+          border: 1px solid $active-color-tealish;
+          
+          &:hover {
+            background-color: lighten($active-color-tealish, 8%);
+          }
+        }
+      }
+    }
+  }
+
+  // Bright theme: improve filter button contrast on light background
+  body.bright-theme & {
+    .mobile-filter-button-container .mobile-filter-button {
+        background: $menu-item-bg-bright;
+        border-color: rgba($accent-color-bright, 0.3);
+        color: $accent-color-bright;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        &:hover {
+            background: rgba($accent-color-bright, 0.1);
+        }
+
+        &.active {
+            background: $accent-color-bright;
+            color: #fff;
+        }
+    }
+    
+    .filter-modal {
+      background-color: rgba(255, 255, 255, 0.3); // Lighter overlay
+      
+      .filter-modal-content {
+        background: rgba($secondary-bg-bright, 0.9);
+        border-color: rgba($accent-color-bright, 0.4);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        
+        @supports (backdrop-filter: blur(10px)) {
+          background: rgba($secondary-bg-bright, 0.85);
+        }
+        
+        .filter-modal-header {
+          border-bottom-color: rgba($accent-color-bright, 0.2);
+          
+          h3 {
+            color: $accent-color-bright;
+            text-shadow: none;
+          }
+          
+          .filter-modal-close {
+            color: rgba($accent-color-bright, 0.8);
+            
+            &:hover {
+              background: rgba($accent-color-bright, 0.1);
+              color: $accent-color-bright;
+            }
+          }
+        }
+        
+        .filter-modal-body .filter-modal-option {
+          background: rgba($accent-color-bright, 0.05);
+          border-color: rgba($accent-color-bright, 0.15);
+          color: $text-color-bright;
+          
+          i {
+            color: $accent-color-bright;
+          }
+          
+          &:hover {
+            background: rgba($accent-color-bright, 0.1);
+            border-color: rgba($accent-color-bright, 0.3);
+          }
+          
+          &.selected {
+            background: $accent-color-bright;
+            color: #fff;
+            border-color: $accent-color-bright;
+            box-shadow: 0 6px 15px rgba($accent-color-bright, 0.3);
+            
+            i {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    @include respond-to('md') {
+      .filter-buttons-desktop .filter-dropdown-desktop .filter-button {
+        &:not(.selected-filter) {
+          background-color: rgba($accent-color-bright, 0.15);
+          color: $accent-color-bright;
+          border: 1px solid rgba($accent-color-bright, 0.3);
+
+          &:hover {
+            background-color: rgba($accent-color-bright, 0.25);
+            border-color: $accent-color-bright;
+          }
+        }
+
+        &.selected-filter {
+          background-color: $active-color-bright;
+          color: $primary-bg-bright;
+          border: 1px solid $active-color-bright;
+          
+          &:hover {
+            background-color: lighten($active-color-bright, 5%);
+          }
+        }
+      }
+    }
+  }
 }
