@@ -5,27 +5,144 @@
 //////////////////////
 ////// Readings //////
 .readings {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem 1rem;
     width: 100%;
 
-    .readings-intro {
-        max-width: 75vw;
-        text-wrap: balance;
-        margin: 0 auto 2rem;
+    .reading-library-icon {
         text-align: center;
-        color: $text-color;
-        opacity: 0.9;
-        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-        line-height: 1.6;
-        font-style: italic;
+        margin-bottom: 1.5rem;
+        
+        svg {
+            width: 3rem;
+            height: 3rem;
+            color: $accent-color;
+            opacity: 0.8;
+        }
     }
 
-    // Bright theme: use dark text for readability on light background
+    h1 {
+        text-align: center;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: $text-color;
+        letter-spacing: -0.02em;
+    }
+
+    .readings-intro {
+        max-width: 600px;
+        text-align: center;
+        margin: 0 auto 2.5rem;
+        color: $text-color;
+        opacity: 0.7;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+        line-height: 1.6;
+    }
+
+    .readings-meta {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+
+        .book-counter {
+            font-size: 0.95rem;
+            color: $accent-color;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            .counter-number {
+                font-weight: 700;
+                font-size: 1.1rem;
+            }
+        }
+
+        .readings-search {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+
+            .search-icon {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1.2rem;
+                height: 1.2rem;
+                color: $text-color;
+                opacity: 0.5;
+                pointer-events: none;
+            }
+
+            input {
+                width: 100%;
+                padding: 0.75rem 1rem 0.75rem 2.75rem;
+                border-radius: 999px;
+                border: 1px solid rgba($accent-color, 0.2);
+                background: rgba($secondary-bg, 0.5);
+                color: $text-color;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+
+                &::placeholder {
+                    color: rgba($text-color, 0.5);
+                }
+
+                &:focus {
+                    outline: none;
+                    border-color: rgba($accent-color, 0.5);
+                    background: rgba($secondary-bg, 0.7);
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                }
+            }
+        }
+    }
+
+    // Bright theme
     body.bright-theme & {
+        h1 {
+            color: $text-color-bright;
+        }
+
+        .reading-library-icon svg {
+            color: $accent-color-bright;
+        }
+
         .readings-intro {
-        color: $text-color-bright;
-        font-weight: 500;
+            color: $text-color-bright;
+        }
+
+        .readings-meta {
+            .book-counter {
+                color: $accent-color-bright;
+            }
+
+            .readings-search {
+                .search-icon {
+                    color: $text-color-bright;
+                }
+
+                input {
+                    border-color: rgba($accent-color-bright, 0.3);
+                    background: rgba($secondary-bg-bright, 0.5);
+                    color: $text-color-bright;
+
+                    &::placeholder {
+                        color: rgba($text-color-bright, 0.5);
+                    }
+
+                    &:focus {
+                        border-color: rgba($accent-color-bright, 0.6);
+                        background: rgba($secondary-bg-bright, 0.8);
+                    }
+                }
+            }
         }
     }
 
@@ -33,16 +150,17 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 2rem;
-        margin: 0 clamp(1.5rem, 2vw, 10rem);
+        margin: 0 auto;
+        max-width: 1200px;
         
         @include respond-to('md') {
             grid-template-columns: repeat(2, 1fr);
-            gap: 2.5rem;
+            gap: 2rem;
         }
         
         @include respond-to('lg') {
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.5rem;
+            gap: 2rem;
         }
     }
 }

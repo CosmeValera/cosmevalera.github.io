@@ -1,33 +1,84 @@
-function initializeReadingNavigation() {
-    const readingCards = document.querySelectorAll('.reading-card-navigation');
+// Reading card expand/collapse functionality
+function initializeReadingCards() {
+    const readingCards = document.querySelectorAll('.reading-card');
     
     readingCards.forEach(card => {
-        const navSquares = card.querySelectorAll('.nav-square');
-        const contentSections = card.querySelectorAll('.content-section');
+        const readMoreBtn = card.querySelector('.read-more-btn');
+        const expandedContent = card.querySelector('.reading-expanded-content');
+        const readMoreText = card.querySelector('.read-more-text');
         
-        navSquares.forEach(square => {
-            square.addEventListener('click', function(e) {
-                // Prevent the click from bubbling up to the parent card
-                e.stopPropagation();
+        if (readMoreBtn && expandedContent) {
+            readMoreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                const targetContent = this.getAttribute('data-content');
+                // Toggle expanded state
+                const isExpanded = expandedContent.classList.contains('show');
                 
-                // Remove active class from all squares and sections
-                navSquares.forEach(sq => sq.classList.remove('active'));
-                contentSections.forEach(section => section.classList.remove('active'));
-                
-                // Add active class to clicked square and corresponding section
-                this.classList.add('active');
-                const targetSection = card.querySelector(`#${targetContent}`);
-                if (targetSection) {
-                    targetSection.classList.add('active');
+                if (isExpanded) {
+                    // Collapse
+                    expandedContent.classList.remove('show');
+                    readMoreBtn.classList.remove('expanded');
+                    readMoreText.textContent = 'Show more';
+                } else {
+                    // Expand
+                    expandedContent.classList.add('show');
+                    readMoreBtn.classList.add('expanded');
+                    readMoreText.textContent = 'Show less';
                 }
             });
-        });
+        }
     });
 }
 
-// Quick View functionality for readings
+// Search functionality for readings
+function initializeReadingSearch() {
+    const searchInput = document.getElementById('search-input');
+    if (!searchInput) return;
+    
+    const readingCards = document.querySelectorAll('.reading-card');
+    
+    searchInput.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        
+        readingCards.forEach(card => {
+            const title = card.querySelector('.reading-title')?.textContent.toLowerCase() || '';
+            const author = card.querySelector('.reading-author')?.textContent.toLowerCase() || '';
+            const description = card.querySelector('.reading-description')?.textContent.toLowerCase() || '';
+            
+            const matches = title.includes(searchTerm) || 
+                          author.includes(searchTerm) || 
+                          description.includes(searchTerm);
+            
+            if (matches || searchTerm === '') {
+                card.style.display = '';
+                // Add animation
+                card.style.animation = 'fadeIn 0.3s ease';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Update book counter if it exists
+        updateBookCounter(searchTerm);
+    });
+}
+
+// Update book counter based on visible cards
+function updateBookCounter(searchTerm = '') {
+    const counter = document.querySelector('.counter-number');
+    if (!counter) return;
+    
+    const visibleCards = document.querySelectorAll('.reading-card:not([style*="display: none"])');
+    const totalBooks = document.querySelectorAll('.reading-card').length;
+    
+    if (searchTerm) {
+        counter.textContent = visibleCards.length;
+    } else {
+        counter.textContent = totalBooks;
+    }
+}
+
+// Quick View functionality for readings (if needed)
 function handleReadingsQuickView() {
     const quickViewButton = document.querySelector('#readings-quick-view-button');
     if (!quickViewButton) return;
@@ -37,28 +88,62 @@ function handleReadingsQuickView() {
         const isActive = quickViewButton.classList.contains('active');
         
         if (isActive) {
-            // Deactivate Quick View
+            // Deactivate Quick View - collapse all cards
             quickViewButton.classList.remove('active');
-            readingCards.forEach((card) => {
-                card.classList.remove('hovered');
+            readingCards.forEach(card => {
+                const expandedContent = card.querySelector('.reading-expanded-content');
+                const readMoreBtn = card.querySelector('.read-more-btn');
+                const readMoreText = card.querySelector('.read-more-text');
+                
+                if (expandedContent && expandedContent.classList.contains('show')) {
+                    expandedContent.classList.remove('show');
+                    readMoreBtn.classList.remove('expanded');
+                    readMoreText.textContent = 'Read more';
+                }
             });
         } else {
-            // Activate Quick View
+            // Activate Quick View - expand all cards
             quickViewButton.classList.add('active');
-            readingCards.forEach((card) => {
-                card.classList.add('hovered');
+            readingCards.forEach(card => {
+                const expandedContent = card.querySelector('.reading-expanded-content');
+                const readMoreBtn = card.querySelector('.read-more-btn');
+                const readMoreText = card.querySelector('.read-more-text');
+                
+                if (expandedContent && !expandedContent.classList.contains('show')) {
+                    expandedContent.classList.add('show');
+                    readMoreBtn.classList.add('expanded');
+                    readMoreText.textContent = 'Show less';
+                }
             });
         }
     });
 }
 
+// Add CSS for fade in animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
 
 ////////////////////
 /////   MAIN   /////
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize navigation for reading cards
-    initializeReadingNavigation();
+    // Initialize reading card expand/collapse
+    initializeReadingCards();
     
-    // Initialize quick view functionality
+    // Initialize search functionality
+    initializeReadingSearch();
+    
+    // Initialize quick view functionality (if button exists)
     handleReadingsQuickView();
 });
