@@ -8,6 +8,7 @@ function attachHoverToPreviewInPhone() {
     const previews = Array.from(document.querySelectorAll('.blog-card-cover-preview-down'));
     
     let isAtBottom = false; // Track bottom state to prevent glitching
+    let ticking = false; // For requestAnimationFrame throttling
     
     function updatePreviewVisibility() {
         /////////////////////
@@ -35,6 +36,7 @@ function attachHoverToPreviewInPhone() {
                     preview.classList.remove('show-preview');
                 }
             });
+            ticking = false;
             return;
         }
         
@@ -63,12 +65,21 @@ function attachHoverToPreviewInPhone() {
                 preview.classList.remove('show-preview');
             }
         });
+        
+        ticking = false;
+    }
+
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(updatePreviewVisibility);
+            ticking = true;
+        }
     }
 
     // Initial call and on scroll/resize
     updatePreviewVisibility();
-    window.addEventListener('scroll', updatePreviewVisibility, { passive: true });
-    window.addEventListener('resize', updatePreviewVisibility);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
 }
 
 function markLastRowCardsInDesktop() {

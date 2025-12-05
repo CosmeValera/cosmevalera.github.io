@@ -197,8 +197,10 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   
-    // Instant scroll handler for immediate progress updates
-    function handleScroll() {
+    // Throttled scroll handler
+    let ticking = false;
+
+    function updateTOC() {
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
       const isScrollingDown = currentScrollY > lastScrollY;
       
@@ -279,7 +281,17 @@ document.addEventListener('DOMContentLoaded', function () {
       lastScrollY = currentScrollY;
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    function onScroll() {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateTOC();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', function() {
       updateProgress();
       updateActiveSection();
