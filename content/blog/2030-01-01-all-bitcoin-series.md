@@ -7,10 +7,10 @@ draft = true
 [taxonomies]
 tags = ["bitcoin", "finance"]
 [extra]
-cover_image = "/images/blog/2025-07-25-bitcoin/bitcoin.png"
+cover_image = "/images/blog/2025-07-25-bitcoin/bitcoin.webp"
 +++
 
-![blog-cover](/images/blog/2025-07-25-bitcoin/bitcoin.png)
+![blog-cover](/images/blog/2025-07-25-bitcoin/bitcoin.webp)
 
 ```js
 Posts Order:
