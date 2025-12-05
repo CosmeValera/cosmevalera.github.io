@@ -2,7 +2,7 @@
   <div class="reading-card">
     {% if page.extra and page.extra.cover_image %}
       <div class="reading-card-cover">
-        <img src="{{ page.extra.cover_image }}" alt="Cover of {{ page.title }}">
+        <img src="{{ page.extra.cover_image }}" alt="Cover of {{ page.title }}" loading="lazy" decoding="async">
         <div class="reading-date-badge">{{ page.date | date(format="%B %d, %Y") }}</div>
       </div>
     {% endif %}

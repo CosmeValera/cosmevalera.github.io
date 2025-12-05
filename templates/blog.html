@@ -188,7 +188,7 @@
         <!-- COVER PREVIEW UP CASE -->
         <div class="blog-card-cover-preview-up-wrapper">
           <div class="blog-card-cover-preview-up {{ main_tag_class }}">
-            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" loading="lazy" decoding="async">
           </div>
         </div>
         
@@ -218,7 +218,7 @@
           
           <!-- RIGHT SIDE: Tablet Preview -->
           <div class="blog-card-cover-preview-tablet {{ main_tag_class }}">
-            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" loading="lazy" decoding="async">
           </div>
         </div>
         
@@ -230,7 +230,7 @@
             <i class="fas fa-eye"></i> Hover to preview
           </div>
           <div class="blog-card-cover-preview-down {{ main_tag_class }}">
-            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" loading="lazy" decoding="async">
           </div>
           <div class="card-date-and-stats">
             <span class="card-date">{{ post_date_display }}</span>

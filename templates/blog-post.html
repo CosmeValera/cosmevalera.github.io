@@ -8,11 +8,26 @@
 
 {% block styles %}
   <link rel="stylesheet" href="{{ get_url(path="blog-post.css") | safe }}">
+  {% if page.extra.cover_image %}
+  <link rel="preload" href="{{ page.extra.cover_image }}" as="image" fetchpriority="high">
+  {% endif %}
 {% endblock %}
 
 {% block scripts %}
   <script src="{{ get_url(path="js/exchange-toggle.js") | safe }}"></script>
   <script src="{{ get_url(path="js/blog-post-toc.js") | safe }}"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
 {% endblock %}
 
 {% block content %}
