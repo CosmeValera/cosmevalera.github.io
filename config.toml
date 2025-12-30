@@ -62,7 +62,7 @@ description_suffix = "Prospero en entornos que evolucionan rápidamente, abrazan
 blog_intro = "Disfruto escribiendo sobre temas que encuentro emocionantes y vale la pena compartir."
 back_to_posts = "← Volver a todos los posts"
 filter_blog_posts = "Filtrar posts"
-hover_to_preview = "Pasa el cursor para previsualizar"
+hover_to_preview = "Pasa ratón encima"
 on_this_page = "En esta página"
 table_of_contents = "Tabla de Contenidos"
 min_read = "min de lectura"
@@ -100,9 +100,17 @@ direct_access_desc = "Desbloquea una vista única de mis proyectos y únete a su
 support_bitcoin = "Apoya la Adopción de Bitcoin"
 support_bitcoin_desc = "Al usar Lightning, estás ayudando a construir el futuro de los pagos de internet descentralizados con tarifas casi nulas."
 # Footer
-footer_sponsor = "Patrocinar"
+footer_sponsor = "Sponsor"
 # Language
 switch_language = "Cambiar idioma"
+# Project Cards
+proj_aquamesh_desc = "Plataforma no-code de arrastrar y soltar para crear dashboards interactivos."
+proj_devopslab_desc = "Pipeline DevOps completo con contenedorización, orquestación y automatización CI/CD"
+proj_fitcal_desc = "Aplicación de seguimiento de fitness y nutrición con gestión de calorías"
+proj_sympho_desc = "Herramienta de notación y composición musical con renderizado interactivo de partituras"
+proj_lop_desc = "Juego de estrategia por turnos con batallas Pokemon y mecánicas personalizadas."
+proj_deptquest_desc = "Una aplicación Android para la gestión de un departamento."
+proj_inventory_desc = "Sistema de gestión de inventario construido con Node.js y MongoDB."
 
 # Default language (English) translations
 [translations]
@@ -169,3 +177,11 @@ support_bitcoin_desc = "By using Lightning, you're helping build the future of d
 footer_sponsor = "Sponsor"
 # Language
 switch_language = "Switch language"
+# Project Cards
+proj_aquamesh_desc = "No-code drag-and-drop platform for creating interactive dashboards."
+proj_devopslab_desc = "Complete DevOps pipeline with containerization, orchestration, and CI/CD automation"
+proj_fitcal_desc = "Fitness and nutrition tracking application with calorie management"
+proj_sympho_desc = "Music notation and composition tool with interactive sheet music rendering"
+proj_lop_desc = "Turn-based strategy game featuring Pokemon battles with custom mechanics."
+proj_deptquest_desc = "An Android application for management of a department."
+proj_inventory_desc = "Inventory management system built with Node.js and MongoDB."
