@@ -28,3 +28,144 @@ nav = [
 ]
 
 favicon = "favicon.jpg"
+
+default_language = "en"
+
+# Spanish language configuration
+[languages.es]
+generate_feeds = true
+build_search_index = false
+taxonomies = [
+    {name = "tags", feed = true},
+]
+
+[languages.es.translations]
+# Navigation
+home = "Inicio"
+projects = "Proyectos"
+blog = "Blog"
+readings = "Lecturas"
+sponsor = "Patrocinar"
+# Home page
+hello = "¡Hola!"
+i_am = "Soy"
+working_for = "Trabajando para"
+in_the = "en el"
+browse_projects = "Ver mis proyectos"
+check_latest_posts = "Ver mis últimos posts"
+connect_with_me = "Conéctate conmigo"
+description_home = "👉🏼 Motivado por un genuino amor por el software, promuevo activamente el"
+clean_code = "código limpio"
+agile_dynamics = "dinámicas ágiles."
+description_suffix = "Prospero en entornos que evolucionan rápidamente, abrazando nuevos conocimientos y traduciéndolos en resultados impactantes."
+# Blog
+blog_intro = "Disfruto escribiendo sobre temas que encuentro emocionantes y vale la pena compartir."
+back_to_posts = "← Volver a todos los posts"
+filter_blog_posts = "Filtrar posts"
+hover_to_preview = "Pasa el cursor para previsualizar"
+on_this_page = "En esta página"
+table_of_contents = "Tabla de Contenidos"
+min_read = "min de lectura"
+words = "palabras"
+# Blog tags/filters
+recommended = "Recomendado"
+for_beginners = "Para principiantes"
+frontend = "Frontend"
+backend = "Backend"
+architecture = "Arquitectura"
+finance = "Finanzas"
+bitcoin = "Bitcoin"
+# Projects
+projects_intro = "Una muestra de proyectos que he construido usando diferentes tecnologías. Cada proyecto representa un desafío único y una experiencia de aprendizaje."
+filter_projects = "Filtrar Proyectos"
+github = "GitHub"
+live_demo = "Demo en Vivo"
+# Readings
+readings_intro = "Una colección de libros que he leído y mis reflexiones sobre ellos."
+books_with_reflections = "libros con reflexiones"
+search_books = "Buscar libros o autores..."
+show_more = "Mostrar más"
+show_less = "Mostrar menos"
+# Sponsor
+become_sponsor = "Conviértete en Patrocinador"
+lightning_donation = "Donación por Lightning Network"
+support_work = "Apoya mi trabajo con un pago de Bitcoin Lightning Network"
+lightning_description = "Lightning Network permite pagos de Bitcoin instantáneos y de bajo costo. ¡Es perfecto para apoyar a creadores y desarrolladores!"
+send_bitcoin = "Enviar Bitcoin vía Lightning"
+why_sponsor = "¿Por qué ser Patrocinador?"
+support_opensource = "Apoya el Código Abierto"
+help_maintain = "Ayuda a mantener proyectos como"
+direct_access = "Acceso Directo e Información"
+direct_access_desc = "Desbloquea una vista única de mis proyectos y únete a su viaje en evolución."
+support_bitcoin = "Apoya la Adopción de Bitcoin"
+support_bitcoin_desc = "Al usar Lightning, estás ayudando a construir el futuro de los pagos de internet descentralizados con tarifas casi nulas."
+# Footer
+footer_sponsor = "Patrocinar"
+# Language
+switch_language = "Cambiar idioma"
+
+# Default language (English) translations
+[translations]
+# Navigation
+home = "Home"
+projects = "Projects"
+blog = "Blog"
+readings = "Readings"
+sponsor = "Sponsor"
+# Home page
+hello = "Hello!"
+i_am = "I am"
+working_for = "Working for"
+in_the = "in the"
+browse_projects = "Browse my projects"
+check_latest_posts = "Check out my latest posts"
+connect_with_me = "Connect with me"
+description_home = "👉🏼 Motivated by a genuine love for software, I actively promote"
+clean_code = "clean code"
+agile_dynamics = "agile dynamics."
+description_suffix = "I thrive in rapidly evolving environments, readily embracing new knowledge and translating it into impactful results."
+# Blog
+blog_intro = "I enjoy writing about topics that I find exciting and are worth sharing."
+back_to_posts = "← Back to all posts"
+filter_blog_posts = "Filter Blog Posts"
+hover_to_preview = "Hover to preview"
+on_this_page = "On this page"
+table_of_contents = "Table of Contents"
+min_read = "min read"
+words = "words"
+# Blog tags/filters
+recommended = "Recommended"
+for_beginners = "For Beginners"
+frontend = "Frontend"
+backend = "Backend"
+architecture = "Architecture"
+finance = "Finance"
+bitcoin = "Bitcoin"
+# Projects
+projects_intro = "A showcase of projects I've built using different technologies. Each project represents a unique challenge and learning experience."
+filter_projects = "Filter Projects"
+github = "GitHub"
+live_demo = "Live Demo"
+# Readings
+readings_intro = "A collection of books I've read and my thoughts on them."
+books_with_reflections = "books with reflections"
+search_books = "Search books or authors..."
+show_more = "Show more"
+show_less = "Show less"
+# Sponsor
+become_sponsor = "Become a Sponsor"
+lightning_donation = "Lightning Network Donation"
+support_work = "Support my work with a Bitcoin Lightning Network payment"
+lightning_description = "Lightning Network enables instant, low-cost Bitcoin payments. It's perfect for supporting creators and developers!"
+send_bitcoin = "Send Bitcoin via Lightning"
+why_sponsor = "Why Become a Sponsor?"
+support_opensource = "Support Open Source"
+help_maintain = "Help maintain projects like"
+direct_access = "Direct Access and Insights"
+direct_access_desc = "Unlock a unique view into my projects and join their evolving journey."
+support_bitcoin = "Support Bitcoin Adoption"
+support_bitcoin_desc = "By using Lightning, you're helping build the future of decentralized internet payments with near-zero fees."
+# Footer
+footer_sponsor = "Sponsor"
+# Language
+switch_language = "Switch language"

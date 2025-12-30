@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Projects | Cosme
+  {{ trans(key="projects", lang=lang) }} | Cosme
 {% endblock %}
 
 {% block styles %}
@@ -20,8 +20,8 @@
     </svg>
   </div>
   
-  <h1>Projects</h1>
-  <p class="projects-intro">A showcase of projects I've built using different technologies. Each project represents a unique challenge and learning experience.</p>
+  <h1>{{ trans(key="projects", lang=lang) }}</h1>
+  <p class="projects-intro">{{ trans(key="projects_intro", lang=lang) }}</p>
 
   <!-- FILTER (Desktop Only) -->
   <div class="filter-buttons-desktop">
@@ -56,7 +56,7 @@
 
   <!-- Mobile Filter Button -->
   <div class="mobile-filter-button-container">
-    <button id="filter-menu-button" class="mobile-filter-button" aria-label="Filter Projects">
+    <button id="filter-menu-button" class="mobile-filter-button" aria-label="{{ trans(key='filter_projects', lang=lang) }}">
       <i class="fas fa-filter"></i>
     </button>
   </div>
@@ -65,7 +65,7 @@
   <div class="filter-modal" id="filter-modal">
     <div class="filter-modal-content">
       <div class="filter-modal-header">
-        <h3>Filter Projects</h3>
+        <h3>{{ trans(key="filter_projects", lang=lang) }}</h3>
         <button class="filter-modal-close" id="filter-modal-close">
           <i class="fas fa-times"></i>
         </button>
@@ -113,10 +113,10 @@
           </p>
           <div class="card-buttons">
             <a class="card-button github-btn" href="https://github.com/CosmeValera/AquaMesh" target="_blank">
-              <i class="fab fa-github"></i>GitHub
+              <i class="fab fa-github"></i>{{ trans(key="github", lang=lang) }}
             </a>
             <a class="card-button demo-btn" href="https://aquamesh.cosmevalera.dev/" target="_blank">
-              <i class="fas fa-link"></i>Live Demo
+              <i class="fas fa-link"></i>{{ trans(key="live_demo", lang=lang) }}
             </a>
           </div>
         </div>

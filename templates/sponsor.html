@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Sponsor | Cosme
+  {{ trans(key="sponsor", lang=lang) }} | Cosme
 {% endblock %}
 
 {% block styles %}
@@ -11,18 +11,18 @@
 {% block content %}
 <div class="sponsor">
     <div id="sponsor-inner">
-        <h1 id="sponsor-title">Become a Sponsor</h1>
+        <h1 id="sponsor-title">{{ trans(key="become_sponsor", lang=lang) }}</h1>
         <section id="section-contribution">
             <!-- Lightning Network Donations Section -->
             <div class="contribution">
                 <h2 class="contribution-title">
-                    <i class="fa-solid fa-bolt"></i>&nbsp;&nbsp; Lightning Network Donation
+                    <i class="fa-solid fa-bolt"></i>&nbsp;&nbsp; {{ trans(key="lightning_donation", lang=lang) }}
                 </h2>
                 <p class="contribution-subtitle">
-                    Support my work with a Bitcoin Lightning Network payment
+                    {{ trans(key="support_work", lang=lang) }}
                 </p>
                 <p class="contribution-description">
-                    Lightning Network enables instant, low-cost Bitcoin payments. It's perfect for supporting creators and developers!
+                    {{ trans(key="lightning_description", lang=lang) }}
                 </p>
                 <div class="donation-options">
                     <a
@@ -31,36 +31,36 @@
                     href="https://getalby.com/p/cosmevalerareales"
                     title="Bitcoin Lightning Network"
                     >
-                        <i class="fa-solid fa-bolt"></i> Send Bitcoin via Lightning
+                        <i class="fa-solid fa-bolt"></i> {{ trans(key="send_bitcoin", lang=lang) }}
                     </a>
                 </div>
             </div>
         </section>
 
         <section id="section-reasons-sponsor">
-            <h2 class="sponsor-title">Why Become a Sponsor?</h2>
+            <h2 class="sponsor-title">{{ trans(key="why_sponsor", lang=lang) }}</h2>
             <div class="sponsor-features">
                 <div class="sponsor-feature">
                     <h1>💓</h1>
-                    <h3 class="feature-title">Support Open Source</h3>
+                    <h3 class="feature-title">{{ trans(key="support_opensource", lang=lang) }}</h3>
                     <p>
-                    Help maintain projects like
+                    {{ trans(key="help_maintain", lang=lang) }}
                     <a target="_blank" href="https://aquamesh.cosmevalera.dev/">AquaMesh</a>,
                     and <a target="_blank" href="https://devopslab.cosmevalera.dev/">DevOpsLab</a>.
                     </p>
                 </div>
                 <div class="sponsor-feature">
                     <h1>⭐</h1>
-                    <h3 class="feature-title">Direct Access and Insights</h3>
+                    <h3 class="feature-title">{{ trans(key="direct_access", lang=lang) }}</h3>
                     <p>
-                    Unlock a unique view into my projects and join their evolving journey.
+                    {{ trans(key="direct_access_desc", lang=lang) }}
                     </p>
                 </div>
                 <div class="sponsor-feature">
                     <h1>⚡</h1>
-                    <h3 class="feature-title">Support Bitcoin Adoption</h3>
+                    <h3 class="feature-title">{{ trans(key="support_bitcoin", lang=lang) }}</h3>
                     <p>
-                    By using Lightning, you're helping build the future of decentralized internet payments with near-zero fees.
+                    {{ trans(key="support_bitcoin_desc", lang=lang) }}
                     </p>
                 </div>
             </div>

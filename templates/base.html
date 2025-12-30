@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ lang | default(value='en') }}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,8 +22,30 @@
     {% block styles%} {% endblock %}
   </head>
   <body{% if current_path and current_path is matching("^/blog/.+") %} class="blog-post-page"{% endif %}>
-    <!-- Theme Toggle (Top Right) -->
+    <!-- Theme & Language Toggle (Top Right) -->
     <div class="theme-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            {% if lang == "es" %}
+                {% set en_path = current_path | trim_start_matches(pat="/es") %}
+                {% if en_path == "" %}
+                    {% set en_path = "/" %}
+                {% endif %}
+                <a href="{{ en_path }}" 
+                   class="language-toggle-btn" 
+                   aria-label="{{ trans(key='switch_language', lang=lang) }}"
+                   title="Switch to English">
+                    <span class="lang-code">ES</span>
+                </a>
+            {% else %}
+                <a href="/es{{ current_path }}" 
+                   class="language-toggle-btn" 
+                   aria-label="{{ trans(key='switch_language', lang=lang) }}"
+                   title="Cambiar a Español">
+                    <span class="lang-code">EN</span>
+                </a>
+            {% endif %}
+        </div>
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
             <i class="fas fa-sun"></i>
         </button>
@@ -46,8 +68,13 @@
 
       <footer class="footer-responsive">
         <span class="footer-main">
+          {% if lang == "es" %}
+          <a href="/es/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> {{ trans(key="footer_sponsor", lang=lang) }}</a>
+          {% else %}
           <a href="/sponsor">
-            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a>
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> {{ trans(key="footer_sponsor", lang=lang) }}</a>
+          {% endif %}
         </span>
         <span class="footer-copyright"> © {{ now() | date(format="%Y") }} Cosme Valera Reales</span>
       </footer>

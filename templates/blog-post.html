@@ -3,7 +3,7 @@
 {% import "related-container.html" as related %}
 
 {% block title %}
-  Blog | Cosme
+  {{ trans(key="blog", lang=lang) }} | Cosme
 {% endblock %}
 
 {% block styles %}
@@ -41,7 +41,11 @@
       {% set post_date_display = page.date | date(format="%B %d, %Y") %}
     {% endif %}
 
-    <a href="/blog" class="back-link">← Back to all posts</a>
+    {% if lang == "es" %}
+    <a href="/es/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
+    {% else %}
+    <a href="/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
+    {% endif %}
     
     {% if page.taxonomies and page.taxonomies.tags %}
       <div class="tags">
@@ -75,7 +79,7 @@
     <!-- TOC for mobile - sticky top -->
     <div class="toc-mobile" data-collapsed>
       <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
-        <span class="toc-title">Table of Contents</span>
+        <span class="toc-title">{{ trans(key="table_of_contents", lang=lang) }}</span>
         <span class="toc-chevron" aria-hidden="true"></span>
       </button>
       <ul id="toc-list-mobile" class="toc-list"></ul>
@@ -85,7 +89,7 @@
     <div class="toc-desktop-wrapper">
       <!-- TOC for desktop - sticky left -->
       <div class="toc-desktop" data-collapsed>
-        <div class="toc-desktop-title">On this page</div>
+        <div class="toc-desktop-title">{{ trans(key="on_this_page", lang=lang) }}</div>
         <ul id="toc-list-desktop" class="toc-list"></ul>
       </div>
     </div>

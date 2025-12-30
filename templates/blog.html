@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Blog | Cosme
+  {{ trans(key="blog", lang=lang) }} | Cosme
 {% endblock %}
 
 {% block styles %}
@@ -21,8 +21,8 @@
     </svg>
   </div>
   
-  <h1>Blog</h1>
-  <p class="blog-intro">I enjoy writing about topics that I find exciting and are worth sharing.</p>
+  <h1>{{ trans(key="blog", lang=lang) }}</h1>
+  <p class="blog-intro">{{ trans(key="blog_intro", lang=lang) }}</p>
 
   <!-- FILTER (Desktop Only) -->
   <div class="filter-buttons-desktop">
@@ -39,7 +39,7 @@
 
       <button class="filter-button" data-filter="frontend">
         <i class="fas fa-laptop-code"></i>
-        Frontend
+        {{ trans(key="frontend", lang=lang) }}
       </button>
 
       <!-- <button class="filter-button" data-filter="backend">
@@ -49,17 +49,17 @@
 
       <button class="filter-button" data-filter="architecture">
         <i class="fas fa-sitemap"></i>
-        Architecture
+        {{ trans(key="architecture", lang=lang) }}
       </button>
 
       <button class="filter-button" data-filter="finance">
         <i class="fas fa-chart-line"></i>
-        Finance
+        {{ trans(key="finance", lang=lang) }}
       </button>
 
       <button class="filter-button" data-filter="bitcoin">
         <i class="fab fa-bitcoin"></i>
-        Bitcoin
+        {{ trans(key="bitcoin", lang=lang) }}
       </button>
     </div>
   </div>
@@ -67,7 +67,7 @@
 
   <!-- Mobile Filter Button -->
   <div class="mobile-filter-button-container">
-    <button id="filter-menu-button" class="mobile-filter-button" aria-label="Filter Blog Posts">
+    <button id="filter-menu-button" class="mobile-filter-button" aria-label="{{ trans(key='filter_blog_posts', lang=lang) }}">
       <i class="fas fa-filter"></i>
     </button>
   </div>
@@ -76,7 +76,7 @@
   <div class="filter-modal" id="filter-modal">
     <div class="filter-modal-content">
       <div class="filter-modal-header">
-        <h3>Filter Blog Posts</h3>
+        <h3>{{ trans(key="filter_blog_posts", lang=lang) }}</h3>
         <button class="filter-modal-close" id="filter-modal-close">
           <i class="fas fa-times"></i>
         </button>
@@ -92,7 +92,7 @@
         </button> -->
         <button class="filter-modal-option" data-filter="frontend">
           <i class="fas fa-laptop-code"></i>
-          Frontend
+          {{ trans(key="frontend", lang=lang) }}
         </button>
         <!-- <button class="filter-modal-option" data-filter="backend">
           <i class="fas fa-server"></i>
@@ -100,15 +100,15 @@
         </button> -->
         <button class="filter-modal-option" data-filter="architecture">
           <i class="fas fa-sitemap"></i>
-          Architecture
+          {{ trans(key="architecture", lang=lang) }}
         </button>
         <button class="filter-modal-option" data-filter="finance">
           <i class="fas fa-chart-line"></i>
-          Finance
+          {{ trans(key="finance", lang=lang) }}
         </button>
         <button class="filter-modal-option" data-filter="bitcoin">
           <i class="fab fa-bitcoin"></i>
-          Bitcoin
+          {{ trans(key="bitcoin", lang=lang) }}
         </button>
       </div>
     </div>
@@ -200,7 +200,7 @@
             <div class="blog-card-details">
               <p class="card-description">{{ post.description }}</p>
               <div class="preview-indicator">
-                <i class="fas fa-eye"></i> Hover to preview
+                <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
               </div>
               <div class="card-date-and-stats">
                 <span class="card-date">{{ post_date_display }}</span>
@@ -227,7 +227,7 @@
         <div class="blog-card-details blog-card-details-mobile-desktop">
           <p class="card-description">{{ post.description }}</p>
           <div class="preview-indicator">
-            <i class="fas fa-eye"></i> Hover to preview
+            <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
           </div>
           <div class="blog-card-cover-preview-down {{ main_tag_class }}">
             <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" loading="lazy" decoding="async">

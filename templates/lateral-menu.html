@@ -1,20 +1,38 @@
 <!-- Lateral Floating Menu -->
 <nav class="lateral-menu-pill">
-  <a href="/" class="menu-item {% if current_path == '/' %}active{% endif %}" aria-label="Home">
-    <i class="fas fa-home"></i>
-  </a>
-  
-  <a href="/projects" class="menu-item {% if current_path and current_path is starting_with('/projects') %}active{% endif %}" aria-label="Projects">
-    <i class="fas fa-code"></i>
-  </a>
-  
-  <a href="/blog" class="menu-item {% if current_path and current_path is starting_with('/blog') %}active{% endif %}" aria-label="Blog">
-    <i class="fas fa-file-alt"></i>
-  </a>
-  
-  <a href="/readings" class="menu-item {% if current_path and current_path is starting_with('/readings') %}active{% endif %}" aria-label="Readings">
-    <i class="fas fa-book-open"></i>
-  </a>
+  {% if lang == "es" %}
+    <a href="/es/" class="menu-item {% if current_path == '/es/' %}active{% endif %}" aria-label="{{ trans(key='home', lang=lang) }}">
+      <i class="fas fa-home"></i>
+    </a>
+    
+    <a href="/es/projects" class="menu-item {% if current_path and current_path is starting_with('/es/projects') %}active{% endif %}" aria-label="{{ trans(key='projects', lang=lang) }}">
+      <i class="fas fa-code"></i>
+    </a>
+    
+    <a href="/es/blog" class="menu-item {% if current_path and current_path is starting_with('/es/blog') %}active{% endif %}" aria-label="{{ trans(key='blog', lang=lang) }}">
+      <i class="fas fa-file-alt"></i>
+    </a>
+    
+    <a href="/es/readings" class="menu-item {% if current_path and current_path is starting_with('/es/readings') %}active{% endif %}" aria-label="{{ trans(key='readings', lang=lang) }}">
+      <i class="fas fa-book-open"></i>
+    </a>
+  {% else %}
+    <a href="/" class="menu-item {% if current_path == '/' %}active{% endif %}" aria-label="{{ trans(key='home', lang=lang) }}">
+      <i class="fas fa-home"></i>
+    </a>
+    
+    <a href="/projects" class="menu-item {% if current_path and current_path is starting_with('/projects') %}active{% endif %}" aria-label="{{ trans(key='projects', lang=lang) }}">
+      <i class="fas fa-code"></i>
+    </a>
+    
+    <a href="/blog" class="menu-item {% if current_path and current_path is starting_with('/blog') %}active{% endif %}" aria-label="{{ trans(key='blog', lang=lang) }}">
+      <i class="fas fa-file-alt"></i>
+    </a>
+    
+    <a href="/readings" class="menu-item {% if current_path and current_path is starting_with('/readings') %}active{% endif %}" aria-label="{{ trans(key='readings', lang=lang) }}">
+      <i class="fas fa-book-open"></i>
+    </a>
+  {% endif %}
 </nav>
 
 <!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
