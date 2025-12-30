@@ -45,30 +45,33 @@ home = "Inicio"
 projects = "Proyectos"
 blog = "Blog"
 readings = "Lecturas"
-sponsor = "Patrocinar"
+sponsor = "Colabora"
+
 # Home page
 hello = "¡Hola!"
 i_am = "Soy"
 working_for = "Trabajando para"
 in_the = "en el"
 galileo_project = "Proyecto Galileo"
-browse_projects = "Ver mis proyectos"
-check_latest_posts = "Ver mis últimos posts"
+browse_projects = "Explora mis proyectos"
+check_latest_posts = "Lee mis últimas publicaciones"
 connect_with_me = "Conecta conmigo"
 description_home = "👉🏼 Motivado por una verdadera pasión por el software, promuevo activamente"
 clean_code = "el código limpio"
 and = "y"
 agile_dynamics = "las dinámicas ágiles."
 description_suffix = "Me desenvuelvo bien en entornos que evolucionan rápidamente, adoptando nuevos conocimientos y convirtiéndolos en resultados tangibles."
+
 # Blog
-blog_intro = "Disfruto escribiendo sobre temas que encuentro emocionantes y vale la pena compartir."
-back_to_posts = "← Volver a todos los posts"
-filter_blog_posts = "Filtrar posts"
+blog_intro = "Escribo sobre temas que encuentro interesantes y merecen ser compartidos."
+back_to_posts = "← Todas las publicaciones"
+filter_blog_posts = "Filtrar publicaciones"
 hover_to_preview = "Pasa ratón encima"
 on_this_page = "En esta página"
-table_of_contents = "Tabla de Contenidos"
+table_of_contents = "Índice"
 min_read = "min de lectura"
 words = "palabras"
+
 # Blog tags/filters
 recommended = "Recomendado"
 for_beginners = "Para principiantes"
@@ -77,42 +80,47 @@ backend = "Backend"
 architecture = "Arquitectura"
 finance = "Finanzas"
 bitcoin = "Bitcoin"
+
 # Projects
-projects_intro = "Una muestra de proyectos que he construido usando diferentes tecnologías. Cada proyecto representa un desafío único y una experiencia de aprendizaje."
-filter_projects = "Filtrar Proyectos"
-github = "GitHub"
-live_demo = "Demo en Vivo"
+projects_intro = "Una selección de proyectos que he desarrollado con diferentes tecnologías. Cada proyecto ha sido un reto único y una oportunidad de aprendizaje."
+filter_projects = "Filtrar proyectos"
+live_demo = "Demo en vivo"
+
 # Readings
 readings_intro = "Una colección de libros que he leído y mis reflexiones sobre ellos."
 books_with_reflections = "libros con reflexiones"
 search_books = "Buscar libros o autores..."
 show_more = "Mostrar más"
 show_less = "Mostrar menos"
+
 # Sponsor
 become_sponsor = "Colabora"
 lightning_donation = "Dona por Lightning Network"
-support_work = "Apoya mi trabajo con un pago de Bitcoin Lightning Network"
-lightning_description = "Lightning Network permite pagos de Bitcoin instantáneos y de bajo costo. ¡Es perfecto para apoyar a desarrolladores!"
+support_work = "Apoya mi trabajo con un pago mediante la red de Lightning de Bitcoin"
+lightning_description = "La red Lightning de Bitcoin permite pagos instantáneos y de bajo coste. ¡Es perfecto para apoyar a desarrolladores!"
 send_bitcoin = "Enviar Bitcoin por Lightning"
 why_sponsor = "¿Por qué colaborar?"
 support_opensource = "Apoya el Código Abierto"
 help_maintain = "Contribuye al mantenimiento de proyectos como"
 direct_access = "Acceso Directo y Exclusivo"
-direct_access_desc = "Obtén una visión privilegiada de mis proyectos y sigue su evolución."
+direct_access_desc = "Obtén una visión privilegiada de mis proyectos y acompaña su evolución."
 support_bitcoin = "Impulsa la Adopción de Bitcoin"
-support_bitcoin_desc = "Al usar Lightning, contribuyes a construir el futuro de los pagos descentralizados en internet."
+support_bitcoin_desc = "Al usar Lightning, contribuyes a construir el futuro de los pagos descentralizados en internet con comisiones casi nulas."
+
 # Footer
 footer_sponsor = "Colabora"
+
 # Language
 switch_language = "Cambiar idioma"
+
 # Project Cards
-proj_aquamesh_desc = "Plataforma no-code de arrastrar y soltar para crear dashboards interactivos."
+proj_aquamesh_desc = "Plataforma sin código de arrastrar y soltar para crear dashboards interactivos."
 proj_devopslab_desc = "Pipeline DevOps completo con contenedorización, orquestación y automatización CI/CD"
 proj_fitcal_desc = "Aplicación de seguimiento de fitness y nutrición con gestión de calorías"
 proj_sympho_desc = "Herramienta de notación y composición musical con renderizado interactivo de partituras"
 proj_lop_desc = "Juego de estrategia por turnos con batallas Pokemon y mecánicas personalizadas."
-proj_deptquest_desc = "Una aplicación Android para la gestión de un departamento."
-proj_inventory_desc = "Sistema de gestión de inventario construido con Node.js y MongoDB."
+proj_deptquest_desc = "Aplicación Android para la gestión de un departamento."
+proj_inventory_desc = "Sistema de gestión de inventario desarrollado con Node.js y MongoDB."
 
 # Default language (English) translations
 [translations]
@@ -156,7 +164,6 @@ bitcoin = "Bitcoin"
 # Projects
 projects_intro = "A showcase of projects I've built using different technologies. Each project represents a unique challenge and learning experience."
 filter_projects = "Filter Projects"
-github = "GitHub"
 live_demo = "Live Demo"
 # Readings
 readings_intro = "A collection of books I've read and my thoughts on them."
