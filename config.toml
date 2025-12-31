@@ -71,6 +71,8 @@ on_this_page = "En esta página"
 table_of_contents = "Índice"
 min_read = "min de lectura"
 words = "palabras"
+next_post = "Siguiente publicación"
+previous_post = "Anterior publicación"
 
 # Blog tags/filters
 recommended = "Recomendado"
@@ -153,6 +155,8 @@ on_this_page = "On this page"
 table_of_contents = "Table of Contents"
 min_read = "min read"
 words = "words"
+next_post = "Next post"
+previous_post = "Previous post"
 # Blog tags/filters
 recommended = "Recommended"
 for_beginners = "For Beginners"
