@@ -6,7 +6,7 @@
       <span class="menu-text">{{ trans(key='home', lang=lang) }}</span>
     </a>
     
-    <a href="/es/projects" class="menu-item {% if current_path and current_path is starting_with('/es/projects') %}active{% endif %}" aria-label="{{ trans(key='projects', lang=lang) }}">
+    <a href="/es/projects" class="menu-item menu-projects {% if current_path and current_path is starting_with('/es/projects') %}active{% endif %}" aria-label="{{ trans(key='projects', lang=lang) }}">
       <i class="fas fa-code"></i>
       <span class="menu-text">{{ trans(key='projects', lang=lang) }}</span>
     </a>
@@ -16,7 +16,7 @@
       <span class="menu-text">{{ trans(key='blog', lang=lang) }}</span>
     </a>
     
-    <a href="/es/readings" class="menu-item {% if current_path and current_path is starting_with('/es/readings') %}active{% endif %}" aria-label="{{ trans(key='readings', lang=lang) }}">
+    <a href="/es/readings" class="menu-item menu-readings {% if current_path and current_path is starting_with('/es/readings') %}active{% endif %}" aria-label="{{ trans(key='readings', lang=lang) }}">
       <i class="fas fa-book-open"></i>
       <span class="menu-text">{{ trans(key='readings', lang=lang) }}</span>
     </a>
@@ -26,7 +26,7 @@
       <span class="menu-text">{{ trans(key='home', lang=lang) }}</span>
     </a>
     
-    <a href="/projects" class="menu-item {% if current_path and current_path is starting_with('/projects') %}active{% endif %}" aria-label="{{ trans(key='projects', lang=lang) }}">
+    <a href="/projects" class="menu-item menu-projects {% if current_path and current_path is starting_with('/projects') %}active{% endif %}" aria-label="{{ trans(key='projects', lang=lang) }}">
       <i class="fas fa-code"></i>
       <span class="menu-text">{{ trans(key='projects', lang=lang) }}</span>
     </a>
@@ -36,7 +36,7 @@
       <span class="menu-text">{{ trans(key='blog', lang=lang) }}</span>
     </a>
     
-    <a href="/readings" class="menu-item {% if current_path and current_path is starting_with('/readings') %}active{% endif %}" aria-label="{{ trans(key='readings', lang=lang) }}">
+    <a href="/readings" class="menu-item menu-readings {% if current_path and current_path is starting_with('/readings') %}active{% endif %}" aria-label="{{ trans(key='readings', lang=lang) }}">
       <i class="fas fa-book-open"></i>
       <span class="menu-text">{{ trans(key='readings', lang=lang) }}</span>
     </a>
