@@ -97,6 +97,14 @@ show_less = "Mostrar menos"
 key_insights = "Ideas clave"
 by = "de"
 
+# Tags pages
+see_all_tags = "← Ver todas las etiquetas"
+posts_tagged = "Publicaciones con"
+highly_recommended = "Lectura muy recomendada"
+great_for_beginners = "Ideal para principiantes"
+tags_title = "Etiquetas"
+browse_tags_desc = "Explora publicaciones por etiqueta."
+
 # Sponsor
 become_sponsor = "Colabora"
 lightning_donation = "Dona por Lightning Network"
@@ -179,6 +187,14 @@ show_more = "Show more"
 show_less = "Show less"
 key_insights = "Key Insights"
 by = "by"
+
+# Tags pages
+see_all_tags = "← See all tags"
+posts_tagged = "Posts tagged"
+highly_recommended = "Highly recommended read"
+great_for_beginners = "Great for beginners"
+tags_title = "Tags"
+browse_tags_desc = "Browse posts by tag."
 
 # Sponsor
 become_sponsor = "Become a Sponsor"

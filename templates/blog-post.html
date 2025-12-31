@@ -51,11 +51,11 @@
       <div class="tags">
         {% for tag in page.taxonomies.tags %}
           {% if tag | slugify in config.extra.blog_post_tags %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-{{ tag | slugify }}-plain">
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-{{ tag | slugify }}-plain">
               {{ tag | slugify | replace(from="-", to=" ") | title }}
             </a>
           {% else %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-default-plain">
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-default-plain">
               {{ tag | slugify | replace(from="-", to=" ") | title }}
             </a>
           {% endif %}

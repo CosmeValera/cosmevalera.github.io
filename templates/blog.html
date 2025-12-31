@@ -126,11 +126,7 @@
         {% set post_date_display = post.date | date(format="%B %d, %Y") %}
       {% endif %}
 
-      {% if post.reading_time == 1 %}
-        {% set time_label = "min" %}
-      {% else %}
-        {% set time_label = "mins" %}
-      {% endif %}
+      {# Removed manual time_label logic in favor of trans #}
       
       {# Set up main tag and helper variables #}
       {% set has_tags = post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
@@ -152,12 +148,12 @@
           {% if "recommended" in tags_string %}
             <div class="blog-card-icon blog-card-recommended {{ main_tag_class }}">
               <i class="fas fa-star"></i>
-              <span class="blog-card-tooltip">Highly recommended read</span>
+              <span class="blog-card-tooltip">{{ trans(key="highly_recommended", lang=lang) }}</span>
             </div>
           {% elif "beginner" in tags_string %} <!-- Checks contain "beginner", not "for-beginner"-->
             <div class="blog-card-icon blog-card-for-beginners {{ main_tag_class }}">
               <i class="fas fa-book"></i>
-              <span class="blog-card-tooltip">Great for beginners</span>
+              <span class="blog-card-tooltip">{{ trans(key="great_for_beginners", lang=lang) }}</span>
             </div>
           {% endif %}
 
@@ -207,9 +203,9 @@
                 <span class="card-stats">
                   <i class="fas fa-clock"></i> 
                   {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                    {{ post.extra.custom_reading_time }} {{ time_label }} - <small>{{ post.extra.custom_word_count }} words</small>
+                    {{ post.extra.custom_reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
                   {% else %}
-                    {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+                    {{ post.reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
                   {% endif %}
                 </span>
               </div>
@@ -237,9 +233,9 @@
             <span class="card-stats">
               <i class="fas fa-clock"></i> 
               {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                {{ post.extra.custom_reading_time }} {{ time_label }} - <small>{{ post.extra.custom_word_count }} words</small>
+                {{ post.extra.custom_reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
               {% else %}
-                {{ post.reading_time }} {{ time_label }} - <small>{{ post.word_count }} words</small>
+                {{ post.reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
               {% endif %}
             </span>
           </div>
