@@ -1,7 +1,7 @@
 +++
 title = "Estilos Compartidos en Monorepos"
 template = "blog-post.html"
-description = "Enfoques para mantener estilos consistentes entre múltiples proyectos en un entorno monorepo"
+description = "Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo"
 [taxonomies]
 tags = ["frontend"]
 [extra]
@@ -12,7 +12,7 @@ cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp
 
 <h4><b>🤔 Resumen</b></h4>
 
-En proyectos a gran escala, mantener estilos consistentes entre múltiples aplicaciones es crucial. Aquí hay dos enfoques clave para gestionar estilos compartidos:
+En proyectos a gran escala, mantener estilos consistentes entre múltiples aplicaciones es crucial. Aquí tienes dos enfoques para gestionar estilos compartidos:
 
 1. 📦 Crear una librería de estilos compartida como un <b>paquete npm</b>.
 2. 🔗 Importar estilos directamente desde <b>un directorio centralizado</b> dentro del monorepo.
@@ -21,25 +21,21 @@ En proyectos a gran escala, mantener estilos consistentes entre múltiples aplic
 
 <h4><b>📦 1. Crear una Librería de Estilos con npm</b></h4>
 
-<b>Resumen:</b> Este enfoque implica crear una librería de estilos dedicada que se publica como un paquete npm. Los estilos pueden luego importarse en cualquier proyecto que los necesite.
+<b>Resumen:</b> Este enfoque consiste en crear una librería de estilos dedicada y publicarla como un paquete npm. Los estilos se pueden importar después en cualquier proyecto que los necesite.
 
-<b>Implementación:</b> Por ejemplo, si estás trabajando con estilos de tema personalizados para PrimeReact, puedes crear tus estilos en una librería y exportarlos usando un archivo `index.js` así:
-
-
+<b>Implementación:</b> Por ejemplo, si estás trabajando con estilos de temas personalizados claro/oscuro para PrimeReact, puedes crear tus estilos en una librería y exportarlos usando un archivo `index.js` así:
 ```sh
 module.exports = {
-  theme: require('./style/themes/my-theme/theme.scss'),
+ theme: require('./style/themes/my-theme/theme.scss'),
 };
 ```
 
-Después de publicar el paquete, puedes instalarlo en tus proyectos usando:
-
+Después de publicar el paquete, puedes instalarlo en tus proyectos con:
 ```sh
 npm i my-theme
 ```
 
 Luego, simplemente importa los estilos en tu punto de entrada JavaScript principal:
-
 ```sh
 import 'my-theme';
 ```
@@ -55,25 +51,24 @@ Requiere publicar y versionar con cada cambio.
 
 <b>Resumen:</b> Si estás usando una configuración de monorepo, puedes almacenar tus estilos en un directorio central e importarlos directamente en cada proyecto.
 
-<b>Implementación:</b> Coloca tus estilos en una carpeta a nivel raíz, paralela a tus apps, e impórtalos en tus proyectos:
-
+<b>Implementación:</b> Coloca tus estilos en una carpeta a nivel raíz, en paralelo a tus apps, e impórtalos en tus proyectos:
 ```sh
 import '../style/themes/my-theme/theme.scss';
 ```
 
 <b>Ventajas:</b>
-No es necesario publicar o gestionar versiones.
+No hace falta publicar ni gestionar versiones.
 Acceso inmediato a los últimos estilos sin pasos adicionales.
 
 <b>Desventajas:</b>
-Potencial para cambios accidentales que rompan funcionalidad si los estilos se actualizan.
-Necesitas tener una estructura de monorepo; no funciona si los proyectos están divididos en diferentes repositorios.
+Riesgo de cambios accidentales que rompan funcionalidad si los estilos se actualizan.
+Necesitas tener una estructura de monorepo; no funciona si los proyectos están en repositorios separados.
 
 ---
 <!-- Visual break before conclusion - changes based on time of year -->
 {{ seasonal_image() }}
 
-<h4><b>❓ Qué elegir</b></h4>
+<h4><b>❓ Qué Elegir</b></h4>
 
 - Usa un <b>paquete npm</b> si quieres tener control de versiones estricto o no tienes todos tus proyectos en la misma carpeta.
 - Usa importación directa desde <b>un directorio centralizado</b> si prefieres una solución más simple y tu estructura de código lo permite.
