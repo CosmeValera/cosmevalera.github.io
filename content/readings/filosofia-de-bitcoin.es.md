@@ -1,6 +1,6 @@
 +++
 title = "La Filosofía de Bitcoin"
-description = "Cómo Bitcoin cambia la forma en que nos relacionamos con el dinero, redefines la propiedad privada y puede transformar nuestro sistema político."
+description = "Cómo Bitcoin cambia nuestra relación con el dinero, redefine la propiedad privada y puede transformar el sistema político."
 date = 2025-02-07
 [extra]
 author = "Álvaro D. María"
@@ -9,6 +9,6 @@ rating = 5
 key_insights = [
     "El dinero es una construcción social que refleja estructuras de poder",
     "Bitcoin redefine el concepto de propiedad privada",
-    "Elimina el monopolio del estado en la creación de dinero"
+    "Elimina el monopolio del Estado sobre la emisión de dinero"
 ]
 +++

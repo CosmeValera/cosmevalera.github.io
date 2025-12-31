@@ -7,8 +7,8 @@ author = "Ryan Holiday"
 cover_image = "/images/readings/the-obstacle-is-the-way.jpg"
 rating = 4
 key_insights = [
-    "Los obstáculos son oportunidades disfrazadas: revelan nuestro camino hacia adelante",
-    "Percepción, acción y voluntad son las tres disciplinas para superar desafíos",
-    "Lo que se interpone en el camino se convierte en el camino: abraza las dificultades como combustible para el crecimiento"
+    "Los obstáculos son oportunidades disfrazadas que nos muestran el camino a seguir",
+    "Percepción, Acción y Voluntad son las tres disciplinas para superar desafíos",
+    "Lo que obstaculiza el camino se convierte en el camino: usa las dificultades como combustible para crecer"
 ]
 +++

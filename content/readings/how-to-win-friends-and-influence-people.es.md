@@ -1,14 +1,14 @@
 +++
 title = "Cómo Ganar Amigos e Influir sobre las Personas"
-description = "Principios atemporales para construir relaciones e influir en otros a través del interés genuino y la comprensión."
+description = "Principios atemporales para construir relaciones e influir en los demás a través del interés genuino y la empatía."
 date = 2025-03-09
 [extra]
 author = "Dale Carnegie"
 cover_image = "/images/readings/how-to-win-friends-and-influence-people.jpg"
 rating = 5
 key_insights = [
-    "Muestra interés genuino en otros para construir relaciones significativas",
-    "Recuerda que el nombre de una persona es el sonido más dulce para ella",
-    "Evita la crítica y enfócate en el refuerzo positivo"
+    "Muestra un interés genuino en los demás para construir relaciones significativas",
+    "Recuerda que, para cualquiera, su propio nombre es el sonido más dulce e importante",
+    "Evita criticar y enfócate en el refuerzo positivo"
 ]
 +++
