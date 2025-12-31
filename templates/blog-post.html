@@ -52,7 +52,7 @@
         {% for tag in page.taxonomies.tags %}
           {% if tag | slugify in config.extra.blog_post_tags %}
             <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-{{ tag | slugify }}-plain">
-              {{ tag | slugify | replace(from="-", to=" ") | title }}
+              {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
             </a>
           {% else %}
             <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-default-plain">
@@ -70,9 +70,9 @@
       <span class="post-date">{{ post_date_display }}</span>
       <span class="reading-time">
         {% if page.extra.custom_reading_time and page.extra.custom_word_count %}
-          {{ page.extra.custom_reading_time }} min read • {{ page.extra.custom_word_count }} words
+          {{ page.extra.custom_reading_time }} {{ trans(key="min_read", lang=lang) }} • {{ page.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}
         {% else %}
-          {{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words
+          {{ page.reading_time | default(value="3") }} {{ trans(key="min_read", lang=lang) }} • {{ page.word_count | default(value="0") }} {{ trans(key="words", lang=lang) }}
         {% endif %}
       </span>
     </div>

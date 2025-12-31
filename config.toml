@@ -99,7 +99,7 @@ by = "de"
 
 # Tags pages
 see_all_tags = "← Ver todas las etiquetas"
-posts_tagged = "Publicaciones con"
+posts_tagged = "Publicaciones sobre"
 highly_recommended = "Lectura muy recomendada"
 great_for_beginners = "Ideal para principiantes"
 tags_title = "Etiquetas"

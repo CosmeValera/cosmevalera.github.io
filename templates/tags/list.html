@@ -21,7 +21,7 @@
       {% for term in terms %}
         {% if term.name | slugify in config.extra.blog_post_tags %}
           <a class="tag tag-{{ term.name | slugify }}-plain" href="{{ term.permalink }}">
-            {{ term.name | slugify | replace(from="-", to=" ") | title }}
+            {{ trans(key=term.name|slugify|replace(from="-", to="_"), lang=lang) }}
             <span class="tag-count">{{ term.pages | length }}</span>
           </a>
         {% else %}
