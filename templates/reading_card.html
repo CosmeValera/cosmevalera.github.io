@@ -19,7 +19,7 @@
       <h3 class="reading-title">{{ page.title }}</h3>
       
       {% if page.extra and page.extra.author %}
-        <p class="reading-author">by {{ page.extra.author }}</p>
+        <p class="reading-author"> {{ trans(key="by", lang=lang) }} {{ page.extra.author }}</p>
       {% endif %}
       
       {% if page.description %}
@@ -27,7 +27,7 @@
       {% endif %}
       
       <button class="read-more-btn">
-        <span class="read-more-text">Show more</span>
+        <span class="read-more-text"> {{ trans(key="show_more", lang=lang) }}</span>
         <svg class="read-more-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
@@ -37,7 +37,7 @@
       <div class="reading-expanded-content">
         {% if page.extra.key_insights %}
         <div class="reading-insights">
-          <h4>Key Insights</h4>
+          <h4>{{ trans(key="key_insights", lang=lang) }}</h4>
           <ul>
             {% for insight in page.extra.key_insights %}
               <li>{{ insight }}</li>

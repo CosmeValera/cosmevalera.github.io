@@ -48,6 +48,41 @@ h2 {
     top: 2rem;
     right: 2rem;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    .language-switcher {
+        .language-toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba($primary-bg, 0.8);
+            border: 1px solid rgba($text-color, 0.1);
+            border-radius: 20px;
+            padding: 0.35rem 0.75rem;
+            color: rgba($text-color, 0.7);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            .lang-code {
+                font-family: $sans-serif;
+                letter-spacing: 0.5px;
+            }
+
+            &:hover {
+                background: rgba($accent-color, 0.15);
+                border-color: rgba($accent-color, 0.3);
+                color: $accent-color;
+                transform: translateY(-1px);
+            }
+        }
+    }
 
     .theme-toggle-btn {
         background: transparent;
@@ -64,11 +99,25 @@ h2 {
 }
 
 body.bright-theme {
-    .theme-toggle-container .theme-toggle-btn {
-        color: rgba($text-color-bright, 0.5);
-        
-        &:hover {
-            color: $accent-color-bright;
+    .theme-toggle-container {
+        .language-switcher .language-toggle-btn {
+            background: rgba($primary-bg-bright, 0.9);
+            border-color: rgba($text-color-bright, 0.15);
+            color: rgba($text-color-bright, 0.7);
+
+            &:hover {
+                background: rgba($accent-color-bright, 0.15);
+                border-color: rgba($accent-color-bright, 0.3);
+                color: $accent-color-bright;
+            }
+        }
+
+        .theme-toggle-btn {
+            color: rgba($text-color-bright, 0.5);
+            
+            &:hover {
+                color: $accent-color-bright;
+            }
         }
     }
 }

@@ -106,40 +106,6 @@ Mobile-first has become the industry standard for responsive design because it a
 
 ---
 
-<h4><b>🫠 Advanced: Desktop-First</b></h4>
-
-While mobile-first is recommended for modern development, you might occasionally need max-width queries for specific use cases. Here's how to extend our system:
-
-```scss
-// Additional mixin for desktop first or edge cases
-@mixin respond-to-max($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (max-width: map-get($breakpoints, $breakpoint) - 1px) {
-      @content;
-    }
-  } @else {
-    @warn "Breakpoint '#{$breakpoint}' not found in \$breakpoints map.";
-  }
-}
-```
-
-<b>Example use case:</b>
-
-```scss
-.special-element {
-  // Default mobile-first styles
-  
-  // Only apply these styles below the 'lg' breakpoint
-  @include respond-to-max('lg') {
-    display: none;
-  }
-}
-```
-
-<b>Important note:</b> You can use `respond-to-max` but be aware that doing so you are not following the mobile-first pattern. For most cases, stick with the mobile-first `respond-to` pattern for cleaner, more maintainable code.
-
----
-
 <h4><b>🔄 Migrate from Desktop-First to Mobile-First + respond-to</b></h4>
 
 Here's a practical guide to migrate your existing styles:
@@ -207,6 +173,40 @@ Look at how we moved `display: flex` from the desktop default to the tablet brea
 - In our mobile-first version, we start with mobile styles (`display: block`), so `display: flex` needs to be applied at the tablet breakpoint to maintain the same visual outcome
 
 This shift isn't just about reorganizing code. It's about preserving the same functionality while changing our starting point. In desktop-first, you subtract complexity for smaller screens; in mobile-first, you add enhancements as screens get larger.
+
+---
+
+<h4><b>🫠 Advanced: Desktop-First</b></h4>
+
+While mobile-first is recommended for modern development, you might occasionally need max-width queries for specific use cases. Here's how to extend our system:
+
+```scss
+// Additional mixin for desktop first or edge cases
+@mixin respond-to-max($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint) - 1px) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found in \$breakpoints map.";
+  }
+}
+```
+
+<b>Example use case:</b>
+
+```scss
+.special-element {
+  // Default mobile-first styles
+  
+  // Only apply these styles below the 'lg' breakpoint
+  @include respond-to-max('lg') {
+    display: none;
+  }
+}
+```
+
+<b>Important note:</b> You can use `respond-to-max` but be aware that doing so you are not following the mobile-first pattern. For most cases, stick with the mobile-first `respond-to` pattern for cleaner, more maintainable code.
 
 ---
 

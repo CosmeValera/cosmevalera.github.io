@@ -28,3 +28,196 @@ nav = [
 ]
 
 favicon = "favicon.jpg"
+
+default_language = "en"
+
+# Spanish language configuration
+[languages.es]
+generate_feeds = true
+build_search_index = false
+taxonomies = [
+    {name = "tags", feed = true},
+]
+
+[languages.es.translations]
+# Navigation
+home = "Inicio"
+projects = "Proyectos"
+blog = "Blog"
+readings = "Lecturas"
+sponsor = "Colabora"
+
+# Home page
+hello = "¡Hola!"
+i_am = "Soy"
+working_for = "Trabajando para"
+in_the = "en el"
+galileo_project = "Proyecto Galileo"
+browse_projects = "Explora mis proyectos"
+check_latest_posts = "Lee mis últimas publicaciones"
+connect_with_me = "Conecta conmigo"
+description_home = "👉🏼 Motivado por una verdadera pasión por el software, promuevo activamente"
+clean_code = "el código limpio"
+and = "y"
+agile_dynamics = "las dinámicas ágiles."
+description_suffix = "Me desenvuelvo bien en entornos que evolucionan rápidamente, adoptando nuevos conocimientos y convirtiéndolos en resultados tangibles."
+
+# Blog
+blog_intro = "Escribo sobre temas que encuentro interesantes y merecen ser compartidos."
+back_to_posts = "← Todas las publicaciones"
+filter_blog_posts = "Filtrar publicaciones"
+hover_to_preview = "Pasa ratón encima"
+on_this_page = "En esta página"
+table_of_contents = "Índice"
+min_read = "min de lectura"
+words = "palabras"
+next_post = "Siguiente publicación"
+previous_post = "Anterior publicación"
+
+# Blog tags/filters
+recommended = "Recomendado"
+for_beginners = "Para principiantes"
+frontend = "Frontend"
+backend = "Backend"
+architecture = "Arquitectura"
+finance = "Finanzas"
+bitcoin = "Bitcoin"
+
+# Projects
+projects_intro = "Una selección de proyectos que he desarrollado con diferentes tecnologías. Cada proyecto ha sido un reto único y una oportunidad de aprendizaje."
+filter_projects = "Filtrar proyectos"
+live_demo = "Demo en vivo"
+
+# Readings
+readings_intro = "Una colección de libros que he leído y mis reflexiones sobre ellos."
+books_with_reflections = "libros con reflexiones"
+search_books = "Buscar libros o autores..."
+show_more = "Mostrar más"
+show_less = "Mostrar menos"
+key_insights = "Ideas clave"
+by = "de"
+
+# Tags pages
+see_all_tags = "← Ver todas las etiquetas"
+posts_tagged = "Publicaciones sobre"
+highly_recommended = "Lectura muy recomendada"
+great_for_beginners = "Ideal para principiantes"
+tags_title = "Etiquetas"
+browse_tags_desc = "Explora publicaciones por etiqueta."
+
+# Sponsor
+become_sponsor = "Colabora"
+lightning_donation = "Dona por Lightning Network"
+support_work = "Apoya mi trabajo con un pago mediante la red de Lightning de Bitcoin"
+lightning_description = "La red Lightning de Bitcoin permite pagos instantáneos y de bajo coste. ¡Es perfecto para apoyar a desarrolladores!"
+send_bitcoin = "Enviar Bitcoin por Lightning"
+why_sponsor = "¿Por qué colaborar?"
+support_opensource = "Apoya el Código Abierto"
+help_maintain = "Contribuye al mantenimiento de proyectos como"
+direct_access = "Acceso Directo y Exclusivo"
+direct_access_desc = "Obtén una visión privilegiada de mis proyectos y acompaña su evolución."
+support_bitcoin = "Impulsa la Adopción de Bitcoin"
+support_bitcoin_desc = "Al usar Lightning, contribuyes a construir el futuro de los pagos descentralizados en internet con comisiones casi nulas."
+
+# Footer
+footer_sponsor = "Colabora"
+
+# Language
+switch_language = "Cambiar idioma"
+
+# Project Cards
+proj_aquamesh_desc = "Plataforma sin código de arrastrar y soltar para crear dashboards interactivos."
+proj_devopslab_desc = "Pipeline DevOps completo con contenedorización, orquestación y automatización CI/CD"
+proj_fitcal_desc = "Aplicación de seguimiento de fitness y nutrición con gestión de calorías"
+proj_sympho_desc = "Herramienta de notación y composición musical con renderizado interactivo de partituras"
+proj_lop_desc = "Juego de estrategia por turnos con batallas Pokemon y mecánicas personalizadas."
+proj_deptquest_desc = "Aplicación Android para la gestión de un departamento."
+proj_inventory_desc = "Sistema de gestión de inventario desarrollado con Node.js y MongoDB."
+
+# Default language (English) translations
+[translations]
+# Navigation
+home = "Home"
+projects = "Projects"
+blog = "Blog"
+readings = "Readings"
+sponsor = "Sponsor"
+# Home page
+hello = "Hello!"
+i_am = "I am"
+working_for = "Working for"
+in_the = "in the"
+galileo_project = "Galileo Project"
+browse_projects = "Browse my projects"
+check_latest_posts = "Check out my latest posts"
+connect_with_me = "Connect with me"
+description_home = "👉🏼 Motivated by a genuine love for software, I actively promote"
+clean_code = "clean code"
+and = "and"
+agile_dynamics = "agile dynamics."
+description_suffix = "I thrive in rapidly evolving environments, readily embracing new knowledge and translating it into impactful results."
+# Blog
+blog_intro = "I enjoy writing about topics that I find exciting and are worth sharing."
+back_to_posts = "← Back to all posts"
+filter_blog_posts = "Filter Blog Posts"
+hover_to_preview = "Hover to preview"
+on_this_page = "On this page"
+table_of_contents = "Table of Contents"
+min_read = "min read"
+words = "words"
+next_post = "Next post"
+previous_post = "Previous post"
+# Blog tags/filters
+recommended = "Recommended"
+for_beginners = "For Beginners"
+frontend = "Frontend"
+backend = "Backend"
+architecture = "Architecture"
+finance = "Finance"
+bitcoin = "Bitcoin"
+# Projects
+projects_intro = "A showcase of projects I've built using different technologies. Each project represents a unique challenge and learning experience."
+filter_projects = "Filter Projects"
+live_demo = "Live Demo"
+# Readings
+readings_intro = "A collection of books I've read and my thoughts on them."
+books_with_reflections = "books with reflections"
+search_books = "Search books or authors..."
+show_more = "Show more"
+show_less = "Show less"
+key_insights = "Key Insights"
+by = "by"
+
+# Tags pages
+see_all_tags = "← See all tags"
+posts_tagged = "Posts tagged"
+highly_recommended = "Highly recommended read"
+great_for_beginners = "Great for beginners"
+tags_title = "Tags"
+browse_tags_desc = "Browse posts by tag."
+
+# Sponsor
+become_sponsor = "Become a Sponsor"
+lightning_donation = "Lightning Network Donation"
+support_work = "Support my work with a Bitcoin Lightning Network payment"
+lightning_description = "Lightning Network enables instant, low-cost Bitcoin payments. It's perfect for supporting creators and developers!"
+send_bitcoin = "Send Bitcoin via Lightning"
+why_sponsor = "Why Become a Sponsor?"
+support_opensource = "Support Open Source"
+help_maintain = "Help maintain projects like"
+direct_access = "Direct Access and Insights"
+direct_access_desc = "Unlock a unique view into my projects and join their evolving journey."
+support_bitcoin = "Support Bitcoin Adoption"
+support_bitcoin_desc = "By using Lightning, you're helping build the future of decentralized internet payments with near-zero fees."
+# Footer
+footer_sponsor = "Sponsor"
+# Language
+switch_language = "Switch language"
+# Project Cards
+proj_aquamesh_desc = "No-code drag-and-drop platform for creating interactive dashboards."
+proj_devopslab_desc = "Complete DevOps pipeline with containerization, orchestration, and CI/CD automation"
+proj_fitcal_desc = "Fitness and nutrition tracking application with calorie management"
+proj_sympho_desc = "Music notation and composition tool with interactive sheet music rendering"
+proj_lop_desc = "Turn-based strategy game featuring Pokemon battles with custom mechanics."
+proj_deptquest_desc = "An Android application for management of a department."
+proj_inventory_desc = "Inventory management system built with Node.js and MongoDB."

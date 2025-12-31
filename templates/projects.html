@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-  Projects | Cosme
+  {{ trans(key="projects", lang=lang) }} | Cosme
 {% endblock %}
 
 {% block styles %}
@@ -20,8 +20,8 @@
     </svg>
   </div>
   
-  <h1>Projects</h1>
-  <p class="projects-intro">A showcase of projects I've built using different technologies. Each project represents a unique challenge and learning experience.</p>
+  <h1>{{ trans(key="projects", lang=lang) }}</h1>
+  <p class="projects-intro">{{ trans(key="projects_intro", lang=lang) }}</p>
 
   <!-- FILTER (Desktop Only) -->
   <div class="filter-buttons-desktop">
@@ -56,7 +56,7 @@
 
   <!-- Mobile Filter Button -->
   <div class="mobile-filter-button-container">
-    <button id="filter-menu-button" class="mobile-filter-button" aria-label="Filter Projects">
+    <button id="filter-menu-button" class="mobile-filter-button" aria-label="{{ trans(key='filter_projects', lang=lang) }}">
       <i class="fas fa-filter"></i>
     </button>
   </div>
@@ -65,7 +65,7 @@
   <div class="filter-modal" id="filter-modal">
     <div class="filter-modal-content">
       <div class="filter-modal-header">
-        <h3>Filter Projects</h3>
+        <h3>{{ trans(key="filter_projects", lang=lang) }}</h3>
         <button class="filter-modal-close" id="filter-modal-close">
           <i class="fas fa-times"></i>
         </button>
@@ -105,7 +105,7 @@
         </div>
         <div class="project-content">
           <h3 class="card-title">AquaMesh</h3>
-          <p class="card-description">No-code drag-and-drop platform for creating interactive dashboards.</p>
+          <p class="card-description">{{ trans(key="proj_aquamesh_desc", lang=lang) }}</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-react"></i>React</span>
             <span class="tag"><i class="fas fa-cube"></i>Turborepo</span>
@@ -116,7 +116,7 @@
               <i class="fab fa-github"></i>GitHub
             </a>
             <a class="card-button demo-btn" href="https://aquamesh.cosmevalera.dev/" target="_blank">
-              <i class="fas fa-link"></i>Live Demo
+              <i class="fas fa-link"></i>{{ trans(key="live_demo", lang=lang) }}
             </a>
           </div>
         </div>
@@ -130,7 +130,7 @@
         </div>
         <div class="project-content">
           <h3 class="card-title">DevOps Lab</h3>
-          <p class="card-description">Complete DevOps pipeline with containerization, orchestration, and CI/CD automation</p>
+          <p class="card-description">{{ trans(key="proj_devopslab_desc", lang=lang) }}</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-docker"></i>Docker</span>
             <span class="tag"><i class="fas fa-dharmachakra"></i>K8s</span>
@@ -144,7 +144,7 @@
               <i class="fab fa-github"></i>GitHub
             </a>
             <a class="card-button demo-btn" href="https://devopslab.cosmevalera.dev/" target="_blank">
-              <i class="fas fa-link"></i>Live Demo
+              <i class="fas fa-link"></i>{{ trans(key="live_demo", lang=lang) }}
             </a>
           </div>
         </div>
@@ -158,7 +158,7 @@
         </div>
         <div class="project-content">
           <h3 class="card-title">FitCal</h3>
-          <p class="card-description">Fitness and nutrition tracking application with calorie management</p>
+          <p class="card-description">{{ trans(key="proj_fitcal_desc", lang=lang) }}</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-angular"></i>Angular</span>
             <span class="tag"><i class="fas fa-code"></i>TypeScript</span>
@@ -180,7 +180,7 @@
         </div>
         <div class="project-content">
           <h3 class="card-title">Sympho</h3>
-          <p class="card-description">Music notation and composition tool with interactive sheet music rendering</p>
+          <p class="card-description">{{ trans(key="proj_sympho_desc", lang=lang) }}</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-square-js"></i>JavaScript</span>
             <span class="tag"><i class="fab fa-node-js"></i>Node</span>
@@ -203,7 +203,7 @@
         </div>
         <div class="project-content">
           <h3 class="card-title">League of Pokemon</h3>
-          <p class="card-description">Turn-based strategy game featuring Pokemon battles with custom mechanics.</p>
+          <p class="card-description">{{ trans(key="proj_lop_desc", lang=lang) }}</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-java"></i>Java (Swing)</span>
           </p>
@@ -223,7 +223,7 @@
         </div>
         <div class="project-content">
           <h3 class="card-title">Department Quest</h3>
-          <p class="card-description">An Android application for management of a department.</p>
+          <p class="card-description">{{ trans(key="proj_deptquest_desc", lang=lang) }}</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-java"></i>Java (Android)</span>
           </p>
@@ -243,7 +243,7 @@
         </div>
         <div class="project-content">
           <h3 class="card-title">Inventory</h3>
-          <p class="card-description">Inventory management system built with Node.js and MongoDB.</p>
+          <p class="card-description">{{ trans(key="proj_inventory_desc", lang=lang) }}</p>
           <p class="card-technology">
             <span class="tag"><i class="fab fa-square-js"></i>JavaScript</span>
             <span class="tag"><i class="fab fa-node-js"></i>Node</span>

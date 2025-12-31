@@ -10,14 +10,18 @@
 
 {% block content %}
   <div class="tag-list">
-    <a href="/blog" class="back-link">← Back to all posts</a>
-    <h1 class="tags-list-title">Tags</h1>
-    <p class="tags-description">Browse posts by tag.</p>
+    {% if lang == "es" %}
+      <a href="/es/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
+    {% else %}
+      <a href="/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
+    {% endif %}
+    <h1 class="tags-list-title">{{ trans(key="tags_title", lang=lang) }}</h1>
+    <p class="tags-description">{{ trans(key="browse_tags_desc", lang=lang) }}</p>
     <div class="tags-cloud">
       {% for term in terms %}
         {% if term.name | slugify in config.extra.blog_post_tags %}
           <a class="tag tag-{{ term.name | slugify }}-plain" href="{{ term.permalink }}">
-            {{ term.name | slugify | replace(from="-", to=" ") | title }}
+            {{ trans(key=term.name|slugify|replace(from="-", to="_"), lang=lang) }}
             <span class="tag-count">{{ term.pages | length }}</span>
           </a>
         {% else %}

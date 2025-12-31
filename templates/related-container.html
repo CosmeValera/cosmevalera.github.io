@@ -4,14 +4,14 @@
 
   {% if page.higher %}
   <div class="link">
-    <span>{% if orderDesc %}Previous post{% else %}Next post{% endif %}</span>
+    <span>{% if orderDesc %} {{ trans(key="previous_post", lang=lang) }}{% else %} {{ trans(key="next_post", lang=lang) }}{% endif %}</span>
     <a href="{{ page.higher.permalink }}">{{ page.higher.title }}</a>
   </div>
   {% endif %}
 
   {% if page.lower %}
   <div class="link">
-    <span>{% if orderDesc %}Next post{% else %}Previous post{% endif %}</span>
+    <span>{% if orderDesc %} {{ trans(key="next_post", lang=lang) }}{% else %} {{ trans(key="previous_post", lang=lang) }}{% endif %}</span>
     <a href="{{ page.lower.permalink }}">{{ page.lower.title }}</a>
   </div>
   {% endif %}

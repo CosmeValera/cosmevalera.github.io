@@ -3,7 +3,7 @@
 {% import "related-container.html" as related %}
 
 {% block title %}
-  Blog | Cosme
+  {{ trans(key="blog", lang=lang) }} | Cosme
 {% endblock %}
 
 {% block styles %}
@@ -41,17 +41,21 @@
       {% set post_date_display = page.date | date(format="%B %d, %Y") %}
     {% endif %}
 
-    <a href="/blog" class="back-link">← Back to all posts</a>
+    {% if lang == "es" %}
+    <a href="/es/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
+    {% else %}
+    <a href="/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
+    {% endif %}
     
     {% if page.taxonomies and page.taxonomies.tags %}
       <div class="tags">
         {% for tag in page.taxonomies.tags %}
           {% if tag | slugify in config.extra.blog_post_tags %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-{{ tag | slugify }}-plain">
-              {{ tag | slugify | replace(from="-", to=" ") | title }}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-{{ tag | slugify }}-plain">
+              {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
             </a>
           {% else %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="tag tag-default-plain">
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-default-plain">
               {{ tag | slugify | replace(from="-", to=" ") | title }}
             </a>
           {% endif %}
@@ -66,16 +70,16 @@
       <span class="post-date">{{ post_date_display }}</span>
       <span class="reading-time">
         {% if page.extra.custom_reading_time and page.extra.custom_word_count %}
-          {{ page.extra.custom_reading_time }} min read • {{ page.extra.custom_word_count }} words
+          {{ page.extra.custom_reading_time }} {{ trans(key="min_read", lang=lang) }} • {{ page.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}
         {% else %}
-          {{ page.reading_time | default(value="3") }} min read • {{ page.word_count | default(value="0") }} words
+          {{ page.reading_time | default(value="3") }} {{ trans(key="min_read", lang=lang) }} • {{ page.word_count | default(value="0") }} {{ trans(key="words", lang=lang) }}
         {% endif %}
       </span>
     </div>
     <!-- TOC for mobile - sticky top -->
     <div class="toc-mobile" data-collapsed>
       <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
-        <span class="toc-title">Table of Contents</span>
+        <span class="toc-title">{{ trans(key="table_of_contents", lang=lang) }}</span>
         <span class="toc-chevron" aria-hidden="true"></span>
       </button>
       <ul id="toc-list-mobile" class="toc-list"></ul>
@@ -85,7 +89,7 @@
     <div class="toc-desktop-wrapper">
       <!-- TOC for desktop - sticky left -->
       <div class="toc-desktop" data-collapsed>
-        <div class="toc-desktop-title">On this page</div>
+        <div class="toc-desktop-title">{{ trans(key="on_this_page", lang=lang) }}</div>
         <ul id="toc-list-desktop" class="toc-list"></ul>
       </div>
     </div>
