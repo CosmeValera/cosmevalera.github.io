@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
   function setTheme(isBrightTheme) {
     if (isBrightTheme) {
       document.body.classList.add(brightClass);
-      icon.className = 'fas fa-moon'; // Show moon when in bright mode (to switch to dark)
+      icon.className = 'fas fa-circle-half-stroke fa-rotate-180';
       localStorage.setItem('theme', 'bright');
     } else {
       document.body.classList.remove(brightClass);
-      icon.className = 'fas fa-sun'; // Show sun when in dark mode (to switch to bright)
+      icon.className = 'fas fa-circle-half-stroke';
       localStorage.setItem('theme', 'dark');
     }
   }
