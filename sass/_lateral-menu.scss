@@ -105,6 +105,14 @@
         color: $primary-bg;
         transform: rotate(90deg);
     }
+
+    &.scrolling-down:not(.active) {
+        opacity: 0.6;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-color: rgba($accent-color, 0.2);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 }
 
 // Desktop Styles
@@ -160,6 +168,11 @@ body.bright-theme {
         &.active {
             background: $accent-color-bright;
             color: #fff;
+        }
+
+        &.scrolling-down:not(.active) {
+            background: rgba($primary-bg-bright, 0.7);
+            border-color: rgba($accent-color-bright, 0.2);
         }
     }
 }

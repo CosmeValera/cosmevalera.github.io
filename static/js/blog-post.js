@@ -200,6 +200,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // Throttled scroll handler
     let ticking = false;
 
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+
     function updateTOC() {
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
       const isScrollingDown = currentScrollY > lastScrollY;
@@ -208,73 +210,75 @@ document.addEventListener('DOMContentLoaded', function () {
       updateActiveSection();
       checkTOCVisibility();
       
-      // Update scroll direction class on mobile TOC after visibility check
+      // Update scroll direction class on mobile TOC and mobile menu toggle after visibility check
       // This ensures the class is set even if TOC just became visible
-      if (tocMobile && tocMobile.classList.contains('visible')) {
-        if (isScrollingDown) {
-          // Initialize start time if this is the first scroll-down frame
-          if (tocScrollDownStartTime === null) {
-            tocScrollDownStartTime = Date.now();
-          }
-          
-          // Check if more than 2 seconds have passed since scroll-down started
-          const timeElapsed = Date.now() - tocScrollDownStartTime;
-          if (timeElapsed > 2000) {
-            // Reset counter if more than 2 seconds have passed
-            tocScrollDownDistance = 0;
-            tocScrollDownStartTime = Date.now();
-          }
-          
-          // Calculate scroll distance in this frame
-          const scrollDistance = currentScrollY - lastScrollY;
-          // Accumulate scroll-down distance
-          tocScrollDownDistance += scrollDistance;
-          
-          // If scrolled down more than 100px within 2 seconds, add scrolling-down class
-          if (tocScrollDownDistance >= 100) {
-            tocMobile.classList.add('scrolling-down');
-            // Reset counters after switching
-            tocScrollDownDistance = 0;
-            tocScrollDownStartTime = null;
-            tocScrollUpDistance = 0;
-            tocScrollUpStartTime = null;
-          } else if (tocMobile.classList.contains('scrolling-down')) {
-            // Already scrolling-down, keep it that way
+      if (isScrollingDown) {
+        // Initialize start time if this is the first scroll-down frame
+        if (tocScrollDownStartTime === null) {
+          tocScrollDownStartTime = Date.now();
+        }
+        
+        // Check if more than 2 seconds have passed since scroll-down started
+        const timeElapsed = Date.now() - tocScrollDownStartTime;
+        if (timeElapsed > 2000) {
+          // Reset counter if more than 2 seconds have passed
+          tocScrollDownDistance = 0;
+          tocScrollDownStartTime = Date.now();
+        }
+        
+        // Calculate scroll distance in this frame
+        const scrollDistance = currentScrollY - lastScrollY;
+        // Accumulate scroll-down distance
+        tocScrollDownDistance += scrollDistance;
+        
+        // If scrolled down more than 100px within 2 seconds, add scrolling-down class
+        if (tocScrollDownDistance >= 100) {
+          if (tocMobile && tocMobile.classList.contains('visible')) {
             tocMobile.classList.add('scrolling-down');
           }
-          // If still in default state (scrolling-up) and distance < 100px, keep default
-        } else {
-          // Initialize start time if this is the first scroll-up frame
-          if (tocScrollUpStartTime === null) {
-            tocScrollUpStartTime = Date.now();
+          if (mobileMenuToggle) {
+            mobileMenuToggle.classList.add('scrolling-down');
           }
-          
-          // Check if more than 2 seconds have passed since scroll-up started
-          const timeElapsed = Date.now() - tocScrollUpStartTime;
-          if (timeElapsed > 2000) {
-            // Reset counter if more than 2 seconds have passed
-            tocScrollUpDistance = 0;
-            tocScrollUpStartTime = Date.now();
-          }
-          
-          // Calculate scroll distance in this frame
-          const scrollDistance = lastScrollY - currentScrollY;
-          // Accumulate scroll-up distance
-          tocScrollUpDistance += scrollDistance;
-          
-          // If scrolled up more than 500px within 2 seconds, remove scrolling-down class (default = scrolling-up)
-          if (tocScrollUpDistance >= 500) {
+          // Reset counters after switching
+          tocScrollDownDistance = 0;
+          tocScrollDownStartTime = null;
+          tocScrollUpDistance = 0;
+          tocScrollUpStartTime = null;
+        }
+        // If still in default state (scrolling-up) and distance < 100px, keep default
+      } else {
+        // Initialize start time if this is the first scroll-up frame
+        if (tocScrollUpStartTime === null) {
+          tocScrollUpStartTime = Date.now();
+        }
+        
+        // Check if more than 2 seconds have passed since scroll-up started
+        const timeElapsed = Date.now() - tocScrollUpStartTime;
+        if (timeElapsed > 2000) {
+          // Reset counter if more than 2 seconds have passed
+          tocScrollUpDistance = 0;
+          tocScrollUpStartTime = Date.now();
+        }
+        
+        // Calculate scroll distance in this frame
+        const scrollDistance = lastScrollY - currentScrollY;
+        // Accumulate scroll-up distance
+        tocScrollUpDistance += scrollDistance;
+        
+        // If scrolled up more than 500px within 2 seconds, remove scrolling-down class (default = scrolling-up)
+        // Also remove if near the top
+        if (tocScrollUpDistance >= 500 || currentScrollY < 50) {
+          if (tocMobile) {
             tocMobile.classList.remove('scrolling-down');
-            // Reset counters after switching
-            tocScrollUpDistance = 0;
-            tocScrollUpStartTime = null;
-            tocScrollDownDistance = 0;
-            tocScrollDownStartTime = null;
-          } else if (!tocMobile.classList.contains('scrolling-down')) {
-            // Already in default state (scrolling-up), keep it that way
-            tocMobile.classList.remove('scrolling-down');
           }
-          // If still scrolling-down and distance < 500px, keep scrolling-down
+          if (mobileMenuToggle) {
+            mobileMenuToggle.classList.remove('scrolling-down');
+          }
+          // Reset counters after switching
+          tocScrollUpDistance = 0;
+          tocScrollUpStartTime = null;
+          tocScrollDownDistance = 0;
+          tocScrollDownStartTime = null;
         }
       }
       
