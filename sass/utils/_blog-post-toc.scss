@@ -2,9 +2,11 @@
 .toc-mobile {
     // Mobile styles (fixed - out of layout to avoid glitches at threshold)
     position: fixed;
-    top: 8px;
+    top: 20px;
     left: 1rem;
-    right: 1rem;
+
+    right: auto;
+    width: calc(100% - 9.5rem); // Avoid overlapping with theme buttons 
     z-index: 10;
     background: rgba($primary-bg-dark, 0.85);
     backdrop-filter: blur(12px);
