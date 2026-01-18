@@ -126,10 +126,33 @@
             gap: 0.5rem;
         }
 
+        a {
+            display: block;
+            flex-shrink: 0;
+            width: 80%;
+            border-radius: 20px;
+            text-decoration: none !important;
+
+            @include respond-to('sm') {
+                width: 31%;
+            }
+
+            img.phone-image {
+                width: 100%;
+                cursor: pointer;
+
+                &:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+
         img.phone-image {
             flex-shrink: 0;
             border-radius: 20px;
             width: 80%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             
             @include respond-to('sm') {
                 width: 31%;
