@@ -126,19 +126,37 @@
             gap: 0.5rem;
         }
 
-        img.phone-image {
+        a {
+            display: block;
             flex-shrink: 0;
-            border-radius: 20px;
             width: 80%;
-            
+            border-radius: 20px;
+            text-decoration: none !important;
+
             @include respond-to('sm') {
                 width: 31%;
             }
 
-            @include respond-to('md') {
-                width: 225px;
-            }
+            img.phone-image {
+                width: 100%;
+                cursor: pointer;
 
+                &:hover {
+                    transform: translateY(-8px);
+                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+                }
+            }
+        }
+
+        img.phone-image {
+            flex-shrink: 0;
+            border-radius: 20px;
+            width: 80%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            @include respond-to('sm') {
+                width: 31%;
+            }
         }
     }
     //// END: Images ////
@@ -189,6 +207,93 @@
                 &.active {
                     display: block;
                 }
+            }
+        }
+    }
+
+    // Expandable content system (details/summary)
+    .expandable-info {
+        margin: 2rem 0;
+        background: rgba($tertiary-bg, 0.4);
+        border: 1px solid rgba($accent-color, 0.3);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        summary {
+            padding: 1.1rem 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            color: $accent-color;
+            background: linear-gradient(90deg, rgba($tertiary-bg, 0.1), rgba($tertiary-bg, 0.3));
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            user-select: none;
+            
+            &::-webkit-details-marker {
+                display: none;
+            }
+
+            &:hover {
+                background: linear-gradient(90deg, rgba($tertiary-bg, 0.2), rgba($tertiary-bg, 0.4));
+            }
+
+            &::after {
+                content: '\f078'; // fa-chevron-down
+                font-family: 'Font Awesome 6 Free';
+                font-weight: 900;
+                font-size: 0.9rem;
+                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                color: rgba($accent-color, 0.7);
+            }
+            
+            i {
+                margin-right: 0.75rem;
+                font-size: 1rem;
+            }
+        }
+
+        &[open] {
+            summary {
+                border-bottom: 1px solid rgba($accent-color, 0.2);
+                margin-bottom: 0.5rem;
+                &::after {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        .expandable-content {
+            padding: 1.5rem;
+            animation: slideDown 0.4s ease-out;
+            
+            p:last-child {
+                margin-bottom: 0;
+            }
+
+            iframe {
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     }
@@ -389,6 +494,33 @@
                         background: rgba(255,255,255,0.6);
                     }
                 }
+            }
+        }
+
+        .expandable-info {
+            background: rgba($tertiary-bg-bright, 0.5);
+            border-color: rgba($accent-color-bright, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            
+            &:hover {
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            }
+            
+            summary {
+                color: $accent-color-bright;
+                background: linear-gradient(90deg, rgba($tertiary-bg-bright, 0.1), rgba($tertiary-bg-bright, 0.3));
+                
+                &::after {
+                    color: rgba($accent-color-bright, 0.7);
+                }
+                
+                &:hover {
+                    background: linear-gradient(90deg, rgba($tertiary-bg-bright, 0.2), rgba($tertiary-bg-bright, 0.4));
+                }
+            }
+            
+            &[open] summary {
+                border-bottom-color: rgba($accent-color-bright, 0.15);
             }
         }
     }

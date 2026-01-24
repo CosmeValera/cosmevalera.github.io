@@ -17,13 +17,7 @@ Posts Order:
 100s Series - Bitcoin Fundamentals & Getting Started
 
 - BTC 101: Why Bitcoin? (already done - theoretical foundation)
-- BTC 102: Getting Started - Your First Bitcoin Purchase
-  - Setting up exchanges (Relai/21Bitcoin)
-  - DCA vs lump sum vs timing the market
-  - Setting up a hot wallet (Blue Wallet, etc.)
-  - Basic security practices (Bitwarden)
-  - Hot vs cold wallet differences
-  - Very brief mention to what is the mempool, and use it check transaction confirmation
+- BTC 102: How to Buy Bitcoin Securely (already done)
 - BTC 103: Cold Storage Fundamentals 
   - When to make the move from hot to cold storage
   - Hot vs cold wallet differences (it's been already covered in 102, maybe mention again)
@@ -73,6 +67,10 @@ Posts Order:
   - Inheritance planning for Bitcoin
   - Social recovery methods
   - Common security mistakes to avoid
+- BTC 206: Multisig
+  - Multisig 2-3 example (like the BTC 103 but with 2-3)
+
+* Quick notes. Maybe the 200 series should be theoretical (like the BTC 101), and the 201 series should be practical (like the BTC 102 and 103). So that the 301 for example could be multisig 2-3. In that case the lightning network I don't know if in the 300s too, or if in the 400s potentially (togethter with AQUA and other 2-layer stuff maybe).
 
 300s Series - More Advanced Bitcoin concepts
 - BTC 301: Lightning Network
