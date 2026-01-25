@@ -1,5 +1,5 @@
 +++
-title = "BTC 102: How to Buy Bitcoin Securely"
+title = "BTC 102: How to Buy Bitcoin"
 template = "blog-post.html"
 description = "Learn how to buy bitcoins from exchanges, how to store them and the difference between hot and cold storage."
 date = 2025-10-14
@@ -17,7 +17,7 @@ Posts Order:
 100s Series - Bitcoin Fundamentals & Getting Started
 
 - BTC 101: Why Bitcoin? (already done - theoretical foundation)
-- BTC 102: How to Buy Bitcoin Securely (already done)
+- BTC 102: How to Buy Bitcoin (already done)
 - BTC 103: Cold Storage Fundamentals 
   - When to make the move from hot to cold storage
   - Hot vs cold wallet differences (it's been already covered in 102, maybe mention again)
