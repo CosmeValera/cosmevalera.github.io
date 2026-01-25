@@ -61,6 +61,13 @@
         <i class="fab fa-bitcoin"></i>
         {{ trans(key="bitcoin", lang=lang) }}
       </button>
+
+      <div class="filter-separator"></div>
+
+      <a href="#blog-series" class="series-link-button">
+        <i class="fas fa-layer-group"></i>
+        {{ trans(key="go_to_series", lang=lang) }}
+      </a>
     </div>
   </div>
   <!-- END: FILTER (Desktop Only) -->
@@ -247,5 +254,50 @@
       </a>
     {% endfor %}
   </div>
+  
+  {#- SERIES LOGIC -#}
+  {% set bitcoin_series_list = [] %}
+  {% for page in section.pages %}
+    {% if page.title is starting_with("BTC 1") %}
+        {% set_global bitcoin_series_list = bitcoin_series_list | concat(with=page) %}
+    {% endif %}
+  {% endfor %}
+  {% set bitcoin_series_list = bitcoin_series_list | sort(attribute="title") %}
+
+  {% if bitcoin_series_list | length > 0 %}
+  <!-- SERIES HEADER -->
+  <div class="blog-series-header">
+      <h1>{{ trans(key="series_section_title", lang=lang) }}</h1>
+      <p class="blog-intro">{{ trans(key="series_section_desc", lang=lang) }}</p>
+  </div>
+
+  <!-- SERIES CAROUSEL -->
+  <div class="blog-series-carousel" id="blog-series">
+      <div class="series-card">
+         <div class="series-image">
+             <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="Bitcoin Series" loading="lazy">
+         </div>
+         <div class="series-content">
+             <span class="series-badge">{{ trans(key="series", lang=lang) }}</span>
+             <h2>{{ trans(key="bitcoin_series_title", lang=lang) }}</h2>
+             <p>{{ trans(key="bitcoin_series_desc", lang=lang) }}</p>
+             
+             <div class="series-chapters">
+                 {% for post in bitcoin_series_list %}
+                    <a href="{{ post.permalink }}" class="chapter-link">
+                        <span class="chapter-number">{{ loop.index }}</span>
+                        <span class="chapter-title">{{ post.title | replace(from="BTC 10" ~ loop.index ~ ": ", to="") }}</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                 {% endfor %}
+             </div>
+         </div>
+         {# Make the whole card clickable, linking to the first post #}
+         <a href="{{ bitcoin_series_list[0].permalink }}" class="series-card-link" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}"></a>
+      </div>
+  </div>
+  {% endif %}
+  <!-- END SERIES CAROUSEL -->
+
 </div>
 {% endblock content %}

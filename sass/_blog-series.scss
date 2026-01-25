@@ -1,0 +1,310 @@
+// _blog-series.scss
+.blog-series-header {
+  padding: 0 1rem;
+  margin-bottom: -1rem; // Pull closer to the cards
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4rem;
+  
+  @include respond-to('md') {
+    padding: 0;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: $accent-color;
+    margin-bottom: 0.5rem;
+    font-family: 'Andika', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    i {
+        font-size: 1.2rem;
+        opacity: 0.8;
+    }
+  }
+
+  p {
+    color: $text-color;
+    opacity: 0.8;
+    font-size: 1rem;
+    max-width: 600px;
+  }
+}
+
+.blog-series-carousel {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  padding: 1rem 1rem 3rem 1rem; // increased bottom padding to prevent shadow clipping
+  overflow-x: auto;
+  display: flex;
+  gap: 1.5rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; // Hide scrollbar for cleaner look
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // To center the single card if there's only one
+  justify-content: center;
+
+  @include respond-to('md') {
+     padding: 1rem 0 3rem 0; // consistent padding for desktop
+  }
+}
+
+.series-card {
+  flex: 0 0 100%; // Mobile: full width
+  min-width: 0;
+  scroll-snap-align: center;
+  background: linear-gradient(145deg, rgba($secondary-bg, 0.9), rgba($primary-bg, 0.95));
+  border: 1px solid rgba($accent-color, 0.3);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba($accent-color, 0.5);
+  }
+
+  @include respond-to('md') {
+    flex-direction: row;
+    height: 320px; // Fixed height for desktop layout consistency
+  }
+
+  // Glassmorphism effect if supported
+  @supports (backdrop-filter: blur(10px)) {
+    background: rgba($secondary-bg, 0.6);
+    backdrop-filter: blur(12px);
+  }
+
+  .series-image {
+    position: relative;
+    height: 200px; // Mobile height
+    width: 100%;
+    overflow: hidden;
+    
+    @include respond-to('md') {
+      height: 100%;
+      width: 45%; // Desktop width split
+      flex: 0 0 45%;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      
+      .series-card:hover & {
+        transform: scale(1.05);
+      }
+    }
+
+    // Overlay to make text readable if we put text over image, 
+    // or just a nice gradient overlay
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent 0%, rgba($secondary-bg, 0.8) 100%);
+      
+      @include respond-to('md') {
+         background: linear-gradient(to right, transparent 0%, rgba($secondary-bg, 0.9) 100%);
+      }
+    }
+  }
+
+  .series-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    z-index: 2;
+    
+    @include respond-to('md') {
+      padding: 2rem;
+      justify-content: center;
+    }
+
+    .series-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba($accent-color, 0.15);
+      color: $accent-color;
+      font-weight: 800;
+      align-self: flex-start;
+      margin-bottom: 0.8rem;
+      border: 1px solid rgba($accent-color, 0.2);
+    }
+
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.5rem;
+      color: $accent-color;
+      font-family: 'Andika', sans-serif;
+      
+      @include respond-to('md') {
+        font-size: 1.8rem;
+      }
+    }
+
+    p {
+      margin: 0 0 1.5rem;
+      font-size: 0.9rem;
+      color: rgba($text-color, 0.8);
+      line-height: 1.5;
+    }
+
+    .series-chapters {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: auto; 
+
+      .chapter-link {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        background: rgba($accent-color, 0.05);
+        border-radius: 12px;
+        text-decoration: none;
+        color: $text-color;
+        transition: all 0.2s ease;
+        border: 1px solid transparent;
+
+        &:hover {
+          background: rgba($accent-color, 0.1);
+          transform: translateX(5px);
+          border-color: rgba($accent-color, 0.2);
+          
+          .chapter-number {
+             background: $accent-color;
+             color: $primary-bg;
+          }
+          
+          i {
+            transform: translateX(3px);
+            color: $accent-color;
+          }
+        }
+
+        .chapter-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background: rgba($text-color, 0.1);
+          color: rgba($text-color, 0.7);
+          font-size: 0.75rem;
+          font-weight: bold;
+          margin-right: 0.8rem;
+          transition: all 0.2s ease;
+        }
+
+        .chapter-title {
+          font-size: 0.9rem;
+          font-weight: 500;
+          flex: 1;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        i {
+          font-size: 0.8rem;
+          color: rgba($text-color, 0.4);
+          transition: all 0.2s ease;
+        }
+      }
+    }
+  }
+}
+
+// Bright Theme Overrides
+body.bright-theme {
+  .series-card {
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    border-color: rgba($accent-color-bright, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    &:hover {
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+      border-color: rgba($accent-color-bright, 0.4);
+    }
+    
+    @supports (backdrop-filter: blur(10px)) {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    .series-image::after {
+      background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.5) 100%);
+      
+      @include respond-to('md') {
+         background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.5) 100%);
+      }
+    }
+
+    .series-content {
+      .series-badge {
+        background: rgba($accent-color-bright, 0.1);
+        color: $accent-color-bright;
+        border-color: rgba($accent-color-bright, 0.2);
+      }
+
+      h2 {
+        color: $accent-color-bright;
+      }
+      
+      p {
+        color: rgba($text-color-bright, 0.8);
+      }
+
+      .series-chapters .chapter-link {
+        background: rgba($accent-color-bright, 0.05);
+        color: $text-color-bright;
+
+        &:hover {
+          background: rgba($accent-color-bright, 0.12);
+          
+          .chapter-number {
+            background: $accent-color-bright;
+            color: white;
+          }
+          
+          i {
+            color: $accent-color-bright;
+          }
+        }
+        
+        .chapter-number {
+            background: rgba($text-color-bright, 0.1);
+            color: rgba($text-color-bright, 0.7);
+        }
+        
+        i {
+             color: rgba($text-color-bright, 0.4);
+        }
+      }
+    }
+  }
+}
