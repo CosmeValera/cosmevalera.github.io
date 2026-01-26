@@ -235,6 +235,14 @@ function handleFilter() {
             toggleModal(false);
         });
     });
+    
+    // Close modal when series link is clicked
+    const seriesLink = document.querySelector('.filter-modal-series-link');
+    if (seriesLink) {
+        seriesLink.addEventListener('click', () => {
+            toggleModal(false);
+        });
+    }
 }
 
 function clickFilterRendersCards() {

@@ -10,6 +10,7 @@ html {
     font-family: $sans-serif;
     font-size: 16px;
     overflow-y: auto;
+    scroll-behavior: smooth;
     
     // Ensure scrollbar is always visible on medium screens to prevent layout shifts
     @include respond-to('md') {

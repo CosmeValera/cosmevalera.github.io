@@ -117,6 +117,15 @@
           <i class="fab fa-bitcoin"></i>
           {{ trans(key="bitcoin", lang=lang) }}
         </button>
+        
+        <!-- Separator -->
+        <div class="filter-modal-separator"></div>
+        
+        <!-- Series Link -->
+        <a href="#blog-series" class="filter-modal-series-link">
+          <i class="fas fa-layer-group"></i>
+          {{ trans(key="go_to_series", lang=lang) }}
+        </a>
       </div>
     </div>
   </div>
@@ -266,13 +275,13 @@
 
   {% if bitcoin_series_list | length > 0 %}
   <!-- SERIES HEADER -->
-  <div class="blog-series-header">
+  <div class="blog-series-header" id="blog-series">
       <h1>{{ trans(key="series_section_title", lang=lang) }}</h1>
       <p class="blog-intro">{{ trans(key="series_section_desc", lang=lang) }}</p>
   </div>
 
   <!-- SERIES CAROUSEL -->
-  <div class="blog-series-carousel" id="blog-series">
+  <div class="blog-series-carousel">
       <div class="series-card">
          <div class="series-image">
              <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="Bitcoin Series" loading="lazy">

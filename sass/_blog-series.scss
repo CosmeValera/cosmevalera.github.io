@@ -5,7 +5,8 @@
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 4rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
   
   @include respond-to('md') {
     padding: 0;
@@ -38,7 +39,7 @@
   width: 100%;
   max-width: 900px;
   margin: 2rem auto 0;
-  padding: 1rem 1rem 3rem 1rem; // increased bottom padding to prevent shadow clipping
+  padding: 1rem 1rem 2rem 1rem; // increased bottom padding to prevent shadow clipping
   overflow-x: auto;
   display: flex;
   gap: 1.5rem;
@@ -53,7 +54,7 @@
   justify-content: center;
 
   @include respond-to('md') {
-     padding: 1rem 0 3rem 0; // consistent padding for desktop
+     padding: 1rem 0 2rem 0; // consistent padding for desktop
   }
 }
 
