@@ -151,19 +151,18 @@ function handleFilter() {
         
         // Filter posts
         blogCards.forEach(card => {
-            // Get all tags from the card
+            // Get all tags from the card using data-filter attribute
             const tags = Array.from(card.querySelectorAll('.blog-card-tag'))
-                .map(tag => tag.textContent.trim().toLowerCase());
+                .map(tag => tag.getAttribute('data-filter') || tag.textContent.trim().toLowerCase());
             
             // Normalize selected filter
             const filter = selectedFilter.toLowerCase();
             
             let matches = false;
             
-            matches = tags.some(tagText => {
-                // Simple normalization: remove spaces, lowercase
-                const normalizedTag = tagText.replace(/\s+/g, '-').toLowerCase();
-                return normalizedTag === filter || normalizedTag.includes(filter);
+            matches = tags.some(tagFilter => {
+                // Use the data-filter value directly for comparison
+                return tagFilter === filter || tagFilter.includes(filter);
             });
             
             if (!matches) {
@@ -268,14 +267,13 @@ function clickFilterRendersCards() {
                 blogCards.forEach((card) => {
                     // Logic duplicated from handleFilter - ideally should be shared but keeping it simple
                     const tags = Array.from(card.querySelectorAll('.blog-card-tag'))
-                        .map(tag => tag.textContent.trim().toLowerCase());
+                        .map(tag => tag.getAttribute('data-filter') || tag.textContent.trim().toLowerCase());
                     
                     const filter = selectedFilter.toLowerCase();
                     let matches = false;
                     
-                    matches = tags.some(tagText => {
-                        const normalizedTag = tagText.replace(/\s+/g, '-').toLowerCase();
-                        return normalizedTag === filter || normalizedTag.includes(filter);
+                    matches = tags.some(tagFilter => {
+                        return tagFilter === filter || tagFilter.includes(filter);
                     });
                     
                     if (!matches) {

@@ -173,12 +173,12 @@
               {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
                 {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
                   {# Main tag: keep its special color class #}
-                  <div class="blog-card-tag tag-{{ tag | slugify }}">
+                  <div class="blog-card-tag tag-{{ tag | slugify }}" data-filter="{{ tag | slugify }}">
                     {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
                   </div>
                 {% else %}
                   {# Secondary tags: always use default style #}
-                  <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary">
+                  <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary" data-filter="{{ tag | slugify }}">
                     {% if tag | slugify in config.extra.blog_post_tags %}
                       {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
                     {% else %}
