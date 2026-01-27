@@ -21,7 +21,7 @@
     </svg>
   </div>
   
-  <h1>{{ trans(key="blog", lang=lang) }}</h1>
+  <h1 id="blog-top">{{ trans(key="blog", lang=lang) }}</h1>
   <p class="blog-intro">{{ trans(key="blog_intro", lang=lang) }}</p>
 
   <!-- FILTER (Desktop Only) -->
@@ -82,53 +82,55 @@
   <!-- Filter Modal (Mobile Only) -->
   <div class="filter-modal" id="filter-modal">
     <div class="filter-modal-content">
-      <div class="filter-modal-header">
-        <h3>{{ trans(key="filter_blog_posts", lang=lang) }}</h3>
-        <button class="filter-modal-close" id="filter-modal-close">
-          <i class="fas fa-times"></i>
-        </button>
+      <!-- FILTER SECTION -->
+      <div class="filter-modal-section">
+        <div class="filter-modal-header">
+          <h3>{{ trans(key="filter_blog_posts", lang=lang) }}</h3>
+          <button class="filter-modal-close" id="filter-modal-close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="filter-modal-body">
+          <button class="filter-modal-option" data-filter="frontend">
+            <i class="fas fa-laptop-code"></i>
+            {{ trans(key="frontend", lang=lang) }}
+          </button>
+          <button class="filter-modal-option" data-filter="architecture">
+            <i class="fas fa-sitemap"></i>
+            {{ trans(key="architecture", lang=lang) }}
+          </button>
+          <button class="filter-modal-option" data-filter="finance">
+            <i class="fas fa-chart-line"></i>
+            {{ trans(key="finance", lang=lang) }}
+          </button>
+          <button class="filter-modal-option" data-filter="bitcoin">
+            <i class="fab fa-bitcoin"></i>
+            {{ trans(key="bitcoin", lang=lang) }}
+          </button>
+        </div>
       </div>
-      <div class="filter-modal-body">
-        <!-- <button class="filter-modal-option" data-filter="recommended">
-          <i class="fas fa-star"></i>
-          Recommended
-        </button>
-        <button class="filter-modal-option" data-filter="for-beginners">
-          <i class="fas fa-book"></i>
-          Beginners
-        </button> -->
-        <button class="filter-modal-option" data-filter="frontend">
-          <i class="fas fa-laptop-code"></i>
-          {{ trans(key="frontend", lang=lang) }}
-        </button>
-        <!-- <button class="filter-modal-option" data-filter="backend">
-          <i class="fas fa-server"></i>
-          Backend
-        </button> -->
-        <button class="filter-modal-option" data-filter="architecture">
-          <i class="fas fa-sitemap"></i>
-          {{ trans(key="architecture", lang=lang) }}
-        </button>
-        <button class="filter-modal-option" data-filter="finance">
-          <i class="fas fa-chart-line"></i>
-          {{ trans(key="finance", lang=lang) }}
-        </button>
-        <button class="filter-modal-option" data-filter="bitcoin">
-          <i class="fab fa-bitcoin"></i>
-          {{ trans(key="bitcoin", lang=lang) }}
-        </button>
-        
-        <!-- Separator -->
-        <div class="filter-modal-separator"></div>
-        
-        <!-- Series Link -->
-        <a href="#blog-series" class="filter-modal-series-link">
-          <i class="fas fa-layer-group"></i>
-          {{ trans(key="go_to_series", lang=lang) }}
-        </a>
+
+      <!-- JUMP TO SECTION -->
+      <div class="filter-modal-section navigation-section">
+        <div class="filter-modal-header">
+          <h3>{{ trans(key="or_jump_to", lang=lang) }}</h3>
+        </div>
+        <div class="filter-modal-body">
+          <a href="#blog-top" class="filter-modal-navigation-link">
+            <i class="fas fa-pen-nib"></i>
+            {{ trans(key="jump_to_blog", lang=lang) }}
+            <i class="fas fa-arrow-up filter-modal-navigation-arrow"></i>
+          </a>
+          <a href="#blog-series" class="filter-modal-navigation-link">
+            <i class="fas fa-layer-group"></i>
+            {{ trans(key="series", lang=lang) }}
+            <i class="fas fa-arrow-down filter-modal-navigation-arrow"></i>
+          </a>
+        </div>
       </div>
     </div>
   </div>
+  <!-- END: Filter Modal (Mobile Only) -->
   <!-- END: Filter Modal (Mobile Only) -->
   
   <div class="blog-cards">

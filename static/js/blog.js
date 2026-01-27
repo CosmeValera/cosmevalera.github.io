@@ -236,13 +236,13 @@ function handleFilter() {
         });
     });
     
-    // Close modal when series link is clicked
-    const seriesLink = document.querySelector('.filter-modal-series-link');
-    if (seriesLink) {
-        seriesLink.addEventListener('click', () => {
+    // Close modal when navigation links are clicked
+    const navigationLinks = document.querySelectorAll('.filter-modal-navigation-link');
+    navigationLinks.forEach(link => {
+        link.addEventListener('click', () => {
             toggleModal(false);
         });
-    }
+    });
 }
 
 function clickFilterRendersCards() {
