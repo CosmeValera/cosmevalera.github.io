@@ -89,7 +89,7 @@ series = "Series"
 bitcoin_series_title = "Fundamentos de Bitcoin"
 bitcoin_series_desc = "Comienza tu viaje en Bitcoin desde cero."
 series_section_title = "Series"
-series_section_desc = "Colecciones de publicaciones que profundizan en temas específicos."
+series_section_desc = "Guías completas para profundizar en un tema."
 
 # Projects
 projects_intro = "Una selección de proyectos que he desarrollado con diferentes tecnologías. Cada proyecto ha sido un reto único y una oportunidad de aprendizaje."
@@ -190,7 +190,7 @@ series = "Series"
 bitcoin_series_title = "Bitcoin Essentials"
 bitcoin_series_desc = "Start your journey into Bitcoin from zero to hero."
 series_section_title = "Series"
-series_section_desc = "Structured collections of posts exploring specific topics in depth."
+series_section_desc = "In-depth guides on specific topics."
 # Projects
 projects_intro = "A showcase of projects I've built using different technologies. Each project represents a unique challenge and learning experience."
 filter_projects = "Filter Projects"
