@@ -75,7 +75,7 @@ words = "palabras"
 next_post = "Siguiente publicación"
 previous_post = "Anterior publicación"
 or_jump_to = "SALTAR A:"
-jump_to_blog = "Blog"
+jump_to_blog = "Publicaciones"
 
 # Blog tags/filters
 recommended = "Recomendado"
@@ -177,7 +177,7 @@ words = "words"
 next_post = "Next post"
 previous_post = "Previous post"
 or_jump_to = "JUMP TO:"
-jump_to_blog = "Blog"
+jump_to_blog = "Posts"
 # Blog tags/filters
 recommended = "Recommended"
 for_beginners = "For Beginners"
