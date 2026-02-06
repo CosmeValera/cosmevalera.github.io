@@ -3,7 +3,7 @@ title = "Estilos Compartidos en Monorepos"
 template = "blog-post.html"
 description = "Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo"
 [taxonomies]
-tags = ["frontend"]
+tags = ["frontend", "architecture"]
 [extra]
 cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp"
 +++
