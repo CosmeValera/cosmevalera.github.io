@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+	<title> - recommended</title>
+	<link href="https://cosmevalera.dev/es/tags/recommended/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2024-11-22T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/es/tags/recommended/atom.xml</id>
+	<entry xml:lang="es">
+		<title>Principios SOLID</title>
+		<published>2024-11-22T00:00:00+00:00</published>
+		<updated>2024-11-22T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/es/blog/solid-principles/" type="text/html"/>
+		<id>https://cosmevalera.dev/es/blog/solid-principles/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2024-11-22-solid-principles&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;🧐 ¿Por qué seguir los principios SOLID?&lt;&#x2F;h4&gt;
+&lt;p&gt;Como desarrolladores de software, nos esforzamos por crear sistemas robustos, mantenibles y fáciles de escalar. Los principios SOLID ofrecen una base para escribir código limpio y bien estructurado, priorizando clases de propósito único, diseños extensibles y dependencias mínimas.&lt;&#x2F;p&gt;
+&lt;p&gt;Aquí tienes un desglose de cada principio con ejemplos e ideas sobre su aplicación:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Cada principio incluye una calificación de dificultad (&lt;code&gt;Fácil&lt;&#x2F;code&gt;, &lt;code&gt;Medio&lt;&#x2F;code&gt; o &lt;code&gt;Difícil&lt;&#x2F;code&gt;) para reflejar su complejidad de comprensión.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;📜 1. Principio de responsabilidad única (SRP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Medio&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definición:&lt;&#x2F;strong&gt; Una clase debe tener solo una razón para cambiar, lo que significa que debe tener una única responsabilidad o propósito.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Viola SRP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;User {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;saveToDatabase&lt;&#x2F;span&gt;&lt;span&gt;() {}
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;logUserActivity&lt;&#x2F;span&gt;&lt;span&gt;() {}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Sigue SRP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserRepository {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;saveToDatabase&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;user&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User) {}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Logger {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;logUserActivity&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;user&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User) {}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;🚫 &lt;strong&gt;Viola SRP:&lt;&#x2F;strong&gt; Maneja múltiples responsabilidades.&lt;br &#x2F;&gt;
+✅ &lt;strong&gt;Sigue SRP:&lt;&#x2F;strong&gt; Separa las responsabilidades en diferentes clases como &lt;code&gt;UserRepository&lt;&#x2F;code&gt; y &lt;code&gt;Logger&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;📦 2. Principio abierto&#x2F;cerrado (OCP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Difícil&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definición:&lt;&#x2F;strong&gt; Las entidades de software (clases, módulos, funciones) deben estar abiertas para extensión pero cerradas para modificación.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Viola OCP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Shape {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;shapeType&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(shapeType &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;circle&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;drawCircle&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;else if &lt;&#x2F;span&gt;&lt;span&gt;(shapeType &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;square&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;drawSquare&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Sigue OCP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Shape {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Circle &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* dibujar círculo *&#x2F; &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Square &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;draw&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* dibujar cuadrado *&#x2F; &lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;🚫 &lt;strong&gt;Viola OCP:&lt;&#x2F;strong&gt; Modificar código existente para nuevos comportamientos.&lt;br &#x2F;&gt;
+✅ &lt;strong&gt;Sigue OCP:&lt;&#x2F;strong&gt; Añadir nuevos comportamientos sin modificar código existente.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🔄 3. Principio de sustitución de Liskov (LSP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Difícil&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definición:&lt;&#x2F;strong&gt; Los subtipos deben poder sustituir a sus tipos base sin alterar la corrección del programa. En otras palabras, una clase derivada debe poder reemplazar a su clase padre sin causar ningún comportamiento inesperado.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Cómo identificar una violación:&lt;&#x2F;strong&gt; Si al sobrescribir un método en la subclase cambias la lógica de tal forma que el código que usa la clase padre deja de funcionar, vas por mal camino. Las subclases deben respetar siempre el comportamiento que se espera de la clase base.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Viola LSP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Rectangle {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;setWidth&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) { this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;width; }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;setHeight&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;height&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) { this.height &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;height; }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span&gt;this.height; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Square &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Rectangle &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;setWidth&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;width;
+&lt;&#x2F;span&gt;&lt;span&gt;    this.height &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;width; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Rompe LSP: comportamiento inesperado
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Sigue LSP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Shape {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;abstract &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Rectangle &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;width&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;height&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    super();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.width &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span&gt;this.height; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Square &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;extends &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;Shape &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;side&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;number&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    super();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getArea&lt;&#x2F;span&gt;&lt;span&gt;() { &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.side &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;* &lt;&#x2F;span&gt;&lt;span&gt;this.side; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Sobre este ejemplo:&lt;&#x2F;strong&gt; Tenemos una clase &lt;code&gt;Square&lt;&#x2F;code&gt; que hereda de &lt;code&gt;Rectangle&lt;&#x2F;code&gt;, pero que cambia su comportamiento al asignar el ancho o el alto. Mientras que la clase base asume que ambas dimensiones son independientes, la clase &lt;code&gt;Square&lt;&#x2F;code&gt; obliga a que los lados sean iguales, lo que provoca resultados inesperados.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;🚫 Viola LSP:&lt;&#x2F;strong&gt; Si una clase derivada altera la lógica o el comportamiento esperado de la clase base, rompe la capacidad de sustitución.&lt;br &#x2F;&gt;
+&lt;strong&gt;✅ Sigue LSP:&lt;&#x2F;strong&gt; Garantiza que los subtipos mantengan un comportamiento coherente y respeten las reglas establecidas por el tipo base.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🎛️ 4. Principio de segregación de interfaces (ISP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Fácil&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definición:&lt;&#x2F;strong&gt; Una clase no debe verse forzada a implementar interfaces que no usa. En su lugar, crea interfaces específicas y más pequeñas.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Viola ISP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;MultifunctionDevice {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;scan&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;fax&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Sigue ISP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;Printer {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;Scanner {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;scan&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;🚫 Viola ISP:&lt;&#x2F;strong&gt; Una única interfaz que obliga a las implementaciones a incluir métodos no utilizados o irrelevantes.&lt;br &#x2F;&gt;
+&lt;strong&gt;✅ Sigue ISP:&lt;&#x2F;strong&gt; Divide las interfaces en unas más pequeñas y específicas para asegurar que las implementaciones solo incluyan métodos relevantes.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🔗 5. Principio de inversión de dependencias (DIP) &lt;code class=&quot;solid-principles-tag&quot;&gt;Medio&lt;&#x2F;code&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Definición:&lt;&#x2F;strong&gt; Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deben depender de abstracciones (por ejemplo, interfaces).&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Viola DIP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;EmailService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendEmail&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* lógica de email *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Notification {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span&gt;emailService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span&gt;EmailService();
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;notify&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.emailService.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendEmail&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Sigue DIP **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;MessageService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendMessage&lt;&#x2F;span&gt;&lt;span&gt;()&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;EmailService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;implements &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;MessageService &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendMessage&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;* lógica de email *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;Notification {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span&gt;messageService&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;MessageService;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;messageService&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;MessageService) {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.messageService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;messageService;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;notify&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.messageService.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;sendMessage&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;🚫 &lt;strong&gt;Viola DIP:&lt;&#x2F;strong&gt; Las clases de alto nivel dependen directamente de implementaciones de bajo nivel.&lt;br &#x2F;&gt;
+✅ &lt;strong&gt;Sigue DIP:&lt;&#x2F;strong&gt; Usa abstracciones para desacoplar dependencias.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;Recursos&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&amp;quot;Nothing is Something&amp;quot;:&lt;&#x2F;strong&gt; Un vídeo &lt;code&gt;altamente&lt;&#x2F;code&gt; recomendado que introduce el patrón Null Object de manera clara y práctica. También presenta un excelente ejemplo de cómo la herencia puede fallar y la transición de herencia a composición, haciéndolo imprescindible para cualquiera que busque profundizar su comprensión de los principios de diseño limpio. &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=OMPfEXIlTVE&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt;Míralo aquí&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;quot;Uncle Bob on SOLID Principles&amp;quot;:&lt;&#x2F;strong&gt; Un vídeo que cubre conceptos de diseño orientado a objetos y toca los principios SOLID cerca del final. Una buena opción para entender los fundamentos del código limpio. &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=zHiWqnTWsn4&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt;Míralo aquí&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Conclusión&lt;&#x2F;h4&gt;
+&lt;p&gt;🥰 Siguiendo estos principios, puedes crear software más fácil de mantener, escalar y extender. Ya sea que estés construyendo una pequeña aplicación o un sistema complejo, los principios SOLID sirven como guía para evitar deuda técnica y mejorar la calidad del código.&lt;&#x2F;p&gt;
+&lt;p&gt;¡Comienza a aplicarlos hoy y observa cómo se transforma tu código! 🎉&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

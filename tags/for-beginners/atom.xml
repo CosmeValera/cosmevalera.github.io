@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - for beginners</title>
+	<link href="https://cosmevalera.dev/tags/for-beginners/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-05-26T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/tags/for-beginners/atom.xml</id>
+	<entry xml:lang="en">
+		<title>How to Analyze a Stock for investment</title>
+		<published>2025-05-26T00:00:00+00:00</published>
+		<updated>2025-05-26T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/blog/how-to-analyze-a-stock/" type="text/html"/>
+		<id>https://cosmevalera.dev/blog/how-to-analyze-a-stock/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-05-26-how-to-analyze-a-stock&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Analyzing a stock can be tricky at first, but this beginner-friendly and practical guide will help you make informed decisions when investing capital at risk. We&#x27;ll explore the key metrics to look at when evaluating a company.&lt;&#x2F;p&gt;
+&lt;p&gt;All of these metrics can be found when evaluating a company using a page like &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;finance.yahoo.com&quot;&gt;Yahoo finance&lt;&#x2F;a&gt; or &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.investing.com&quot;&gt;Investing&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🏷️ Valuation Metrics&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;1️⃣ Market Cap&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; The total value of a company.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Formula:&lt;&#x2F;strong&gt; &lt;code&gt;Market Cap = Share Price × Shares&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tells you if a company is large or small.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;2️⃣ Enterprise Value (EV)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; A more complete measure than Market Cap for the value of the company, as it includes debt and cash.&lt;br &#x2F;&gt;
+&lt;strong&gt;Formula:&lt;&#x2F;strong&gt; &lt;code&gt;EV = Market Cap + Debt - Cash&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;EV is like the price you&#x27;d pay to buy the whole company, including its debts.&lt;&#x2F;li&gt;
+&lt;li&gt;In the formula the debt is added because if you were to buy a company, you have to take on its obligations too.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If the &lt;code&gt;EV&lt;&#x2F;code&gt; is much higher than the &lt;code&gt;Market Cap&lt;&#x2F;code&gt;, that&#x27;s a bad sign because it means the company has a lot of debt.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;3️⃣ Trailing P&#x2F;E (Price&#x2F;Earnings, last 12 months)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; Ratio of price to earnings over the past year.&lt;&#x2F;p&gt;
+&lt;p&gt;Lower is generally better, since that means that the earnings are greater.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Typically, a Trailing P&#x2F;E below 17 suggests the stock may be undervalued; while above 18 could indicate overvaluation (though this varies by sector and company).&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;4️⃣ Forward P&#x2F;E (Price&#x2F;Earnings, next 12 months)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; Ratio of price to expected future earnings over the coming year.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;If Forward P&#x2F;E is &lt;strong&gt;higher&lt;&#x2F;strong&gt; than Trailing P&#x2F;E, &lt;strong&gt;worse&lt;&#x2F;strong&gt; results are expected.&lt;&#x2F;li&gt;
+&lt;li&gt;If Forward P&#x2F;E is &lt;strong&gt;lower&lt;&#x2F;strong&gt; than Trailing P&#x2F;E, &lt;strong&gt;better&lt;&#x2F;strong&gt; results are expected. &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;5️⃣ EV&#x2F;EBITDA&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This might be the single most important metric, so stay with me for a second. It may sound complicated at first, but once it clicks, it’s actually pretty intuitive.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Definition:&lt;&#x2F;strong&gt; EV&#x2F;EBITDA is the ratio of Enterprise Value (EV) to Earnings Before Interest, Taxes, Depreciation, and Amortization (EBITDA).&lt;&#x2F;li&gt;
+&lt;li&gt;To make it easy: &lt;strong&gt;EV&lt;&#x2F;strong&gt; is the company&#x27;s total value and &lt;strong&gt;EBITDA&lt;&#x2F;strong&gt; is its operating benefits (before taxes and other stuff). So, you can think of it as the &lt;strong&gt;company&#x27;s price divided by its operating benefits&lt;&#x2F;strong&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;This metric tells you how many years it would take for the company to pay off its current valuation using its operating earnings.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For example, a EV&#x2F;EBITDA of 10 means that the company would need 10 years to pay its current valoration (e.g., company is valued in $100M and generates $10M per year)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;How to interpret EV&#x2F;EBITDA 🧐&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A value &lt;strong&gt;below 10&lt;&#x2F;strong&gt; might suggest the company is undervalued or a potentially good buy. But be careful, it can also mean the company is in trouble or that investors lack confidence in its future.&lt;&#x2F;p&gt;
+&lt;p&gt;A value &lt;strong&gt;above 10&lt;&#x2F;strong&gt; could indicate the company is overvalued, or it might be seen as so innovative or promising that investors believe it deserves a premium price.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt; 💰 Profitability&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;6️⃣ Profit Margin&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Measures how much profit a company makes from its revenue.&lt;&#x2F;li&gt;
+&lt;li&gt;The higher, the better.&lt;&#x2F;li&gt;
+&lt;li&gt;However, margins vary a lot by industry.
+&lt;ul&gt;
+&lt;li&gt;Supermarkets have low margins (~2%).&lt;&#x2F;li&gt;
+&lt;li&gt;Tech companies can exceed 20%.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As a general rule of thumb:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;5–10% = Average&lt;&#x2F;li&gt;
+&lt;li&gt;10–20% = Good&lt;&#x2F;li&gt;
+&lt;li&gt;&amp;gt;20% = Excellent&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt; 📈 Income State&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;7️⃣ EBITDA Growth&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Look for growing EBITDA.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;8️⃣ Earnings Growth&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Look for a consistent growth in earnings.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt; 🏦 Balance Sheet&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;9️⃣ Total Cash&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The more, the better.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;🔟 Total Debt&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The less, the better.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Check how long does the company need to repay its debt with EBITDA. The fewer years to pay off its debt, the better.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt; 📉 Stock Price History&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;11&lt;&#x2F;code&gt; Beta&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Beta measures how much a stock’s price moves relative to the overall market.
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&amp;lt;1:&lt;&#x2F;strong&gt; Defensive (less volatile)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;=1:&lt;&#x2F;strong&gt; Neutral (moves with the market)&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;&amp;gt;1:&lt;&#x2F;strong&gt; Aggressive (more volatile)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For example: if Beta = 2, and the market goes up by 100, the stock would go up by 200 (and vice versa).&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt; 📊 Insider Statistics&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;12&lt;&#x2F;code&gt; Percentage of Shares Held by Insiders&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The higher, the better. You want management to have skin in the game.&lt;&#x2F;li&gt;
+&lt;li&gt;When insiders own a significant stake, it often means they’re more aligned with shareholders and confident in the company’s future.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt; 💸 Dividends&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;13&lt;&#x2F;code&gt; Dividend Yield and Payout&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;For example: A 5% yield means you get $5 per $100 invested each year.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When a company pays a dividend, its market capitalization typically drops by that amount. So you&#x27;re not gaining free money, just shifting value from the company to your pocket.&lt;&#x2F;p&gt;
+&lt;p&gt;This is why dividends, while often seen as passive income, can be misleading, since they don&#x27;t create value on their own. What really matters is the company’s quality.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;br&#x2F;&gt;
+&lt;!-- Visual break for the practical example --&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-05-26-how-to-analyze-a-stock&#x2F;apple-break-image.webp&quot; style=&quot;width: 100%; border-radius: 20px;&quot; &#x2F;&gt;&lt;br&#x2F;&gt;&lt;br&#x2F;&gt;&lt;br&#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🔍 Practical example:&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Let&#x27;s take &lt;strong&gt;Apple (AAPL)&lt;&#x2F;strong&gt; as an example, visit &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;finance.yahoo.com&#x2F;quote&#x2F;AAPL&quot;&gt;its page in Yahoo Finance&lt;&#x2F;a&gt; and scroll down to the Statistics section. You should see something like this:&lt;&#x2F;p&gt;
+&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-05-26-how-to-analyze-a-stock&#x2F;apple-statistics-image.webp&quot; style=&quot;width: 95%; border-radius: 10px; display: block; margin: 0 auto&quot;&#x2F;&gt;
+&lt;br&#x2F;&gt;
+&lt;p&gt;&lt;strong&gt;🏷️ Valuation Metrics Analysis 🏷️&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Market Cap:&lt;&#x2F;strong&gt; $3.03T &amp;lt;- &lt;em&gt;High capitalization, one of the world&#x27;s largest companies.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Enterprise Value:&lt;&#x2F;strong&gt; $3.08T &amp;lt;- &lt;em&gt;Notice how EV ($3.08T) is slightly higher than Market Cap ($3.03T). This suggests Apple has more debt than cash, but the difference is relatively small, indicating a healthy balance sheet structure.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Trailing P&#x2F;E:&lt;&#x2F;strong&gt; 31.59 &amp;lt;- &lt;em&gt;High premium above our 17-18 benchmark, suggesting overvaluation or strong investor confidence.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Forward P&#x2F;E:&lt;&#x2F;strong&gt; 25.32 &amp;lt;- &lt;em&gt;The Forward P&#x2F;E (25.32) is lower than the Trailing P&#x2F;E (31.59), which is a positive sign. This indicates analysts expect Apple&#x27;s earnings to grow over the next 12 months.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;EV&#x2F;EBITDA:&lt;&#x2F;strong&gt; 22.17 &amp;lt;- &lt;em&gt;Above our threshold of 10, trading at a premium. While this could indicate overvaluation, it might also reflect investor confidence in Apple&#x27;s innovation, market position, and future growth prospects.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;💰 Profitability Analysis 💰&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Profit Margin:&lt;&#x2F;strong&gt; 24.30% &amp;lt;- &lt;em&gt;Excellent (&amp;gt;20% category), showing strong operational efficiency.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;🏦 Balance Sheet Health 🏦&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Total Cash:&lt;&#x2F;strong&gt; $48.5B &amp;lt;- &lt;em&gt;Strong cash position for flexibility.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;strong&gt;Final thoughts 🤔 :&lt;&#x2F;strong&gt; Apple shows excellent profitability but trades at premium valuations, requiring careful consideration of whether the price is justified.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Yahoo finance doesn&#x27;t show all the metrics we discussed in this chart, only some of them. To find the rest, you’ll need to explore the site further.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;&lt;b&gt;Resources&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Main reference for this post: &lt;strong&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=_GotMa93C0I&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt; How to analyze a stock in 2024 (Spanish)&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt; &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;&lt;b&gt;Conclusion&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Looking at all the metrics will give you a clearer, more objective view of a company&#x27;s value, profitability, and risk. Remember, no single metric tells the whole story.&lt;&#x2F;p&gt;
+&lt;p&gt;That said, a good tip for beginners: the two most important metrics to focus on are &lt;code&gt;EV&#x2F;EBITDA&lt;&#x2F;code&gt; and &lt;code&gt;P&#x2F;E&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;You can explore other real examples (e.g., Amazon or Tesla) on platforms like &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;finance.yahoo.com&quot;&gt;Yahoo finance&lt;&#x2F;a&gt; or &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.investing.com&quot;&gt;Investing&lt;&#x2F;a&gt; to get practice. Use these notes as your checklist! 😊&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ Important: This guide is for educational purposes only and does not constitute financial advice. All investments carry risk, and it&#x27;s important to do your own research before making any financial decisions.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</content>
+	</entry>
+</feed>
