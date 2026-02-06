@@ -2,17 +2,79 @@
 {% macro container(page,orderDesc=true) %}
 <div class="related-container">
 
-  {% if page.higher %}
-  <div class="link">
-    <span>{% if orderDesc %} {{ trans(key="previous_post", lang=lang) }}{% else %} {{ trans(key="next_post", lang=lang) }}{% endif %}</span>
-    <a href="{{ page.higher.permalink }}">{{ page.higher.title }}</a>
+  {# ========================================== #}
+  {# 1. NORMAL NAVIGATION (Default)             #}
+  {# ========================================== #}
+  {# This block is always rendered. JS will hide it if mode=series is active. #}
+  <div class="nav-normal">
+      {% if page.higher %}
+      <div class="link">
+        <span>{% if orderDesc %} {{ trans(key="previous_post", lang=lang) }}{% else %} {{ trans(key="next_post", lang=lang) }}{% endif %}</span>
+        <a href="{{ page.higher.permalink }}">{{ page.higher.title }}</a>
+      </div>
+      {% endif %}
+
+      {% if page.lower %}
+      <div class="link">
+        <span>{% if orderDesc %} {{ trans(key="next_post", lang=lang) }}{% else %} {{ trans(key="previous_post", lang=lang) }}{% endif %}</span>
+        <a href="{{ page.lower.permalink }}">{{ page.lower.title }}</a>
+      </div>
+      {% endif %}
   </div>
+
+  {# ========================================== #}
+  {# 2. SERIES NAVIGATION (Hidden by default)   #}
+  {# ========================================== #}
+  {# Only rendered if this is a series post. JS will show it if mode=series is active. #}
+  
+  {% set is_bitcoin_series = false %}
+  {% set custom_prev = false %}
+  {% set custom_next = false %}
+
+  {% if "bitcoin-101" in page.relative_path %}
+      {% set is_bitcoin_series = true %}
+      {% if lang == "es" %}
+          {% set custom_next = get_page(path="blog/2025-10-19-bitcoin-102.es.md") %}
+      {% else %}
+          {% set custom_next = get_page(path="blog/2025-10-19-bitcoin-102.md") %}
+      {% endif %}
+
+  {% elif "bitcoin-102" in page.relative_path %}
+      {% set is_bitcoin_series = true %}
+      {% if lang == "es" %}
+          {% set custom_prev = get_page(path="blog/2025-07-25-bitcoin-101.es.md") %}
+          {% set custom_next = get_page(path="blog/2026-02-04-bitcoin-103.es.md") %}
+      {% else %}
+          {% set custom_prev = get_page(path="blog/2025-07-25-bitcoin-101.md") %}
+          {% set custom_next = get_page(path="blog/2026-02-04-bitcoin-103.md") %}
+      {% endif %}
+
+  {% elif "bitcoin-103" in page.relative_path %}
+      {% set is_bitcoin_series = true %}
+      {% if lang == "es" %}
+          {% set custom_prev = get_page(path="blog/2025-10-19-bitcoin-102.es.md") %}
+      {% else %}
+          {% set custom_prev = get_page(path="blog/2025-10-19-bitcoin-102.md") %}
+      {% endif %}
   {% endif %}
 
-  {% if page.lower %}
-  <div class="link">
-    <span>{% if orderDesc %} {{ trans(key="next_post", lang=lang) }}{% else %} {{ trans(key="previous_post", lang=lang) }}{% endif %}</span>
-    <a href="{{ page.lower.permalink }}">{{ page.lower.title }}</a>
+  {% if is_bitcoin_series %}
+  <div class="nav-series" style="display: none;">
+      {% if custom_prev %}
+      <div class="link">
+        <span>{% if orderDesc %} {{ trans(key="previous_post", lang=lang) }}{% else %} {{ trans(key="next_post", lang=lang) }}{% endif %}</span>
+        {# Append ?mode=series to keep the user in the loop #}
+        <a href="{{ custom_prev.permalink }}?mode=series">{{ custom_prev.title }}</a>
+      </div>
+      {% endif %}
+
+      {% if custom_next %}
+      <div class="link">
+        <span>{% if orderDesc %} {{ trans(key="next_post", lang=lang) }}{% else %} {{ trans(key="previous_post", lang=lang) }}{% endif %}</span>
+        {# Append ?mode=series to keep the user in the loop #}
+        <a href="{{ custom_next.permalink }}?mode=series">{{ custom_next.title }}</a>
+      </div>
+      {% endif %}
   </div>
   {% endif %}
 

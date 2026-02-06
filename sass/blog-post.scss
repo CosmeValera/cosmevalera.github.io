@@ -371,8 +371,12 @@
         margin: 1rem auto;
         display: flex;
         text-align: center;
+
+        .nav-normal, .nav-series {
+            display: contents;
+        }
     
-        > .link {
+        .link {
             flex: 1;
             padding: 1rem;
             box-sizing: border-box;

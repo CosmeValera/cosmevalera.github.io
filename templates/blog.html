@@ -295,7 +295,7 @@
              
              <div class="series-chapters">
                  {% for post in bitcoin_series_list %}
-                    <a href="{{ post.permalink }}" class="chapter-link">
+                    <a href="{{ post.permalink }}?mode=series" class="chapter-link">
                         <span class="chapter-number">{{ loop.index }}</span>
                         <span class="chapter-title">{{ post.title | replace(from="BTC 10" ~ loop.index ~ ": ", to="") }}</span>
                         <i class="fas fa-arrow-right"></i>
@@ -304,7 +304,7 @@
              </div>
          </div>
          {# Make the whole card clickable, linking to the first post #}
-         <a href="{{ bitcoin_series_list[0].permalink }}" class="series-card-link" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}"></a>
+         <a href="{{ bitcoin_series_list[0].permalink }}?mode=series" class="series-card-link" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}"></a>
       </div>
   </div>
   {% endif %}

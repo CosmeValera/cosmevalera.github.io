@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Check for Series Mode
+    const urlParams = new URLSearchParams(window.location.search);
+    const mode = urlParams.get('mode');
+    if (mode === 'series') {
+        const navNormal = document.querySelector('.nav-normal');
+        const navSeries = document.querySelector('.nav-series');
+        if (navSeries) {
+            if (navNormal) navNormal.style.display = 'none';
+            // Use 'contents' to allow children to participate in the parent flex container
+            navSeries.style.display = 'contents'; 
+        }
+    }
     const postContent = document.querySelector('.post-content');
     const tocMobile = document.querySelector('.toc-mobile');
     const tocDesktop = document.querySelector('.toc-desktop');
