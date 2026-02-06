@@ -32,13 +32,15 @@
     }
 
     .readings-intro {
-        max-width: 600px;
+        max-width: 75vw;
+        text-wrap: balance;
+        margin: 0 auto 2rem;
         text-align: center;
-        margin: 0 auto 2.5rem;
         color: $text-color;
-        opacity: 0.7;
-        font-size: clamp(0.9rem, 2vw, 1rem);
+        opacity: 0.9;
+        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
         line-height: 1.6;
+        font-style: italic;
     }
 
     .readings-meta {
@@ -116,6 +118,7 @@
 
         .readings-intro {
             color: $text-color-bright;
+            font-weight: 500;
         }
 
         .readings-meta {
