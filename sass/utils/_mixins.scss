@@ -56,6 +56,12 @@
     &.tag-bitcoin {
       background: $bitcoin-tag-gradient;
     }
+    &.tag-best-practices {
+      background: $best-practices-tag-gradient;
+    }
+    &.tag-testing {
+      background: $testing-tag-gradient;
+    }
 }
 
 @mixin tag-styling-plain {
@@ -86,6 +92,12 @@
     }
     &.tag-bitcoin-plain {
       background-color: $bitcoin-tag-plain;
+    }
+    &.tag-best-practices-plain {
+      background-color: $best-practices-tag-plain;
+    }
+    &.tag-testing-plain {
+      background-color: $testing-tag-plain;
     }
 }
 

@@ -3,7 +3,7 @@ title = "Principios SOLID"
 template = "blog-post.html"
 description = "Descubre cómo aplicar los principios SOLID para escribir un código más limpio, escalable y fácil de mantener"
 [taxonomies]
-tags = ["architecture", "recommended"]
+tags = ["best-practices", "recommended"]
 [extra]
 cover_image = "/images/blog/2024-11-22-solid-principles/cover-webp.webp"
 +++

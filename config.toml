@@ -14,7 +14,7 @@ highlight_theme = "monokai"
 build_search_index = false
 
 [extra]
-blog_post_tags = ["recommended", "for-beginners", "frontend", "backend", "architecture", "finance", "bitcoin"]
+blog_post_tags = ["recommended", "for-beginners", "frontend", "backend", "architecture", "finance", "bitcoin", "best-practices", "testing"]
 
 links = [
     { title = "GitHub", url = "https://github.com/CosmeValera", icon = "github" },
@@ -85,6 +85,8 @@ backend = "Backend"
 architecture = "Arquitectura"
 finance = "Finanzas"
 bitcoin = "Bitcoin"
+best_practices = "Buenas Prácticas"
+testing = "Pruebas"
 series = "Series"
 bitcoin_series_title = "Fundamentos de Bitcoin"
 bitcoin_series_desc = "Comienza tu viaje en Bitcoin desde cero."
@@ -186,6 +188,8 @@ backend = "Backend"
 architecture = "Architecture"
 finance = "Finance"
 bitcoin = "Bitcoin"
+best_practices = "Best Practices"
+testing = "Testing"
 series = "Series"
 bitcoin_series_title = "Bitcoin Essentials"
 bitcoin_series_desc = "Start your journey into Bitcoin from zero to hero."

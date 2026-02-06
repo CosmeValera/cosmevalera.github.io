@@ -36,6 +36,20 @@
         #123434 65%, 
         #123434);
   }
+  &.tag-best-practices {
+    background: 
+      linear-gradient(-90deg, 
+        mix($best-practices-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
+  &.tag-testing {
+    background: 
+      linear-gradient(-90deg, 
+        mix($testing-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
 }
 // END: BLOG-CARD BG COLOR EFFECT WHEN HOVERED //////
 
@@ -76,6 +90,20 @@
         $primary-bg-bright 60%, 
         $secondary-bg-bright);
   }
+  &.tag-best-practices {
+    background: 
+      linear-gradient(-90deg, 
+        mix($best-practices-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
+  &.tag-testing {
+    background: 
+      linear-gradient(-90deg, 
+        mix($testing-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
 }
 // END: BLOG-CARD BG COLOR EFFECT WHEN HOVERED (BRIGHT THEME) //////
 /////////////////////////////////////////////////////
@@ -112,6 +140,18 @@
       0 0 0 2px rgba($bitcoin-tag-plain, 0.6),
       0 4px 8px rgba(0, 0, 0, 0.3);
     animation: pulse-border-bitcoin 2s ease-in-out infinite;
+  }
+  &.tag-best-practices {
+    box-shadow: 
+      0 0 0 2px rgba($best-practices-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-best-practices 2s ease-in-out infinite;
+  }
+  &.tag-testing {
+    box-shadow: 
+      0 0 0 2px rgba($testing-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-testing 2s ease-in-out infinite;
   }
 }
 
@@ -179,6 +219,32 @@
       0 4px 8px rgba(0, 0, 0, 0.3);
   }
 }
+
+@keyframes pulse-border-best-practices {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($best-practices-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($best-practices-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes pulse-border-testing {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($testing-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($testing-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
 // END: BLOG-CARD BORDER COLOR FOR ICONS WHEN HOVERED //////
 ////////////////////////////////////////////////////////////
 
@@ -199,6 +265,12 @@
   }
   &.tag-bitcoin {
     box-shadow: 0 0 0 2px rgba($bitcoin-tag-plain, 0.6);
+  }
+  &.tag-best-practices {
+    box-shadow: 0 0 0 2px rgba($best-practices-tag-plain, 0.6);
+  }
+  &.tag-testing {
+    box-shadow: 0 0 0 2px rgba($testing-tag-plain, 0.6);
   }
 }
 // END: BLOG-CARD ICON BORDER COLOR WHEN HOVERED ///////////

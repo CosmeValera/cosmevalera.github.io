@@ -4,7 +4,7 @@ template = "blog-post.html"
 description = "What is dependency injection and why you should use it"
 draft = true
 [taxonomies]
-tags = ["testing"]
+tags = ["testing", "best-practices"]
 [extra]
 cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp"
 +++
