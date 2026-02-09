@@ -14,14 +14,14 @@
 
 {% block content %}
 <div class="blog">
-  <div class="blog-icon">
+  <div class="blog-icon" id="blog-top">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path>
       <path d="m15 5 4 4"></path>
     </svg>
   </div>
   
-  <h1 id="blog-top">{{ trans(key="blog", lang=lang) }}</h1>
+  <h1>{{ trans(key="blog", lang=lang) }}</h1>
   <p class="blog-intro">{{ trans(key="blog_intro", lang=lang) }}</p>
 
   <!-- FILTER (Desktop Only) -->
@@ -36,10 +36,14 @@
         <i class="fas fa-book"></i>
         Beginners
       </button> -->
-
       <button class="filter-button" data-filter="frontend">
         <i class="fas fa-laptop-code"></i>
         {{ trans(key="frontend", lang=lang) }}
+      </button>
+
+      <button class="filter-button" data-filter="best-practices">
+        <i class="fas fa-check-circle"></i>
+        {{ trans(key="best_practices", lang=lang) }}
       </button>
 
       <!-- <button class="filter-button" data-filter="backend">
@@ -52,19 +56,14 @@
         {{ trans(key="architecture", lang=lang) }}
       </button>
 
-      <button class="filter-button" data-filter="finance">
-        <i class="fas fa-chart-line"></i>
-        {{ trans(key="finance", lang=lang) }}
-      </button>
-
       <!-- <button class="filter-button" data-filter="testing">
         <i class="fas fa-vial"></i>
         {{ trans(key="testing", lang=lang) }}
       </button> -->
 
-      <button class="filter-button" data-filter="best-practices">
-        <i class="fas fa-check-circle"></i>
-        {{ trans(key="best_practices", lang=lang) }}
+      <button class="filter-button" data-filter="finance">
+        <i class="fas fa-chart-line"></i>
+        {{ trans(key="finance", lang=lang) }}
       </button>
 
       <button class="filter-button" data-filter="bitcoin">
@@ -105,21 +104,21 @@
             <i class="fas fa-laptop-code"></i>
             {{ trans(key="frontend", lang=lang) }}
           </button>
+          <button class="filter-modal-option" data-filter="best-practices">
+            <i class="fas fa-check-circle"></i>
+            {{ trans(key="best_practices", lang=lang) }}
+          </button>
           <button class="filter-modal-option" data-filter="architecture">
             <i class="fas fa-sitemap"></i>
             {{ trans(key="architecture", lang=lang) }}
-          </button>
-          <button class="filter-modal-option" data-filter="finance">
-            <i class="fas fa-chart-line"></i>
-            {{ trans(key="finance", lang=lang) }}
           </button>
           <!-- <button class="filter-modal-option" data-filter="testing">
             <i class="fas fa-vial"></i>
             {{ trans(key="testing", lang=lang) }}
           </button> -->
-          <button class="filter-modal-option" data-filter="best-practices">
-            <i class="fas fa-check-circle"></i>
-            {{ trans(key="best_practices", lang=lang) }}
+          <button class="filter-modal-option" data-filter="finance">
+            <i class="fas fa-chart-line"></i>
+            {{ trans(key="finance", lang=lang) }}
           </button>
           <button class="filter-modal-option" data-filter="bitcoin">
             <i class="fab fa-bitcoin"></i>
