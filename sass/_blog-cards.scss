@@ -175,6 +175,8 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         opacity: 0.8;
         transition: opacity 0.3s ease;
         z-index: 2;
+        white-space: nowrap;
+        min-width: fit-content;
 
         i {
           margin-right: 0.5rem;
