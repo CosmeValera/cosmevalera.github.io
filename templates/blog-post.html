@@ -70,9 +70,9 @@
       <span class="post-date">{{ post_date_display }}</span>
       <span class="reading-time">
         {% if page.extra.custom_reading_time and page.extra.custom_word_count %}
-          {{ page.extra.custom_reading_time }} {{ trans(key="min_read", lang=lang) }} • {{ page.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}
+          {{ page.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} • {{ page.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}
         {% else %}
-          {{ page.reading_time | default(value="3") }} {{ trans(key="min_read", lang=lang) }} • {{ page.word_count | default(value="0") }} {{ trans(key="words", lang=lang) }}
+          {{ page.reading_time | default(value="3") }}{{ trans(key="min_read", lang=lang) }} • {{ page.word_count | default(value="0") }} {{ trans(key="words", lang=lang) }}
         {% endif %}
       </span>
     </div>

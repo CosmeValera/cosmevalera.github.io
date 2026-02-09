@@ -97,9 +97,9 @@
                   <span class="card-stats">
                     <i class="fas fa-clock"></i> 
                     {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                      {{ post.extra.custom_reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
+                      {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
                     {% else %}
-                      {{ post.reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
+                      {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
                     {% endif %}
                   </span>
                 </div>
@@ -127,9 +127,9 @@
               <span class="card-stats">
                 <i class="fas fa-clock"></i> 
                 {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                  {{ post.extra.custom_reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
+                  {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
                 {% else %}
-                  {{ post.reading_time }} {{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
+                  {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
                 {% endif %}
               </span>
             </div>
