@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2024-10-04-optimizing-microfrontends-with-turborepo&#x2F;cover-webp.webp" as="image" fetchpriority="high">
+  
+
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                
+                
+                <a href="&#x2F;blog&#x2F;optimizing-microfrontends-with-turborepo&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Cambiar idioma"
+                   title="Switch to English">
+                    <span class="lang-code">ES</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/projects" class="menu-item menu-projects " aria-label="Proyectos">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Proyectos</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+    
+
+    
+    <a href="/es/blog" class="back-link">← Todas las publicaciones</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/architecture/" class="tag tag-architecture-plain">
+              Arquitectura
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Impulsa tus Microfrontends con Turborepo</h1>
+    <h3 class="presentation-text">Turborepo optimiza tus microfrontends gracias a agilizar los builds con paralelismo y caché</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">October 04, 2024</span>
+      <span class="reading-time">
+        
+          2m lectura • 307 palabras
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Índice</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">En esta página</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2024-10-04-optimizing-microfrontends-with-turborepo/cover-webp.webp" alt="blog-cover" /></p>
+<h4><b>🧐 ¿Por qué Turborepo?</b></h4>
+<p>Gestionar múltiples microfrontends dentro de un monorepo puede ser un desafío. Turborepo ofrece una solución potente para optimizar flujos de trabajo, ejecutar tareas en paralelo y cachear resultados para obtener builds más rápidos.</p>
+<p><b>Tareas paralelas:</b> Ejecuta builds y tests en múltiples microfrontends simultáneamente.</p>
+<p><b>Caché inteligente:</b> Ahorra tiempo reutilizando outputs de ejecuciones anteriores.</p>
+<p><b>Escalable:</b> Gestiona tantos microfrontends como necesites, todo dentro de un solo monorepo.</p>
+<p>Si estás trabajando con múltiples aplicaciones, Turborepo es un cambio radical para agilizar tus flujos de trabajo.</p>
+<p>Así es como puedes configurar y usar Turborepo en tu proyecto:</p>
+<hr />
+<h4><b>🔧 1. Creando un proyecto Turborepo</b></h4>
+<p><b>1.1 Crear un nuevo proyecto Turborepo:</b> </p>
+<p>En lugar de configurar Turborepo manualmente, puedes usar el siguiente comando para crear rápidamente un nuevo Turborepo:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npx create-turbo@latest
+</span></code></pre>
+<p><b>1.2 Coloca tus microfrontends dentro del directorio <code>apps</code>:</b> </p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>apps/
+</span><span> ├── mfe1/
+</span><span> ├── mfe2/
+</span><span> └── mfe3/
+</span><span>package.json
+</span><span>turbo.json
+</span></code></pre>
+<h4><b>📄 2. Archivos de configuración importantes</b></h4>
+<p><code>package.json</code> define tus scripts, dependencias y estructura de workspace.</p>
+<p><code>turbo.json</code> configura cómo se ejecutan las tareas en tu monorepo. También incluye configuraciones de caché para acelerar ejecuciones posteriores.</p>
+<h4><b>⚡ 3. Ejecutando comandos de Turborepo</b></h4>
+Después de configurar Turborepo, puedes gestionar fácilmente todas las aplicaciones y paquetes con unos pocos comandos simples:
+<p><b>Instalar dependencias:</b></p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm i 
+</span></code></pre>
+<p><b>Construir todas las aplicaciones y paquetes:</b></p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm run build 
+</span></code></pre>
+<p><b>Iniciar el entorno de desarrollo:</b></p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm run dev 
+</span></code></pre>
+<blockquote>
+<p>Ejecuta cualquiera de estos comandos una vez, y Turborepo usará su caché inteligente para acelerar builds posteriores.</p>
+</blockquote>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>2</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div>
+<p>¡Pruébalo en tu próximo proyecto y experimenta la eficiencia de primera mano! 😍😍</p>
+
+    </div>
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <div class="link">
+        <span> Anterior publicación</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">Estilos Compartidos en Monorepos</a>
+      </div>
+      
+
+      
+      <div class="link">
+        <span> Siguiente publicación</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;solid-principles&#x2F;">Principios SOLID</a>
+      </div>
+      
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/es/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Colabora</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

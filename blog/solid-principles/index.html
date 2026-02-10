@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2024-11-22-solid-principles&#x2F;cover-webp.webp" as="image" fetchpriority="high">
+  
+
+  </head>
+  <body class="blog-post-page">
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                <a href="/es&#x2F;blog&#x2F;solid-principles&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Switch language"
+                   title="Cambiar a Español">
+                    <span class="lang-code">EN</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/" class="menu-item " aria-label="Home">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Home</span>
+    </a>
+    
+    <a href="/projects" class="menu-item menu-projects " aria-label="Projects">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Projects</span>
+    </a>
+    
+    <a href="/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/readings" class="menu-item menu-readings " aria-label="Readings">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Readings</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+    
+
+    
+    <a href="/blog" class="back-link">← Back to all posts</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/tags/best-practices/" class="tag tag-best-practices-plain">
+              Best Practices
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/tags/recommended/" class="tag tag-recommended-plain">
+              Recommended
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">SOLID Principles</h1>
+    <h3 class="presentation-text">Learn how SOLID principles can enhance your codebase by promoting maintainability, scalability, and clean design</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">November 22, 2024</span>
+      <span class="reading-time">
+        
+          5 min read • 832 words
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Table of Contents</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">On this page</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2024-11-22-solid-principles/cover-webp.webp" alt="blog-cover" /></p>
+<h4>🧐 Why SOLID Principles?</h4>
+<p>As software developers, we strive to create systems that are robust, maintainable, and easy to scale. The SOLID principles offer a foundation for writing clean, well-structured code by encouraging single-purpose classes, extensible designs, and minimal dependencies.</p>
+<p>Here's a breakdown of each principle with examples and insights into their application:</p>
+<blockquote>
+<p>Each principle includes a difficulty rating (<code>Easy</code>, <code>Medium</code>, or <code>Hard</code>) to reflect its understanding complexity.</p>
+</blockquote>
+<hr />
+<h4>📜 1. Single Responsibility Principle (SRP) <code class="solid-principles-tag">Medium</code></h4>
+<p><strong>Definition:</strong> A class should have only one reason to change, meaning it should have a single responsibility or purpose.</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Violates SRP **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>User {
+</span><span>  </span><span style="color:#a6e22e;">saveToDatabase</span><span>() {}
+</span><span>  </span><span style="color:#a6e22e;">logUserActivity</span><span>() {}
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Follows SRP **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>UserRepository {
+</span><span>  </span><span style="color:#a6e22e;">saveToDatabase</span><span>(</span><span style="font-style:italic;color:#fd971f;">user</span><span style="color:#f92672;">: </span><span>User) {}
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Logger {
+</span><span>  </span><span style="color:#a6e22e;">logUserActivity</span><span>(</span><span style="font-style:italic;color:#fd971f;">user</span><span style="color:#f92672;">: </span><span>User) {}
+</span><span>}
+</span></code></pre>
+<p>🚫 <strong>Violates SRP:</strong> Handles multiple responsabilities.<br />
+✅ <strong>Follows SRP:</strong> Separate concerns into different classes like <code>UserRepository</code> and <code>Logger</code>.</p>
+<hr />
+<h4>📦 2. Open/Closed Principle (OCP) <code class="solid-principles-tag">Hard</code></h4>
+<p><strong>Definition:</strong> Software entities (classes, modules, functions) should be open for extension but closed for modification.</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Violates OCP **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Shape {
+</span><span>  </span><span style="color:#a6e22e;">draw</span><span>(</span><span style="font-style:italic;color:#fd971f;">shapeType</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>) {
+</span><span>    </span><span style="color:#f92672;">if </span><span>(shapeType </span><span style="color:#f92672;">=== </span><span style="color:#e6db74;">&#39;circle&#39;</span><span>) {
+</span><span>      </span><span style="color:#a6e22e;">drawCircle</span><span>();
+</span><span>    } </span><span style="color:#f92672;">else if </span><span>(shapeType </span><span style="color:#f92672;">=== </span><span style="color:#e6db74;">&#39;square&#39;</span><span>) {
+</span><span>      </span><span style="color:#a6e22e;">drawSquare</span><span>();
+</span><span>    }
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Follows OCP **/
+</span><span style="color:#f92672;">abstract </span><span style="font-style:italic;color:#66d9ef;">class </span><span>Shape {
+</span><span>  </span><span style="color:#f92672;">abstract </span><span style="color:#a6e22e;">draw</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">void</span><span>;
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Circle </span><span style="color:#f92672;">extends </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">Shape </span><span>{
+</span><span>  </span><span style="color:#a6e22e;">draw</span><span>() { </span><span style="color:#75715e;">/* draw circle */ </span><span>}
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Square </span><span style="color:#f92672;">extends </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">Shape </span><span>{
+</span><span>  </span><span style="color:#a6e22e;">draw</span><span>() { </span><span style="color:#75715e;">/* draw square */ </span><span>}
+</span><span>}
+</span></code></pre>
+<p><strong>🚫 Violates OCP:</strong> Modifying existing code for new behaviours.<br />
+<strong>✅ Follows OCP:</strong> Add new behaviours without modifying existing code.</p>
+<hr />
+<h4>🔄 3. Liskov Substitution Principle (LSP) <code class="solid-principles-tag">Hard</code></h4>
+<p><strong>Definition:</strong> Subtypes must be substitutable for their base types without altering the correctness of the program. In other words, a derived class must be able to replace its parent class without causing unexpected behavior.</p>
+<p><strong>How to identify a violation:</strong> If overriding a method in the subclass breaks assumptions about the parent class, this violates LSP. Subtypes must maintain the behavior expected by the base type.</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Violates LSP **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Rectangle {
+</span><span>  </span><span style="color:#a6e22e;">setWidth</span><span>(</span><span style="font-style:italic;color:#fd971f;">width</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>) { this.width </span><span style="color:#f92672;">= </span><span>width; }
+</span><span>  </span><span style="color:#a6e22e;">setHeight</span><span>(</span><span style="font-style:italic;color:#fd971f;">height</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>) { this.height </span><span style="color:#f92672;">= </span><span>height; }
+</span><span>  </span><span style="color:#a6e22e;">getArea</span><span>() { </span><span style="color:#f92672;">return </span><span>this.width </span><span style="color:#f92672;">* </span><span>this.height; }
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Square </span><span style="color:#f92672;">extends </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">Rectangle </span><span>{
+</span><span>  </span><span style="color:#a6e22e;">setWidth</span><span>(</span><span style="font-style:italic;color:#fd971f;">width</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>) {
+</span><span>    this.width </span><span style="color:#f92672;">= </span><span>width;
+</span><span>    this.height </span><span style="color:#f92672;">= </span><span>width; </span><span style="color:#75715e;">// Breaks LSP: unexpected behavior
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Follows LSP **/
+</span><span style="color:#f92672;">abstract </span><span style="font-style:italic;color:#66d9ef;">class </span><span>Shape {
+</span><span>  </span><span style="color:#f92672;">abstract </span><span style="color:#a6e22e;">getArea</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>;
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Rectangle </span><span style="color:#f92672;">extends </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">Shape </span><span>{
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">constructor</span><span>(</span><span style="color:#f92672;">private </span><span style="font-style:italic;color:#fd971f;">width</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>, </span><span style="color:#f92672;">private </span><span style="font-style:italic;color:#fd971f;">height</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>) {
+</span><span>    super();
+</span><span>  }
+</span><span>  </span><span style="color:#a6e22e;">getArea</span><span>() { </span><span style="color:#f92672;">return </span><span>this.width </span><span style="color:#f92672;">* </span><span>this.height; }
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Square </span><span style="color:#f92672;">extends </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">Shape </span><span>{
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">constructor</span><span>(</span><span style="color:#f92672;">private </span><span style="font-style:italic;color:#fd971f;">side</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">number</span><span>) {
+</span><span>    super();
+</span><span>  }
+</span><span>  </span><span style="color:#a6e22e;">getArea</span><span>() { </span><span style="color:#f92672;">return </span><span>this.side </span><span style="color:#f92672;">* </span><span>this.side; }
+</span><span>}
+</span></code></pre>
+<p><strong>Regarding this example:</strong> A <code>Square</code> class inheriting from <code>Rectangle</code> but behaving differently when setting its width or height. The base class assumes independent width and height, but the <code>Square</code> class enforces equal sides, leading to unexpected behavior.</p>
+<p><strong>🚫 Violates LSP:</strong> When a derived class alters assumptions or expected behaviors defined in the base class, it breaks substitutability.<br />
+<strong>✅ Follows LSP:</strong> Ensure that subtypes maintain consistent behavior and respect the expectations set by their base type.</p>
+<hr />
+<h4>🎛️ 4. Interface Segregation Principle (ISP) <code class="solid-principles-tag">Easy</code></h4>
+<p><strong>Definition:</strong> A class should not be forced to implement interfaces it doesn't use. Instead, create specific, smaller interfaces.</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Violates ISP **/
+</span><span style="font-style:italic;color:#66d9ef;">interface </span><span>MultifunctionDevice {
+</span><span>  </span><span style="color:#a6e22e;">print</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">void</span><span>;
+</span><span>  </span><span style="color:#a6e22e;">scan</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">void</span><span>;
+</span><span>  </span><span style="color:#a6e22e;">fax</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">void</span><span>;
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Follows ISP **/
+</span><span style="font-style:italic;color:#66d9ef;">interface </span><span>Printer {
+</span><span>  </span><span style="color:#a6e22e;">print</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">void</span><span>;
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">interface </span><span>Scanner {
+</span><span>  </span><span style="color:#a6e22e;">scan</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">void</span><span>;
+</span><span>}
+</span></code></pre>
+<p><strong>🚫 Violates ISP:</strong> A single interface forcing implementations to include unused or irrelevant methods.<br />
+<strong>✅ Follows ISP:</strong> Divide interfaces into smaller, specific ones to ensure implementations only include relevant methods.</p>
+<hr />
+<h4>🔗 5. Dependency Inversion Principle (DIP) <code class="solid-principles-tag">Medium</code></h4>
+<p><strong>Definition:</strong> High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces).</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Violates DIP **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>EmailService {
+</span><span>  </span><span style="color:#a6e22e;">sendEmail</span><span>() {
+</span><span>    </span><span style="color:#75715e;">/* email logic */
+</span><span>  }
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Notification {
+</span><span>  </span><span style="color:#f92672;">private </span><span>emailService </span><span style="color:#f92672;">= new </span><span>EmailService();
+</span><span>  </span><span style="color:#a6e22e;">notify</span><span>() {
+</span><span>    this.emailService.</span><span style="color:#a6e22e;">sendEmail</span><span>();
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Follows DIP **/
+</span><span style="font-style:italic;color:#66d9ef;">interface </span><span>MessageService {
+</span><span>  </span><span style="color:#a6e22e;">sendMessage</span><span>()</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">void</span><span>;
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>EmailService </span><span style="color:#f92672;">implements </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">MessageService </span><span>{
+</span><span>  </span><span style="color:#a6e22e;">sendMessage</span><span>() {
+</span><span>    </span><span style="color:#75715e;">/* email logic */
+</span><span>  }
+</span><span>}
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>Notification {
+</span><span>  </span><span style="color:#f92672;">private </span><span>messageService</span><span style="color:#f92672;">: </span><span>MessageService;
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">constructor</span><span>(</span><span style="color:#f92672;">private </span><span style="font-style:italic;color:#fd971f;">messageService</span><span style="color:#f92672;">: </span><span>MessageService) {
+</span><span>    this.messageService </span><span style="color:#f92672;">= </span><span>messageService;
+</span><span>  }
+</span><span>  </span><span style="color:#a6e22e;">notify</span><span>() {
+</span><span>    this.messageService.</span><span style="color:#a6e22e;">sendMessage</span><span>();
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p><strong>🚫 Violates DIP:</strong> High-level classes directly depend on low-level implementations.<br />
+<strong>✅ Follows DIP:</strong> Use abstractions to decouple dependencies.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>2</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><h4>Resources</h4>
+<ul>
+<li><strong>&quot;Nothing is Something&quot;:</strong> A <code>highly</code> recommended video that introduces the Null Object Pattern in a clear and practical way. It also features an excellent example of how inheritance can go wrong and the transitioning from inheritance to composition, making it a must-watch for anyone looking to deepen their understanding of clean design principles. <a target="_blank" href="https://www.youtube.com/watch?v=OMPfEXIlTVE"><span class="fab fa-youtube"></span>Watch it here</a></li>
+<li><strong>&quot;Uncle Bob on SOLID Principles&quot;:</strong> A video that covers object-oriented design concepts and touches on the SOLID principles near the end. A good watch for understanding the foundations of clean code. <a target="_blank" href="https://www.youtube.com/watch?v=zHiWqnTWsn4"><span class="fab fa-youtube"></span>Watch it here</a></li>
+</ul>
+<h4>Conclusion</h4>
+<p>🥰 By following these principles, you can create software that is easier to maintain, scale, and extend. Whether you're building a small app or a complex system, SOLID principles serve as a guide to avoid technical debt and enhance code quality.</p>
+<p>Start applying them today and watch your codebase transform! 🎉</p>
+
+    </div>
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <div class="link">
+        <span> Previous post</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;optimizing-microfrontends-with-turborepo&#x2F;">Optimizing Microfrontends with Turborepo</a>
+      </div>
+      
+
+      
+      <div class="link">
+        <span> Next post</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;respond-to-mixin-pattern-scss&#x2F;">Respond-To Mixin pattern (SCSS)</a>
+      </div>
+      
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+	<title> - frontend</title>
+	<link href="https://cosmevalera.dev/es/tags/frontend/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2025-04-22T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/es/tags/frontend/atom.xml</id>
+	<entry xml:lang="es">
+		<title>Patrón de mixin &#x27;Respond-To&#x27; (SCSS)</title>
+		<published>2025-04-22T00:00:00+00:00</published>
+		<updated>2025-04-22T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/es/blog/respond-to-mixin-pattern-scss/" type="text/html"/>
+		<id>https://cosmevalera.dev/es/blog/respond-to-mixin-pattern-scss/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-04-22-respond-to-mixin-pattern-scss&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🤔 El Problema de las Media Queries Tradicionales&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Seamos honestos, todos hemos escrito montones de media queries repetitivas en nuestros archivos SCSS. Siempre es lo mismo: copiar y pegar los mismos breakpoints una y otra vez, esperando no habernos dejado ninguno ni haber estropeado los valores. Es tedioso, propenso a errores y una auténtica pesadilla de mantener cuando tu sistema de diseño cambia.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Aquí tienes un patrón que probablemente te resulte familiar:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.button &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Estilos por defecto para escritorio
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;15&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Estilos para tablet
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;992&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;12&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Estilos para móvil
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;768&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;0.9&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Este enfoque &amp;quot;desktop-first&amp;quot; (escritorio primero) con múltiples consultas de &lt;code&gt;max-width&lt;&#x2F;code&gt; tiene varios inconvenientes:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sigue un paradigma obsoleto centrado en el escritorio&lt;&#x2F;li&gt;
+&lt;li&gt;Carece de un sistema estandarizado para los breakpoints&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;💡 Una Forma Mejor: El Patrón del Mixin Respond-To&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;El mixin &lt;code&gt;respond-to&lt;&#x2F;code&gt; crea una abstracción para las media queries que hace tu código más fácil de mantener, más consistente y sigue los principios modernos de &amp;quot;mobile-first&amp;quot; (móvil primero).&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Paso 1: Define tus breakpoints en un sitio centralizado&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span&gt;$breakpoints: (
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;sm&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;576&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;md&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;768&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;992&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;xl&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1200&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px
+&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Paso 2: Crea el mixin respond-to&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@mixin &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;respond-to&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;$breakpoint&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-has-key&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;min-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-get&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint)) {
+&lt;&#x2F;span&gt;&lt;span&gt;     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@content&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   }
+&lt;&#x2F;span&gt;&lt;span&gt; } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@warn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Breakpoint &amp;#39;#{$breakpoint}&amp;#39; no encontrado en el mapa &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;\$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;breakpoints.&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Paso 3: Usa el mixin en tus componentes&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.button &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Estilos base mobile-first
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;0.9&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;20&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Estilos tablet (min-width: 768px)
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;md&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;12&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;25&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Estilos escritorio (min-width: 992px)
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;font-size&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;15&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🌟 Ventajas del Enfoque Mobile-First&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Mobile-first se ha convertido en el estándar de la industria para el diseño responsive porque se adapta a cómo los usuarios acceden al contenido hoy en día. Con la mayor parte del tráfico web viniendo de dispositivos móviles, empezar por la pantalla más pequeña asegura una experiencia de usuario óptima en todos los tamaños de pantalla.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Ventajas:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Mejora Progresiva:&lt;&#x2F;b&gt; Diseña primero para móvil, luego adapta para pantallas más grandes&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;b&gt;Código Más Simple:&lt;&#x2F;b&gt; Menos sobrescritura de propiedades entre breakpoints&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;b&gt;Mejor Rendimiento:&lt;&#x2F;b&gt; Los usuarios móviles no descargan estilos innecesarios de escritorio&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🔄 Migrar de Desktop-First a Mobile-First + respond-to&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Aquí tienes una guía práctica para migrar tus estilos existentes:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Antes (Desktop-First):&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.card &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Por defecto escritorio
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;flex&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Tablet
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;992&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Móvil
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;768&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;block&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Después (Mobile-First con &lt;code&gt;respond-to&lt;&#x2F;code&gt;):&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.card &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Por defecto móvil (pantalla más pequeña)
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;block&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Tablet (min-width: 768px)
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;md&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;flex&lt;&#x2F;span&gt;&lt;span&gt;; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; 💡 ¡Punto clave de la migración! Ver explicación abajo
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1.5&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Escritorio (min-width: 992px)
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;padding&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;margin&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;rem&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Recuerda crear los breakpoints y el mixin &lt;code&gt;respond-to&lt;&#x2F;code&gt; como se explicó arriba en &lt;code&gt;💡 Una Forma Mejor: El Patrón del Mixin Respond-To&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;b&gt;Pasos para la migración:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Mueve los estilos específicos de móvil para que sean los estilos por defecto (fuera de cualquier media query)&lt;&#x2F;li&gt;
+&lt;li&gt;Reemplaza las consultas &lt;code&gt;max-width&lt;&#x2F;code&gt; por &lt;code&gt;min-width&lt;&#x2F;code&gt; usando el mixin &lt;code&gt;respond-to&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Ten cuidado con las propiedades que se aplican en múltiples breakpoints (explicado en detalle abajo)&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;&lt;b&gt;Ojo con los Detalles Complicados&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Fíjate en cómo movimos &lt;code&gt;display: flex&lt;&#x2F;code&gt; del valor por defecto de escritorio al breakpoint de tablet. Este es un ejemplo perfecto de la traducción funcional necesaria:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;En el código original desktop-first, &lt;code&gt;display: flex&lt;&#x2F;code&gt; se aplicaba tanto a &lt;strong&gt;escritorio como a tablet&lt;&#x2F;strong&gt; (solo se sobrescribía para móvil)&lt;&#x2F;li&gt;
+&lt;li&gt;En nuestra versión mobile-first, empezamos con los estilos móviles (&lt;code&gt;display: block&lt;&#x2F;code&gt;), por lo que &lt;code&gt;display: flex&lt;&#x2F;code&gt; necesita aplicarse en el breakpoint de tablet para mantener el mismo resultado visual&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Este cambio no es solo reorganizar código. Se trata de preservar la misma funcionalidad mientras cambiamos nuestro punto de partida. En desktop-first, quitas complejidad para pantallas más pequeñas; en mobile-first, añades mejoras a medida que las pantallas se hacen más grandes.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🫠 Avanzado: Desktop-First&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Aunque mobile-first es lo recomendado para el desarrollo hoy en día, ocasionalmente podrías necesitar consultas de &lt;code&gt;max-width&lt;&#x2F;code&gt; para casos específicos. Aquí te muestro cómo ampliar nuestro sistema:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Mixin adicional para desktop-first o casos extremos
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@mixin &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;respond-to-max&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;$breakpoint&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-has-key&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@media &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;max-width&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;map-get&lt;&#x2F;span&gt;&lt;span&gt;($breakpoints, $breakpoint) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;px&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;     &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@content&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;   }
+&lt;&#x2F;span&gt;&lt;span&gt; } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@warn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Breakpoint &amp;#39;#{$breakpoint}&amp;#39; no encontrado en el mapa &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ae81ff;&quot;&gt;\$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;breakpoints.&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Ejemplo de uso:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;scss&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-scss &quot;&gt;&lt;code class=&quot;language-scss&quot; data-lang=&quot;scss&quot;&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;.special-element &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Estilos mobile-first por defecto
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Aplicar estos estilos solo por debajo del breakpoint &amp;#39;lg&amp;#39;
+&lt;&#x2F;span&gt;&lt;span&gt; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;@include&lt;&#x2F;span&gt;&lt;span&gt; respond-to-max(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;lg&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;   &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;display&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#66d9ef;&quot;&gt;none&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt; }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Nota importante:&lt;&#x2F;b&gt; Puedes usar &lt;code&gt;respond-to-max&lt;&#x2F;code&gt; pero ten en cuenta que al hacerlo no estás siguiendo el patrón mobile-first. Para la mayoría de los casos, quédate con el patrón mobile-first &lt;code&gt;respond-to&lt;&#x2F;code&gt; para tener un código más limpio y fácil de mantener.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;&lt;b&gt;Conclusión&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;El patrón del mixin &lt;code&gt;respond-to&lt;&#x2F;code&gt; con un enfoque mobile-first es una técnica potente para crear diseños responsive limpios y fáciles de mantener. Al centralizar tus breakpoints y usar un sistema estandarizado para aplicar media queries, mejorarás tu proceso de desarrollo y crearás una experiencia de usuario más consistente en todos los dispositivos.&lt;&#x2F;p&gt;
+&lt;p&gt;Prueba este patrón en tu próximo proyecto. ¡Creo que te sorprenderá lo mucho que simplifica el diseño responsive!&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="es">
+		<title>Impulsa tus Microfrontends con Turborepo</title>
+		<published>2024-10-04T00:00:00+00:00</published>
+		<updated>2024-10-04T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/es/blog/optimizing-microfrontends-with-turborepo/" type="text/html"/>
+		<id>https://cosmevalera.dev/es/blog/optimizing-microfrontends-with-turborepo/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2024-10-04-optimizing-microfrontends-with-turborepo&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🧐 ¿Por qué Turborepo?&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Gestionar múltiples microfrontends dentro de un monorepo puede ser un desafío. Turborepo ofrece una solución potente para optimizar flujos de trabajo, ejecutar tareas en paralelo y cachear resultados para obtener builds más rápidos.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Tareas paralelas:&lt;&#x2F;b&gt; Ejecuta builds y tests en múltiples microfrontends simultáneamente.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Caché inteligente:&lt;&#x2F;b&gt; Ahorra tiempo reutilizando outputs de ejecuciones anteriores.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Escalable:&lt;&#x2F;b&gt; Gestiona tantos microfrontends como necesites, todo dentro de un solo monorepo.&lt;&#x2F;p&gt;
+&lt;p&gt;Si estás trabajando con múltiples aplicaciones, Turborepo es un cambio radical para agilizar tus flujos de trabajo.&lt;&#x2F;p&gt;
+&lt;p&gt;Así es como puedes configurar y usar Turborepo en tu proyecto:&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🔧 1. Creando un proyecto Turborepo&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;1.1 Crear un nuevo proyecto Turborepo:&lt;&#x2F;b&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;En lugar de configurar Turborepo manualmente, puedes usar el siguiente comando para crear rápidamente un nuevo Turborepo:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npx create-turbo@latest
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;1.2 Coloca tus microfrontends dentro del directorio &lt;code&gt;apps&lt;&#x2F;code&gt;:&lt;&#x2F;b&gt; &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;apps&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; ├── mfe1&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; ├── mfe2&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; └── mfe3&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;package.json
+&lt;&#x2F;span&gt;&lt;span&gt;turbo.json
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4&gt;&lt;b&gt;📄 2. Archivos de configuración importantes&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;code&gt;package.json&lt;&#x2F;code&gt; define tus scripts, dependencias y estructura de workspace.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;turbo.json&lt;&#x2F;code&gt; configura cómo se ejecutan las tareas en tu monorepo. También incluye configuraciones de caché para acelerar ejecuciones posteriores.&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;⚡ 3. Ejecutando comandos de Turborepo&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+Después de configurar Turborepo, puedes gestionar fácilmente todas las aplicaciones y paquetes con unos pocos comandos simples:
+&lt;p&gt;&lt;b&gt;Instalar dependencias:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm i 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Construir todas las aplicaciones y paquetes:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm run build 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Iniciar el entorno de desarrollo:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm run dev 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ejecuta cualquiera de estos comandos una vez, y Turborepo usará su caché inteligente para acelerar builds posteriores.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;
+&lt;p&gt;¡Pruébalo en tu próximo proyecto y experimenta la eficiencia de primera mano! 😍😍&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="es">
+		<title>Estilos Compartidos en Monorepos</title>
+		<published>2024-09-01T00:00:00+00:00</published>
+		<updated>2024-09-01T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/es/blog/shared-styles-in-monorepo/" type="text/html"/>
+		<id>https://cosmevalera.dev/es/blog/shared-styles-in-monorepo/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🤔 Resumen&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;En proyectos a gran escala, mantener estilos consistentes entre múltiples aplicaciones es crucial. Aquí tienes dos enfoques para gestionar estilos compartidos:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;📦 Crear una librería de estilos compartida como un &lt;b&gt;paquete npm&lt;&#x2F;b&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;🔗 Importar estilos directamente desde &lt;b&gt;un directorio centralizado&lt;&#x2F;b&gt; dentro del monorepo.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;📦 1. Crear una Librería de Estilos con npm&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;Resumen:&lt;&#x2F;b&gt; Este enfoque consiste en crear una librería de estilos dedicada y publicarla como un paquete npm. Los estilos se pueden importar después en cualquier proyecto que los necesite.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Implementación:&lt;&#x2F;b&gt; Por ejemplo, si estás trabajando con estilos de temas personalizados claro&#x2F;oscuro para PrimeReact, puedes crear tus estilos en una librería y exportarlos usando un archivo &lt;code&gt;index.js&lt;&#x2F;code&gt; así:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;module.exports = {
+&lt;&#x2F;span&gt;&lt;span&gt; theme: require(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;.&#x2F;style&#x2F;themes&#x2F;my-theme&#x2F;theme.scss&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;),
+&lt;&#x2F;span&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Después de publicar el paquete, puedes instalarlo en tus proyectos con:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm i my-theme
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Luego, simplemente importa los estilos en tu punto de entrada JavaScript principal:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;my-theme&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Ventajas:&lt;&#x2F;b&gt;
+Control de versiones centralizado de estilos.
+Fácil de actualizar y distribuir entre múltiples proyectos.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Desventajas:&lt;&#x2F;b&gt;
+Requiere publicar y versionar con cada cambio.&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🔗 2. Importación Directa desde un Directorio Centralizado&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;Resumen:&lt;&#x2F;b&gt; Si estás usando una configuración de monorepo, puedes almacenar tus estilos en un directorio central e importarlos directamente en cada proyecto.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Implementación:&lt;&#x2F;b&gt; Coloca tus estilos en una carpeta a nivel raíz, en paralelo a tus apps, e impórtalos en tus proyectos:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;..&#x2F;style&#x2F;themes&#x2F;my-theme&#x2F;theme.scss&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Ventajas:&lt;&#x2F;b&gt;
+No hace falta publicar ni gestionar versiones.
+Acceso inmediato a los últimos estilos sin pasos adicionales.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Desventajas:&lt;&#x2F;b&gt;
+Riesgo de cambios accidentales que rompan funcionalidad si los estilos se actualizan.
+Necesitas tener una estructura de monorepo; no funciona si los proyectos están en repositorios separados.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;&lt;b&gt;❓ Qué Elegir&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Usa un &lt;b&gt;paquete npm&lt;&#x2F;b&gt; si quieres tener control de versiones estricto o no tienes todos tus proyectos en la misma carpeta.&lt;&#x2F;li&gt;
+&lt;li&gt;Usa importación directa desde &lt;b&gt;un directorio centralizado&lt;&#x2F;b&gt; si prefieres una solución más simple y tu estructura de código lo permite.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+</feed>

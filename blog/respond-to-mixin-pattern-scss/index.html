@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2025-04-22-respond-to-mixin-pattern-scss&#x2F;cover-webp.webp" as="image" fetchpriority="high">
+  
+
+  </head>
+  <body class="blog-post-page">
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                <a href="/es&#x2F;blog&#x2F;respond-to-mixin-pattern-scss&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Switch language"
+                   title="Cambiar a Español">
+                    <span class="lang-code">EN</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/" class="menu-item " aria-label="Home">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Home</span>
+    </a>
+    
+    <a href="/projects" class="menu-item menu-projects " aria-label="Projects">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Projects</span>
+    </a>
+    
+    <a href="/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/readings" class="menu-item menu-readings " aria-label="Readings">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Readings</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+    
+
+    
+    <a href="/blog" class="back-link">← Back to all posts</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Respond-To Mixin pattern (SCSS)</h1>
+    <h3 class="presentation-text">Learn how to simplify responsive design with a mobile-first approach using the respond-to mixin pattern in SCSS</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">April 22, 2025</span>
+      <span class="reading-time">
+        
+          5 min read • 894 words
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Table of Contents</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">On this page</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2025-04-22-respond-to-mixin-pattern-scss/cover-webp.webp" alt="blog-cover" /></p>
+<h4><b>🤔 The Problem with Traditional Media Queries</b></h4>
+<p>Let's be honest, we've all written tons of repetitive media queries in our SCSS files. It's the same every time: copy-paste the same breakpoints over and over, hoping you didn't miss any or mess up the values. It's tedious, error-prone, and a real pain to maintain when your design system changes.</p>
+<p><b>Here's a pattern that probably looks familiar:</b></p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span style="color:#a6e22e;">.button </span><span>{
+</span><span>  </span><span style="color:#75715e;">// Default desktop styles
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">font-size</span><span>: </span><span style="color:#ae81ff;">1.2</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">15</span><span style="color:#f92672;">px </span><span style="color:#ae81ff;">30</span><span style="color:#f92672;">px</span><span>;
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Tablet styles
+</span><span>  </span><span style="color:#f92672;">@media </span><span>(</span><span style="font-style:italic;color:#66d9ef;">max-width</span><span>: </span><span style="color:#ae81ff;">992</span><span style="color:#f92672;">px</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">font-size</span><span>: </span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">12</span><span style="color:#f92672;">px </span><span style="color:#ae81ff;">25</span><span style="color:#f92672;">px</span><span>;
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Mobile styles
+</span><span>  </span><span style="color:#f92672;">@media </span><span>(</span><span style="font-style:italic;color:#66d9ef;">max-width</span><span>: </span><span style="color:#ae81ff;">768</span><span style="color:#f92672;">px</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">font-size</span><span>: </span><span style="color:#ae81ff;">0.9</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">10</span><span style="color:#f92672;">px </span><span style="color:#ae81ff;">20</span><span style="color:#f92672;">px</span><span>;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p>This desktop-first approach with multiple <code>max-width</code> queries has several drawbacks:</p>
+<ul>
+<li>It follows an outdated desktop-first paradigm</li>
+<li>It lacks a standardized system for breakpoints</li>
+</ul>
+<hr />
+<h4><b>💡 A Better Way: The Respond-To Mixin Pattern</b></h4>
+<p>The <code>respond-to</code> mixin creates an abstraction for media queries that makes your code more maintainable, consistent, and follows modern mobile-first principles.</p>
+<p><b>Step 1: Define your breakpoints in a central location</b></p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span>$breakpoints: (
+</span><span>  </span><span style="color:#e6db74;">&#39;sm&#39;</span><span>: </span><span style="color:#ae81ff;">576</span><span style="color:#f92672;">px</span><span>,
+</span><span>  </span><span style="color:#e6db74;">&#39;md&#39;</span><span>: </span><span style="color:#ae81ff;">768</span><span style="color:#f92672;">px</span><span>,
+</span><span>  </span><span style="color:#e6db74;">&#39;lg&#39;</span><span>: </span><span style="color:#ae81ff;">992</span><span style="color:#f92672;">px</span><span>,
+</span><span>  </span><span style="color:#e6db74;">&#39;xl&#39;</span><span>: </span><span style="color:#ae81ff;">1200</span><span style="color:#f92672;">px
+</span><span>);
+</span></code></pre>
+<p><b>Step 2: Create the respond-to mixin</b></p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span style="color:#f92672;">@mixin </span><span style="color:#a6e22e;">respond-to</span><span>(</span><span style="font-style:italic;color:#fd971f;">$breakpoint</span><span>) {
+</span><span>  </span><span style="color:#f92672;">@if </span><span style="color:#66d9ef;">map-has-key</span><span>($breakpoints, $breakpoint) {
+</span><span>    </span><span style="color:#f92672;">@media </span><span>(</span><span style="font-style:italic;color:#66d9ef;">min-width</span><span>: </span><span style="color:#66d9ef;">map-get</span><span>($breakpoints, $breakpoint)) {
+</span><span>      </span><span style="color:#f92672;">@content</span><span>;
+</span><span>    }
+</span><span>  } </span><span style="color:#f92672;">@else </span><span>{
+</span><span>    </span><span style="color:#f92672;">@warn </span><span style="color:#e6db74;">&quot;Breakpoint &#39;#{$breakpoint}&#39; not found in </span><span style="color:#ae81ff;">\$</span><span style="color:#e6db74;">breakpoints map.&quot;</span><span>;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p><b>Step 3: Use the mixin in your components</b></p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span style="color:#a6e22e;">.button </span><span>{
+</span><span>  </span><span style="color:#75715e;">// Mobile-first base styles
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">font-size</span><span>: </span><span style="color:#ae81ff;">0.9</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">10</span><span style="color:#f92672;">px </span><span style="color:#ae81ff;">20</span><span style="color:#f92672;">px</span><span>;
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Tablet styles (min-width: 768px)
+</span><span>  </span><span style="color:#f92672;">@include</span><span> respond-to(</span><span style="color:#e6db74;">&#39;md&#39;</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">font-size</span><span>: </span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">12</span><span style="color:#f92672;">px </span><span style="color:#ae81ff;">25</span><span style="color:#f92672;">px</span><span>;
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Desktop styles (min-width: 992px)
+</span><span>  </span><span style="color:#f92672;">@include</span><span> respond-to(</span><span style="color:#e6db74;">&#39;lg&#39;</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">font-size</span><span>: </span><span style="color:#ae81ff;">1.2</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">15</span><span style="color:#f92672;">px </span><span style="color:#ae81ff;">30</span><span style="color:#f92672;">px</span><span>;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<hr />
+<h4><b>🌟 Benefits of the Mobile-First Approach</b></h4>
+<p>Mobile-first has become the industry standard for responsive design because it aligns with how users access content today. With most web traffic coming from mobile devices, starting with the smallest viewport ensures optimal user experience across all screen sizes.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li><b>Progressive Enhancement:</b> Design for mobile first, then enhance for larger screens</li>
+<li><b>Simplified Code:</b> Less overriding of properties across breakpoints</li>
+<li><b>Better Performance:</b> Mobile users don't download unnecessary styles for desktop</li>
+</ul>
+<hr />
+<h4><b>🔄 Migrate from Desktop-First to Mobile-First + respond-to</b></h4>
+<p>Here's a practical guide to migrate your existing styles:</p>
+<p><b>Before (Desktop-First):</b></p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span style="color:#a6e22e;">.card </span><span>{
+</span><span>  </span><span style="color:#75715e;">// Desktop default
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">display</span><span>: </span><span style="color:#66d9ef;">flex</span><span>;
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">2</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">margin</span><span>: </span><span style="color:#ae81ff;">2</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Tablet
+</span><span>  </span><span style="color:#f92672;">@media </span><span>(</span><span style="font-style:italic;color:#66d9ef;">max-width</span><span>: </span><span style="color:#ae81ff;">992</span><span style="color:#f92672;">px</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">1.5</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">margin</span><span>: </span><span style="color:#ae81ff;">1.5</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Mobile
+</span><span>  </span><span style="color:#f92672;">@media </span><span>(</span><span style="font-style:italic;color:#66d9ef;">max-width</span><span>: </span><span style="color:#ae81ff;">768</span><span style="color:#f92672;">px</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">display</span><span>: </span><span style="color:#66d9ef;">block</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">margin</span><span>: </span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p><b>After (Mobile-First with <code>respond-to</code>):</b></p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span style="color:#a6e22e;">.card </span><span>{
+</span><span>  </span><span style="color:#75715e;">// Mobile default (smallest screen)
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">display</span><span>: </span><span style="color:#66d9ef;">block</span><span>;
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">margin</span><span>: </span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Tablet (min-width: 768px)
+</span><span>  </span><span style="color:#f92672;">@include</span><span> respond-to(</span><span style="color:#e6db74;">&#39;md&#39;</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">display</span><span>: </span><span style="color:#66d9ef;">flex</span><span>; </span><span style="color:#75715e;">// 💡 Key migration point! See explanation below
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">1.5</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">margin</span><span>: </span><span style="color:#ae81ff;">1.5</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Desktop (min-width: 992px)
+</span><span>  </span><span style="color:#f92672;">@include</span><span> respond-to(</span><span style="color:#e6db74;">&#39;lg&#39;</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">padding</span><span>: </span><span style="color:#ae81ff;">2</span><span style="color:#f92672;">rem</span><span>;
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">margin</span><span>: </span><span style="color:#ae81ff;">2</span><span style="color:#f92672;">rem</span><span>;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<blockquote>
+<p>Remember to create the breakpoints and the <code>respond-to</code> mixin as stated above in <code>💡 A Better Way: The Respond-To Mixin Pattern</code></p>
+</blockquote>
+<p><b>Migration steps:</b></p>
+<ol>
+<li>Move the mobile-specific styles to be the default styles (outside any media query)</li>
+<li>Replace <code>max-width</code> queries with <code>min-width</code> using the <code>respond-to</code> mixin</li>
+<li>Be careful with properties that apply across multiple breakpoints (explained in detail below)</li>
+</ol>
+<p><b>Mind the Tricky Details</b></p>
+<p>Look at how we moved <code>display: flex</code> from the desktop default to the tablet breakpoint. This is a perfect example of the functional translation required:</p>
+<ul>
+<li>In the original desktop-first code, <code>display: flex</code> was applied to <strong>both desktop and tablet</strong> (it was overridden only for mobile)</li>
+<li>In our mobile-first version, we start with mobile styles (<code>display: block</code>), so <code>display: flex</code> needs to be applied at the tablet breakpoint to maintain the same visual outcome</li>
+</ul>
+<p>This shift isn't just about reorganizing code. It's about preserving the same functionality while changing our starting point. In desktop-first, you subtract complexity for smaller screens; in mobile-first, you add enhancements as screens get larger.</p>
+<hr />
+<h4><b>🫠 Advanced: Desktop-First</b></h4>
+<p>While mobile-first is recommended for modern development, you might occasionally need max-width queries for specific use cases. Here's how to extend our system:</p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span style="color:#75715e;">// Additional mixin for desktop first or edge cases
+</span><span style="color:#f92672;">@mixin </span><span style="color:#a6e22e;">respond-to-max</span><span>(</span><span style="font-style:italic;color:#fd971f;">$breakpoint</span><span>) {
+</span><span>  </span><span style="color:#f92672;">@if </span><span style="color:#66d9ef;">map-has-key</span><span>($breakpoints, $breakpoint) {
+</span><span>    </span><span style="color:#f92672;">@media </span><span>(</span><span style="font-style:italic;color:#66d9ef;">max-width</span><span>: </span><span style="color:#66d9ef;">map-get</span><span>($breakpoints, $breakpoint) </span><span style="color:#f92672;">- </span><span style="color:#ae81ff;">1</span><span style="color:#f92672;">px</span><span>) {
+</span><span>      </span><span style="color:#f92672;">@content</span><span>;
+</span><span>    }
+</span><span>  } </span><span style="color:#f92672;">@else </span><span>{
+</span><span>    </span><span style="color:#f92672;">@warn </span><span style="color:#e6db74;">&quot;Breakpoint &#39;#{$breakpoint}&#39; not found in </span><span style="color:#ae81ff;">\$</span><span style="color:#e6db74;">breakpoints map.&quot;</span><span>;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p><b>Example use case:</b></p>
+<pre data-lang="scss" style="background-color:#272822;color:#f8f8f2;" class="language-scss "><code class="language-scss" data-lang="scss"><span style="color:#a6e22e;">.special-element </span><span>{
+</span><span>  </span><span style="color:#75715e;">// Default mobile-first styles
+</span><span>  
+</span><span>  </span><span style="color:#75715e;">// Only apply these styles below the &#39;lg&#39; breakpoint
+</span><span>  </span><span style="color:#f92672;">@include</span><span> respond-to-max(</span><span style="color:#e6db74;">&#39;lg&#39;</span><span>) {
+</span><span>    </span><span style="font-style:italic;color:#66d9ef;">display</span><span>: </span><span style="color:#66d9ef;">none</span><span>;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p><b>Important note:</b> You can use <code>respond-to-max</code> but be aware that doing so you are not following the mobile-first pattern. For most cases, stick with the mobile-first <code>respond-to</code> pattern for cleaner, more maintainable code.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>2</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><h4><b>Conclusion</b></h4>
+<p>The <code>respond-to</code> mixin pattern with a mobile-first approach is a powerful technique for creating clean, maintainable responsive designs. By centralizing your breakpoints and using a standardized system for applying media queries, you'll improve your development process and create a more consistent user experience across devices.</p>
+<p>Give this pattern a try in your next project. I think you'll be surprised at how much it simplifies responsive design! </p>
+
+    </div>
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <div class="link">
+        <span> Previous post</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;solid-principles&#x2F;">SOLID Principles</a>
+      </div>
+      
+
+      
+      <div class="link">
+        <span> Next post</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;how-to-analyze-a-stock&#x2F;">How to Analyze a Stock for investment</a>
+      </div>
+      
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

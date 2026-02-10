@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+	<title>Home | Cosme - bitcoin</title>
+	<link href="https://cosmevalera.dev/tags/bitcoin/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2026-02-04T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/tags/bitcoin/atom.xml</id>
+	<entry xml:lang="en">
+		<title>BTC 103: Bitcoin Cold Storage</title>
+		<published>2026-02-04T00:00:00+00:00</published>
+		<updated>2026-02-04T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/blog/bitcoin-103/" type="text/html"/>
+		<id>https://cosmevalera.dev/blog/bitcoin-103/</id>
+		<content type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;📖 Reading time:&lt;&#x2F;strong&gt; ~13 minutes&lt;br &#x2F;&gt;
+&lt;strong&gt;⏱️ Total time to complete:&lt;&#x2F;strong&gt; 1-2 hours (including hardware setup and initial transactions)&lt;br &#x2F;&gt;
+&lt;strong&gt;💰 Required investment:&lt;&#x2F;strong&gt; ~200-400 euros for hardware wallet and backup system&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Why should I care about Cold Storage?&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;People have lost hundreds of millions in Bitcoin. These are the most common reasons:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;b&gt;Lost seed phrase:&lt;&#x2F;b&gt; &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.bbc.com&#x2F;news&#x2F;articles&#x2F;c74zel3ng1vo&quot;&gt;James Howells&lt;&#x2F;a&gt; accidentally threw away a hard drive containing 8,000 Bitcoin (now worth over 700 million euros) in 2013.&lt;&#x2F;li&gt;
+    &lt;li&gt;&lt;b&gt;Scams or phishing attacks:&lt;&#x2F;b&gt; &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;heraldsheets.com&#x2F;protocol-podcast-host-loses-bitcoin-btc-savings&#x2F;&quot;&gt;Eric Savics&lt;&#x2F;a&gt; lost 7 years of savings (over 1 million euros in Bitcoin) in 20 minutes after downloading a fake wallet app.&lt;&#x2F;li&gt;
+    &lt;li&gt;&lt;b&gt;Exchange hacks&#x2F;collapse:&lt;&#x2F;b&gt; The &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.investopedia.com&#x2F;what-went-wrong-with-ftx-6828447&quot;&gt;FTX collapse&lt;&#x2F;a&gt; in 2022 left customers unable to access billions in Bitcoin they stored on the exchange.&lt;&#x2F;li&gt;
+    &lt;li&gt;&lt;b&gt;Death without an inheritance plan:&lt;&#x2F;b&gt; Family members unable to &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.swanbitcoin.com&#x2F;education&#x2F;multi-sig-custody-and-inheritance&#x2F;&quot;&gt;access Bitcoin after the owner&#x27;s death&lt;&#x2F;a&gt;, lost forever.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The pattern: Most losses are from not having proper backups or giving up custody to third parties. This is why cold storage is essential, especially when you have a significant amount of Bitcoin.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;What is Cold Storage?&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Cold storage is the practice of securing Bitcoin offline, away from internet-connected devices and potential hackers. It&#x27;s the standard for protecting significant amounts of Bitcoin you plan to hold long-term.&lt;&#x2F;p&gt;
+&lt;p&gt;As we saw in &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;bitcoin-102&#x2F;&quot;&gt;&lt;b&gt;BTC 102: How to Buy Bitcoin&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;, a hot wallet is a wallet that has had its seed phrase generated online, it&#x27;s convenient, but also potentially vulnerable. A cold wallet, on the other hand, is a wallet that has had its seed phrase generated offline, and where the seed phrase has never been exposed to any online device, thus it is immune to online hacks. However, this security comes with responsibility: your Bitcoin is only safe as long as you don&#x27;t share the private seed and don&#x27;t lose it.&lt;&#x2F;p&gt; 
+&lt;p&gt;&lt;b&gt;When should I move to Cold Storage?&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;There is no hard rule for when to move to cold storage, but it&#x27;s usually said that you should consider it when you have around 2 salaries invested in Bitcoin.&lt;&#x2F;p&gt;
+&lt;p&gt;Hardware wallets cost around 100-250 euros, plus the cost of a backup system for your seed phrase (around 50-100 euros). If you only have 100 euros in Bitcoin, the investment may not be justified yet. However, some people prefer the peace of mind of going cold storage from the beginning, it&#x27;s a matter of personal preference. A good rule of thumb: if you&#x27;re losing sleep worrying about your Bitcoin security, it&#x27;s time to move to cold storage.&lt;&#x2F;p&gt;
+&lt;!-- The following disclaimer needs an emoji: --&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Disclaimer:&lt;&#x2F;strong&gt; I&#x27;m not being sponsored by any company. To have cold storage you will need to buy both a hardware wallet and a backup system for your seed phrase. Therefore, my recommendations are only based on my personal experience and what I think is the best option for you.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;In this tutorial, I&#x27;ll guide you through choosing a hardware wallet and seed backup system, creating your first cold wallet with the hardware wallet, and using Sparrow to send and receive Bitcoin.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Hardware Wallet&lt;&#x2F;h4&gt;
+&lt;p&gt;A hardware wallet is a physical device that generates and stores your wallet seed offline, creating what&#x27;s known as a cold wallet. This way it grants maximum security to your Bitcoin. &lt;&#x2F;p&gt;
+&lt;p&gt;The device allows you to sign transactions offline before broadcasting them to the network, ensuring your private keys never leave the secure environment of the hardware wallet, even when sending Bitcoin. Modern hardware wallets also offer additional security features, which won&#x27;t be covered in this tutorial but are worth learning about on your own, such as: temporary seeds, passphrases, multi-signature support, etc.&lt;&#x2F;p&gt;
+&lt;p&gt;There are different options for your hardware wallet (ColdCard, BitBox02, Trezor, Jade), each one of them has a different price and sometimes different specifications. I recommend using ColdCard, either the &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;coldcard.com&#x2F;mk4&quot;&gt;&lt;b&gt;ColdCard Mk4&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; (around 150 euros) which is the device I&#x27;ll use for this tutorial, or pay a little bit more to have a bigger screen and more buttons: &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;coldcard.com&#x2F;q&quot;&gt;&lt;b&gt;ColdCard Q&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; (around 250 euros). Both options are great.&lt;&#x2F;p&gt;
+&lt;div class=&quot;phone-images-row&quot;&gt;
+  &lt;a href=&quot;https:&#x2F;&#x2F;coldcard.com&#x2F;mk4&quot; target=&quot;_blank&quot;&gt;
+    &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-9.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;&#x2F;a&gt;
+  &lt;a href=&quot;https:&#x2F;&#x2F;coldcard.com&#x2F;q&quot; target=&quot;_blank&quot;&gt;
+    &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-10.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; Explore other hardware wallet options&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;There are other good options like the &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bitbox.swiss&#x2F;bitbox02&#x2F;&quot;&gt;&lt;b&gt;BitBox02&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; (around 150 euros), the &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;foundation.xyz&#x2F;passport-core&#x2F;&quot;&gt;&lt;b&gt;Passport&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; (around 200 euros), or the &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.trezor.io&#x2F;&quot;&gt;&lt;b&gt;Trezor Safe 7&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; (around 250 euros).&lt;&#x2F;p&gt;
+        &lt;div class=&quot;phone-images-row&quot;&gt;
+          &lt;a href=&quot;https:&#x2F;&#x2F;bitbox.swiss&#x2F;bitbox02&#x2F;&quot; target=&quot;_blank&quot;&gt;
+            &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-11.webp&quot;&gt;&lt;&#x2F;img&gt;
+          &lt;&#x2F;a&gt;
+          &lt;a href=&quot;https:&#x2F;&#x2F;foundation.xyz&#x2F;passport-core&#x2F;&quot; target=&quot;_blank&quot;&gt;
+            &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-12.webp&quot;&gt;&lt;&#x2F;img&gt;
+          &lt;&#x2F;a&gt;
+          &lt;a href=&quot;https:&#x2F;&#x2F;www.trezor.io&#x2F;&quot; target=&quot;_blank&quot;&gt;
+            &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-13.webp&quot;&gt;&lt;&#x2F;img&gt;
+          &lt;&#x2F;a&gt;
+        &lt;&#x2F;div&gt;
+        &lt;p&gt;If you are feeling overwhelmed with so many options about which hardware wallet to buy, the important part is having a reputable hardware wallet. And any of the options I mentioned is great and will keep your Bitcoin safe.&lt;&#x2F;p&gt;
+        &lt;p&gt;I recommend using either the &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;coldcard.com&#x2F;mk4&quot;&gt;&lt;b&gt;ColdCard Mk4&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; or the &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;coldcard.com&#x2F;q&quot;&gt;&lt;b&gt;ColdCard Q&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; because they are respected, secure and easy to use; and also so you can follow this tutorial without any issues.&lt;&#x2F;p&gt;
+        &lt;p&gt;For those extra curious, here is an in-depth 1-hour comparison of the current hardware wallets:&lt;&#x2F;p&gt;
+        &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;ZZKoSmQu30Q?si=UEacQ-8dVNJI_aOe&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+        &lt;!-- &lt;p&gt;For an in-depth comparison of all hardware wallets watch the following video (Warning: 3 hours long. In Spanish. Great video):&lt;&#x2F;p&gt;
+        &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;pGjJKOZL_zA?si=iO1tRwsQKEM3r0eQ&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt; --&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;Let&#x27;s go through the process of setting up our hardware wallet, we will also see how to backup our seed phrase with metal plates and how to use Sparrow to manage our cold wallet.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Seed phrase backup&lt;&#x2F;h4&gt;
+&lt;p&gt;Using metal plates is the most secure way to backup your seed phrase. Metal plates are impossible to hack and they last over time. Writing down your seed phrase in a piece of paper is not secure in the long term, as it can be stolen, lost or or damaged by water or fire.&lt;&#x2F;p&gt;
+&lt;p&gt;To backup your seed phrase with metal plates, I recommend buying: &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;onekey.so&#x2F;products&#x2F;onekey-keytag&#x2F;&quot;&gt;&lt;b&gt;OneKey KeyTag&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; (around 60 euros). This product consists of 2 metal plates and a punch pen to record your seed phrase (you can store up to two different seed phrases). &lt;&#x2F;p&gt;
+&lt;div class=&quot;phone-images-row&quot;&gt;
+  &lt;a href=&quot;https:&#x2F;&#x2F;onekey.so&#x2F;products&#x2F;onekey-keytag&#x2F;&quot; target=&quot;_blank&quot;&gt;
+    &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;&#x2F;a&gt;
+  &lt;a href=&quot;https:&#x2F;&#x2F;onekey.so&#x2F;products&#x2F;onekey-keytag&#x2F;&quot; target=&quot;_blank&quot;&gt;
+    &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-2.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; Explore other seed phrase backup options&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;There are other options to store your seed phrase in metal plates like &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.blockplate.com&#x2F;&quot;&gt;&lt;b&gt;Blockplate&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;, &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;getcoinplate.com&#x2F;?v=12470fe406d4&quot;&gt;&lt;b&gt;Coinplate Alpha&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; and &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;seedplate.com&#x2F;&quot;&gt;&lt;b&gt;Seedplate&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+        &lt;div class=&quot;phone-images-row&quot;&gt;
+          &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-5.webp&quot;&gt;&lt;&#x2F;img&gt;
+          &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-6.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;&#x2F;div&gt;
+        &lt;p&gt;You can also use engraving methods instead of punching, such as &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ironhodl.com&#x2F;&quot;&gt;&lt;b&gt;IRON HODL&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; or &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;oz-usa.com&#x2F;ti1000-lite-titanium-crypto-seed-phrase-recovery-cold-storage-system-metal-plate-engraving-pen&#x2F;&quot;&gt;&lt;b&gt;TI1000&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt; 
+        &lt;div class=&quot;phone-images-row&quot;&gt;
+          &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-3.webp&quot;&gt;&lt;&#x2F;img&gt;
+          &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-4.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;&#x2F;div&gt;
+        &lt;p&gt;I recommend &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;onekey.so&#x2F;products&#x2F;onekey-keytag&#x2F;&quot;&gt;&lt;b&gt;OneKey KeyTag&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; because it&#x27;s one of the most affordable options, includes 2 plates and a punch pen, and is both durable and easy to use.&lt;&#x2F;p&gt;
+        &lt;p&gt;Any of these options work, the most important thing is to have a durable backup of your seed phrase. Feel free to compare prices and specifications.&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;MicroSD card and Adapter&lt;&#x2F;h4&gt;
+&lt;p&gt;If you use a ColdCard, you need to buy a microSD card to store the wallet export from the ColdCard, and an adapter to connect the microSD card to your computer. You can find these on Amazon or any electronics retailer. Here are examples: &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.amazon.de&#x2F;dp&#x2F;B08TJTB8XS?ref_=cm_sw_r_cso_cp_apan_dp_ss_BEKAHX6Q2PQT6W7YVK76&quot;&gt;&lt;b&gt;MicroSD&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; and &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.amazon.de&#x2F;dp&#x2F;B09NHKN74L?ref_=cm_sw_r_cso_wa_apan_dp_ss_M728Z6W1VP4NPY6KB576&quot;&gt;&lt;b&gt;Adapter&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;div class=&quot;phone-images-row&quot;&gt;
+  &lt;a href=&quot;https:&#x2F;&#x2F;www.amazon.de&#x2F;dp&#x2F;B08TJTB8XS?ref_=cm_sw_r_cso_cp_apan_dp_ss_BEKAHX6Q2PQT6W7YVK76&quot; target=&quot;_blank&quot;&gt;
+    &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-7.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;&#x2F;a&gt;
+  &lt;a href=&quot;https:&#x2F;&#x2F;www.amazon.de&#x2F;dp&#x2F;B09NHKN74L?ref_=cm_sw_r_cso_wa_apan_dp_ss_M728Z6W1VP4NPY6KB576&quot; target=&quot;_blank&quot;&gt;
+    &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;image-8.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;&#x2F;a&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;For the following sections, we assume you have purchased the hardware wallet, the metal plate backup, and (if using ColdCard) the microSD card and adapter. If you&#x27;re using a different hardware wallet, the process will be similar but the exact steps may vary.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Installing Sparrow Wallet&lt;&#x2F;h4&gt;
+&lt;p&gt;Install &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;sparrowwallet.com&#x2F;download&#x2F;&quot;&gt;&lt;b&gt;Sparrow Wallet&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; on your computer. Sparrow is an open-source and non-custodial desktop wallet especially designed for cold storage of Bitcoin. It&#x27;s what most Bitcoiners use to manage their hardware wallets.&lt;&#x2F;p&gt;
+&lt;p&gt;The initial setup is straightforward:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Install &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;sparrowwallet.com&#x2F;download&#x2F;&quot;&gt;&lt;b&gt;Sparrow Wallet&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;[Introduction] &lt;strong&gt;Click Next&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;[Public Server] &lt;strong&gt;Click Next&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;[Bitcoin Core node] &lt;strong&gt;Click Next&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;[Connecting to a Private Electrum Server] &lt;strong&gt;Configure Server&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Click Test Connection&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;If it says &amp;quot;Connected to Electrum&amp;quot;: &lt;strong&gt;Click Create New Wallet&lt;&#x2F;strong&gt;
+&lt;ul&gt;
+&lt;li&gt;If it failed, pick another Public Server URL and try again&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Now Sparrow Wallet is set up!&lt;&#x2F;strong&gt; &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;We&#x27;ll import your cold wallet from the hardware wallet in the next steps. For now, Sparrow is ready and waiting.&lt;&#x2F;p&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; Video guide for Sparrow setup (first 4 minutes)&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;This video covers the &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;sparrowwallet.com&#x2F;download&#x2F;&quot;&gt;&lt;b&gt;Sparrow Wallet&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; setup process (00:46-03:44). The rest of the video demonstrates hot wallet features and an alternative cold storage setup method, which you can explore if interested, but we&#x27;ll be using the air-gapped method with ColdCard in the following sections.&lt;&#x2F;p&gt;
+        &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;_EVDtos8ZgI?si=8E94Odda-7_TvxT8&amp;start=52&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Hardware Wallet setup&lt;&#x2F;h4&gt;
+&lt;p&gt;Now it&#x27;s time to create your first cold wallet using the ColdCard. Follow along with the steps below, or if you prefer video instructions, watch the 7-minute tutorial:&lt;&#x2F;p&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; 7-minute video tutorial: Setting up the ColdCard Mk4&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+      &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;z-HbVnQphY0?si=_lG40LygWkR-ukqT&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;Here are the steps:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unpack the ColdCard Mk4 (it comes with a serial number card and a temporary wallet backup card)&lt;&#x2F;li&gt;
+&lt;li&gt;Plug the ColdCard into a power source (preferably a wall outlet rather than your computer)&lt;&#x2F;li&gt;
+&lt;li&gt;Verify that the serial number on the device matches the one on the package card&lt;&#x2F;li&gt;
+&lt;li&gt;Follow the on-screen tutorial to set up your ColdCard PIN and store it on the backup card&lt;&#x2F;li&gt;
+&lt;li&gt;Select &amp;quot;New Seed Words&amp;quot; to generate your first cold wallet&lt;&#x2F;li&gt;
+&lt;li&gt;Write down the seed words on the backup card and complete the verification quiz&lt;&#x2F;li&gt;
+&lt;li&gt;Once complete, your ColdCard will display &amp;quot;Ready to Sign&amp;quot; as the first menu option&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Congratulations! Your ColdCard is now ready to sign transactions offline 🥳&lt;&#x2F;p&gt;
+&lt;p&gt;Before we use it, there&#x27;s one critical step: moving your seed phrase from the temporary backup card to the permanent metal plate.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Backup your seed phrase in metal&lt;&#x2F;h4&gt;
+&lt;p&gt;The backup card that came with your ColdCard is only meant for temporary storage during setup. Now we&#x27;ll transfer your seed phrase to a permanent, fireproof, and waterproof metal backup.&lt;&#x2F;p&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; 6-minute video tutorial: Using the OneKey KeyTag&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+      &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;BGY6sHuZdeA?si=tsK-Lz4rr5sOyxBL&amp;start=18&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;&lt;b&gt;Creating your metal backup:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unpack the OneKey KeyTag (includes two metal plates, a punch pen, and instructions)&lt;&#x2F;li&gt;
+&lt;li&gt;Use the punch pen to carefully punch the holes corresponding to each word of your seed phrase&lt;&#x2F;li&gt;
+&lt;li&gt;Double-check your work (each word must be punched correctly)&lt;&#x2F;li&gt;
+&lt;li&gt;Optional: Add an NFC chip to store a note (like &amp;quot;Bitcoin wallet backup&amp;quot;)&lt;&#x2F;li&gt;
+&lt;li&gt;Optional: Apply the tamper-evident seal (wait until after you&#x27;ve verified the backup works)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;b&gt;⚠️ Critical security steps:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Never photograph&lt;&#x2F;strong&gt; your seed words or backup card&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Don&#x27;t let anyone see&lt;&#x2F;strong&gt; your seed phrase while you&#x27;re working&lt;&#x2F;li&gt;
+&lt;li&gt;Once you&#x27;ve punched the metal plate, &lt;strong&gt;burn or shred&lt;&#x2F;strong&gt; the paper backup card completely&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;b&gt;Verify your backup before destroying the paper:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Before destroying the backup card, it&#x27;s wise to test your metal backup. You can do this by temporarily deleting your wallet from Sparrow and restoring it using only the metal plate. This ensures that if you ever need to recover your wallet years from now, you&#x27;ll be able to. Don&#x27;t wait 10 years to discover your backup doesn&#x27;t work!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Store your metal plate securely:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Your metal plate is now the master key to your Bitcoin. Anyone who finds it can access your funds. Consider storing it in a home safe or other secure location. Remember: the ColdCard stores the wallet in its secure element, so for day-to-day use you won&#x27;t need the metal plate, it&#x27;s only for recovery if your ColdCard is lost or damaged.&lt;&#x2F;p&gt;
+&lt;p&gt;Now that your cold wallet is secured and backed up, let&#x27;s learn how to use it with Sparrow to send and receive Bitcoin!&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Import your Cold Wallet to Sparrow&lt;&#x2F;h4&gt;
+&lt;p&gt;Before we can receive Bitcoin, we need to import your cold wallet from the ColdCard into Sparrow. This process only exports your wallet&#x27;s public information (xpub), not your private seed phrase, which remains safely stored in the ColdCard.&lt;&#x2F;p&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; 13-minute video tutorial: Using ColdCard Mk4 with Sparrow (air-gapped)&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;This video demonstrates the complete air-gapped workflow with ColdCard Mk4 and Sparrow: &lt;b&gt;importing the wallet (5:36), receiving Bitcoin (8:42), and sending Bitcoin via air-gapped signing (9:55)&lt;&#x2F;b&gt;. Perfect companion to the written instructions below.&lt;&#x2F;p&gt;
+        &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;BEwWInJ5Ldo?si=YOUR_SI_PARAM&amp;start=336&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;Here&#x27;s how to import your wallet:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Insert the microSD card into your ColdCard&lt;&#x2F;li&gt;
+&lt;li&gt;On the ColdCard, navigate to: &lt;strong&gt;Advanced → MicroSD Card → Export Wallet → Generic JSON&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;The ColdCard will save a file to the microSD card&lt;&#x2F;li&gt;
+&lt;li&gt;Remove the microSD card and insert it into your computer using the adapter&lt;&#x2F;li&gt;
+&lt;li&gt;In Sparrow, click &lt;strong&gt;File → New Wallet&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Name your wallet (e.g., &amp;quot;Cold Storage&amp;quot;)&lt;&#x2F;li&gt;
+&lt;li&gt;Click &lt;strong&gt;Airgapped Hardware Wallet → ColdCard → Import File&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Choose the JSON file from your microSD card&lt;&#x2F;li&gt;
+&lt;li&gt;Click &lt;strong&gt;Apply&lt;&#x2F;strong&gt; to complete the setup&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Your cold wallet is now connected to Sparrow! The wallet shows your Bitcoin addresses and balance, but all signing still happens offline on the ColdCard.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Receive Bitcoin in Sparrow&lt;&#x2F;h4&gt;
+&lt;p&gt;Receiving Bitcoin to your cold wallet is simple. Let&#x27;s transfer some Bitcoin from your hot wallet (like BlueWallet) to test that everything works.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s how:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;In Sparrow, click the &lt;strong&gt;Receive&lt;&#x2F;strong&gt; tab on the left sidebar&lt;&#x2F;li&gt;
+&lt;li&gt;Sparrow will display a Bitcoin address and QR code&lt;&#x2F;li&gt;
+&lt;li&gt;Copy this address or scan the QR code with your phone&lt;&#x2F;li&gt;
+&lt;li&gt;In your hot wallet (BlueWallet), go to &lt;strong&gt;Send&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Paste the address from Sparrow and send a small amount (start with a test transaction)&lt;&#x2F;li&gt;
+&lt;li&gt;Wait for the transaction to be broadcast to the network&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Within a few seconds, you should see the pending transaction appear in Sparrow. Once it&#x27;s confirmed in a block, the Bitcoin is secured in your cold storage! 🎉&lt;&#x2F;p&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; Why does confirmation take so long?&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;Bitcoin transactions need to be included in a block and added to the blockchain. You can check the status of your transaction on &lt;a href=&quot;https:&#x2F;&#x2F;mempool.space&#x2F;&quot; target=&quot;_blank&quot;&gt;mempool.space&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Send Bitcoin from Sparrow&lt;&#x2F;h4&gt;
+&lt;p&gt;Sending Bitcoin from your cold wallet is where the air-gapped security really shines. The transaction is created in Sparrow, signed offline on your ColdCard, and then broadcast to the network. Your seed phrase never touches an internet-connected device.&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s send those test Bitcoin back to your hot wallet to complete the round trip.&lt;&#x2F;p&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; Video: Sending Bitcoin from ColdCard Mk4 with Sparrow (air-gapped)&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;The last section of this video &lt;b&gt;sending Bitcoin via air-gapped signing (9:55)&lt;&#x2F;b&gt; shows how to send Bitcoin from your cold wallet to your hot wallet using Sparrow and ColdCard Mk4.&lt;&#x2F;p&gt;
+        &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;BEwWInJ5Ldo?si=YOUR_SI_PARAM&amp;start=595&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;p&gt;&lt;b&gt;Step 1: Create the transaction in Sparrow&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;In Sparrow, click the &lt;strong&gt;Send&lt;&#x2F;strong&gt; tab on the left sidebar&lt;&#x2F;li&gt;
+&lt;li&gt;In your hot wallet (BlueWallet), go to &lt;strong&gt;Receive&lt;&#x2F;strong&gt; and copy your Bitcoin address&lt;&#x2F;li&gt;
+&lt;li&gt;Paste this address into the &amp;quot;Pay to&amp;quot; field in Sparrow&lt;&#x2F;li&gt;
+&lt;li&gt;Enter the amount you want to send (or click &lt;strong&gt;Max&lt;&#x2F;strong&gt; to send everything)&lt;&#x2F;li&gt;
+&lt;li&gt;Select your transaction fee:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Low priority&lt;&#x2F;strong&gt; (1-2 sats&#x2F;vB): Slower, cheaper, good when you&#x27;re not in a hurry&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Normal priority&lt;&#x2F;strong&gt; (2-4 sats&#x2F;vB): Balanced option&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;High priority&lt;&#x2F;strong&gt; (5+ sats&#x2F;vB): Faster confirmation&lt;&#x2F;li&gt;
+&lt;li&gt;Check &lt;a href=&quot;https:&#x2F;&#x2F;mempool.space&#x2F;&quot; target=&quot;_blank&quot;&gt;mempool.space&lt;&#x2F;a&gt; to see current network conditions&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Click &lt;strong&gt;Create Transaction&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Review the transaction details carefully&lt;&#x2F;li&gt;
+&lt;li&gt;Click &lt;strong&gt;Finalize Transaction for Signing&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;b&gt;Step 2: Save the transaction to microSD&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click &lt;strong&gt;Save Transaction&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Save it to your microSD card (it will be named something like &lt;code&gt;coldcard-transaction.psbt&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Safely eject the microSD card from your computer&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;b&gt;Step 3: Sign the transaction on ColdCard (air-gapped)&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Insert the microSD card into your ColdCard&lt;&#x2F;li&gt;
+&lt;li&gt;On the ColdCard, select &lt;strong&gt;Ready To Sign&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;The ColdCard will display the transaction details&lt;&#x2F;li&gt;
+&lt;li&gt;Carefully verify:
+&lt;ul&gt;
+&lt;li&gt;The destination address matches your hot wallet&lt;&#x2F;li&gt;
+&lt;li&gt;The amount is correct&lt;&#x2F;li&gt;
+&lt;li&gt;The fee seems reasonable&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;If everything looks good, press &lt;strong&gt;✓&lt;&#x2F;strong&gt; to sign the transaction&lt;&#x2F;li&gt;
+&lt;li&gt;The ColdCard will create a signed file on the microSD card (ending in &lt;code&gt;-final.txn&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Remove the microSD card from the ColdCard&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;b&gt;Step 4: Broadcast the signed transaction&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Insert the microSD card back into your computer&lt;&#x2F;li&gt;
+&lt;li&gt;In Sparrow, click &lt;strong&gt;Load Transaction&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Navigate to your microSD card and select the file ending in &lt;code&gt;-final.txn&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Sparrow will show the transaction is now signed and ready to broadcast&lt;&#x2F;li&gt;
+&lt;li&gt;Click &lt;strong&gt;Broadcast Transaction&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;That&#x27;s it! Your transaction is now being broadcast to the Bitcoin network. You should see it appear in your hot wallet within seconds, and it will be confirmed once it&#x27;s included in a block.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;🎉 Congratulations!&lt;&#x2F;b&gt; You&#x27;ve successfully set up cold storage, received Bitcoin, and sent Bitcoin using an air-gapped signing process. Your seed phrase never touched an internet-connected device, keeping your Bitcoin secure from online threats.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;What&#x27;s Next?&lt;&#x2F;h4&gt;
+&lt;p&gt;You now have a solid foundation for Bitcoin cold storage. Here are some advanced topics to explore when you&#x27;re ready:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Passphrases (25th word):&lt;&#x2F;strong&gt; Add an extra layer of security to your seed phrase&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Duress wallet:&lt;&#x2F;strong&gt; Create a decoy wallet with a small amount in case of physical threats&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-signature (multisig):&lt;&#x2F;strong&gt; Require multiple keys to spend Bitcoin, useful for larger amounts and added security&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Bitcoin Lightning:&lt;&#x2F;strong&gt; Fast, low-fee payments for everyday transactions&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Inheritance planning:&lt;&#x2F;strong&gt; Ensure your Bitcoin can be recovered by trusted family members using time locks or multi-sig setups&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The Bitcoin rabbit hole goes deep, but you&#x27;ve taken the most important step: securing your Bitcoin with proper self-custody. Well done! 🚀&lt;&#x2F;p&gt;</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>BTC 102: How to Buy Bitcoin</title>
+		<published>2025-10-19T00:00:00+00:00</published>
+		<updated>2025-10-19T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/blog/bitcoin-102/" type="text/html"/>
+		<id>https://cosmevalera.dev/blog/bitcoin-102/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Understanding Bitcoin is essential, and it is something you should continue exploring on your own. Investing in an asset you do not truly believe in often leads to losses, especially with Bitcoin. The price of Bitcoin can fluctuate at any moment due to its volatility. However, these short-term price changes do not affect its core fundamentals or intrinsic value.&lt;&#x2F;p&gt;
+&lt;p&gt;This post is not about Bitcoin&#x27;s fundamentals, since I have already covered that topic in the first article of this Bitcoin series: &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;bitcoin-101&#x2F;&quot;&gt;&lt;b&gt;BTC 101: Why Bitcoin?&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; Instead, the purpose here is to give you just enough information to learn how to buy your first sats directly from your phone.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Setting up a Bitcoin Exchange&lt;&#x2F;h4&gt;
+&lt;p&gt;An exchange is a platform that allows you to buy or sell bitcoins (or sats, the smallest unit of Bitcoin) at current market prices. Popular platforms, such as Binance and Coinbase, are general cryptocurrency exchanges offering numerous tokens that don&#x27;t align with our focus. Since we&#x27;re specifically interested in Bitcoin, &lt;b&gt;we&#x27;ll use a Bitcoin-only exchange&lt;&#x2F;b&gt; instead. These apps reduce distractions from other assets and provide useful features for regularly buying sats.&lt;&#x2F;p&gt;
+&lt;p&gt;On your phone, install &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=fior.digital21app&quot;&gt;21Bitcoin&lt;&#x2F;a&gt;. It&#x27;s slightly cheaper and faster than alternatives, and it&#x27;s what I personally use. The app is designed specifically for buying Bitcoin regularly with a clean, straightforward interface. If 21Bitcoin isn&#x27;t available in your region, &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=com.relai&quot;&gt;Relai&lt;&#x2F;a&gt; works almost identically and is a great alternative. In this guide, I will give explanations and screenshots for both apps.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are other ways to buy Bitcoin, such as using peer-to-peer exchanges like &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;hodlhodl.com&#x2F;&quot;&gt;HodlHodl&lt;&#x2F;a&gt;, which do not require &lt;strong&gt;KYC (Know Your Customer)&lt;&#x2F;strong&gt;. KYC  is the process where you submit your ID and personal information to prove your identity. However, Bitcoin is fundamentally about financial privacy, and KYC exchanges (like Binance, 21Bitcoin, and Relai) contradict this philosophy as these apps store the personal information of those who have purchased or sold sats. However, these KYC exchanges are much easier to navigate as beginners, and starting off with one of them is a reasonable tradeoff. As you gain experience, you can explore no-KYC options like peer-to-peer platforms to better protect your privacy.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;b&gt;A Long-Term Mindset&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;If you are looking for a shortcut to be rich, Bitcoin is not for you. However, if you are willing to look at Bicoin as a long-term way to save, you are already on the right track!&lt;&#x2F;p&gt;
+&lt;p&gt; The most proven approach is to consistently purchase small amounts over time through a strategy called &lt;b&gt;dollar-cost averaging (DCA)&lt;&#x2F;b&gt;, and allow time and patience to grow your holdings.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Configure the Exchange&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;After installing the exchange, complete the KYC (ID and personal info). The account approval usually takes a few days.&lt;&#x2F;p&gt;
+&lt;p&gt;Once your account is verified and everything is set up, &lt;b&gt;you can start buying sats!&lt;&#x2F;b&gt; These sats will be held in the exchange&#x27;s wallet, from which you can buy or sell whenever you want at the current market price.&lt;&#x2F;p&gt;
+&lt;p&gt;To implement our DCA strategy effectively, we need to configure two key features:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;A savings plan&lt;&#x2F;strong&gt; for automated periodic purchases&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Automatic transfers&lt;&#x2F;strong&gt; to your own Bitcoin wallet for self-custody&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;The savings plan ensures we buy regularly without manual effort. The automatic transfers are important because, although exchanges like 21Bitcoin are generally trustworthy, Bitcoin&#x27;s philosophy is about self-custody and having full control over our funds. Let&#x27;s start with the periodic purchases, then move on to wallet setup and transfers.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Periodic Purchases&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;div class=&quot;exchange-toggle-container&quot;&gt;
+  &lt;div class=&quot;exchange-toggle&quot;&gt;
+    &lt;div class=&quot;toggle-option&quot; data-exchange=&quot;21bitcoin&quot;&gt;21Bitcoin&lt;&#x2F;div&gt;
+    &lt;div class=&quot;toggle-option&quot; data-exchange=&quot;relai&quot;&gt;Relai&lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+  &lt;div class=&quot;exchange-container&quot;&gt;
+    &lt;div class=&quot;exchange-content&quot; data-exchange=&quot;21bitcoin&quot;&gt;
+      &lt;p&gt;In &lt;b&gt;21Bitcoin&lt;&#x2F;b&gt; go to: &lt;b&gt;Bitcoin → Savings → Show Deposit Details.&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;div class=&quot;phone-images-row&quot;&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;pp-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;pp-2.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;pp-3.webp&quot;&gt;&lt;&#x2F;img&gt;
+      &lt;&#x2F;div&gt;
+    &lt;p&gt;Use this information to set up automatic Bitcoin purchases from your bank account to 21Bitcoin. Start with an amount you&#x27;re comfortable with, perhaps 100€ per month, and then adjust as you gain experience.&lt;&#x2F;p&gt;
+    &lt;p&gt;Key details to note:&lt;&#x2F;p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;b&gt;0.79% purchase fee&lt;&#x2F;b&gt;, quite reasonable for long-term investing&lt;&#x2F;li&gt;
+      &lt;li&gt;&lt;b&gt;10€ minimum&lt;&#x2F;b&gt; for savings plans (smaller amounts will be returned)&lt;&#x2F;li&gt;
+      &lt;li&gt;Sats arrive in a few hours&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+    &lt;p&gt;&lt;b&gt;Fee optimization tip:&lt;&#x2F;b&gt; Consider the frequency of your purchases relative to fees. Four weekly 30€ purchases cost more in fees (1.96€ total) than one monthly 120€ purchase (0.95€). However, as your purchase amounts increase, this difference becomes negligible, and you can prioritize the DCA benefits of more frequent purchases.&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+    &lt;div class=&quot;exchange-content&quot; data-exchange=&quot;relai&quot;&gt;
+      &lt;p&gt;In &lt;b&gt;Relai:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Click &lt;b&gt;Buy&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;amount&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;weekly auto-invest or Monthly auto-invest&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;Payment Method&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Review the order summary and click &lt;b&gt;Buy Now&lt;&#x2F;b&gt; (ignore &quot;Use external wallet&quot; for now, we&#x27;ll cover that later)&lt;&#x2F;li&gt;
+        &lt;li&gt;Copy the &lt;b&gt;Payment details&lt;&#x2F;b&gt; into your bank account&lt;&#x2F;li&gt;
+        &lt;li&gt;Click &lt;b&gt;Done&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+      &lt;&#x2F;ul&gt;
+      &lt;div class=&quot;phone-images-row&quot;&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;relai-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;relai-2.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;relai-3.webp&quot;&gt;&lt;&#x2F;img&gt;
+      &lt;&#x2F;div&gt;
+    &lt;p&gt;Use the information in &lt;b&gt;Payment details&lt;&#x2F;b&gt; to set up automatic Bitcoin purchases from your bank account to Relai. Start with an amount you&#x27;re comfortable with, perhaps 100€ per month, and then adjust as you gain experience.&lt;&#x2F;p&gt;
+    &lt;p&gt;Key details to note:&lt;&#x2F;p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;b&gt;Up to 100€ every month with 0% purchase fee!&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+      &lt;li&gt;&lt;b&gt;1% purchase fee&lt;&#x2F;b&gt;, quite reasonable for long-term investing&lt;&#x2F;li&gt;
+      &lt;li&gt;&lt;b&gt;50€ minimum&lt;&#x2F;b&gt; per purchase&lt;&#x2F;li&gt;
+      &lt;li&gt;Sats arrive the next day&lt;&#x2F;li&gt;
+    &lt;&#x2F;ul&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;We&#x27;ve covered how to buy your first sats. Now let&#x27;s see how you can &lt;b&gt;set up your first BTC wallet.&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Setting up your BTC Wallet&lt;&#x2F;h4&gt;
+&lt;p&gt;On your phone, install &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bluewallet.io&#x2F;&quot;&gt;BlueWallet&lt;&#x2F;a&gt;. This is a user-friendly and well-regarded open-source Bitcoin wallet that will allow you to store your sats securely instead of relying on the exchange. While BlueWallet is a hot wallet (which has its own risks), it&#x27;s safer than leaving your Bitcoin on an exchange app where you depend on a third party.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Hot vs Cold Wallets:&lt;&#x2F;strong&gt; Both hot and cold wallets allow their owners to send or receive sats. The difference is that a hot wallet like BlueWallet generates your private seed using an internet-connected device, making it convenient but potentially vulnerable during seed creation. A cold wallet (like Coldcard or BitBox) generates your seed completely offline, providing maximum security. For beginners, a reputable hot wallet offers a good balance of security and usability.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;After installing BlueWallet, let&#x27;s create our first wallet:&lt;&#x2F;p&gt; 
+&lt;ul&gt;
+&lt;li&gt;Click &lt;b&gt;Add now&lt;&#x2F;b&gt; in the Add a wallet box&lt;&#x2F;li&gt;
+&lt;li&gt;Give it a name like &lt;i&gt;MyBlueWallet&lt;&#x2F;i&gt;, select type &lt;i&gt;Bitcoin&lt;&#x2F;i&gt;, click &lt;b&gt;Create&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;The app will generate a seed phrase (12 words) that serves as the master key to your bitcoins&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;div class=&quot;phone-images-row&quot;&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;wallet-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;wallet-2.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;wallet-3.webp&quot;&gt;&lt;&#x2F;img&gt;
+&lt;&#x2F;div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Critical Security Warning:&lt;&#x2F;strong&gt; Your seed phrase is like your bank account password, it gives complete control over your sats. Anyone who has access to it can steal all your funds. Never share it with anyone and never store it digitally (notes apps, screenshots, emails) since malware could access these files. You can write it down on paper, but using a password manager is a better option for the long-term (paper can be lost, damaged, or destroyed).&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;In regards to the third screentshot, that&#x27;s your seed phrase, it&#x27;s your master key and only backup for recovering your wallet if you lose access to your phone. In the next section, we&#x27;ll see how to store it safely using Bitwarden. Later we will see how to set up automatic transfers and how to make transactions with BlueWallet.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Setting up a Password Manager&lt;&#x2F;h4&gt;
+&lt;p&gt;If you already have a password manager, you are free to use it. Otherwise, I&#x27;ll show you how to use &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=com.x8bit.bitwarden&quot;&gt;Bitwarden&lt;&#x2F;a&gt; to store your seed phrase.&lt;&#x2F;p&gt;
+&lt;p&gt;On your phone, install Bitwarden and create an account. Choose a strong master password that you can remember, as this will be the key to accessing all your stored information.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Critical Security Warning:&lt;&#x2F;strong&gt; Bitwarden is end-to-end encrypted, so they can&#x27;t access your data or reset your master password. If you forget your master password, you&#x27;ll lose access to everything permanently. Set a password hint and write the master password on a piece of paper if need be.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Once we have an account in Bitwarden, let&#x27;s save the private seed:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Click the &lt;b&gt;plus icon (+)&lt;&#x2F;b&gt; at the bottom right&lt;&#x2F;li&gt;
+&lt;li&gt;Select &lt;b&gt;Secure Note&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Give it a name like &lt;i&gt;Blue Wallet&lt;&#x2F;i&gt;, click on &lt;b&gt;Additional options&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Click on &lt;b&gt;Add field&lt;&#x2F;b&gt;, select &lt;b&gt;Hidden&lt;&#x2F;b&gt;, name &lt;b&gt;Seed Phrase&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;b&gt;Fill the Seed Phrase field with the 12 words in BlueWallet&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Click &lt;b&gt;Save&lt;&#x2F;b&gt; at the top right&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;div class=&quot;phone-images-row&quot;&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;bitw-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;bitw-2.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;bitw-6.webp&quot;&gt;&lt;&#x2F;img&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;Now you should be able to access your note called &lt;i&gt;Blue Wallet&lt;&#x2F;i&gt; in Bitwarden, and see your seed phrase inside of it.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;💡 &lt;strong&gt;Tip:&lt;&#x2F;strong&gt; If you can&#x27;t find your 12 words in BlueWallet or made a mistake saving them in Bitwarden, just create a new wallet. It&#x27;s free and takes seconds.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;Important:&lt;&#x2F;strong&gt; Double-check your seed phrase in Bitwarden for typos. Even one wrong letter means you won&#x27;t be able to recover your funds if you lose your phone.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Let&#x27;s see now how to configure automatic transfers from your chosen exchange to our BlueWallet.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Configuring Automatic Transfers&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;1. Obtain your Bitcoin address&lt;&#x2F;b&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s obtain a &lt;b&gt;Bitcoin address&lt;&#x2F;b&gt; so you can receive sats in your Bitcoin wallet. A Bitcoin wallet can have multiple addresses. Think of your wallet as a mailbox and addresses as different slots where you can receive mail. In general, using different addresses helps keep your activity private.&lt;&#x2F;p&gt;
+&lt;p&gt;Go to &lt;b&gt;BlueWallet → Click MyBlueWallet card → Click Receive&lt;&#x2F;b&gt;. You&#x27;ll see a QR code and a Bitcoin address that starts with &lt;i&gt;&quot;bc1q...&quot;&lt;&#x2F;i&gt;. &lt;b&gt;Click the address to copy it&lt;&#x2F;b&gt;.&lt;&#x2F;p&gt;
+&lt;div class=&quot;phone-images-row&quot;&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;wallet-7.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;wallet-4.webp&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;wallet-5.webp&quot;&gt;&lt;&#x2F;img&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;b&gt;2. Configure automatic transfers&lt;&#x2F;b&gt; &lt;&#x2F;p&gt;
+&lt;div class=&quot;exchange-toggle-container&quot;&gt;
+  &lt;div class=&quot;exchange-toggle&quot;&gt;
+    &lt;div class=&quot;toggle-option&quot; data-exchange=&quot;21bitcoin&quot;&gt;21Bitcoin&lt;&#x2F;div&gt;
+    &lt;div class=&quot;toggle-option&quot; data-exchange=&quot;relai&quot;&gt;Relai&lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+  &lt;div class=&quot;exchange-container&quot;&gt;
+    &lt;div class=&quot;exchange-content&quot; data-exchange=&quot;21bitcoin&quot;&gt;
+      &lt;p&gt;In &lt;b&gt;21Bitcoin:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Go to &lt;b&gt;Bitcoin → Auto Transfer&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Choose &lt;b&gt;Non-Custodial mode&lt;&#x2F;b&gt; (or &lt;i&gt;Set a balance limit&lt;&#x2F;i&gt;)&lt;sup&gt;*&lt;&#x2F;sup&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Click &lt;b&gt;Add Wallet&lt;&#x2F;b&gt;  → Select &lt;b&gt;Private Wallet&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Name it &lt;i&gt;&quot;MyBlueWallet&quot;&lt;&#x2F;i&gt; and &lt;b&gt;paste your copied address&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;2FA signature&lt;&#x2F;b&gt; to verify ownership&lt;sup&gt;**&lt;&#x2F;sup&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Use your &lt;b&gt;fingerprint or Face ID&lt;&#x2F;b&gt; to verify ownership&lt;&#x2F;li&gt;
+        &lt;li&gt;&lt;b&gt;Confirm the wallet address matches&lt;&#x2F;b&gt; (check the last few characters)&lt;&#x2F;li&gt;
+        &lt;li&gt;&lt;b&gt;Select&lt;&#x2F;b&gt; the external wallet you added&lt;&#x2F;li&gt;
+        &lt;li&gt;Done! Your wallet is now verified and ready for automatic transfers&lt;&#x2F;li&gt;
+      &lt;&#x2F;ul&gt;
+      &lt;div class=&quot;phone-images-row&quot;&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;pp-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;aa-3.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;aa-14.webp&quot;&gt;&lt;&#x2F;img&gt;
+      &lt;&#x2F;div&gt;
+      &lt;p&gt;Use this information to set up automatic Bitcoin purchases from your bank account to 21Bitcoin. Your sats will automatically transfer to your BlueWallet after each purchase.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;b&gt;* Automatic transfer options:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Non-Custodial mode&lt;&#x2F;strong&gt;: Every purchase is automatically sent to your wallet&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Balance limit&lt;&#x2F;strong&gt;: Transfers occur when your exchange balance reaches a certain amount&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;b&gt;** Alternative verification method:&lt;&#x2F;b&gt; 21Bitcoin also offers digital signature verification if 2FA isn&#x27;t available on your device. Follow the same process explained inside the Relai tab on section 3.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;&lt;b&gt;Transfer Fee Consideration:&lt;&#x2F;b&gt; Each transfer costs 1000 sats (roughly 1€). With non-custodial mode, you pay this fee for every purchase. With a balance limit, you can set a higher threshold (like 300-500€) to reduce transfer frequency while maintaining automatic custody.&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+    &lt;div class=&quot;exchange-content&quot; data-exchange=&quot;relai&quot;&gt;
+      &lt;p&gt;In &lt;b&gt;Relai:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Click &lt;b&gt;Buy&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;amount&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;weekly auto-invest or Monthly auto-invest&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;Payment Method&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;In the order summary, toggle &lt;b&gt;Use external wallet&lt;&#x2F;b&gt; and click &lt;b&gt;Confirm external wallet&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;&lt;b&gt;Add external Wallet&lt;&#x2F;b&gt; → &lt;b&gt;Add manually&lt;&#x2F;b&gt; → &lt;b&gt;Paste your BlueWallet address&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;&lt;b&gt;Copy the verification message&lt;&#x2F;b&gt; provided by Relai&lt;&#x2F;li&gt;
+      &lt;&#x2F;ul&gt;
+      &lt;div class=&quot;phone-images-row&quot;&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;relai-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;relai-4.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;relai-5.webp&quot;&gt;&lt;&#x2F;img&gt;
+      &lt;&#x2F;div&gt;
+      &lt;b&gt;3. Sign and verify your address&lt;&#x2F;b&gt; 
+      &lt;p&gt;Relai requires you to verify that the wallet address belongs to you using a digital signature.&lt;&#x2F;p&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Go back to &lt;b&gt;BlueWallet → MyBlueWallet&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Click the &lt;b&gt;three dots&lt;&#x2F;b&gt; at the top right&lt;&#x2F;li&gt;
+        &lt;li&gt;Select &lt;b&gt;Sign&#x2F;Verify Message&lt;&#x2F;b&gt; at the bottom&lt;&#x2F;li&gt;
+        &lt;li&gt;The Address field should already be filled with your wallet address&lt;&#x2F;li&gt;
+        &lt;li&gt;&lt;b&gt;Paste the verification message&lt;&#x2F;b&gt; into the Message field&lt;&#x2F;li&gt;
+        &lt;li&gt;Click &lt;b&gt;Sign&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;&lt;b&gt;Copy the signature&lt;&#x2F;b&gt; that appears&lt;&#x2F;li&gt;
+        &lt;li&gt;Return to &lt;b&gt;Relai&lt;&#x2F;b&gt; and &lt;b&gt;paste the signature&lt;&#x2F;b&gt; to complete verification&lt;&#x2F;li&gt;
+        &lt;li&gt;Click &lt;b&gt;Done&lt;&#x2F;b&gt; → Click &lt;b&gt;Buy Now&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+        &lt;li&gt;Copy the &lt;b&gt;Payment details&lt;&#x2F;b&gt; to your bank account → Click &lt;b&gt;Done&lt;&#x2F;b&gt;&lt;&#x2F;li&gt;
+      &lt;&#x2F;ul&gt;
+      &lt;div class=&quot;phone-images-row&quot;&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;sign-1.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;sign-2.webp&quot;&gt;&lt;&#x2F;img&gt;
+        &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;sign-3.webp&quot;&gt;&lt;&#x2F;img&gt;
+      &lt;&#x2F;div&gt;
+      &lt;p&gt;In Relai, use the information in &lt;b&gt;Payment details&lt;&#x2F;b&gt; to set up automatic Bitcoin purchases from your bank account to Relai. Your sats will automatically transfer to your BlueWallet after each purchase.&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+  &lt;&#x2F;div&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;&lt;b&gt;Using Your Bitcoin&lt;&#x2F;b&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;Once your sats are in BlueWallet, you can send Bitcoin to others using the Send button. Enter the recipient&#x27;s bitcoin address or scan their QR code, and adjust transaction fees (pay more for faster confirmation, or less if you can wait). Every transaction appears on the &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;mempool.space&#x2F;&quot;&gt;mempool&lt;&#x2F;a&gt;, where you can see your transaction&#x27;s status and current network fees in real-time.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;⚠️ Important:&lt;&#x2F;strong&gt; Before sending Bitcoin, always double-check that the last 5 characters of the address match what you copied. If you send to the wrong address, your Bitcoin is gone!&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;That&#x27;s it! You&#x27;re now set up to buy and store sats 🚀&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;Next Steps&lt;&#x2F;h4&gt;
+&lt;p&gt;Once you’re comfortable buying sats and your balance starts to grow, the next step is learning how to secure your Bitcoin properly.
+Continue with &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;bitcoin-103&#x2F;&quot;&gt;&lt;b&gt;BTC 103: Cold Storage&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;, where we’ll cover when cold storage makes sense and how to protect your Bitcoin from hacks, theft, and custodial risk.&lt;&#x2F;p&gt;</content>
+	</entry>
+	<entry xml:lang="en">
+		<title>BTC 101: Why Bitcoin?</title>
+		<published>2025-07-25T00:00:00+00:00</published>
+		<updated>2025-07-25T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/blog/bitcoin-101/" type="text/html"/>
+		<id>https://cosmevalera.dev/blog/bitcoin-101/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Have you ever had a payment declined even though you had money in your account? Or watched prices rise year after year while your salary stayed the same? These aren&#x27;t just annoyances, they&#x27;re symptoms of a broken system.&lt;&#x2F;p&gt;
+&lt;p&gt;Bitcoin exists because of these problems. It&#x27;s money that no one can freeze, inflate away, or restrict. Understanding it requires touching on &lt;b&gt;economics, technology, philosophy, and incentives&lt;&#x2F;b&gt;. I&#x27;ll try my best to explain it simply.&lt;&#x2F;p&gt;
+&lt;p&gt;First, let&#x27;s talk &lt;b&gt;economics&lt;&#x2F;b&gt;. How do currencies like the dollar and euro compare with Bitcoin?&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Inflation&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;inflation.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;$100 in 1913 would be worth today only $3.87. Over the course of 100 years the dollar has lost 96.13% of its value &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;howmuch.net&#x2F;articles&#x2F;rise-and-fall-dollar&quot;&gt;[1]&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;p&gt;While the purchasing power of the dollar has fluctuated since 1913, it has never surpassed the purchasing power it had in 1913.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Understanding why inflation happens is a bit complex. But to summarize: central banks print money at a more or less steady rate. However, during periods of conflict or epidemics, this money creation accelerates significantly. As a result, people&#x27;s savings lose value.&lt;&#x2F;p&gt;
+&lt;h4&gt;From the Gold Standard to Fiat money&lt;&#x2F;h4&gt;
+&lt;p&gt;During the economic depression of the 1930s, countries entered a loop. They would devalue their currency (to promote exports) and adopt protectionist measures (to limit imports). In doing so, they worsened the crisis by discouraging international trade.&lt;&#x2F;p&gt;
+&lt;p&gt;The USA, and 43 other countries recognized this harmful cycle and, in 1944, signed the Bretton Woods Agreement &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.investopedia.com&#x2F;terms&#x2F;b&#x2F;brettonwoodsagreement.asp&quot;&gt;[2]&lt;&#x2F;a&gt;, a new international monetary system in which:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;the dollar became the central currency and the only one convertible to gold ($35 per ounce).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;all other currencies had a fixed exchange rate against the dollar but were not directly convertible to gold (they first had to be converted to dollars, then to gold).&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The system worked well for some years but eventually, both the USA and the other countries started taking advantage of the system. 1) The USA started printing more dollars than those that they could back up with its gold reserves. 2) Some of the other 43 countries purposely devalued their currency in order to boost exports to the USA, thus causing a trading imbalance. The US deficit increased and the dollar came under pressure, leading to the system&#x27;s collapse.&lt;&#x2F;p&gt;
+&lt;p&gt;In 1965, France under President Charles de Gaulle grew suspicious about the system and demanded that the USA convert France&#x27;s dollar reserves into gold.&lt;&#x2F;p&gt;
+&lt;p&gt;Following in France&#x27;s footsteps, other countries started to request that the USA exchange its dollars back into gold. In 1971, US President Richard Nixon put an end to the dollar&#x27;s convertibility to gold.&lt;&#x2F;p&gt;
+&lt;h4&gt;Bitcoin vs. Fiat Currency&lt;&#x2F;h4&gt;
+&lt;p&gt;As we have seen, since President Nixon detached the dollar from gold in 1971, fiat currencies are no longer convertible to gold. Therefore, they are no longer backed by anything. You can no longer go to a bank and exchange your money for gold.&lt;&#x2F;p&gt;
+&lt;p&gt;As a result, fiat currencies are just paper notes. Central banks can print as many as they wish, thus making your money worth less and less.&lt;&#x2F;p&gt;
+&lt;p&gt;In other words, fiat money has no intrinsic value as it is no longer backed by anything. Its value relies upon the state&#x27;s authority. If you don&#x27;t pay your taxes, you will get into trouble.&lt;&#x2F;p&gt;
+&lt;p&gt;People often say Bitcoin is not based on anything. Nor is a fiat currency! Do Bitcoin or fiat currencies have any intrinsic value? The answer is that neither do.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;So why would I invest in Bitcoin&lt;&#x2F;b&gt; if it has no intrinsic value? Well, in the same way that fiat money is backed by the state&#x27;s authority, Bitcoin is backed by &lt;b&gt;proof-of-work&lt;&#x2F;b&gt;. Mining Bitcoin requires an enormous amount of computational power and electricity to secure the network and create new blocks. This energy use makes Bitcoin &lt;b&gt;expensive to produce and verifiably scarce&lt;&#x2F;b&gt;. You cannot fake the work required. In essence, we are transforming physical-world energy into real digital scarcity &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=--IFcOIEfl4&quot;&gt;[3]&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;We&#x27;ve covered some economics. Let&#x27;s consider the &lt;b&gt;technology&lt;&#x2F;b&gt; and &lt;b&gt;incentives&lt;&#x2F;b&gt; behind Bitcoin.&lt;&#x2F;p&gt;
+&lt;h4&gt;The Basics of Bitcoin technology&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;technology.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bitcoin is both a network and a currency. &lt;b&gt;Bitcoin&lt;&#x2F;b&gt; (with an uppercase &#x27;B&#x27;) refers to the network and &lt;b&gt;bitcoin&lt;&#x2F;b&gt; (lowercase &#x27;b&#x27;) refers to the currency.&lt;&#x2F;p&gt;
+&lt;p&gt;The Bitcoin network is built upon Maths and code. It relies both on technology and incentives, which work in a synergic way &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bitcoin.org&#x2F;bitcoin.pdf&quot;&gt;[4]&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;When Bitcoin was created, there were two key challenges to overcome in order to build a peer-to-peer electronic cash system (one that allows money to move directly between people without a middleman). These challenges were:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The &lt;strong&gt;double spending&lt;&#x2F;strong&gt; problem.&lt;&#x2F;li&gt;
+&lt;li&gt;The &lt;strong&gt;trusted third party&lt;&#x2F;strong&gt; problem.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The &lt;b&gt;double spending&lt;&#x2F;b&gt; problem presents the challenge of preventing User A from transferring the same single coin to both User B and User C at the same time. Traditional currencies don&#x27;t face this challenge because physical notes cannot be used twice and digital fiat money is controlled by the state.&lt;&#x2F;p&gt;
+&lt;p&gt;To address the double spending problem, one of the solutions is to introduce a trusted third party. This leads to the second challenge, namely the &lt;b&gt;trusted third party&lt;&#x2F;b&gt; problem. Any third party can be hacked or act dishonestly.&lt;&#x2F;p&gt;
+&lt;p&gt;Bitcoin overcomes this problem by being a peer-to-peer network that doesn&#x27;t require trust. Since the same participants are responsible for both 1) mining new blocks and 2) verifying that the Bitcoin protocol is being followed and that no one is abusing the system.&lt;&#x2F;p&gt;
+&lt;h4&gt;How Bitcoin Works: Blockchain, Miners and Nodes&lt;&#x2F;h4&gt;
+&lt;p&gt;This technology involves:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Blockchain&lt;&#x2F;strong&gt;: a series of blocks in which each new block contains the hash of the previous one, thus forming a chain. It acts as a timestamp server. Since we can&#x27;t trust any individual or organization to provide time for Bitcoin, the network creates its own time through the blockchain.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Miners&lt;&#x2F;strong&gt; are computers that rapidly perform calculations to solve complex cryptographic puzzles. When a block is successfully mined, the miner receives a reward. At the same time, the block is added to the blockchain and all the transactions within it are confirmed.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Nodes&lt;&#x2F;strong&gt; are computers that store the full copy of the blockchain and help validate transactions and blocks. To keep Bitcoin decentralized and secure, it&#x27;s essential that anyone can run a node. Nodes can freely leave and rejoin the network and then accept the longest proof-of-work chain as evidence of what has happened whilst they were away.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Encryption&lt;&#x2F;strong&gt;: to mine a block, miners must find a number (nonce) which, when passed through the SHA-256 hashing algorithm, produces a hash that is lower than the target value set by the Bitcoin network. Since there is no shortcut to find this nonce, miners use brute force, trying as many possible combinations as fast as possible, until one miner solves the puzzle and earns the right to add the block and claim the reward.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Incentives&lt;&#x2F;h4&gt;
+&lt;p&gt;Incentives are well-aligned in Bitcoin. I can&#x27;t cover everything in this post but to name a few:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bitcoin is scarce:&lt;&#x2F;strong&gt; this serves two purposes: 1) its fixed supply makes it deflationary. As a result, long-term savings in bitcoin are likely to hold or increase its value. 2) It helps the network gain traction so people are incentivized to enter as soon as possible. A network with no users is as useful as a library with no books!&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Diminishing block rewards:&lt;&#x2F;strong&gt; every 210,000 blocks (≈4 years), the reward for mining a block is halved. This creates a strong incentive to adopt Bitcoin as early as possible since new issuance becomes scarcer with each halving period.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Bitcoin&#x27;s supply is pre-established:&lt;&#x2F;strong&gt; everyone knows that the total amount of bitcoins is limited to 21 million. It&#x27;s also known the rate at which they will be mined. In the first halving period, each block mined rewards the miner 50 bitcoins; in the second halving period, the reward is 25 bitcoins and so on. Around the year 2140, the reward will be reduced to zero &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.blockpit.io&#x2F;blog&#x2F;bitcoin-halving&quot;&gt;[5]&lt;&#x2F;a&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Miner&#x27;s rewards:&lt;&#x2F;strong&gt; Nowadays, miners earn mostly from the block reward. In 2025, which corresponds to the fourth halving period, the reward is 3.125 BTC per block. As the reward decreases, miners will rely more on fees from the users who want to add transactions to the blockchain. Once the block reward reaches zero, they will depend solely on these fees.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Why run a node?&lt;&#x2F;strong&gt; Unlike miners, nodes don&#x27;t grant rewards. However, to ensure that your bitcoins are safe, it&#x27;s important to protect the network. There are currently around 23,000 public nodes but as long as even just one node is running, the network can work. The Bitcoin network only depends on Maths, the internet, and the existence of people with good-will. There is a clear incentive for those who have significant capital in bitcoin to buy a node, thus protecting the network and their wealth.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Why only 21 million bitcoins?&lt;&#x2F;strong&gt; The whole point of bitcoin is that its supply is limited, thus protecting the value of your investment from inflation. &lt;strong&gt;Can Bitcoin code be changed to increase the quantity of bitcoins to exceed 21 million?&lt;&#x2F;strong&gt; The answer is technically yes. Bitcoin receives updates constantly; these are called BIPs (Bitcoin Improvement Proposals) &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bitcoin&#x2F;bips&quot;&gt;[6]&lt;&#x2F;a&gt;. However, realistically, this is not going to happen. BIPs are accepted or rejected based on community consensus and increasing the supply of bitcoins would dilute the wealth of its holders. Therefore, regarding incentives, those most involved in the network are the least interested in increasing the total supply of bitcoins.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h4&gt;Common doubts &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.marcialpons.es&#x2F;media&#x2F;pdf&#x2F;55178_La_filosofia_de_BITCOIN.pdf&quot;&gt;[7]&lt;&#x2F;a&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;But Bitcoin is Volatile:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Bitcoin&#x27;s volatility is one of the most common criticisms and with justification. However, the price is extrinsic to Bitcoin. This volatility just means that the market still doesn&#x27;t know the value of Bitcoin. As adoption grows and the market matures, volatility decreases over time. In fact, early volatility has been beneficial, since Bitcoin is not a company, nor does it have a marketing department to promote it. If it weren&#x27;t for the volatility, Bitcoin would still be worth $1.&lt;&#x2F;p&gt;
+&lt;p&gt;The famous term &lt;b&gt;HODL&lt;&#x2F;b&gt; originated from a 2013 Reddit post uploaded by a drunk person. He said that he was a terrible trader and was unable to make a profit by predicting the rise or fall in the price of bitcoin. But he realized that if he ignored the short-term swings and just held the asset, the traders would then not be able to profit from him.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a lot to learn about Bitcoin; therefore there is a big asymmetry of knowledge between those who understand it and those who don&#x27;t. This causes people to feel envious when they miss opportunities to make a profit and to panic-sell when the price falls. This happens as a result of a lack of understanding of the asset. It&#x27;s important to bear in mind the long-term value of Bitcoin and not let our emotions cloud our vision in the short term.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Why Bitcoin and not Crypto?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a fundamental flaw in grouping everything together under the term &quot;crypto&quot;. This would imply that other crypto assets compete with Bitcoin. In reality, most of them don&#x27;t even &lt;i&gt;intend&lt;&#x2F;i&gt; to. As I have already said in this post, one of the most important virtues of Bitcoin is that there is no third party involvement. If you have a network that has been running on its own for over a decade, why would you choose a cheaper alternative that could be manipulated by any person or company at any given time?&lt;&#x2F;p&gt;
+&lt;p&gt;Other crypto projects don&#x27;t aim to become global monetary systems; rather, they aim to be entrepreneurial projects or, even worse, &lt;i&gt;neolottery&lt;&#x2F;i&gt;. Remember that if you think that a bitcoin is too expensive, you can always buy sats (satoshis, the smallest unit of bitcoin).&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;Next Steps&lt;&#x2F;h4&gt;
+&lt;p&gt;This post covers the basics, but Bitcoin is a deep topic that rewards continuous learning. Don&#x27;t take my word for it, explore different perspectives, question everything, and form your own understanding. The resources below are a great starting point.&lt;&#x2F;p&gt;
+&lt;p&gt;When you&#x27;re ready to own some sats, check out &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;bitcoin-102&#x2F;&quot;&gt;&lt;b&gt;BTC 102: How to Buy Bitcoin&lt;&#x2F;b&gt;&lt;&#x2F;a&gt; for a step-by-step guide on purchasing and storing bitcoin securely.&lt;&#x2F;p&gt;
+&lt;h4&gt;Resources&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;Recommended video&lt;&#x2F;b&gt; (Jack Mallers at BTCPrague 2025):&lt;br&gt;&lt;&#x2F;p&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;Pef22g53zsg&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; More resources (videos, books, etc.)&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+      &lt;p&gt;&lt;b&gt;Other recommended videos:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt;&lt;b&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=1PkMFIa7rmQ&amp;t=146s&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt; Michael Saylor at BTCPrague 2024&lt;&#x2F;a&gt;&lt;&#x2F;b&gt;: The 21 Rules of Bitcoin.&lt;&#x2F;p&gt;
+      &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;1PkMFIa7rmQ?start=146&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+      &lt;hr&gt;
+      &lt;p&gt;&lt;b&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=--IFcOIEfl4&quot;&gt;&lt;span class=&quot;fab fa-youtube&quot;&gt;&lt;&#x2F;span&gt; Jack Mallers at BTCPrague 2024&lt;&#x2F;a&gt;&lt;&#x2F;b&gt;: The Intrinsic Value of Bitcoin and Proof of Work.&lt;&#x2F;p&gt;
+      &lt;iframe width=&quot;100%&quot; height=&quot;400&quot; src=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;embed&#x2F;--IFcOIEfl4?start=55&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; referrerpolicy=&quot;strict-origin-when-cross-origin&quot; allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+      &lt;hr&gt;
+      &lt;p&gt;&lt;b&gt;Recommended books:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;b&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;saifedean.com&#x2F;the-bitcoin-standard&quot;&gt;&lt;span class=&quot;fas fa-book&quot;&gt;&lt;&#x2F;span&gt; The Bitcoin Standard&lt;&#x2F;a&gt;&lt;&#x2F;b&gt; by Saifedean Ammous: A comprehensive guide to understanding the economics of Bitcoin, analyzing the historical context of money and its role as the decentralized alternative to central banking (here is the preview).
+      &lt;p&gt;&lt;&#x2F;p&gt;
+      &lt;embed src=&quot;https:&#x2F;&#x2F;cdn.prod.website-files.com&#x2F;64fee27528c4095c908b5078&#x2F;673cb007e8000b7ae06027fa_TBS%20Free%20Chapters%20Sample.pdf&quot; type=&quot;application&#x2F;pdf&quot; width=&quot;100%&quot; height=&quot;600px&quot;&gt;
+      &lt;hr&gt;
+      &lt;b&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;store.bitcoinmagazine.com&#x2F;products&#x2F;the-philosophy-of-bitcoin&quot;&gt;&lt;span class=&quot;fas fa-book&quot;&gt;&lt;&#x2F;span&gt; The Philosophy of Bitcoin&lt;&#x2F;a&gt;&lt;&#x2F;b&gt; by Álvaro D. Maria: A &lt;b&gt;highly&lt;&#x2F;b&gt; recommended book that explains how Bitcoin changes the way we relate to money, how it redefines the concept of property ownership, and how it can change the political system that we live in (you can &lt;b&gt;&lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.marcialpons.es&#x2F;media&#x2F;pdf&#x2F;55178_La_filosofia_de_BITCOIN.pdf&quot;&gt;read the preview in Spanish&lt;&#x2F;a&gt;&lt;&#x2F;b&gt; here, I didn&#x27;t found an English preview).
+      &lt;p&gt;&lt;&#x2F;p&gt;
+      &lt;hr&gt;
+      &lt;p&gt;&lt;b&gt;Further reading:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;b&gt;● &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;chemaclass.com&#x2F;blog&#x2F;bitcoin-fundamentals&quot;&gt;&lt;span class=&quot;fas fa-pen&quot;&gt;&lt;&#x2F;span&gt; Bitcoin Fundamentals&lt;&#x2F;a&gt;&lt;&#x2F;b&gt; by Chemaclass: Another beginner-friendly introduction.
+      &lt;hr&gt;
+      &lt;p&gt;&lt;b&gt;Mentioned sources:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt; ● Inflation - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;howmuch.net&#x2F;articles&#x2F;rise-and-fall-dollar&quot;&gt;[1]&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt; ● Bretton Woods Agreement - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.investopedia.com&#x2F;terms&#x2F;b&#x2F;brettonwoodsagreement.asp&quot;&gt;[2]&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt; ● Jack Mallers at BTCPrague 2024: The Intrinsic Value of Bitcoin and Proof of Work - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=--IFcOIEfl4&quot;&gt;[3]&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt; ● Bitcoin Whitepaper - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bitcoin.org&#x2F;bitcoin.pdf&quot;&gt;[4]&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt; ● Bitcoin halvings explained: The reward per block at each halving - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.blockpit.io&#x2F;blog&#x2F;bitcoin-halving&quot;&gt;[5]&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt; ● Bitcoin Improvement Proposals - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bitcoin&#x2F;bips&quot;&gt;[6]&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+      &lt;p&gt; ● Preview: La Filosofía de Bitcoin - &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.marcialpons.es&#x2F;media&#x2F;pdf&#x2F;55178_La_filosofia_de_BITCOIN.pdf&quot;&gt;[7]&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+</content>
+	</entry>
+</feed>
