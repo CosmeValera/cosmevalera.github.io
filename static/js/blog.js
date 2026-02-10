@@ -306,6 +306,31 @@ function clickFilterRendersCards() {
     });
 }
 
+function managePulseAnimation() {
+    // Only relevant for desktop where hover exists
+    if (!window.matchMedia('(min-width: 768px)').matches) return;
+
+    const cards = document.querySelectorAll('.blog-card');
+    let hoverCount = 0;
+    const HOVER_THRESHOLD = 2; // Reduced threshold as per user preference (implied)
+
+    function onCardHover() {
+        hoverCount++;
+        if (hoverCount >= HOVER_THRESHOLD) {
+            document.body.classList.add('user-has-interacted');
+            
+            // Cleanup listeners since we are done
+            cards.forEach(card => {
+                card.removeEventListener('mouseenter', onCardHover);
+            });
+        }
+    }
+
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', onCardHover);
+    });
+}
+
 //////////
 // MAIN //
 //////////
@@ -321,4 +346,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     clickFilterRendersCards();      // DESKTOP: FILTER BUTTONS
 
+    managePulseAnimation();         // DESKTOP: HANDLE PULSE ANIMATION LOGIC
 });

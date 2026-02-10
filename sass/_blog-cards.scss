@@ -181,6 +181,17 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         z-index: 2;
         white-space: nowrap;
         min-width: fit-content;
+        animation: float-y 2s ease-in-out infinite;
+
+        @keyframes float-y {
+          0%, 100% { transform: translate(-50%, 0); }
+          50% { transform: translate(-50%, -5px); }
+        }
+
+        // Stop animation once user has interacted
+        body.user-has-interacted & {
+          animation: none;
+        }
 
         i {
           margin-right: 0.5rem;
@@ -478,6 +489,7 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         // On card hover preview disappears
         .preview-indicator {
           opacity: 0;
+          animation: none; // Stop animation when hidden
         }
 
       }
