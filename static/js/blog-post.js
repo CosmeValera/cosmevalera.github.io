@@ -213,6 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let ticking = false;
 
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const themeToggleContainer = document.querySelector('.theme-and-language-toggle-container');
 
     function updateTOC() {
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
@@ -251,6 +252,9 @@ document.addEventListener('DOMContentLoaded', function () {
           if (mobileMenuToggle) {
             mobileMenuToggle.classList.add('scrolling-down');
           }
+          if (themeToggleContainer) {
+            themeToggleContainer.classList.add('scrolling-down');
+          }
           // Reset counters after switching
           tocScrollDownDistance = 0;
           tocScrollDownStartTime = null;
@@ -285,6 +289,9 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           if (mobileMenuToggle) {
             mobileMenuToggle.classList.remove('scrolling-down');
+          }
+          if (themeToggleContainer) {
+            themeToggleContainer.classList.remove('scrolling-down');
           }
           // Reset counters after switching
           tocScrollUpDistance = 0;

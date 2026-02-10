@@ -43,7 +43,7 @@ h2 {
     }
 }
 
-.theme-toggle-container {
+.theme-and-language-toggle-container {
     position: fixed;
     top: 2rem;
     right: 2rem;
@@ -99,7 +99,7 @@ h2 {
 }
 
 body.bright-theme {
-    .theme-toggle-container {
+    .theme-and-language-toggle-container {
         .language-switcher .language-toggle-btn {
             background: rgba($primary-bg-bright, 0.9);
             border-color: rgba($text-color-bright, 0.15);

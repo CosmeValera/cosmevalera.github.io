@@ -1,0 +1,26 @@
+// Theme Toggle Container Transparency on Scroll
+.theme-and-language-toggle-container {
+    transition: background 0.3s ease, opacity 0.3s ease;
+
+    &.scrolling-down {
+        .language-switcher .language-toggle-btn,
+        .theme-toggle-btn {
+            opacity: 0.65; // Match FAB opacity
+            transition: opacity 0.3s ease;
+            
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        // Optional: Adjustment for the language button background to be more glass-like if needed
+        .language-switcher .language-toggle-btn {
+            background: rgba($primary-bg, 0.4); // More transparent background
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+             &:hover {
+                 background: rgba($accent-color, 0.15); /* Restore hover bg */
+            }
+        }
+    }
+}
