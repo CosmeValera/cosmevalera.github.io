@@ -166,8 +166,10 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         display: none;
         position: absolute;
         bottom: -36px;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transform: translateY(0);
         color: $accent-color;
         font-size: 0.8rem;
         text-align: center;
@@ -180,17 +182,19 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         transition: opacity 0.3s ease;
         z-index: 2;
         white-space: nowrap;
+        width: fit-content; // changed min-width to width for margin centering
         min-width: fit-content;
         animation: float-y 2s ease-in-out infinite;
 
         @keyframes float-y {
-          0%, 100% { transform: translate(-50%, 0); }
-          50% { transform: translate(-50%, -5px); }
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
         }
 
         // Stop animation once user has interacted
         body.user-has-interacted & {
           animation: none;
+          transform: translateY(0);
         }
 
         i {
