@@ -281,9 +281,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Accumulate scroll-up distance
         tocScrollUpDistance += scrollDistance;
         
-        // If scrolled up more than 500px within 2 seconds, remove scrolling-down class (default = scrolling-up)
+        // If scrolled up more than 400px within 2 seconds, remove scrolling-down class (default = scrolling-up)
         // Also remove if near the top
-        if (tocScrollUpDistance >= 500 || currentScrollY < 50) {
+        if (tocScrollUpDistance >= 400 || currentScrollY < 50) {
           if (tocMobile) {
             tocMobile.classList.remove('scrolling-down');
           }
