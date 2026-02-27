@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2026-03-03-dependency-injection&#x2F;cover-image.webp" as="image" fetchpriority="high">
+  
+
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                
+                
+                <a href="&#x2F;blog&#x2F;dependency-injection&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Cambiar idioma"
+                   title="Switch to English">
+                    <span class="lang-code">ES</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/projects" class="menu-item menu-projects " aria-label="Proyectos">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Proyectos</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+    
+
+    
+    <a href="/es/blog" class="back-link">← Todas las publicaciones</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/testing/" class="tag tag-testing-plain">
+              Testing
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/best-practices/" class="tag tag-best-practices-plain">
+              Buenas Prácticas
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Inyección de Dependencias</h1>
+    <h3 class="presentation-text">Descubre cómo la Inyección de Dependencias desacopla tu código de sus dependencias, facilitando el testing y el intercambio de implementaciones</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">February 27, 2026</span>
+      <span class="reading-time">
+        
+          5m lectura • 819 palabras
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Índice</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">En esta página</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2026-03-03-dependency-injection/cover-image.webp" alt="blog-cover" /></p>
+<h4>🧐 ¿Qué es la Inyección de Dependencias?</h4>
+<p>La Inyección de Dependencias (DI) es un patrón de diseño en el que una clase <strong>recibe</strong> sus dependencias desde fuera en lugar de <strong>crearlas</strong> internamente. En vez de que un servicio instancie directamente las clases concretas que necesita, recibe una <strong>interfaz</strong> (abstracción) a través de su constructor.</p>
+<p>Esta simple técnica tiene un gran impacto en como de testeable, flexible y mantenible resulta tu código.</p>
+<hr />
+<h4>🚫 El Problema: Acoplamiento Fuerte</h4>
+<p>Imagina una clase <code>UserService</code> que necesita obtener usuarios de una base de datos. Sin DI, esta clase crea directamente su propio repositorio:</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="font-style:italic;color:#66d9ef;">class </span><span>UserRepository {
+</span><span>  </span><span style="color:#a6e22e;">findById</span><span>(</span><span style="font-style:italic;color:#fd971f;">id</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>)</span><span style="color:#f92672;">: </span><span>User {
+</span><span>    </span><span style="color:#75715e;">// Accede a la base de datos real
+</span><span>    </span><span style="color:#f92672;">return </span><span>database.</span><span style="color:#a6e22e;">query</span><span>(</span><span style="color:#e6db74;">`SELECT * FROM users WHERE id = ${id}`</span><span>);
+</span><span>  }
+</span><span>}
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>UserService {
+</span><span>  </span><span style="color:#f92672;">private </span><span>userRepo </span><span style="color:#f92672;">= new </span><span>UserRepository(); </span><span style="color:#75715e;">// ❌ Dependencia hardcodeada
+</span><span>
+</span><span>  </span><span style="color:#a6e22e;">getUser</span><span>(</span><span style="font-style:italic;color:#fd971f;">id</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>)</span><span style="color:#f92672;">: </span><span>User {
+</span><span>    </span><span style="color:#f92672;">return </span><span>this.userRepo.</span><span style="color:#a6e22e;">findById</span><span>(id);
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p><strong>¿Qué tiene de malo?</strong></p>
+<ul>
+<li><code>UserService</code> está <strong>fuertemente acoplado</strong> a <code>UserRepository</code></li>
+<li><strong>No puedes testear</strong> <code>UserService</code> sin una conexión real a la base de datos</li>
+<li>Si quieres cambiar la fuente de datos (por ejemplo, de SQL a una API), tienes que <strong>modificar</strong> <code>UserService</code></li>
+</ul>
+<hr />
+<h4>✅ La Solución: Depende de Interfaces, no de Implementaciones</h4>
+<p>La idea clave es:</p>
+<ol>
+<li>Definir una <strong>interfaz</strong> para la dependencia</li>
+<li>Hacer que el servicio dependa de la <strong>interfaz</strong>, no de la clase concreta</li>
+<li><strong>Inyectar</strong> la implementación concreta a través del constructor</li>
+</ol>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Paso 1: Definir la interfaz **/
+</span><span style="font-style:italic;color:#66d9ef;">interface </span><span>IUserRepository {
+</span><span>  </span><span style="color:#a6e22e;">findById</span><span>(</span><span style="font-style:italic;color:#fd971f;">id</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>)</span><span style="color:#f92672;">: </span><span>User;
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Paso 2: El servicio depende de la interfaz **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>UserService {
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">constructor</span><span>(</span><span style="color:#f92672;">private </span><span style="font-style:italic;color:#fd971f;">userRepo</span><span style="color:#f92672;">: </span><span>IUserRepository) {} </span><span style="color:#75715e;">// 💡 Parameter properties
+</span><span>
+</span><span>  </span><span style="color:#a6e22e;">getUser</span><span>(</span><span style="font-style:italic;color:#fd971f;">id</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>)</span><span style="color:#f92672;">: </span><span>User {
+</span><span>    </span><span style="color:#f92672;">return </span><span>this.userRepo.</span><span style="color:#a6e22e;">findById</span><span>(id);
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Paso 3: Crear la implementación real **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>UserRepository </span><span style="color:#f92672;">implements </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">IUserRepository </span><span>{
+</span><span>  </span><span style="color:#a6e22e;">findById</span><span>(</span><span style="font-style:italic;color:#fd971f;">id</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>)</span><span style="color:#f92672;">: </span><span>User {
+</span><span>    </span><span style="color:#f92672;">return </span><span>database.</span><span style="color:#a6e22e;">query</span><span>(</span><span style="color:#e6db74;">`SELECT * FROM users WHERE id = ${id}`</span><span>);
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p>Ahora, a <code>UserService</code> le da igual <strong>qué</strong> implementación recibe. Solo conoce <code>IUserRepository</code>.</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Uso en producción **/
+</span><span style="font-style:italic;color:#66d9ef;">const </span><span>userRepo </span><span style="color:#f92672;">= new </span><span>UserRepository();
+</span><span style="font-style:italic;color:#66d9ef;">const </span><span>userService </span><span style="color:#f92672;">= new </span><span>UserService(userRepo);
+</span></code></pre>
+<details class="expandable-info">
+    <summary><i class="fas fa-lightbulb"></i> Parameter Properties: el atajo explicado</summary>
+    <div class="expandable-content">
+        <p>Esto se conoce como <b>constructor parameter properties</b> en TypeScript. Es un atajo que declara una propiedad de clase y le asigna el valor del parámetro del constructor, todo en una sola línea.</p>
+        <p>Estos dos ejemplos son equivalentes:</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Atajo (lo que usamos) **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>UserService {
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">constructor</span><span>(</span><span style="color:#f92672;">private </span><span style="font-style:italic;color:#fd971f;">userRepo</span><span style="color:#f92672;">: </span><span>IUserRepository) {}
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Explícito (lo mismo, escrito al completo) **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>UserService {
+</span><span>  </span><span style="color:#f92672;">private </span><span>userRepo</span><span style="color:#f92672;">: </span><span>IUserRepository;
+</span><span>
+</span><span>  </span><span style="font-style:italic;color:#66d9ef;">constructor</span><span>(</span><span style="font-style:italic;color:#fd971f;">userRepo</span><span style="color:#f92672;">: </span><span>IUserRepository) {
+</span><span>    this.userRepo </span><span style="color:#f92672;">= </span><span>userRepo;
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p>Ambas versiones guardan el <code>userRepo</code> inyectado como propiedad de clase para que métodos como <code>getUser()</code> puedan acceder a él mediante <code>this.userRepo</code>. El atajo es simplemente la forma que tiene TypeScript de reducir código repetitivo manteniendo el mismo comportamiento. En PHP existe una funcionalidad similar llamada constructor property promotion, y otros lenguajes tienen funcionalidades parecidas.</p>
+    </div>
+</details>
+<hr />
+<h4>🧪 Por Qué Importa: Testing</h4>
+<p>Aquí es donde la DI realmente brilla. Como <code>UserService</code> depende de una interfaz, podemos crear una <strong>implementación mock</strong> para los tests, sin necesidad de base de datos:</p>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Implementación mock para tests **/
+</span><span style="font-style:italic;color:#66d9ef;">class </span><span>UserRepositoryMock </span><span style="color:#f92672;">implements </span><span style="text-decoration:underline;font-style:italic;color:#a6e22e;">IUserRepository </span><span>{
+</span><span>  </span><span style="color:#a6e22e;">findById</span><span>(</span><span style="font-style:italic;color:#fd971f;">id</span><span style="color:#f92672;">: </span><span style="font-style:italic;color:#66d9ef;">string</span><span>)</span><span style="color:#f92672;">: </span><span>User {
+</span><span>    </span><span style="color:#f92672;">return </span><span>{ id, name: </span><span style="color:#e6db74;">&quot;Test User&quot;</span><span>, email: </span><span style="color:#e6db74;">&quot;test@example.com&quot; </span><span>};
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<pre data-lang="ts" style="background-color:#272822;color:#f8f8f2;" class="language-ts "><code class="language-ts" data-lang="ts"><span style="color:#75715e;">/** Test unitario (¡sin base de datos!) **/
+</span><span style="font-style:italic;color:#66d9ef;">const </span><span>mockRepo </span><span style="color:#f92672;">= new </span><span>UserRepositoryMock();
+</span><span style="font-style:italic;color:#66d9ef;">const </span><span>userService </span><span style="color:#f92672;">= new </span><span>UserService(mockRepo);
+</span><span>
+</span><span style="font-style:italic;color:#66d9ef;">const </span><span>user </span><span style="color:#f92672;">= </span><span>userService.</span><span style="color:#a6e22e;">getUser</span><span>(</span><span style="color:#e6db74;">&quot;123&quot;</span><span>);
+</span><span style="color:#a6e22e;">assert</span><span>(user.name </span><span style="color:#f92672;">=== </span><span style="color:#e6db74;">&quot;Test User&quot;</span><span>); </span><span style="color:#75715e;">// ✅ Rápido, aislado, fiable
+</span></code></pre>
+<p><strong>🚫 Sin DI:</strong> Tus tests necesitan una base de datos real, haciéndolos lentos y difíciles de configurar.<br />
+<strong>✅ Con DI:</strong> Los tests son rápidos, aislados y están completamente bajo tu control.</p>
+<hr />
+<h4>📊 Antes vs Después: Resumen Visual</h4>
+<p><strong>Sin DI (con acoplamiento):</strong></p>
+<pre style="background-color:#272822;color:#f8f8f2;"><code><span>UserService ──────► UserRepository ──────► Database
+</span><span>   (no se puede         (concreto)
+</span><span>     cambiar)
+</span></code></pre>
+<p><strong>Con DI (sin acoplamiento):</strong></p>
+<pre style="background-color:#272822;color:#f8f8f2;"><code><span>UserService ──────► IUserRepository (interfaz)
+</span><span>                         │
+</span><span>                    ┌────┴─────┐
+</span><span>                    ▼          ▼
+</span><span>             UserRepository  UserRepositoryMock
+</span><span>              (producción)      (testing)
+</span></code></pre>
+<p>La interfaz actúa como un <strong>contrato</strong>: cualquier clase que la implemente se puede conectar a <code>UserService</code>. Esto hace que tu código sea flexible y tus tests fiables.</p>
+<hr />
+<h4>💡 Puntos Clave</h4>
+<ul>
+<li><strong>Depende de abstracciones (interfaces), no de implementaciones concretas</strong></li>
+<li><strong>Inyecta las dependencias</strong> a través del constructor en lugar de crearlas internamente</li>
+<li>Esto hace que tus clases sean <strong>fáciles de testear</strong> intercambiando implementaciones reales por mocks</li>
+<li>También hace que tu código sea <strong>más fácil de cambiar</strong> (cambia un repositorio SQL por un cliente API sin tocar el servicio)</li>
+</ul>
+<blockquote>
+<p>Si conoces los <a class="link-text" target="_blank" href="https://cosmevalera.dev/es/blog/solid-principles/"><b>principios SOLID</b></a>, notarás que la Inyección de Dependencias es la aplicación práctica del <strong>Principio de Inversión de Dependencias (DIP)</strong>: <em>&quot;Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deben depender de abstracciones.&quot;</em></p>
+</blockquote>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>2</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><h4>Conclusión</h4>
+<p>La Inyección de Dependencias es uno de esos patrones que, una vez lo entiendes, querrás aplicar en todas partes. Mantiene tu código desacoplado, tus tests rápidos y fiables, y tu arquitectura flexible.</p>
+<p>La próxima vez que escribas <code>new SomeDependency()</code> dentro de una clase, para y pregúntate: <em>¿debería inyectar esto?</em> 🎯</p>
+
+    </div>
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <div class="link">
+        <span> Anterior publicación</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-103&#x2F;">BTC 103: Custodia en Frío de Bitcoin</a>
+      </div>
+      
+
+      
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/es/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Colabora</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

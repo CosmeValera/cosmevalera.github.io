@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Projects | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/projects.css">
+
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                <a href="/es&#x2F;projects&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Switch language"
+                   title="Cambiar a Español">
+                    <span class="lang-code">EN</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/" class="menu-item " aria-label="Home">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Home</span>
+    </a>
+    
+    <a href="/projects" class="menu-item menu-projects active" aria-label="Projects">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Projects</span>
+    </a>
+    
+    <a href="/blog" class="menu-item " aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/readings" class="menu-item menu-readings " aria-label="Readings">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Readings</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+<div class="projects">
+  <div class="projects-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+    </svg>
+  </div>
+  
+  <h1>Projects</h1>
+  <p class="projects-intro">A showcase of projects I&#x27;ve built using different technologies. Each project represents a unique challenge and learning experience.</p>
+
+  <!-- FILTER (Desktop Only) -->
+  <div class="filter-buttons-desktop">
+    <div class="filter-dropdown-desktop">
+      <button class="filter-button" data-filter="React">
+        <i class="fab fa-react"></i>
+        React
+      </button>
+
+      <button class="filter-button" data-filter="Angular">
+        <i class="fab fa-angular"></i>
+        Angular
+      </button>
+
+      <button class="filter-button" data-filter="DevOps">
+        <i class="fas fa-dharmachakra"></i>
+        DevOps
+      </button>
+
+      <button class="filter-button" data-filter="Node">
+        <i class="fab fa-node-js"></i>
+        Node
+      </button>
+
+      <button class="filter-button" data-filter="Java">
+        <i class="fab fa-java"></i>
+        Java
+      </button>
+    </div>
+  </div>
+  <!-- END: FILTER (Desktop Only) -->
+
+  <!-- Mobile Filter Button -->
+  <div class="mobile-filter-button-container">
+    <button id="filter-menu-button" class="mobile-filter-button" aria-label="Filter Projects">
+      <i class="fas fa-filter"></i>
+    </button>
+  </div>
+
+  <!-- Filter Modal (Mobile Only) -->
+  <div class="filter-modal" id="filter-modal">
+    <div class="filter-modal-content">
+      <div class="filter-modal-header">
+        <h3>Filter Projects</h3>
+        <button class="filter-modal-close" id="filter-modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="filter-modal-body">
+        <button class="filter-modal-option" data-filter="React">
+          <i class="fab fa-react"></i>
+          React
+        </button>
+        <button class="filter-modal-option" data-filter="Angular">
+          <i class="fab fa-angular"></i>
+          Angular
+        </button>
+        <button class="filter-modal-option" data-filter="DevOps">
+          <i class="fas fa-dharmachakra"></i>
+          DevOps
+        </button>
+        <button class="filter-modal-option" data-filter="Node">
+          <i class="fab fa-node-js"></i>
+          Node
+        </button>
+        <button class="filter-modal-option" data-filter="Java">
+          <i class="fab fa-java"></i>
+          Java
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- END: Filter Modal (Mobile Only) -->
+
+  <!-- CARDS -->
+  <div class="row project-cards-row">
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="https://cosmevalera.dev/images/projects/AquaMesh.png" alt="AquaMesh" width="400" height="220" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">AquaMesh</h3>
+          <p class="card-description">No-code drag-and-drop platform for creating interactive dashboards.</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-react"></i>React</span>
+            <span class="tag"><i class="fas fa-cube"></i>Turborepo</span>
+            <span class="tag"><i class="fas fa-puzzle-piece"></i>Microfrontends</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/AquaMesh" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+            <a class="card-button demo-btn" href="https://aquamesh.cosmevalera.dev/" target="_blank">
+              <i class="fas fa-link"></i>Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 animate__animated animate__bounceInRight">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="https://cosmevalera.dev/images/projects/devopslab-dark-2.png" alt="DevOpsLab" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">DevOps Lab</h3>
+          <p class="card-description">Complete DevOps pipeline with containerization, orchestration, and CI&#x2F;CD automation</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-docker"></i>Docker</span>
+            <span class="tag"><i class="fas fa-dharmachakra"></i>K8s</span>
+            <span class="tag"><i class="fab fa-aws"></i>AWS</span>
+            <span class="tag"><i class="fab fa-jenkins"></i>Jenkins</span>
+            <span class="tag"><i class="fab fa-react"></i>React</span>
+            <span class="tag"><i class="fab fa-node-js"></i>Node</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/DevOpsLab" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+            <a class="card-button demo-btn" href="https://devopslab.cosmevalera.dev/" target="_blank">
+              <i class="fas fa-link"></i>Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="https://cosmevalera.dev/images/projects/FitCal.webp" alt="FitCal" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">FitCal</h3>
+          <p class="card-description">Fitness and nutrition tracking application with calorie management</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-angular"></i>Angular</span>
+            <span class="tag"><i class="fas fa-code"></i>TypeScript</span>
+            <span class="tag"><i class="fab fa-java"></i>Java (Spring)</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/FitCal" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-12 col-md-6 animate__animated animate__bounceInRight">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="https://cosmevalera.dev/images/projects/Sympho.png" alt="Sympho" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">Sympho</h3>
+          <p class="card-description">Music notation and composition tool with interactive sheet music rendering</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-square-js"></i>JavaScript</span>
+            <span class="tag"><i class="fab fa-node-js"></i>Node</span>
+            <span class="tag"><i class="fas fa-dharmachakra"></i>K8s</span>
+            <span class="tag"><i class="fas fa-music"></i>Vexflow</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/Sympho" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="https://cosmevalera.dev/images/projects/LeagueOfPokemon.png" alt="League of Pokemon" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">League of Pokemon</h3>
+          <p class="card-description">Turn-based strategy game featuring Pokemon battles with custom mechanics.</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-java"></i>Java (Swing)</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/LeagueOfPokemon" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 animate__animated animate__bounceInRight">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="https://cosmevalera.dev/images/projects/AndroidDepartmentQuest.jpg" alt="AndroidDepartmentQuest" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">Department Quest</h3>
+          <p class="card-description">An Android application for management of a department.</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-java"></i>Java (Android)</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/AndroidDepartmentQuest" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-12 col-md-6 animate__animated animate__bounceInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="https://cosmevalera.dev/images/projects/Inventory.png" alt="Inventory" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">Inventory</h3>
+          <p class="card-description">Inventory management system built with Node.js and MongoDB.</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-square-js"></i>JavaScript</span>
+            <span class="tag"><i class="fab fa-node-js"></i>Node</span>
+            <span class="tag"><i class="fas fa-leaf"></i>MongoDB</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/Inventory" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- END: CARDS -->
+</div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+<script src="https://cosmevalera.dev/js/projects.js"></script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

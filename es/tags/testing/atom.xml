@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+	<title> - testing</title>
+	<link href="https://cosmevalera.dev/es/tags/testing/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2026-03-03T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/es/tags/testing/atom.xml</id>
+	<entry xml:lang="es">
+		<title>Inyección de Dependencias</title>
+		<published>2026-03-03T00:00:00+00:00</published>
+		<updated>2026-03-03T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/es/blog/dependency-injection/" type="text/html"/>
+		<id>https://cosmevalera.dev/es/blog/dependency-injection/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-03-03-dependency-injection&#x2F;cover-image.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;🧐 ¿Qué es la Inyección de Dependencias?&lt;&#x2F;h4&gt;
+&lt;p&gt;La Inyección de Dependencias (DI) es un patrón de diseño en el que una clase &lt;strong&gt;recibe&lt;&#x2F;strong&gt; sus dependencias desde fuera en lugar de &lt;strong&gt;crearlas&lt;&#x2F;strong&gt; internamente. En vez de que un servicio instancie directamente las clases concretas que necesita, recibe una &lt;strong&gt;interfaz&lt;&#x2F;strong&gt; (abstracción) a través de su constructor.&lt;&#x2F;p&gt;
+&lt;p&gt;Esta simple técnica tiene un gran impacto en como de testeable, flexible y mantenible resulta tu código.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🚫 El Problema: Acoplamiento Fuerte&lt;&#x2F;h4&gt;
+&lt;p&gt;Imagina una clase &lt;code&gt;UserService&lt;&#x2F;code&gt; que necesita obtener usuarios de una base de datos. Sin DI, esta clase crea directamente su propio repositorio:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserRepository {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;findById&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; Accede a la base de datos real
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;database.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;query&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;`SELECT * FROM users WHERE id = ${id}`&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span&gt;userRepo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span&gt;UserRepository(); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; ❌ Dependencia hardcodeada
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getUser&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.userRepo.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;findById&lt;&#x2F;span&gt;&lt;span&gt;(id);
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;¿Qué tiene de malo?&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;UserService&lt;&#x2F;code&gt; está &lt;strong&gt;fuertemente acoplado&lt;&#x2F;strong&gt; a &lt;code&gt;UserRepository&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;No puedes testear&lt;&#x2F;strong&gt; &lt;code&gt;UserService&lt;&#x2F;code&gt; sin una conexión real a la base de datos&lt;&#x2F;li&gt;
+&lt;li&gt;Si quieres cambiar la fuente de datos (por ejemplo, de SQL a una API), tienes que &lt;strong&gt;modificar&lt;&#x2F;strong&gt; &lt;code&gt;UserService&lt;&#x2F;code&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;✅ La Solución: Depende de Interfaces, no de Implementaciones&lt;&#x2F;h4&gt;
+&lt;p&gt;La idea clave es:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Definir una &lt;strong&gt;interfaz&lt;&#x2F;strong&gt; para la dependencia&lt;&#x2F;li&gt;
+&lt;li&gt;Hacer que el servicio dependa de la &lt;strong&gt;interfaz&lt;&#x2F;strong&gt;, no de la clase concreta&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Inyectar&lt;&#x2F;strong&gt; la implementación concreta a través del constructor&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Paso 1: Definir la interfaz **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;interface &lt;&#x2F;span&gt;&lt;span&gt;IUserRepository {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;findById&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Paso 2: El servicio depende de la interfaz **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;userRepo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;IUserRepository) {} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; 💡 Parameter properties
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getUser&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;this.userRepo.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;findById&lt;&#x2F;span&gt;&lt;span&gt;(id);
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Paso 3: Crear la implementación real **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserRepository &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;implements &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;IUserRepository &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;findById&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;database.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;query&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;`SELECT * FROM users WHERE id = ${id}`&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ahora, a &lt;code&gt;UserService&lt;&#x2F;code&gt; le da igual &lt;strong&gt;qué&lt;&#x2F;strong&gt; implementación recibe. Solo conoce &lt;code&gt;IUserRepository&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Uso en producción **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span&gt;userRepo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span&gt;UserRepository();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span&gt;userService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span&gt;UserService(userRepo);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-lightbulb&quot;&gt;&lt;&#x2F;i&gt; Parameter Properties: el atajo explicado&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;Esto se conoce como &lt;b&gt;constructor parameter properties&lt;&#x2F;b&gt; en TypeScript. Es un atajo que declara una propiedad de clase y le asigna el valor del parámetro del constructor, todo en una sola línea.&lt;&#x2F;p&gt;
+        &lt;p&gt;Estos dos ejemplos son equivalentes:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Atajo (lo que usamos) **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;userRepo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;IUserRepository) {}
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Explícito (lo mismo, escrito al completo) **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserService {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;private &lt;&#x2F;span&gt;&lt;span&gt;userRepo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;IUserRepository;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;constructor&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;userRepo&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;IUserRepository) {
+&lt;&#x2F;span&gt;&lt;span&gt;    this.userRepo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;userRepo;
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Ambas versiones guardan el &lt;code&gt;userRepo&lt;&#x2F;code&gt; inyectado como propiedad de clase para que métodos como &lt;code&gt;getUser()&lt;&#x2F;code&gt; puedan acceder a él mediante &lt;code&gt;this.userRepo&lt;&#x2F;code&gt;. El atajo es simplemente la forma que tiene TypeScript de reducir código repetitivo manteniendo el mismo comportamiento. En PHP existe una funcionalidad similar llamada constructor property promotion, y otros lenguajes tienen funcionalidades parecidas.&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;🧪 Por Qué Importa: Testing&lt;&#x2F;h4&gt;
+&lt;p&gt;Aquí es donde la DI realmente brilla. Como &lt;code&gt;UserService&lt;&#x2F;code&gt; depende de una interfaz, podemos crear una &lt;strong&gt;implementación mock&lt;&#x2F;strong&gt; para los tests, sin necesidad de base de datos:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Implementación mock para tests **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span&gt;UserRepositoryMock &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;implements &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;font-style:italic;color:#a6e22e;&quot;&gt;IUserRepository &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;findById&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;string&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span&gt;User {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;{ id, name: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Test User&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, email: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;test@example.com&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;ts&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-ts &quot;&gt;&lt;code class=&quot;language-ts&quot; data-lang=&quot;ts&quot;&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;** Test unitario (¡sin base de datos!) **&#x2F;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span&gt;mockRepo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span&gt;UserRepositoryMock();
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span&gt;userService &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= new &lt;&#x2F;span&gt;&lt;span&gt;UserService(mockRepo);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#66d9ef;&quot;&gt;const &lt;&#x2F;span&gt;&lt;span&gt;user &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span&gt;userService.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;getUser&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;123&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a6e22e;&quot;&gt;assert&lt;&#x2F;span&gt;&lt;span&gt;(user.name &lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;=== &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;quot;Test User&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#75715e;&quot;&gt;&#x2F;&#x2F; ✅ Rápido, aislado, fiable
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;🚫 Sin DI:&lt;&#x2F;strong&gt; Tus tests necesitan una base de datos real, haciéndolos lentos y difíciles de configurar.&lt;br &#x2F;&gt;
+&lt;strong&gt;✅ Con DI:&lt;&#x2F;strong&gt; Los tests son rápidos, aislados y están completamente bajo tu control.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;📊 Antes vs Después: Resumen Visual&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;strong&gt;Sin DI (con acoplamiento):&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#272822;color:#f8f8f2;&quot;&gt;&lt;code&gt;&lt;span&gt;UserService ──────► UserRepository ──────► Database
+&lt;&#x2F;span&gt;&lt;span&gt;   (no se puede         (concreto)
+&lt;&#x2F;span&gt;&lt;span&gt;     cambiar)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;strong&gt;Con DI (sin acoplamiento):&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#272822;color:#f8f8f2;&quot;&gt;&lt;code&gt;&lt;span&gt;UserService ──────► IUserRepository (interfaz)
+&lt;&#x2F;span&gt;&lt;span&gt;                         │
+&lt;&#x2F;span&gt;&lt;span&gt;                    ┌────┴─────┐
+&lt;&#x2F;span&gt;&lt;span&gt;                    ▼          ▼
+&lt;&#x2F;span&gt;&lt;span&gt;             UserRepository  UserRepositoryMock
+&lt;&#x2F;span&gt;&lt;span&gt;              (producción)      (testing)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;La interfaz actúa como un &lt;strong&gt;contrato&lt;&#x2F;strong&gt;: cualquier clase que la implemente se puede conectar a &lt;code&gt;UserService&lt;&#x2F;code&gt;. Esto hace que tu código sea flexible y tus tests fiables.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;💡 Puntos Clave&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Depende de abstracciones (interfaces), no de implementaciones concretas&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Inyecta las dependencias&lt;&#x2F;strong&gt; a través del constructor en lugar de crearlas internamente&lt;&#x2F;li&gt;
+&lt;li&gt;Esto hace que tus clases sean &lt;strong&gt;fáciles de testear&lt;&#x2F;strong&gt; intercambiando implementaciones reales por mocks&lt;&#x2F;li&gt;
+&lt;li&gt;También hace que tu código sea &lt;strong&gt;más fácil de cambiar&lt;&#x2F;strong&gt; (cambia un repositorio SQL por un cliente API sin tocar el servicio)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Si conoces los &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;solid-principles&#x2F;&quot;&gt;&lt;b&gt;principios SOLID&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;, notarás que la Inyección de Dependencias es la aplicación práctica del &lt;strong&gt;Principio de Inversión de Dependencias (DIP)&lt;&#x2F;strong&gt;: &lt;em&gt;&amp;quot;Los módulos de alto nivel no deben depender de módulos de bajo nivel. Ambos deben depender de abstracciones.&amp;quot;&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;2&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;Conclusión&lt;&#x2F;h4&gt;
+&lt;p&gt;La Inyección de Dependencias es uno de esos patrones que, una vez lo entiendes, querrás aplicar en todas partes. Mantiene tu código desacoplado, tus tests rápidos y fiables, y tu arquitectura flexible.&lt;&#x2F;p&gt;
+&lt;p&gt;La próxima vez que escribas &lt;code&gt;new SomeDependency()&lt;&#x2F;code&gt; dentro de una clase, para y pregúntate: &lt;em&gt;¿debería inyectar esto?&lt;&#x2F;em&gt; 🎯&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>

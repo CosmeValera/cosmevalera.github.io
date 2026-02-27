@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp" as="image" fetchpriority="high">
+  
+
+  </head>
+  <body class="blog-post-page">
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                <a href="/es&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Switch language"
+                   title="Cambiar a Español">
+                    <span class="lang-code">EN</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/" class="menu-item " aria-label="Home">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Home</span>
+    </a>
+    
+    <a href="/projects" class="menu-item menu-projects " aria-label="Projects">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Projects</span>
+    </a>
+    
+    <a href="/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/readings" class="menu-item menu-readings " aria-label="Readings">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Readings</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+    
+
+    
+    <a href="/blog" class="back-link">← Back to all posts</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/tags/architecture/" class="tag tag-architecture-plain">
+              Architecture
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Shared Styles in Monorepos</h1>
+    <h3 class="presentation-text">Approaches to maintain consistent styles across multiple projects in a monorepo environment</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">September 01, 2024</span>
+      <span class="reading-time">
+        
+          2 min read • 380 words
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Table of Contents</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">On this page</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp" alt="blog-cover" /></p>
+<h4><b>🤔 Overview</b></h4>
+<p>In large-scale projects maintaining consistent styles across multiple applications is crucial. Here are two key approaches for managing shared styles:</p>
+<ol>
+<li>📦 Creating a shared styles library as a <b>npm package</b>.</li>
+<li>🔗 Directly importing styles from <b>a centralized directory</b> within the monorepo.</li>
+</ol>
+<hr />
+<h4><b>📦 1. Creating a Styles Library with npm</b></h4>
+<p><b>Overview:</b> This approach involves creating a dedicated styles library that is published as a npm package. The styles can then be imported into any project that needs them.</p>
+<p><b>Implementation:</b> For example, if you're working with custom theme styles for PrimeReact, you can create your styles in a library and export them using an <code>index.js</code> file like this:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>module.exports = {
+</span><span>  theme: require(</span><span style="color:#e6db74;">&#39;./style/themes/my-theme/theme.scss&#39;</span><span>),
+</span><span>}</span><span style="color:#f92672;">;
+</span></code></pre>
+<p>After publishing the package, you can install it in your projects using:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm i my-theme
+</span></code></pre>
+<p>Then, simply import the styles in your main JavaScript entry point:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>import </span><span style="color:#e6db74;">&#39;my-theme&#39;</span><span style="color:#f92672;">;
+</span></code></pre>
+<p><b>Pros:</b>
+Centralized version control of styles.
+Easy to update and distribute across multiple projects.</p>
+<p><b>Cons:</b>
+Requires publishing and versioning with each change.</p>
+<h4><b>🔗 2. Direct Import from a Centralized Directory</b></h4>
+<p><b>Overview:</b> If you’re using a monorepo setup, you can store your styles in a central directory and import them directly into each project.</p>
+<p><b>Implementation:</b> Place your styles in a folder at the root level, parallel to your apps, and import them in your projects:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>import </span><span style="color:#e6db74;">&#39;../style/themes/my-theme/theme.scss&#39;</span><span style="color:#f92672;">;
+</span></code></pre>
+<p><b>Pros:</b>
+No need to publish or manage versions.
+Immediate access to the latest styles without additional steps.</p>
+<p><b>Cons:</b>
+Potential for accidental breaking changes if styles are updated.
+Need to have a monorepo structure; doesn't work if the projects are split into different repositories.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>2</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><h4><b>❓ What to choose</b></h4>
+<ul>
+<li>Use a <b>npm package</b> if you want to have strict version control or you don't have all your projects in the same folder.</li>
+<li>Use direct importing from <b>a centralized directory</b> if you prefer a simpler solution and your code structure allows it.</li>
+</ul>
+
+    </div>
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+
+      
+      <div class="link">
+        <span> Next post</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;optimizing-microfrontends-with-turborepo&#x2F;">Optimizing Microfrontends with Turborepo</a>
+      </div>
+      
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Sponsor</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

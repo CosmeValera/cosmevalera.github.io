@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;cover-webp.webp" as="image" fetchpriority="high">
+  
+
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                
+                
+                <a href="&#x2F;blog&#x2F;bitcoin-103&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Cambiar idioma"
+                   title="Switch to English">
+                    <span class="lang-code">ES</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/projects" class="menu-item menu-projects " aria-label="Proyectos">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Proyectos</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+    
+
+    
+    <a href="/es/blog" class="back-link">← Todas las publicaciones</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/bitcoin/" class="tag tag-bitcoin-plain">
+              Bitcoin
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/finance/" class="tag tag-finance-plain">
+              Finanzas
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">BTC 103: Custodia en Frío de Bitcoin</h1>
+    <h3 class="presentation-text">Aprende sobre hardware wallets y copias de seguridad de la frase semilla, y cómo usarlas para mantener tu Bitcoin seguro</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">February 04, 2026</span>
+      <span class="reading-time">
+        
+          13m lectura • 2596 palabras
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Índice</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">En esta página</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <blockquote>
+<p><strong>📖 Tiempo de lectura:</strong> ~13 minutos<br />
+<strong>⏱️ Tiempo total para completar:</strong> 1–2 horas (incluyendo la configuración del hardware y las primeras transacciones)<br />
+<strong>💰 Inversión necesaria:</strong> ~200–400 euros entre hardware wallet y sistema de respaldo</p>
+</blockquote>
+<p><img src="/images/blog/2026-02-04-bitcoin-3/cover-webp.webp" alt="blog-cover" /></p>
+<p><b>¿Por qué debería importarme el almacenamiento en frío?</b></p>
+<p>Se han perdido cientos de millones de euros en Bitcoin. Estas son las causas más habituales:</p>
+<ul>
+    <li><b>Pérdida de la frase semilla:</b> <a class="link-text" target="_blank" href="https://www.bbc.com/news/articles/c74zel3ng1vo">James Howells</a> tiró por error un disco duro con 8.000 BTC (hoy valorados en más de 700 millones de euros) en 2013.</li>
+    <li><b>Estafas y ataques de phishing:</b> <a class="link-text" target="_blank" href="https://heraldsheets.com/protocol-podcast-host-loses-bitcoin-btc-savings/">Eric Savics</a> perdió siete años de ahorros (más de 1 millón de euros en Bitcoin) en apenas 20 minutos tras descargar una wallet falsa.</li>
+    <li><b>Hackeos o quiebras de exchanges:</b> El <a class="link-text" target="_blank" href="https://www.investopedia.com/what-went-wrong-with-ftx-6828447">colapso de FTX</a> en 2022 dejó a miles de usuarios sin acceso a sus Bitcoin.</li>
+    <li><b>Fallecimiento sin planificación hereditaria:</b> Familiares incapaces de <a class="link-text" target="_blank" href="https://www.swanbitcoin.com/education/multi-sig-custody-and-inheritance/">acceder al Bitcoin de un pariente tras su muerte</a>.</li>
+</ul>
+<p>El patrón es claro: la mayoría de las pérdidas se deben a una mala gestión de copias de seguridad o a delegar la custodia en terceros. Por eso el almacenamiento en frío es esencial, especialmente cuando hablamos de cantidades significativas de Bitcoin.</p>
+<p><b>¿Qué es el almacenamiento en frío?</b></p>
+<p>El almacenamiento en frío consiste en guardar tu Bitcoin completamente fuera de la red, lejos de dispositivos conectados a internet y, por tanto, de posibles atacantes. Es el estándar de seguridad para proteger cantidades significativas de Bitcoin que se piensan mantener a largo plazo.</p>
+<p>Como vimos en <a class="link-text" target="_blank" href="https://cosmevalera.dev/es/blog/bitcoin-102/"><b>BTC 102: Cómo Comprar Bitcoin</b></a>, una hot wallet es una billetera cuya frase semilla se genera en un entorno conectado a internet: es cómoda, pero potencialmente vulnerable. Una cold wallet, en cambio, su frase semilla fue generada sin conexión a internet y nunca ha estado expuesta a un dispositivo online. Eso la hace inmune a hackeos en línea. A cambio, asumes toda la responsabilidad: tu Bitcoin está seguro siempre que no compartas ni pierdas la frase semilla.</p>
+<p><b>¿Cuándo tiene sentido pasarse al almacenamiento en frío?</b></p>
+<p>No existe una regla universal, pero suele recomendarse cuando tienes el equivalente a unos dos salarios invertidos en Bitcoin.</p>
+<p>Una hardware wallet cuesta normalmente entre 100 y 250€, a lo que hay que sumar unos 50–100€ para un buen sistema de respaldo para tu frase semilla. Si solo tienes unos 100€ en Bitcoin, probablemente no compense todavía. Dicho esto, hay quien prefiere la tranquilidad de usar almacenamiento en frío desde el primer día. Regla práctica: si pierdes el sueño preocupándote por la seguridad de tus Bitcoin, es el momento de dar el paso.</p>
+<blockquote>
+<p><strong>⚠️ Aviso:</strong> No estoy patrocinado por ninguna empresa. Para tener almacenamiento en frío necesitarás tanto una hardware wallet como un sistema de respaldo para la frase semilla. Por lo tanto, mis recomendaciones se basan únicamente en mi experiencia personal y en lo que creo que es la mejor opción para ti.</p>
+</blockquote>
+<p>En este tutorial aprenderás a elegir una hardware wallet y un sistema de respaldo, crear tu primera cold wallet y usar Sparrow para enviar y recibir Bitcoin.</p>
+<hr />
+<h4>Hardware Wallet</h4>
+<p>Una hardware wallet es un dispositivo físico que genera y almacena la semilla de tu billetera completamente fuera de línea, creando así una cold wallet. Es la forma más segura de custodiar Bitcoin.</p>
+<p>Estas wallets permiten firmar transacciones sin exponer nunca las claves privadas, ni siquiera al enviar fondos. Además, incluyen funciones avanzadas como passphrases, soporte multifirma o semillas temporales, que no cubriremos aquí pero merece la pena investigar.</p>
+<p>Hay varias opciones en el mercado (ColdCard, BitBox02, Trezor, Jade…). Yo recomiendo ColdCard, bien la <a class="link-text" target="_blank" href="https://coldcard.com/mk4"><b>ColdCard Mk4</b></a> (~150 €), que usaré en este tutorial, o la <a class="link-text" target="_blank" href="https://coldcard.com/q"><b>ColdCard Q</b></a> (~250 €), con pantalla más grande y más botones. Ambas son excelentes.</p>
+<div class="phone-images-row">
+  <a href="https://coldcard.com/mk4" target="_blank">
+    <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-9.webp"></img>
+  </a>
+  <a href="https://coldcard.com/q" target="_blank">
+    <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-10.webp"></img>
+  </a>
+</div>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Explora otras opciones de hardware wallets</summary>
+    <div class="expandable-content">
+        <p>Hay otras buenas opciones como la <a class="link-text" target="_blank" href="https://bitbox.swiss/bitbox02/"><b>BitBox02</b></a> (alrededor de 150 euros), la <a class="link-text" target="_blank" href="https://foundation.xyz/passport-core/"><b>Passport</b></a> (alrededor de 200 euros), o la <a class="link-text" target="_blank" href="https://www.trezor.io/"><b>Trezor Safe 7</b></a> (alrededor de 250 euros).</p>
+        <div class="phone-images-row">
+          <a href="https://bitbox.swiss/bitbox02/" target="_blank">
+            <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-11.webp"></img>
+          </a>
+          <a href="https://foundation.xyz/passport-core/" target="_blank">
+            <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-12.webp"></img>
+          </a>
+          <a href="https://www.trezor.io/" target="_blank">
+            <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-13.webp"></img>
+          </a>
+        </div>
+        <p>Si te sientes abrumado con tantas opciones y no sabes qué hardware wallet comprar, lo importante es tener una hardware wallet de buena reputación. Y cualquiera de las opciones que mencioné es excelente y mantendrá tu Bitcoin seguros.</p>
+        <p>Recomiendo usar o bien la <a class="link-text" target="_blank" href="https://coldcard.com/mk4"><b>ColdCard Mk4</b></a> o la <a class="link-text" target="_blank" href="https://coldcard.com/q"><b>ColdCard Q</b></a> porque tienen el respaldo de miles de usuarios, son seguras y fáciles de usar; y también para que puedas seguir este tutorial sin problemas.</p>
+        <p>Para los más curiosos, aquí hay una comparación detallada de 3 horas de las hardware wallets actuales:</p>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/pGjJKOZL_zA?si=iO1tRwsQKEM3r0eQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</details>
+<p>A continuación veremos cómo configurar la hardware wallet, hacer el respaldo de la frase semilla en metal y usar Sparrow para gestionar tu cold wallet.</p>
+<hr />
+<h4>Copia de seguridad de la frase semilla</h4>
+<p>Usar placas de metal es la forma más segura de hacer una copia de seguridad de tu frase semilla. El metal no se puede hackear y resiste el paso del tiempo. En cambio, escribir la frase en papel no es una solución segura a largo plazo: puede perderse, ser robada o dañarse por agua o fuego.</p>
+<p>Para respaldar tu frase semilla con placas de metal, recomiendo comprar: <a class="link-text" target="_blank" href="https://onekey.so/products/onekey-keytag/"><b>OneKey KeyTag</b></a> (unos 60€). Incluye dos placas de metal y un punzón para grabar la frase semilla, lo que te permite almacenar hasta dos frases distintas.</p>
+<div class="phone-images-row">
+  <a href="https://onekey.so/products/onekey-keytag/" target="_blank">
+    <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-1.webp"></img>
+  </a>
+  <a href="https://onekey.so/products/onekey-keytag/" target="_blank">
+    <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-2.webp"></img>
+  </a>
+</div>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Explora otras opciones de copia de seguridad de la frase semilla</summary>
+    <div class="expandable-content">
+        <p>Existen otras alternativas para guardar tu frase semilla en metal, como <a class="link-text" target="_blank" href="https://www.blockplate.com/"><b>Blockplate</b></a>, <a class="link-text" target="_blank" href="https://getcoinplate.com/?v=12470fe406d4"><b>Coinplate Alpha</b></a> o <a class="link-text" target="_blank" href="https://seedplate.com/"><b>Seedplate</b></a>.</p>
+        <div class="phone-images-row">
+          <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-5.webp"></img>
+          <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-6.webp"></img>
+        </div>
+        <p>También hay sistemas de grabado en lugar de punzón, como <a class="link-text" target="_blank" href="https://ironhodl.com/"><b>IRON HODL</b></a> o <a class="link-text" target="_blank" href="https://oz-usa.com/ti1000-lite-titanium-crypto-seed-phrase-recovery-cold-storage-system-metal-plate-engraving-pen/"><b>TI1000</b></a>.</p> 
+        <div class="phone-images-row">
+          <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-3.webp"></img>
+          <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-4.webp"></img>
+        </div>
+        <p>Recomiendo <a class="link-text" target="_blank" href="https://onekey.so/products/onekey-keytag/"><b>OneKey KeyTag</b></a> porque es una de las opciones más económicas, incluye dos placas y un punzón, y además es resistente y fácil de usar.</p>
+        <p>Cualquiera de estas soluciones es válida. Lo realmente importante es contar con un respaldo duradero de tu frase semilla. Siéntete libre de comparar precios y características antes de decidir.</p>
+    </div>
+</details>
+<hr />
+<h4>Tarjeta microSD y adaptador</h4>
+<p>Si utilizas una ColdCard, necesitarás una tarjeta microSD para exportar la billetera desde el dispositivo y un adaptador para poder conectarla a tu ordenador. Puedes encontrarlos fácilmente en Amazon o en cualquier tienda de electrónica. Por ejemplo: <a class="link-text" target="_blank" href="https://www.amazon.de/dp/B08TJTB8XS?ref_=cm_sw_r_cso_cp_apan_dp_ss_BEKAHX6Q2PQT6W7YVK76"><b>microSD</b></a> y <a class="link-text" target="_blank" href="https://www.amazon.de/dp/B09NHKN74L?ref_=cm_sw_r_cso_wa_apan_dp_ss_M728Z6W1VP4NPY6KB576"><b>adaptador</b></a>.</p>
+<div class="phone-images-row">
+  <a href="https://www.amazon.de/dp/B08TJTB8XS?ref_=cm_sw_r_cso_cp_apan_dp_ss_BEKAHX6Q2PQT6W7YVK76" target="_blank">
+    <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-7.webp"></img>
+  </a>
+  <a href="https://www.amazon.de/dp/B09NHKN74L?ref_=cm_sw_r_cso_wa_apan_dp_ss_M728Z6W1VP4NPY6KB576" target="_blank">
+    <img class="phone-image" src="/images/blog/2026-02-04-bitcoin-3/image-8.webp"></img>
+  </a>
+</div>
+<p>En las siguientes secciones asumimos que ya has comprado la hardware wallet, el respaldo en metal y, si usas ColdCard, la tarjeta microSD con su adaptador. Si utilizas otra hardware wallet, el proceso será muy parecido, aunque algunos pasos concretos pueden variar.</p>
+<hr />
+<h4>Instalando Sparrow Wallet</h4>
+<p>Instala <a class="link-text" target="_blank" href="https://sparrowwallet.com/download/"><b>Sparrow Wallet</b></a> en tu ordenador. Es una wallet de escritorio, de código abierto y sin custodia, pensada específicamente para el uso con hardware wallets y almacenamiento en frío de Bitcoin. Es lo que la mayoría de Bitcoiners usan para gestionar sus hardware wallets.</p>
+<p>La configuración inicial es sencilla:</p>
+<ul>
+<li>Instala <a class="link-text" target="_blank" href="https://sparrowwallet.com/download/"><b>Sparrow Wallet</b></a></li>
+<li>[Introduction] <strong>Haz clic en Next</strong></li>
+<li>[Public Server] <strong>Haz clic en Next</strong></li>
+<li>[Bitcoin Core node] <strong>Haz clic en Next</strong></li>
+<li>[Connecting to a Private Electrum Server] <strong>Configure Server</strong></li>
+<li><strong>Haz clic en Test Connection</strong></li>
+<li>Si aparece &quot;Connected to Electrum&quot;: <strong>Haz clic en Create New Wallet</strong>
+<ul>
+<li>Si falla, elige otra URL de servidor público e inténtalo de nuevo</li>
+</ul>
+</li>
+<li><strong>¡Ahora Sparrow Wallet está configurada!</strong></li>
+</ul>
+<p>Importaremos tu cold wallet desde la hardware wallet en los siguientes pasos. Por ahora, Sparrow está listo y a la espera.</p>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Guía en vídeo para la configuración de Sparrow (primeros 3 minutos)</summary>
+    <div class="expandable-content">
+        <p>Este vídeo cubre la configuración inicial de <a class="link-text" target="_blank" href="https://sparrowwallet.com/download/"><b>Sparrow Wallet</b></a> (01:08–02:55). El resto muestra como crear una hot wallet con Sparrow. Es interesante, pero nosotros usaremos el enfoque "air-gapped" con ColdCard en las siguientes secciones.</p>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/tCKn75nzb9o?si=0ULcXXBIP0ETERf2&start=68" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</details>
+<hr />
+<h4>Configuración de la Hardware Wallet</h4>
+<p>Ahora llega el momento de crear tu primera cold wallet con la ColdCard. Sigue los pasos a continuación o, si lo prefieres, el tutorial en vídeo de 7 minutos:</p>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Tutorial en vídeo de 10 minutos: Configuración de la ColdCard Mk4</summary>
+    <div class="expandable-content">
+      <p>El tutorial se divide en dos partes. La primera muestra como configurar la <b>ColdCard Mk4</b> (01:32–11:30). La segunda muestra como importar la cold wallet en Sparrow, recivir y enviar sats (12:05–26:13), eso lo iremos viendo a lo largo de este tutorial.</p>
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/V9mJvD8rnyY?si=Gxj_dEXZsCxyT9cu&start=92" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</details>
+<p>Pasos a seguir:</p>
+<ul>
+<li>Desempaqueta la ColdCard Mk4 (incluye una tarjeta con el número de serie y una tarjeta temporal de respaldo)</li>
+<li>Conecta la ColdCard a una fuente de alimentación (mejor un enchufe de pared que el ordenador)</li>
+<li>Comprueba que el número de serie del dispositivo coincide con el de la tarjeta</li>
+<li>Sigue las instrucciones en pantalla para configurar el PIN y anótalo en la tarjeta de respaldo</li>
+<li>Selecciona &quot;New Seed Words&quot; para generar tu primera cold wallet</li>
+<li>Apunta las palabras semilla y completa el cuestionario de verificación</li>
+<li>Al finalizar, verás &quot;Ready to Sign&quot; como primera opción del menú</li>
+</ul>
+<p>¡Enhorabuena! Tu ColdCard ya está lista para firmar transacciones fuera de internet 🥳</p>
+<p>Antes de usarla, queda un paso fundamental: transferir la frase semilla desde la tarjeta temporal a la placa de metal definitiva.</p>
+<hr />
+<h4>Respalda tu frase semilla en metal</h4>
+<p>La tarjeta de respaldo que vino con tu ColdCard solo está destinada al almacenamiento temporal durante la configuración. Ahora transferiremos tu frase semilla a un respaldo de metal permanente, resistente al fuego y al agua.</p>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Vídeo tutorial (9 minutos): Como grabar las placas de metal</summary>
+    <div class="expandable-content">
+      <p>Este vídeo explica cómo grabar paso a paso la frase semilla en placas de metal usando un punzón (sirve para OneKey KeyTag, TinySeed, SeedPlate, etc.)</p>
+      <iframe width="100%" height="400" src="https://www.youtube.com/embed/EkxCqc4g1ls?si=zy_8ZhHb_RcW4lgy&start=164" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</details>
+<p><b>Cómo crear tu respaldo en metal:</b></p>
+<ul>
+<li>Desempaqueta el OneKey KeyTag (incluye dos placas de metal, punzón e instrucciones)</li>
+<li>Usa el punzón para perforar cuidadosamente los agujeros correspondientes de cada palabra de tu frase semilla</li>
+<li>Revisa que todas las palabras estén correctamente marcadas</li>
+<li>Opcional: Añade un chip NFC para almacenar una nota (como &quot;Copia de seguridad de billetera Bitcoin&quot;)</li>
+<li>Opcional: Aplica el sello a prueba de manipulaciones (para hacer esto mejor espera hasta después de haber verificado que el respaldo funciona)</li>
+</ul>
+<p><b>⚠️ Pasos de seguridad críticos:</b></p>
+<ul>
+<li><strong>No hagas fotos</strong> de la frase semilla ni del respaldo</li>
+<li><strong>Evita que nadie la vea</strong> mientras trabajas</li>
+<li>Una vez terminado, <strong>quema o destruye</strong> la tarjeta de papel</li>
+</ul>
+<p><b>Verifica el respaldo antes de destruir el papel:</b></p>
+<p>Antes de deshacerte del papel, conviene comprobar que el respaldo en metal funciona. Puedes borrar temporalmente la wallet en Sparrow y restaurarla usando solo la placa de metal. Así te aseguras de que, si dentro de años necesitas recuperar tu billetera, podrás hacerlo sin problemas. ¡No esperes 10 años para descubrir que tu respaldo no funciona!</p>
+<p><b>Guarda la placa de metal de forma segura:</b></p>
+<p>Esta placa es, literalmente, la llave maestra de tus Bitcoin. Cualquiera que la tenga puede acceder a tus fondos. Guárdala en una caja fuerte u otro lugar seguro. Recuerda: la ColdCard almacena la billetera en su elemento seguro, así que para el uso diario no necesitarás la placa de metal, es solo para recuperar tus fondos si tu ColdCard se pierde o daña.</p>
+<p>Con tu cold wallet ya protegida y respaldada, pasemos a usar Sparrow para enviar y recibir Bitcoin.</p>
+<hr />
+<h4>Importa tu cold wallet en Sparrow</h4>
+<p>Antes de recibir Bitcoin, necesitamos importar la cold wallet desde la ColdCard a Sparrow. Este proceso solo exporta información pública de tu cold wallet(xpub); la frase semilla nunca sale de la ColdCard.</p>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Vídeo tutorial (11 minutos): ColdCard Mk4 con Sparrow (air-gapped)</summary>
+    <div class="expandable-content">
+        <p>La segunda parte del vídeo muestra el flujo completo: <b>importar la wallet (11:57), recibir Bitcoin (15:42) y enviar Bitcoin firmando sin conexión a internet (17:57)</b>.</p>
+        <p>Si eres capaz de seguir el vídeo hasta el final, el objetivo de esta publicación estaría completo. En caso contrario, sigue leyendo.</p>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/V9mJvD8rnyY?si=Gxj_dEXZsCxyT9cu&start=717" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</details>
+<p>Pasos para importar la billetera:</p>
+<ul>
+<li>Inserta la tarjeta microSD en la ColdCard</li>
+<li>En la ColdCard, ve a <strong>Advanced → MicroSD Card → Export Wallet → Generic JSON</strong></li>
+<li>La ColdCard guardará el archivo en la tarjeta microSD</li>
+<li>Extrae la tarjeta microSD e insértala en tu ordenador</li>
+<li>En Sparrow, haz click en <strong>File → New Wallet</strong></li>
+<li>Ponle un nombre (por ejemplo, &quot;Almacenamiento en frío&quot;)</li>
+<li>Haz click en <strong>Airgapped Hardware Wallet → ColdCard → Import File</strong></li>
+<li>Selecciona el archivo JSON de tu tarjeta microSD</li>
+<li>Haz clic en <strong>Apply</strong></li>
+</ul>
+<p>¡Tu cold wallet ya está conectada! Sparrow muestra tus direcciones de Bitcoin y saldo, pero toda la firma sigue ocurriendo fuera de línea en la ColdCard.</p>
+<hr />
+<h4>Recibir Bitcoin en Sparrow</h4>
+<p>Recibir Bitcoin en tu cold wallet es muy sencillo. Como vimos en el vídeo en <b>Importa tu cold wallet en Sparrow</b>, vamos a enviar una pequeña cantidad desde tu hot wallet (por ejemplo, BlueWallet) para comprobar que todo funciona correctamente.</p>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Vídeo tutorial (11 minutos): ColdCard Mk4 con Sparrow (air-gapped)</summary>
+    <div class="expandable-content">
+        <p>Cómo <b>recibir Bitcoin en tu cold wallet</b> desde tu hot wallet usando Sparrow y ColdCard Mk4 (<b>15:42-17:57</b>).</p>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/V9mJvD8rnyY?si=Gxj_dEXZsCxyT9cu&start=942" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</details>
+<p>Pasos:</p>
+<ul>
+<li>En Sparrow, abre la pestaña <strong>Receive</strong> en la barra lateral izquierda</li>
+<li>Sparrow mostrará una dirección de Bitcoin y un código QR</li>
+<li>En tu hot wallet (BlueWallet), ve a <strong>Send</strong></li>
+<li>Copia la dirección o escanea el código QR de Sparrow en BlueWallet.</li>
+<li>Envía una cantidad pequeña y espera a que la transacción se propague por la red</li>
+</ul>
+<p>En unos segundos verás la transacción pendiente en Sparrow. Tras confirmarse en un bloque (consulta <a href="https://mempool.space/" target="_blank">mempool.space</a>), tus Bitcoin estarán a salvo en almacenamiento en frío 🎉</p>
+<hr />
+<h4>Enviar Bitcoin desde Sparrow</h4>
+<p>Enviar Bitcoin es donde realmente destaca la seguridad "air-gapped". Sparrow crea la transacción, la ColdCard la firma sin conexión y después se transmite a la red. La frase semilla nunca toca internet.</p>
+<p>Enviemos esos Bitcoin de prueba de vuelta a tu hot wallet para completar el viaje de ida y vuelta.</p>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Vídeo tutorial (11 minutos): ColdCard Mk4 con Sparrow (air-gapped)</summary>
+    <div class="expandable-content">
+        <p>La última sección de este vídeo <b>enviando Bitcoin mediante firma sin conexión (17:57-22:23)</b> muestra cómo enviar Bitcoin desde tu cold wallet a tu hot wallet usando Sparrow y ColdCard Mk4.</p>
+        <iframe width="100%" height="400" src="https://www.youtube.com/embed/V9mJvD8rnyY?si=Gxj_dEXZsCxyT9cu&start=1077" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</details>
+<p><b>Paso 1: Crear la transacción en Sparrow</b></p>
+<ul>
+<li>En Sparrow, haz clic en la pestaña <strong>Send</strong> en la barra lateral izquierda</li>
+<li>En tu hot wallet (BlueWallet), ve a <strong>Receive</strong> y copia tu dirección de Bitcoin</li>
+<li>Pega esta dirección en el campo &quot;Pay to&quot; en Sparrow</li>
+<li>Introduce la cantidad que quieres enviar (o haz clic en <strong>Max</strong> para enviar todo)</li>
+<li>Selecciona tu tarifa de transacción:
+<ul>
+<li><strong>Prioridad baja</strong> (1-2 sats/vB): Más lenta, más barata, buena cuando no tienes prisa</li>
+<li><strong>Prioridad normal</strong> (2-4 sats/vB): Opción equilibrada</li>
+<li><strong>Prioridad alta</strong> (5+ sats/vB): Confirmación más rápida</li>
+<li>Consulta <a href="https://mempool.space/" target="_blank">mempool.space</a> para ver las condiciones actuales de la red</li>
+</ul>
+</li>
+<li>Haz clic en <strong>Create Transaction</strong></li>
+<li>Revisa los detalles de la transacción cuidadosamente</li>
+<li>Haz clic en <strong>Finalize Transaction for Signing</strong></li>
+</ul>
+<p><b>Paso 2: Guardar la transacción en la microSD</b></p>
+<ul>
+<li>Haz clic en <strong>Save Transaction</strong></li>
+<li>Guárdala en tu tarjeta microSD (se llamará algo como <code>coldcard-transaction.psbt</code>)</li>
+<li>Expulsa de forma segura la tarjeta microSD de tu ordenador</li>
+</ul>
+<p><b>Paso 3: Firmar la transacción en la ColdCard (air-gapped)</b></p>
+<ul>
+<li>Inserta la tarjeta microSD en tu ColdCard</li>
+<li>En la ColdCard, selecciona <strong>Ready To Sign</strong></li>
+<li>La ColdCard mostrará los detalles de la transacción</li>
+<li>Verifica cuidadosamente:
+<ul>
+<li>La dirección de destino coincide con la de tu hot wallet</li>
+<li>La cantidad es correcta</li>
+<li>La tarifa parece razonable</li>
+</ul>
+</li>
+<li>Si todo se ve bien, presiona <strong>✓</strong> para firmar la transacción</li>
+<li>La ColdCard creará un archivo firmado en la tarjeta microSD (terminando en <code>-final.txn</code>)</li>
+<li>Retira la tarjeta microSD de la ColdCard</li>
+</ul>
+<p><b>Paso 4: Transmitir la transacción firmada</b></p>
+<ul>
+<li>Inserta la tarjeta microSD de nuevo en tu ordenador</li>
+<li>En Sparrow, haz clic en <strong>Load Transaction</strong></li>
+<li>Navega a tu tarjeta microSD y selecciona el archivo que termina en <code>-final.txn</code></li>
+<li>Sparrow mostrará que la transacción ahora está firmada y lista para transmitir</li>
+<li>Haz clic en <strong>Broadcast Transaction</strong></li>
+</ul>
+<p>¡Listo! La transacción se transmitirá a la red y se confirmará en cuanto entre en un bloque.</p>
+<p><b>🎉 ¡Felicidades!</b> Has configurado correctamente el almacenamiento en frío, recibido Bitcoin y enviado Bitcoin usando una firma sin conexión (air-gapped). Tu frase semilla nunca estuvo expuesta a internet, manteniendo tus Bitcoin a salvo.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>2</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><h4>¿Qué sigue?</h4>
+<p>Ahora tienes una base sólida para el almacenamiento en frío de Bitcoin. Aquí hay algunos temas avanzados para explorar cuando estés listo:</p>
+<ul>
+<li><strong>Passphrase (palabra 25):</strong> Añade una capa extra de seguridad a tu frase semilla</li>
+<li><strong>Duress wallet (Cartera de coacción):</strong> Crea una billetera señuelo con una pequeña cantidad en caso de amenazas físicas</li>
+<li><strong>Multifirma (multisig):</strong> Requiere múltiples claves para gastar Bitcoin, útil para cantidades mayores y seguridad añadida</li>
+<li><strong>Bitcoin Lightning:</strong> Pagos rápidos y de baja comisión para transacciones diarias</li>
+<li><strong>Planificación de herencia:</strong> Asegura que tus Bitcoin puedan ser recuperados por familiares de confianza usando bloqueos de tiempo o configuraciones multifirma</li>
+</ul>
+<p>El viaje por la madriguera de Bitcoin es largo, pero el paso más importante ya lo has dado: tomar control real de tus Bitcoin. 🚀</p>
+
+    </div>
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <div class="link">
+        <span> Anterior publicación</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-102&#x2F;">BTC 102: Cómo Comprar Bitcoin</a>
+      </div>
+      
+
+      
+      <div class="link">
+        <span> Siguiente publicación</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;dependency-injection&#x2F;">Inyección de Dependencias</a>
+      </div>
+      
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+      
+      
+          
+      
+  
+
+  
+  <div class="nav-series" style="display: none;">
+      
+      <div class="link">
+        <span> Anterior publicación</span>
+        
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-102&#x2F;?mode=series">BTC 102: Cómo Comprar Bitcoin</a>
+      </div>
+      
+
+      
+  </div>
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/es/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Colabora</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

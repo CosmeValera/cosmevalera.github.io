@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+  Blog | Cosme
+</title>
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog.css">
+
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                
+                
+                <a href="&#x2F;blog&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Cambiar idioma"
+                   title="Switch to English">
+                    <span class="lang-code">ES</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/projects" class="menu-item menu-projects " aria-label="Proyectos">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Proyectos</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+<div class="blog">
+  <div class="blog-icon" id="blog-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path>
+      <path d="m15 5 4 4"></path>
+    </svg>
+  </div>
+  
+  <h1>Blog</h1>
+  <p class="blog-intro">Escribo sobre temas que encuentro interesantes y merecen ser compartidos.</p>
+
+  <!-- FILTER (Desktop Only) -->
+  <div class="filter-buttons-desktop">
+    <div class="filter-dropdown-desktop">
+      <!-- <button class="filter-button" data-filter="recommended">
+        <i class="fas fa-star"></i>
+        Recommended
+      </button>
+
+      <button class="filter-button" data-filter="for-beginners">
+        <i class="fas fa-book"></i>
+        Beginners
+      </button> -->
+      <button class="filter-button" data-filter="frontend">
+        <i class="fas fa-laptop-code"></i>
+        Frontend
+      </button>
+
+      <button class="filter-button" data-filter="best-practices">
+        <i class="fas fa-check-circle"></i>
+        Buenas Prácticas
+      </button>
+
+      <!-- <button class="filter-button" data-filter="backend">
+        <i class="fas fa-server"></i>
+        Backend
+      </button> -->
+
+      <button class="filter-button" data-filter="architecture">
+        <i class="fas fa-sitemap"></i>
+        Arquitectura
+      </button>
+
+      <!-- <button class="filter-button" data-filter="testing">
+        <i class="fas fa-vial"></i>
+        Testing
+      </button> -->
+
+      <button class="filter-button" data-filter="finance">
+        <i class="fas fa-chart-line"></i>
+        Finanzas
+      </button>
+
+      <button class="filter-button" data-filter="bitcoin">
+        <i class="fab fa-bitcoin"></i>
+        Bitcoin
+      </button>
+
+      <div class="filter-separator"></div>
+
+      <a href="#blog-series" class="series-link-button">
+        <i class="fas fa-layer-group"></i>
+        Series
+      </a>
+    </div>
+  </div>
+  <!-- END: FILTER (Desktop Only) -->
+
+  <!-- Mobile Filter Button -->
+  <div class="mobile-filter-button-container">
+    <button id="filter-menu-button" class="mobile-filter-button" aria-label="Filtrar publicaciones">
+      <i class="fas fa-filter"></i>
+    </button>
+  </div>
+
+  <!-- Filter Modal (Mobile Only) -->
+  <div class="filter-modal" id="filter-modal">
+    <div class="filter-modal-content">
+      <!-- FILTER SECTION -->
+      <div class="filter-modal-section">
+        <div class="filter-modal-header">
+          <h3>Filtrar publicaciones</h3>
+          <button class="filter-modal-close" id="filter-modal-close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="filter-modal-body">
+          <button class="filter-modal-option" data-filter="frontend">
+            <i class="fas fa-laptop-code"></i>
+            Frontend
+          </button>
+          <button class="filter-modal-option" data-filter="best-practices">
+            <i class="fas fa-check-circle"></i>
+            Buenas Prácticas
+          </button>
+          <button class="filter-modal-option" data-filter="architecture">
+            <i class="fas fa-sitemap"></i>
+            Arquitectura
+          </button>
+          <!-- <button class="filter-modal-option" data-filter="testing">
+            <i class="fas fa-vial"></i>
+            Testing
+          </button> -->
+          <button class="filter-modal-option" data-filter="finance">
+            <i class="fas fa-chart-line"></i>
+            Finanzas
+          </button>
+          <button class="filter-modal-option" data-filter="bitcoin">
+            <i class="fab fa-bitcoin"></i>
+            Bitcoin
+          </button>
+        </div>
+      </div>
+
+      <!-- JUMP TO SECTION -->
+      <div class="filter-modal-section navigation-section">
+        <div class="filter-modal-header">
+          <h3>SALTAR A:</h3>
+        </div>
+        <div class="filter-modal-body">
+          <a href="#blog-top" class="filter-modal-navigation-link">
+            <i class="fas fa-pen-nib"></i>
+            Publicaciones
+            <i class="fas fa-arrow-up filter-modal-navigation-arrow"></i>
+          </a>
+          <a href="#blog-series" class="filter-modal-navigation-link">
+            <i class="fas fa-layer-group"></i>
+            Series
+            <i class="fas fa-arrow-down filter-modal-navigation-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END: Filter Modal (Mobile Only) -->
+  <!-- END: Filter Modal (Mobile Only) -->
+  
+  <div class="blog-cards">
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-testing" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;dependency-injection&#x2F;">
+        
+          
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-testing" data-filter="testing">
+                    Testing
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-best-practices tag-secondary" data-filter="best-practices">
+                    
+                      Buenas Prácticas
+                    
+                  </div>
+                
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-testing">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2026-03-03-dependency-injection&#x2F;cover-image.webp" alt="Cover preview for Inyección de Dependencias" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">Inyección de Dependencias</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Descubre cómo la Inyección de Dependencias desacopla tu código de sus dependencias, facilitando el testing y el intercambio de implementaciones</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">February 27, 2026</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    5m lectura - <small>819 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-testing">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2026-03-03-dependency-injection&#x2F;cover-image.webp" alt="Cover preview for Inyección de Dependencias" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-testing">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2026-03-03-dependency-injection&#x2F;cover-image.webp" alt="Cover preview for Inyección de Dependencias" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">Inyección de Dependencias</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Descubre cómo la Inyección de Dependencias desacopla tu código de sus dependencias, facilitando el testing y el intercambio de implementaciones</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">February 27, 2026</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                5m lectura - <small>819 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-bitcoin" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-103&#x2F;">
+        
+          
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-bitcoin" data-filter="bitcoin">
+                    Bitcoin
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-finance tag-secondary" data-filter="finance">
+                    
+                      Finanzas
+                    
+                  </div>
+                
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-bitcoin">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;cover-webp.webp" alt="Cover preview for BTC 103: Custodia en Frío de Bitcoin" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">BTC 103: Custodia en Frío de Bitcoin</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Aprende sobre hardware wallets y copias de seguridad de la frase semilla, y cómo usarlas para mantener tu Bitcoin seguro</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">February 04, 2026</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    13m lectura - <small>2596 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-bitcoin">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;cover-webp.webp" alt="Cover preview for BTC 103: Custodia en Frío de Bitcoin" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-bitcoin">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2026-02-04-bitcoin-3&#x2F;cover-webp.webp" alt="Cover preview for BTC 103: Custodia en Frío de Bitcoin" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">BTC 103: Custodia en Frío de Bitcoin</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Aprende sobre hardware wallets y copias de seguridad de la frase semilla, y cómo usarlas para mantener tu Bitcoin seguro</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">February 04, 2026</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                13m lectura - <small>2596 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-bitcoin" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-102&#x2F;">
+        
+          
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-bitcoin" data-filter="bitcoin">
+                    Bitcoin
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-finance tag-secondary" data-filter="finance">
+                    
+                      Finanzas
+                    
+                  </div>
+                
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-bitcoin">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;cover-webp.webp" alt="Cover preview for BTC 102: Cómo Comprar Bitcoin" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">BTC 102: Cómo Comprar Bitcoin</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Aprende cómo comprar Bitcoin en exchanges y almacenarlo de forma segura</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">October 19, 2025</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    9m lectura - <small>1765 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-bitcoin">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;cover-webp.webp" alt="Cover preview for BTC 102: Cómo Comprar Bitcoin" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-bitcoin">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2025-10-19-bitcoin-2&#x2F;cover-webp.webp" alt="Cover preview for BTC 102: Cómo Comprar Bitcoin" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">BTC 102: Cómo Comprar Bitcoin</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Aprende cómo comprar Bitcoin en exchanges y almacenarlo de forma segura</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">October 19, 2025</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                9m lectura - <small>1765 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-bitcoin" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-101&#x2F;">
+        
+          
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-bitcoin" data-filter="bitcoin">
+                    Bitcoin
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-finance tag-secondary" data-filter="finance">
+                    
+                      Finanzas
+                    
+                  </div>
+                
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-bitcoin">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;cover-webp.webp" alt="Cover preview for BTC 101: ¿Por qué Bitcoin?" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">BTC 101: ¿Por qué Bitcoin?</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Las razones clave por las que Bitcoin puede beneficiar a todos: descentralización, resistencia a la censura y oferta limitada</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">July 25, 2025</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    11m lectura - <small>2187 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-bitcoin">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;cover-webp.webp" alt="Cover preview for BTC 101: ¿Por qué Bitcoin?" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-bitcoin">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2025-07-25-bitcoin&#x2F;cover-webp.webp" alt="Cover preview for BTC 101: ¿Por qué Bitcoin?" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">BTC 101: ¿Por qué Bitcoin?</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Las razones clave por las que Bitcoin puede beneficiar a todos: descentralización, resistencia a la censura y oferta limitada</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">July 25, 2025</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                11m lectura - <small>2187 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-finance" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;how-to-analyze-a-stock&#x2F;">
+        
+          
+           <!-- Checks contain "beginner", not "for-beginner"-->
+            <div class="blog-card-icon blog-card-for-beginners  tag-finance">
+              <i class="fas fa-book"></i>
+              <span class="blog-card-tooltip">Ideal para principiantes</span>
+            </div>
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-finance" data-filter="finance">
+                    Finanzas
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-finance">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-05-26-how-to-analyze-a-stock&#x2F;cover-webp.webp" alt="Cover preview for Cómo Analizar una Acción para Invertir" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">Cómo Analizar una Acción para Invertir</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Métricas de valoración y otros parámetros a tener en cuenta al analizar una acción</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">May 26, 2025</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    7m lectura - <small>1358 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-finance">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-05-26-how-to-analyze-a-stock&#x2F;cover-webp.webp" alt="Cover preview for Cómo Analizar una Acción para Invertir" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-finance">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2025-05-26-how-to-analyze-a-stock&#x2F;cover-webp.webp" alt="Cover preview for Cómo Analizar una Acción para Invertir" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">Cómo Analizar una Acción para Invertir</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Métricas de valoración y otros parámetros a tener en cuenta al analizar una acción</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">May 26, 2025</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                7m lectura - <small>1358 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-frontend" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;respond-to-mixin-pattern-scss&#x2F;">
+        
+          
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-frontend" data-filter="frontend">
+                    Frontend
+                  </div>
+                
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-frontend">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-04-22-respond-to-mixin-pattern-scss&#x2F;cover-webp.webp" alt="Cover preview for Patrón de mixin &#x27;Respond-To&#x27; (SCSS)" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">Patrón de mixin &#x27;Respond-To&#x27; (SCSS)</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Aprende cómo simplificar el diseño responsive con un enfoque mobile-first usando el patrón de mixin &#x27;Respond-To&#x27; en SCSS</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">April 22, 2025</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    5m lectura - <small>980 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-frontend">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2025-04-22-respond-to-mixin-pattern-scss&#x2F;cover-webp.webp" alt="Cover preview for Patrón de mixin &#x27;Respond-To&#x27; (SCSS)" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-frontend">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2025-04-22-respond-to-mixin-pattern-scss&#x2F;cover-webp.webp" alt="Cover preview for Patrón de mixin &#x27;Respond-To&#x27; (SCSS)" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">Patrón de mixin &#x27;Respond-To&#x27; (SCSS)</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Aprende cómo simplificar el diseño responsive con un enfoque mobile-first usando el patrón de mixin &#x27;Respond-To&#x27; en SCSS</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">April 22, 2025</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                5m lectura - <small>980 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-best-practices" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;solid-principles&#x2F;">
+        
+          
+          
+            <div class="blog-card-icon blog-card-recommended  tag-best-practices">
+              <i class="fas fa-star"></i>
+              <span class="blog-card-tooltip">Lectura muy recomendada</span>
+            </div>
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-best-practices" data-filter="best-practices">
+                    Buenas Prácticas
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-best-practices">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2024-11-22-solid-principles&#x2F;cover-webp.webp" alt="Cover preview for Principios SOLID" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">Principios SOLID</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Descubre cómo aplicar los principios SOLID para escribir un código más limpio, escalable y fácil de mantener</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">November 22, 2024</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    5m lectura - <small>904 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-best-practices">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2024-11-22-solid-principles&#x2F;cover-webp.webp" alt="Cover preview for Principios SOLID" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-best-practices">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2024-11-22-solid-principles&#x2F;cover-webp.webp" alt="Cover preview for Principios SOLID" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">Principios SOLID</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Descubre cómo aplicar los principios SOLID para escribir un código más limpio, escalable y fácil de mantener</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">November 22, 2024</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                5m lectura - <small>904 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-architecture" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;optimizing-microfrontends-with-turborepo&#x2F;">
+        
+          
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-architecture" data-filter="architecture">
+                    Arquitectura
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-frontend tag-secondary" data-filter="frontend">
+                    
+                      Frontend
+                    
+                  </div>
+                
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-architecture">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2024-10-04-optimizing-microfrontends-with-turborepo&#x2F;cover-webp.webp" alt="Cover preview for Impulsa tus Microfrontends con Turborepo" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">Impulsa tus Microfrontends con Turborepo</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Turborepo optimiza tus microfrontends gracias a agilizar los builds con paralelismo y caché</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">October 04, 2024</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    2m lectura - <small>307 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-architecture">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2024-10-04-optimizing-microfrontends-with-turborepo&#x2F;cover-webp.webp" alt="Cover preview for Impulsa tus Microfrontends con Turborepo" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-architecture">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2024-10-04-optimizing-microfrontends-with-turborepo&#x2F;cover-webp.webp" alt="Cover preview for Impulsa tus Microfrontends con Turborepo" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">Impulsa tus Microfrontends con Turborepo</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Turborepo optimiza tus microfrontends gracias a agilizar los builds con paralelismo y caché</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">October 04, 2024</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                2m lectura - <small>307 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+      
+      
+      
+      
+        
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+        
+        
+          
+        
+      
+      
+      <a class="blog-card tag-frontend" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">
+        
+          
+          
+
+          
+          <div class="blog-card-tags">
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-frontend" data-filter="frontend">
+                    Frontend
+                  </div>
+                
+              
+            
+              
+              
+              
+              
+                
+                  
+                  <div class="blog-card-tag tag-architecture tag-secondary" data-filter="architecture">
+                    
+                      Arquitectura
+                    
+                  </div>
+                
+              
+            
+          </div>
+        
+
+        
+        <!-- COVER PREVIEW UP CASE -->
+        <div class="blog-card-cover-preview-up-wrapper">
+          <div class="blog-card-cover-preview-up  tag-frontend">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp" alt="Cover preview for Estilos Compartidos en Monorepos" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- TABLET LAYOUT WRAPPER -->
+        <div class="blog-card-tablet-wrapper">
+          <!-- LEFT SIDE: Content -->
+          <div class="blog-card-tablet-content">
+            <h3 class="blog-title">Estilos Compartidos en Monorepos</h3>
+            <div class="blog-card-details">
+              <p class="card-description">Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo</p>
+              <div class="preview-indicator">
+                <i class="fas fa-eye"></i> Pasa ratón encima
+              </div>
+              <div class="card-date-and-stats">
+                <span class="card-date">September 01, 2024</span>
+                <span class="card-stats">
+                  <i class="fas fa-clock"></i> 
+                  
+                    2m lectura - <small>382 palabras</small>
+                  
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- RIGHT SIDE: Tablet Preview -->
+          <div class="blog-card-cover-preview-tablet  tag-frontend">
+            <img src="&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp" alt="Cover preview for Estilos Compartidos en Monorepos" loading="lazy" decoding="async">
+          </div>
+        </div>
+        
+        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+        <div class="blog-card-cover-preview-down  tag-frontend">
+          <img src="&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp" alt="Cover preview for Estilos Compartidos en Monorepos" loading="lazy" decoding="async">
+        </div>
+        <h3 class="blog-title blog-title-mobile-desktop">Estilos Compartidos en Monorepos</h3>
+        <div class="blog-card-details blog-card-details-mobile-desktop">
+          <p class="card-description">Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo</p>
+          <div class="preview-indicator">
+            <i class="fas fa-eye"></i> Pasa ratón encima
+          </div>
+          <div class="card-date-and-stats">
+            <span class="card-date">September 01, 2024</span>
+            <span class="card-stats">
+              <i class="fas fa-clock"></i> 
+              
+                2m lectura - <small>382 palabras</small>
+              
+            </span>
+          </div>
+        </div>
+      </a>
+    
+  </div>
+  
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  
+  <!-- SERIES HEADER -->
+  <div class="blog-series-header" id="blog-series">
+      <h1>Series</h1>
+      <p class="blog-intro">Guías completas para profundizar en un tema.</p>
+  </div>
+
+  <!-- SERIES CAROUSEL -->
+  <div class="blog-series-carousel">
+      <div class="series-card">
+         <div class="series-image">
+             <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="Bitcoin Series" loading="lazy">
+         </div>
+         <div class="series-content">
+             <span class="series-badge">Series</span>
+             <h2>Fundamentos de Bitcoin</h2>
+             <p>Comienza tu viaje en Bitcoin desde cero.</p>
+             
+             <div class="series-chapters">
+                 
+                    <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-101&#x2F;?mode=series" class="chapter-link">
+                        <span class="chapter-number">1</span>
+                        <span class="chapter-title">¿Por qué Bitcoin?</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                 
+                    <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-102&#x2F;?mode=series" class="chapter-link">
+                        <span class="chapter-number">2</span>
+                        <span class="chapter-title">Cómo Comprar Bitcoin</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                 
+                    <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-103&#x2F;?mode=series" class="chapter-link">
+                        <span class="chapter-number">3</span>
+                        <span class="chapter-title">Custodia en Frío de Bitcoin</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                 
+             </div>
+         </div>
+         
+         <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;bitcoin-101&#x2F;?mode=series" class="series-card-link" aria-label="Fundamentos de Bitcoin"></a>
+      </div>
+  </div>
+  
+  <!-- END SERIES CAROUSEL -->
+
+</div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/es/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Colabora</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/blog.js"></script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>
