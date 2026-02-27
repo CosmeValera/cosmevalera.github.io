@@ -1,7 +1,7 @@
 +++
 title = "Dependency Injection"
 template = "blog-post.html"
-description = "What is dependency injection and why you should use it"
+description = "Learn how Dependency Injection decouples your code from its dependencies, making it easy to test and swap implementations"
 [taxonomies]
 tags = ["testing", "best-practices"]
 [extra]
@@ -18,7 +18,7 @@ This simple technique has a massive impact on how testable, flexible, and mainta
 
 ---
 
-<h4>🚫 The Problem: Without Dependency Injection</h4>
+<h4>🚫 The Problem: Tight Coupling</h4>
 
 Imagine a `UserService` that needs to fetch users from a database. Without DI, it directly creates its own repository:
 
@@ -46,7 +46,7 @@ class UserService {
 
 ---
 
-<h4>✅ The Solution: Dependency Injection with Interfaces</h4>
+<h4>✅ The Solution: Depend on Interfaces, not Implementations</h4>
 
 The key idea is:
 1. Define an **interface** for the dependency
@@ -63,7 +63,7 @@ interface IUserRepository {
 ```ts
 /** Step 2: Service depends on the interface **/
 class UserService {
-  constructor(private userRepo: IUserRepository) {}
+  constructor(private userRepo: IUserRepository) {} // 💡 Parameter properties
 
   getUser(id: string): User {
     return this.userRepo.findById(id);
@@ -87,6 +87,33 @@ Now, `UserService` doesn't know or care **which** implementation it receives. It
 const userRepo = new UserRepository();
 const userService = new UserService(userRepo);
 ```
+
+<details class="expandable-info">
+    <summary><i class="fas fa-lightbulb"></i> Parameter Properties: the shorthand explained</summary>
+    <div class="expandable-content">
+        <p>This is called <b>constructor parameter properties</b> in TypeScript. It's a shorthand that declares a class property and assigns it from the constructor parameter, all in one line.</p>
+        <p>These two snippets are exactly equivalent:</p>
+
+```ts
+/** Shorthand (what we use) **/
+class UserService {
+  constructor(private userRepo: IUserRepository) {}
+}
+```
+
+```ts
+/** Explicit (same thing, written out in full) **/
+class UserService {
+  private userRepo: IUserRepository;
+
+  constructor(userRepo: IUserRepository) {
+    this.userRepo = userRepo;
+  }
+}
+```
+<p>Both versions store the injected <code>userRepo</code> as a class property so that methods like <code>getUser()</code> can access it via <code>this.userRepo</code>. The shorthand is just TypeScript's way of reducing boilerplate while keeping the same behavior. In PHP, a similar feature is called constructor property promotion, and other languages have similar features.</p>
+    </div>
+</details>
 
 ---
 
@@ -112,7 +139,7 @@ const user = userService.getUser("123");
 assert(user.name === "Test User"); // ✅ Fast, isolated, reliable
 ```
 
-**🚫 Without DI:** Your tests need a real database, making them slow, fragile, and hard to set up.   
+**🚫 Without DI:** Your tests need a real database, making them slow, and hard to set up.   
 **✅ With DI:** Tests are fast, isolated, and fully under your control.
 
 ---
