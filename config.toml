@@ -56,11 +56,11 @@ galileo_project = "Proyecto Galileo"
 browse_projects = "Explora mis proyectos"
 check_latest_posts = "Lee mis últimas publicaciones"
 connect_with_me = "Conecta conmigo"
-description_home = "👉🏼 Motivado por una verdadera pasión por el software, promuevo activamente"
+description_home = "👉🏼 Me mueve una pasión genuina por el software, defiendo activamente"
 clean_code = "el código limpio"
 and = "y"
 agile_dynamics = "las dinámicas ágiles."
-description_suffix = "Me desenvuelvo bien en entornos que evolucionan rápidamente, adoptando nuevos conocimientos y convirtiéndolos en resultados tangibles."
+description_suffix = "Me desenvuelvo bien en entornos dinámicos, adoptando nuevos conocimientos y convirtiéndolos en resultados tangibles."
 
 # Blog
 blog_intro = "Escribo sobre temas que encuentro interesantes y merecen ser compartidos."
