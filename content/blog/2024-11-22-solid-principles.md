@@ -209,6 +209,7 @@ class Notification {
 
 - **"Nothing is Something":** A `highly` recommended video that introduces the Null Object Pattern in a clear and practical way. It also features an excellent example of how inheritance can go wrong and the transitioning from inheritance to composition, making it a must-watch for anyone looking to deepen their understanding of clean design principles. <a target="_blank" href="https://www.youtube.com/watch?v=OMPfEXIlTVE"><span class="fab fa-youtube"></span>Watch it here</a>
 - **"Uncle Bob on SOLID Principles":** A video that covers object-oriented design concepts and touches on the SOLID principles near the end. A good watch for understanding the foundations of clean code. <a target="_blank" href="https://www.youtube.com/watch?v=zHiWqnTWsn4"><span class="fab fa-youtube"></span>Watch it here</a>
+- **"Dependency Injection":** If you want to dive deeper into the Dependency Inversion Principle (DIP) and see how it works in practice, check out my post on Dependency Injection. <a target="_blank" class="link-text" href="https://cosmevalera.dev/blog/dependency-injection/"><b>Read it here</b></a>
 
 <h4>Conclusion</h4>
 

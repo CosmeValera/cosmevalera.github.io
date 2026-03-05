@@ -198,6 +198,7 @@ class Notification {
 
 - **"Nothing is Something":** Un vídeo `altamente` recomendado que introduce el patrón Null Object de manera clara y práctica. También presenta un excelente ejemplo de cómo la herencia puede fallar y la transición de herencia a composición, haciéndolo imprescindible para cualquiera que busque profundizar su comprensión de los principios de diseño limpio. <a target="_blank" href="https://www.youtube.com/watch?v=OMPfEXIlTVE"><span class="fab fa-youtube"></span>Míralo aquí</a>
 - **"Uncle Bob on SOLID Principles":** Un vídeo que cubre conceptos de diseño orientado a objetos y toca los principios SOLID cerca del final. Una buena opción para entender los fundamentos del código limpio. <a target="_blank" href="https://www.youtube.com/watch?v=zHiWqnTWsn4"><span class="fab fa-youtube"></span>Míralo aquí</a>
+- **"Inyección de Dependencias":** Si quieres profundizar en el Principio de Inversión de Dependencias (DIP) y ver cómo se aplica en la práctica, echa un vistazo a mi post sobre la Inyección de Dependencias. <a target="_blank" class="link-text" href="https://cosmevalera.dev/es/blog/dependency-injection/"><b>Léelo aquí</b></a>
 
 <h4>Conclusión</h4>
 
