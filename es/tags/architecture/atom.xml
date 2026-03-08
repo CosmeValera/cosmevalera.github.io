@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es">
+	<title> - architecture</title>
+	<link href="https://cosmevalera.dev/es/tags/architecture/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://cosmevalera.dev/"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2024-10-04T00:00:00+00:00</updated>
+	<id>https://cosmevalera.dev/es/tags/architecture/atom.xml</id>
+	<entry xml:lang="es">
+		<title>Impulsa tus Microfrontends con Turborepo</title>
+		<published>2024-10-04T00:00:00+00:00</published>
+		<updated>2024-10-04T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/es/blog/optimizing-microfrontends-with-turborepo/" type="text/html"/>
+		<id>https://cosmevalera.dev/es/blog/optimizing-microfrontends-with-turborepo/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2024-10-04-optimizing-microfrontends-with-turborepo&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🧐 ¿Por qué Turborepo?&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;Gestionar múltiples microfrontends dentro de un monorepo puede ser un desafío. Turborepo ofrece una solución potente para optimizar flujos de trabajo, ejecutar tareas en paralelo y cachear resultados para obtener builds más rápidos.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Tareas paralelas:&lt;&#x2F;b&gt; Ejecuta builds y tests en múltiples microfrontends simultáneamente.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Caché inteligente:&lt;&#x2F;b&gt; Ahorra tiempo reutilizando outputs de ejecuciones anteriores.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Escalable:&lt;&#x2F;b&gt; Gestiona tantos microfrontends como necesites, todo dentro de un solo monorepo.&lt;&#x2F;p&gt;
+&lt;p&gt;Si estás trabajando con múltiples aplicaciones, Turborepo es un cambio radical para agilizar tus flujos de trabajo.&lt;&#x2F;p&gt;
+&lt;p&gt;Así es como puedes configurar y usar Turborepo en tu proyecto:&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;🔧 1. Creando un proyecto Turborepo&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;1.1 Crear un nuevo proyecto Turborepo:&lt;&#x2F;b&gt; &lt;&#x2F;p&gt;
+&lt;p&gt;En lugar de configurar Turborepo manualmente, puedes usar el siguiente comando para crear rápidamente un nuevo Turborepo:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npx create-turbo@latest
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;1.2 Coloca tus microfrontends dentro del directorio &lt;code&gt;apps&lt;&#x2F;code&gt;:&lt;&#x2F;b&gt; &lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;apps&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; ├── mfe1&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; ├── mfe2&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt; └── mfe3&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;package.json
+&lt;&#x2F;span&gt;&lt;span&gt;turbo.json
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h4&gt;&lt;b&gt;📄 2. Archivos de configuración importantes&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;code&gt;package.json&lt;&#x2F;code&gt; define tus scripts, dependencias y estructura de workspace.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;turbo.json&lt;&#x2F;code&gt; configura cómo se ejecutan las tareas en tu monorepo. También incluye configuraciones de caché para acelerar ejecuciones posteriores.&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;⚡ 3. Ejecutando comandos de Turborepo&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+Después de configurar Turborepo, puedes gestionar fácilmente todas las aplicaciones y paquetes con unos pocos comandos simples:
+&lt;p&gt;&lt;b&gt;Instalar dependencias:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm i 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Construir todas las aplicaciones y paquetes:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm run build 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Iniciar el entorno de desarrollo:&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm run dev 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ejecuta cualquiera de estos comandos una vez, y Turborepo usará su caché inteligente para acelerar builds posteriores.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;3&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img 
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-summer-spring-webp.webp&quot; 
+      alt=&quot;Spring&amp;amp;#x2F;Summer seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;
+&lt;p&gt;¡Pruébalo en tu próximo proyecto y experimenta la eficiencia de primera mano! 😍😍&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="es">
+		<title>Estilos Compartidos en Monorepos</title>
+		<published>2024-09-01T00:00:00+00:00</published>
+		<updated>2024-09-01T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://cosmevalera.dev/es/blog/shared-styles-in-monorepo/" type="text/html"/>
+		<id>https://cosmevalera.dev/es/blog/shared-styles-in-monorepo/</id>
+		<content type="html">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🤔 Resumen&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;En proyectos a gran escala, mantener estilos consistentes entre múltiples aplicaciones es crucial. Aquí tienes dos enfoques para gestionar estilos compartidos:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;📦 Crear una librería de estilos compartida como un &lt;b&gt;paquete npm&lt;&#x2F;b&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;🔗 Importar estilos directamente desde &lt;b&gt;un directorio centralizado&lt;&#x2F;b&gt; dentro del monorepo.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;&lt;b&gt;📦 1. Crear una Librería de Estilos con npm&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;Resumen:&lt;&#x2F;b&gt; Este enfoque consiste en crear una librería de estilos dedicada y publicarla como un paquete npm. Los estilos se pueden importar después en cualquier proyecto que los necesite.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Implementación:&lt;&#x2F;b&gt; Por ejemplo, si estás trabajando con estilos de temas personalizados claro&#x2F;oscuro para PrimeReact, puedes crear tus estilos en una librería y exportarlos usando un archivo &lt;code&gt;index.js&lt;&#x2F;code&gt; así:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;module.exports = {
+&lt;&#x2F;span&gt;&lt;span&gt; theme: require(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;.&#x2F;style&#x2F;themes&#x2F;my-theme&#x2F;theme.scss&amp;#39;&lt;&#x2F;span&gt;&lt;span&gt;),
+&lt;&#x2F;span&gt;&lt;span&gt;}&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Después de publicar el paquete, puedes instalarlo en tus proyectos con:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;npm i my-theme
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Luego, simplemente importa los estilos en tu punto de entrada JavaScript principal:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;my-theme&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Ventajas:&lt;&#x2F;b&gt;
+Control de versiones centralizado de estilos.
+Fácil de actualizar y distribuir entre múltiples proyectos.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Desventajas:&lt;&#x2F;b&gt;
+Requiere publicar y versionar con cada cambio.&lt;&#x2F;p&gt;
+&lt;h4&gt;&lt;b&gt;🔗 2. Importación Directa desde un Directorio Centralizado&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;b&gt;Resumen:&lt;&#x2F;b&gt; Si estás usando una configuración de monorepo, puedes almacenar tus estilos en un directorio central e importarlos directamente en cada proyecto.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Implementación:&lt;&#x2F;b&gt; Coloca tus estilos en una carpeta a nivel raíz, en paralelo a tus apps, e impórtalos en tus proyectos:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#272822;color:#f8f8f2;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span&gt;import &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6db74;&quot;&gt;&amp;#39;..&#x2F;style&#x2F;themes&#x2F;my-theme&#x2F;theme.scss&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#f92672;&quot;&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;b&gt;Ventajas:&lt;&#x2F;b&gt;
+No hace falta publicar ni gestionar versiones.
+Acceso inmediato a los últimos estilos sin pasos adicionales.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;b&gt;Desventajas:&lt;&#x2F;b&gt;
+Riesgo de cambios accidentales que rompan funcionalidad si los estilos se actualizan.
+Necesitas tener una estructura de monorepo; no funciona si los proyectos están en repositorios separados.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;3&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img 
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-summer-spring-webp.webp&quot; 
+      alt=&quot;Spring&amp;amp;#x2F;Summer seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;h4&gt;&lt;b&gt;❓ Qué Elegir&lt;&#x2F;b&gt;&lt;&#x2F;h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Usa un &lt;b&gt;paquete npm&lt;&#x2F;b&gt; si quieres tener control de versiones estricto o no tienes todos tus proyectos en la misma carpeta.&lt;&#x2F;li&gt;
+&lt;li&gt;Usa importación directa desde &lt;b&gt;un directorio centralizado&lt;&#x2F;b&gt; si prefieres una solución más simple y tu estructura de código lo permite.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+	</entry>
+</feed>
