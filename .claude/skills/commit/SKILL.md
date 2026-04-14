@@ -5,7 +5,7 @@ description: Stage relevant changes and create a git commit with a conventional-
 
 # /commit
 
-Create a git commit for the current changes.
+Create a git commit for the current changes. 🚀
 
 ## Steps
 
