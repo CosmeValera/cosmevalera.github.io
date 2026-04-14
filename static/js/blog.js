@@ -3,83 +3,45 @@ function attachHoverToPreviewInPhone() {
     if (!window.matchMedia('(max-width: 767px)').matches) {
         return;
     }
-    
+
     const cards = Array.from(document.querySelectorAll('.blog-card'));
-    const previews = Array.from(document.querySelectorAll('.blog-card-cover-preview-down'));
-    
-    let isAtBottom = false; // Track bottom state to prevent glitching
-    let ticking = false; // For requestAnimationFrame throttling
-    
-    function updatePreviewVisibility() {
-        /////////////////////
-        // CASE: LAST CARD //
-        /////////////////////
-        const scrollBottom = window.innerHeight + window.scrollY;
-        const docHeight = document.documentElement.scrollHeight;
-        const distanceFromBottom = docHeight - scrollBottom;
-        
-        // Anti-glitch logic: use different thresholds for entering vs exiting bottom state
-        if (!isAtBottom && distanceFromBottom < 80) {
-            // Entering bottom state
-            isAtBottom = true;
-        } else if (isAtBottom && distanceFromBottom > 120) {
-            // Exiting bottom state (higher threshold to prevent bounce glitch)
-            isAtBottom = false;
-        }
-        
-        // If we're in bottom state, show last card's preview
-        if (isAtBottom) {
-            previews.forEach((preview, idx) => {
-                if (idx === previews.length - 1) {
-                    preview.classList.add('show-preview');
-                } else {
-                    preview.classList.remove('show-preview');
-                }
-            });
-            ticking = false;
-            return;
-        }
-        
-        ///////////////////////////////////////////
-        // CASE: DEFAULT (ANY CARD BUT LAST ONE) //
-        ///////////////////////////////////////////
-        const viewportCenter = window.innerHeight / 2;
-        let minDistance = Infinity;
-        let centerCard = null;
+    if (!cards.length) return;
 
-        cards.forEach((card, idx) => {
-            const rect = card.getBoundingClientRect();
-            const cardCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(cardCenter - viewportCenter);
+    const previewByCard = new Map(
+        cards.map(card => [card, card.querySelector('.blog-card-cover-preview-down')])
+    );
+    const lastCard = cards[cards.length - 1];
 
-            if (distance < minDistance) {
-                minDistance = distance;
-                centerCard = idx;
-            }
+    let centerCard = null;
+    let bottomReached = false;
+
+    function applyPreview() {
+        const target = bottomReached ? lastCard : centerCard;
+        previewByCard.forEach((preview, card) => {
+            if (!preview) return;
+            preview.classList.toggle('show-preview', card === target);
         });
-
-        previews.forEach((preview, idx) => {
-            if (idx === centerCard) {
-                preview.classList.add('show-preview');
-            } else {
-                preview.classList.remove('show-preview');
-            }
-        });
-        
-        ticking = false;
     }
 
-    function onScroll() {
-        if (!ticking) {
-            window.requestAnimationFrame(updatePreviewVisibility);
-            ticking = true;
+    // Viewport is collapsed to a horizontal line at the middle via rootMargin;
+    // the card currently crossing that line is the "centered" one.
+    const centerObserver = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+            if (entry.isIntersecting) centerCard = entry.target;
         }
-    }
+        applyPreview();
+    }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
 
-    // Initial call and on scroll/resize
-    updatePreviewVisibility();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    cards.forEach(card => centerObserver.observe(card));
+
+    // When the last card is mostly visible we're at the bottom of the list —
+    // force its preview so the final item never gets skipped.
+    const bottomObserver = new IntersectionObserver((entries) => {
+        bottomReached = entries[0].intersectionRatio >= 0.9;
+        applyPreview();
+    }, { threshold: [0, 0.9, 1] });
+
+    bottomObserver.observe(lastCard);
 }
 
 function markLastRowCardsInDesktop() {
