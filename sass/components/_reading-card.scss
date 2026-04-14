@@ -9,6 +9,10 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    // Skip layout + paint for off-screen cards; ~500px is a rough height hint the
+    // browser uses to reserve scroll space until the card nears the viewport.
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
 
     &:hover {
         transform: translateY(-4px);
@@ -38,7 +42,6 @@
             border-radius: 999px;
             font-size: 0.65rem;
             font-weight: 600;
-            backdrop-filter: blur(8px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
     }

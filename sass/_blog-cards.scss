@@ -23,6 +23,7 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     cursor: pointer;
     z-index: 1;
     box-sizing: border-box;
+    contain: layout;
 
     // Dark theme: improve card contrast against dark background
     body.dark-theme & {
@@ -325,7 +326,8 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       border-radius: 0 0 12px 12px;
       height: 0;
       opacity: 0;
-      transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), margin-bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      // margin-bottom intentionally snaps (not transitioned) to save per-frame layout work
+      transition: height 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       display: block; // Always block, but height/opacity control visibility
 
       // Show if .show-preview is present
@@ -368,12 +370,18 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       }
     }
 
-    // Don't show preview-up on phone
+    // Desktop-only (hover preview for last-row cards). display: none on mobile/tablet
+    // prevents the <img> inside from being fetched where it's never shown.
     .blog-card-cover-preview-up-wrapper {
+      display: none;
       position: absolute;
       width: inherit;
       opacity: 0;
       transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      @include respond-to('md') {
+        display: block;
+      }
 
       .blog-card-cover-preview-up {
         position: relative;

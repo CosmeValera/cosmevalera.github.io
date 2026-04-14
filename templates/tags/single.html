@@ -108,13 +108,13 @@
             
             <!-- RIGHT SIDE: Tablet Preview -->
             <div class="blog-card-cover-preview-tablet {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}">
-              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
             </div>
           </div>
 
           <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
           <div class="blog-card-cover-preview-down {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 and post.taxonomies.tags[0] | slugify in config.extra.blog_post_tags %} tag-{{ post.taxonomies.tags[0] | slugify }}{% endif %}">
-            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}">
+            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
           </div>
           <h3 class="blog-title blog-title-mobile-desktop">{{ post.title }}</h3>
           <div class="blog-card-details blog-card-details-mobile-desktop">

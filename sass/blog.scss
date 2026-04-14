@@ -73,8 +73,7 @@
     z-index: 10000;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.6); // Dark overlay
-    backdrop-filter: blur(5px); // Blur the background behind the modal
+    background-color: rgba(0, 0, 0, 0.75); // Dark overlay (no backdrop blur — GPU cost on mobile)
 
     &.show {
       display: flex; // Flex to center content
