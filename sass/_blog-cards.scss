@@ -25,6 +25,13 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     box-sizing: border-box;
     contain: layout;
 
+    // The inner <article> is semantic-only. display: contents removes its
+    // layout box so the flex children below still participate directly in
+    // .blog-card's flex column (no visual change vs. the old flat DOM).
+    > article {
+      display: contents;
+    }
+
     // Dark theme: improve card contrast against dark background
     body.dark-theme & {
       background: linear-gradient(-90deg, #1a2d2d, #1f3a3a);

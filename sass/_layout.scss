@@ -29,20 +29,22 @@ html {
                 flex: 1;
                 margin-top: 2rem;
             }
-            
-            footer {
+
+            // Page footer only — scoped by class so it doesn't leak into
+            // <footer> elements inside articles/cards.
+            > .footer-responsive {
               margin: 1rem auto;
               font-size: 0.75rem;
               text-align: center;
-            
+
               a {
                 color: $accent-color;
-            
+
                 &:hover {
                   text-decoration: underline;
                 }
               }
-            
+
               // 💻 Desktop/tablet override
               @include respond-to('lg') {
                 flex-direction: row; // Override the default (column on mobile)
@@ -58,8 +60,8 @@ body.dark-theme {
 
   .page-wrapper {
     color: $text-color-dark;
-    
-    footer {
+
+    > .footer-responsive {
       a {
         color: $accent-color-dark;
       }
@@ -73,8 +75,8 @@ body.bright-theme {
 
   .page-wrapper {
     color: $text-color-bright;
-    
-    footer {
+
+    > .footer-responsive {
       a {
         color: $accent-color-bright;
       }

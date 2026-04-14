@@ -150,25 +150,25 @@
   <!-- END: Filter Modal (Mobile Only) -->
   <!-- END: Filter Modal (Mobile Only) -->
   
-  <div class="blog-cards">
+  <section class="blog-cards" aria-label="{{ trans(key='jump_to_blog', lang=lang) }}">
     {% for post in section.pages %}
       {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
       {% set now_numeric = now() | date(format="%Y%m%d") | int %}
-      
+
       {% if post_date_numeric > now_numeric %}
         {% set post_date_display = now() | date(format="%B %d, %Y") %}
+        {% set post_date_iso = now() | date(format="%Y-%m-%d") %}
       {% else %}
         {% set post_date_display = post.date | date(format="%B %d, %Y") %}
+        {% set post_date_iso = post.date | date(format="%Y-%m-%d") %}
       {% endif %}
 
-      {# Removed manual time_label logic in favor of trans #}
-      
       {# Set up main tag and helper variables #}
       {% set has_tags = post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
       {% set main_tag = "" %}
       {% set main_tag_class = "" %}
       {% set tags_string = "" %}
-      
+
       {% if has_tags %}
         {% set main_tag = post.taxonomies.tags[0] | slugify %}
         {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
@@ -176,112 +176,109 @@
           {% set main_tag_class = " tag-" ~ main_tag %}
         {% endif %}
       {% endif %}
-      
+
       <a class="blog-card{{ main_tag_class }}" href="{{ post.permalink }}">
-        {% if has_tags %}
-          {# Show special icons based on tags #}
-          {% if "recommended" in tags_string %}
-            <div class="blog-card-icon blog-card-recommended {{ main_tag_class }}">
-              <i class="fas fa-star"></i>
-              <span class="blog-card-tooltip">{{ trans(key="highly_recommended", lang=lang) }}</span>
-            </div>
-          {% elif "beginner" in tags_string %} <!-- Checks contain "beginner", not "for-beginner"-->
-            <div class="blog-card-icon blog-card-for-beginners {{ main_tag_class }}">
-              <i class="fas fa-book"></i>
-              <span class="blog-card-tooltip">{{ trans(key="great_for_beginners", lang=lang) }}</span>
-            </div>
+        <article>
+          {% if has_tags %}
+            {# Show special icons based on tags (decorative floating badge) #}
+            {% if "recommended" in tags_string %}
+              <div class="blog-card-icon blog-card-recommended {{ main_tag_class }}">
+                <i class="fas fa-star"></i>
+                <span class="blog-card-tooltip">{{ trans(key="highly_recommended", lang=lang) }}</span>
+              </div>
+            {% elif "beginner" in tags_string %}
+              <div class="blog-card-icon blog-card-for-beginners {{ main_tag_class }}">
+                <i class="fas fa-book"></i>
+                <span class="blog-card-tooltip">{{ trans(key="great_for_beginners", lang=lang) }}</span>
+              </div>
+            {% endif %}
+
+            {# Article header: the tags that describe the post #}
+            <header class="blog-card-tags">
+              {% for tag in post.taxonomies.tags %}
+                {% set tag_lower = tag | lower %}
+                {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
+                  {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
+                    <div class="blog-card-tag tag-{{ tag | slugify }}" data-filter="{{ tag | slugify }}">
+                      {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
+                    </div>
+                  {% else %}
+                    <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary" data-filter="{{ tag | slugify }}">
+                      {% if tag | slugify in config.extra.blog_post_tags %}
+                        {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
+                      {% else %}
+                        {{ tag | slugify | replace(from="-", to=" ") | title }}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </header>
           {% endif %}
 
-          {# Display tags #}
-          <div class="blog-card-tags">
-            {% for tag in post.taxonomies.tags %}
-              {% set tag_lower = tag | lower %}
-              
-              {# Skip special tags that are used for icons #}
-              {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
-                {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
-                  {# Main tag: keep its special color class #}
-                  <div class="blog-card-tag tag-{{ tag | slugify }}" data-filter="{{ tag | slugify }}">
-                    {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
-                  </div>
-                {% else %}
-                  {# Secondary tags: always use default style #}
-                  <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary" data-filter="{{ tag | slugify }}">
-                    {% if tag | slugify in config.extra.blog_post_tags %}
-                      {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
-                    {% else %}
-                      {{ tag | slugify | replace(from="-", to=" ") | title }}
-                    {% endif %}
-                  </div>
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          </div>
-        {% endif %}
-
-        
-        <!-- COVER PREVIEW UP CASE -->
-        <div class="blog-card-cover-preview-up-wrapper">
-          <div class="blog-card-cover-preview-up {{ main_tag_class }}">
-            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
-          </div>
-        </div>
-        
-        <!-- TABLET LAYOUT WRAPPER -->
-        <div class="blog-card-tablet-wrapper">
-          <!-- LEFT SIDE: Content -->
-          <div class="blog-card-tablet-content">
-            <h3 class="blog-title">{{ post.title }}</h3>
-            <div class="blog-card-details">
-              <p class="card-description">{{ post.description }}</p>
-              <div class="preview-indicator">
-                <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
-              </div>
-              <div class="card-date-and-stats">
-                <span class="card-date">{{ post_date_display }}</span>
-                <span class="card-stats">
-                  <i class="fas fa-clock"></i> 
-                  {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                    {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
-                  {% else %}
-                    {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
-                  {% endif %}
-                </span>
-              </div>
+          <!-- COVER PREVIEW UP CASE -->
+          <div class="blog-card-cover-preview-up-wrapper">
+            <div class="blog-card-cover-preview-up {{ main_tag_class }}">
+              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
             </div>
           </div>
-          
-          <!-- RIGHT SIDE: Tablet Preview -->
-          <div class="blog-card-cover-preview-tablet {{ main_tag_class }}">
+
+          <!-- TABLET LAYOUT WRAPPER -->
+          <div class="blog-card-tablet-wrapper">
+            <!-- LEFT SIDE: Content -->
+            <div class="blog-card-tablet-content">
+              <h3 class="blog-title">{{ post.title }}</h3>
+              <div class="blog-card-details">
+                <p class="card-description">{{ post.description }}</p>
+                <div class="preview-indicator">
+                  <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
+                </div>
+                <footer class="card-date-and-stats">
+                  <time class="card-date" datetime="{{ post_date_iso }}">{{ post_date_display }}</time>
+                  <span class="card-stats">
+                    <i class="fas fa-clock"></i>
+                    {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
+                      {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
+                    {% else %}
+                      {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
+                    {% endif %}
+                  </span>
+                </footer>
+              </div>
+            </div>
+
+            <!-- RIGHT SIDE: Tablet Preview -->
+            <div class="blog-card-cover-preview-tablet {{ main_tag_class }}">
+              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
+            </div>
+          </div>
+
+          <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
+          <div class="blog-card-cover-preview-down {{ main_tag_class }}">
             <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
           </div>
-        </div>
-        
-        <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
-        <div class="blog-card-cover-preview-down {{ main_tag_class }}">
-          <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
-        </div>
-        <h3 class="blog-title blog-title-mobile-desktop">{{ post.title }}</h3>
-        <div class="blog-card-details blog-card-details-mobile-desktop">
-          <p class="card-description">{{ post.description }}</p>
-          <div class="preview-indicator">
-            <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
+          <h3 class="blog-title blog-title-mobile-desktop">{{ post.title }}</h3>
+          <div class="blog-card-details blog-card-details-mobile-desktop">
+            <p class="card-description">{{ post.description }}</p>
+            <div class="preview-indicator">
+              <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
+            </div>
+            <footer class="card-date-and-stats">
+              <time class="card-date" datetime="{{ post_date_iso }}">{{ post_date_display }}</time>
+              <span class="card-stats">
+                <i class="fas fa-clock"></i>
+                {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
+                  {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
+                {% else %}
+                  {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
+                {% endif %}
+              </span>
+            </footer>
           </div>
-          <div class="card-date-and-stats">
-            <span class="card-date">{{ post_date_display }}</span>
-            <span class="card-stats">
-              <i class="fas fa-clock"></i> 
-              {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
-              {% else %}
-                {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
-              {% endif %}
-            </span>
-          </div>
-        </div>
+        </article>
       </a>
     {% endfor %}
-  </div>
+  </section>
   
   {#- SERIES LOGIC -#}
   {% set bitcoin_series_list = [] %}
@@ -293,39 +290,38 @@
   {% set bitcoin_series_list = bitcoin_series_list | sort(attribute="title") %}
 
   {% if bitcoin_series_list | length > 0 %}
-  <!-- SERIES HEADER -->
-  <div class="blog-series-header" id="blog-series">
-      <h1>{{ trans(key="series_section_title", lang=lang) }}</h1>
-      <p class="blog-intro">{{ trans(key="series_section_desc", lang=lang) }}</p>
-  </div>
+  <section class="blog-series" aria-labelledby="blog-series">
+    <header class="blog-series-header" id="blog-series">
+        <h1 id="blog-series-heading">{{ trans(key="series_section_title", lang=lang) }}</h1>
+        <p class="blog-intro">{{ trans(key="series_section_desc", lang=lang) }}</p>
+    </header>
 
-  <!-- SERIES CAROUSEL -->
-  <div class="blog-series-carousel">
-      <div class="series-card">
-         <div class="series-image">
-             <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="Bitcoin Series" loading="lazy">
-         </div>
-         <div class="series-content">
-             <span class="series-badge">{{ trans(key="series", lang=lang) }}</span>
-             <h2>{{ trans(key="bitcoin_series_title", lang=lang) }}</h2>
-             <p>{{ trans(key="bitcoin_series_desc", lang=lang) }}</p>
-             
-             <div class="series-chapters">
-                 {% for post in bitcoin_series_list %}
-                    <a href="{{ post.permalink }}?mode=series" class="chapter-link">
-                        <span class="chapter-number">{{ loop.index }}</span>
-                        <span class="chapter-title">{{ post.title | replace(from="BTC 10" ~ loop.index ~ ": ", to="") }}</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                 {% endfor %}
-             </div>
-         </div>
-         {# Make the whole card clickable, linking to the first post #}
-         <a href="{{ bitcoin_series_list[0].permalink }}?mode=series" class="series-card-link" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}"></a>
-      </div>
-  </div>
+    <div class="blog-series-carousel">
+        <article class="series-card">
+           <div class="series-image">
+               <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="Bitcoin Series" loading="lazy">
+           </div>
+           <div class="series-content">
+               <span class="series-badge">{{ trans(key="series", lang=lang) }}</span>
+               <h2>{{ trans(key="bitcoin_series_title", lang=lang) }}</h2>
+               <p>{{ trans(key="bitcoin_series_desc", lang=lang) }}</p>
+
+               <nav class="series-chapters" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}">
+                   {% for post in bitcoin_series_list %}
+                      <a href="{{ post.permalink }}?mode=series" class="chapter-link">
+                          <span class="chapter-number">{{ loop.index }}</span>
+                          <span class="chapter-title">{{ post.title | replace(from="BTC 10" ~ loop.index ~ ": ", to="") }}</span>
+                          <i class="fas fa-arrow-right"></i>
+                      </a>
+                   {% endfor %}
+               </nav>
+           </div>
+           {# Make the whole card clickable, linking to the first post #}
+           <a href="{{ bitcoin_series_list[0].permalink }}?mode=series" class="series-card-link" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}"></a>
+        </article>
+    </div>
+  </section>
   {% endif %}
-  <!-- END SERIES CAROUSEL -->
 
 </div>
 {% endblock content %}
