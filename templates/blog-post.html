@@ -2,15 +2,45 @@
 
 {% import "related-container.html" as related %}
 
-{% block title %}
-  {{ trans(key="blog", lang=lang) }} | Cosme
-{% endblock %}
+{% block title %}{{ page.title }} | Cosme{% endblock %}
 
 {% block styles %}
   <link rel="stylesheet" href="{{ get_url(path="blog-post.css") | safe }}">
   {% if page.extra.cover_image %}
   <link rel="preload" href="{{ page.extra.cover_image }}" as="image" fetchpriority="high">
   {% endif %}
+
+  {# JSON-LD structured data — enables rich snippets (byline, date, etc.) in Google results #}
+  {% set base_no_slash = config.base_url | trim_end_matches(pat="/") %}
+  {% set post_image = base_no_slash ~ "/favicon.jpg" %}
+  {% if page.extra.cover_image %}{% set_global post_image = base_no_slash ~ page.extra.cover_image %}{% endif %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | json_encode | safe }},
+    "description": {{ page.description | default(value="") | json_encode | safe }},
+    "image": {{ post_image | json_encode | safe }},
+    "datePublished": {{ page.date | date(format="%Y-%m-%d") | json_encode | safe }},
+    {% if page.updated %}"dateModified": {{ page.updated | date(format="%Y-%m-%d") | json_encode | safe }},{% else %}"dateModified": {{ page.date | date(format="%Y-%m-%d") | json_encode | safe }},{% endif %}
+    "author": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": {{ config.base_url | json_encode | safe }}
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": {{ config.base_url | json_encode | safe }}
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": {{ current_url | default(value=config.base_url) | json_encode | safe }}
+    },
+    "inLanguage": "{% if lang == 'es' %}es{% else %}en{% endif %}"{% if page.taxonomies and page.taxonomies.tags %},
+    "keywords": {{ page.taxonomies.tags | join(sep=", ") | json_encode | safe }}{% endif %}
+  }
+  </script>
 {% endblock %}
 
 {% block scripts %}
