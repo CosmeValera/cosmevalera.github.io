@@ -18,6 +18,7 @@ cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp
 	co = checkout
 	d = diff
   l = log
+  lo = log -n 10 --oneline
 	s = status
 	#############
 	su = stash -u
