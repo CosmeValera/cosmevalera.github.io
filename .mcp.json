@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hello": {
+      "command": "node",
+      "args": [".claude/mcp/hello/index.js"]
+    }
+  }
+}
