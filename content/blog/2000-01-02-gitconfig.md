@@ -8,6 +8,7 @@ tags = ["frontend", "architecture"]
 cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp"
 +++
 
+Go to your user folder and open ´.gitconfig´, example ´C:\Users\cosme\.gitconfig´:
 ```sh
 [user]
 	name = Cosme Valera
@@ -53,4 +54,19 @@ cover_image = "/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp
 	ui = true
 [push]
 	autoSetupRemote = true
+```
+
+You can also add a `yolo` command in your `.bashrc`, example ´C:\Users\cosme\.bashrc´:
+```sh
+yolo() {
+  git add .
+  git commit -m "$*"
+  git push
+}
+
+yolof() {
+  git add .
+  git commit -m "$*"
+  git push -f
+}
 ```
