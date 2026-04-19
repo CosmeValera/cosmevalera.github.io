@@ -65,4 +65,150 @@
         {% endif %}
     </div>
 </div>
+
+<div class="scroll-indicator" aria-hidden="true">
+    <span class="scroll-indicator-text">Scroll</span>
+    <div class="scroll-indicator-line">
+        <div class="scroll-indicator-dot"></div>
+    </div>
+</div>
+
+
+<section class="home-section home-featured-projects reveal-section" aria-labelledby="featured-projects-heading">
+    <div class="home-section-header">
+        <h2 id="featured-projects-heading" class="home-section-title">{{ trans(key="featured_projects", lang=lang) }}</h2>
+        <p class="home-section-desc">{{ trans(key="featured_projects_desc", lang=lang) }}</p>
+    </div>
+    
+
+    <div class="home-projects-grid">
+        
+        <a href="https://devopslab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
+            <div class="home-project-image">
+                <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOps Lab" width="400" height="220" loading="lazy" decoding="async">
+            </div>
+            <div class="home-project-body">
+                <h3 class="home-project-title">DevOps Lab</h3>
+                <p class="home-project-desc">{{ trans(key="proj_devopslab_desc", lang=lang) }}</p>
+                <div class="home-project-tech">
+                    <span class="home-project-tag"><i class="fab fa-docker"></i>Docker</span>
+                    <span class="home-project-tag"><i class="fas fa-dharmachakra"></i>K8s</span>
+                    <span class="home-project-tag"><i class="fab fa-aws"></i>AWS</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://aquamesh.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
+            <div class="home-project-image">
+                <img src="{{ get_url(path='images/projects/AquaMesh.png') }}" alt="AquaMesh" width="400" height="220" loading="lazy" decoding="async">
+            </div>
+            <div class="home-project-body">
+                <h3 class="home-project-title">AquaMesh</h3>
+                <p class="home-project-desc">{{ trans(key="proj_aquamesh_desc", lang=lang) }}</p>
+                <div class="home-project-tech">
+                    <span class="home-project-tag"><i class="fab fa-react"></i>React</span>
+                    <span class="home-project-tag"><i class="fas fa-cube"></i>Turborepo</span>
+                    <span class="home-project-tag"><i class="fas fa-puzzle-piece"></i>Microfrontends</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://github.com/CosmeValera/FitCal" target="_blank" rel="noopener" class="home-project-card">
+            <div class="home-project-image">
+                <img src="{{ get_url(path='images/projects/FitCal.webp') }}" alt="FitCal" width="400" height="220" loading="lazy" decoding="async">
+            </div>
+            <div class="home-project-body">
+                <h3 class="home-project-title">FitCal</h3>
+                <p class="home-project-desc">{{ trans(key="proj_fitcal_desc", lang=lang) }}</p>
+                <div class="home-project-tech">
+                    <span class="home-project-tag"><i class="fab fa-angular"></i>Angular</span>
+                    <span class="home-project-tag"><i class="fab fa-java"></i>Spring</span>
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+    <div class="home-section-footer">
+        {% if lang == "es" %}
+            <a href="/es/projects/" class="home-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
+        {% else %}
+            <a href="{{ get_url(path='projects') | safe }}" class="home-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
+        {% endif %}
+    </div>
+</section>
+
+<section class="home-section home-latest-posts reveal-section" aria-labelledby="latest-posts-heading">
+    <div class="home-section-header">
+        <h2 id="latest-posts-heading" class="home-section-title">{{ trans(key="latest_posts", lang=lang) }}</h2>
+        <p class="home-section-desc">{{ trans(key="latest_posts_desc", lang=lang) }}</p>
+    </div>
+
+    {% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
+    <div class="home-posts-grid">
+        {% for post in blog_section.pages | slice(end=3) %}
+            {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
+            {% set now_numeric = now() | date(format="%Y%m%d") | int %}
+            {% if post_date_numeric > now_numeric %}
+                {% set post_date_display = now() | date(format="%B %d, %Y") %}
+                {% set post_date_iso = now() | date(format="%Y-%m-%d") %}
+            {% else %}
+                {% set post_date_display = post.date | date(format="%B %d, %Y") %}
+                {% set post_date_iso = post.date | date(format="%Y-%m-%d") %}
+            {% endif %}
+
+            {% set has_tags = post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
+            {% set main_tag_class = "" %}
+            {% set main_tag_slug = "" %}
+            {% if has_tags %}
+                {% set main_tag_slug = post.taxonomies.tags[0] | slugify %}
+                {% if main_tag_slug in config.extra.blog_post_tags %}
+                    {% set main_tag_class = " tag-" ~ main_tag_slug %}
+                {% endif %}
+            {% endif %}
+
+            <a href="{{ post.permalink }}" class="home-post-card{{ main_tag_class }}">
+                <article>
+                    {% if post.extra.cover_image %}
+                        <div class="home-post-cover">
+                            <img src="{{ post.extra.cover_image }}" alt="Cover for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
+                        </div>
+                    {% endif %}
+                    <div class="home-post-body">
+                        {% if has_tags and main_tag_slug in config.extra.blog_post_tags %}
+                            <span class="home-post-tag tag-{{ main_tag_slug }}">
+                                {{ trans(key=main_tag_slug|replace(from="-", to="_"), lang=lang) }}
+                            </span>
+                        {% endif %}
+                        <h3 class="home-post-title">{{ post.title }}</h3>
+                        <p class="home-post-desc">{{ post.description }}</p>
+                        <footer class="home-post-meta">
+                            <time datetime="{{ post_date_iso }}">{{ post_date_display }}</time>
+                            <span class="home-post-reading">
+                                <i class="fas fa-clock"></i>
+                                {% if post.extra.custom_reading_time %}
+                                    {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }}
+                                {% else %}
+                                    {{ post.reading_time | default(value="3") }}{{ trans(key="min_read", lang=lang) }}
+                                {% endif %}
+                            </span>
+                        </footer>
+                    </div>
+                </article>
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="home-section-footer">
+        {% if lang == "es" %}
+            <a href="/es/blog/" class="home-section-link">{{ trans(key="view_all_posts", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
+        {% else %}
+            <a href="{{ get_url(path='blog') | safe }}" class="home-section-link">{{ trans(key="view_all_posts", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
+        {% endif %}
+    </div>
+</section>
 {% endblock content %}
+
+{% block scripts %}
+<script src="{{ get_url(path="js/index.js") | safe }}"></script>
+{% endblock scripts %}

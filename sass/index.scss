@@ -1,4 +1,5 @@
 @import 'core';
+@import 'home-sections';
 
 .home-container {
     display: flex;
@@ -10,15 +11,16 @@
     padding: 1.5rem;
     max-width: 1400px;
     margin: 0 auto;
-    text-align: center; // Center text on mobile
+    text-align: center;
 
     @include respond-to('lg') {
+        min-height: 100vh;
         flex-direction: row;
         gap: 4rem;
         align-items: center;
         text-align: left;
         padding: 2rem;
-        padding-right: 10rem; // Prevent lateral menu overlap
+        padding-right: 10rem;
     }
 }
 
@@ -491,5 +493,131 @@ body.bright-theme {
                 }
             }
         }
+    }
+}
+
+// Scroll indicator
+.scroll-indicator {
+    display: none;
+
+    @include respond-to('lg') {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        padding-bottom: 2rem;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+        animation-delay: 1.2s;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+
+        &.is-hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+        }
+    }
+}
+
+.scroll-indicator-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba($text-color, 0.4);
+}
+
+.scroll-indicator-line {
+    width: 2px;
+    height: 40px;
+    background: rgba($text-color, 0.1);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-indicator-dot {
+    width: 2px;
+    height: 12px;
+    background: $accent-color;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    animation: scroll-dot 2s ease-in-out infinite;
+}
+
+@keyframes scroll-dot {
+    0% { top: 0; opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { top: 28px; opacity: 0; }
+}
+
+// Scroll-reveal sections (desktop only)
+.reveal-section {
+    @include respond-to('lg') {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+        &.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        // Stagger children inside the section
+        .home-section-header {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+        }
+
+        .home-post-card,
+        .home-project-card {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.3s ease,
+                        border-color 0.3s ease;
+
+            &:nth-child(1) { transition-delay: 0.2s, 0.2s, 0s, 0s; }
+            &:nth-child(2) { transition-delay: 0.35s, 0.35s, 0s, 0s; }
+            &:nth-child(3) { transition-delay: 0.5s, 0.5s, 0s, 0s; }
+        }
+
+        .home-section-footer {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s,
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+        }
+
+        &.is-visible {
+            .home-section-header,
+            .home-post-card,
+            .home-project-card,
+            .home-section-footer {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+}
+
+// Bright theme overrides for scroll indicator
+body.bright-theme {
+    .scroll-indicator-text {
+        color: rgba($text-color-bright, 0.4);
+    }
+
+    .scroll-indicator-line {
+        background: rgba($text-color-bright, 0.1);
+    }
+
+    .scroll-indicator-dot {
+        background: $accent-color-bright;
     }
 }
