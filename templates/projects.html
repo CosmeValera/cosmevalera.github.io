@@ -36,6 +36,11 @@
         Angular
       </button>
 
+      <button class="filter-button" data-filter="Vue">
+        <i class="fab fa-vuejs"></i>
+        Vue
+      </button>
+
       <button class="filter-button" data-filter="DevOps">
         <i class="fas fa-dharmachakra"></i>
         DevOps
@@ -78,6 +83,10 @@
         <button class="filter-modal-option" data-filter="Angular">
           <i class="fab fa-angular"></i>
           Angular
+        </button>
+        <button class="filter-modal-option" data-filter="Vue">
+          <i class="fab fa-vuejs"></i>
+          Vue
         </button>
         <button class="filter-modal-option" data-filter="DevOps">
           <i class="fas fa-dharmachakra"></i>
@@ -145,6 +154,57 @@
               <i class="fab fa-github"></i>GitHub
             </a>
             <a class="card-button demo-btn" href="https://devopslab.cosmevalera.dev/" target="_blank">
+              <i class="fas fa-link"></i>{{ trans(key="live_demo", lang=lang) }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 animate__animated animate__fadeInLeft">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/bitcoin-finance-lab-dark.png') }}" alt="Bitcoin Finance Lab" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">Bitcoin Finance Lab</h3>
+          <p class="card-description">{{ trans(key="proj_btcfinlab_desc", lang=lang) }}</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fab fa-vuejs"></i>Vue</span>
+            <span class="tag"><i class="fab fa-bitcoin"></i>Bitcoin</span>
+            <span class="tag"><i class="fas fa-chart-line"></i>Finance</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/bitcoin-finance-lab" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+            <a class="card-button demo-btn" href="https://bitcoin-finance-lab.cosmevalera.dev/" target="_blank">
+              <i class="fas fa-link"></i>{{ trans(key="live_demo", lang=lang) }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 animate__animated animate__fadeInRight">
+      <div class="project-card">
+        <div class="project-image-container">
+          <img src="{{ get_url(path='images/projects/particle-universe-light.png') }}" alt="Particle Universe" width="400" height="220" loading="lazy" decoding="async" />
+        </div>
+        <div class="project-content">
+          <h3 class="card-title">Particle Universe</h3>
+          <p class="card-description">{{ trans(key="proj_particle_desc", lang=lang) }}</p>
+          <p class="card-technology">
+            <span class="tag"><i class="fas fa-rocket"></i>Astro</span>
+            <span class="tag"><i class="fab fa-vuejs"></i>Vue</span>
+            <span class="tag"><i class="fab fa-react"></i>React</span>
+            <span class="tag"><i class="fab fa-angular"></i>Angular</span>
+          </p>
+          <div class="card-buttons">
+            <a class="card-button github-btn" href="https://github.com/CosmeValera/particle-universe" target="_blank">
+              <i class="fab fa-github"></i>GitHub
+            </a>
+            <a class="card-button demo-btn" href="https://particle-universe.cosmevalera.dev/" target="_blank">
               <i class="fas fa-link"></i>{{ trans(key="live_demo", lang=lang) }}
             </a>
           </div>
@@ -236,29 +296,6 @@
         </div>
       </div>
     </div>
-  
-    <div class="col-12 col-md-6 animate__animated animate__fadeInLeft">
-      <div class="project-card">
-        <div class="project-image-container">
-          <img src="{{ get_url(path='images/projects/Inventory.png') }}" alt="Inventory" width="400" height="220" loading="lazy" decoding="async" />
-        </div>
-        <div class="project-content">
-          <h3 class="card-title">Inventory</h3>
-          <p class="card-description">{{ trans(key="proj_inventory_desc", lang=lang) }}</p>
-          <p class="card-technology">
-            <span class="tag"><i class="fab fa-square-js"></i>JavaScript</span>
-            <span class="tag"><i class="fab fa-node-js"></i>Node</span>
-            <span class="tag"><i class="fas fa-leaf"></i>MongoDB</span>
-          </p>
-          <div class="card-buttons">
-            <a class="card-button github-btn" href="https://github.com/CosmeValera/Inventory" target="_blank">
-              <i class="fab fa-github"></i>GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
   <!-- END: CARDS -->
 </div>

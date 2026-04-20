@@ -148,7 +148,8 @@ proj_fitcal_desc = "Aplicación de seguimiento de fitness y nutrición con gesti
 proj_sympho_desc = "Herramienta de notación y composición musical con renderizado interactivo de partituras"
 proj_lop_desc = "Juego de estrategia por turnos con batallas Pokemon y mecánicas personalizadas."
 proj_deptquest_desc = "Aplicación Android para la gestión de un departamento."
-proj_inventory_desc = "Sistema de gestión de inventario desarrollado con Node.js y MongoDB."
+proj_particle_desc = "Dashboard multi-framework con Astro que renderiza simulaciones interactivas de partículas con React, Vue y Angular"
+proj_btcfinlab_desc = "Herramienta de comparación financiera en Vue 3 que visualiza el rendimiento de Bitcoin frente a acciones e índices de mercado"
 
 # Default language (English) translations
 [translations]
@@ -252,4 +253,5 @@ proj_fitcal_desc = "Fitness and nutrition tracking application with calorie mana
 proj_sympho_desc = "Music notation and composition tool with interactive sheet music rendering"
 proj_lop_desc = "Turn-based strategy game featuring Pokemon battles with custom mechanics."
 proj_deptquest_desc = "An Android application for management of a department."
-proj_inventory_desc = "Inventory management system built with Node.js and MongoDB."
+proj_particle_desc = "Multi-framework Astro dashboard rendering interactive particle simulations with React, Vue, and Angular"
+proj_btcfinlab_desc = "Vue 3 financial comparison tool visualizing Bitcoin performance against treasury stocks and market indices"
