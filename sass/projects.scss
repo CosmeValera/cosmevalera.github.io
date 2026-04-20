@@ -197,6 +197,8 @@ body {
     }
 
     .project-card {
+      --mouse-x: 50%;
+      --mouse-y: 50%;
       width: 100%;
       position: relative;
       margin-bottom: 2rem;
@@ -209,10 +211,31 @@ body {
       display: flex;
       flex-direction: column;
 
+      // Cursor-tracking spotlight glow
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          400px circle at var(--mouse-x) var(--mouse-y),
+          rgba($accent-color, 0.12),
+          transparent 50%
+        );
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        border-radius: inherit;
+      }
+
       &:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         border-color: rgba($accent-color, 0.5);
+
+        &::after {
+          opacity: 1;
+        }
       }
 
       .project-image-container {
@@ -330,6 +353,14 @@ body {
       background-color: $secondary-bg-bright;
       border-color: rgba($accent-color-bright, 0.2);
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+      &::after {
+        background: radial-gradient(
+          400px circle at var(--mouse-x) var(--mouse-y),
+          rgba($accent-color-bright, 0.2),
+          transparent 50%
+        );
+      }
 
       &:hover {
         box-shadow: 0 12px 24px rgba(0,0,0,0.1);

@@ -158,11 +158,17 @@
 
         .highlight {
             // Gradient text for "Cosme"
-            background: linear-gradient(135deg, $accent-color 0%, $active-color-tealish 100%);
+            background: linear-gradient(90deg, $accent-color, $active-color-tealish, $accent-color);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
+            animation: gradientShift 4s ease infinite;
+
+            @media (prefers-reduced-motion: reduce) {
+                animation: none;
+            }
         }
     }
 
@@ -436,7 +442,8 @@ body.bright-theme {
                 
                 .highlight {
                     // Bright theme gradient
-                    background: linear-gradient(135deg, $accent-color-bright 0%, darken($active-color-tealish, 10%) 100%);
+                    background: linear-gradient(90deg, $accent-color-bright, darken($active-color-tealish, 10%), $accent-color-bright);
+                    background-size: 200% auto;
                     -webkit-background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-clip: text;
