@@ -6,10 +6,10 @@ draft = true
 [taxonomies]
 tags = ["frontend", "architecture"]
 [extra]
-cover_image = "/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-image.png"
+cover_image = "/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-image.webp"
 +++
 
-![blog-cover](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-image.png)
+![blog-cover](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-image.webp)
 
 > **TL;DR**
 > - *SSGs* (Zola, Astro) → content-heavy sites: blogs, portfolios, marketing site.
