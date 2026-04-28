@@ -19,7 +19,7 @@ Go to your user folder and open ´.gitconfig´, example ´C:\Users\cosme\.gitcon
 	co = checkout
 	d = diff
   l = log
-  lo = log -n 10 --oneline
+  lo = log -n 7 --oneline
 	s = status
 	#############
 	su = stash -u
