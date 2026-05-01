@@ -156,10 +156,18 @@
             {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
             {% set now_numeric = now() | date(format="%Y%m%d") | int %}
             {% if post_date_numeric > now_numeric %}
-                {% set post_date_display = now() | date(format="%B %d, %Y") %}
+                {% if lang == "es" %}
+                    {% set post_date_display = now() | date(format="%-d %B %Y", locale="es_ES") %}
+                {% else %}
+                    {% set post_date_display = now() | date(format="%B %-d, %Y") %}
+                {% endif %}
                 {% set post_date_iso = now() | date(format="%Y-%m-%d") %}
             {% else %}
-                {% set post_date_display = post.date | date(format="%B %d, %Y") %}
+                {% if lang == "es" %}
+                    {% set post_date_display = post.date | date(format="%-d %B %Y", locale="es_ES") %}
+                {% else %}
+                    {% set post_date_display = post.date | date(format="%B %-d, %Y") %}
+                {% endif %}
                 {% set post_date_iso = post.date | date(format="%Y-%m-%d") %}
             {% endif %}
 

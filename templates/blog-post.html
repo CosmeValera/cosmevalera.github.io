@@ -66,9 +66,17 @@
     {% set now_numeric = now() | date(format="%Y%m%d") | int %}
     
     {% if post_date_numeric > now_numeric %}
-      {% set post_date_display = now() | date(format="%B %d, %Y") %}
+      {% if lang == "es" %}
+        {% set post_date_display = now() | date(format="%-d %B %Y", locale="es_ES") %}
+      {% else %}
+        {% set post_date_display = now() | date(format="%B %-d, %Y") %}
+      {% endif %}
     {% else %}
-      {% set post_date_display = page.date | date(format="%B %d, %Y") %}
+      {% if lang == "es" %}
+        {% set post_date_display = page.date | date(format="%-d %B %Y", locale="es_ES") %}
+      {% else %}
+        {% set post_date_display = page.date | date(format="%B %-d, %Y") %}
+      {% endif %}
     {% endif %}
 
     {% if lang == "es" %}
