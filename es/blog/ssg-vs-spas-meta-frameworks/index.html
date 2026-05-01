@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPAs vs SSGs vs Meta frameworks | Cosme</title>
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+      
+      
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    <meta name="description" content="Cuándo usar React, Vue, Zola, Astro, Next o Nuxt, y el coste de elegir la herramienta equivocada">
+    <link rel="canonical" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;ssg-vs-spas-meta-frameworks&#x2F;">
+
+    
+    <meta property="og:title" content="SPAs vs SSGs vs Meta frameworks | Cosme">
+    <meta property="og:description" content="Cuándo usar React, Vue, Zola, Astro, Next o Nuxt, y el coste de elegir la herramienta equivocada">
+    <meta property="og:url" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;ssg-vs-spas-meta-frameworks&#x2F;">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2026-05-06-ssg-vs-spas-vs-meta-frameworks&#x2F;cover-image.webp">
+    <meta property="og:site_name" content="Cosme Valera">
+    <meta property="og:locale" content="es_ES">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SPAs vs SSGs vs Meta frameworks | Cosme">
+    <meta name="twitter:description" content="Cuándo usar React, Vue, Zola, Astro, Next o Nuxt, y el coste de elegir la herramienta equivocada">
+    <meta name="twitter:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2026-05-06-ssg-vs-spas-vs-meta-frameworks&#x2F;cover-image.webp">
+
+    
+    
+      
+        
+        
+        <link rel="alternate" hreflang="en" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;ssg-vs-spas-meta-frameworks&#x2F;">
+        <link rel="alternate" hreflang="es" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;ssg-vs-spas-meta-frameworks&#x2F;">
+        <link rel="alternate" hreflang="x-default" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;ssg-vs-spas-meta-frameworks&#x2F;">
+      
+    
+    
+    
+    
+
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+        window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+        cronitor('config', { clientKey: '482ce2f6e9775eb3b28794266710e6e6' });
+    </script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2026-05-06-ssg-vs-spas-vs-meta-frameworks&#x2F;cover-image.webp" as="image" fetchpriority="high">
+  
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "SPAs vs SSGs vs Meta frameworks",
+    "description": "Cuándo usar React, Vue, Zola, Astro, Next o Nuxt, y el coste de elegir la herramienta equivocada",
+    "image": "https://cosmevalera.dev/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-image.webp",
+    "datePublished": "2026-05-06",
+    "dateModified": "2026-05-06",
+    "author": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cosmevalera.dev/es/blog/ssg-vs-spas-meta-frameworks/"
+    },
+    "inLanguage": "es",
+    "keywords": "frontend, architecture"
+  }
+  </script>
+
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher -->
+        <div class="language-switcher">
+            
+                
+                
+                <a href="&#x2F;blog&#x2F;ssg-vs-spas-meta-frameworks&#x2F;" 
+                   class="language-toggle-btn" 
+                   aria-label="Cambiar idioma"
+                   title="Switch to English">
+                    <span class="lang-code">ES</span>
+                </a>
+            
+        </div>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
+            <i class="fas fa-circle-half-stroke"></i>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background">
+      <div class="grid-layer-3"></div>
+      <div class="grid-ripple"></div>
+    </div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/projects" class="menu-item menu-projects " aria-label="Proyectos">
+      <i class="fas fa-code"></i>
+      <span class="menu-text">Proyectos</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+        
+      
+    
+
+    
+    <a href="/es/blog" class="back-link">← Todas las publicaciones</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/architecture/" class="tag tag-architecture-plain">
+              Arquitectura
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">SPAs vs SSGs vs Meta frameworks</h1>
+    <h3 class="presentation-text">Cuándo usar React, Vue, Zola, Astro, Next o Nuxt, y el coste de elegir la herramienta equivocada</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">1 May 2026</span>
+      <span class="reading-time">
+        
+          5m lectura • 832 palabras
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Índice</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">En esta página</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-image.webp" alt="blog-cover" /></p>
+<blockquote>
+<p><strong>TL;DR</strong></p>
+<ul>
+<li><strong>SPAs / aplicaciones interactivas</strong> construidas con React, Vue y Angular encajan mejor en interfaces con bastante estado.</li>
+<li><strong>SSGs</strong> como Zola y Astro encajan mejor en sitios con mucho contenido: blogs, portfolios y landing pages.</li>
+<li><strong>Meta frameworks</strong> como Next.js y Nuxt encajan mejor cuando necesitas interactividad y páginas de contenido en el mismo proyecto.</li>
+<li><strong>SSGs de documentación</strong> como VitePress y Docusaurus son SSGs especializados en documentación.</li>
+<li>La herramienta equivocada puede funcionar, pero normalmente te cuesta rendimiento, simplicidad o experiencia de desarrollo.</li>
+</ul>
+</blockquote>
+<p>Alguien pasó tres semanas construyendo un flujo de contenido en React: parseo de Markdown, frontmatter, generación de rutas, RSS... antes de darse cuenta de que Astro ya trae todo eso de serie. El código funcionaba. Simplemente no hacía falta que existiera.</p>
+<p>La pregunta no es <em>qué framework es mejor</em>.</p>
+<p>La pregunta real es: <strong>qué tipo de web estoy construyendo</strong>.</p>
+<hr />
+<h4>Los grupos prácticos</h4>
+<p>Hay tres grandes familias: SSGs, SPAs y meta frameworks. Las herramientas de documentación merecen una nota aparte porque están pensadas para un tipo de web muy distinto a un blog o portfolio.</p>
+<p><strong>1. Static Site Generators (SSGs):</strong> Astro, Zola, Hugo, Jekyll</p>
+<p>Toman contenido, normalmente Markdown, más plantillas, y con un comando de build generan HTML/CSS/JS plano. Las páginas generadas se guardan en una carpeta tipo <code>dist</code> o <code>public</code>. En producción, la página ya existe como archivo; el navegador solo la descarga. Encajan muy bien en sitios con mucho contenido.</p>
+<p>Herramientas como VitePress, Docusaurus y Nextra también son SSGs, pero vienen ya orientadas a documentar una librería o producto: barras laterales, búsqueda y navegación centrada en código. Para un blog o portfolio, suele encajar mejor Astro o Zola.</p>
+<p><strong>2. SPAs / aplicaciones interactivas:</strong> React, Vue, Angular, Svelte</p>
+<p>React, Vue, Angular y Svelte se usan a menudo para construir <em>SPAs</em>: aplicaciones interactivas donde JavaScript gestiona las rutas, el estado y las actualizaciones de la UI en el navegador. Encajan bien en interfaces con mucho estado detrás de un login, donde el SEO suele importar menos. Angular, en concreto, se usa mucho en proyectos empresariales orientados a aplicación; tiene soporte para SSR, pero no un meta framework ampliamente adoptado equivalente a Next o Nuxt.</p>
+<p><strong>3. Meta frameworks:</strong> Next.js, Nuxt, SvelteKit</p>
+<p>Se construyen encima de React/Vue/Svelte y añaden rutas, SSG, SSR, carga de datos y convenciones de despliegue. Úsalos cuando páginas estáticas de contenido y páginas tipo aplicación necesiten vivir en la misma base de código: comercio electrónico con páginas de producto estáticas y carrito interactivo, SaaS con marketing estático y dashboard completo, o una plataforma de blog con posts generados y editor interactivo. Si tus necesidades están claramente en un lado u otro, un meta framework suele ser demasiado.</p>
+<img src="/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/table.jpeg" style="width: 95%; border-radius: 10px; display: block; margin: 0 auto"/>
+<hr />
+<h4>El coste de elegir mal</h4>
+<p>Puedes usar cualquiera de estas herramientas para casi cualquier caso, pero pagas un precio cuando la herramienta no encaja con el problema.</p>
+<p><em>Usar React para un blog:</em></p>
+<ul>
+<li>Construyes tu propio flujo de contenido desde cero: parseo de Markdown, frontmatter, generación de rutas, resaltado de sintaxis, RSS... Los SSGs ya te dan todo esto.</li>
+<li>Normalmente envías mucho más JavaScript del que un sitio de contenido necesita.</li>
+<li>El SEO y la carga inicial pueden sufrir si el contenido depende demasiado del renderizado en cliente.</li>
+</ul>
+<p><em>Usar Zola para una aplicación interactiva:</em></p>
+<ul>
+<li>No tienes modelo de componentes integrado, renderizado declarativo ni sistema de reactividad.</li>
+<li>Gestionar estado con JavaScript plano se complica rápido cuando hay más de un par de piezas interactuando.</li>
+<li>Empiezas a reconstruir cosas que React/Vue ya resuelven bien.</li>
+</ul>
+<p><em>Usar Next.js cuando Astro o Zola bastan:</em></p>
+<ul>
+<li>Añades más conceptos, dependencias y preocupaciones de despliegue de las que el proyecto necesita.</li>
+<li>Puedes acabar dedicando tiempo a modos de renderizado y convenciones del framework en lugar de avanzar con la web.</li>
+</ul>
+<hr />
+<h4>Astro: el SSG moderno</h4>
+<p>Si hoy empezara un sitio de contenido y quisiera funcionalidades modernas de frontend, <strong>Astro</strong> probablemente sería mi opción por defecto:</p>
+<ul>
+<li>Puedes escribir componentes de <em>React/Vue/Svelte</em>, y Astro los compila a HTML plano durante el build.</li>
+<li><em>Islands architecture</em>: solo los componentes que marcas como interactivos envían JS al navegador.</li>
+<li>Muy buen soporte para MDX, Markdown con componentes embebidos.</li>
+<li>Un ecosistema grande de integraciones y temas.</li>
+</ul>
+<p>Si quieres algo más simple, <em>Zola</em> es excelente: sin Node.js, sin npm, solo un binario de Rust.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>5</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img 
+      src="https://cosmevalera.dev/images/blog/general/tree-summer-spring-webp.webp" 
+      alt="Spring&amp;#x2F;Summer seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div>
+<p>No hay un único mejor framework web, sino la herramienta adecuada para lo que estás construyendo.</p>
+<p>Si el proyecto es principalmente contenido, empieza con un SSG. Si es principalmente estado e interacción, empieza con un framework de SPA. Si necesita ambas cosas, usa un meta framework.</p>
+<p>Antes de empezar un proyecto nuevo, pregúntate: ¿es una página de contenidos, una aplicación interactiva, o ambas cosas?</p>
+<p>Esas respuestas eligen la categoría. La categoría elige la herramienta.</p>
+
+    </div>
+    
+    <hr class="footer-rule" />
+    
+<div class="related-container">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <div class="link">
+        <span> Anterior publicación</span>
+        <a href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;dependency-injection&#x2F;">Inyección de Dependencias</a>
+      </div>
+      
+
+      
+  </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+</div>
+
+    <hr class="footer-rule-2" />
+    
+  </div>
+
+      </main>
+
+      <footer class="footer-responsive">
+        <span class="footer-main">
+          
+          <a href="/es/sponsor">
+            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> Colabora</a>
+          
+        </span>
+        <span class="footer-copyright"> © 2026 Cosme Valera Reales</span>
+      </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    <script src="https://cosmevalera.dev/js/easter-egg.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>
