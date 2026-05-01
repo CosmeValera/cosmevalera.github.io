@@ -1,7 +1,7 @@
 +++
 title = "SPAs vs SSGs vs Meta-frameworks"
 template = "blog-post.html"
-description = "When to use React, Vue, Zola, Astro or Next/Nuxt; and the cost of picking the wrong tool for the job"
+description = "When to use React, Vue, Zola, Astro, Next or Nuxt; and the cost of picking the wrong tool for the job"
 [taxonomies]
 tags = ["frontend", "architecture"]
 [extra]
@@ -85,7 +85,8 @@ If you want something simpler, *Zola* is excellent: no Node.js, no npm, just a s
 
 There's no single best web framework, only the right tool for what you're building. 
 
-Before starting a new project, ask: is this a content site, an interactive app, or both?
+If the project is mostly content, start with an SSG. If it is mostly state and interaction, start with an SPA framework. If it needs both, reach for a meta-framework.
 
+Before starting a new project, ask: is this a content site, an interactive app, or both?
 
 Those answers pick the category. The category picks the tool.
