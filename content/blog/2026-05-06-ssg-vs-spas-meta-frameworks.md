@@ -2,7 +2,6 @@
 title = "SSGs vs SPAs vs Meta-frameworks"
 template = "blog-post.html"
 description = "When to use Zola, Astro, React, Vue, or Next/Nuxt; and the cost of picking the wrong tool for the job"
-draft = true
 [taxonomies]
 tags = ["frontend", "architecture"]
 [extra]
@@ -18,7 +17,7 @@ cover_image = "/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-imag
 > - *Specialized SSGs* (VitePress, Docusaurus) → technical documentation.
 > - Using a tool outside its sweet spot costs you in DX or performance.
 
-You want to build a website. Do you reach for **Zola**, **Astro**, **React**, **Vue**, or **Next.js**? They all produce websites, but they solve very different problems.
+You want to build a website. Do you reach for **React**, **Vue**, **Zola**, **Astro**, or **Next.js**? They all produce websites, but they solve very different problems.
 
 ---
 
@@ -28,7 +27,7 @@ You want to build a website. Do you reach for **Zola**, **Astro**, **React**, **
 
 They take content (usually Markdown) + templates, and at *build time* output plain HTML/CSS/JS. Zero runtime overhead. Great for content-heavy sites.
 
-**2. SPA frameworks:** React, Vue, Angular
+**2. SPA frameworks:** React, Vue, Angular, Svelte
 
 They build *interactive apps* in the browser. JS renders everything client-side. Best for stateful, interactive UIs behind a login where SEO doesn't matter.
 
