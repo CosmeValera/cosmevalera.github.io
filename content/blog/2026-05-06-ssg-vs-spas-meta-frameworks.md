@@ -27,25 +27,25 @@ The real question is: **what kind of website am I building?**
 
 <h4>The practical buckets</h4>
 
-There are three big families: SSGs, SPA frameworks, and meta-frameworks. I split documentation tools into their own bucket because their defaults differ from a normal blog or portfolio.
+There are three big families: SSGs, SPAs, and meta-frameworks. I split documentation tools into their own bucket because their defaults differ from a normal blog or portfolio.
 
 **1. Static Site Generators (SSGs):** Astro, Zola, Hugo, Jekyll
 
-They take content (usually Markdown) + templates and generate plain HTML/CSS/JS before deployment. In production, the page already exists as a file; the browser just downloads it. Great for content-heavy sites.
+They take content (usually Markdown) + templates and using a build command they generate plain HTML/CSS/JS (the built pages are stored in a `dist`/`public` folder). In production, the page already exists as a file; the browser just downloads it. Great for content-heavy sites.
 
 **2. Documentation SSGs:** VitePress, Docusaurus, Nextra
 
 They are still SSGs, but their defaults assume you're documenting a library, API, or product: sidebars, search, nested pages, callouts, and code-focused navigation. For blogs or portfolios, pick Astro or Zola instead.
 
-**3. App frameworks / SPA tools:** React, Vue, Angular, Svelte
+**3. SPAs / interactive apps:** React, Vue, Angular, Svelte
 
-They are commonly used to build *interactive apps* where JavaScript handles routing, state, and UI updates in the browser. Best for stateful, interactive UIs behind a login where SEO doesn't matter.
+React, Vue, Angular and Svelte are commonly used to build *SPAs*: interactive apps where JavaScript handles routing, state, and UI updates in the browser. Best for stateful UIs behind a login, where SEO usually matters less.
 
 **4. Meta-frameworks:** Next.js, Nuxt, SvelteKit
 
 They sit on top of React/Vue/Svelte and add routing, SSG, SSR, data loading, and deployment conventions. Use them when static content pages and app-like pages need to live in the same codebase.
 
-![table-tech](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/table.jpeg)
+![Comparison table of SSGs, SPAs, documentation SSGs and meta-frameworks](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/table.jpeg)
 
 ---
 
@@ -55,7 +55,7 @@ You *can* use any of these for any use case, but you pay a price when the tool d
 
 *Using React for a blog:*
 - You build your own content pipeline from scratch (Markdown parsing, frontmatter, route generation, syntax highlighting, RSS...). SSGs give you all of this for free.
-- Your bundle ships 100KB+ of JS before the user sees any content.
+- You usually ship much more JavaScript than a content site actually needs.
 - SEO and initial load can suffer if content depends too much on client-side rendering.
 
 *Using Zola for an interactive app:*
@@ -83,7 +83,7 @@ If your needs are cleanly one side or the other, a meta-framework is overkill.
     <summary><i class="fas fa-lightbulb"></i> What about Angular?</summary>
     <div class="expandable-content">
         <p>Angular lives in the interactive app (or SPA tool) row alongside React and Vue, traditionally used for enterprise apps behind a login.</p>
-        <p>It does have SSR support (Angular SSR, formerly Angular Universal), but there's no widely-adopted meta-framework in the Angular ecosystem like Next/Nuxt. Angular projects are almost always pure SPAs.</p>
+        <p>It does have SSR support (Angular SSR, formerly Angular Universal), but there's no widely-adopted meta-framework in the Angular ecosystem like Next/Nuxt. In practice, Angular is still mostly used for app-first projects.</p>
     </div>
 </details>
 
@@ -91,7 +91,7 @@ If your needs are cleanly one side or the other, a meta-framework is overkill.
 
 <h4>Astro: the modern SSG</h4>
 
-If you're starting a content site today and want modern frontend features, *Astro* is the strongest default:
+If you're starting a content site today and want modern frontend features, **Astro** would probably be my default:
 
 - Write *React/Vue/Svelte components*, Astro compiles them to plain HTML at build time.
 - *Islands architecture*: only components you mark as interactive ship JS to the browser.
@@ -107,4 +107,8 @@ If you want something simpler, *Zola* is excellent, with no Node.js, no npm, jus
 
 <h4>Tiny summary</h4>
 
-There's no single best web framework, only the right tool for what you're building. Before starting a new project, ask: is this a content site, an interactive app, or both? The answer picks the category for you.
+There's no single best web framework, only the right tool for what you're building. 
+
+Before starting a new project, ask: is this a content site, an interactive app, or both?
+
+The answer picks the category for you.
