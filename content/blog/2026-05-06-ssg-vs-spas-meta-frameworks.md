@@ -43,7 +43,7 @@ React, Vue, Angular and Svelte are commonly used to build *SPAs*: interactive ap
 
 They sit on top of React/Vue/Svelte and add routing, SSG, SSR, data loading, and deployment conventions. Use them when static content pages and app-like pages need to live in the same codebase: e-commerce (static product pages, interactive cart), SaaS (static marketing, full SPA dashboard), or a blog platform (generated posts, interactive editor). If your needs are cleanly one side or the other, a meta-framework is overkill.
 
-![Comparison table of SSGs, SPAs, documentation SSGs and meta-frameworks](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/table.jpeg)
+<img src="/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/table.jpeg" style="width: 95%; border-radius: 10px; display: block; margin: 0 auto"/>
 
 ---
 
