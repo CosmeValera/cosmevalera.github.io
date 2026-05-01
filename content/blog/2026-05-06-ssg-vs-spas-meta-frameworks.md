@@ -11,13 +11,17 @@ cover_image = "/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-imag
 ![blog-cover](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-image.webp)
 
 > **TL;DR**
-> - *SSGs* (Zola, Astro) → content-heavy sites: blogs, portfolios, marketing site.
-> - *SPA frameworks* (React, Vue, Angular) → interactive apps, usually behind a login.
-> - *Meta-frameworks* (Next.js, Nuxt) → when you need both in one codebase.
-> - *Specialized SSGs* (VitePress, Docusaurus) → technical documentation.
-> - Using a tool outside its sweet spot costs you in DX or performance.
+> - **SPA frameworks** like React, Vue and Angular are best for interactive applications.
+> - **SSGs** like Zola and Astro are best for content-heavy sites: blogs, portfolios and landing pages.
+> - **Meta-frameworks** like Next.js and Nuxt are best when you need both interactivity and content pages in the same project.
+> - **Documentation SSGs** like VitePress and Docusaurus are SSGs specialized for documentation.
+> - The wrong tool can still work, but it usually costs you performance, simplicity, or developer experience.
 
-You want to build a website. Do you reach for **React**, **Vue**, **Zola**, **Astro**, or **Next.js**? They all produce websites, but they solve very different problems.
+You want to build a website. Do you reach for **React**, **Vue**, **Zola**, **Astro**, or **Next.js**?
+
+They all produce something that runs in a browser, but they are optimized for different problems. The question is not *which framework is best?*
+
+The real question is: **what kind of website am I building?**
 
 ---
 
