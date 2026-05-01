@@ -287,10 +287,14 @@
 
         .social-icons {
             display: flex;
-            gap: 1.5rem;
+            align-items: center;
+            gap: 1.15rem;
+            flex-wrap: wrap;
+            justify-content: center;
 
             @include respond-to('lg') {
-                gap: 1.8rem;
+                justify-content: flex-start;
+                gap: 1.25rem;
             }
 
             .social-icon {
@@ -304,6 +308,43 @@
 
                 &:hover {
                     color: $accent-color;
+                    transform: translateY(-3px);
+                }
+            }
+
+            .social-divider {
+                width: 1px;
+                height: 1.8rem;
+                margin: 0 0.1rem;
+                background: rgba($text-color, 0.16);
+
+                @include respond-to('lg') {
+                    margin: 0 0.25rem;
+                }
+            }
+
+            .cv-download-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                padding: 0.45rem 0.75rem;
+                border: 1px solid rgba($text-color, 0.18);
+                border-radius: 999px;
+                color: rgba($text-color, 0.62);
+                font-size: 0.88rem;
+                font-weight: 700;
+                line-height: 1;
+                text-decoration: none;
+                transition: all 0.2s ease;
+
+                i {
+                    font-size: 0.95rem;
+                }
+
+                &:hover {
+                    color: $accent-color;
+                    border-color: rgba($accent-color, 0.55);
+                    background: rgba($accent-color, 0.08);
                     transform: translateY(-3px);
                 }
             }
@@ -496,6 +537,21 @@ body.bright-theme {
                     color: rgba($text-color-bright, 0.5);
                     &:hover {
                         color: $accent-color-bright;
+                    }
+                }
+
+                .social-icons .social-divider {
+                    background: rgba($text-color-bright, 0.18);
+                }
+
+                .social-icons .cv-download-link {
+                    border-color: rgba($text-color-bright, 0.18);
+                    color: rgba($text-color-bright, 0.62);
+
+                    &:hover {
+                        color: darken($accent-color-bright, 10%);
+                        border-color: rgba($accent-color-bright, 0.55);
+                        background: rgba($accent-color-bright, 0.1);
                     }
                 }
             }

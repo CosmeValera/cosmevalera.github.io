@@ -60,6 +60,11 @@
                             {% endif %}
                         </a>
                     {% endfor %}
+                    <span class="social-divider" aria-hidden="true"></span>
+                    <a href="{{ get_url(path='assets/CV-Cosme_Valera_Reales-2026-04-29.pdf') | safe }}" title="{{ trans(key="download_cv", lang=lang) }}" class="cv-download-link">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>{{ trans(key="download_cv", lang=lang) }}</span>
+                    </a>
                 </div>
             </div>
         {% endif %}
