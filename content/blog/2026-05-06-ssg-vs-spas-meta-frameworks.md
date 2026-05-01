@@ -17,9 +17,9 @@ cover_image = "/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/cover-imag
 > - **Documentation SSGs** like VitePress and Docusaurus are SSGs specialized for documentation.
 > - The wrong tool can still work, but it usually costs you performance, simplicity, or developer experience.
 
-You want to build a website. Do you reach for **React**, **Vue**, **Zola**, **Astro**, or **Next.js**?
+Someone spent three weeks building a content pipeline in React: Markdown parsing, frontmatter, route generation, RSS..., before realising Astro ships all of that for free. The code worked. It just didn't need to exist.
 
-They all produce something that runs in a browser, but they are optimized for different problems. The question is not *which framework is best?*
+The question isn't *which framework is best?*
 
 The real question is: **what kind of website am I building?**
 
@@ -27,23 +27,21 @@ The real question is: **what kind of website am I building?**
 
 <h4>The practical buckets</h4>
 
-There are three big families: SSGs, SPAs, and meta-frameworks. I split documentation tools into their own bucket because their defaults differ from a normal blog or portfolio.
+There are three big families: SSGs, SPAs, and meta-frameworks. Documentation tools get their own note because their defaults differ from a normal blog or portfolio.
 
 **1. Static Site Generators (SSGs):** Astro, Zola, Hugo, Jekyll
 
-They take content (usually Markdown) + templates and using a build command they generate plain HTML/CSS/JS (the built pages are stored in a `dist`/`public` folder). In production, the page already exists as a file; the browser just downloads it. Great for content-heavy sites.
+They take content (usually Markdown) + templates and using a build command they generate plain HTML/CSS/JS (the built pages are stored in a `dist`/`public` folder). In production, the page already exists as a file; the browser just downloads it. Great for content-heavy sites. 
 
-**2. Documentation SSGs:** VitePress, Docusaurus, Nextra
+Tools like VitePress, Docusaurus and Nextra are SSGs too, but their defaults assume you're documenting a library (sidebars, search, code-focused navigation). For a blog or portfolio, pick Astro or Zola instead.
 
-They are still SSGs, but their defaults assume you're documenting a library, API, or product: sidebars, search, nested pages, callouts, and code-focused navigation. For blogs or portfolios, pick Astro or Zola instead.
+**2. SPAs / interactive apps:** React, Vue, Angular, Svelte
 
-**3. SPAs / interactive apps:** React, Vue, Angular, Svelte
+React, Vue, Angular and Svelte are commonly used to build *SPAs*: interactive apps where JavaScript handles routing, state, and UI updates in the browser. Best for stateful UIs behind a login, where SEO usually matters less. Angular in particular is mostly used for enterprise app-first projects; it has SSR support but no widely-adopted meta-framework equivalent to Next or Nuxt.
 
-React, Vue, Angular and Svelte are commonly used to build *SPAs*: interactive apps where JavaScript handles routing, state, and UI updates in the browser. Best for stateful UIs behind a login, where SEO usually matters less.
+**3. Meta-frameworks:** Next.js, Nuxt, SvelteKit
 
-**4. Meta-frameworks:** Next.js, Nuxt, SvelteKit
-
-They sit on top of React/Vue/Svelte and add routing, SSG, SSR, data loading, and deployment conventions. Use them when static content pages and app-like pages need to live in the same codebase.
+They sit on top of React/Vue/Svelte and add routing, SSG, SSR, data loading, and deployment conventions. Use them when static content pages and app-like pages need to live in the same codebase: e-commerce (static product pages, interactive cart), SaaS (static marketing, full SPA dashboard), or a blog platform (generated posts, interactive editor). If your needs are cleanly one side or the other, a meta-framework is overkill.
 
 ![Comparison table of SSGs, SPAs, documentation SSGs and meta-frameworks](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/table.jpeg)
 
@@ -69,26 +67,6 @@ You *can* use any of these for any use case, but you pay a price when the tool d
 
 ---
 
-<h4>Where meta-frameworks fit</h4>
-
-Meta-frameworks make sense when you need *both* paradigms in one codebase:
-
-- **E-commerce**: product pages need SSG for SEO, but the cart and checkout are interactive.
-- **SaaS**: marketing pages are static, the dashboard is a full SPA.
-- **Blog platform**: public posts are statically generated, the editor is interactive.
-
-If your needs are cleanly one side or the other, a meta-framework is overkill.
-
-<details class="expandable-info">
-    <summary><i class="fas fa-lightbulb"></i> What about Angular?</summary>
-    <div class="expandable-content">
-        <p>Angular lives in the interactive app (or SPA tool) row alongside React and Vue, traditionally used for enterprise apps behind a login.</p>
-        <p>It does have SSR support (Angular SSR, formerly Angular Universal), but there's no widely-adopted meta-framework in the Angular ecosystem like Next/Nuxt. In practice, Angular is still mostly used for app-first projects.</p>
-    </div>
-</details>
-
----
-
 <h4>Astro: the modern SSG</h4>
 
 If you're starting a content site today and want modern frontend features, **Astro** would probably be my default:
@@ -98,17 +76,16 @@ If you're starting a content site today and want modern frontend features, **Ast
 - Great MDX support (Markdown with embedded components).
 - Large ecosystem of integrations and themes.
 
-If you want something simpler, *Zola* is excellent, with no Node.js, no npm, just a single Rust binary.
+If you want something simpler, *Zola* is excellent: no Node.js, no npm, just a single Rust binary.
 
 ---
 
 <!-- Visual break before conclusion - changes based on time of year -->
 {{ seasonal_image() }}
 
-<h4>Tiny summary</h4>
-
 There's no single best web framework, only the right tool for what you're building. 
 
 Before starting a new project, ask: is this a content site, an interactive app, or both?
 
-The answer picks the category for you.
+
+Those answers pick the category. The category picks the tool.
