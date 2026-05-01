@@ -25,32 +25,27 @@ The real question is: **what kind of website am I building?**
 
 ---
 
-<h4>The three categories</h4>
+<h4>The main categories</h4>
 
-**1. Static Site Generators (SSGs):** Zola, Hugo, Jekyll, Astro, VitePress
+**1. Static Site Generators (SSGs):** Zola, Hugo, Jekyll, Astro
 
 They take content (usually Markdown) + templates, and at *build time* output plain HTML/CSS/JS. Zero runtime overhead. Great for content-heavy sites.
 
-**2. SPA frameworks:** React, Vue, Angular, Svelte
+**2. Documentation SSGs:** Vitepress, Docusaurus, Nextra
+
+Their defaults assume you're documenting a library or product. If that's your goal, use VitePress (Vue) or Docusaurus (React). For blogs or portfolios, pick Astro or Zola instead.
+
+**3. SPA frameworks:** React, Vue, Angular, Svelte
 
 They build *interactive apps* in the browser. JS renders everything client-side. Best for stateful, interactive UIs behind a login where SEO doesn't matter.
 
-**3. Meta-frameworks:** Next.js, Nuxt, SvelteKit
+**4. Meta-frameworks:** Next.js, Nuxt, SvelteKit
 
 They sit on top of React/Vue/Svelte and add SSG and SSR capabilities, letting you mix static and interactive pages *in the same codebase*.
 
----
-
-<h4>When to use what</h4>
-
-```csv
-| Use case                               | Recommended tool             |
-|----------------------------------------|------------------------------|
-| Blog, portfolio, marketing site        | Astro, Zola, Hugo            |
-| Technical documentation                | VitePress, Docusaurus, MkDocs|
-| Complex interactive SPA (no SEO needs) | React, Vue, Angular          |
-| Mix of static + interactive pages      | Next.js, Nuxt, SvelteKit     |
-```
+> **Summary:**
+> 
+> ![table-tech](/images/blog/2026-05-06-ssg-vs-spas-vs-meta-frameworks/table.jpeg)
 
 ---
 
