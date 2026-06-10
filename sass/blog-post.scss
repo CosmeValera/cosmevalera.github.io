@@ -115,6 +115,26 @@
         }
     }
 
+    .post-figure {
+        max-width: 560px;
+        margin: 2rem auto;
+        text-align: center;
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        figcaption {
+            margin-top: 0.75rem;
+            color: rgba($text-color, 0.72);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    }
+
     .phone-images-row {
         display: flex;
         justify-content: center;
@@ -465,6 +485,10 @@
 
         blockquote {
             border-left: 6px solid $accent-color-bright;
+        }
+
+        .post-figure figcaption {
+            color: rgba($text-color-bright, 0.72);
         }
 
         hr {
