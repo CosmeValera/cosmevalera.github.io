@@ -7,15 +7,6 @@ function handleFilter() {
         filterButton.classList[action]('active');
     }
 
-    function removeAnimations() {
-        document.querySelectorAll('.project-card').forEach(card => {
-            const column = card.closest('.col-12');
-            if (column) {
-                column.classList.remove('animate__animated');
-            }
-        });
-    }
-
     function filterProjects(selectedFilter) {
         const JAVA_FILTER_VALUE = "Java";
         const JAVASCRIPT_FILTER_VALUE = "JavaScript";
@@ -94,7 +85,6 @@ function handleFilter() {
     filterModalOptions.forEach(option => {
         option.addEventListener('click', (e) => {
             e.stopPropagation();
-            removeAnimations(); // Remove animations on filter click
             const selectedFilter = option.getAttribute('data-filter');
             const isSelected = option.classList.contains('selected');
 
@@ -120,18 +110,8 @@ function clickFilterRendersCards() {
     const filterButtons = document.querySelectorAll(".filter-button");
     const projectCards = document.querySelectorAll(".project-card");
 
-    function removeAnimations() {
-        document.querySelectorAll('.project-card').forEach(card => {
-            const column = card.closest('.col-12');
-            if (column) {
-                column.classList.remove('animate__animated');
-            }
-        });
-    }
-    
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
-          removeAnimations(); // Remove animations on filter click
           const selectedFilter = button.getAttribute("data-filter");
           const isCurrentlySelected = button.classList.contains("selected-filter");
 

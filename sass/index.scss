@@ -1,4 +1,6 @@
-@import 'core';
+@import 'variables';
+@import 'utils/mixin-card-bg-color-and-border';
+@import 'utils/mixins';
 @import 'home-sections';
 
 .home-container {

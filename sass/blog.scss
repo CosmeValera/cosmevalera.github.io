@@ -1,4 +1,6 @@
-@import 'main';
+@import 'variables';
+@import 'utils/mixin-card-bg-color-and-border';
+@import 'utils/mixins';
 @import 'blog-cards';
 @import 'blog-filters';
 @import 'blog-series';
@@ -98,18 +100,8 @@
         padding: 20px 24px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         
-        // Glassmorphism
-        @supports (backdrop-filter: blur(10px)) {
-          background: rgba($secondary-bg, 0.8);
-          backdrop-filter: blur(20px);
-        }
-
         &.navigation-section {
           background: rgba($accent-color, 0.03);
-          
-          @supports (backdrop-filter: blur(10px)) {
-            background: rgba($accent-color, 0.03);
-          }
 
           .filter-modal-header h3 {
              font-size: 1.1rem;

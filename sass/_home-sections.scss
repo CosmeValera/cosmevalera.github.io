@@ -71,8 +71,6 @@
 }
 .home-post-card,
 .home-project-card {
-    --mouse-x: 50%;
-    --mouse-y: 50%;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -89,31 +87,10 @@
         display: contents;
     }
 
-    // Cursor-tracking spotlight glow
-    &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-            350px circle at var(--mouse-x) var(--mouse-y),
-            rgba($accent-color, 0.12),
-            transparent 50%
-        );
-        z-index: 2;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-        border-radius: inherit;
-    }
-
     &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
         border-color: rgba($accent-color, 0.5);
-
-        &::after {
-            opacity: 1;
-        }
 
         .home-post-cover img,
         .home-project-image img {
@@ -286,17 +263,9 @@ body.bright-theme {
         color: $text-color-bright;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-        &::after {
-            background: radial-gradient(
-                350px circle at var(--mouse-x) var(--mouse-y),
-                rgba($accent-color-bright, 0.2),
-                transparent 50%
-            );
-        }
-
         &:hover {
             border-color: rgba($accent-color-bright, 0.6);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
         }
     }
 

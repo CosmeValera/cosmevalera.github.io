@@ -13,9 +13,7 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     padding: 1.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: 
-      transform 0.3s ease-in-out, 
-      box-shadow 0.3s ease-in-out;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     width: 90%;
     max-width: 90%;
@@ -46,28 +44,9 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     // Main card hover effect
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
       z-index: 10;
       overflow: visible;
-      
-      // Desktop specific hover effects
-      @include respond-to('md') {
-
-        // Accent for card
-        @include card-color-accent-based-on-primary-tag();
-
-        &:has(.blog-card-recommended, .blog-card-for-beginners) {
-          // If icon: border permanent border
-          .blog-card-icon {
-            @include icon-border-when-has-icon-based-on-primary-tag();
-          }
-
-          // If icon: border to card and preview, animated
-          &, .blog-card-cover-preview-down, .blog-card-cover-preview-up { // border to card and preview
-            @include card-border-when-has-icon-based-on-primary-tag();
-          }
-        }
-      }
     }
 
     .blog-card-icon {
@@ -182,12 +161,12 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         font-size: 0.8rem;
         text-align: center;
         padding: 4px 12px;
-        background: linear-gradient(145deg, #0f2f2f, $secondary-bg);
+        background: rgba($secondary-bg, 0.95);
         border: 1px solid #124050;
         border-radius: 12px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         opacity: 0.8;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.2s ease;
         z-index: 2;
         white-space: nowrap;
         width: fit-content; // changed min-width to width for margin centering
@@ -199,19 +178,23 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
           50% { transform: translateY(-5px); }
         }
 
-        // Stop animation once user has interacted
         body.user-has-interacted & {
           animation: none;
           transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          animation: none;
         }
 
         i {
           margin-right: 0.5rem;
         }
 
-        // Only appear for laptop
         @include respond-to('md') {
-          display: block;
+          @media (hover: hover) and (pointer: fine) {
+            display: block;
+          }
         }
       }
   
@@ -323,35 +306,31 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
     // BLOG CARD COVER PREVIEW SECTION //
     /////////////////////////////////////
     .blog-card-cover-preview-down {
-      // Mobile styles (hidden by default, attached to hover)
+      // Phone preview is always rendered; scroll only highlights the centered card.
       position: relative;
       width: 100%;
       overflow: hidden;
       pointer-events: none;
       box-sizing: border-box;
-      box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, .24);
       border-radius: 0 0 12px 12px;
-      height: 0;
-      opacity: 0;
-      // margin-bottom intentionally snaps (not transitioned) to save per-frame layout work
-      transition: height 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      display: block; // Always block, but height/opacity control visibility
+      height: 150px;
+      opacity: 0.42;
+      margin-bottom: 1rem;
+      transition: opacity 0.15s ease;
+      display: block;
 
-      // Show if .show-preview is present
       &.show-preview {
-        height: 150px;
         opacity: 1;
-        margin-bottom: 1rem;
       }
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.3s ease;
         border: 2px solid rgba(79, 245, 245, .3);
         border-radius: 8px;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+        box-shadow: none;
       }
       
       // Hide on Tablet (Tablet uses specific side-by-side wrapper)
@@ -361,30 +340,29 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         }
       }
 
-      // Desktop styles (hidden by default, appears on hover, is ABSOLUTE for overlap)
       @include respond-to('md') {
         position: absolute;
         display: block;
-        top: calc(100% - 1px); // Connect seamlessly to card bottom
-        left: -1px; // Align with card border
-        width: calc(100% + 2px); // Match card width exactly
-        height: 0;
+        top: calc(100% - 1px);
+        left: -1px;
+        width: calc(100% + 2px);
+        height: calc(200px + 2rem);
         opacity: 0;
         pointer-events: none;
-        transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 1rem;
-        margin-bottom: 0; // Reset margin for desktop
+        margin-bottom: 0;
+        transform: translateY(-6px);
+        transition: opacity 0.16s ease, transform 0.16s ease;
+        z-index: 10;
       }
     }
 
-    // Desktop-only (hover preview for last-row cards). display: none on mobile/tablet
-    // prevents the <img> inside from being fetched where it's never shown.
     .blog-card-cover-preview-up-wrapper {
       display: none;
       position: absolute;
       width: inherit;
       opacity: 0;
-      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.16s ease;
 
       @include respond-to('md') {
         display: block;
@@ -394,26 +372,24 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         position: relative;
         top: -240px;
         left: -#{$preview-offset};
-        width: calc(100% + #{$preview-offset} *1.6);
+        width: calc(100% + #{$preview-offset} * 1.6);
         overflow: hidden;
-        height: calc(200px + 2rem); // Set fixed height instead of 0
+        height: calc(200px + 2rem);
         opacity: 0;
-        z-index: 1;
+        z-index: 10;
         border-radius: 12px 12px 0 0;
         pointer-events: none;
         padding: 1rem;
-        transform: scaleY(0); // Start scaled to 0
-        transform-origin: bottom; // Scale from bottom
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(6px);
+        transition: opacity 0.16s ease, transform 0.16s ease;
       
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.3s ease;
           border: 2px solid rgba(79, 245, 245, .3);
           border-radius: 8px;
-          box-shadow: 0 8px 8px rgba(0, 0, 0, .3);
+          box-shadow: none;
         }
       }
     }
@@ -453,28 +429,30 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
       }
     }
 
-    // Blog-card main desktop styles
     @include respond-to('md') {
       &:hover {
-      
-      //**** PREVIEW UP (HOVER) ****//
-        &.preview-up {
-          border-radius: 0 0 12px 12px; // Card's border-radius
+        @include card-color-accent-based-on-primary-tag();
 
-         .blog-card-cover-preview-up-wrapper {
+        .preview-indicator {
+          opacity: 0;
+        }
+
+        &.preview-up {
+          border-radius: 0 0 12px 12px;
+
+          .blog-card-cover-preview-up-wrapper {
             opacity: 1;
-            
+
             .blog-card-cover-preview-up {
               background: linear-gradient(90deg, #123434, $secondary-bg);
               border: 1px solid #124050;
-              border-bottom: 0; // Remove bottom border
-              clip-path: inset(-20px -20px 1px -20px); // Clip bottom border
-              box-shadow: 0 -8px 12px rgba(0, 0, 0, .3);
+              border-bottom: 0;
+              box-shadow: 0 -6px 10px rgba(0, 0, 0, .24);
               opacity: 1;
-              transform: scaleY(1); // Scale to full size
-              
+              transform: translateY(0);
+
               @include card-color-accent-based-on-primary-tag();
-              
+
               img {
                 height: 200px;
               }
@@ -482,42 +460,24 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
           }
         }
 
-        //**** PREVIEW DOWN (HOVER) ****//
         &:not(.preview-up) {
-          border-radius: 12px 12px 0 0;  // Card's border-radius
+          border-radius: 12px 12px 0 0;
 
           .blog-card-cover-preview-down {
-            background: linear-gradient(90deg, #123434, $secondary-bg); // Matching
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-            clip-path: inset(+1px -20px -40px -20px); // Remove box-shadow at the top
+            background: linear-gradient(90deg, #123434, $secondary-bg);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
             border: 1px solid #124050;
-            border-top: 0; // Remove border at the top
+            border-top: 0;
             opacity: 1;
             pointer-events: none;
-            height: calc(200px + 2rem); // img height + padding
-            z-index: 10;
-            
+            transform: translateY(0);
+
             @include card-color-accent-based-on-primary-tag();
 
             img {
               height: 200px;
             }
           }
-        }
-
-        // On card hover preview disappears
-        .preview-indicator {
-          opacity: 0;
-          animation: none; // Stop animation when hidden
-        }
-
-      }
-
-      &:not(:hover) {
-        animation: lower-card 0.3s forwards;
-
-        @keyframes lower-card {
-          from { z-index: 10; }          to { z-index: 1; }
         }
       }
     }
@@ -583,32 +543,21 @@ $preview-offset: 25px; // Use integer px for pixel-perfect alignment
         @include respond-to('md') {
           @include card-color-accent-based-on-primary-tag-bright();
 
-          &:has(.blog-card-recommended, .blog-card-for-beginners) {
-              .blog-card-icon {
-                  @include icon-border-when-has-icon-based-on-primary-tag();
-              }
-              &, .blog-card-cover-preview-down, .blog-card-cover-preview-up {
-                  @include card-border-when-has-icon-based-on-primary-tag();
-              }
-          }
-
-          // Preview Up Bright
           &.preview-up .blog-card-cover-preview-up-wrapper .blog-card-cover-preview-up {
             background: linear-gradient(135deg, $primary-bg-bright, $secondary-bg-bright);
             border: 1px solid rgba($accent-color-bright, 0.2);
             border-bottom: 0;
-            box-shadow: 0 -8px 12px rgba(0, 0, 0, 0.05);
-            
+            box-shadow: 0 -6px 10px rgba(0, 0, 0, 0.05);
+
             @include card-color-accent-based-on-primary-tag-bright();
           }
 
-          // Preview Down Bright
           &:not(.preview-up) .blog-card-cover-preview-down {
             background: linear-gradient(135deg, $primary-bg-bright, $secondary-bg-bright);
             border: 1px solid rgba($accent-color-bright, 0.2);
             border-top: 0;
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
-            
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+
             @include card-color-accent-based-on-primary-tag-bright();
           }
         }

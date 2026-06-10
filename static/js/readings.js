@@ -41,49 +41,54 @@ function initializeReadingSearch() {
     const searchInput = document.getElementById('search-input');
     if (!searchInput) return;
     
-    const readingCards = document.querySelectorAll('.reading-card');
+    const readingCards = Array.from(document.querySelectorAll('.reading-card')).map(card => ({
+        element: card,
+        searchableText: [
+            card.querySelector('.reading-title')?.textContent || '',
+            card.querySelector('.reading-author')?.textContent || '',
+            card.querySelector('.reading-description')?.textContent || ''
+        ].join(' ').toLowerCase()
+    }));
+    const totalBooks = readingCards.length;
+    let queued = false;
+    let pendingSearchTerm = '';
     
-    searchInput.addEventListener('input', function(e) {
-        const searchTerm = e.target.value.toLowerCase().trim();
+    function applySearch() {
+        queued = false;
+        let visibleCount = 0;
         
         readingCards.forEach(card => {
-            const title = card.querySelector('.reading-title')?.textContent.toLowerCase() || '';
-            const author = card.querySelector('.reading-author')?.textContent.toLowerCase() || '';
-            const description = card.querySelector('.reading-description')?.textContent.toLowerCase() || '';
-            
-            const matches = title.includes(searchTerm) || 
-                          author.includes(searchTerm) || 
-                          description.includes(searchTerm);
-            
-            if (matches || searchTerm === '') {
-                card.style.display = '';
-                // Add animation
-                card.style.animation = 'fadeIn 0.3s ease';
-            } else {
-                card.style.display = 'none';
+            const matches = pendingSearchTerm === '' || card.searchableText.includes(pendingSearchTerm);
+            card.element.classList.toggle('is-hidden', !matches);
+
+            if (matches) {
+                visibleCount++;
             }
         });
         
-        // Update book counter if it exists
-        updateBookCounter(searchTerm);
+        updateBookCounter(pendingSearchTerm, visibleCount, totalBooks);
+    }
+
+    searchInput.addEventListener('input', function(e) {
+        pendingSearchTerm = e.target.value.toLowerCase().trim();
+
+        if (!queued) {
+            queued = true;
+            window.requestAnimationFrame(applySearch);
+        }
     });
 }
 
 // Update book counter based on visible cards
-function updateBookCounter(searchTerm = '') {
+function updateBookCounter(searchTerm = '', visibleCount, totalBooks) {
     const counter = document.querySelector('.counter-number');
     const counterContainer = document.querySelector('.book-counter');
     if (!counter || !counterContainer) return;
     
-    const visibleCards = document.querySelectorAll('.reading-card:not([style*="display: none"])');
-    const totalBooks = document.querySelectorAll('.reading-card').length;
-    
     if (searchTerm) {
-        counter.textContent = visibleCards.length;
-        counterContainer.innerHTML = `<span class="counter-number">${visibleCards.length}</span> books`;
+        counter.textContent = visibleCount;
     } else {
         counter.textContent = totalBooks;
-        counterContainer.innerHTML = `<span class="counter-number">${totalBooks}</span> books and counting`;
     }
 }
 
@@ -135,22 +140,6 @@ function handleReadingsQuickView() {
         }
     });
 }
-
-// Add CSS for fade in animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-`;
-document.head.appendChild(style);
 
 ////////////////////
 /////   MAIN   /////

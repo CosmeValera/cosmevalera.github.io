@@ -90,7 +90,7 @@
         
         <a href="https://devopslab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
             <div class="home-project-image">
-                <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOps Lab" width="400" height="220" loading="lazy" decoding="async">
+                <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOps Lab" width="400" height="220" decoding="async">
             </div>
             <div class="home-project-body">
                 <h3 class="home-project-title">DevOps Lab</h3>
@@ -105,7 +105,7 @@
 
         <a href="https://aquamesh.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
             <div class="home-project-image">
-                <img src="{{ get_url(path='images/projects/AquaMesh.png') }}" alt="AquaMesh" width="400" height="220" loading="lazy" decoding="async">
+                <img src="{{ get_url(path='images/projects/AquaMesh.png') }}" alt="AquaMesh" width="400" height="220" decoding="async">
             </div>
             <div class="home-project-body">
                 <h3 class="home-project-title">AquaMesh</h3>
@@ -120,7 +120,7 @@
 
         <a href="https://bitcoin-finance-lab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
             <div class="home-project-image">
-                <img src="{{ get_url(path='images/projects/bitcoin-finance-lab-dark.png') }}" alt="Bitcoin Finance Lab" width="400" height="220" loading="lazy" decoding="async">
+                <img src="{{ get_url(path='images/projects/bitcoin-finance-lab-dark.png') }}" alt="Bitcoin Finance Lab" width="400" height="220" decoding="async">
             </div>
             <div class="home-project-body">
                 <h3 class="home-project-title">Bitcoin Finance Lab</h3>
@@ -185,7 +185,7 @@
                 <article>
                     {% if post.extra.cover_image %}
                         <div class="home-post-cover">
-                            <img src="{{ post.extra.cover_image }}" alt="Cover for {{ post.title }}" width="400" height="220" loading="lazy" decoding="async">
+                            <img src="{{ post.extra.cover_image }}" alt="Cover for {{ post.title }}" width="400" height="220" decoding="async">
                         </div>
                     {% endif %}
                     <div class="home-post-body">
@@ -225,5 +225,4 @@
 
 {% block scripts %}
 <script src="{{ get_url(path="js/index.js") | safe }}"></script>
-<script src="{{ get_url(path="js/card-effects.js") | safe }}"></script>
 {% endblock scripts %}
