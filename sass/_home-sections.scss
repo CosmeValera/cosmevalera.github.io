@@ -54,8 +54,7 @@
     }
 }
 
-.home-posts-grid,
-.home-projects-grid {
+.home-posts-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -68,6 +67,25 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
+}
+
+// Featured projects: one hero card + a column of three compact cards
+.home-projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+
+    @include respond-to('lg') {
+        grid-template-columns: 1.1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+.home-projects-side {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5rem;
 }
 .home-post-card,
 .home-project-card {
@@ -207,6 +225,72 @@
     i {
         font-size: 0.85rem;
         color: $accent-color;
+    }
+}
+
+.home-project-card--hero {
+    .home-project-body {
+        padding: 1.5rem;
+        gap: 0.8rem;
+    }
+
+    .home-project-title {
+        font-size: 1.4rem;
+
+        @include respond-to('lg') {
+            font-size: 1.6rem;
+        }
+    }
+
+    .home-project-desc {
+        font-size: 1rem;
+        -webkit-line-clamp: 3;
+    }
+}
+
+.home-project-card--compact {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.85rem;
+
+    // Inset thumbnail: keeps the screenshot's own 16/9 proportions instead of
+    // stretching it to the card height (which cropped the app borders off).
+    .home-project-image {
+        flex: 0 0 40%;
+        width: auto;
+        max-width: 210px;
+        border-radius: 8px;
+        align-self: center;
+    }
+
+    .home-project-body {
+        padding: 0;
+        gap: 0.4rem;
+        min-width: 0;
+        justify-content: center;
+    }
+
+    .home-project-title {
+        font-size: 1rem;
+    }
+
+    .home-project-desc {
+        font-size: 0.82rem;
+    }
+
+    .home-project-tech {
+        margin-top: 0;
+        padding-top: 0.2rem;
+    }
+
+    .home-project-tag {
+        font-size: 0.66rem;
+        padding: 0.22rem 0.5rem;
+
+        i {
+            font-size: 0.78rem;
+        }
     }
 }
 

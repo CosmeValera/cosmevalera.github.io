@@ -87,25 +87,10 @@
     
 
     <div class="home-projects-grid">
-        
-        <a href="https://devopslab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
-            <div class="home-project-image">
-                <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOps Lab" width="400" height="220" decoding="async">
-            </div>
-            <div class="home-project-body">
-                <h3 class="home-project-title">DevOps Lab</h3>
-                <p class="home-project-desc">{{ trans(key="proj_devopslab_desc", lang=lang) }}</p>
-                <div class="home-project-tech">
-                    <span class="home-project-tag"><i class="fab fa-docker"></i>Docker</span>
-                    <span class="home-project-tag"><i class="fas fa-dharmachakra"></i>K8s</span>
-                    <span class="home-project-tag"><i class="fab fa-aws"></i>AWS</span>
-                </div>
-            </div>
-        </a>
 
-        <a href="https://rabbithole.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
+        <a href="https://rabbithole.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--hero">
             <div class="home-project-image">
-                <img src="{{ get_url(path='images/projects/RabbitHole.png') }}" alt="RabbitHole" width="400" height="220" decoding="async">
+                <img src="{{ get_url(path='images/projects/RabbitHole.png') }}" alt="RabbitHole" width="800" height="450" decoding="async">
             </div>
             <div class="home-project-body">
                 <h3 class="home-project-title">RabbitHole</h3>
@@ -118,21 +103,51 @@
             </div>
         </a>
 
-        <a href="https://bitcoin-finance-lab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card">
-            <div class="home-project-image">
-                <img src="{{ get_url(path='images/projects/bitcoin-finance-lab-dark.png') }}" alt="Bitcoin Finance Lab" width="400" height="220" decoding="async">
-            </div>
-            <div class="home-project-body">
-                <h3 class="home-project-title">Bitcoin Finance Lab</h3>
-                <p class="home-project-desc">{{ trans(key="proj_btcfinlab_desc", lang=lang) }}</p>
-                <div class="home-project-tech">
-                    <span class="home-project-tag"><i class="fab fa-vuejs"></i>Vue</span>
-                    <span class="home-project-tag"><i class="fab fa-bitcoin"></i>Bitcoin</span>
-                    <span class="home-project-tag"><i class="fas fa-chart-line"></i>Finance</span>
-                </div>
-            </div>
-        </a>
+        <div class="home-projects-side">
 
+            <a href="https://devopslab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--compact">
+                <div class="home-project-image">
+                    <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOps Lab" width="400" height="220" decoding="async">
+                </div>
+                <div class="home-project-body">
+                    <h3 class="home-project-title">DevOps Lab</h3>
+                    <p class="home-project-desc">{{ trans(key="proj_devopslab_desc", lang=lang) }}</p>
+                    <div class="home-project-tech">
+                        <span class="home-project-tag"><i class="fab fa-docker"></i>Docker</span>
+                        <span class="home-project-tag"><i class="fas fa-dharmachakra"></i>K8s</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://particle-universe.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--compact">
+                <div class="home-project-image">
+                    <img src="{{ get_url(path='images/projects/particle-universe-light.png') }}" alt="Particle Universe" width="400" height="220" decoding="async">
+                </div>
+                <div class="home-project-body">
+                    <h3 class="home-project-title">Particle Universe</h3>
+                    <p class="home-project-desc">{{ trans(key="proj_particle_desc", lang=lang) }}</p>
+                    <div class="home-project-tech">
+                        <span class="home-project-tag"><i class="fas fa-rocket"></i>Astro</span>
+                        <span class="home-project-tag"><i class="fas fa-layer-group"></i>Multi-framework</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="https://bitcoin-finance-lab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--compact">
+                <div class="home-project-image">
+                    <img src="{{ get_url(path='images/projects/bitcoin-finance-lab-dark.png') }}" alt="Bitcoin Finance Lab" width="400" height="220" decoding="async">
+                </div>
+                <div class="home-project-body">
+                    <h3 class="home-project-title">Bitcoin Finance Lab</h3>
+                    <p class="home-project-desc">{{ trans(key="proj_btcfinlab_desc", lang=lang) }}</p>
+                    <div class="home-project-tech">
+                        <span class="home-project-tag"><i class="fab fa-vuejs"></i>Vue</span>
+                        <span class="home-project-tag"><i class="fab fa-bitcoin"></i>Bitcoin</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
     </div>
 
     <div class="home-section-footer">
