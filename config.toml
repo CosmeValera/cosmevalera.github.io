@@ -143,7 +143,7 @@ footer_sponsor = "Colabora"
 switch_language = "Cambiar idioma"
 
 # Project Cards
-proj_studymesh_desc = "Wiki de conocimiento estudiantil con guías de estudio, dashboards, ejercicios y chat de IA"
+proj_rabbithole_desc = "Convierte un prompt en una guía de IA de varias páginas, explicada a través de lo que ya sabes"
 proj_devopslab_desc = "Pipeline DevOps completo con contenedorización, orquestación y automatización CI/CD"
 proj_fitcal_desc = "Aplicación de seguimiento de fitness y nutrición con gestión de calorías"
 proj_sympho_desc = "Herramienta de notación y composición musical con renderizado interactivo de partituras"
@@ -249,7 +249,7 @@ footer_sponsor = "Sponsor"
 # Language
 switch_language = "Switch language"
 # Project Cards
-proj_studymesh_desc = "Student knowledge wiki with study guides, dashboards, exercises, and AI chat"
+proj_rabbithole_desc = "Turns one prompt into a multi-page AI guide, explained through what you already know"
 proj_devopslab_desc = "Complete DevOps pipeline with containerization, orchestration, and CI/CD automation"
 proj_fitcal_desc = "Fitness and nutrition tracking application with calorie management"
 proj_sympho_desc = "Music notation and composition tool with interactive sheet music rendering"
