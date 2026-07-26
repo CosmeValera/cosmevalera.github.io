@@ -328,48 +328,90 @@
     transform: translateX(4px);
 }
 
+// Image-forward: the screenshot IS the card. Side-by-side thumbnails only got
+// ~40% of an already short card (~205px wide), far too small to recognise an
+// app UI; full-bleed gives the same three cards ~5x the image area.
 .home-project-card--compact {
-    flex-direction: row;
-    align-items: center;
-    gap: 0.9rem;
-    padding: 0.85rem;
+    min-height: 190px;
+    padding: 0;
 
-    // Inset thumbnail: keeps the screenshot's own 16/9 proportions instead of
-    // stretching it to the card height (which cropped the app borders off).
     .home-project-image {
-        flex: 0 0 40%;
-        width: auto;
-        max-width: 210px;
-        border-radius: 8px;
-        align-self: center;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        aspect-ratio: auto;
+        border-radius: inherit;
+
+        // Top-anchored crop: app screenshots put their identity (header, nav,
+        // hero panel) at the top, so cutting from the bottom loses least.
+        img {
+            object-fit: cover;
+            object-position: top center;
+        }
     }
 
+    // Text sits on a scrim over the screenshot, so it stays legible on light
+    // shots (particle-universe) and dark ones alike — hence light text in both
+    // themes, overriding the bright-theme card colours further down.
     .home-project-body {
-        padding: 0;
-        gap: 0.4rem;
-        min-width: 0;
-        justify-content: center;
+        position: relative;
+        z-index: 1;
+        margin-top: auto;
+        padding: 0.7rem 0.9rem;
+        gap: 0.3rem;
+        flex: 0 0 auto;
+        // Flat scrim, not a gradient: a gradient across the body itself is
+        // near-transparent exactly where the title sits.
+        background: rgba(3, 8, 12, 0.88);
+    }
+
+    // The fade lives above the scrim, over the screenshot, so the text always
+    // sits on full opacity and the edge still isn't a hard line.
+    .home-project-body::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 2rem;
+        pointer-events: none;
+        background: linear-gradient(to top, rgba(3, 8, 12, 0.88), rgba(3, 8, 12, 0));
     }
 
     .home-project-title {
-        font-size: 1rem;
+        font-size: 1.05rem;
+        text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
     }
 
+    // The description is a nice-to-have here; the screenshot carries the
+    // message and every extra line of scrim eats into it.
     .home-project-desc {
-        font-size: 0.82rem;
+        display: none;
     }
 
     .home-project-tech {
         margin-top: 0;
-        padding-top: 0.2rem;
+        padding-top: 0.1rem;
     }
 
     .home-project-tag {
-        font-size: 0.66rem;
-        padding: 0.22rem 0.5rem;
+        font-size: 0.68rem;
+        padding: 0.24rem 0.55rem;
+        background: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.9);
 
         i {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
+        }
+    }
+
+    @include respond-to('lg') {
+        min-height: 0;
+
+        .home-project-title {
+            font-size: 1.1rem;
         }
     }
 }
@@ -487,6 +529,23 @@ body.bright-theme {
 
         i {
             color: $accent-color-bright;
+        }
+    }
+
+    // The compact cards are a screenshot with a dark scrim, not a light
+    // surface — their text stays light in this theme too.
+    .home-project-card--compact {
+        .home-project-title {
+            color: $accent-color;
+        }
+
+        .home-project-tag {
+            background: rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.9);
+
+            i {
+                color: $accent-color;
+            }
         }
     }
 
