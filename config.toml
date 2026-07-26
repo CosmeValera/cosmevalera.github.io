@@ -67,6 +67,7 @@ latest_posts_desc = "Reflexiones recientes sobre software, arquitectura y más."
 view_all_posts = "Ver todas las publicaciones"
 featured_projects = "Proyectos destacados"
 featured_projects_desc = "Una muestra de lo que he construido."
+flagship_project = "Proyecto estrella"
 view_all_projects = "Ver todos los proyectos"
 
 # Blog
@@ -180,6 +181,7 @@ latest_posts_desc = "Recent thoughts on software, architecture, and more."
 view_all_posts = "View all posts"
 featured_projects = "Featured projects"
 featured_projects_desc = "A glimpse at what I've been building."
+flagship_project = "Flagship project"
 view_all_projects = "View all projects"
 # Blog
 blog_intro = "I enjoy writing about topics that I find exciting and are worth sharing."
