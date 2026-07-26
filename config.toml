@@ -153,6 +153,12 @@ proj_deptquest_desc = "Aplicación Android para la gestión de un departamento."
 proj_particle_desc = "Dashboard multi-framework con Astro que renderiza simulaciones interactivas de partículas con React, Vue y Angular"
 proj_btcfinlab_desc = "Herramienta de comparación financiera en Vue 3 que visualiza el rendimiento de Bitcoin frente a acciones e índices de mercado"
 
+# One-liners for the image-forward cards on the home page: the full
+# descriptions above get cut mid-word at that width.
+proj_devopslab_short = "Pipeline de CI/CD con Docker y Kubernetes"
+proj_particle_short = "React, Vue y Angular en un mismo dashboard Astro"
+proj_btcfinlab_short = "Bitcoin frente a acciones e índices, en gráficas"
+
 # Default language (English) translations
 [translations]
 # Navigation
@@ -259,3 +265,9 @@ proj_lop_desc = "Turn-based strategy game featuring Pokemon battles with custom 
 proj_deptquest_desc = "An Android application for management of a department."
 proj_particle_desc = "Multi-framework Astro dashboard rendering interactive particle simulations with React, Vue, and Angular"
 proj_btcfinlab_desc = "Vue 3 financial comparison tool visualizing Bitcoin performance against treasury stocks and market indices"
+
+# One-liners for the image-forward cards on the home page: the full
+# descriptions above get cut mid-word at that width.
+proj_devopslab_short = "CI/CD pipeline with Docker and Kubernetes"
+proj_particle_short = "React, Vue and Angular in one Astro dashboard"
+proj_btcfinlab_short = "Bitcoin against stocks and indices, charted"

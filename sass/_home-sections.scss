@@ -385,10 +385,14 @@
         text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
     }
 
-    // The description is a nice-to-have here; the screenshot carries the
-    // message and every extra line of scrim eats into it.
+    // One line only: every extra line of scrim is a line taken off the
+    // screenshot underneath.
     .home-project-desc {
-        display: none;
+        font-size: 0.8rem;
+        line-height: 1.35;
+        color: rgba(255, 255, 255, 0.75);
+        -webkit-line-clamp: 1;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
     }
 
     .home-project-tech {
@@ -537,6 +541,10 @@ body.bright-theme {
     .home-project-card--compact {
         .home-project-title {
             color: $accent-color;
+        }
+
+        .home-project-desc {
+            color: rgba(255, 255, 255, 0.75);
         }
 
         .home-project-tag {
