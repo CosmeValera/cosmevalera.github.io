@@ -1,6 +1,6 @@
-# AGENTS.md
+# CLAUDE.md
 
-This file provides guidance to agents when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Commands
 
@@ -13,7 +13,7 @@ Prerequisites: Node.js ≥ 20 (required by `zola-bin`).
 
 Zola version: `zola-bin@^1.0.0` pins Zola **0.19.2**. Do not bump to `zola-bin@2.x` (Zola 0.21/0.22) without migrating `config.toml` — 0.22 renamed the `[markdown]` keys `highlight_code`/`highlight_theme` to a `highlighting` table and now rejects unknown fields. Note CI's deploy action is pinned to Zola 0.16.1, older than local.
 
-This file lives at the repo root. `CLAUDE.md`, its sibling, is a copy for Claude Code — keep both in sync when editing either. Claude-specific config sits one level down in `.claude/` (`settings.local.json`, `skills/`).
+This file lives at the repo root. `AGENTS.md`, its sibling, is a copy for non-Claude agents — keep both in sync when editing either. Claude-specific config sits one level down in `.claude/`: `settings.local.json` (permissions) and `skills/` (e.g. `.claude/skills/commit/SKILL.md`).
 
 ## Architecture
 

@@ -7,11 +7,11 @@ taxonomies = [
     {name = "tags", feed = true},
 ]
 
+build_search_index = false
+
 [markdown]
 highlight_code = true
 highlight_theme = "monokai"
-
-build_search_index = false
 
 [extra]
 blog_post_tags = ["recommended", "for-beginners", "frontend", "backend", "architecture", "finance", "bitcoin", "best-practices", "testing"]
