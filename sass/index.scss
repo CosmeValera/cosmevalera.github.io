@@ -8,20 +8,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 85vh;
     gap: 2rem;
-    padding: 1.5rem;
+    // No min-height on purpose: a full-viewport hero hides the fact that the
+    // page scrolls, which reads as "this is all there is" on large screens.
+    padding: 2rem 1.5rem 3rem;
     max-width: 1400px;
     margin: 0 auto;
     text-align: center;
 
     @include respond-to('lg') {
-        min-height: 100vh;
         flex-direction: row;
         gap: 4rem;
         align-items: center;
         text-align: left;
-        padding: 2rem;
+        padding: 3rem 2rem 4rem;
         padding-right: 10rem;
     }
 }
@@ -126,6 +126,35 @@
         a {
             color: $accent-color;
             text-decoration: none;
+        }
+
+        // Trailing link into the CV page: the badge already names the job, so
+        // it doubles as the entry point instead of a separate home section.
+        .status-badge-divider {
+            width: 1px;
+            height: 0.9em;
+            background: rgba($accent-color, 0.45);
+        }
+
+        .status-badge-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-weight: 700;
+            white-space: nowrap;
+
+            i {
+                font-size: 0.75em;
+                transition: transform 0.2s ease;
+            }
+
+            &:hover {
+                text-decoration: underline;
+
+                i {
+                    transform: translateX(3px);
+                }
+            }
         }
     }
 
@@ -314,42 +343,6 @@
                 }
             }
 
-            .social-divider {
-                width: 1px;
-                height: 1.8rem;
-                margin: 0 0.1rem;
-                background: rgba($text-color, 0.16);
-
-                @include respond-to('lg') {
-                    margin: 0 0.25rem;
-                }
-            }
-
-            .cv-download-link {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.45rem;
-                padding: 0.45rem 0.75rem;
-                border: 1px solid rgba($text-color, 0.18);
-                border-radius: 999px;
-                color: rgba($text-color, 0.62);
-                font-size: 0.88rem;
-                font-weight: 700;
-                line-height: 1;
-                text-decoration: none;
-                transition: all 0.2s ease;
-
-                i {
-                    font-size: 0.95rem;
-                }
-
-                &:hover {
-                    color: $accent-color;
-                    border-color: rgba($accent-color, 0.55);
-                    background: rgba($accent-color, 0.08);
-                    transform: translateY(-3px);
-                }
-            }
         }
     }
 }
@@ -474,6 +467,10 @@ body.bright-theme {
                 a {
                     color: darken($accent-color-bright, 10%);
                 }
+
+                .status-badge-divider {
+                    background: rgba($accent-color-bright, 0.45);
+                }
             }
 
             .presentation-title {
@@ -542,93 +539,8 @@ body.bright-theme {
                     }
                 }
 
-                .social-icons .social-divider {
-                    background: rgba($text-color-bright, 0.18);
-                }
-
-                .social-icons .cv-download-link {
-                    border-color: rgba($text-color-bright, 0.18);
-                    color: rgba($text-color-bright, 0.62);
-
-                    &:hover {
-                        color: darken($accent-color-bright, 10%);
-                        border-color: rgba($accent-color-bright, 0.55);
-                        background: rgba($accent-color-bright, 0.1);
-                    }
-                }
             }
         }
     }
 }
 
-// Scroll indicator
-.scroll-indicator {
-    display: none;
-
-    @include respond-to('lg') {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.6rem;
-        padding-bottom: 2rem;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease-out forwards;
-        animation-delay: 1.2s;
-        transition: opacity 0.5s ease, transform 0.5s ease;
-
-        &.is-hidden {
-            opacity: 0;
-            transform: translateY(10px);
-            pointer-events: none;
-        }
-    }
-}
-
-.scroll-indicator-text {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba($text-color, 0.4);
-}
-
-.scroll-indicator-line {
-    width: 2px;
-    height: 40px;
-    background: rgba($text-color, 0.1);
-    border-radius: 2px;
-    position: relative;
-    overflow: hidden;
-}
-
-.scroll-indicator-dot {
-    width: 2px;
-    height: 12px;
-    background: $accent-color;
-    border-radius: 2px;
-    position: absolute;
-    top: 0;
-    animation: scroll-dot 2s ease-in-out infinite;
-}
-
-@keyframes scroll-dot {
-    0% { top: 0; opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { top: 28px; opacity: 0; }
-}
-
-// Bright theme overrides for scroll indicator
-body.bright-theme {
-    .scroll-indicator-text {
-        color: rgba($text-color-bright, 0.4);
-    }
-
-    .scroll-indicator-line {
-        background: rgba($text-color-bright, 0.1);
-    }
-
-    .scroll-indicator-dot {
-        background: $accent-color-bright;
-    }
-}

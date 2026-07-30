@@ -1,0 +1,744 @@
+@import 'variables';
+@import 'utils/mixins';
+
+// The CV page is a single reading column: a header card with identity and
+// contact, then stacked sections. Education + Languages share a row on wide
+// screens. Everything is print-friendly (see the @media print block at the end).
+
+.cv {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 2rem) 3rem;
+}
+
+/* ===== Header ===== */
+.cv-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background-color: $secondary-bg;
+  border: 1px solid rgba($accent-color, 0.2);
+  border-radius: 16px;
+
+  @include respond-to('md') {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.cv-identity {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.cv-portrait {
+  width: clamp(72px, 18vw, 110px);
+  height: clamp(72px, 18vw, 110px);
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba($accent-color, 0.5);
+}
+
+.cv-name {
+  // The global h1 is centred and huge; the CV header needs a compact left rail.
+  text-align: left;
+  font-size: clamp(1.4rem, 5vw, 2.1rem);
+  margin: 0 0 0.2rem;
+  line-height: 1.15;
+}
+
+.cv-role {
+  margin: 0 0 0.75rem;
+  color: $accent-color;
+  font-weight: 600;
+  font-size: clamp(0.85rem, 2.6vw, 1.05rem);
+}
+
+.cv-contact {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+
+  li {
+    display: flex;
+    align-items: center;
+    color: rgba($text-color, 0.75);
+  }
+
+  i {
+    margin-right: 0.4rem;
+    color: $accent-color;
+    width: 1em;
+    text-align: center;
+  }
+
+  a {
+    color: rgba($text-color, 0.75);
+
+    &:hover {
+      color: $accent-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+.cv-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+
+  &.cv-btn-primary {
+    background: $accent-color;
+    color: $primary-bg;
+    border: 1px solid $accent-color;
+
+    &:hover {
+      background: lighten($accent-color, 10%);
+      border-color: lighten($accent-color, 10%);
+    }
+  }
+
+}
+
+/* ===== Sections ===== */
+.cv-section {
+  margin-top: 2.5rem;
+}
+
+.cv-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  // Override the global h2 sizing, which is display-sized.
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba($accent-color, 0.25);
+
+  i {
+    color: $accent-color;
+    font-size: 0.9em;
+  }
+}
+
+.cv-summary {
+  font-size: clamp(0.9rem, 2.4vw, 1rem);
+
+  p {
+    margin: 0 0 0.85rem;
+    line-height: 1.7;
+    color: rgba($text-color, 0.85);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cv-section-footer {
+  margin: 1.25rem 0 0;
+  text-align: center;
+}
+
+.cv-section-link {
+  color: $accent-color;
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* ===== Timeline (experience + education) ===== */
+.cv-timeline {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid rgba($accent-color, 0.2);
+}
+
+.cv-entry {
+  position: relative;
+  padding-bottom: 2rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.cv-entry-marker {
+  position: absolute;
+  left: calc(-1.5rem - 7px);
+  top: 0.45rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $primary-bg;
+  border: 2px solid rgba($accent-color, 0.5);
+}
+
+.cv-entry.is-current .cv-entry-marker {
+  background: $accent-color;
+  border-color: $accent-color;
+  box-shadow: 0 0 0 4px rgba($accent-color, 0.18);
+}
+
+.cv-entry-head {
+  margin-bottom: 0.6rem;
+}
+
+.cv-entry-role {
+  font-size: clamp(1rem, 2.8vw, 1.15rem);
+  font-weight: 700;
+  margin: 0 0 0.15rem;
+  color: $accent-color;
+}
+
+.cv-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.9rem;
+  margin: 0 0 0.15rem;
+  font-size: 0.88rem;
+}
+
+.cv-entry-company {
+  font-weight: 600;
+
+  a {
+    color: $text-color;
+    border-bottom: 1px dotted rgba($accent-color, 0.6);
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
+
+.cv-entry-location,
+.cv-entry-period {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba($text-color, 0.6);
+
+  i {
+    color: rgba($accent-color, 0.7);
+  }
+}
+
+.cv-entry-summary {
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba($text-color, 0.85);
+  font-style: italic;
+}
+
+.cv-bullets {
+  margin: 0 0 0.85rem;
+  padding-left: 1.1rem;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin-bottom: 0.4rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba($text-color, 0.8);
+
+    &::before {
+      content: '▸';
+      position: absolute;
+      left: -1.1rem;
+      color: rgba($accent-color, 0.8);
+    }
+  }
+}
+
+/* ===== Nested positions (one company, several roles) ===== */
+.cv-entry-role--company {
+  a {
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.cv-subroles {
+  margin: 0.75rem 0 0.9rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba($accent-color, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cv-subrole-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.cv-subrole-role {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-style: italic;
+  color: rgba($text-color, 0.9);
+}
+
+.cv-subrole .cv-bullets {
+  margin-bottom: 0;
+}
+
+/* ===== Tags ===== */
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  background: rgba($accent-color, 0.1);
+  color: $accent-color;
+  border: 1px solid rgba($accent-color, 0.3);
+}
+
+/* ===== Projects ===== */
+.cv-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cv-project {
+  padding: 1.15rem 1.25rem;
+  background-color: $secondary-bg;
+  border: 1px solid rgba($accent-color, 0.2);
+  border-radius: 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba($accent-color, 0.5);
+  }
+
+  &.cv-project--featured {
+    border-color: rgba($accent-color, 0.55);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.cv-project-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.cv-project-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: clamp(1rem, 2.8vw, 1.15rem);
+  font-weight: 700;
+  margin: 0;
+
+  a {
+    color: $accent-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.cv-project-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  background: rgba($accent-color, 0.15);
+  color: $accent-color;
+  border: 1px solid rgba($accent-color, 0.35);
+}
+
+.cv-project-desc {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba($text-color, 0.85);
+}
+
+.cv-project-note {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.78rem;
+  color: rgba($text-color, 0.6);
+
+  i {
+    color: rgba($accent-color, 0.7);
+  }
+}
+
+.cv-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.85rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba($text-color, 0.75);
+
+    &:hover {
+      color: $accent-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* ===== Skills ===== */
+.cv-skills {
+  display: grid;
+  gap: 1.1rem;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 2rem;
+  }
+}
+
+.cv-skill-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 0 0 0.55rem;
+  color: rgba($text-color, 0.6);
+}
+
+/* ===== Education + Languages row ===== */
+.cv-two-columns {
+  display: grid;
+  gap: 0;
+
+  @include respond-to('lg') {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: 0 2.5rem;
+    align-items: start;
+  }
+}
+
+.cv-languages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cv-language {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed rgba($accent-color, 0.15);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.cv-language-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.cv-language-level {
+  font-size: 0.8rem;
+  color: rgba($text-color, 0.65);
+}
+
+/* ===== Bright theme ===== */
+body.bright-theme {
+  .cv-header,
+  .cv-project {
+    background-color: $secondary-bg-bright;
+    border-color: rgba($accent-color-bright, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .cv-project:hover,
+  .cv-project.cv-project--featured {
+    border-color: rgba($accent-color-bright, 0.55);
+  }
+
+  .cv-portrait {
+    border-color: rgba($accent-color-bright, 0.5);
+  }
+
+  .cv-role,
+  .cv-entry-role,
+  .cv-section-title i,
+  .cv-project-name a,
+  .cv-section-link {
+    color: $accent-color-bright;
+  }
+
+  .cv-contact {
+    li,
+    a {
+      color: rgba($text-color-bright, 0.75);
+    }
+
+    i {
+      color: $accent-color-bright;
+    }
+
+    a:hover {
+      color: $accent-color-bright;
+    }
+  }
+
+  .cv-btn-primary {
+    background: $accent-color-bright;
+    color: #fff;
+    border-color: $accent-color-bright;
+
+    &:hover {
+      background: lighten($accent-color-bright, 10%);
+      border-color: lighten($accent-color-bright, 10%);
+    }
+  }
+
+  .cv-section-title {
+    border-bottom-color: rgba($accent-color-bright, 0.3);
+  }
+
+  .cv-summary p,
+  .cv-entry-summary,
+  .cv-project-desc {
+    color: rgba($text-color-bright, 0.85);
+  }
+
+  .cv-subroles {
+    border-left-color: rgba($accent-color-bright, 0.22);
+  }
+
+  .cv-subrole-role {
+    color: rgba($text-color-bright, 0.9);
+  }
+
+  .cv-bullets li {
+    color: rgba($text-color-bright, 0.8);
+
+    &::before {
+      color: rgba($accent-color-bright, 0.9);
+    }
+  }
+
+  .cv-timeline {
+    border-left-color: rgba($accent-color-bright, 0.25);
+  }
+
+  .cv-entry-marker {
+    background: $primary-bg-bright;
+    border-color: rgba($accent-color-bright, 0.6);
+  }
+
+  .cv-entry.is-current .cv-entry-marker {
+    background: $accent-color-bright;
+    border-color: $accent-color-bright;
+    box-shadow: 0 0 0 4px rgba($accent-color-bright, 0.18);
+  }
+
+  .cv-entry-company a {
+    color: $text-color-bright;
+    border-bottom-color: rgba($accent-color-bright, 0.6);
+
+    &:hover {
+      color: $accent-color-bright;
+    }
+  }
+
+  .cv-entry-location,
+  .cv-entry-period,
+  .cv-project-note,
+  .cv-skill-label,
+  .cv-language-level {
+    color: rgba($text-color-bright, 0.6);
+
+    i {
+      color: rgba($accent-color-bright, 0.8);
+    }
+  }
+
+  .cv-tag,
+  .cv-project-badge {
+    background: rgba($accent-color-bright, 0.1);
+    color: $accent-color-bright;
+    border-color: rgba($accent-color-bright, 0.35);
+  }
+
+  .cv-project-links a {
+    color: rgba($text-color-bright, 0.75);
+
+    &:hover {
+      color: $accent-color-bright;
+    }
+  }
+
+  .cv-language {
+    border-bottom-color: rgba($accent-color-bright, 0.2);
+  }
+}
+
+/* ===== Print: the page doubles as the printable CV ===== */
+@media print {
+  .lateral-menu-pill,
+  .mobile-menu-toggle,
+  .theme-and-language-toggle-container,
+  .grid-background,
+  .page-wrapper > .footer-responsive,
+  .cv-actions,
+  .cv-section-footer {
+    display: none !important;
+  }
+
+  html,
+  body,
+  body.bright-theme {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  .page-wrapper main {
+    margin-top: 0;
+  }
+
+  .cv {
+    max-width: none;
+    padding: 0;
+  }
+
+  .cv-header,
+  .cv-project {
+    background: none !important;
+    border: 1px solid #bbb !important;
+    box-shadow: none !important;
+  }
+
+  .cv-name,
+  .cv-role,
+  .cv-entry-role,
+  .cv-project-name a,
+  .cv-section-title,
+  .cv-section-title i,
+  .cv-contact li,
+  .cv-contact a,
+  .cv-contact i,
+  .cv-summary p,
+  .cv-subrole-role,
+  .cv-entry-summary,
+  .cv-project-desc,
+  .cv-bullets li,
+  .cv-entry-company a,
+  .cv-entry-location,
+  .cv-entry-period,
+  .cv-project-note,
+  .cv-skill-label,
+  .cv-language-level,
+  .cv-project-links a {
+    color: #000 !important;
+  }
+
+  .cv-tag,
+  .cv-project-badge {
+    background: none !important;
+    color: #000 !important;
+    border-color: #999 !important;
+  }
+
+  .cv-section-title {
+    border-bottom-color: #999 !important;
+  }
+
+  .cv-timeline,
+  .cv-subroles {
+    border-left-color: #ccc !important;
+  }
+
+  .cv-entry-marker {
+    background: #fff !important;
+    border-color: #666 !important;
+    box-shadow: none !important;
+  }
+
+  .cv-section,
+  .cv-entry,
+  .cv-project {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-project:hover {
+    transform: none;
+  }
+}

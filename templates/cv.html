@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ trans(key="cv_title", lang=lang) }} | Cosme
+{% endblock %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ get_url(path="cv.css") | safe }}">
+{% endblock %}
+
+{% block content %}
+{% set cv = section.extra %}
+<div class="cv">
+
+  {# ===== Header: identity, contact, actions ===== #}
+  <header class="cv-header">
+    <div class="cv-identity">
+      <img class="cv-portrait" src="{{ get_url(path='images/home/portrait.jpg') }}" alt="Cosme Valera Reales" width="120" height="120" decoding="async">
+      <div class="cv-identity-text">
+        <h1 class="cv-name">Cosme Valera Reales</h1>
+        <p class="cv-role">{{ cv.role }}</p>
+        <ul class="cv-contact">
+          <li><i class="fas fa-location-dot" aria-hidden="true"></i>{{ cv.location }}</li>
+          <li><a href="mailto:{{ cv.email }}"><i class="fas fa-envelope" aria-hidden="true"></i>{{ cv.email }}</a></li>
+          <li><a href="{{ cv.linkedin | safe }}" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i>{{ cv.linkedin_label }}</a></li>
+          <li><a href="{{ cv.github | safe }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i>{{ cv.github_label }}</a></li>
+          <li><a href="{{ cv.website | safe }}"><i class="fas fa-globe" aria-hidden="true"></i>{{ cv.website_label }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cv-actions">
+      <a class="cv-btn cv-btn-primary" href="{{ get_url(path=cv.pdf) | safe }}" target="_blank" rel="noopener">
+        <i class="fas fa-file-pdf" aria-hidden="true"></i>{{ trans(key="download_cv", lang=lang) }}
+      </a>
+    </div>
+  </header>
+
+  {# ===== About ===== #}
+  <section class="cv-section cv-section--about" aria-labelledby="cv-about-heading">
+    <h2 class="cv-section-title" id="cv-about-heading">
+      <i class="fas fa-user" aria-hidden="true"></i>{{ trans(key="cv_about", lang=lang) }}
+    </h2>
+    <div class="cv-summary">
+      {% for paragraph in cv.about %}<p>{{ paragraph }}</p>{% endfor %}
+    </div>
+  </section>
+
+  {# ===== Experience ===== #}
+  <section class="cv-section" aria-labelledby="cv-experience-heading">
+    <h2 class="cv-section-title" id="cv-experience-heading">
+      <i class="fas fa-briefcase" aria-hidden="true"></i>{{ trans(key="cv_experience", lang=lang) }}
+    </h2>
+
+    <div class="cv-timeline">
+      {% for job in cv.experience %}
+        {# `roles` present means one company that held several positions: the
+           company becomes the heading and each position is nested under it. #}
+        <article class="cv-entry{% if job.current is defined %} is-current{% endif %}{% if job.roles is defined %} has-subroles{% endif %}">
+          <span class="cv-entry-marker" aria-hidden="true"></span>
+          <div class="cv-entry-head">
+            {% if job.roles is defined %}
+              <h3 class="cv-entry-role cv-entry-role--company">
+                {% if job.company_url is defined %}
+                  <a href="{{ job.company_url | safe }}" target="_blank" rel="noopener">{{ job.company }}</a>
+                {% else %}
+                  {{ job.company }}
+                {% endif %}
+              </h3>
+              <p class="cv-entry-meta">
+                <span class="cv-entry-location"><i class="fas fa-location-dot" aria-hidden="true"></i>{{ job.location }}</span>
+                <span class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ job.period }}</span>
+              </p>
+            {% else %}
+              <h3 class="cv-entry-role">{{ job.role }}</h3>
+              <p class="cv-entry-meta">
+                <span class="cv-entry-company">
+                  {% if job.company_url is defined %}
+                    <a href="{{ job.company_url | safe }}" target="_blank" rel="noopener">{{ job.company }}</a>
+                  {% else %}
+                    {{ job.company }}
+                  {% endif %}
+                </span>
+                <span class="cv-entry-location"><i class="fas fa-location-dot" aria-hidden="true"></i>{{ job.location }}</span>
+              </p>
+              <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ job.period }}</p>
+            {% endif %}
+          </div>
+
+          {% if job.summary is defined %}
+            <p class="cv-entry-summary">{{ job.summary }}</p>
+          {% endif %}
+
+          {% if job.bullets is defined %}
+            <ul class="cv-bullets">
+              {% for bullet in job.bullets %}<li>{{ bullet }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+
+          {% if job.roles is defined %}
+            <div class="cv-subroles">
+              {% for position in job.roles %}
+                <div class="cv-subrole">
+                  <div class="cv-subrole-head">
+                    <h4 class="cv-subrole-role">{{ position.role }}</h4>
+                    <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ position.period }}</p>
+                  </div>
+                  {% if position.summary is defined %}
+                    <p class="cv-entry-summary">{{ position.summary }}</p>
+                  {% endif %}
+                  {% if position.bullets is defined %}
+                    <ul class="cv-bullets">
+                      {% for bullet in position.bullets %}<li>{{ bullet }}</li>{% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if job.tech is defined %}
+            <ul class="cv-tags">
+              {% for item in job.tech %}<li class="cv-tag">{{ item }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# ===== Projects ===== #}
+  <section class="cv-section" aria-labelledby="cv-projects-heading">
+    <h2 class="cv-section-title" id="cv-projects-heading">
+      <i class="fas fa-code" aria-hidden="true"></i>{{ trans(key="cv_projects", lang=lang) }}
+    </h2>
+
+    <div class="cv-projects">
+      {% for project in cv.projects %}
+        <article class="cv-project{% if project.featured is defined %} cv-project--featured{% endif %}">
+          <div class="cv-project-head">
+            <h3 class="cv-project-name">
+              <a href="{{ project.url | safe }}" target="_blank" rel="noopener">{{ project.name }}</a>
+              {% if project.featured is defined %}
+                <span class="cv-project-badge"><i class="fas fa-star" aria-hidden="true"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
+              {% endif %}
+            </h3>
+            {% if project.period is defined %}
+              <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ project.period }}</p>
+            {% endif %}
+          </div>
+
+          <p class="cv-project-desc">{{ project.description }}</p>
+
+          {% if project.note is defined %}
+            <p class="cv-project-note"><i class="fas fa-hourglass-half" aria-hidden="true"></i>{{ project.note }}</p>
+          {% endif %}
+
+          {% if project.bullets is defined %}
+            <ul class="cv-bullets">
+              {% for bullet in project.bullets %}<li>{{ bullet }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+
+          <ul class="cv-tags">
+            {% for item in project.tech %}<li class="cv-tag">{{ item }}</li>{% endfor %}
+          </ul>
+
+          <p class="cv-project-links">
+            <a href="{{ project.url | safe }}" target="_blank" rel="noopener"><i class="fas fa-link" aria-hidden="true"></i>{{ trans(key="live_demo", lang=lang) }}</a>
+            <a href="{{ project.repo | safe }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i>{{ trans(key="source_code", lang=lang) }}</a>
+          </p>
+        </article>
+      {% endfor %}
+    </div>
+
+    <p class="cv-section-footer">
+      {% if lang == "es" %}
+        <a href="/es/projects/" class="cv-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+      {% else %}
+        <a href="{{ get_url(path='projects') | safe }}" class="cv-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+      {% endif %}
+    </p>
+  </section>
+
+  {# ===== Skills ===== #}
+  <section class="cv-section" aria-labelledby="cv-skills-heading">
+    <h2 class="cv-section-title" id="cv-skills-heading">
+      <i class="fas fa-screwdriver-wrench" aria-hidden="true"></i>{{ trans(key="cv_skills", lang=lang) }}
+    </h2>
+
+    <div class="cv-skills">
+      {% for group in cv.skills %}
+        <div class="cv-skill-group">
+          <h3 class="cv-skill-label">{{ group.label }}</h3>
+          <ul class="cv-tags">
+            {% for item in group.items %}<li class="cv-tag">{{ item }}</li>{% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# ===== Education + Languages ===== #}
+  <div class="cv-two-columns">
+    <section class="cv-section" aria-labelledby="cv-education-heading">
+      <h2 class="cv-section-title" id="cv-education-heading">
+        <i class="fas fa-graduation-cap" aria-hidden="true"></i>{{ trans(key="cv_education", lang=lang) }}
+      </h2>
+
+      <div class="cv-timeline">
+        {% for study in cv.education %}
+          <article class="cv-entry">
+            <span class="cv-entry-marker" aria-hidden="true"></span>
+            <div class="cv-entry-head">
+              <h3 class="cv-entry-role">{{ study.title }}</h3>
+              <p class="cv-entry-meta">
+                <span class="cv-entry-company">{{ study.school }}</span>
+              </p>
+              <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ study.period }}</p>
+            </div>
+            <ul class="cv-tags">
+              {% for item in study.tech %}<li class="cv-tag">{{ item }}</li>{% endfor %}
+            </ul>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="cv-section" aria-labelledby="cv-languages-heading">
+      <h2 class="cv-section-title" id="cv-languages-heading">
+        <i class="fas fa-language" aria-hidden="true"></i>{{ trans(key="cv_languages", lang=lang) }}
+      </h2>
+
+      <ul class="cv-languages">
+        {% for language in cv.languages %}
+          <li class="cv-language">
+            <span class="cv-language-name">{{ language.name }}</span>
+            <span class="cv-language-level">{{ language.level }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+</div>
+
+{# Structured data so search engines read this page as a person profile. #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Cosme Valera Reales",
+  "url": "{{ config.base_url | trim_end_matches(pat='/') }}/",
+  "email": "mailto:{{ cv.email }}",
+  "jobTitle": "{{ cv.role }}",
+  "description": "{{ cv.about | first }}",
+  "image": "{{ get_url(path='images/home/portrait.jpg') }}",
+  "address": { "@type": "PostalAddress", "addressLocality": "{{ cv.location }}" },
+  "worksFor": { "@type": "Organization", "name": "GMV" },
+  "sameAs": ["{{ cv.github }}", "{{ cv.linkedin }}"],
+  "knowsLanguage": [{% for language in cv.languages %}"{{ language.name }}"{% if not loop.last %}, {% endif %}{% endfor %}]
+}
+</script>
+{% endblock content %}

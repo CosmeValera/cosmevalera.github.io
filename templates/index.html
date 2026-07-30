@@ -19,7 +19,12 @@
     <div class="content-section">
         <div class="status-badge">
             <i class="fas fa-star"></i> <span>{{ trans(key="working_for", lang=lang) }} <a target="_blank" href="https://www.gmv.com/en-es">GMV</a> {{ trans(key="in_the", lang=lang) }} <a target="_blank" href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)">{{ trans(key="galileo_project", lang=lang) }}</a></span>
-            <!-- <i class="fas fa-star"></i> Available for opportunities -->
+            <span class="status-badge-divider" aria-hidden="true"></span>
+            {% if lang == "es" %}
+                <a href="/es/cv/" class="status-badge-cv">{{ trans(key="see_my_cv", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
+            {% else %}
+                <a href="{{ get_url(path='cv') | safe }}" class="status-badge-cv">{{ trans(key="see_my_cv", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
+            {% endif %}
         </div>
         
         <h1 class="presentation-title">{{ trans(key="hello", lang=lang) }}</h1>
@@ -60,24 +65,11 @@
                             {% endif %}
                         </a>
                     {% endfor %}
-                    <span class="social-divider" aria-hidden="true"></span>
-                    <a href="{{ get_url(path='assets/CV-Cosme_Valera_Reales-2026-04-30.pdf') | safe }}" title="{{ trans(key="download_cv", lang=lang) }}" target="_blank" rel="noopener" class="cv-download-link">
-                        <i class="fas fa-file-pdf"></i>
-                        <span>{{ trans(key="download_cv", lang=lang) }}</span>
-                    </a>
                 </div>
             </div>
         {% endif %}
     </div>
 </div>
-
-<div class="scroll-indicator" aria-hidden="true">
-    <span class="scroll-indicator-text">Scroll</span>
-    <div class="scroll-indicator-line">
-        <div class="scroll-indicator-dot"></div>
-    </div>
-</div>
-
 
 <section class="home-section home-featured-projects" aria-labelledby="featured-projects-heading">
     <div class="home-section-header">
@@ -241,7 +233,3 @@
     </div>
 </section>
 {% endblock content %}
-
-{% block scripts %}
-<script src="{{ get_url(path="js/index.js") | safe }}"></script>
-{% endblock scripts %}

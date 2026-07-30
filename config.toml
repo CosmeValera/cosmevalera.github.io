@@ -69,6 +69,7 @@ featured_projects = "Proyectos destacados"
 featured_projects_desc = "Una muestra de lo que he construido."
 flagship_project = "Proyecto estrella"
 view_all_projects = "Ver todos los proyectos"
+see_my_cv = "Ver mi CV"
 
 # Blog
 blog_intro = "Escribo sobre temas que encuentro interesantes y merecen ser compartidos."
@@ -114,6 +115,17 @@ show_more = "Mostrar más"
 show_less = "Mostrar menos"
 key_insights = "Ideas clave"
 by = "de"
+
+# CV
+cv = "CV"
+cv_title = "CV"
+cv_about = "Sobre mí"
+cv_experience = "Experiencia"
+cv_projects = "Proyectos"
+cv_skills = "Habilidades"
+cv_education = "Formación"
+cv_languages = "Idiomas"
+source_code = "Código"
 
 # Tags pages
 see_all_tags = "← Ver todas las etiquetas"
@@ -189,6 +201,7 @@ featured_projects = "Featured projects"
 featured_projects_desc = "A glimpse at what I've been building."
 flagship_project = "Flagship project"
 view_all_projects = "View all projects"
+see_my_cv = "See my CV"
 # Blog
 blog_intro = "I enjoy writing about topics that I find exciting and are worth sharing."
 back_to_posts = "← Back to all posts"
@@ -230,6 +243,17 @@ show_more = "Show more"
 show_less = "Show less"
 key_insights = "Key Insights"
 by = "by"
+
+# CV
+cv = "CV"
+cv_title = "CV"
+cv_about = "About"
+cv_experience = "Experience"
+cv_projects = "Projects"
+cv_skills = "Skills"
+cv_education = "Education"
+cv_languages = "Languages"
+source_code = "Source"
 
 # Tags pages
 see_all_tags = "← See all tags"
