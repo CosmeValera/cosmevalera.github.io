@@ -17,13 +17,9 @@
         </div>
     </div>
     <div class="content-section">
-        {% if lang == "es" %}{% set cv_url = "/es/cv/" %}{% else %}{% set cv_url = get_url(path='cv') %}{% endif %}
-        {# The whole badge is the link into the CV: GMV / Galileo are plain text on purpose. #}
-        <a class="status-badge" href="{{ cv_url | safe }}">
-            <i class="fas fa-star"></i> <span>{{ trans(key="working_for", lang=lang) }} GMV {{ trans(key="in_the", lang=lang) }} {{ trans(key="galileo_project", lang=lang) }}</span>
-            <span class="status-badge-divider" aria-hidden="true"></span>
-            <span class="status-badge-cv">{{ trans(key="see_my_cv", lang=lang) }} <i class="fas fa-arrow-right"></i></span>
-        </a>
+        <div class="status-badge">
+            <i class="fas fa-star"></i> <span>{{ trans(key="working_for", lang=lang) }} <a target="_blank" href="https://www.gmv.com/en-es">GMV</a> {{ trans(key="in_the", lang=lang) }} <a target="_blank" href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)">{{ trans(key="galileo_project", lang=lang) }}</a></span>
+        </div>
         
         <h1 class="presentation-title">{{ trans(key="hello", lang=lang) }}</h1>
         <h2 class="presentation">{{ trans(key="i_am", lang=lang) }} <span class="highlight">Cosme</span></h2>
@@ -63,6 +59,13 @@
                             {% endif %}
                         </a>
                     {% endfor %}
+                    {# Entry point into the CV page, sitting at the end of the social row. #}
+                    <span class="social-divider" aria-hidden="true"></span>
+                    {% if lang == "es" %}{% set cv_url = "/es/cv/" %}{% else %}{% set cv_url = get_url(path='cv') %}{% endif %}
+                    <a href="{{ cv_url | safe }}" title="{{ trans(key="see_my_cv", lang=lang) }}" class="cv-link">
+                        <i class="fas fa-file-lines"></i>
+                        <span>{{ trans(key="see_my_cv", lang=lang) }}</span>
+                    </a>
                 </div>
             </div>
         {% endif %}

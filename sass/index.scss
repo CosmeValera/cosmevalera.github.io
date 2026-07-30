@@ -110,8 +110,6 @@
         width: fit-content;
         margin-bottom: 0.5rem;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        text-decoration: none;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
         @include respond-to('lg') {
             padding: 0.6rem 1.2rem;
@@ -125,37 +123,9 @@
             }
         }
 
-        // The badge itself is the anchor, so hover feedback lives here and the
-        // trailing "See my CV" part only reacts to it.
-        &:hover {
+        a {
             color: $accent-color;
-            border-color: $accent-color;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
-
-            .status-badge-cv i {
-                transform: translateX(3px);
-            }
-        }
-
-        // Trailing link into the CV page: the badge already names the job, so
-        // it doubles as the entry point instead of a separate home section.
-        .status-badge-divider {
-            width: 1px;
-            height: 0.9em;
-            background: rgba($accent-color, 0.45);
-        }
-
-        .status-badge-cv {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-weight: 700;
-            white-space: nowrap;
-
-            i {
-                font-size: 0.75em;
-                transition: transform 0.2s ease;
-            }
+            text-decoration: none;
         }
     }
 
@@ -344,6 +314,44 @@
                 }
             }
 
+            .social-divider {
+                width: 1px;
+                height: 1.8rem;
+                margin: 0 0.1rem;
+                background: rgba($text-color, 0.16);
+
+                @include respond-to('lg') {
+                    margin: 0 0.25rem;
+                }
+            }
+
+            // Entry point into the CV page: a labelled pill rather than a bare
+            // icon, so it reads as an action next to the social icons.
+            .cv-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                padding: 0.45rem 0.75rem;
+                border: 1px solid rgba($text-color, 0.18);
+                border-radius: 999px;
+                color: rgba($text-color, 0.62);
+                font-size: 0.88rem;
+                font-weight: 700;
+                line-height: 1;
+                text-decoration: none;
+                transition: all 0.2s ease;
+
+                i {
+                    font-size: 0.95rem;
+                }
+
+                &:hover {
+                    color: $accent-color;
+                    border-color: rgba($accent-color, 0.55);
+                    background: rgba($accent-color, 0.08);
+                    transform: translateY(-3px);
+                }
+            }
         }
     }
 }
@@ -465,13 +473,8 @@ body.bright-theme {
                 border-color: rgba($accent-color-bright, 0.3);
                 color: darken($accent-color-bright, 10%);
 
-                &:hover {
+                a {
                     color: darken($accent-color-bright, 10%);
-                    border-color: $accent-color-bright;
-                }
-
-                .status-badge-divider {
-                    background: rgba($accent-color-bright, 0.45);
                 }
             }
 
@@ -541,6 +544,20 @@ body.bright-theme {
                     }
                 }
 
+                .social-icons .social-divider {
+                    background: rgba($text-color-bright, 0.18);
+                }
+
+                .social-icons .cv-link {
+                    border-color: rgba($text-color-bright, 0.18);
+                    color: rgba($text-color-bright, 0.62);
+
+                    &:hover {
+                        color: darken($accent-color-bright, 10%);
+                        border-color: rgba($accent-color-bright, 0.55);
+                        background: rgba($accent-color-bright, 0.1);
+                    }
+                }
             }
         }
     }
