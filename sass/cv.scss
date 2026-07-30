@@ -351,6 +351,7 @@
 }
 
 .cv-project {
+  position: relative;
   padding: 1.15rem 1.25rem;
   background-color: $secondary-bg;
   border: 1px solid rgba($accent-color, 0.2);
@@ -387,6 +388,10 @@
   margin: 0;
 
   a {
+    // Stays static so its overlay (see .cv-project-stretched) sizes to the
+    // card; z-index still applies because it is a flex item of this heading.
+    position: static;
+    z-index: 2;
     color: $accent-color;
 
     &:hover {
@@ -439,6 +444,8 @@
   font-weight: 600;
 
   a {
+    position: relative;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -449,6 +456,27 @@
       text-decoration: underline;
     }
   }
+}
+
+/* The project title is the live-demo link and its overlay covers the whole card,
+   so there is no separate "Live demo" button. The source-code link sits above the
+   overlay (z-index 2) and keeps its own href. */
+.cv-project-stretched::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 14px;
+}
+
+.cv-project-stretched:focus-visible::after {
+  outline: 2px solid $accent-color;
+  outline-offset: 3px;
+}
+
+.cv-project:hover .cv-project-stretched {
+  color: $accent-color;
+  text-decoration: underline;
 }
 
 /* ===== Skills ===== */

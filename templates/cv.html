@@ -139,7 +139,7 @@
         <article class="cv-project{% if project.featured is defined %} cv-project--featured{% endif %}">
           <div class="cv-project-head">
             <h3 class="cv-project-name">
-              <a href="{{ project.url | safe }}" target="_blank" rel="noopener">{{ project.name }}</a>
+              <a class="cv-project-stretched" href="{{ project.url | safe }}" target="_blank" rel="noopener">{{ project.name }}</a>
               {% if project.featured is defined %}
                 <span class="cv-project-badge"><i class="fas fa-star" aria-hidden="true"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
               {% endif %}
@@ -166,7 +166,6 @@
           </ul>
 
           <p class="cv-project-links">
-            <a href="{{ project.url | safe }}" target="_blank" rel="noopener"><i class="fas fa-link" aria-hidden="true"></i>{{ trans(key="live_demo", lang=lang) }}</a>
             <a href="{{ project.repo | safe }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i>{{ trans(key="source_code", lang=lang) }}</a>
           </p>
         </article>

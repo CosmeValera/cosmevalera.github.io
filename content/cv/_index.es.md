@@ -20,7 +20,7 @@ pdf = "assets/CV-Cosme_Valera_Reales-2026-04-30.pdf"
 about = [
   "Cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, donde la mayor parte del día es React y TypeScript, y el resto es Node, Java y llevar las cosas hasta Kubernetes.",
   "La IA forma parte de mi día a día. He construido proyectos con Claude Code, Codex y Cursor, y voy bastante más allá del chat: agentes, skills, reglas y servidores MCP. Sigo el tema de cerca y me quedo con lo que aguanta el contacto con un proyecto real, que es también como salió RabbitHole.",
-  "El resto es bastante simple. Me gusta el código que otra persona pueda retomar meses después, así que las revisiones, el pair programming y la refactorización son la parte del trabajo que más disfruto.",
+  "Eso ha subido el listón de lo básico en vez de bajarlo. Buena parte de lo que entrego ahora empieza siendo la salida de un agente, así que las revisiones, los tests y la refactorización son lo que mantiene el código honesto, y una base de código clara es la que un agente acierta a la primera. El estándar no cambia porque quien escribe no sea humano.",
 ]
 
 [[extra.experience]]
