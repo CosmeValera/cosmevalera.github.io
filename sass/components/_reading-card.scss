@@ -2,7 +2,6 @@
 .reading-card {
     position: relative;
     border-radius: 12px;
-    overflow: hidden;
     background: rgba($secondary-bg, 0.3);
     border: 1px solid rgba($accent-color, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -18,11 +17,20 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
+    // The rating tooltip escapes the card, so the card cannot clip its own
+    // children: each piece rounds its own corners and the hovered card is
+    // lifted above its grid neighbours instead.
+    &:hover,
+    &:focus-within {
+        z-index: 10;
+    }
+
     .reading-card-cover {
         position: relative;
         width: 100%;
         aspect-ratio: 2/3;
         overflow: hidden;
+        border-radius: 12px 12px 0 0;
         background: rgba(0, 0, 0, 0.1);
 
         img {
@@ -50,6 +58,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
+        border-radius: 0 0 12px 12px;
         background: linear-gradient(
             to bottom,
             rgba($secondary-bg, 0.4) 0%,
@@ -92,11 +101,21 @@
                 text-align: left;
 
                 .rating-tooltip-title {
-                    display: block;
+                    display: flex;
+                    align-items: baseline;
+                    gap: 0.4rem;
                     font-size: 0.75rem;
-                    font-weight: 700;
-                    color: $accent-color;
-                    margin-bottom: 0.3rem;
+                    margin-bottom: 0.35rem;
+
+                    .rating-tooltip-score {
+                        font-weight: 700;
+                        color: $accent-color;
+                    }
+
+                    .rating-tooltip-label {
+                        font-weight: 600;
+                        color: $accent-color;
+                    }
                 }
 
                 .rating-tooltip-text {
@@ -104,18 +123,27 @@
                     font-size: 0.7rem;
                     line-height: 1.45;
                     color: rgba(255, 255, 255, 0.85);
-
-                    + .rating-tooltip-scale {
-                        margin-top: 0.4rem;
-                    }
                 }
 
                 .rating-tooltip-scale {
                     display: block;
+                    margin-top: 0.45rem;
                     font-size: 0.6rem;
                     letter-spacing: 0.02em;
                     text-transform: uppercase;
                     color: rgba(255, 255, 255, 0.45);
+                }
+
+                // 1-4 stars carry no note: shrink the box to the single line.
+                &.is-compact {
+                    right: auto;
+                    width: max-content;
+                    padding: 0.4rem 0.6rem;
+
+                    .rating-tooltip-title {
+                        margin-bottom: 0;
+                        white-space: nowrap;
+                    }
                 }
             }
 
@@ -304,7 +332,8 @@
                 border-color: rgba($accent-color-bright, 0.35);
                 box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 
-                .rating-tooltip-title {
+                .rating-tooltip-score,
+                .rating-tooltip-label {
                     color: $accent-color-bright;
                 }
 

@@ -21,14 +21,15 @@
               <span class="star">⭐</span>
             {% endfor %}
           </span>
-          <div class="rating-tooltip" role="tooltip">
-            <span class="rating-tooltip-title">{{ page.extra.rating }}/5. {{ trans(key="rating_label_" ~ page.extra.rating, lang=lang) }}</span>
+          <div class="rating-tooltip{% if not page.extra.rating_note %} is-compact{% endif %}" role="tooltip">
+            <span class="rating-tooltip-title">
+              <span class="rating-tooltip-score">{{ page.extra.rating }}/5</span>
+              <span class="rating-tooltip-label">{{ trans(key="rating_label_" ~ page.extra.rating, lang=lang) }}</span>
+            </span>
             {% if page.extra.rating_note %}
               <span class="rating-tooltip-text">{{ page.extra.rating_note }}</span>
-            {% elif page.extra.rating == 5 %}
-              <span class="rating-tooltip-text">{{ trans(key="rating_desc_5", lang=lang) }}</span>
+              <span class="rating-tooltip-scale">{{ trans(key="rating_scale_note", lang=lang) }}</span>
             {% endif %}
-            <span class="rating-tooltip-scale">{{ trans(key="rating_scale_note", lang=lang) }}</span>
           </div>
         </div>
       {% endif %}
