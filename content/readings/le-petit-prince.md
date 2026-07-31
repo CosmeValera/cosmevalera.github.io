@@ -6,6 +6,7 @@ date = 2026-07-26
 author = "Antoine de Saint-Exupéry"
 cover_image = "/images/readings/le-petit-prince.jpg"
 rating = 5
+rating_note = "Working out what apprivoiser meant on my own, instead of looking up a translation that would have misled me, was worth more than any translated edition. It taught me that bonds are built with time and consistency, and that some things are valuable in themselves and not as a means to something else. It pulled me out of the purely utilitarian mindset I had until now."
 key_insights = [
     "I read it in French, and I think reading it in the original language matters: much of the book lives in words that cannot be translated without losing meaning",
     "'Apprivoiser' is the clearest case, translated as 'to tame', which loses the mutual, patient act of creating ties that the fox actually describes",

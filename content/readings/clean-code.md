@@ -5,7 +5,7 @@ date = 2023-05-23
 [extra]
 author = "Robert C. Martin"
 cover_image = "/images/readings/clean-code.jpg"
-rating = 5
+rating = 4
 key_insights = [
     "Code should be written for humans to read, not just for machines to execute",
     "Functions should do one thing and do it well",

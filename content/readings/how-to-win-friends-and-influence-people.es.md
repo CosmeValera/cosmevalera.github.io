@@ -6,6 +6,7 @@ date = 2025-03-09
 author = "Dale Carnegie"
 cover_image = "/images/readings/how-to-win-friends-and-influence-people.jpg"
 rating = 5
+rating_note = "Me puso por escrito cosas en las que nunca me había parado a pensar: recordar los nombres, entender cómo se siente el otro, mirar las cosas primero desde su lado. Lo explica de una forma que llega, así que se me quedó, y cambió cómo trato a la gente."
 key_insights = [
     "Muestra un interés genuino en los demás para construir relaciones significativas",
     "Recuerda que, para cualquiera, su propio nombre es el sonido más dulce e importante",

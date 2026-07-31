@@ -59,11 +59,71 @@
         .reading-rating {
             text-align: left;
             margin-bottom: 0.5rem;
-            
+            position: relative;
+
+            .reading-stars {
+                display: inline-block;
+                cursor: help;
+                outline: none;
+            }
+
             .star {
                 font-size: 0.75rem;
                 display: inline-block;
                 margin-right: 1px;
+            }
+
+            .rating-tooltip {
+                position: absolute;
+                top: calc(100% + 0.4rem);
+                left: 0;
+                right: 0;
+                z-index: 5;
+                padding: 0.6rem 0.7rem;
+                border-radius: 8px;
+                background: rgba(15, 15, 15, 0.97);
+                border: 1px solid rgba($accent-color, 0.35);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-4px);
+                transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+                pointer-events: none;
+                text-align: left;
+
+                .rating-tooltip-title {
+                    display: block;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    color: $accent-color;
+                    margin-bottom: 0.3rem;
+                }
+
+                .rating-tooltip-text {
+                    display: block;
+                    font-size: 0.7rem;
+                    line-height: 1.45;
+                    color: rgba(255, 255, 255, 0.85);
+
+                    + .rating-tooltip-scale {
+                        margin-top: 0.4rem;
+                    }
+                }
+
+                .rating-tooltip-scale {
+                    display: block;
+                    font-size: 0.6rem;
+                    letter-spacing: 0.02em;
+                    text-transform: uppercase;
+                    color: rgba(255, 255, 255, 0.45);
+                }
+            }
+
+            .reading-stars:hover ~ .rating-tooltip,
+            .reading-stars:focus ~ .rating-tooltip {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
             }
         }
 
@@ -237,6 +297,24 @@
 
             .reading-title {
                 color: $text-color-bright;
+            }
+
+            .reading-rating .rating-tooltip {
+                background: rgba(255, 255, 255, 0.98);
+                border-color: rgba($accent-color-bright, 0.35);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+
+                .rating-tooltip-title {
+                    color: $accent-color-bright;
+                }
+
+                .rating-tooltip-text {
+                    color: rgba($text-color-bright, 0.85);
+                }
+
+                .rating-tooltip-scale {
+                    color: rgba($text-color-bright, 0.5);
+                }
             }
 
             .reading-author {
