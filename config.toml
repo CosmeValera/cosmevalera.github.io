@@ -109,7 +109,7 @@ filter_projects = "Filtrar proyectos"
 live_demo = "Demo en vivo"
 
 # Readings
-readings_intro = "Una colección de libros que he leído y mis reflexiones sobre ellos."
+readings_intro = "Los libros que me dejaron algo: software, Bitcoin y ser mejor persona. Lo que leo solo por entretenimiento se queda fuera."
 books_with_reflections = "libros con reflexiones"
 search_books = "Buscar libros o autores..."
 show_more = "Mostrar más"
@@ -244,7 +244,7 @@ projects_intro = "A showcase of projects I've built using different technologies
 filter_projects = "Filter Projects"
 live_demo = "Live Demo"
 # Readings
-readings_intro = "A collection of books I've read and my thoughts on them."
+readings_intro = "The books that left something behind: software, Bitcoin, and being a better human. What I read purely for entertainment stays out."
 books_with_reflections = "books with reflections"
 search_books = "Search books or authors..."
 show_more = "Show more"
