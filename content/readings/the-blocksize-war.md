@@ -5,7 +5,7 @@ date = 2026-01-25
 [extra]
 author = "Jonathan Bier"
 cover_image = "/images/readings/the-blocksize-war.webp"
-rating = 4
+rating = 3
 key_insights = [
     "The conflict was not just about technical limits but about the fundamental vision of Bitcoin",
     "Small blockers prioritized decentralization over short-term transaction capacity",

@@ -1,0 +1,14 @@
++++
+title = "Le Petit Prince"
+description = "Un cuento infantil que en realidad habla de adultos: lo que perdemos al crecer y lo que cuesta crear un vínculo con alguien."
+date = 2026-07-26
+[extra]
+author = "Antoine de Saint-Exupéry"
+cover_image = "/images/readings/le-petit-prince.jpg"
+rating = 5
+key_insights = [
+    "Lo leí en francés, y creo que leerlo en el idioma original importa: buena parte del libro usa palabras que se traducen mal",
+    "'Apprivoiser' es el caso más claro, traducido como 'domesticar', lo que pierde el acto mutuo y paciente de crear lazos que describe el zorro",
+    "Lo esencial es invisible a los ojos: el valor de algo viene del tiempo y del cuidado que le has dedicado"
+]
++++
