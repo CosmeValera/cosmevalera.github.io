@@ -1,7 +1,7 @@
 +++
 title = "CV"
 template = "cv.html"
-description = "CV of Cosme Valera Reales, frontend developer at GMV working on ESA's Galileo programme, building with React, TypeScript and AI tooling from Madrid, Spain."
+description = "CV of Cosme Valera Reales, software developer at GMV on ESA's Galileo programme. Full-stack with TypeScript, Node, Spring, Docker and AI tooling. Madrid, Spain."
 
 # All CV data lives here (and in _index.es.md) rather than in [translations],
 # because it is content, not UI chrome. Section titles are the chrome and stay

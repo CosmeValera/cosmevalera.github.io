@@ -23,79 +23,6 @@
   <h1>{{ trans(key="projects", lang=lang) }}</h1>
   <p class="projects-intro">{{ trans(key="projects_intro", lang=lang) }}</p>
 
-  <!-- FILTER (Desktop Only) -->
-  <div class="filter-buttons-desktop">
-    <div class="filter-dropdown-desktop">
-      <button class="filter-button" data-filter="React">
-        <i class="fab fa-react"></i>
-        React
-      </button>
-
-      <button class="filter-button" data-filter="Angular">
-        <i class="fab fa-angular"></i>
-        Angular
-      </button>
-
-      <button class="filter-button" data-filter="Vue">
-        <i class="fab fa-vuejs"></i>
-        Vue
-      </button>
-
-      <button class="filter-button" data-filter="DevOps">
-        <i class="fas fa-dharmachakra"></i>
-        DevOps
-      </button>
-
-      <button class="filter-button" data-filter="Java">
-        <i class="fab fa-java"></i>
-        Java
-      </button>
-    </div>
-  </div>
-  <!-- END: FILTER (Desktop Only) -->
-
-  <!-- Mobile Filter Button -->
-  <div class="mobile-filter-button-container">
-    <button id="filter-menu-button" class="mobile-filter-button" aria-label="{{ trans(key='filter_projects', lang=lang) }}">
-      <i class="fas fa-filter"></i>
-    </button>
-  </div>
-
-  <!-- Filter Modal (Mobile Only) -->
-  <div class="filter-modal" id="filter-modal">
-    <div class="filter-modal-content">
-      <div class="filter-modal-header">
-        <h3>{{ trans(key="filter_projects", lang=lang) }}</h3>
-        <button class="filter-modal-close" id="filter-modal-close">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="filter-modal-body">
-        <button class="filter-modal-option" data-filter="React">
-          <i class="fab fa-react"></i>
-          React
-        </button>
-        <button class="filter-modal-option" data-filter="Angular">
-          <i class="fab fa-angular"></i>
-          Angular
-        </button>
-        <button class="filter-modal-option" data-filter="Vue">
-          <i class="fab fa-vuejs"></i>
-          Vue
-        </button>
-        <button class="filter-modal-option" data-filter="DevOps">
-          <i class="fas fa-dharmachakra"></i>
-          DevOps
-        </button>
-        <button class="filter-modal-option" data-filter="Java">
-          <i class="fab fa-java"></i>
-          Java
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- END: Filter Modal (Mobile Only) -->
-
   <!-- CARDS -->
   <div class="row project-cards-row">
     
@@ -243,46 +170,6 @@
           </p>
           <div class="card-buttons">
             <a class="card-button github-btn" href="https://github.com/CosmeValera/Sympho" target="_blank">
-              <i class="fab fa-github"></i>GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="col-12 col-md-6">
-      <div class="project-card">
-        <div class="project-image-container">
-          <img src="{{ get_url(path='images/projects/LeagueOfPokemon.png') }}" alt="League of Pokemon" width="400" height="220" decoding="async" />
-        </div>
-        <div class="project-content">
-          <h3 class="card-title">League of Pokemon</h3>
-          <p class="card-description">{{ trans(key="proj_lop_desc", lang=lang) }}</p>
-          <p class="card-technology">
-            <span class="tag"><i class="fab fa-java"></i>Java (Swing)</span>
-          </p>
-          <div class="card-buttons">
-            <a class="card-button github-btn" href="https://github.com/CosmeValera/LeagueOfPokemon" target="_blank">
-              <i class="fab fa-github"></i>GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6">
-      <div class="project-card">
-        <div class="project-image-container">
-          <img src="{{ get_url(path='images/projects/AndroidDepartmentQuest.jpg') }}" alt="AndroidDepartmentQuest" width="400" height="220" decoding="async" />
-        </div>
-        <div class="project-content">
-          <h3 class="card-title">Department Quest</h3>
-          <p class="card-description">{{ trans(key="proj_deptquest_desc", lang=lang) }}</p>
-          <p class="card-technology">
-            <span class="tag"><i class="fab fa-java"></i>Java (Android)</span>
-          </p>
-          <div class="card-buttons">
-            <a class="card-button github-btn" href="https://github.com/CosmeValera/AndroidDepartmentQuest" target="_blank">
               <i class="fab fa-github"></i>GitHub
             </a>
           </div>

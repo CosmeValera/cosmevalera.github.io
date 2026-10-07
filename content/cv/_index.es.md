@@ -1,7 +1,7 @@
 +++
 title = "CV"
 template = "cv.html"
-description = "CV de Cosme Valera Reales, desarrollador frontend en GMV trabajando en el programa Galileo de la ESA, construyendo con React, TypeScript e IA desde Madrid, España."
+description = "CV de Cosme Valera Reales, desarrollador de software en GMV en el programa Galileo de la ESA. Full-stack con TypeScript, Node, Spring, Docker e IA. Madrid, España."
 
 # Todo el contenido del CV vive aquí (y en _index.md) en lugar de en
 # [translations], porque es contenido, no interfaz. Los títulos de sección sí
