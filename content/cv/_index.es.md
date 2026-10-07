@@ -2,6 +2,8 @@
 title = "CV"
 template = "cv.html"
 description = "CV de Cosme Valera Reales, desarrollador de software en GMV en el programa Galileo de la ESA. Full-stack con TypeScript, Node, Spring, Docker e IA. Madrid, España."
+# La página de proyectos se integró en el CV; su URL antigua sigue funcionando.
+aliases = ["/es/projects/"]
 
 # Todo el contenido del CV vive aquí (y en _index.md) en lugar de en
 # [translations], porque es contenido, no interfaz. Los títulos de sección sí
@@ -18,7 +20,7 @@ website = "https://cosmevalera.dev"
 website_label = "cosmevalera.dev"
 pdf = "assets/CV-Cosme_Valera_Reales-2026-08-01.pdf"
 about = [
-  "Cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, donde la mayor parte del día es React y TypeScript, y el resto es Node, Java y llevar las cosas hasta Kubernetes.",
+  "Más de cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, donde la mayor parte del día es React y TypeScript, y el resto es Node, Java y llevar las cosas hasta Kubernetes.",
   "La IA forma parte de mi día a día. He construido proyectos con Claude Code, Codex y Cursor, y voy bastante más allá del chat: agentes, skills, reglas y servidores MCP. Sigo el tema de cerca y me quedo con lo que aguanta el contacto con un proyecto real, que es también como salió RabbitHole.",
   "Eso ha subido el listón de lo básico en vez de bajarlo. Buena parte de lo que entrego ahora empieza siendo la salida de un agente, así que las revisiones, los tests y la refactorización son lo que mantiene el código honesto, y una base de código clara es la que un agente acierta a la primera. El estándar no cambia porque quien escribe no sea humano.",
 ]
@@ -77,42 +79,83 @@ bullets = [
   "Empecé con Angular y Java. Tres meses de prácticas y después contratado.",
 ]
 
+# Los proyectos viven solo aquí (y en _index.md): el CV los muestra todos y la
+# home enseña los marcados con `home = true`, así que no hay una segunda copia.
+#   tagline      una línea, también es el texto de la tarjeta en la home
+#   description  dos párrafos: qué hace y cómo está hecho
+#   screenshots  rutas dentro de static/; la primera es la imagen de la home
+#   url          web en vivo, opcional: sin url no hay enlace "Visitar web"
+#   flagship     opcional, la insignia + la tarjeta grande de la home
 [[extra.projects]]
 name = "RabbitHole"
+tagline = "Aprende cualquier cosa a través de lo que ya sabes."
 url = "https://rabbithole.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/RabbitHole"
 period = "2023 – Actualidad"
-note = "Más de 6 meses de trabajo intenso repartidos en los últimos 3 años"
-featured = true
-description = "Convierte un prompt en una guía de IA de varias páginas, explicada a través de lo que ya sabes. Empieza donde quieras y profundiza tanto como quieras."
-bullets = [
-  "Genera guías de varias páginas con lecciones y ejercicios a partir de un solo prompt, ancladas a los conocimientos previos que elige quien lee.",
-  "Convierte cualquier guía en tests, flashcards o un pódcast con un clic, con un chat de IA y búsqueda web para ampliarla cuando quieras.",
-  "Funciona con la IA que elijas: alojada, tu propia clave de API o un modelo local en tu máquina.",
-  "Monorepo con Turborepo y rutas de API serverless, cubierto con Vitest y Playwright.",
+flagship = true
+home = true
+description = [
+  "Mi producto estrella, diseñado, construido y mantenido por mí en más de 6 meses de trabajo intenso repartidos en los últimos tres años. Un prompt se convierte en una guía de varias páginas con lecciones y ejercicios, explicada a través de los conocimientos previos que elige quien lee, y sigue creciendo cuando quieras con un chat de IA con fuentes web. Cualquier guía se convierte en un test, flashcards o un pódcast a dos voces con un clic.",
+  "Es un monorepo con Turborepo: un cliente en React y TypeScript sobre rutas de API serverless, Supabase para autenticación y datos, y Stripe para los pagos. Funciona con la IA que elijas (alojada, tu propia clave de API o un modelo local en tu máquina), y Vitest y Playwright lo cubren desde tests unitarios hasta flujos end-to-end.",
 ]
-tech = ["React", "TypeScript", "IA", "Supabase", "Stripe", "Turborepo", "Playwright"]
+screenshots = ["images/projects/RabbitHole.png"]
 
 [[extra.projects]]
 name = "DevOps Lab"
+tagline = "Una app full-stack desplegada con Docker, Kubernetes y un pipeline de Jenkins en AWS."
 url = "https://devopslab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/DevOpsLab"
-description = "Pipeline DevOps completo con contenedorización, orquestación y automatización CI/CD."
-tech = ["Docker", "Kubernetes", "AWS", "Jenkins", "React", "Node"]
+home = true
+description = [
+  "Un laboratorio práctico que lleva la misma aplicación full-stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins. Cada método tiene su propio tutorial, así que la web también sirve de guía para hacerlo por tu cuenta.",
+  "La versión en vivo corre en AWS: el frontend en React y TypeScript se sirve desde S3 y CloudFront, la API en Node y Express corre en Lambda y Jenkins vive en EC2, con IAM limitando el acceso de cada pieza. El frontend muestra el estado real del pipeline de Jenkins, obtenido a través de esa API en Lambda.",
+]
+screenshots = ["images/projects/devopslab-dark-2.png", "images/projects/devopslab-light.png"]
+
+[[extra.projects]]
+name = "FitCal"
+tagline = "Seguimiento de calorías y macros, de tus objetivos a tu diario de comidas."
+# url = "https://fitcal.cosmevalera.dev/"
+repo = "https://github.com/CosmeValera/FitCal"
+description = [
+  "Una app de nutrición. Tu perfil (altura, peso, edad y nivel de actividad) fija tus objetivos diarios de calorías y macros, el diario de comidas suma calorías y macros a medida que registras alimentos, y un registro de peso muestra tu progreso. Los alimentos viven en un catálogo donde puedes crearlos, editarlos y borrarlos.",
+  "Una API REST en Java con Spring Boot, construida con Maven, sirve a un frontend en Angular totalmente responsive y con tema oscuro.",
+]
+screenshots = ["images/projects/FitCal.webp"]
+
+[[extra.projects]]
+name = "Sympho"
+tagline = "Compón, guarda y reproduce partituras, en la web o como app de escritorio."
+# url = "https://sympho.cosmevalera.dev/"
+repo = "https://github.com/CosmeValera/Sympho"
+description = [
+  "Un editor de partituras: escribe notas y silencios de cualquier duración, añade alteraciones y puntillos, define título, instrumento y tempo, y reprodúcela. Inicia sesión con Google para guardar partituras en un repositorio privado o publicarlas en uno público que cualquiera puede explorar.",
+  "Hecho con JavaScript y Node, con VexFlow renderizando la notación. Funciona en el navegador o como app de escritorio con Electron, tiene tres temas (oscuro, claro y solar) y se despliega en Kubernetes.",
+]
+screenshots = ["images/projects/Sympho.png", "images/projects/Sympho3.png"]
 
 [[extra.projects]]
 name = "Bitcoin Finance Lab"
+tagline = "Bitcoin frente a las acciones e índices que lo tienen, en gráficas."
 url = "https://bitcoin-finance-lab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/bitcoin-finance-lab"
-description = "Herramienta de comparación financiera en Vue 3 que visualiza el rendimiento de Bitcoin frente a acciones e índices de mercado."
-tech = ["Vue", "TypeScript", "Gráficas"]
+home = true
+description = [
+  "Una herramienta financiera que pone Bitcoin junto a empresas con Bitcoin en tesorería como Strategy y Metaplanet, las acciones preferentes de Strategy, índices amplios como SPY y QQQ, o cualquier ticker que añadas. El constructor de carteras combina pesos en rentabilidad, volatilidad y caída máxima, la vista de benchmark normaliza rentabilidades en una tabla de métricas ordenable, y un simulador de DCA muestra qué habría pasado comprando de forma periódica.",
+  "Hecha con Vue 3, TypeScript y Pinia, con gráficas en Chart.js y empaquetada con Vite, sobre datos de mercado de Yahoo Finance.",
+]
+screenshots = ["images/projects/bitcoin-finance-lab-dark.png"]
 
 [[extra.projects]]
 name = "Particle Universe"
+tagline = "Vue, React, Angular y Astro compartiendo una misma simulación de partículas en vivo."
 url = "https://particle-universe.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/particle-universe"
-description = "Dashboard multi-framework con Astro que renderiza simulaciones interactivas de partículas con React, Vue y Angular a la vez."
-tech = ["Astro", "React", "Vue", "Angular"]
+description = [
+  "Una simulación interactiva de partículas donde cuatro frameworks funcionan como una sola app: Vue controla los sliders, presets, colores y formas, React renderiza el canvas de partículas y Astro dibuja métricas en vivo como sparklines. Arrastra sobre el canvas para atraer partículas o prueba los presets galaxy, fireworks, rain, matrix y nebula.",
+  "Construida sobre Astro con Vue 3, React 19, Angular 21 y Tailwind 4, todos leyendo y escribiendo el mismo estado en tiempo real con Nano Stores.",
+]
+screenshots = ["images/projects/particle-universe-dark.png", "images/projects/particle-universe-light.png"]
 
 [[extra.skills]]
 label = "Frontend"

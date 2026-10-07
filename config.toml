@@ -22,7 +22,7 @@ links = [
 ]
 
 nav = [
-    { name = "Projects", path = "/projects/", class = "menu-item" },
+    { name = "CV", path = "/cv/", class = "menu-item" },
     { name = "Blog", path = "/blog/", class = "menu-item" },
     { name = "Readings", path = "/readings/", class = "menu-item" },
 ]
@@ -42,7 +42,6 @@ taxonomies = [
 [languages.es.translations]
 # Navigation
 home = "Inicio"
-projects = "Proyectos"
 blog = "Blog"
 readings = "Lecturas"
 sponsor = "Colabora"
@@ -53,22 +52,24 @@ i_am = "Soy"
 working_for = "Trabajando para"
 in_the = "en el"
 galileo_project = "Proyecto Galileo"
+home_role = "Desarrollador de software"
 browse_projects = "Explora mis proyectos"
 download_cv = "Descargar CV"
 check_latest_posts = "Lee mis últimas publicaciones"
 connect_with_me = "Conecta conmigo"
-description_home = "👉🏼 Construyo aplicaciones web con el objetivo de que sigan siendo fáciles de mantener."
+description_home = "Construyo aplicaciones web full-stack que siguen siendo fáciles de mantener."
 clean_code = "El código limpio"
 and = "y"
 description_middle = "es el listón, y lo mismo para los"
 ai_agents = "agentes de IA"
-description_suffix = "con los que trabajo: roles claros y límites claros. Fuera del trabajo me gusta crear proyectos, leer, así como escribir sobre lo que merece la pena compartir."
+description_suffix = "con los que trabajo: roles claros y límites claros."
 latest_posts = "Últimas publicaciones"
 latest_posts_desc = "Reflexiones recientes sobre software, arquitectura y más."
 view_all_posts = "Ver todas las publicaciones"
 featured_projects = "Proyectos destacados"
 featured_projects_desc = "Una muestra de lo que he construido."
 flagship_project = "Proyecto estrella"
+read_more = "Leer más"
 view_all_projects = "Ver todos los proyectos"
 see_my_cv = "Ver mi CV"
 
@@ -103,10 +104,6 @@ bitcoin_series_desc = "Comienza tu viaje en Bitcoin desde cero."
 series_section_title = "Series"
 series_section_desc = "Guías completas para profundizar en un tema."
 
-# Projects
-projects_intro = "Una selección de proyectos que he desarrollado con diferentes tecnologías. Cada proyecto ha sido un reto único y una oportunidad de aprendizaje."
-live_demo = "Demo en vivo"
-
 # Readings
 readings_intro = "Los libros que me dejaron algo: software, mentalidad de producto, Bitcoin y ser mejor persona. Lo que leo solo por entretenimiento se queda fuera."
 books_with_reflections = "libros con reflexiones"
@@ -132,6 +129,8 @@ cv_skills = "Habilidades"
 cv_education = "Formación"
 cv_languages = "Idiomas"
 source_code = "Código"
+visit_site = "Visitar web"
+screenshot = "captura"
 
 # Tags pages
 see_all_tags = "← Ver todas las etiquetas"
@@ -161,50 +160,37 @@ footer_sponsor = "Colabora"
 # Language
 switch_language = "Cambiar idioma"
 
-# Project Cards
-proj_rabbithole_desc = "Convierte un prompt en una guía de IA de varias páginas, explicada a través de lo que ya sabes"
-proj_devopslab_desc = "Pipeline DevOps completo con contenedorización, orquestación y automatización CI/CD"
-proj_fitcal_desc = "Aplicación de seguimiento de fitness y nutrición con gestión de calorías"
-proj_sympho_desc = "Herramienta de notación y composición musical con renderizado interactivo de partituras"
-proj_particle_desc = "Dashboard multi-framework con Astro que renderiza simulaciones interactivas de partículas con React, Vue y Angular"
-proj_btcfinlab_desc = "Herramienta de comparación financiera en Vue 3 que visualiza el rendimiento de Bitcoin frente a acciones e índices de mercado"
-
-# One-liners for the image-forward cards on the home page: the full
-# descriptions above get cut mid-word at that width.
-proj_devopslab_short = "Pipeline de CI/CD con Docker y Kubernetes"
-proj_particle_short = "React, Vue y Angular en un mismo dashboard Astro"
-proj_btcfinlab_short = "Bitcoin frente a acciones e índices, en gráficas"
-
 # Default language (English) translations
 [translations]
 # Navigation
 home = "Home"
-projects = "Projects"
 blog = "Blog"
 readings = "Readings"
 sponsor = "Sponsor"
 # Home page
 hello = "Hello!"
-i_am = "I am"
+i_am = "I'm"
 working_for = "Working for"
 in_the = "in the"
 galileo_project = "Galileo Project"
+home_role = "Software developer"
 browse_projects = "Browse my projects"
 download_cv = "Download CV"
 check_latest_posts = "Check out my latest posts"
 connect_with_me = "Connect with me"
-description_home = "👉🏼 I build web applications that stay easy to work on."
+description_home = "I build full-stack web applications that stay easy to work on."
 clean_code = "Clean code"
 and = "and"
 description_middle = "is the bar, and the same goes for the"
 ai_agents = "AI agents"
-description_suffix = "I work with: clear roles, clear constraints. Outside work I build side projects, read, and write about what I find worth sharing."
+description_suffix = "I work with: clear roles, clear constraints."
 latest_posts = "Latest posts"
 latest_posts_desc = "Recent thoughts on software, architecture, and more."
 view_all_posts = "View all posts"
 featured_projects = "Featured projects"
 featured_projects_desc = "A glimpse at what I've been building."
 flagship_project = "Flagship project"
+read_more = "Read more"
 view_all_projects = "View all projects"
 see_my_cv = "See my CV"
 # Blog
@@ -236,9 +222,6 @@ bitcoin_series_title = "Bitcoin Essentials"
 bitcoin_series_desc = "Start your journey into Bitcoin from zero to hero."
 series_section_title = "Series"
 series_section_desc = "In-depth guides on specific topics."
-# Projects
-projects_intro = "A showcase of projects I've built using different technologies. Each project represents a unique challenge and learning experience."
-live_demo = "Live Demo"
 # Readings
 readings_intro = "The books that left something behind: software, product mindset, Bitcoin and being a better human. What I read purely for entertainment stays out."
 books_with_reflections = "books with reflections"
@@ -264,6 +247,8 @@ cv_skills = "Skills"
 cv_education = "Education"
 cv_languages = "Languages"
 source_code = "Source"
+visit_site = "Visit site"
+screenshot = "screenshot"
 
 # Tags pages
 see_all_tags = "← See all tags"
@@ -290,16 +275,3 @@ support_bitcoin_desc = "By using Lightning, you're helping build the future of d
 footer_sponsor = "Sponsor"
 # Language
 switch_language = "Switch language"
-# Project Cards
-proj_rabbithole_desc = "Turns one prompt into a multi-page AI guide, explained through what you already know"
-proj_devopslab_desc = "Complete DevOps pipeline with containerization, orchestration, and CI/CD automation"
-proj_fitcal_desc = "Fitness and nutrition tracking application with calorie management"
-proj_sympho_desc = "Music notation and composition tool with interactive sheet music rendering"
-proj_particle_desc = "Multi-framework Astro dashboard rendering interactive particle simulations with React, Vue, and Angular"
-proj_btcfinlab_desc = "Vue 3 financial comparison tool visualizing Bitcoin performance against treasury stocks and market indices"
-
-# One-liners for the image-forward cards on the home page: the full
-# descriptions above get cut mid-word at that width.
-proj_devopslab_short = "CI/CD pipeline with Docker and Kubernetes"
-proj_particle_short = "React, Vue and Angular in one Astro dashboard"
-proj_btcfinlab_short = "Bitcoin against stocks and indices, charted"

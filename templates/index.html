@@ -9,6 +9,8 @@
 {% endblock %}
 
 {% block content %}
+{# The CV section is the single source for projects. #}
+{% set cv = get_section(path="cv/_index.md", lang=lang) %}
 <div class="home-container">
     <div class="profile-section">
         <div class="portrait-wrapper">
@@ -21,25 +23,22 @@
             <i class="fas fa-star"></i> <span>{{ trans(key="working_for", lang=lang) }} <a target="_blank" href="https://www.gmv.com/en-es">GMV</a> {{ trans(key="in_the", lang=lang) }} <a target="_blank" href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)">{{ trans(key="galileo_project", lang=lang) }}</a></span>
         </div>
         
-        <h1 class="presentation-title">{{ trans(key="hello", lang=lang) }}</h1>
-        <h2 class="presentation">{{ trans(key="i_am", lang=lang) }} <span class="highlight">Cosme</span></h2>
-        
+        <p class="presentation">{{ trans(key="hello", lang=lang) }} {{ trans(key="i_am", lang=lang) }} <span class="highlight">Cosme</span></p>
+        <h1 class="presentation-title">{{ trans(key="home_role", lang=lang) }}</h1>
+
         <p class="description">
             {{ trans(key="description_home", lang=lang) }} <span class="highlight-text text-blue">{{ trans(key="clean_code", lang=lang) }}</span> {{ trans(key="description_middle", lang=lang) }} <span class="highlight-text text-green">{{ trans(key="ai_agents", lang=lang) }}</span> {{ trans(key="description_suffix", lang=lang) }}
         </p>
-        
+
         <div class="action-buttons">
-            {% if lang == "es" %}
-            <a href="/es/projects/" class="btn btn-primary">
+            <a href="{{ cv.permalink | safe }}#projects" class="btn btn-primary">
                 {{ trans(key="browse_projects", lang=lang) }} <i class="fas fa-arrow-right"></i>
             </a>
+            {% if lang == "es" %}
             <a href="/es/blog/" class="btn btn-secondary">
                 {{ trans(key="check_latest_posts", lang=lang) }}
             </a>
             {% else %}
-            <a href="{{ get_url(path='projects') | safe }}" class="btn btn-primary">
-                {{ trans(key="browse_projects", lang=lang) }} <i class="fas fa-arrow-right"></i>
-            </a>
             <a href="{{ get_url(path='blog') | safe }}" class="btn btn-secondary">
                 {{ trans(key="check_latest_posts", lang=lang) }}
             </a>
@@ -61,8 +60,7 @@
                     {% endfor %}
                     {# Entry point into the CV page, sitting at the end of the social row. #}
                     <span class="social-divider" aria-hidden="true"></span>
-                    {% if lang == "es" %}{% set cv_url = "/es/cv/" %}{% else %}{% set cv_url = get_url(path='cv') %}{% endif %}
-                    <a href="{{ cv_url | safe }}" title="{{ trans(key="see_my_cv", lang=lang) }}" class="cv-link">
+                    <a href="{{ cv.permalink | safe }}" title="{{ trans(key="see_my_cv", lang=lang) }}" class="cv-link">
                         <i class="fas fa-file-lines"></i>
                         <span>{{ trans(key="see_my_cv", lang=lang) }}</span>
                     </a>
@@ -79,80 +77,46 @@
     </div>
     
 
+    {# Cards come from the CV entries marked `home = true`: the flagship one is
+       the hero, the rest stack beside it. Each links to its full entry on the CV. #}
+    {% set home_projects = cv.extra.projects | filter(attribute="home", value=true) %}
     <div class="home-projects-grid">
 
-        <a href="https://rabbithole.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--hero">
-            <div class="home-project-image">
-                <img src="{{ get_url(path='images/projects/RabbitHole.png') }}" alt="RabbitHole" width="800" height="450" decoding="async">
-            </div>
-            <div class="home-project-body">
-                <span class="home-project-badge"><i class="fas fa-star"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
-                <h3 class="home-project-title">RabbitHole</h3>
-                <p class="home-project-desc">{{ trans(key="proj_rabbithole_desc", lang=lang) }}</p>
-                <div class="home-project-tech">
-                    <span class="home-project-tag"><i class="fab fa-react"></i>React</span>
-                    <span class="home-project-tag"><i class="fas fa-code"></i>TypeScript</span>
-                    <span class="home-project-tag"><i class="fas fa-robot"></i>AI</span>
-                    <span class="home-project-tag"><i class="fas fa-database"></i>Supabase</span>
-                    <span class="home-project-tag"><i class="fab fa-stripe-s"></i>Stripe</span>
-                </div>
-                <span class="home-project-cta">{{ trans(key="live_demo", lang=lang) }} <i class="fas fa-arrow-right"></i></span>
-            </div>
-        </a>
+        {% for project in home_projects %}
+            {% if project.flagship is defined %}
+                <a href="{{ cv.permalink | safe }}#{{ project.name | slugify }}" class="home-project-card home-project-card--hero">
+                    <div class="home-project-image">
+                        <img src="{{ get_url(path=project.screenshots | first) | safe }}" alt="{{ project.name }}" width="800" height="450" decoding="async">
+                    </div>
+                    <div class="home-project-body">
+                        <span class="home-project-badge"><i class="fas fa-star"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
+                        <h3 class="home-project-title">{{ project.name }}</h3>
+                        <p class="home-project-desc">{{ project.tagline }}</p>
+                        <span class="home-project-cta">{{ trans(key="read_more", lang=lang) }} <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
 
         <div class="home-projects-side">
-
-            <a href="https://devopslab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--compact">
-                <div class="home-project-image">
-                    <img src="{{ get_url(path='images/projects/devopslab-dark-2.png') }}" alt="DevOps Lab" width="400" height="220" decoding="async">
-                </div>
-                <div class="home-project-body">
-                    <h3 class="home-project-title">DevOps Lab</h3>
-                    <p class="home-project-desc">{{ trans(key="proj_devopslab_short", lang=lang) }}</p>
-                    <div class="home-project-tech">
-                        <span class="home-project-tag"><i class="fab fa-docker"></i>Docker</span>
-                        <span class="home-project-tag"><i class="fas fa-dharmachakra"></i>K8s</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://particle-universe.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--compact">
-                <div class="home-project-image">
-                    <img src="{{ get_url(path='images/projects/particle-universe-light.png') }}" alt="Particle Universe" width="400" height="220" decoding="async">
-                </div>
-                <div class="home-project-body">
-                    <h3 class="home-project-title">Particle Universe</h3>
-                    <p class="home-project-desc">{{ trans(key="proj_particle_short", lang=lang) }}</p>
-                    <div class="home-project-tech">
-                        <span class="home-project-tag"><i class="fas fa-rocket"></i>Astro</span>
-                        <span class="home-project-tag"><i class="fas fa-layer-group"></i>Multi-framework</span>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://bitcoin-finance-lab.cosmevalera.dev/" target="_blank" rel="noopener" class="home-project-card home-project-card--compact">
-                <div class="home-project-image">
-                    <img src="{{ get_url(path='images/projects/bitcoin-finance-lab-dark.png') }}" alt="Bitcoin Finance Lab" width="400" height="220" decoding="async">
-                </div>
-                <div class="home-project-body">
-                    <h3 class="home-project-title">Bitcoin Finance Lab</h3>
-                    <p class="home-project-desc">{{ trans(key="proj_btcfinlab_short", lang=lang) }}</p>
-                    <div class="home-project-tech">
-                        <span class="home-project-tag"><i class="fab fa-vuejs"></i>Vue</span>
-                        <span class="home-project-tag"><i class="fab fa-bitcoin"></i>Bitcoin</span>
-                    </div>
-                </div>
-            </a>
-
+            {% for project in home_projects %}
+                {% if project.flagship is not defined %}
+                    <a href="{{ cv.permalink | safe }}#{{ project.name | slugify }}" class="home-project-card home-project-card--compact">
+                        <div class="home-project-image">
+                            <img src="{{ get_url(path=project.screenshots | first) | safe }}" alt="{{ project.name }}" width="400" height="220" decoding="async">
+                        </div>
+                        <div class="home-project-body">
+                            <h3 class="home-project-title">{{ project.name }}</h3>
+                            <p class="home-project-desc">{{ project.tagline }}</p>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
         </div>
     </div>
 
     <div class="home-section-footer">
-        {% if lang == "es" %}
-            <a href="/es/projects/" class="home-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
-        {% else %}
-            <a href="{{ get_url(path='projects') | safe }}" class="home-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
-        {% endif %}
+        <a href="{{ cv.permalink | safe }}#projects" class="home-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
     </div>
 </section>
 
@@ -162,9 +126,26 @@
         <p class="home-section-desc">{{ trans(key="latest_posts_desc", lang=lang) }}</p>
     </div>
 
+    {# Two newest technical posts first, then the newest Bitcoin/finance one:
+       a recruiter skimming the page should meet the engineering writing first. #}
     {% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
+    {% set technical_posts = [] %}
+    {% set other_posts = [] %}
+    {% for post in blog_section.pages %}
+        {% set first_tag = "" %}
+        {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
+            {% set first_tag = post.taxonomies.tags | first | slugify %}
+        {% endif %}
+        {% if first_tag in ["bitcoin", "finance"] %}
+            {% set_global other_posts = other_posts | concat(with=post) %}
+        {% else %}
+            {% set_global technical_posts = technical_posts | concat(with=post) %}
+        {% endif %}
+    {% endfor %}
+    {% set newest_other = other_posts | slice(end=1) %}
+    {% set home_posts = technical_posts | slice(end=2) | concat(with=newest_other) %}
     <div class="home-posts-grid">
-        {% for post in blog_section.pages | slice(end=3) %}
+        {% for post in home_posts %}
             {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
             {% set now_numeric = now() | date(format="%Y%m%d") | int %}
             {% if post_date_numeric > now_numeric %}

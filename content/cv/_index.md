@@ -2,6 +2,8 @@
 title = "CV"
 template = "cv.html"
 description = "CV of Cosme Valera Reales, software developer at GMV on ESA's Galileo programme. Full-stack with TypeScript, Node, Spring, Docker and AI tooling. Madrid, Spain."
+# The projects page was folded into the CV; keep its old URL working.
+aliases = ["/projects/"]
 
 # All CV data lives here (and in _index.es.md) rather than in [translations],
 # because it is content, not UI chrome. Section titles are the chrome and stay
@@ -18,7 +20,7 @@ website = "https://cosmevalera.dev"
 website_label = "cosmevalera.dev"
 pdf = "assets/CV-Cosme_Valera_Reales-2026-08-01.pdf"
 about = [
-  "Four years building web applications. Right now I work at GMV on Galileo, Europe's satellite navigation system, where most of my day is React and TypeScript and the rest is Node, Java and getting things deployed to Kubernetes.",
+  "Over four years building web applications. Right now I work at GMV on Galileo, Europe's satellite navigation system, where most of my day is React and TypeScript and the rest is Node, Java and getting things deployed to Kubernetes.",
   "AI is part of how I work every day. I've built projects with Claude Code, Codex and Cursor, and I go well past the chat box into agents, skills, rules and MCP servers. I follow the space closely and keep whatever survives contact with a real project, which is also how RabbitHole got built.",
   "That raised the bar for the basics instead of lowering it. A lot of what I ship now starts as agent output, so reviews, tests and refactoring are what keep it honest, and a clear codebase is the one an agent gets right on the first try. The standard does not change because the author is not human.",
 ]
@@ -77,42 +79,83 @@ bullets = [
   "Started with Angular and Java. Three months as an intern, then hired.",
 ]
 
+# Projects live only here (and in _index.es.md): the CV renders all of them and
+# the home page shows the ones marked `home = true`, so there is no second copy.
+#   tagline      one line, also used as the home-page card text
+#   description  two paragraphs: what it does, then how it is built
+#   screenshots  paths under static/; the first is the home-page card image
+#   url          live site, optional: no url, no "Visit site" link
+#   flagship     optional, the badge + big card on the home page
 [[extra.projects]]
 name = "RabbitHole"
+tagline = "Learn anything through what you already know."
 url = "https://rabbithole.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/RabbitHole"
 period = "2023 – Present"
-note = "6+ months of focused work spread across the last 3 years"
-featured = true
-description = "Turns one prompt into a multi-page AI guide, explained through what you already know. Start anywhere, go as deep as you want."
-bullets = [
-  "Generates multi-page guides with lessons and exercises from a single prompt, anchored to the background knowledge the reader picks.",
-  "Turns any guide into quizzes, flashcards or a podcast recap in one click, with an AI chat and web search to expand it on demand.",
-  "Runs on the AI you choose: hosted, your own API key, or a local model on your machine.",
-  "Turborepo monorepo with serverless API routes, covered by Vitest and Playwright.",
+flagship = true
+home = true
+description = [
+  "My flagship product, designed, built and run by me over 6+ months of focused work spread across the last three years. One prompt becomes a multi-page guide with lessons and exercises, explained through the background knowledge the reader picks, and it keeps growing on demand through an AI chat with web sources. Any guide turns into a quiz, flashcards or a two-voice podcast in one click.",
+  "It is a Turborepo monorepo: a React and TypeScript client backed by serverless API routes, Supabase for auth and data, and Stripe for payments. It runs on the AI you choose (hosted, your own API key, or a local model on your machine), and Vitest and Playwright cover it from unit tests to end-to-end flows.",
 ]
-tech = ["React", "TypeScript", "AI", "Supabase", "Stripe", "Turborepo", "Playwright"]
+screenshots = ["images/projects/RabbitHole.png"]
 
 [[extra.projects]]
 name = "DevOps Lab"
+tagline = "One full-stack app, deployed with Docker, Kubernetes and a Jenkins pipeline on AWS."
 url = "https://devopslab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/DevOpsLab"
-description = "Complete DevOps pipeline with containerization, orchestration and CI/CD automation."
-tech = ["Docker", "Kubernetes", "AWS", "Jenkins", "React", "Node"]
+home = true
+description = [
+  "A hands-on lab that takes the same full-stack application through every common way of shipping it: Docker Compose, Kubernetes with Kustomize and Helm, and a Jenkins CI/CD pipeline. Each method comes with its own tutorial, so the site doubles as a guide to doing it yourself.",
+  "The live version runs on AWS: the React and TypeScript frontend is served from S3 and CloudFront, the Node and Express API runs on Lambda, and Jenkins lives on EC2, with IAM keeping each piece scoped. The frontend shows the real Jenkins pipeline status, fetched through that Lambda API.",
+]
+screenshots = ["images/projects/devopslab-dark-2.png", "images/projects/devopslab-light.png"]
+
+[[extra.projects]]
+name = "FitCal"
+tagline = "Calorie and macro tracking, from personal goals to a daily food diary."
+# url = "https://fitcal.cosmevalera.dev/"
+repo = "https://github.com/CosmeValera/FitCal"
+description = [
+  "A nutrition tracker. Your profile (height, weight, age and activity level) sets your daily calorie and macro goals, the meal diary totals calories and macros as you log food, and a weight tracker shows progress over time. Foods live in a catalogue you can create, edit and delete from.",
+  "A REST API in Java with Spring Boot, built with Maven, serves an Angular frontend that is fully responsive and ships with a dark theme.",
+]
+screenshots = ["images/projects/FitCal.webp"]
+
+[[extra.projects]]
+name = "Sympho"
+tagline = "Compose, save and play sheet music, on the web or as a desktop app."
+# url = "https://sympho.cosmevalera.dev/"
+repo = "https://github.com/CosmeValera/Sympho"
+description = [
+  "A score editor: write notes and rests of any duration, add accidentals and dots, set the title, instrument and tempo, then play the score back. Sign in with Google to save scores to a private repository, or publish them to a public one that everyone can browse.",
+  "Built with JavaScript and Node, with VexFlow rendering the notation. It runs in the browser or as an Electron desktop app, has three themes (dark, light and solar), and is deployed on Kubernetes.",
+]
+screenshots = ["images/projects/Sympho.png", "images/projects/Sympho3.png"]
 
 [[extra.projects]]
 name = "Bitcoin Finance Lab"
+tagline = "Bitcoin against the stocks and indices that hold it, charted."
 url = "https://bitcoin-finance-lab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/bitcoin-finance-lab"
-description = "Vue 3 financial comparison tool visualizing Bitcoin performance against treasury stocks and market indices."
-tech = ["Vue", "TypeScript", "Charts"]
+home = true
+description = [
+  "A finance tool that puts Bitcoin side by side with Bitcoin treasury companies such as Strategy and Metaplanet, Strategy's preferred shares, broad indices like SPY and QQQ, or any ticker you add. The portfolio builder blends weights into returns, volatility and maximum drawdown, the benchmark view normalises returns into a sortable metrics table, and a DCA simulator shows what buying on a schedule would have done.",
+  "Built with Vue 3, TypeScript and Pinia, charted with Chart.js and bundled with Vite, on Yahoo Finance market data.",
+]
+screenshots = ["images/projects/bitcoin-finance-lab-dark.png"]
 
 [[extra.projects]]
 name = "Particle Universe"
+tagline = "Vue, React, Angular and Astro sharing one live particle simulation."
 url = "https://particle-universe.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/particle-universe"
-description = "Multi-framework Astro dashboard rendering interactive particle simulations with React, Vue and Angular side by side."
-tech = ["Astro", "React", "Vue", "Angular"]
+description = [
+  "An interactive particle simulation where four frameworks work as one app: Vue drives the sliders, presets, colours and shapes, React renders the particle canvas, and Astro charts live metrics as sparklines. Drag on the canvas to attract particles, or try the galaxy, fireworks, rain, matrix and nebula presets.",
+  "Built on Astro with Vue 3, React 19, Angular 21 and Tailwind 4, all reading and writing the same state in real time through Nano Stores.",
+]
+screenshots = ["images/projects/particle-universe-dark.png", "images/projects/particle-universe-light.png"]
 
 [[extra.skills]]
 label = "Frontend"

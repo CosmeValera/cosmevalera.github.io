@@ -128,57 +128,57 @@
     </div>
   </section>
 
-  {# ===== Projects ===== #}
-  <section class="cv-section" aria-labelledby="cv-projects-heading">
+  {# ===== Projects =====
+     The only place projects are rendered in full. Each one gets an id from its
+     name, so the home-page cards can link straight to it (/cv/#devops-lab). #}
+  <section class="cv-section" id="projects" aria-labelledby="cv-projects-heading">
     <h2 class="cv-section-title" id="cv-projects-heading">
       <i class="fas fa-code" aria-hidden="true"></i>{{ trans(key="cv_projects", lang=lang) }}
     </h2>
 
     <div class="cv-projects">
       {% for project in cv.projects %}
-        <article class="cv-project{% if project.featured is defined %} cv-project--featured{% endif %}">
-          <div class="cv-project-head">
-            <h3 class="cv-project-name">
-              <a class="cv-project-stretched" href="{{ project.url | safe }}" target="_blank" rel="noopener">{{ project.name }}</a>
-              {% if project.featured is defined %}
-                <span class="cv-project-badge"><i class="fas fa-star" aria-hidden="true"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
-              {% endif %}
-            </h3>
+        <article class="cv-project{% if project.flagship is defined %} cv-project--flagship{% endif %}" id="{{ project.name | slugify }}">
+          <header class="cv-project-head">
+            <div class="cv-project-heading">
+              <h3 class="cv-project-name">
+                {{ project.name }}
+                {% if project.flagship is defined %}
+                  <span class="cv-project-badge"><i class="fas fa-star" aria-hidden="true"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
+                {% endif %}
+              </h3>
+              <p class="cv-project-tagline">{{ project.tagline }}</p>
+            </div>
             {% if project.period is defined %}
               <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ project.period }}</p>
             {% endif %}
+          </header>
+
+          <div class="cv-project-desc">
+            {% for paragraph in project.description %}<p>{{ paragraph }}</p>{% endfor %}
           </div>
 
-          <p class="cv-project-desc">{{ project.description }}</p>
-
-          {% if project.note is defined %}
-            <p class="cv-project-note"><i class="fas fa-hourglass-half" aria-hidden="true"></i>{{ project.note }}</p>
-          {% endif %}
-
-          {% if project.bullets is defined %}
-            <ul class="cv-bullets">
-              {% for bullet in project.bullets %}<li>{{ bullet }}</li>{% endfor %}
+          {% if project.screenshots is defined %}
+            <ul class="cv-project-shots">
+              {% for shot in project.screenshots %}
+                <li>
+                  <a href="{{ get_url(path=shot) | safe }}" target="_blank" rel="noopener">
+                    <img src="{{ get_url(path=shot) | safe }}" alt="{{ project.name }}, {{ trans(key="screenshot", lang=lang) }} {{ loop.index }}" width="640" height="400" loading="lazy" decoding="async">
+                  </a>
+                </li>
+              {% endfor %}
             </ul>
           {% endif %}
 
-          <ul class="cv-tags">
-            {% for item in project.tech %}<li class="cv-tag">{{ item }}</li>{% endfor %}
-          </ul>
-
           <p class="cv-project-links">
+            {% if project.url is defined %}
+              <a href="{{ project.url | safe }}" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>{{ trans(key="visit_site", lang=lang) }}</a>
+            {% endif %}
             <a href="{{ project.repo | safe }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i>{{ trans(key="source_code", lang=lang) }}</a>
           </p>
         </article>
       {% endfor %}
     </div>
-
-    <p class="cv-section-footer">
-      {% if lang == "es" %}
-        <a href="/es/projects/" class="cv-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      {% else %}
-        <a href="{{ get_url(path='projects') | safe }}" class="cv-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-      {% endif %}
-    </p>
   </section>
 
   {# ===== Skills ===== #}
