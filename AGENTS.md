@@ -11,7 +11,7 @@ This file provides guidance to agents when working with code in this repository.
 
 Prerequisites: Node.js ≥ 20 (required by `zola-bin`).
 
-Zola version: `zola-bin@^1.0.0` pins Zola **0.19.2**. Do not bump to `zola-bin@2.x` (Zola 0.21/0.22) without migrating `config.toml` — 0.22 renamed the `[markdown]` keys `highlight_code`/`highlight_theme` to a `highlighting` table and now rejects unknown fields. Note CI's deploy action is pinned to Zola 0.16.1, older than local.
+Zola version: `zola-bin@^1.0.0` pins Zola **0.19.2**. Do not bump to `zola-bin@2.x` (Zola 0.21/0.22) without migrating `config.toml` — 0.22 renamed the `[markdown]` keys `highlight_code`/`highlight_theme` to a `highlighting` table and now rejects unknown fields. CI's deploy action (`shalzz/zola-deploy-action@v0.19.2`) runs the same Zola; keep the two in step, since Zola 0.16's Sass compiler fails on CSS `min()`/`clamp()` that mix units (`rem` with `vw`/`cqi`).
 
 This file lives at the repo root. `CLAUDE.md`, its sibling, is a copy for Claude Code — keep both in sync when editing either. Claude-specific config sits one level down in `.claude/` (`settings.local.json`, `skills/`).
 
