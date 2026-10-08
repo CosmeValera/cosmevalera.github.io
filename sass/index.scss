@@ -91,6 +91,11 @@
     gap: 1rem;
     z-index: 1;
     align-items: center; // Center content on mobile
+    // A size container, so the title can scale with this column (cqi) rather
+    // than the viewport. Containment drops its content width, hence the
+    // explicit width for the stacked mobile layout.
+    container-type: inline-size;
+    width: 100%;
 
     @include respond-to('lg') {
         align-items: flex-start; // Align left on desktop
@@ -129,22 +134,38 @@
         }
     }
 
-    // The role is the headline. Sizes are capped so the longest word
-    // ("Desarrollador" in ES) never overflows the column at any width.
+    // The role is the headline and stays on one line. Its size follows the
+    // column, not the viewport, so screen size and browser zoom can't push it
+    // onto a second line: 10.5cqi keeps "Software developer" at ~97% of the
+    // column width.
     .presentation-title {
-        font-size: clamp(2.25rem, 9vw, 3.5rem);
+        font-size: min(3.5rem, 10.5cqi);
         font-weight: 800;
         line-height: 1.05;
         margin: 0;
         color: $text-color;
         text-align: center;
         letter-spacing: -1px;
+        white-space: nowrap;
 
         @include respond-to('lg') {
-            font-size: clamp(3rem, 4.2vw + 0.5rem, 4.75rem);
+            font-size: min(4.75rem, 10.5cqi);
             text-align: left;
             letter-spacing: -2px;
             line-height: 1;
+        }
+
+        // "Desarrollador de software" is a third longer, so it gets a smaller
+        // ratio. On narrow columns it breaks into two balanced lines rather
+        // than shrinking below 2.25rem.
+        &:lang(es) {
+            font-size: clamp(2.25rem, 7.9cqi, 3.5rem);
+            white-space: normal;
+            text-wrap: balance;
+
+            @include respond-to('lg') {
+                font-size: clamp(2.25rem, 7.9cqi, 4.75rem);
+            }
         }
     }
 
