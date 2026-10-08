@@ -84,6 +84,8 @@ bullets = [
 #   tagline      una línea, también es el texto de la tarjeta en la home
 #   description  dos párrafos: qué hace y cómo está hecho
 #   screenshots  rutas dentro de static/; la primera es la imagen de la home
+#   video        vídeo demo opcional dentro de static/, primero en el carrusel;
+#                video_poster es su miniatura (la home sigue usando la primera captura)
 #   url          web en vivo, opcional: sin url no hay enlace "Visitar web"
 #   flagship     opcional, la insignia + la tarjeta grande de la home
 [[extra.projects]]
@@ -91,14 +93,16 @@ name = "RabbitHole"
 tagline = "Aprende cualquier cosa a través de lo que ya sabes."
 url = "https://rabbithole.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/RabbitHole"
-period = "2023 – Actualidad"
+period = "2023 – 2026"
 flagship = true
 home = true
 description = [
   "Mi producto estrella, diseñado, construido y mantenido por mí en más de 6 meses de trabajo intenso repartidos en los últimos tres años. Un prompt se convierte en una guía de varias páginas con lecciones y ejercicios, explicada a través de los conocimientos previos que elige quien lee, y sigue creciendo cuando quieras con un chat de IA con fuentes web. Cualquier guía se convierte en un test, flashcards o un pódcast a dos voces con un clic.",
   "Es un monorepo con Turborepo: un cliente en React y TypeScript sobre rutas de API serverless, Supabase para autenticación y datos, y Stripe para los pagos. Funciona con la IA que elijas (alojada, tu propia clave de API o un modelo local en tu máquina), y Vitest y Playwright lo cubren desde tests unitarios hasta flujos end-to-end.",
 ]
-screenshots = ["images/projects/RabbitHole.png"]
+video = "videos/projects/rabbithole-demo.mp4"
+video_poster = "images/projects/rabbithole-demo-poster.webp"
+screenshots = ["images/projects/rabbithole-subjunctive.webp", "images/projects/rabbithole-quiz.webp"]
 
 [[extra.projects]]
 name = "DevOps Lab"
@@ -110,29 +114,19 @@ description = [
   "Un laboratorio práctico que lleva la misma aplicación full-stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins. Cada método tiene su propio tutorial, así que la web también sirve de guía para hacerlo por tu cuenta.",
   "La versión en vivo corre en AWS: el frontend en React y TypeScript se sirve desde S3 y CloudFront, la API en Node y Express corre en Lambda y Jenkins vive en EC2, con IAM limitando el acceso de cada pieza. El frontend muestra el estado real del pipeline de Jenkins, obtenido a través de esa API en Lambda.",
 ]
-screenshots = ["images/projects/devopslab-dark-2.png", "images/projects/devopslab-light.png"]
-
-[[extra.projects]]
-name = "FitCal"
-tagline = "Seguimiento de calorías y macros, de tus objetivos a tu diario de comidas."
-# url = "https://fitcal.cosmevalera.dev/"
-repo = "https://github.com/CosmeValera/FitCal"
-description = [
-  "Una app de nutrición. Tu perfil (altura, peso, edad y nivel de actividad) fija tus objetivos diarios de calorías y macros, el diario de comidas suma calorías y macros a medida que registras alimentos, y un registro de peso muestra tu progreso. Los alimentos viven en un catálogo donde puedes crearlos, editarlos y borrarlos.",
-  "Una API REST en Java con Spring Boot, construida con Maven, sirve a un frontend en Angular totalmente responsive y con tema oscuro.",
-]
-screenshots = ["images/projects/FitCal.webp"]
+screenshots = ["images/projects/devopslab-deployments.webp", "images/projects/devopslab-jenkins.webp", "images/projects/devopslab-tutorials.webp"]
 
 [[extra.projects]]
 name = "Sympho"
 tagline = "Compón, guarda y reproduce partituras, en la web o como app de escritorio."
-# url = "https://sympho.cosmevalera.dev/"
+url = "https://sympho.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/Sympho"
+home = true
 description = [
   "Un editor de partituras: escribe notas y silencios de cualquier duración, añade alteraciones y puntillos, define título, instrumento y tempo, y reprodúcela. Inicia sesión con Google para guardar partituras en un repositorio privado o publicarlas en uno público que cualquiera puede explorar.",
   "Hecho con JavaScript y Node, con VexFlow renderizando la notación. Funciona en el navegador o como app de escritorio con Electron, tiene tres temas (oscuro, claro y solar) y se despliega en Kubernetes.",
 ]
-screenshots = ["images/projects/Sympho.png", "images/projects/Sympho3.png"]
+screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-dark.webp", "images/projects/sympho-library.webp"]
 
 [[extra.projects]]
 name = "Bitcoin Finance Lab"
@@ -144,18 +138,7 @@ description = [
   "Una herramienta financiera que pone Bitcoin junto a empresas con Bitcoin en tesorería como Strategy y Metaplanet, las acciones preferentes de Strategy, índices amplios como SPY y QQQ, o cualquier ticker que añadas. El constructor de carteras combina pesos en rentabilidad, volatilidad y caída máxima, la vista de benchmark normaliza rentabilidades en una tabla de métricas ordenable, y un simulador de DCA muestra qué habría pasado comprando de forma periódica.",
   "Hecha con Vue 3, TypeScript y Pinia, con gráficas en Chart.js y empaquetada con Vite, sobre datos de mercado de Yahoo Finance.",
 ]
-screenshots = ["images/projects/bitcoin-finance-lab-dark.png"]
-
-[[extra.projects]]
-name = "Particle Universe"
-tagline = "Vue, React, Angular y Astro compartiendo una misma simulación de partículas en vivo."
-url = "https://particle-universe.cosmevalera.dev/"
-repo = "https://github.com/CosmeValera/particle-universe"
-description = [
-  "Una simulación interactiva de partículas donde cuatro frameworks funcionan como una sola app: Vue controla los sliders, presets, colores y formas, React renderiza el canvas de partículas y Astro dibuja métricas en vivo como sparklines. Arrastra sobre el canvas para atraer partículas o prueba los presets galaxy, fireworks, rain, matrix y nebula.",
-  "Construida sobre Astro con Vue 3, React 19, Angular 21 y Tailwind 4, todos leyendo y escribiendo el mismo estado en tiempo real con Nano Stores.",
-]
-screenshots = ["images/projects/particle-universe-dark.png", "images/projects/particle-universe-light.png"]
+screenshots = ["images/projects/bitcoin-finance-lab-benchmark.webp", "images/projects/bitcoin-finance-lab-portfolio.webp", "images/projects/bitcoin-finance-lab-dca.webp"]
 
 [[extra.skills]]
 label = "Frontend"

@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="{{ get_url(path="cv.css") | safe }}">
 {% endblock %}
 
+{% block scripts %}
+<script src="{{ get_url(path="js/cv.js") | safe }}"></script>
+{% endblock %}
+
 {% block content %}
 {% set cv = section.extra %}
 <div class="cv">
@@ -149,9 +153,17 @@
               </h3>
               <p class="cv-project-tagline">{{ project.tagline }}</p>
             </div>
-            {% if project.period is defined %}
-              <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ project.period }}</p>
-            {% endif %}
+            <div class="cv-project-meta">
+              <p class="cv-project-links">
+                <a href="{{ project.repo | safe }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i>{{ trans(key="source_code", lang=lang) }}</a>
+                {% if project.url is defined %}
+                  <a href="{{ project.url | safe }}" target="_blank" rel="noopener">{{ trans(key="visit_site", lang=lang) }}<i class="fas fa-arrow-up cv-link-arrow" aria-hidden="true"></i></a>
+                {% endif %}
+              </p>
+              {% if project.period is defined %}
+                <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ project.period }}</p>
+              {% endif %}
+            </div>
           </header>
 
           <div class="cv-project-desc">
@@ -159,7 +171,15 @@
           </div>
 
           {% if project.screenshots is defined %}
-            <ul class="cv-project-shots">
+            <ul class="cv-project-shots" data-project="{{ project.name }}">
+              {% if project.video is defined %}
+                <li>
+                  <a class="cv-shot-video" href="{{ get_url(path=project.video) | safe }}" target="_blank" rel="noopener" data-video>
+                    <img src="{{ get_url(path=project.video_poster) | safe }}" alt="{{ project.name }}, {{ trans(key="demo_video", lang=lang) }}" width="640" height="400" loading="lazy" decoding="async">
+                    <span class="cv-shot-play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                  </a>
+                </li>
+              {% endif %}
               {% for shot in project.screenshots %}
                 <li>
                   <a href="{{ get_url(path=shot) | safe }}" target="_blank" rel="noopener">
@@ -169,13 +189,6 @@
               {% endfor %}
             </ul>
           {% endif %}
-
-          <p class="cv-project-links">
-            {% if project.url is defined %}
-              <a href="{{ project.url | safe }}" target="_blank" rel="noopener"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>{{ trans(key="visit_site", lang=lang) }}</a>
-            {% endif %}
-            <a href="{{ project.repo | safe }}" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i>{{ trans(key="source_code", lang=lang) }}</a>
-          </p>
         </article>
       {% endfor %}
     </div>
@@ -241,6 +254,24 @@
     </section>
   </div>
 </div>
+
+{# Screenshot carousel: js/cv.js opens it over the page. Without JS the thumbnails stay plain links to the images. #}
+<dialog class="cv-lightbox" aria-label="{{ trans(key="screenshots", lang=lang) }}">
+  <figure class="cv-lightbox-figure">
+    <img class="cv-lightbox-image" alt="">
+    <video class="cv-lightbox-video" controls playsinline preload="none" hidden></video>
+    <figcaption class="cv-lightbox-caption" aria-live="polite"></figcaption>
+  </figure>
+  <button class="cv-lightbox-btn cv-lightbox-close" type="button" aria-label="{{ trans(key="close", lang=lang) }}">
+    <i class="fas fa-xmark" aria-hidden="true"></i>
+  </button>
+  <button class="cv-lightbox-btn cv-lightbox-prev" type="button" aria-label="{{ trans(key="previous_screenshot", lang=lang) }}">
+    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+  </button>
+  <button class="cv-lightbox-btn cv-lightbox-next" type="button" aria-label="{{ trans(key="next_screenshot", lang=lang) }}">
+    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+  </button>
+</dialog>
 
 {# Structured data so search engines read this page as a person profile. #}
 <script type="application/ld+json">

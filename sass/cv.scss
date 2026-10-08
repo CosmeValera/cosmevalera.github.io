@@ -364,6 +364,20 @@
   margin-bottom: 0.75rem;
 }
 
+// Top-right column: Source / Visit site links, then the period if any.
+// When the header wraps on narrow screens it drops under the tagline, left-aligned.
+.cv-project-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  padding-top: 0.2rem;
+
+  @media (max-width: 640px) {
+    align-items: flex-start;
+  }
+}
+
 .cv-project-name {
   display: flex;
   flex-wrap: wrap;
@@ -376,7 +390,7 @@
 }
 
 .cv-project-tagline {
-  margin: 0.2rem 0 0;
+  margin: 0.5rem 0 0;
   font-size: 0.92rem;
   font-weight: 600;
   line-height: 1.45;
@@ -424,6 +438,7 @@
     overflow: hidden;
     border: 1px solid rgba($accent-color, 0.2);
     border-radius: 8px;
+    cursor: zoom-in;
     transition: border-color 0.2s ease, transform 0.2s ease;
 
     &:hover {
@@ -448,22 +463,218 @@
   }
 }
 
+// The demo-video thumbnail: its poster frame with a play badge on top.
+.cv-shot-video {
+  position: relative;
+
+  img {
+    object-position: center;
+  }
+}
+
+.cv-shot-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding-left: 0.2rem; // the play triangle looks off-centre without it
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 1rem;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+
+  .cv-shot-video:hover & {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+/* ===== Screenshot carousel (js/cv.js) ===== */
+// A full-viewport <dialog>, dark in both themes: screenshots read best on black.
+.cv-lightbox {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.9);
+  // Blur the page behind so its text doesn't compete with the screenshot.
+  backdrop-filter: blur(6px);
+  color: #fff;
+  overflow: hidden;
+
+  &::backdrop {
+    background: transparent;
+  }
+
+  &[open] {
+    animation: cv-lightbox-in 0.2s ease;
+  }
+
+  &.is-single .cv-lightbox-prev,
+  &.is-single .cv-lightbox-next {
+    display: none;
+  }
+}
+
+body:has(.cv-lightbox[open]) {
+  overflow: hidden;
+}
+
+@keyframes cv-lightbox-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.cv-lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  height: 100%;
+  margin: 0;
+  padding: 4.5rem clamp(1rem, 7vw, 6rem) 1.5rem;
+}
+
+.cv-lightbox-image,
+.cv-lightbox-video {
+  display: block;
+  max-width: 100%;
+  // Leave room for the caption under the media.
+  max-height: calc(100% - 2.4rem);
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+// Demo videos are recorded 16:9. Size the video to the largest 16:9 box that
+// fits the figure (cq units), so it scales up like the screenshots do and its
+// controls span the picture, not a letterboxed strip.
+.cv-lightbox-figure {
+  container-type: size;
+}
+
+.cv-lightbox-video {
+  width: min(100cqw, (100cqh - 2.4rem) * 16 / 9);
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.cv-lightbox-caption {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.cv-lightbox-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.35rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: $accent-color;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent-color;
+    outline-offset: 2px;
+  }
+}
+
+.cv-lightbox-close {
+  top: 1rem;
+  right: 1rem;
+}
+
+.cv-lightbox-prev,
+.cv-lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cv-lightbox-prev {
+  left: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+.cv-lightbox-next {
+  right: clamp(0.5rem, 2vw, 1.5rem);
+}
+
+// On phones the arrows sit over the image edges; swiping works too.
+@media (max-width: 640px) {
+  .cv-lightbox-figure {
+    padding: 4rem 0.75rem 1.5rem;
+  }
+
+  .cv-lightbox-prev,
+  .cv-lightbox-next {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(0, 0, 0, 0.55);
+    font-size: 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-lightbox[open] {
+    animation: none;
+  }
+}
+
 .cv-project-links {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-  margin: 1rem 0 0;
-  font-size: 0.85rem;
+  margin: 0;
+  font-size: 0.9rem;
   font-weight: 600;
+  white-space: nowrap;
 
   a {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     color: $accent-color;
+    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
+    }
+
+    // The kit has no up-right arrow, so the up arrow is tilted into one.
+    .cv-link-arrow {
+      font-size: 0.8em;
+      transform: rotate(45deg);
+      transition: transform 0.2s ease;
+    }
+
+    &:hover .cv-link-arrow {
+      transform: translate(2px, -2px) rotate(45deg);
     }
   }
 }
