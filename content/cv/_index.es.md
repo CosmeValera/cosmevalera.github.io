@@ -114,7 +114,9 @@ description = [
   "Un laboratorio práctico que lleva la misma aplicación full-stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins. Cada método tiene su propio tutorial, así que la web también sirve de guía para hacerlo por tu cuenta.",
   "La versión en vivo corre en AWS: el frontend en React y TypeScript se sirve desde S3 y CloudFront, la API en Node y Express corre en Lambda y Jenkins vive en EC2, con IAM limitando el acceso de cada pieza. El frontend muestra el estado real del pipeline de Jenkins, obtenido a través de esa API en Lambda.",
 ]
-screenshots = ["images/projects/devopslab-deployments.webp", "images/projects/devopslab-jenkins.webp", "images/projects/devopslab-tutorials.webp"]
+video = "videos/projects/devopslab-demo.mp4"
+video_poster = "images/projects/devopslab-demo-poster.webp"
+screenshots = ["images/projects/devopslab-jenkins.webp", "images/projects/devopslab-tutorials.webp"]
 
 [[extra.projects]]
 name = "Sympho"
@@ -126,7 +128,9 @@ description = [
   "Un editor de partituras: escribe notas y silencios de cualquier duración, añade alteraciones y puntillos, define título, instrumento y tempo, y reprodúcela. Inicia sesión con Google para guardar partituras en un repositorio privado o publicarlas en uno público que cualquiera puede explorar.",
   "Hecho con JavaScript y Node, con VexFlow renderizando la notación. Funciona en el navegador o como app de escritorio con Electron, tiene tres temas (oscuro, claro y solar) y se despliega en Kubernetes.",
 ]
-screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-dark.webp", "images/projects/sympho-library.webp"]
+video = "videos/projects/sympho-demo.mp4"
+video_poster = "images/projects/sympho-demo-poster.webp"
+screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-library.webp"]
 
 [[extra.projects]]
 name = "Bitcoin Finance Lab"

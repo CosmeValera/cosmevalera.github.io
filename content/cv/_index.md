@@ -114,7 +114,9 @@ description = [
   "A hands-on lab that takes the same full-stack application through every common way of shipping it: Docker Compose, Kubernetes with Kustomize and Helm, and a Jenkins CI/CD pipeline. Each method comes with its own tutorial, so the site doubles as a guide to doing it yourself.",
   "The live version runs on AWS: the React and TypeScript frontend is served from S3 and CloudFront, the Node and Express API runs on Lambda, and Jenkins lives on EC2, with IAM keeping each piece scoped. The frontend shows the real Jenkins pipeline status, fetched through that Lambda API.",
 ]
-screenshots = ["images/projects/devopslab-deployments.webp", "images/projects/devopslab-jenkins.webp", "images/projects/devopslab-tutorials.webp"]
+video = "videos/projects/devopslab-demo.mp4"
+video_poster = "images/projects/devopslab-demo-poster.webp"
+screenshots = ["images/projects/devopslab-jenkins.webp", "images/projects/devopslab-tutorials.webp"]
 
 [[extra.projects]]
 name = "Sympho"
@@ -126,7 +128,9 @@ description = [
   "A score editor: write notes and rests of any duration, add accidentals and dots, set the title, instrument and tempo, then play the score back. Sign in with Google to save scores to a private repository, or publish them to a public one that everyone can browse.",
   "Built with JavaScript and Node, with VexFlow rendering the notation. It runs in the browser or as an Electron desktop app, has three themes (dark, light and solar), and is deployed on Kubernetes.",
 ]
-screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-dark.webp", "images/projects/sympho-library.webp"]
+video = "videos/projects/sympho-demo.mp4"
+video_poster = "images/projects/sympho-demo-poster.webp"
+screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-library.webp"]
 
 [[extra.projects]]
 name = "Bitcoin Finance Lab"
