@@ -138,7 +138,9 @@ description = [
   "A finance tool that puts Bitcoin side by side with Bitcoin treasury companies such as Strategy and Metaplanet, Strategy's preferred shares, broad indices like SPY and QQQ, or any ticker you add. The portfolio builder blends weights into returns, volatility and maximum drawdown, the benchmark view normalises returns into a sortable metrics table, and a DCA simulator shows what buying on a schedule would have done.",
   "Built with Vue 3, TypeScript and Pinia, charted with Chart.js and bundled with Vite, on Yahoo Finance market data.",
 ]
-screenshots = ["images/projects/bitcoin-finance-lab-benchmark.webp", "images/projects/bitcoin-finance-lab-portfolio.webp", "images/projects/bitcoin-finance-lab-dca.webp"]
+video = "videos/projects/bitcoin-finance-lab-demo.mp4"
+video_poster = "images/projects/bitcoin-finance-lab-demo-poster.webp"
+screenshots = ["images/projects/bitcoin-finance-lab-benchmark.webp", "images/projects/bitcoin-finance-lab-portfolio.webp"]
 
 [[extra.skills]]
 label = "Frontend"

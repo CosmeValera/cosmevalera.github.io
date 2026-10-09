@@ -138,7 +138,9 @@ description = [
   "Una herramienta financiera que pone Bitcoin junto a empresas con Bitcoin en tesorería como Strategy y Metaplanet, las acciones preferentes de Strategy, índices amplios como SPY y QQQ, o cualquier ticker que añadas. El constructor de carteras combina pesos en rentabilidad, volatilidad y caída máxima, la vista de benchmark normaliza rentabilidades en una tabla de métricas ordenable, y un simulador de DCA muestra qué habría pasado comprando de forma periódica.",
   "Hecha con Vue 3, TypeScript y Pinia, con gráficas en Chart.js y empaquetada con Vite, sobre datos de mercado de Yahoo Finance.",
 ]
-screenshots = ["images/projects/bitcoin-finance-lab-benchmark.webp", "images/projects/bitcoin-finance-lab-portfolio.webp", "images/projects/bitcoin-finance-lab-dca.webp"]
+video = "videos/projects/bitcoin-finance-lab-demo.mp4"
+video_poster = "images/projects/bitcoin-finance-lab-demo-poster.webp"
+screenshots = ["images/projects/bitcoin-finance-lab-benchmark.webp", "images/projects/bitcoin-finance-lab-portfolio.webp"]
 
 [[extra.skills]]
 label = "Frontend"
