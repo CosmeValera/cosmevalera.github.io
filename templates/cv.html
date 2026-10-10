@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "cv-duration.html" as cv_duration %}
 
 {% block title %}
   {{ trans(key="cv_title", lang=lang) }} | Cosme
@@ -73,7 +74,7 @@
               </h3>
               <p class="cv-entry-meta">
                 <span class="cv-entry-location"><i class="fas fa-location-dot" aria-hidden="true"></i>{{ job.location }}</span>
-                <span class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ job.period }}</span>
+                <span class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ job.period }}<span class="cv-entry-duration">{{ cv_duration::duration(period=job.period, lang=lang) }}</span></span>
               </p>
             {% else %}
               <h3 class="cv-entry-role">{{ job.role }}</h3>
@@ -87,7 +88,7 @@
                 </span>
                 <span class="cv-entry-location"><i class="fas fa-location-dot" aria-hidden="true"></i>{{ job.location }}</span>
               </p>
-              <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ job.period }}</p>
+              <p class="cv-entry-period"><i class="fas fa-calendar-days" aria-hidden="true"></i>{{ job.period }}<span class="cv-entry-duration">{{ cv_duration::duration(period=job.period, lang=lang) }}</span></p>
             {% endif %}
           </div>
 

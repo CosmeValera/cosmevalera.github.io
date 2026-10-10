@@ -136,6 +136,10 @@ demo_video = "vídeo demo"
 previous_screenshot = "Captura anterior"
 next_screenshot = "Captura siguiente"
 close = "Cerrar"
+cv_year = "año"
+cv_years = "años"
+cv_month = "mes"
+cv_months = "meses"
 
 # Tags pages
 see_all_tags = "← Ver todas las etiquetas"
@@ -259,6 +263,10 @@ demo_video = "demo video"
 previous_screenshot = "Previous screenshot"
 next_screenshot = "Next screenshot"
 close = "Close"
+cv_year = "yr"
+cv_years = "yrs"
+cv_month = "mo"
+cv_months = "mos"
 
 # Tags pages
 see_all_tags = "← See all tags"

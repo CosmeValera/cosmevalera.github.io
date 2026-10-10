@@ -238,6 +238,12 @@
   }
 }
 
+// "· 3 yrs 1 mo" right after the dates; the dot takes the muted text colour.
+.cv-entry-duration::before {
+  content: "\00B7";
+  margin: 0 0.4rem 0 0.1rem;
+}
+
 .cv-entry-summary {
   margin: 0 0 0.6rem;
   font-size: 0.9rem;

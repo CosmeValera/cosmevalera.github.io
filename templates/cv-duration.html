@@ -1,0 +1,29 @@
+{# Length of an experience period such as "04/2022 – 04/2023", written the
+   LinkedIn way ("1 yr 1 mo"). Both end months count, so 04/2023 – 07/2023 is
+   4 months. An end that is not a date ("Present", "Actualidad") means the
+   month of the build, so it only moves forward when the site is rebuilt. #}
+{% macro duration(period, lang) %}
+  {%- set bounds = period | split(pat=" – ") -%}
+  {%- set start = bounds | first | split(pat="/") -%}
+  {%- set start_month = start | first | int -%}
+  {%- set start_year = start | last | int -%}
+  {%- set end = bounds | last -%}
+  {%- if end is containing("/") -%}
+    {%- set end_month = end | split(pat="/") | first | int -%}
+    {%- set end_year = end | split(pat="/") | last | int -%}
+  {%- else -%}
+    {%- set end_month = now() | date(format="%m") | int -%}
+    {%- set end_year = now() | date(format="%Y") | int -%}
+  {%- endif -%}
+  {%- set total = (end_year - start_year) * 12 + end_month - start_month + 1 -%}
+  {%- set months = total % 12 -%}
+  {%- set years = (total - months) / 12 -%}
+  {%- set years = years | int -%}
+  {%- if years > 0 -%}
+    {{ years }} {% if years == 1 %}{{ trans(key="cv_year", lang=lang) }}{% else %}{{ trans(key="cv_years", lang=lang) }}{% endif %}
+  {%- endif -%}
+  {%- if years > 0 and months > 0 %} {% endif -%}
+  {%- if months > 0 -%}
+    {{ months }} {% if months == 1 %}{{ trans(key="cv_month", lang=lang) }}{% else %}{{ trans(key="cv_months", lang=lang) }}{% endif %}
+  {%- endif -%}
+{% endmacro %}
