@@ -56,28 +56,17 @@ bullets = [
 ]
 tech = ["Angular", "TypeScript", "CSS", "Java", "MySQL", "WordPress", "Git", "GitHub Actions"]
 
-# Una empresa, dos puestos. `roles` va al final: en TOML toda clave posterior a
-# la primera cabecera [[extra.experience.roles]] pertenece a esa subtabla.
 [[extra.experience]]
 company = "Capgemini"
+role = "Desarrollador Full Stack Junior"
 period = "04/2022 – 04/2023"
 location = "Murcia, España"
-tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "Figma", "Scrum"]
-
-[[extra.experience.roles]]
-role = "Desarrollador Full Stack Junior"
-period = "07/2022 – 04/2023"
 bullets = [
   "Desarrollo de aplicaciones web para los sistemas de infraestructura ferroviaria de ADIF, dando soporte a servicios relacionados con los trenes de Renfe y la operación ferroviaria nacional, con Angular, TypeScript, CSS y Java (Spring).",
   "Construcción de interfaces responsive a partir de diseños de Figma y requisitos de cliente, alineando la implementación frontend con las necesidades de negocio y usabilidad.",
-]
-
-[[extra.experience.roles]]
-role = "Desarrollador Full Stack en prácticas"
-period = "04/2022 – 07/2022"
-bullets = [
   "Empecé con Angular y Java. Tres meses de prácticas y después contratado.",
 ]
+tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "Figma", "Scrum"]
 
 # Los proyectos viven solo aquí (y en _index.md): el CV los muestra todos y la
 # home enseña los marcados con `home = true`, así que no hay una segunda copia.

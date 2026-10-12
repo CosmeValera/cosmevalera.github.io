@@ -56,28 +56,17 @@ bullets = [
 ]
 tech = ["Angular", "TypeScript", "CSS", "Java", "MySQL", "WordPress", "Git", "GitHub Actions"]
 
-# One company, two positions. `roles` must be declared last: in TOML every key
-# after the first [[extra.experience.roles]] header belongs to that sub-table.
 [[extra.experience]]
 company = "Capgemini"
+role = "Junior Full Stack Developer"
 period = "04/2022 – 04/2023"
 location = "Murcia, Spain"
-tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "Figma", "Scrum"]
-
-[[extra.experience.roles]]
-role = "Junior Full Stack Developer"
-period = "07/2022 – 04/2023"
 bullets = [
   "Developed web applications for ADIF railway infrastructure systems, supporting services related to Renfe trains and national rail operations, using Angular, TypeScript, CSS and Java (Spring).",
   "Built responsive interfaces from Figma designs and client requirements, aligning frontend implementation with business and usability needs.",
-]
-
-[[extra.experience.roles]]
-role = "Full Stack Developer Intern"
-period = "04/2022 – 07/2022"
-bullets = [
   "Started with Angular and Java. Three months as an intern, then hired.",
 ]
+tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "Figma", "Scrum"]
 
 # Projects live only here (and in _index.es.md): the CV renders all of them and
 # the home page shows the ones marked `home = true`, so there is no second copy.
