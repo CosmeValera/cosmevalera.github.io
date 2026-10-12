@@ -28,7 +28,7 @@ about = [
 [[extra.experience]]
 company = "GMV"
 company_url = "https://www.gmv.com/en-es"
-role = "Mid-Level Frontend Developer"
+role = "Mid-Level Full Stack Developer"
 period = "10/2023 – Present"
 location = "Madrid, Spain"
 current = true
