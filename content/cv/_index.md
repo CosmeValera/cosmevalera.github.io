@@ -71,7 +71,8 @@ tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "F
 # Projects live only here (and in _index.es.md): the CV renders all of them and
 # the home page shows the ones marked `home = true`, so there is no second copy.
 #   tagline      one line, also used as the home-page card text
-#   description  two paragraphs: what it does, then how it is built
+#   description  one paragraph: what it does and what makes it worth a look
+#   tech         the stack, shown as tags under the description
 #   screenshots  paths under static/; the first is the home-page card image
 #   video        optional demo video under static/, shown first in the carousel;
 #                video_poster is its thumbnail (the home page keeps the first screenshot)
@@ -86,9 +87,9 @@ period = "2023 – 2026"
 flagship = true
 home = true
 description = [
-  "My flagship product, designed, built and run by me over 6+ months of focused work spread across the last three years. One prompt becomes a multi-page guide with lessons and exercises, explained through the background knowledge the reader picks, and it keeps growing on demand through an AI chat with web sources. Any guide turns into a quiz, flashcards or a two-voice podcast in one click.",
-  "It is a Turborepo monorepo: a React and TypeScript client backed by serverless API routes, Supabase for auth and data, and Stripe for payments. It runs on the AI you choose (hosted, your own API key, or a local model on your machine), and Vitest and Playwright cover it from unit tests to end-to-end flows.",
+  "My flagship product, designed, built and run by me over 6+ months of focused work spread across the last three years. One prompt becomes a multi-page guide with lessons and exercises, explained through the background knowledge the reader picks, and it keeps growing on demand through an AI chat with web sources. Any guide turns into a quiz, flashcards or a two-voice podcast in one click, and it all runs on the AI you choose: hosted, your own API key, or a local model on your machine.",
 ]
+tech = ["React", "TypeScript", "Turborepo", "Serverless", "Supabase", "Stripe", "Vitest", "Playwright"]
 video = "videos/projects/rabbithole-demo.mp4"
 video_poster = "images/projects/rabbithole-demo-poster.webp"
 screenshots = ["images/projects/rabbithole-subjunctive.webp", "images/projects/rabbithole-quiz.webp"]
@@ -100,9 +101,9 @@ url = "https://devopslab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/DevOpsLab"
 home = true
 description = [
-  "A hands-on lab that takes the same full-stack application through every common way of shipping it: Docker Compose, Kubernetes with Kustomize and Helm, and a Jenkins CI/CD pipeline. Each method comes with its own tutorial, so the site doubles as a guide to doing it yourself.",
-  "The live version runs on AWS: the React and TypeScript frontend is served from S3 and CloudFront, the Node and Express API runs on Lambda, and Jenkins lives on EC2, with IAM keeping each piece scoped. The frontend shows the real Jenkins pipeline status, fetched through that Lambda API.",
+  "A hands-on lab that takes the same full-stack application through every common way of shipping it: Docker Compose, Kubernetes with Kustomize and Helm, and a Jenkins CI/CD pipeline, each with its own tutorial. The live version runs on AWS (S3 and CloudFront for the frontend, Lambda for the API, Jenkins on EC2) and shows the real status of its Jenkins pipeline.",
 ]
+tech = ["React", "TypeScript", "Node", "Express", "Docker", "Kubernetes", "Helm", "Kustomize", "Jenkins", "AWS"]
 video = "videos/projects/devopslab-demo.mp4"
 video_poster = "images/projects/devopslab-demo-poster.webp"
 screenshots = ["images/projects/devopslab-jenkins.webp", "images/projects/devopslab-tutorials.webp"]
@@ -114,9 +115,9 @@ url = "https://sympho.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/Sympho"
 home = true
 description = [
-  "A score editor: write notes and rests of any duration, add accidentals and dots, set the title, instrument and tempo, then play the score back. Sign in with Google to save scores to a private repository, or publish them to a public one that everyone can browse.",
-  "Built with JavaScript and Node, with VexFlow rendering the notation. It runs in the browser or as an Electron desktop app, has three themes (dark, light and solar), and is deployed on Kubernetes.",
+  "A score editor that runs in the browser or as a desktop app: write notes and rests of any duration, add accidentals and dots, set the title, instrument and tempo, then play the score back. Sign in with Google to save scores to a private repository, or publish them to a public one that everyone can browse.",
 ]
+tech = ["JavaScript", "Node", "VexFlow", "Electron", "Kubernetes"]
 video = "videos/projects/sympho-demo.mp4"
 video_poster = "images/projects/sympho-demo-poster.webp"
 screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-library.webp"]
@@ -129,8 +130,8 @@ repo = "https://github.com/CosmeValera/bitcoin-finance-lab"
 home = true
 description = [
   "A finance tool that puts Bitcoin side by side with Bitcoin treasury companies such as Strategy and Metaplanet, Strategy's preferred shares, broad indices like SPY and QQQ, or any ticker you add. The portfolio builder blends weights into returns, volatility and maximum drawdown, the benchmark view normalises returns into a sortable metrics table, and a DCA simulator shows what buying on a schedule would have done.",
-  "Built with Vue 3, TypeScript and Pinia, charted with Chart.js and bundled with Vite, on Yahoo Finance market data.",
 ]
+tech = ["Vue 3", "TypeScript", "Pinia", "Chart.js", "Vite", "Yahoo Finance"]
 video = "videos/projects/bitcoin-finance-lab-demo.mp4"
 video_poster = "images/projects/bitcoin-finance-lab-demo-poster.webp"
 screenshots = ["images/projects/bitcoin-finance-lab-benchmark.webp", "images/projects/bitcoin-finance-lab-portfolio.webp"]

@@ -171,6 +171,12 @@
             {% for paragraph in project.description %}<p>{{ paragraph }}</p>{% endfor %}
           </div>
 
+          {% if project.tech is defined %}
+            <ul class="cv-tags cv-project-tech">
+              {% for item in project.tech %}<li class="cv-tag">{{ item }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+
           {% if project.screenshots is defined %}
             <ul class="cv-project-shots" data-project="{{ project.name }}">
               {% if project.video is defined %}

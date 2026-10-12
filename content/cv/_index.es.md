@@ -71,7 +71,8 @@ tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "F
 # Los proyectos viven solo aquí (y en _index.md): el CV los muestra todos y la
 # home enseña los marcados con `home = true`, así que no hay una segunda copia.
 #   tagline      una línea, también es el texto de la tarjeta en la home
-#   description  dos párrafos: qué hace y cómo está hecho
+#   description  un párrafo: qué hace y qué lo hace interesante
+#   tech         el stack, que se muestra como etiquetas bajo la descripción
 #   screenshots  rutas dentro de static/; la primera es la imagen de la home
 #   video        vídeo demo opcional dentro de static/, primero en el carrusel;
 #                video_poster es su miniatura (la home sigue usando la primera captura)
@@ -86,9 +87,9 @@ period = "2023 – 2026"
 flagship = true
 home = true
 description = [
-  "Mi producto estrella, diseñado, construido y mantenido por mí en más de 6 meses de trabajo intenso repartidos en los últimos tres años. Un prompt se convierte en una guía de varias páginas con lecciones y ejercicios, explicada a través de los conocimientos previos que elige quien lee, y sigue creciendo cuando quieras con un chat de IA con fuentes web. Cualquier guía se convierte en un test, flashcards o un pódcast a dos voces con un clic.",
-  "Es un monorepo con Turborepo: un cliente en React y TypeScript sobre rutas de API serverless, Supabase para autenticación y datos, y Stripe para los pagos. Funciona con la IA que elijas (alojada, tu propia clave de API o un modelo local en tu máquina), y Vitest y Playwright lo cubren desde tests unitarios hasta flujos end-to-end.",
+  "Mi producto estrella, diseñado, construido y mantenido por mí en más de 6 meses de trabajo intenso repartidos en los últimos tres años. Un prompt se convierte en una guía de varias páginas con lecciones y ejercicios, explicada a través de los conocimientos previos que elige quien lee, y sigue creciendo cuando quieras con un chat de IA con fuentes web. Cualquier guía se convierte en un test, flashcards o un pódcast a dos voces con un clic, y todo funciona con la IA que elijas: alojada, tu propia clave de API o un modelo local en tu máquina.",
 ]
+tech = ["React", "TypeScript", "Turborepo", "Serverless", "Supabase", "Stripe", "Vitest", "Playwright"]
 video = "videos/projects/rabbithole-demo.mp4"
 video_poster = "images/projects/rabbithole-demo-poster.webp"
 screenshots = ["images/projects/rabbithole-subjunctive.webp", "images/projects/rabbithole-quiz.webp"]
@@ -100,9 +101,9 @@ url = "https://devopslab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/DevOpsLab"
 home = true
 description = [
-  "Un laboratorio práctico que lleva la misma aplicación full-stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins. Cada método tiene su propio tutorial, así que la web también sirve de guía para hacerlo por tu cuenta.",
-  "La versión en vivo corre en AWS: el frontend en React y TypeScript se sirve desde S3 y CloudFront, la API en Node y Express corre en Lambda y Jenkins vive en EC2, con IAM limitando el acceso de cada pieza. El frontend muestra el estado real del pipeline de Jenkins, obtenido a través de esa API en Lambda.",
+  "Un laboratorio práctico que lleva la misma aplicación full-stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins, cada una con su propio tutorial. La versión en vivo corre en AWS (S3 y CloudFront para el frontend, Lambda para la API y Jenkins en EC2) y muestra el estado real de su pipeline de Jenkins.",
 ]
+tech = ["React", "TypeScript", "Node", "Express", "Docker", "Kubernetes", "Helm", "Kustomize", "Jenkins", "AWS"]
 video = "videos/projects/devopslab-demo.mp4"
 video_poster = "images/projects/devopslab-demo-poster.webp"
 screenshots = ["images/projects/devopslab-jenkins.webp", "images/projects/devopslab-tutorials.webp"]
@@ -114,9 +115,9 @@ url = "https://sympho.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/Sympho"
 home = true
 description = [
-  "Un editor de partituras: escribe notas y silencios de cualquier duración, añade alteraciones y puntillos, define título, instrumento y tempo, y reprodúcela. Inicia sesión con Google para guardar partituras en un repositorio privado o publicarlas en uno público que cualquiera puede explorar.",
-  "Hecho con JavaScript y Node, con VexFlow renderizando la notación. Funciona en el navegador o como app de escritorio con Electron, tiene tres temas (oscuro, claro y solar) y se despliega en Kubernetes.",
+  "Un editor de partituras que funciona en el navegador o como app de escritorio: escribe notas y silencios de cualquier duración, añade alteraciones y puntillos, define título, instrumento y tempo, y reprodúcela. Inicia sesión con Google para guardar partituras en un repositorio privado o publicarlas en uno público que cualquiera puede explorar.",
 ]
+tech = ["JavaScript", "Node", "VexFlow", "Electron", "Kubernetes"]
 video = "videos/projects/sympho-demo.mp4"
 video_poster = "images/projects/sympho-demo-poster.webp"
 screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-library.webp"]
@@ -129,8 +130,8 @@ repo = "https://github.com/CosmeValera/bitcoin-finance-lab"
 home = true
 description = [
   "Una herramienta financiera que pone Bitcoin junto a empresas con Bitcoin en tesorería como Strategy y Metaplanet, las acciones preferentes de Strategy, índices amplios como SPY y QQQ, o cualquier ticker que añadas. El constructor de carteras combina pesos en rentabilidad, volatilidad y caída máxima, la vista de benchmark normaliza rentabilidades en una tabla de métricas ordenable, y un simulador de DCA muestra qué habría pasado comprando de forma periódica.",
-  "Hecha con Vue 3, TypeScript y Pinia, con gráficas en Chart.js y empaquetada con Vite, sobre datos de mercado de Yahoo Finance.",
 ]
+tech = ["Vue 3", "TypeScript", "Pinia", "Chart.js", "Vite", "Yahoo Finance"]
 video = "videos/projects/bitcoin-finance-lab-demo.mp4"
 video_poster = "images/projects/bitcoin-finance-lab-demo-poster.webp"
 screenshots = ["images/projects/bitcoin-finance-lab-benchmark.webp", "images/projects/bitcoin-finance-lab-portfolio.webp"]
