@@ -17,6 +17,8 @@ From AquaMesh to a complete AI learning product
 - **RabbitHole: The Post-Mortem**
 What launching my first SaaS taught me about product development
 
+> Extra idea: when the rabbithole blog-posts are created, I can also link to them in the #projects section inside /CV in order to have like a case study of it in addition to the users being able to using it.
+
 Also:
 - **First steps of the product mindset** (title to be decided): 
 Porduct mindset post, maybe relating it about the rabbithole post-mortem blog-post, and mentioning the book of Escaping the build trap or talking about it directly.

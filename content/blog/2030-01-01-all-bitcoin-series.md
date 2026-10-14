@@ -70,7 +70,7 @@ Posts Order:
 - BTC 206: Multisig
   - Multisig 2-3 example (like the BTC 103 but with 2-3)
 
-* Quick notes. Maybe the 200 series should be theoretical (like the BTC 101), and the 201 series should be practical (like the BTC 102 and 103). So that the 301 for example could be multisig 2-3. In that case the lightning network I don't know if in the 300s too, or if in the 400s potentially (togethter with AQUA and other 2-layer stuff maybe).
+* Quick notes. Maybe the 200 series should be theoretical (like the BTC 101), and the 300 series should be practical (like the BTC 102 and 103). So that the 301 for example could be multisig 2-3. In that case the lightning network I don't know if in the 300s too, or if in the 400s potentially (togethter with AQUA and other 2-layer stuff maybe).
 
 300s Series - More Advanced Bitcoin concepts
 - BTC 301: Lightning Network
@@ -84,25 +84,10 @@ Posts Order:
 
 ```
 
+# Old stuff from 103 post:
 ```js
-Another blog-post for the continuation (This is actually trying to do too much, it's better ot split hot wallet into one post, and cold wallet into another post. It's nice to explain the difference tho. 102+103):
-- 1. Simple set up of using Relai/21Bitcoin to buy your bitcoins with DCA every month (DCA vs lump-sum vs timing the market (be brief, and why DCA is recommended in my opinion)),
-- 2. how to set up cold storage. -> Say options for each thing, but for the cold wallet recomment Coldcard-mk4 or Colcard-q (the difference between hot and cold storage. Small tutorial about Sparrow, or just mention it, and say that it will be talked more about in the last section),
-- 3. And buy the OneKey KeyTag (or similar) for the writing your private seed there and put it inside a safe.
-- 4. Sparrow and UTXOs.
-- 5. Extra section, with more stuff, like Multisig setups, Shamir. 
-
----
-
-Also say that memory seeds are not recommended anymore, and paper seeds either. (e.g., The recommended approach nowadays is to use a durable metal seed‑phrase backup like the OneKey KeyTag—instead of relying solely on memorizing your seed or storing it on paper. Memory-only ('brain') wallets are no longer recommended, and paper-based seed backups are not considered secure).
-
 About UTXos, also say everything else, like UTXOs vs normal account (like ethereum or bank accounts) and why it was made like this in bitcoin (I think so that it was more similar to gold, and so that every coin could be followed perfectly through the blockchain). And also mention what is Consolidation, and other things like Coinjoin and other stuff, although I could put all of this at the very end like extra information or similar, since it's more technical and specific.
 
 Another thing to talk about is that the actual wallets are just boxes in the emptiness of the space, that anyone could access any of these boxes (except for passphrases and multisigs or similar), but the magic is that the number of possibilities is so absurdly high that it's much more profitable to just mine bitcoins instead of trying to find wallets in the emptiness of the space of private wallets. This concept is hard to grasp, and you feel insecure at first, but as an example there is there the wallet of satoshi, and no one has uncovered its keys in over 10 years, since they haven't moved, and most probable no one will. (https://www.youtube.com/watch?v=S9JGmA5_unY).
 Although maybe this whole topic, is worth another post (BTC 103 (?)). However, it's true that my idea was to make 101 and 102 the essentials of understanding and then of practicality. And this is more like doing details, so maybe BTC 201, like entering the details or a new course to put it that way idk, it depends also on how long it gets the 102 in total, what things fit inside it, and if using the 201 is going to be understandable which I guess yes, in that case, maybe i could do like BTC 201: the wallets/bit256; BTC 202: Passphrases and Multisig and Shamir/SSS (there are other things like what is your actual saving strategy, or inheritance strategy, as well as other tihngs like: Threshold Signatures, Social Recovery, Vaults / Scripts). Maybe BTC 203: Lightning Network (I could mention the chema post about how to set up your alby lighning node, and so on).
-
-Mention also Sparrow. For example, this is what ChatGpt so that why not to use paper wallets (insecure and old alternative, were you had both the private and public keys in one piece of paper): 🔐 Modern Alternatives:
-- Hardware wallets (e.g., Ledger, Trezor, Coldcard)
-- Seed phrase backups in metal (e.g., OneKey KeyTag, Cryptosteel, ColdTi)
-- Multisig setups (e.g., Sparrow + hardware wallets)
 ```
