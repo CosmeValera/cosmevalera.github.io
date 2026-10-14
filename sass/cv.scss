@@ -1,485 +1,524 @@
+// CV page: sticky identity sidebar + sections. Prints as a clean one-column
+// document (see the @media print block at the end).
 @import 'variables';
 @import 'utils/mixins';
 
-// The CV page is a single reading column: a header card with identity and
-// contact, then stacked sections. Education + Languages share a row on wide
-// screens. Everything is print-friendly (see the @media print block at the end).
-
 .cv {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem clamp(1rem, 4vw, 2rem) 3rem;
+  display: grid;
+  gap: 2.5rem;
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+
+  @include respond-to('lg') {
+    grid-template-columns: 19rem minmax(0, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
 }
 
-/* ===== Header ===== */
-.cv-header {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: clamp(1.25rem, 4vw, 2rem);
-  background-color: $secondary-bg;
-  border: 1px solid rgba($accent-color, 0.2);
-  border-radius: 16px;
+// ---------------------------------------------------------------------------
+// Sidebar
+// ---------------------------------------------------------------------------
+.cv-aside {
+  display: grid;
+  gap: 1rem;
 
-  @include respond-to('md') {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  @include respond-to('lg') {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
   }
+}
+
+.cv-card {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  @include surface(var(--radius-lg));
 }
 
 .cv-identity {
   display: flex;
   align-items: center;
-  gap: clamp(1rem, 3vw, 1.5rem);
+  gap: 1rem;
+
+  @include respond-to('lg') {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .cv-portrait {
-  width: clamp(72px, 18vw, 110px);
-  height: clamp(72px, 18vw, 110px);
-  flex-shrink: 0;
-  border-radius: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 18px;
   object-fit: cover;
-  border: 2px solid rgba($accent-color, 0.5);
+  border: 1px solid var(--line-2);
+
+  @include respond-to('lg') {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 22px;
+  }
 }
 
 .cv-name {
-  // The global h1 is centred and huge; the CV header needs a compact left rail.
-  text-align: left;
-  font-size: clamp(1.4rem, 5vw, 2.1rem);
-  margin: 0 0 0.2rem;
-  line-height: 1.15;
+  font-size: clamp(1.5rem, 4vw, 1.75rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
 }
 
 .cv-role {
-  margin: 0 0 0.75rem;
-  color: $accent-color;
-  font-weight: 600;
-  font-size: clamp(0.85rem, 2.6vw, 1.05rem);
+  margin-top: 0.3rem;
+  font-size: 1.25rem;
+  color: var(--accent-text);
+}
+
+.cv-available {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  @include mono-label(0.66rem);
+  color: var(--text-2);
 }
 
 .cv-contact {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 1rem;
-  margin: 0;
-  padding: 0;
-  font-size: 0.8rem;
+  display: grid;
+  gap: 0.55rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
 
-  li {
+  li,
+  a {
     display: flex;
     align-items: center;
-    color: rgba($text-color, 0.75);
+    gap: 0.7rem;
+    min-width: 0;
+    color: var(--text-2);
+  }
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   i {
-    margin-right: 0.4rem;
-    color: $accent-color;
-    width: 1em;
+    width: 1rem;
+    flex-shrink: 0;
     text-align: center;
+    color: var(--text-3);
   }
 
   a {
-    color: rgba($text-color, 0.75);
+    transition: color 0.2s ease;
 
-    &:hover {
-      color: $accent-color;
-      text-decoration: underline;
+    @include hover {
+      color: var(--accent-text);
     }
   }
 }
 
-.cv-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  flex-shrink: 0;
+.cv-download {
+  width: 100%;
+
+  .mono {
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
 }
 
-.cv-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.15rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.25s ease;
+.cv-toc {
+  display: none;
 
-  &.cv-btn-primary {
-    background: $accent-color;
-    color: $primary-bg;
-    border: 1px solid $accent-color;
-
-    &:hover {
-      background: lighten($accent-color, 10%);
-      border-color: lighten($accent-color, 10%);
-    }
+  @include respond-to('lg') {
+    display: block;
+    padding: 0.5rem;
+    @include surface(var(--radius-lg));
   }
 
+  a {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: var(--text-2);
+    transition: color 0.2s ease, background-color 0.2s ease;
+
+    .mono {
+      font-size: 0.66rem;
+      color: var(--text-3);
+    }
+
+    @include hover {
+      color: var(--text);
+      background: var(--surface-2);
+    }
+
+    &.is-active {
+      color: var(--text);
+      background: var(--surface-2);
+
+      .mono {
+        color: var(--accent-text);
+      }
+    }
+  }
 }
 
-/* ===== Sections ===== */
-.cv-section {
-  margin-top: 2.5rem;
+// ---------------------------------------------------------------------------
+// Sections
+// ---------------------------------------------------------------------------
+.cv-main {
+  display: grid;
+  gap: clamp(3rem, 7vw, 4.5rem);
+  min-width: 0;
 }
 
 .cv-section-title {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  // Override the global h2 sizing, which is display-sized.
-  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
-  font-weight: 700;
-  margin: 0 0 1.25rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba($accent-color, 0.25);
+  align-items: baseline;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
 
-  i {
-    color: $accent-color;
-    font-size: 0.9em;
+  .mono {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--accent-text);
   }
 }
 
 .cv-summary {
-  font-size: clamp(0.9rem, 2.4vw, 1rem);
+  display: grid;
+  gap: 1rem;
+  max-width: 46rem;
+  font-size: 1.05rem;
+  color: var(--text-2);
 
-  p {
-    margin: 0 0 0.85rem;
-    line-height: 1.7;
-    color: rgba($text-color, 0.85);
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+  p:first-child {
+    font-size: clamp(1.2rem, 2.4vw, 1.4rem);
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    color: var(--text);
   }
 }
 
-/* ===== Timeline (experience + education) ===== */
+// Timeline
 .cv-timeline {
   position: relative;
-  padding-left: 1.5rem;
-  border-left: 2px solid rgba($accent-color, 0.2);
+  display: grid;
+  gap: 2.5rem;
+  padding-left: 1.75rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    left: 4px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--line-2), var(--line) 80%, transparent);
+  }
 }
 
 .cv-entry {
   position: relative;
-  padding-bottom: 2rem;
-
-  &:last-child {
-    padding-bottom: 0;
-  }
+  display: grid;
+  gap: 0.85rem;
 }
 
 .cv-entry-marker {
   position: absolute;
-  left: calc(-1.5rem - 7px);
   top: 0.45rem;
-  width: 12px;
-  height: 12px;
+  left: calc(-1.75rem);
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: $primary-bg;
-  border: 2px solid rgba($accent-color, 0.5);
-}
+  background: var(--bg);
+  border: 1.5px solid var(--text-3);
 
-.cv-entry.is-current .cv-entry-marker {
-  background: $accent-color;
-  border-color: $accent-color;
-  box-shadow: 0 0 0 4px rgba($accent-color, 0.18);
+  .is-current & {
+    border-color: var(--accent);
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
 }
 
 .cv-entry-head {
-  margin-bottom: 0.6rem;
+  display: grid;
+  gap: 0.5rem;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: start;
+  }
 }
 
 .cv-entry-role {
-  font-size: clamp(1rem, 2.8vw, 1.15rem);
-  font-weight: 700;
-  margin: 0 0 0.15rem;
-  color: $accent-color;
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+
+  a {
+    border-bottom: 1px solid var(--line-2);
+    transition: border-color 0.2s ease;
+
+    @include hover {
+      border-color: var(--accent-text);
+    }
+  }
 }
 
 .cv-entry-meta {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.35rem 0.9rem;
-  margin: 0 0 0.15rem;
-  font-size: 0.88rem;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+  color: var(--text-2);
 }
 
-.cv-entry-company {
-  font-weight: 600;
+.cv-entry-company a {
+  color: var(--text);
+  font-weight: 500;
 
-  a {
-    color: $text-color;
-    border-bottom: 1px dotted rgba($accent-color, 0.6);
-
-    &:hover {
-      color: $accent-color;
-    }
+  @include hover {
+    color: var(--accent-text);
   }
 }
 
-.cv-entry-location,
 .cv-entry-period {
   display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin: 0;
-  font-size: 0.8rem;
-  color: rgba($text-color, 0.6);
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+  white-space: nowrap;
 
-  i {
-    color: rgba($accent-color, 0.7);
+  @include respond-to('md') {
+    align-items: flex-end;
+    text-align: right;
   }
 }
 
-// "· 3 yrs 1 mo" right after the dates; the dot takes the muted text colour.
-.cv-entry-duration::before {
-  content: "\00B7";
-  margin: 0 0.4rem 0 0.1rem;
+.cv-entry-duration {
+  color: var(--accent-text);
 }
 
 .cv-entry-summary {
-  margin: 0 0 0.6rem;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: rgba($text-color, 0.85);
-  font-style: italic;
+  max-width: 48rem;
+  color: var(--text-2);
 }
 
 .cv-bullets {
-  margin: 0 0 0.85rem;
-  padding-left: 1.1rem;
-  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  max-width: 48rem;
 
   li {
     position: relative;
-    margin-bottom: 0.4rem;
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: rgba($text-color, 0.8);
+    padding-left: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--text-2);
 
     &::before {
-      content: '▸';
+      content: '';
       position: absolute;
-      left: -1.1rem;
-      color: rgba($accent-color, 0.8);
-    }
-  }
-}
-
-/* ===== Nested positions (one company, several roles) ===== */
-.cv-entry-role--company {
-  a {
-    color: inherit;
-
-    &:hover {
-      text-decoration: underline;
+      left: 0;
+      top: 0.68em;
+      width: 0.5rem;
+      height: 1px;
+      background: var(--accent-text);
     }
   }
 }
 
 .cv-subroles {
-  margin: 0.75rem 0 0.9rem;
-  padding-left: 1rem;
-  border-left: 2px solid rgba($accent-color, 0.18);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.25rem 0 0.25rem 1.25rem;
+  border-left: 1px dashed var(--line-2);
+}
+
+.cv-subrole {
+  display: grid;
+  gap: 0.6rem;
 }
 
 .cv-subrole-head {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
   justify-content: space-between;
-  gap: 0.35rem 1rem;
-  margin-bottom: 0.35rem;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
 }
 
 .cv-subrole-role {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 600;
-  font-style: italic;
-  color: rgba($text-color, 0.9);
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
 }
 
-.cv-subrole .cv-bullets {
-  margin-bottom: 0;
-}
-
-/* ===== Tags ===== */
 .cv-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
 }
 
 .cv-tag {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.2rem 0.65rem;
-  border-radius: 9999px;
-  background: rgba($accent-color, 0.1);
-  color: $accent-color;
-  border: 1px solid rgba($accent-color, 0.3);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: var(--text-2);
 }
 
-/* ===== Projects ===== */
+// Projects
 .cv-projects {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  display: grid;
+  gap: 1.5rem;
 }
 
 .cv-project {
-  // Clears the fixed theme/language toggles when a home-page card jumps here.
-  scroll-margin-top: 5rem;
-  padding: 1.25rem 1.35rem;
-  background-color: $secondary-bg;
-  border: 1px solid rgba($accent-color, 0.2);
-  border-radius: 14px;
-  transition: border-color 0.2s ease;
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  @include surface(var(--radius-lg));
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover,
   &:target {
-    border-color: rgba($accent-color, 0.5);
+    border-color: var(--accent-text);
+    box-shadow: 0 0 0 4px var(--accent-soft);
   }
 
-  &.cv-project--flagship {
-    border-color: rgba($accent-color, 0.55);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  &--flagship {
+    background:
+      radial-gradient(60% 50% at 100% 0%, var(--accent-soft), transparent 70%),
+      var(--surface);
   }
 }
 
 .cv-project-head {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
   justify-content: space-between;
-  gap: 0.35rem 1rem;
-  margin-bottom: 0.75rem;
-}
-
-// Top-right column: Source / Visit site links, then the period if any.
-// When the header wraps on narrow screens it drops under the tagline, left-aligned.
-.cv-project-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.35rem;
-  padding-top: 0.2rem;
-
-  @media (max-width: 640px) {
-    align-items: flex-start;
-  }
+  align-items: flex-start;
+  gap: 0.5rem 1.5rem;
 }
 
 .cv-project-name {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem;
-  font-size: clamp(1.05rem, 3vw, 1.25rem);
-  font-weight: 700;
-  margin: 0;
-  color: $accent-color;
-}
-
-.cv-project-tagline {
-  margin: 0.5rem 0 0;
-  font-size: 0.92rem;
-  font-weight: 600;
-  line-height: 1.45;
-  color: rgba($text-color, 0.7);
+  gap: 0.75rem;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  letter-spacing: -0.04em;
 }
 
 .cv-project-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 0.15rem 0.55rem;
-  border-radius: 9999px;
-  background: rgba($accent-color, 0.15);
-  color: $accent-color;
-  border: 1px solid rgba($accent-color, 0.35);
+  gap: 0.35rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  @include mono-label(0.6rem);
+  font-weight: 600;
 }
 
-.cv-project-desc p {
-  margin: 0 0 0.6rem;
-  font-size: 0.9rem;
-  line-height: 1.65;
-  color: rgba($text-color, 0.85);
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+.cv-project-tagline {
+  margin-top: 0.3rem;
+  font-size: 1.25rem;
+  color: var(--text-2);
 }
 
-.cv-project-tech {
-  margin-top: 0.85rem;
+.cv-project-desc {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 50rem;
+  color: var(--text-2);
 }
 
-// Thumbnails three to a row, each opening the full-size image. The grid stays
-// three columns even with fewer shots, so every thumbnail keeps the same size.
+.cv-project-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.cv-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+// Thumbnails: the first one (the demo video when there is one) is large.
 .cv-project-shots {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.6rem;
-  margin: 1rem 0 0;
-  padding: 0;
-  list-style: none;
+
+  li:first-child {
+    grid-column: 1 / -1;
+  }
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    li:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
 
   a {
+    position: relative;
     display: block;
+    height: 100%;
     overflow: hidden;
-    border: 1px solid rgba($accent-color, 0.2);
-    border-radius: 8px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
     cursor: zoom-in;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease, transform 0.3s $ease-out;
 
-    &:hover {
-      border-color: rgba($accent-color, 0.6);
+    @include hover {
+      border-color: var(--line-2);
       transform: translateY(-2px);
-    }
 
-    &:focus-visible {
-      outline: 2px solid $accent-color;
-      outline-offset: 2px;
+      img {
+        transform: scale(1.04);
+      }
     }
   }
 
   img {
-    display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     // App screenshots carry their identity (header, nav) at the top.
     object-position: top center;
+    transition: transform 0.6s $ease-out;
   }
 }
 
 // The demo-video thumbnail: its poster frame with a play badge on top.
-.cv-shot-video {
-  position: relative;
-
-  img {
-    object-position: center;
-  }
+.cv-shot-video img {
+  object-position: center;
 }
 
 .cv-shot-play {
@@ -488,20 +527,76 @@
   left: 50%;
   display: grid;
   place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3.5rem;
+  height: 3.5rem;
   padding-left: 0.2rem; // the play triangle looks off-centre without it
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  font-size: 1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 1.1rem;
   transform: translate(-50%, -50%);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 0 0 8px rgba(200, 240, 74, 0.2);
+  transition: transform 0.3s $ease-spring, box-shadow 0.3s ease;
 
   .cv-shot-video:hover & {
-    background: rgba(0, 0, 0, 0.8);
-    transform: translate(-50%, -50%) scale(1.08);
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 0 14px rgba(200, 240, 74, 0.15);
   }
+}
+
+// Skills
+.cv-skills {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.cv-skill-group {
+  display: grid;
+  gap: 0.75rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--line);
+
+  @include respond-to('md') {
+    grid-template-columns: 12rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+}
+
+.cv-skill-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+// Languages
+.cv-languages {
+  display: grid;
+  gap: 0.75rem;
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+}
+
+.cv-language {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1.1rem 1.25rem;
+  @include surface;
+}
+
+.cv-language-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.cv-language-level {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-text);
 }
 
 /* ===== Screenshot carousel (js/cv.js) ===== */
@@ -515,9 +610,10 @@
   margin: 0;
   padding: 0;
   border: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(6, 7, 5, 0.92);
   // Blur the page behind so its text doesn't compete with the screenshot.
-  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   color: #fff;
   overflow: hidden;
 
@@ -526,7 +622,7 @@
   }
 
   &[open] {
-    animation: cv-lightbox-in 0.2s ease;
+    animation: cv-lightbox-in 0.25s ease;
   }
 
   &.is-single .cv-lightbox-prev,
@@ -554,6 +650,7 @@ body:has(.cv-lightbox[open]) {
   height: 100%;
   margin: 0;
   padding: 4.5rem clamp(1rem, 7vw, 6rem) 1.5rem;
+  container-type: size;
 }
 
 .cv-lightbox-image,
@@ -563,8 +660,8 @@ body:has(.cv-lightbox[open]) {
   // Leave room for the caption under the media.
   max-height: calc(100% - 2.4rem);
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
 
   &[hidden] {
     display: none;
@@ -574,10 +671,6 @@ body:has(.cv-lightbox[open]) {
 // Demo videos are recorded 16:9. Size the video to the largest 16:9 box that
 // fits the figure (cq units), so it scales up like the screenshots do and its
 // controls span the picture, not a letterboxed strip.
-.cv-lightbox-figure {
-  container-type: size;
-}
-
 .cv-lightbox-video {
   width: min(100cqw, (100cqh - 2.4rem) * 16 / 9);
   aspect-ratio: 16 / 9;
@@ -585,9 +678,10 @@ body:has(.cv-lightbox[open]) {
 }
 
 .cv-lightbox-caption {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .cv-lightbox-btn {
@@ -596,23 +690,16 @@ body:has(.cv-lightbox[open]) {
   place-items: center;
   width: 3rem;
   height: 3rem;
-  padding: 0;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
-  font-size: 1.35rem;
-  cursor: pointer;
+  font-size: 1.15rem;
   transition: background-color 0.2s ease, color 0.2s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.16);
-    color: $accent-color;
-  }
-
-  &:focus-visible {
-    outline: 2px solid $accent-color;
-    outline-offset: 2px;
+    background: rgba(255, 255, 255, 0.14);
+    color: #c8f04a;
   }
 }
 
@@ -646,337 +733,154 @@ body:has(.cv-lightbox[open]) {
     width: 2.5rem;
     height: 2.5rem;
     background: rgba(0, 0, 0, 0.55);
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cv-lightbox[open] {
-    animation: none;
-  }
-}
-
-.cv-project-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: 600;
-  white-space: nowrap;
-
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: $accent-color;
-    text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
-
-    // The kit has no up-right arrow, so the up arrow is tilted into one.
-    .cv-link-arrow {
-      font-size: 0.8em;
-      transform: rotate(45deg);
-      transition: transform 0.2s ease;
-    }
-
-    &:hover .cv-link-arrow {
-      transform: translate(2px, -2px) rotate(45deg);
-    }
-  }
-}
-
-/* ===== Skills ===== */
-.cv-skills {
-  display: grid;
-  gap: 1.1rem;
-
-  @include respond-to('md') {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem 2rem;
-  }
-}
-
-.cv-skill-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  margin: 0 0 0.55rem;
-  color: rgba($text-color, 0.6);
-}
-
-/* ===== Education + Languages row ===== */
-.cv-two-columns {
-  display: grid;
-  gap: 0;
-
-  @include respond-to('lg') {
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-    gap: 0 2.5rem;
-    align-items: start;
-  }
-}
-
-.cv-languages {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.cv-language {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px dashed rgba($accent-color, 0.15);
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.cv-language-name {
-  font-weight: 600;
-  font-size: 0.92rem;
-}
-
-.cv-language-level {
-  font-size: 0.8rem;
-  color: rgba($text-color, 0.65);
-}
-
-/* ===== Bright theme ===== */
-body.bright-theme {
-  .cv-header,
-  .cv-project {
-    background-color: $secondary-bg-bright;
-    border-color: rgba($accent-color-bright, 0.25);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  }
-
-  .cv-project:hover,
-  .cv-project:target,
-  .cv-project.cv-project--flagship {
-    border-color: rgba($accent-color-bright, 0.55);
-  }
-
-  .cv-portrait {
-    border-color: rgba($accent-color-bright, 0.5);
-  }
-
-  .cv-role,
-  .cv-entry-role,
-  .cv-section-title i,
-  .cv-project-name,
-  .cv-project-links a {
-    color: $accent-color-bright;
-  }
-
-  .cv-contact {
-    li,
-    a {
-      color: rgba($text-color-bright, 0.75);
-    }
-
-    i {
-      color: $accent-color-bright;
-    }
-
-    a:hover {
-      color: $accent-color-bright;
-    }
-  }
-
-  .cv-btn-primary {
-    background: $accent-color-bright;
-    color: #fff;
-    border-color: $accent-color-bright;
-
-    &:hover {
-      background: lighten($accent-color-bright, 10%);
-      border-color: lighten($accent-color-bright, 10%);
-    }
-  }
-
-  .cv-section-title {
-    border-bottom-color: rgba($accent-color-bright, 0.3);
-  }
-
-  .cv-summary p,
-  .cv-entry-summary,
-  .cv-project-desc p {
-    color: rgba($text-color-bright, 0.85);
-  }
-
-  .cv-project-tagline {
-    color: rgba($text-color-bright, 0.7);
-  }
-
-  .cv-project-shots a {
-    border-color: rgba($accent-color-bright, 0.25);
-
-    &:hover {
-      border-color: rgba($accent-color-bright, 0.6);
-    }
-  }
-
-  .cv-subroles {
-    border-left-color: rgba($accent-color-bright, 0.22);
-  }
-
-  .cv-subrole-role {
-    color: rgba($text-color-bright, 0.9);
-  }
-
-  .cv-bullets li {
-    color: rgba($text-color-bright, 0.8);
-
-    &::before {
-      color: rgba($accent-color-bright, 0.9);
-    }
-  }
-
-  .cv-timeline {
-    border-left-color: rgba($accent-color-bright, 0.25);
-  }
-
-  .cv-entry-marker {
-    background: $primary-bg-bright;
-    border-color: rgba($accent-color-bright, 0.6);
-  }
-
-  .cv-entry.is-current .cv-entry-marker {
-    background: $accent-color-bright;
-    border-color: $accent-color-bright;
-    box-shadow: 0 0 0 4px rgba($accent-color-bright, 0.18);
-  }
-
-  .cv-entry-company a {
-    color: $text-color-bright;
-    border-bottom-color: rgba($accent-color-bright, 0.6);
-
-    &:hover {
-      color: $accent-color-bright;
-    }
-  }
-
-  .cv-entry-location,
-  .cv-entry-period,
-  .cv-skill-label,
-  .cv-language-level {
-    color: rgba($text-color-bright, 0.6);
-
-    i {
-      color: rgba($accent-color-bright, 0.8);
-    }
-  }
-
-  .cv-tag,
-  .cv-project-badge {
-    background: rgba($accent-color-bright, 0.1);
-    color: $accent-color-bright;
-    border-color: rgba($accent-color-bright, 0.35);
-  }
-
-  .cv-language {
-    border-bottom-color: rgba($accent-color-bright, 0.2);
-  }
-}
-
-/* ===== Print: the page doubles as the printable CV ===== */
+/* ===== Print ===== */
+// Ctrl+P gives a plain one-column CV: no chrome, no colour, no screenshots.
 @media print {
-  .lateral-menu-pill,
-  .mobile-menu-toggle,
-  .theme-and-language-toggle-container,
-  .grid-background,
-  .page-wrapper > .footer-responsive,
-  .cv-actions,
-  .cv-project-shots {
+  @page {
+    margin: 14mm 14mm;
+  }
+
+  :root,
+  :root[data-theme] {
+    --bg: #fff;
+    --surface: #fff;
+    --surface-2: #fff;
+    --line: #ddd;
+    --line-2: #bbb;
+    --text: #111;
+    --text-2: #333;
+    --text-3: #666;
+    --accent-text: #111;
+    --accent: #111;
+    --accent-soft: transparent;
+  }
+
+  body {
+    background: #fff;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  body::after,
+  .backdrop,
+  .site-header,
+  .mobile-menu,
+  .site-footer,
+  .skip-link,
+  .cv-toc,
+  .cv-download,
+  .cv-available,
+  .cv-project-shots,
+  .cv-project-links,
+  .cv-lightbox,
+  .status-dot {
     display: none !important;
   }
 
-  html,
-  body,
-  body.bright-theme {
-    background: #fff !important;
-    color: #000 !important;
-    font-size: 11pt;
+  .site-main {
+    padding-top: 0;
   }
 
-  .page-wrapper main {
-    margin-top: 0;
-  }
-
-  .cv {
+  .container {
     max-width: none;
     padding: 0;
   }
 
-  .cv-header,
-  .cv-project {
-    background: none !important;
-    border: 1px solid #bbb !important;
-    box-shadow: none !important;
+  .cv {
+    display: block;
+    padding: 0;
   }
 
-  .cv-name,
-  .cv-role,
-  .cv-entry-role,
-  .cv-project-name,
-  .cv-project-tagline,
-  .cv-section-title,
-  .cv-section-title i,
-  .cv-contact li,
-  .cv-contact a,
-  .cv-contact i,
-  .cv-summary p,
-  .cv-subrole-role,
-  .cv-entry-summary,
-  .cv-project-desc p,
-  .cv-bullets li,
-  .cv-entry-company a,
-  .cv-entry-location,
-  .cv-entry-period,
-  .cv-skill-label,
-  .cv-language-level,
-  .cv-project-links a {
-    color: #000 !important;
+  .cv-aside {
+    position: static;
+    margin-bottom: 1.25rem;
   }
 
-  .cv-tag,
-  .cv-project-badge {
-    background: none !important;
-    color: #000 !important;
-    border-color: #999 !important;
+  .cv-card,
+  .cv-project,
+  .cv-language {
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .cv-identity {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .cv-portrait {
+    width: 64px;
+    height: 64px;
+  }
+
+  .cv-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    border: 0;
+    padding-top: 0;
+  }
+
+  .cv-main {
+    gap: 1.25rem;
   }
 
   .cv-section-title {
-    border-bottom-color: #999 !important;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.35rem;
+    font-size: 14pt;
   }
 
-  .cv-timeline,
-  .cv-subroles {
-    border-left-color: #ccc !important;
+  .cv-summary p:first-child {
+    font-size: inherit;
   }
 
-  .cv-entry-marker {
-    background: #fff !important;
-    border-color: #666 !important;
-    box-shadow: none !important;
+  .cv-timeline {
+    gap: 1rem;
   }
 
-  .cv-section,
   .cv-entry,
-  .cv-project {
+  .cv-project,
+  .cv-skill-group {
     break-inside: avoid;
-    page-break-inside: avoid;
+  }
+
+  .cv-entry-head {
+    grid-template-columns: 1fr auto;
+  }
+
+  .cv-entry-period {
+    align-items: flex-end;
+  }
+
+  .cv-tag {
+    border-color: #ccc;
+    padding: 0.05rem 0.4rem;
+  }
+
+  .cv-skill-group {
+    grid-template-columns: 10rem 1fr;
+    padding-block: 0.5rem;
+  }
+
+  .cv-languages {
+    display: flex;
+    gap: 2rem;
+  }
+
+  a {
+    color: inherit !important;
+    border: 0 !important;
+  }
+
+  .js [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

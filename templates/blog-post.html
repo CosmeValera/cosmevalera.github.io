@@ -1,11 +1,13 @@
 {% extends "base.html" %}
-
 {% import "related-container.html" as related %}
+{% import "post-macros.html" as posts %}
 
 {% block title %}{{ page.title }} | Cosme{% endblock %}
 
+{% block body_class %}page-post{% endblock %}
+
 {% block styles %}
-  <link rel="stylesheet" href="{{ get_url(path="blog-post.css") | safe }}">
+  <link rel="stylesheet" href="{{ get_url(path='blog-post.css') | safe }}">
   {% if page.extra.cover_image %}
   <link rel="preload" href="{{ page.extra.cover_image }}" as="image" fetchpriority="high">
   {% endif %}
@@ -44,101 +46,114 @@
 {% endblock %}
 
 {% block scripts %}
-  <script src="{{ get_url(path="js/exchange-toggle.js") | safe }}"></script>
-  <script src="{{ get_url(path="js/blog-post.js") | safe }}"></script>
-  <script>
-    // Add lazy loading to all images in post content except the first (LCP)
-    document.addEventListener('DOMContentLoaded', function() {
-      const postImages = document.querySelectorAll('.post-content img');
-      postImages.forEach(function(img, index) {
-        if (index > 0) { // Skip first image (likely LCP)
-          img.setAttribute('loading', 'lazy');
-          img.setAttribute('decoding', 'async');
-        }
-      });
-    });
-  </script>
+  <script src="{{ get_url(path='js/exchange-toggle.js') | safe }}"></script>
+  <script src="{{ get_url(path='js/blog-post.js') | safe }}"></script>
 {% endblock %}
 
 {% block content %}
-  <div class="blog-post">
-    {% set post_date_numeric = page.date | date(format="%Y%m%d") | int %}
-    {% set now_numeric = now() | date(format="%Y%m%d") | int %}
-    
-    {% if post_date_numeric > now_numeric %}
-      {% if lang == "es" %}
-        {% set post_date_display = now() | date(format="%-d %B %Y", locale="es_ES") %}
-      {% else %}
-        {% set post_date_display = now() | date(format="%B %-d, %Y") %}
-      {% endif %}
-    {% else %}
-      {% if lang == "es" %}
-        {% set post_date_display = page.date | date(format="%-d %B %Y", locale="es_ES") %}
-      {% else %}
-        {% set post_date_display = page.date | date(format="%B %-d, %Y") %}
-      {% endif %}
-    {% endif %}
+{% set known_tags = config.extra.blog_post_tags %}
+{% set prefix = "" %}
+{% if lang == "es" %}{% set prefix = "/es" %}{% endif %}
+{% set main_tag = "default" %}
+{% if page.taxonomies and page.taxonomies.tags and page.taxonomies.tags[0] | slugify in known_tags %}
+  {% set main_tag = page.taxonomies.tags[0] | slugify %}
+{% endif %}
 
-    {% if lang == "es" %}
-    <a href="/es/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
-    {% else %}
-    <a href="/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
-    {% endif %}
-    
+<div class="reading-progress" aria-hidden="true"><span data-progress></span></div>
+
+<article class="post tag-{{ main_tag }}"
+         data-copy-label="{{ trans(key='copy_code', lang=lang) }}"
+         data-copied-label="{{ trans(key='copied', lang=lang) }}"
+         data-anchor-label="{{ trans(key='link_to_section', lang=lang) }}">
+  <header class="post-header container">
+    <a href="{{ prefix }}/blog/" class="back-link">
+      <span aria-hidden="true">←</span> {{ trans(key="back_to_posts", lang=lang) }}
+    </a>
+
     {% if page.taxonomies and page.taxonomies.tags %}
-      <div class="tags">
+      <ul class="post-tags">
         {% for tag in page.taxonomies.tags %}
-          {% if tag | slugify in config.extra.blog_post_tags %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-{{ tag | slugify }}-plain">
-              {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
+          {% set slug = tag | slugify %}
+          <li>
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) }}" class="tag-pill tag-{% if slug in known_tags %}{{ slug }}{% else %}default{% endif %}">
+              {{ posts::tag_label(tag=tag, lang=lang, known_tags=known_tags) }}
             </a>
-          {% else %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag, lang=lang) }}" class="tag tag-default-plain">
-              {{ tag | slugify | replace(from="-", to=" ") | title }}
-            </a>
-          {% endif %}
+          </li>
         {% endfor %}
-      </div>
+      </ul>
     {% endif %}
 
-    <h1 class="blog-post-title">{{ page.title }}</h1>
-    <h3 class="presentation-text">{{ page.description }}</h3>
-    
-    <div class="post-metadata">
-      <span class="post-date">{{ post_date_display }}</span>
-      <span class="reading-time">
-        {% if page.extra.custom_reading_time and page.extra.custom_word_count %}
-          {{ page.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} • {{ page.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}
-        {% else %}
-          {{ page.reading_time | default(value="3") }}{{ trans(key="min_read", lang=lang) }} • {{ page.word_count | default(value="0") }} {{ trans(key="words", lang=lang) }}
-        {% endif %}
-      </span>
-    </div>
-    <!-- TOC for mobile - sticky top -->
-    <div class="toc-mobile" data-collapsed>
-      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
-        <span class="toc-title">{{ trans(key="table_of_contents", lang=lang) }}</span>
-        <span class="toc-chevron" aria-hidden="true"></span>
-      </button>
-      <ul id="toc-list-mobile" class="toc-list"></ul>
-      <div class="reading-progress" aria-hidden="true"></div>
-    </div>
-    <!-- TOC wrapper for desktop sticky behavior -->
-    <div class="toc-desktop-wrapper">
-      <!-- TOC for desktop - sticky left -->
-      <div class="toc-desktop" data-collapsed>
-        <div class="toc-desktop-title">{{ trans(key="on_this_page", lang=lang) }}</div>
-        <ul id="toc-list-desktop" class="toc-list"></ul>
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}<p class="post-lead serif">{{ page.description }}</p>{% endif %}
+
+    <div class="post-byline">
+      <img class="post-avatar" src="{{ get_url(path='images/home/portrait.jpg') }}" alt="" width="44" height="44">
+      <div class="post-byline-text">
+        <span class="post-author">Cosme Valera</span>
+        <span class="post-meta mono">
+          <time datetime="{{ posts::iso_date(date=page.date) }}">{{ posts::display_date(date=page.date, lang=lang) }}</time>
+          <span aria-hidden="true">·</span>
+          <span>{{ posts::reading_time(post=page, lang=lang) }}</span>
+          <span aria-hidden="true">·</span>
+          <span>{% if page.extra.custom_word_count %}{{ page.extra.custom_word_count }}{% else %}{{ page.word_count | default(value=0) }}{% endif %} {{ trans(key="words", lang=lang) }}</span>
+        </span>
       </div>
     </div>
-    <!-- Post content - centered independently -->
-    <div class="post-content">
-        {{ page.content | safe }}
+  </header>
+
+  <div class="post-layout container">
+    <aside class="post-aside" data-toc-aside hidden>
+      <nav class="toc" aria-labelledby="toc-title">
+        <p class="toc-title mono" id="toc-title">{{ trans(key="on_this_page", lang=lang) }}</p>
+        <ol class="toc-list" data-toc-list></ol>
+      </nav>
+    </aside>
+
+    <div class="post-content prose">
+      {{ page.content | safe }}
     </div>
-    
-    <hr class="footer-rule" />
-    {{ related::container(page=page,orderDesc=true) }}
-    <hr class="footer-rule-2" />
-    
   </div>
+
+  <footer class="post-footer container">
+    <div class="author-card">
+      <img src="{{ get_url(path='images/home/portrait.jpg') }}" alt="" width="72" height="72" loading="lazy">
+      <div>
+        <p class="eyebrow">{{ trans(key="written_by", lang=lang) }}</p>
+        <p class="author-name">Cosme Valera</p>
+        <p class="author-bio">{{ trans(key="author_bio", lang=lang) }}</p>
+        <ul class="author-links">
+          {% for link in config.extra.links %}
+            <li><a href="{{ link.url }}" target="_blank" rel="me noopener" class="icon-btn" aria-label="{{ link.title }}"><i class="{{ link.iconset | default(value='fab') }} fa-{{ link.icon }}" aria-hidden="true"></i></a></li>
+          {% endfor %}
+          <li><a href="{{ prefix }}/cv/" class="arrow-link">{{ trans(key="see_my_cv", lang=lang) }}<span aria-hidden="true">→</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    {{ related::container(page=page, lang=lang, orderDesc=true) }}
+  </footer>
+</article>
+
+{# Small screens: floating button with a progress ring that opens the TOC sheet. #}
+<button class="toc-fab" type="button" data-toc-fab aria-controls="toc-sheet" aria-expanded="false" hidden
+        aria-label="{{ trans(key='table_of_contents', lang=lang) }}">
+  <svg viewBox="0 0 48 48" width="48" height="48" aria-hidden="true">
+    <circle class="toc-fab-track" cx="24" cy="24" r="21"/>
+    <circle class="toc-fab-ring" cx="24" cy="24" r="21" data-progress-ring/>
+  </svg>
+  <span class="toc-fab-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+</button>
+
+<div class="toc-sheet" id="toc-sheet" data-toc-sheet hidden>
+  <div class="toc-sheet-backdrop" data-toc-close></div>
+  <div class="toc-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="toc-sheet-title">
+    <div class="toc-sheet-head">
+      <p class="toc-title mono" id="toc-sheet-title">{{ trans(key="table_of_contents", lang=lang) }}</p>
+      <button type="button" class="icon-btn" data-toc-close aria-label="{{ trans(key='close_menu', lang=lang) }}">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ol class="toc-list" data-toc-list></ol>
+  </div>
+</div>
 {% endblock content %}

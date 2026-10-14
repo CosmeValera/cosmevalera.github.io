@@ -1,335 +1,108 @@
 {% extends "base.html" %}
+{% import "post-macros.html" as posts %}
 
 {% block title %}
   {{ trans(key="blog", lang=lang) }} | Cosme
 {% endblock %}
 
+{% block body_class %}page-blog{% endblock %}
+
 {% block styles %}
-  <link rel="stylesheet" href="{{ get_url(path="blog.css") | safe }}">
+  <link rel="stylesheet" href="{{ get_url(path='blog.css') | safe }}">
 {% endblock %}
 
 {% block scripts %}
-  <script src="{{ get_url(path="js/blog.js") | safe }}"></script>
+  <script src="{{ get_url(path='js/blog.js') | safe }}"></script>
 {% endblock %}
 
 {% block content %}
-<div class="blog">
-  <div class="blog-icon" id="blog-top">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path>
-      <path d="m15 5 4 4"></path>
-    </svg>
-  </div>
-  
-  <h1>{{ trans(key="blog", lang=lang) }}</h1>
-  <p class="blog-intro">{{ trans(key="blog_intro", lang=lang) }}</p>
+{% set known_tags = config.extra.blog_post_tags %}
+{% set filters = ["frontend|fas fa-laptop-code", "best-practices|fas fa-circle-check", "architecture|fas fa-sitemap", "finance|fas fa-chart-line", "bitcoin|fab fa-bitcoin"] %}
 
-  <!-- FILTER (Desktop Only) -->
-  <div class="filter-buttons-desktop">
-    <div class="filter-dropdown-desktop">
-      <!-- <button class="filter-button" data-filter="recommended">
-        <i class="fas fa-star"></i>
-        Recommended
+{#- Bitcoin series: every post whose title starts with "BTC 1", in title order. -#}
+{% set bitcoin_series_list = [] %}
+{% for page in section.pages %}
+  {% if page.title is starting_with("BTC 1") %}
+    {% set_global bitcoin_series_list = bitcoin_series_list | concat(with=page) %}
+  {% endif %}
+{% endfor %}
+{% set bitcoin_series_list = bitcoin_series_list | sort(attribute="title") %}
+
+<header class="page-head container">
+  <p class="eyebrow" data-reveal><span class="eyebrow-index">02</span>{{ trans(key="blog", lang=lang) }}</p>
+  <h1 class="page-title" data-reveal>{{ trans(key="blog", lang=lang) }}<span class="page-title-count mono">{{ section.pages | length }}</span></h1>
+  <p class="page-lead" data-reveal>{{ trans(key="blog_intro", lang=lang) }}</p>
+</header>
+
+<div class="container">
+  <div class="filter-bar" data-reveal>
+    <div class="filter-chips" role="toolbar" aria-label="{{ trans(key='filter_blog_posts', lang=lang) }}">
+      <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">
+        {{ trans(key="all_posts", lang=lang) }}
       </button>
-
-      <button class="filter-button" data-filter="for-beginners">
-        <i class="fas fa-book"></i>
-        Beginners
-      </button> -->
-      <button class="filter-button" data-filter="frontend">
-        <i class="fas fa-laptop-code"></i>
-        {{ trans(key="frontend", lang=lang) }}
-      </button>
-
-      <button class="filter-button" data-filter="best-practices">
-        <i class="fas fa-check-circle"></i>
-        {{ trans(key="best_practices", lang=lang) }}
-      </button>
-
-      <!-- <button class="filter-button" data-filter="backend">
-        <i class="fas fa-server"></i>
-        Backend
-      </button> -->
-
-      <button class="filter-button" data-filter="architecture">
-        <i class="fas fa-sitemap"></i>
-        {{ trans(key="architecture", lang=lang) }}
-      </button>
-
-      <!-- <button class="filter-button" data-filter="testing">
-        <i class="fas fa-vial"></i>
-        {{ trans(key="testing", lang=lang) }}
-      </button> -->
-
-      <button class="filter-button" data-filter="finance">
-        <i class="fas fa-chart-line"></i>
-        {{ trans(key="finance", lang=lang) }}
-      </button>
-
-      <button class="filter-button" data-filter="bitcoin">
-        <i class="fab fa-bitcoin"></i>
-        {{ trans(key="bitcoin", lang=lang) }}
-      </button>
-
-      <div class="filter-separator"></div>
-
-      <a href="#blog-series" class="series-link-button">
-        <i class="fas fa-layer-group"></i>
+      {% for entry in filters %}{% set filter = entry | split(pat="|") %}
+        <button type="button" class="chip tag-{{ filter.0 }}" data-filter="{{ filter.0 }}" aria-pressed="false">
+          <i class="{{ filter.1 }}" aria-hidden="true"></i>
+          {{ trans(key=filter.0 | replace(from="-", to="_"), lang=lang) }}
+        </button>
+      {% endfor %}
+    </div>
+    {% if bitcoin_series_list | length > 0 %}
+      <a href="#blog-series" class="chip chip-link">
+        <i class="fas fa-layer-group" aria-hidden="true"></i>
         {{ trans(key="go_to_series", lang=lang) }}
       </a>
-    </div>
-  </div>
-  <!-- END: FILTER (Desktop Only) -->
-
-  <!-- Mobile Filter Button -->
-  <div class="mobile-filter-button-container">
-    <button id="filter-menu-button" class="mobile-filter-button" aria-label="{{ trans(key='filter_blog_posts', lang=lang) }}">
-      <i class="fas fa-filter"></i>
-    </button>
+    {% endif %}
   </div>
 
-  <!-- Filter Modal (Mobile Only) -->
-  <div class="filter-modal" id="filter-modal">
-    <div class="filter-modal-content">
-      <!-- FILTER SECTION -->
-      <div class="filter-modal-section">
-        <div class="filter-modal-header">
-          <h3>{{ trans(key="filter_blog_posts", lang=lang) }}</h3>
-          <button class="filter-modal-close" id="filter-modal-close">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-        <div class="filter-modal-body">
-          <button class="filter-modal-option" data-filter="frontend">
-            <i class="fas fa-laptop-code"></i>
-            {{ trans(key="frontend", lang=lang) }}
-          </button>
-          <button class="filter-modal-option" data-filter="best-practices">
-            <i class="fas fa-check-circle"></i>
-            {{ trans(key="best_practices", lang=lang) }}
-          </button>
-          <button class="filter-modal-option" data-filter="architecture">
-            <i class="fas fa-sitemap"></i>
-            {{ trans(key="architecture", lang=lang) }}
-          </button>
-          <!-- <button class="filter-modal-option" data-filter="testing">
-            <i class="fas fa-vial"></i>
-            {{ trans(key="testing", lang=lang) }}
-          </button> -->
-          <button class="filter-modal-option" data-filter="finance">
-            <i class="fas fa-chart-line"></i>
-            {{ trans(key="finance", lang=lang) }}
-          </button>
-          <button class="filter-modal-option" data-filter="bitcoin">
-            <i class="fab fa-bitcoin"></i>
-            {{ trans(key="bitcoin", lang=lang) }}
-          </button>
-        </div>
-      </div>
+  <p class="filter-status mono" aria-live="polite" data-filter-status
+     data-label="{{ trans(key='posts_label', lang=lang) }}">{{ section.pages | length }} {{ trans(key="posts_label", lang=lang) }}</p>
 
-      <!-- JUMP TO SECTION -->
-      <div class="filter-modal-section navigation-section">
-        <div class="filter-modal-header">
-          <h3>{{ trans(key="or_jump_to", lang=lang) }}</h3>
-        </div>
-        <div class="filter-modal-body">
-          <a href="#blog-top" class="filter-modal-navigation-link">
-            <i class="fas fa-pen-nib"></i>
-            {{ trans(key="jump_to_blog", lang=lang) }}
-            <i class="fas fa-arrow-up filter-modal-navigation-arrow"></i>
-          </a>
-          <a href="#blog-series" class="filter-modal-navigation-link">
-            <i class="fas fa-layer-group"></i>
-            {{ trans(key="series", lang=lang) }}
-            <i class="fas fa-arrow-down filter-modal-navigation-arrow"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END: Filter Modal (Mobile Only) -->
-  <!-- END: Filter Modal (Mobile Only) -->
-  
-  <section class="blog-cards" aria-label="{{ trans(key='jump_to_blog', lang=lang) }}">
+  <section class="post-grid" aria-label="{{ trans(key='jump_to_blog', lang=lang) }}" data-post-grid>
     {% for post in section.pages %}
-      {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
-      {% set now_numeric = now() | date(format="%Y%m%d") | int %}
-
-      {% if post_date_numeric > now_numeric %}
-        {% if lang == "es" %}
-          {% set post_date_display = now() | date(format="%-d %B %Y", locale="es_ES") %}
-        {% else %}
-          {% set post_date_display = now() | date(format="%B %-d, %Y") %}
-        {% endif %}
-        {% set post_date_iso = now() | date(format="%Y-%m-%d") %}
-      {% else %}
-        {% if lang == "es" %}
-          {% set post_date_display = post.date | date(format="%-d %B %Y", locale="es_ES") %}
-        {% else %}
-          {% set post_date_display = post.date | date(format="%B %-d, %Y") %}
-        {% endif %}
-        {% set post_date_iso = post.date | date(format="%Y-%m-%d") %}
-      {% endif %}
-
-      {# Set up main tag and helper variables #}
-      {% set has_tags = post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
-      {% set main_tag = "" %}
-      {% set main_tag_class = "" %}
-      {% set tags_string = "" %}
-
-      {% if has_tags %}
-        {% set main_tag = post.taxonomies.tags[0] | slugify %}
-        {% set tags_string = post.taxonomies.tags | join(sep=",") | lower %}
-        {% if main_tag in config.extra.blog_post_tags %}
-          {% set main_tag_class = " tag-" ~ main_tag %}
-        {% endif %}
-      {% endif %}
-
-      <a class="blog-card{{ main_tag_class }}" href="{{ post.permalink }}">
-        <article>
-          {% if has_tags %}
-            {# Show special icons based on tags (decorative floating badge) #}
-            {% if "recommended" in tags_string %}
-              <div class="blog-card-icon blog-card-recommended {{ main_tag_class }}">
-                <i class="fas fa-star"></i>
-                <span class="blog-card-tooltip">{{ trans(key="highly_recommended", lang=lang) }}</span>
-              </div>
-            {% elif "beginner" in tags_string %}
-              <div class="blog-card-icon blog-card-for-beginners {{ main_tag_class }}">
-                <i class="fas fa-book"></i>
-                <span class="blog-card-tooltip">{{ trans(key="great_for_beginners", lang=lang) }}</span>
-              </div>
-            {% endif %}
-
-            {# Article header: the tags that describe the post #}
-            <header class="blog-card-tags">
-              {% for tag in post.taxonomies.tags %}
-                {% set tag_lower = tag | lower %}
-                {% if tag_lower != "recommended" and "beginner" not in tag_lower %}
-                  {% if loop.index0 == 0 and tag | slugify in config.extra.blog_post_tags %}
-                    <div class="blog-card-tag tag-{{ tag | slugify }}" data-filter="{{ tag | slugify }}">
-                      {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
-                    </div>
-                  {% else %}
-                    <div class="blog-card-tag tag-{{ tag | slugify }} tag-secondary" data-filter="{{ tag | slugify }}">
-                      {% if tag | slugify in config.extra.blog_post_tags %}
-                        {{ trans(key=tag|slugify|replace(from="-", to="_"), lang=lang) }}
-                      {% else %}
-                        {{ tag | slugify | replace(from="-", to=" ") | title }}
-                      {% endif %}
-                    </div>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
-            </header>
-          {% endif %}
-
-          <!-- COVER PREVIEW UP CASE -->
-          <div class="blog-card-cover-preview-up-wrapper">
-            <div class="blog-card-cover-preview-up {{ main_tag_class }}">
-              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" decoding="async">
-            </div>
-          </div>
-
-          <!-- TABLET LAYOUT WRAPPER -->
-          <div class="blog-card-tablet-wrapper">
-            <!-- LEFT SIDE: Content -->
-            <div class="blog-card-tablet-content">
-              <h3 class="blog-title">{{ post.title }}</h3>
-              <div class="blog-card-details">
-                <p class="card-description">{{ post.description }}</p>
-                <div class="preview-indicator">
-                  <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
-                </div>
-                <footer class="card-date-and-stats">
-                  <time class="card-date" datetime="{{ post_date_iso }}">{{ post_date_display }}</time>
-                  <span class="card-stats">
-                    <i class="fas fa-clock"></i>
-                    {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                      {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
-                    {% else %}
-                      {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
-                    {% endif %}
-                  </span>
-                </footer>
-              </div>
-            </div>
-
-            <!-- RIGHT SIDE: Tablet Preview -->
-            <div class="blog-card-cover-preview-tablet {{ main_tag_class }}">
-              <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" decoding="async">
-            </div>
-          </div>
-
-          <!-- MOBILE/DESKTOP LAYOUT (outside tablet wrapper) -->
-          <div class="blog-card-cover-preview-down {{ main_tag_class }}">
-            <img src="{{ post.extra.cover_image }}" alt="Cover preview for {{ post.title }}" width="400" height="220" decoding="async">
-          </div>
-          <h3 class="blog-title blog-title-mobile-desktop">{{ post.title }}</h3>
-          <div class="blog-card-details blog-card-details-mobile-desktop">
-            <p class="card-description">{{ post.description }}</p>
-            <div class="preview-indicator">
-              <i class="fas fa-eye"></i> {{ trans(key="hover_to_preview", lang=lang) }}
-            </div>
-            <footer class="card-date-and-stats">
-              <time class="card-date" datetime="{{ post_date_iso }}">{{ post_date_display }}</time>
-              <span class="card-stats">
-                <i class="fas fa-clock"></i>
-                {% if post.extra.custom_reading_time and post.extra.custom_word_count %}
-                  {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.extra.custom_word_count }} {{ trans(key="words", lang=lang) }}</small>
-                {% else %}
-                  {{ post.reading_time }}{{ trans(key="min_read", lang=lang) }} - <small>{{ post.word_count }} {{ trans(key="words", lang=lang) }}</small>
-                {% endif %}
-              </span>
-            </footer>
-          </div>
-        </article>
-      </a>
+      {{ posts::post_card(post=post, lang=lang, known_tags=known_tags, featured=loop.first) }}
     {% endfor %}
   </section>
-  
-  {#- SERIES LOGIC -#}
-  {% set bitcoin_series_list = [] %}
-  {% for page in section.pages %}
-    {% if page.title is starting_with("BTC 1") %}
-        {% set_global bitcoin_series_list = bitcoin_series_list | concat(with=page) %}
-    {% endif %}
-  {% endfor %}
-  {% set bitcoin_series_list = bitcoin_series_list | sort(attribute="title") %}
 
   {% if bitcoin_series_list | length > 0 %}
-  <section class="blog-series" aria-labelledby="blog-series">
-    <header class="blog-series-header" id="blog-series">
-        <h1 id="blog-series-heading">{{ trans(key="series_section_title", lang=lang) }}</h1>
-        <p class="blog-intro">{{ trans(key="series_section_desc", lang=lang) }}</p>
-    </header>
+    <section class="series" id="blog-series" aria-labelledby="blog-series-heading">
+      <header class="section-head" data-reveal>
+        <p class="eyebrow"><span class="eyebrow-index">∞</span>{{ trans(key="series", lang=lang) }}</p>
+        <h2 id="blog-series-heading" class="section-title">{{ trans(key="series_section_title", lang=lang) }}</h2>
+        <p class="section-desc">{{ trans(key="series_section_desc", lang=lang) }}</p>
+      </header>
 
-    <div class="blog-series-carousel">
-        <article class="series-card">
-           <div class="series-image">
-               <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="Bitcoin Series">
-           </div>
-           <div class="series-content">
-               <span class="series-badge">{{ trans(key="series", lang=lang) }}</span>
-               <h2>{{ trans(key="bitcoin_series_title", lang=lang) }}</h2>
-               <p>{{ trans(key="bitcoin_series_desc", lang=lang) }}</p>
+      <article class="series-card" data-reveal>
+        <div class="series-media">
+          <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="" width="800" height="800" loading="lazy" decoding="async">
+          <span class="series-count mono">{{ bitcoin_series_list | length }} {{ trans(key="chapters", lang=lang) }}</span>
+        </div>
+        <div class="series-body">
+          <span class="tag-pill tag-bitcoin">{{ trans(key="series", lang=lang) }}</span>
+          <h3 class="series-title">{{ trans(key="bitcoin_series_title", lang=lang) }}</h3>
+          <p class="series-desc">{{ trans(key="bitcoin_series_desc", lang=lang) }}</p>
 
-               <nav class="series-chapters" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}">
-                   {% for post in bitcoin_series_list %}
-                      <a href="{{ post.permalink }}?mode=series" class="chapter-link">
-                          <span class="chapter-number">{{ loop.index }}</span>
-                          <span class="chapter-title">{{ post.title | replace(from="BTC 10" ~ loop.index ~ ": ", to="") }}</span>
-                          <i class="fas fa-arrow-right"></i>
-                      </a>
-                   {% endfor %}
-               </nav>
-           </div>
-           {# Make the whole card clickable, linking to the first post #}
-           <a href="{{ bitcoin_series_list[0].permalink }}?mode=series" class="series-card-link" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}"></a>
-        </article>
-    </div>
-  </section>
+          <nav aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}">
+            <ol class="series-chapters">
+              {% for post in bitcoin_series_list %}
+                <li>
+                  <a href="{{ post.permalink | safe }}?mode=series" class="chapter-link">
+                    <span class="chapter-number mono">{{ post.title | split(pat=":") | first }}</span>
+                    <span class="chapter-title">{{ post.title | replace(from="BTC 10" ~ loop.index ~ ": ", to="") }}</span>
+                    <span class="chapter-arrow" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              {% endfor %}
+            </ol>
+          </nav>
+
+          <a href="{{ bitcoin_series_list[0].permalink | safe }}?mode=series" class="btn btn-primary">
+            {{ trans(key="start_series", lang=lang) }}
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </article>
+    </section>
   {% endif %}
-
 </div>
 {% endblock content %}

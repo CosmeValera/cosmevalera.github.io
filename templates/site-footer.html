@@ -1,0 +1,53 @@
+{% set prefix = "" %}
+{% if lang == "es" %}{% set prefix = "/es" %}{% endif %}
+
+<footer class="site-footer">
+  <div class="container">
+    <section class="footer-cta" aria-labelledby="footer-cta-title">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>{{ trans(key="footer_cta_label", lang=lang) }}</p>
+      <h2 class="footer-cta-title" id="footer-cta-title">
+        {{ trans(key="footer_cta_title", lang=lang) }}
+        <em class="serif">{{ trans(key="footer_cta_title_em", lang=lang) }}</em>
+      </h2>
+      <p class="footer-cta-desc">{{ trans(key="footer_cta_desc", lang=lang) }}</p>
+      <a class="footer-email" href="mailto:{{ config.extra.email }}">
+        <span>{{ config.extra.email }}</span>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <p class="footer-heading">{{ trans(key="footer_sitemap", lang=lang) }}</p>
+        <ul>
+          <li><a href="{{ prefix }}/">{{ trans(key="home", lang=lang) }}</a></li>
+          <li><a href="{{ prefix }}/cv/">{{ trans(key="cv", lang=lang) }}</a></li>
+          <li><a href="{{ prefix }}/blog/">{{ trans(key="blog", lang=lang) }}</a></li>
+          <li><a href="{{ prefix }}/readings/">{{ trans(key="readings", lang=lang) }}</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">{{ trans(key="footer_elsewhere", lang=lang) }}</p>
+        <ul>
+          {% for link in config.extra.links %}
+            <li><a href="{{ link.url }}" target="_blank" rel="me noopener"><i class="fab fa-{{ link.icon }}" aria-hidden="true"></i>{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">{{ trans(key="footer_support", lang=lang) }}</p>
+        <ul>
+          <li><a href="{{ prefix }}/sponsor/"><i class="fa-solid fa-bolt" aria-hidden="true"></i>{{ trans(key="footer_sponsor", lang=lang) }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {{ now() | date(format="%Y") }} Cosme Valera Reales</span>
+      <span class="footer-built">{{ trans(key="footer_built", lang=lang) }}</span>
+      <a class="footer-top" href="#main">{{ trans(key="back_to_top", lang=lang) }} <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+
+  <p class="footer-wordmark" aria-hidden="true">Cosme Valera</p>
+</footer>

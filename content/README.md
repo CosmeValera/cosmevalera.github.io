@@ -29,15 +29,19 @@ This system allows you to schedule blog posts in Zola, automatically displaying 
     +++
     ```
 
-## 💻 Code for Date Handling in `blog.html`
+## 💻 Code for Date Handling in `templates/post-macros.html`
+The `display_date` macro (and its `iso_date` sibling for `<time datetime>`) is used by every post card and the post header:
 ```jinja
-{% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
-{% set now_numeric = now() | date(format="%Y%m%d") | int %}
-
-{% if post_date_numeric > now_numeric %}
-  {% set post_date_display = now() | date(format="%B %d, %Y") %}
-{% else %}
-  {% set post_date_display = post.date | date(format="%B %d, %Y") %}
-{% endif %}
+{% macro display_date(date, lang) %}
+  {%- set shown = date -%}
+  {%- if date | date(format="%Y%m%d") | int > now() | date(format="%Y%m%d") | int -%}
+    {%- set shown = now() -%}
+  {%- endif -%}
+  {%- if lang == "es" -%}
+    {{ shown | date(format="%-d %B %Y", locale="es_ES") }}
+  {%- else -%}
+    {{ shown | date(format="%B %-d, %Y") }}
+  {%- endif -%}
+{% endmacro %}
 ```
 This code snippet checks if the post's date is in the future compared to the current date. If it is, the date will be set to the current date; otherwise, it will remain the post's original date.

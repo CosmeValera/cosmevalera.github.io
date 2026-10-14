@@ -1,123 +1,263 @@
+// Theme tokens, reset and base typography.
+//
+// Dark is the default. js/theme-init.js sets html[data-theme] before first
+// paint from localStorage or the OS preference; without JS the OS preference
+// still applies through the media query below.
+
+@mixin light-tokens {
+  color-scheme: light;
+  --bg: #f4f3ec;
+  --bg-raised: #faf9f4;
+  --surface: #ffffff;
+  --surface-2: #efeee6;
+  --surface-3: #e5e4da;
+  --line: rgba(24, 26, 20, 0.09);
+  --line-2: rgba(24, 26, 20, 0.17);
+  --text: #15170f;
+  --text-2: #4f5347;
+  --text-3: #7f8375;
+  --accent: #c8f04a;
+  --accent-text: #4b7008;
+  --accent-soft: rgba(120, 170, 20, 0.12);
+  --on-accent: #10120c;
+  --glow: rgba(160, 210, 40, 0.28);
+  --grid-line: rgba(24, 26, 20, 0.05);
+  --grain-opacity: 0.035;
+  --shadow-sm: 0 1px 2px rgba(24, 26, 20, 0.06);
+  --shadow: 0 1px 2px rgba(24, 26, 20, 0.05), 0 12px 32px -12px rgba(24, 26, 20, 0.16);
+  --shadow-lg: 0 2px 4px rgba(24, 26, 20, 0.05), 0 30px 60px -20px rgba(24, 26, 20, 0.25);
+  --code-bg: #1b1d17;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #0b0c0a;
+  --bg-raised: #111310;
+  --surface: #151713;
+  --surface-2: #1c1f1a;
+  --surface-3: #252922;
+  --line: rgba(232, 238, 222, 0.08);
+  --line-2: rgba(232, 238, 222, 0.15);
+  --text: #eceee6;
+  --text-2: #a9ada1;
+  --text-3: #74786d;
+  --accent: #c8f04a;
+  --accent-text: #c8f04a;
+  --accent-soft: rgba(200, 240, 74, 0.1);
+  --on-accent: #10120c;
+  --glow: rgba(200, 240, 74, 0.16);
+  --grid-line: rgba(232, 238, 222, 0.035);
+  --grain-opacity: 0.06;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 40px -16px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.3), 0 40px 80px -24px rgba(0, 0, 0, 0.8);
+  --code-bg: #121410;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --header-h: 64px;
+  --gutter: 1.25rem;
+
+  @include respond-to('md') {
+    --gutter: 2rem;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    @include light-tokens;
+  }
+}
+
+:root[data-theme="light"] {
+  @include light-tokens;
+}
+
+// Reset
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 1.5rem);
+
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: $font-sans;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+
+  &.menu-open {
+    overflow: hidden;
+  }
+}
+
+img,
+picture,
+video,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
 a {
-    @include transition(color .2s ease-out);    
-    color: $text-color;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, p, b, a {
-    font-family: $sans-serif;
+ul,
+ol {
+  padding: 0;
+  list-style: none;
 }
 
-h1 {
-    text-align: center;
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: bold;
-    margin-bottom: 0.3em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
-h1.presentation-title {
-    font-size: calc(min(5rem, 10vw));
+p {
+  text-wrap: pretty;
 }
 
-h2 {
-    font-size: calc(min(2.5rem, 5vw));
-    font-weight: normal;
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
-@include respond-to('lg') {
-    // These 2 are for the index page actually
-    h1.presentation-title {
-        font-size: 7rem;
-    }
-
-    h2.presentation {
-        font-size: 2.5rem;
-    }
-
-    // h1 {
-    //     font-size: 5rem;
-    // }
-
-    h2 {
-        font-size: 3rem;
-    }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-.theme-and-language-toggle-container {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-
-    .language-switcher {
-        .language-toggle-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            background: rgba($primary-bg, 0.8);
-            border: 1px solid rgba($text-color, 0.1);
-            border-radius: 20px;
-            padding: 0.35rem 0.75rem;
-            color: rgba($text-color, 0.7);
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-
-            .lang-code {
-                font-family: $sans-serif;
-                letter-spacing: 0.5px;
-            }
-
-            &:hover {
-                background: rgba($accent-color, 0.15);
-                border-color: rgba($accent-color, 0.3);
-                color: $accent-color;
-                transform: translateY(-1px);
-            }
-        }
-    }
-
-    .theme-toggle-btn {
-        background: transparent;
-        border: none;
-        color: rgba($text-color, 0.5);
-        font-size: 1.2rem;
-        cursor: pointer;
-        transition: color 0.3s ease;
-
-        &:hover {
-            color: $accent-color;
-        }
-    }
+[hidden] {
+  display: none !important;
 }
 
-body.bright-theme {
-    .theme-and-language-toggle-container {
-        .language-switcher .language-toggle-btn {
-            background: rgba($primary-bg-bright, 0.9);
-            border-color: rgba($text-color-bright, 0.15);
-            color: rgba($text-color-bright, 0.7);
+// Typography helpers
+.serif {
+  font-family: $font-serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
 
-            &:hover {
-                background: rgba($accent-color-bright, 0.15);
-                border-color: rgba($accent-color-bright, 0.3);
-                color: $accent-color-bright;
-            }
-        }
+.mono {
+  font-family: $font-mono;
+  font-feature-settings: 'zero';
+}
 
-        .theme-toggle-btn {
-            color: rgba($text-color-bright, 0.5);
-            
-            &:hover {
-                color: $accent-color-bright;
-            }
-        }
-    }
+.eyebrow {
+  @include mono-label;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-3);
+}
+
+.eyebrow-index {
+  color: var(--accent-text);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+mark {
+  background: none;
+  color: var(--text);
+  background-image: linear-gradient(transparent 62%, var(--accent-soft) 62%);
+  padding: 0 0.1em;
+}
+
+kbd {
+  font-family: $font-mono;
+  font-size: 0.75em;
+  padding: 0.1em 0.45em;
+  border: 1px solid var(--line-2);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  color: var(--text-3);
+}
+
+// Scroll-reveal. Only armed when JS is running (html.js), so content never
+// stays hidden without it.
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s $ease-out, transform 0.7s $ease-out;
+  transition-delay: var(--reveal-delay, 0s);
+
+  &.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }

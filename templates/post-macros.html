@@ -1,0 +1,88 @@
+{# Shared blog-post helpers, used by the home page, the blog index, tag pages
+   and the post itself. Macros only see their arguments, so `lang` and the
+   known tag list are always passed in. #}
+
+{# Scheduling: a post dated in the future shows today's date until its date
+   arrives (see content/README.md). Prints the human-readable date. #}
+{% macro display_date(date, lang) %}
+  {%- set shown = date -%}
+  {%- if date | date(format="%Y%m%d") | int > now() | date(format="%Y%m%d") | int -%}
+    {%- set shown = now() -%}
+  {%- endif -%}
+  {%- if lang == "es" -%}
+    {{ shown | date(format="%-d %B %Y", locale="es_ES") }}
+  {%- else -%}
+    {{ shown | date(format="%B %-d, %Y") }}
+  {%- endif -%}
+{% endmacro %}
+
+{# Same rule as display_date, as an ISO date for <time datetime>. #}
+{% macro iso_date(date) %}
+  {%- if date | date(format="%Y%m%d") | int > now() | date(format="%Y%m%d") | int -%}
+    {{ now() | date(format="%Y-%m-%d") }}
+  {%- else -%}
+    {{ date | date(format="%Y-%m-%d") }}
+  {%- endif -%}
+{% endmacro %}
+
+{# Minutes to read, honouring the custom_reading_time override. #}
+{% macro reading_time(post, lang) %}
+  {%- if post.extra.custom_reading_time -%}
+    {{ post.extra.custom_reading_time }}
+  {%- else -%}
+    {{ post.reading_time | default(value=3) }}
+  {%- endif -%}
+  {{ trans(key="min_read", lang=lang) }}
+{%- endmacro %}
+
+{# A tag's display name: translated when it is one of the known tags. #}
+{% macro tag_label(tag, lang, known_tags) %}
+  {%- set slug = tag | slugify -%}
+  {%- if slug in known_tags -%}
+    {{ trans(key=slug | replace(from="-", to="_"), lang=lang) }}
+  {%- else -%}
+    {{ slug | replace(from="-", to=" ") | title }}
+  {%- endif -%}
+{% endmacro %}
+
+{# Card for the blog grid and tag pages. The whole card is one link, so tags
+   are labels here, not links. `featured` renders the wide horizontal variant. #}
+{% macro post_card(post, lang, known_tags, featured=false) %}
+  {%- set tags = [] -%}
+  {%- if post.taxonomies and post.taxonomies.tags -%}{%- set tags = post.taxonomies.tags -%}{%- endif -%}
+  {%- set main_tag = "default" -%}
+  {%- if tags | length > 0 and tags[0] | slugify in known_tags -%}{%- set main_tag = tags[0] | slugify -%}{%- endif -%}
+  {%- set tag_slugs = [] -%}
+  {%- for tag in tags -%}{%- set_global tag_slugs = tag_slugs | concat(with=tag | slugify) -%}{%- endfor -%}
+
+  <a class="post-card{% if featured %} post-card--featured{% endif %} tag-{{ main_tag }}" href="{{ post.permalink | safe }}" data-tags="{{ tag_slugs | join(sep=' ') }}">
+    <article>
+      <div class="post-card-media">
+        {% if post.extra.cover_image %}
+          <img src="{{ post.extra.cover_image }}" alt="" width="800" height="450" loading="lazy" decoding="async">
+        {% endif %}
+        {% if "recommended" in tag_slugs %}
+          <span class="post-card-flag" title="{{ trans(key='highly_recommended', lang=lang) }}"><i class="fas fa-star" aria-hidden="true"></i>{{ trans(key="recommended", lang=lang) }}</span>
+        {% elif "for-beginners" in tag_slugs %}
+          <span class="post-card-flag" title="{{ trans(key='great_for_beginners', lang=lang) }}"><i class="fas fa-seedling" aria-hidden="true"></i>{{ trans(key="for_beginners", lang=lang) }}</span>
+        {% endif %}
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-tags">
+          {% for slug in tag_slugs %}
+            {% if slug != "recommended" and slug != "for-beginners" %}
+              <span class="tag-pill tag-{% if slug in known_tags %}{{ slug }}{% else %}default{% endif %}">{{ self::tag_label(tag=slug, lang=lang, known_tags=known_tags) }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <h3 class="post-card-title">{{ post.title }}</h3>
+        <p class="post-card-desc">{{ post.description }}</p>
+        <p class="post-card-meta">
+          <time datetime="{{ self::iso_date(date=post.date) }}">{{ self::display_date(date=post.date, lang=lang) }}</time>
+          <span aria-hidden="true">·</span>
+          <span>{{ self::reading_time(post=post, lang=lang) }}</span>
+        </p>
+      </div>
+    </article>
+  </a>
+{% endmacro %}

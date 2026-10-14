@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% if page.title %}{{ page.title }}{% else %}{{ config.title }}{% endif %}{% endblock title %}</title>
 
+    {# Runs before first paint: sets data-theme on <html> so the page never
+       flashes the wrong palette, and flags that JS is available. #}
+    <script src="{{ get_url(path='js/theme-init.js') | safe }}"></script>
+    <meta name="theme-color" content="#0b0c0a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f4f3ec" media="(prefers-color-scheme: light)">
+
     {# =========================================================================== #}
     {# ===== Start SEO: description, OpenGraph, Twitter, canonical, hreflang ===== #}
     {# =========================================================================== #}
@@ -77,89 +83,39 @@
     {# ===== END SEO ===== #}
     {# =================== #}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ get_url(path='fonts.css') }}">
-    <link rel="stylesheet" href="{{ get_url(path="main.css") | safe }}">
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ get_url(path='main.css') | safe }}">
     <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
 
     <!-- Cronitor RUM -->
     <script async src="https://rum.cronitor.io/script.js"></script>
-    <script>
-        window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
-        cronitor('config', { clientKey: '482ce2f6e9775eb3b28794266710e6e6' });
-    </script>
-    
+    <script src="{{ get_url(path='js/cronitor.js') | safe }}"></script>
+
     {% if config.extra.favicon %}
     <link rel="icon" href="{{ get_url(path=config.extra.favicon) }}" />
     {% endif %}
-    
-    {% block styles%} {% endblock %}
+
+    {% block styles %}{% endblock %}
   </head>
-  <body{% if current_path and current_path is matching("^/blog/.+") %} class="blog-post-page"{% endif %}>
-    <!-- Theme & Language Toggle (Top Right) -->
-    <div class="theme-and-language-toggle-container">
-        <!-- Language Switcher -->
-        <div class="language-switcher">
-            {% if lang == "es" %}
-                {% set en_path = current_path | trim_start_matches(pat="/es") %}
-                {% if en_path == "" %}
-                    {% set en_path = "/" %}
-                {% endif %}
-                <a href="{{ en_path }}" 
-                   class="language-toggle-btn" 
-                   aria-label="{{ trans(key='switch_language', lang=lang) }}"
-                   title="Switch to English">
-                    <span class="lang-code">ES</span>
-                </a>
-            {% else %}
-                <a href="/es{{ current_path }}" 
-                   class="language-toggle-btn" 
-                   aria-label="{{ trans(key='switch_language', lang=lang) }}"
-                   title="Cambiar a Español">
-                    <span class="lang-code">EN</span>
-                </a>
-            {% endif %}
-        </div>
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme">
-            <i class="fas fa-circle-half-stroke"></i>
-        </button>
-    </div>
+  <body class="{% block body_class %}{% endblock %}">
+    <a class="skip-link" href="#main">{{ trans(key="skip_to_content", lang=lang) }}</a>
 
-    <!-- Grid Background - Consistent across all pages -->
-    <div class="grid-background"></div>
-        
-    <!-- Lateral Menu -->
-    {% include "lateral-menu.html" %}
+    {# Fixed decorative layer: glow, blueprint grid and grain. #}
+    <div class="backdrop" aria-hidden="true"></div>
 
-    <!-- Page Content -->
-    <div class="page-wrapper">
-      <main>
-          {% block content %} {% endblock content %}
-      </main>
+    {% include "site-header.html" %}
 
-      <footer class="footer-responsive">
-        <span class="footer-main">
-          {% if lang == "es" %}
-          <a href="/es/sponsor">
-            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> {{ trans(key="footer_sponsor", lang=lang) }}</a>
-          {% else %}
-          <a href="/sponsor">
-            <i class="fa fa-magic dark-hover" aria-hidden="true"></i> {{ trans(key="footer_sponsor", lang=lang) }}</a>
-          {% endif %}
-        </span>
-        <span class="footer-copyright"> © {{ now() | date(format="%Y") }} Cosme Valera Reales</span>
-      </footer>
-    </div>
+    <main id="main" class="site-main">
+      {% block content %}{% endblock content %}
+    </main>
 
-    <!-- SCRIPTS -->
-    <script src="{{ get_url(path="js/lateralMenu.js") | safe }}"></script>
-    <script src="{{ get_url(path="js/themeToggle.js") | safe }}"></script>
-    <script src="{{ get_url(path="js/easter-egg.js") | safe }}"></script>
-    {% block scripts%} {% endblock %}
-    <!-- END: SCRIPTS -->
+    {% include "site-footer.html" %}
+
+    <script src="{{ get_url(path='js/site.js') | safe }}"></script>
+    <script src="{{ get_url(path='js/easter-egg.js') | safe }}"></script>
+    {% block scripts %}{% endblock %}
   </body>
 </html>

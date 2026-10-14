@@ -1,566 +1,189 @@
+// Blog index: filter chips, post grid and the series card.
 @import 'variables';
-@import 'utils/mixin-card-bg-color-and-border';
 @import 'utils/mixins';
-@import 'blog-cards';
-@import 'blog-filters';
-@import 'blog-series';
+@import 'components/post-card';
 
-.blog {
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 2rem 0rem;
+// Filter bar: scrolls sideways on small screens instead of wrapping.
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  margin-inline: calc(var(--gutter) * -1);
+  padding: 0.25rem var(--gutter) 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+  mask-image: linear-gradient(90deg, #000 85%, transparent);
 
-  .blog-icon {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    
-    svg {
-      width: 3rem;
-      height: 3rem;
-      color: $accent-color;
-      opacity: 0.8;
-    }
-  }
-
-  .blog-intro {
-    max-width: 75vw;
-    text-wrap: balance;
-    margin: 0 auto 2rem;
-    text-align: center;
-    color: $text-color;
-    opacity: 0.9;
-    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-    line-height: 1.6;
-    font-style: italic;
-  }
-
-  body.bright-theme & {
-    .blog-icon svg {
-      color: $accent-color-bright;
-    }
-    
-    .blog-intro {
-      color: $text-color-bright;
-      font-weight: 500;
-    }
-  }
-
-  .blog-cards { 
-    max-width: 900px;
-    margin: 0 clamp(0.5rem, 2vw, 10rem);
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    display: grid;
-    grid-template-columns: 1fr; // 👉 Mobile default: 1 column
-    gap: 2rem 0;
-
-    @include blog-card-values("a");
-    
-    // 🧾 TABLET overrides (2 columns)
-    @include respond-to('md') {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      align-items: stretch;
-    }
-  }
-
-  // Filter Modal (Mobile Only)
-  .filter-modal {
+  &::-webkit-scrollbar {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+  }
+
+  @include respond-to('md') {
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+    flex-wrap: wrap;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+.filter-chips {
+  display: flex;
+  gap: 0.5rem;
+
+  @include respond-to('md') {
+    flex-wrap: wrap;
+  }
+}
+
+.chip-link {
+  margin-left: auto;
+  border-style: dashed;
+
+  @include hover {
+    color: var(--accent-text);
+  }
+
+  @include below('md') {
+    margin-left: 0.5rem;
+  }
+}
+
+// Cards entering after a filter change.
+.post-grid[data-filtered] .post-card:not(.is-hidden) {
+  animation: card-in 0.5s $ease-out backwards;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Series
+// ---------------------------------------------------------------------------
+.series {
+  padding-top: clamp(4rem, 9vw, 7rem);
+}
+
+.series-card {
+  display: grid;
+  @include surface(var(--radius-lg));
+  overflow: hidden;
+  --tag: #f7931a;
+
+  @include respond-to('lg') {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}
+
+.series-media {
+  position: relative;
+  min-height: 16rem;
+  background: var(--surface-2);
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 10000;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.75); // Dark overlay (no backdrop blur — GPU cost on mobile)
-
-    &.show {
-      display: flex; // Flex to center content
-      animation: fadeInOverlay 0.3s ease-out forwards;
-    }
-
-    .filter-modal-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      width: 85%;
-      max-width: 340px;
-      position: relative;
-      opacity: 0;
-      transform: scale(0.95);
-      animation: popInModal 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-      
-      .filter-modal-section {
-        background: rgba($secondary-bg, 0.9);
-        border: 1px solid rgba($accent-color, 0.5);
-        border-radius: 20px;
-        padding: 20px 24px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        
-        &.navigation-section {
-          background: rgba($accent-color, 0.03);
-
-          .filter-modal-header h3 {
-             font-size: 1.1rem;
-             opacity: 0.8;
-          }
-        }
-      }
-
-      .filter-modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 15px;
-
-        h3 {
-          color: $accent-color;
-          margin: 0;
-          font-size: 1.3rem;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .filter-modal-close {
-          background: none;
-          border: none;
-          color: rgba($accent-color, 0.8);
-          font-size: 1.5rem;
-          cursor: pointer;
-          padding: 4px;
-          border-radius: 50%;
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 32px;
-          height: 32px;
-
-          &:hover {
-            background: rgba($accent-color, 0.15);
-            color: $accent-color;
-            transform: rotate(90deg);
-          }
-        }
-      }
-
-      .filter-modal-body {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-
-        .filter-modal-option,
-        .filter-modal-navigation-link {
-          display: flex;
-          align-items: center;
-          gap: 14px;
-          padding: 12px 16px;
-          background: rgba($accent-color, 0.08);
-          border: 1px solid rgba($accent-color, 0.15);
-          border-radius: 10px;
-          color: rgba($text-color, 0.9);
-          font-size: 0.95rem;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          text-decoration: none;
-
-          i:first-child {
-            font-size: 1.1rem;
-            color: $accent-color;
-            width: 24px;
-            text-align: center;
-            transition: color 0.2s ease;
-          }
-          
-          &:hover {
-            background: rgba($accent-color, 0.15);
-            transform: translateX(4px);
-            border-color: rgba($accent-color, 0.3);
-          }
-          
-          &.selected {
-            background: $accent-color;
-            color: $primary-bg;
-            border-color: $accent-color;
-            box-shadow: 0 6px 15px rgba($accent-color, 0.3);
-            transform: scale(1.02);
-            
-            i:first-child {
-              color: $primary-bg;
-            }
-          }
-        }
-
-        .filter-modal-navigation-link {
-          background: rgba($accent-color, 0.04);
-          border-style: dashed;
-
-          .filter-modal-navigation-arrow {
-            margin-left: auto;
-            font-size: 0.8rem;
-            opacity: 0.5;
-            transition: transform 0.2s ease;
-          }
-
-          &:hover {
-            border-style: solid;
-            .filter-modal-navigation-arrow {
-              opacity: 1;
-              transform: translateY(2px);
-            }
-          }
-        }
-      }
-    }
+    object-fit: cover;
   }
 
-  // Animations
-  @keyframes fadeInOverlay {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(80% 60% at 30% 100%, rgba(247, 147, 26, 0.35), transparent 70%);
+    mix-blend-mode: screen;
   }
+}
 
-  @keyframes popInModal {
-    from { opacity: 0; transform: scale(0.9) translateY(20px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
+.series-count {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(10, 11, 9, 0.72);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
 
-  // Mobile Filter Button Styles
-  .mobile-filter-button-container {
-      position: fixed;
-      top: 85px; // Below the header/theme toggle
-      right: 1.5rem;
-      z-index: 999; // Below modal (10000) but above content
-      
-      @include respond-to('md') {
-          display: none;
-      }
+.series-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
 
-      .mobile-filter-button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 50px;
-          height: 50px;
-          background: $menu-item-bg;
-          border: 1px solid rgba($accent-color, 0.3);
-          border-radius: 50%;
-          color: $accent-color;
-          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-size: 1.1rem;
-          padding: 0;
+.series-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  letter-spacing: -0.04em;
+}
 
-          &:hover {
-              transform: scale(1.05);
-              box-shadow: 0 8px 20px rgba($accent-color, 0.2);
-              background: rgba($accent-color, 0.1);
-          }
+.series-desc {
+  color: var(--text-2);
+}
 
-          &.active {
-              background: $accent-color;
-              color: $primary-bg;
-              box-shadow: 0 0 15px rgba($accent-color, 0.5);
-          }
-      }
-  }
+.series-body nav {
+  align-self: stretch;
+}
 
-  // 🧾 TABLET overrides
-  @include respond-to('md') {
-    .filter-buttons-desktop {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2.5rem;
+.series-chapters {
+  margin-block: 0.5rem 1rem;
+  border-top: 1px solid var(--line);
+  counter-reset: chapter;
+}
 
-      .filter-dropdown-desktop {
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        padding: 0;
-        margin: 0;
-        border-radius: 0;
-        align-items: center; // Ensure vertical centering
-        flex-wrap: wrap; // Allow wrapping
-        gap: 10px; // Consistent spacing
-        // max-width: 700px; // Force earlier wrap for balance
-        margin: 0 auto; // Center the container itself
+.chapter-link {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 0.25rem;
+  border-bottom: 1px solid var(--line);
+  transition: padding 0.3s $ease-out, color 0.2s ease;
 
-        .filter-separator {
-          width: 1px;
-          height: 24px;
-          background-color: rgba($accent-color, 0.3);
-          margin: 0; // Handled by gap
-        }
+  @include hover {
+    padding-inline: 0.75rem;
 
-        .filter-button {
-          border: none;
-          cursor: pointer;
-          padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
-          margin: 0; // Handled by gap
-          font-size: 0.9rem;
-          font-weight: bold;
-          text-transform: uppercase;
-          border-radius: 9999px;
-          transition: all 0.3s ease-in-out;
-
-          &:not(.selected-filter) {
-            background-color: rgba($accent-color, 0.1);
-            color: $accent-color;
-            border: 1px solid rgba($accent-color, 0.2);
-
-            &:hover {
-                background-color: rgba($accent-color, 0.2);
-                border-color: $accent-color;
-                transform: translateY(-1px);
-            }
-          }
-
-          &.selected-filter {
-            background-color: $accent-color;
-            color: $primary-bg;
-            box-shadow: 0 4px 12px rgba($accent-color, 0.3);
-            
-            &:hover {
-              background-color: lighten($accent-color, 8%);
-              transform: translateY(-1px);
-            }
-          }
-        }
-        
-        .series-link-button {
-           // Base styles copied from .filter-button but made independent
-           cursor: pointer;
-           padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
-           margin: 0; // Handled by gap
-           font-size: 0.9rem;
-           font-size: 0.9rem;
-           font-weight: bold;
-           text-transform: uppercase;
-           border-radius: 9999px;
-           transition: all 0.3s ease-in-out;
-           
-           // Unique styles for series link
-           text-decoration: none;
-           display: flex;
-           align-items: center;
-           gap: 6px;
-           background-color: rgba($accent-color, 0.05);
-           border: 1px dashed rgba($accent-color, 0.4);
-           color: $accent-color; 
-
-           &:hover {
-              background-color: rgba($accent-color, 0.1);
-              border-color: $accent-color;
-              border-style: solid;
-              transform: translateY(-1px);
-           }
-        }
-      }
-    }
-  }
-
-  // Dark theme: improve filter button contrast
-  body.dark-theme & {
-    @include respond-to('md') {
-      .filter-buttons-desktop .filter-dropdown-desktop {
-        .filter-separator {
-           background-color: rgba($accent-color-dark, 0.3);
-        }
-
-        .filter-button {
-          &:not(.selected-filter) {
-            background-color: rgba($accent-color-dark, 0.2);
-            color: $accent-color-dark;
-            border: 1px solid rgba($accent-color-dark, 0.3);
-
-            &:hover {
-              background-color: rgba($accent-color-dark, 0.3);
-              border-color: $accent-color-dark;
-            }
-          }
-
-          &.selected-filter {
-            background-color: $active-color-tealish;
-            color: $primary-bg-dark;
-            border: 1px solid $active-color-tealish;
-            
-            &:hover {
-              background-color: lighten($active-color-tealish, 8%);
-            }
-          }
-        }
-          
-        .series-link-button {
-          border: 1px dashed rgba($accent-color-dark, 0.4);
-          background-color: rgba($accent-color-dark, 0.1);
-          color: $accent-color-dark; // Ensure text color is correct in dark mode
-          
-          &:hover {
-              background-color: rgba($accent-color-dark, 0.25);
-              border-color: $accent-color-dark;
-              border-style: solid;
-          }
-        }
-      }
-    }
-  }
-
-  // Bright theme: improve filter button contrast on light background
-  body.bright-theme & {
-    .mobile-filter-button-container .mobile-filter-button {
-        background: $menu-item-bg-bright;
-        border-color: rgba($accent-color-bright, 0.3);
-        color: $accent-color-bright;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-
-        &:hover {
-            background: rgba($accent-color-bright, 0.1);
-        }
-
-        &.active {
-            background: $accent-color-bright;
-            color: #fff;
-        }
-    }
-    
-    .filter-modal {
-      background-color: rgba(255, 255, 255, 0.3); // Lighter overlay
-      
-      .filter-modal-content {
-        background: none;
-        border: none;
-        box-shadow: none;
-
-        .filter-modal-section {
-          background: rgba($secondary-bg-bright, 0.9);
-          border: 1px solid rgba($accent-color-bright, 0.4);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-          
-          @supports (backdrop-filter: blur(10px)) {
-            background: rgba($secondary-bg-bright, 0.85);
-          }
-
-          &.navigation-section {
-            background: rgba($accent-color-bright, 0.02);
-            
-            @supports (backdrop-filter: blur(10px)) {
-              background: rgba($accent-color-bright, 0.02);
-            }
-          }
-        }
-        
-        .filter-modal-header {
-          h3 {
-            color: $accent-color-bright;
-            text-shadow: none;
-          }
-          
-          .filter-modal-close {
-            color: rgba($accent-color-bright, 0.8);
-            
-            &:hover {
-              background: rgba($accent-color-bright, 0.1);
-              color: $accent-color-bright;
-            }
-          }
-        }
-        
-        .filter-modal-body {
-          .filter-modal-option,
-          .filter-modal-navigation-link {
-            background: rgba($accent-color-bright, 0.05);
-            border-color: rgba($accent-color-bright, 0.15);
-            color: $text-color-bright;
-            
-            i:first-child {
-              color: $accent-color-bright;
-            }
-            
-            &:hover {
-              background: rgba($accent-color-bright, 0.1);
-              border-color: rgba($accent-color-bright, 0.3);
-            }
-            
-            &.selected {
-              background: $accent-color-bright;
-              color: #fff;
-              border-color: $accent-color-bright;
-              box-shadow: 0 6px 15px rgba($accent-color-bright, 0.3);
-              
-              i:first-child {
-                color: #fff;
-              }
-            }
-          }
-
-          .filter-modal-navigation-link {
-            background: rgba($accent-color-bright, 0.02);
-            border-color: rgba($accent-color-bright, 0.2);
-
-            .filter-modal-navigation-arrow {
-              color: rgba($accent-color-bright, 0.4);
-            }
-
-            &:hover {
-              .filter-modal-navigation-arrow {
-                color: $accent-color-bright;
-              }
-            }
-          }
-        }
-      }
+    .chapter-title {
+      color: var(--text);
     }
 
-    @include respond-to('md') {
-      .filter-buttons-desktop .filter-dropdown-desktop {
-        .filter-separator {
-           background-color: rgba($accent-color-bright, 0.3);
-        }
-
-        .filter-button {
-          &:not(.selected-filter) {
-            background-color: rgba($accent-color-bright, 0.15);
-            color: $accent-color-bright;
-            border: 1px solid rgba($accent-color-bright, 0.3);
-
-            &:hover {
-              background-color: rgba($accent-color-bright, 0.25);
-              border-color: $accent-color-bright;
-            }
-          }
-
-          &.selected-filter {
-            background-color: $active-color-bright;
-            color: $primary-bg-bright;
-            border: 1px solid $active-color-bright;
-            
-            &:hover {
-              background-color: lighten($active-color-bright, 5%);
-            }
-          }
-        }
-        
-        .series-link-button {
-           border: 1px dashed rgba($accent-color-bright, 0.4);
-           background-color: rgba($accent-color-bright, 0.08); 
-           color: $accent-color-bright; // Ensure text color is correct in bright mode
-           
-           &:hover {
-              background-color: rgba($accent-color-bright, 0.15);
-              border-color: $accent-color-bright;
-              border-style: solid;
-           }
-        }
-      }
+    .chapter-arrow {
+      color: var(--tag);
+      transform: translateX(4px);
     }
   }
+}
+
+.chapter-number {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--tag);
+}
+
+.chapter-title {
+  font-weight: 500;
+  color: var(--text-2);
+  transition: color 0.2s ease;
+}
+
+.chapter-arrow {
+  color: var(--text-3);
+  transition: transform 0.3s $ease-out, color 0.2s ease;
 }

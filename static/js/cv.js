@@ -118,3 +118,35 @@ function initializeScreenshotLightbox() {
 }
 
 initializeScreenshotLightbox();
+
+// Sidebar scrollspy: highlight the section currently being read.
+function initializeCvScrollspy() {
+    const links = Array.from(document.querySelectorAll('[data-cv-link]'));
+    const sections = Array.from(document.querySelectorAll('[data-cv-section]'));
+    if (!links.length || !sections.length || !('IntersectionObserver' in window)) return;
+
+    const visible = new Set();
+
+    function setActive(id) {
+        links.forEach(link => {
+            const active = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('is-active', active);
+            if (active) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+        });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) visible.add(entry.target);
+            else visible.delete(entry.target);
+        });
+        // The topmost section inside the reading band wins.
+        const current = sections.find(section => visible.has(section));
+        if (current) setActive(current.id);
+    }, { rootMargin: '-20% 0px -60% 0px' });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+initializeCvScrollspy();

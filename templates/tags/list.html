@@ -1,36 +1,39 @@
 {% extends "base.html" %}
+{% import "post-macros.html" as posts %}
 
 {% block title %}
-  {{ taxonomy.name | title }} | Cosme
+  {{ trans(key="tags_title", lang=lang) }} | Cosme
 {% endblock %}
 
+{% block body_class %}page-tags{% endblock %}
+
 {% block styles %}
-  <link rel="stylesheet" href="{{ get_url(path="tags-list.css") | safe }}">
+  <link rel="stylesheet" href="{{ get_url(path='tags-list.css') | safe }}">
 {% endblock %}
 
 {% block content %}
-  <div class="tag-list">
-    {% if lang == "es" %}
-      <a href="/es/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
-    {% else %}
-      <a href="/blog" class="back-link">{{ trans(key="back_to_posts", lang=lang) }}</a>
-    {% endif %}
-    <h1 class="tags-list-title">{{ trans(key="tags_title", lang=lang) }}</h1>
-    <p class="tags-description">{{ trans(key="browse_tags_desc", lang=lang) }}</p>
-    <div class="tags-cloud">
-      {% for term in terms %}
-        {% if term.name | slugify in config.extra.blog_post_tags %}
-          <a class="tag tag-{{ term.name | slugify }}-plain" href="{{ term.permalink }}">
-            {{ trans(key=term.name|slugify|replace(from="-", to="_"), lang=lang) }}
-            <span class="tag-count">{{ term.pages | length }}</span>
-          </a>
-        {% else %}
-          <a class="tag tag-default-plain" href="{{ term.permalink }}">
-            {{ term.name | slugify | replace(from="-", to=" ") | title }}
-            <span class="tag-count">{{ term.pages | length }}</span>
-          </a>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </div>
-{% endblock content %} 
+{% set known_tags = config.extra.blog_post_tags %}
+{% set prefix = "" %}
+{% if lang == "es" %}{% set prefix = "/es" %}{% endif %}
+
+<header class="page-head container">
+  <a href="{{ prefix }}/blog/" class="back-link"><span aria-hidden="true">←</span> {{ trans(key="back_to_posts", lang=lang) }}</a>
+  <h1 class="page-title" data-reveal>{{ trans(key="tags_title", lang=lang) }}<span class="page-title-count mono">{{ terms | length }}</span></h1>
+  <p class="page-lead" data-reveal>{{ trans(key="browse_tags_desc", lang=lang) }}</p>
+</header>
+
+<div class="container">
+  <ul class="tag-cloud" data-reveal>
+    {% for term in terms %}
+      {% set slug = term.name | slugify %}
+      <li>
+        <a class="tag-cloud-item tag-{% if slug in known_tags %}{{ slug }}{% else %}default{% endif %}" href="{{ term.permalink | safe }}">
+          <span class="tag-cloud-dot" aria-hidden="true"></span>
+          <span class="tag-cloud-name">{{ posts::tag_label(tag=term.name, lang=lang, known_tags=known_tags) }}</span>
+          <span class="tag-cloud-count mono">{{ term.pages | length }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock content %}

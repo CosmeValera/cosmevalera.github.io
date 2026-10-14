@@ -1,0 +1,230 @@
+// Small shared UI pieces used on several pages.
+
+// Tag colours: `.tag-<name>` sets --tag for whatever sits inside it.
+@each $name, $color in $tag-colors {
+  .tag-#{$name},
+  .tag-#{$name}-plain {
+    --tag: #{$color};
+  }
+}
+
+// Buttons
+.btn {
+  --btn-bg: var(--surface-2);
+  --btn-fg: var(--text);
+  --btn-line: var(--line-2);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 2.9rem;
+  padding: 0.7rem 1.3rem;
+  border: 1px solid var(--btn-line);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: transform 0.25s $ease-out, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.3s ease;
+
+  svg {
+    transition: transform 0.3s $ease-out;
+  }
+
+  @include hover {
+    transform: translateY(-1px);
+
+    svg {
+      transform: translateX(3px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+.btn-primary {
+  --btn-bg: var(--accent);
+  --btn-fg: var(--on-accent);
+  --btn-line: transparent;
+  font-weight: 600;
+
+  @include hover {
+    box-shadow: 0 10px 30px -10px var(--accent), 0 0 0 4px var(--accent-soft);
+  }
+}
+
+.btn-ghost {
+  --btn-bg: transparent;
+
+  @include hover {
+    --btn-bg: var(--surface-2);
+  }
+}
+
+.btn-sm {
+  min-height: 2.3rem;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+}
+
+.btn-lg {
+  min-height: 3.4rem;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.05rem;
+}
+
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-2);
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+
+  @include hover {
+    color: var(--text);
+    background: var(--surface-2);
+    border-color: var(--line-2);
+  }
+}
+
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-2);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+
+  span {
+    transition: transform 0.3s $ease-out;
+  }
+
+  @include hover {
+    color: var(--accent-text);
+
+    span {
+      transform: translateX(4px);
+    }
+  }
+}
+
+// Chips: filter toggles and quick links.
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-2);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+
+  i {
+    font-size: 0.8em;
+    color: var(--tag, var(--text-3));
+  }
+
+  @include hover {
+    color: var(--text);
+    border-color: var(--line-2);
+  }
+
+  &.is-active {
+    color: var(--bg);
+    background: var(--text);
+    border-color: var(--text);
+
+    i {
+      color: inherit;
+    }
+  }
+}
+
+// Tag pills: a coloured dot and the tag name.
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.22rem 0.6rem 0.22rem 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--tag, var(--text-3)) 35%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tag, var(--text-3)) 10%, transparent);
+  color: var(--text);
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--tag, var(--text-3));
+    box-shadow: 0 0 8px var(--tag, transparent);
+  }
+}
+
+a.tag-pill {
+  transition: background-color 0.2s ease;
+
+  @include hover {
+    background: color-mix(in srgb, var(--tag, var(--text-3)) 22%, transparent);
+  }
+}
+
+// Live "on air" dot.
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--accent);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2.2s $ease-out infinite;
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+.filter-status {
+  margin-bottom: 1.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}

@@ -1,115 +1,4 @@
-@mixin underline-effect($after-position, $bottom, $hover-color) {
-    position: relative;
-
-    &::after {
-        content: '';
-        position: $after-position;
-        width: 0;
-        height: 1px;
-        display: block;
-        background: $text-color;
-        transition: 0.25s;
-        bottom: $bottom;
-    }
-
-    &:hover::after {
-        width: 100%;
-        background-color: $hover-color;
-    }
-}
-
-@mixin card-a-colors-dark {
-    background-color: $secondary-bg;
-    border: 4px solid $accent-color;
-}
-@mixin card-b-colors-dark {
-    background-color: $tertiary-bg;
-    border: 1px solid $accent-color;
-}
-
-@mixin tag-styling {
-    min-width: fit-content;
-
-    &.tag-default {
-      background: $default-tag-gradient;
-    }
-    &.tag-recommended {
-        background: $recommended-tag-gradient;
-    }
-    &.tag-for-beginners {
-        background: $for-beginners-tag-gradient;
-    }
-
-    &.tag-frontend {
-        background: $frontend-tag-gradient;
-    }
-    &.tag-backend {
-        background: $backend-tag-gradient;
-    }
-    &.tag-architecture {
-        background: $architecture-tag-gradient;
-    }
-
-    &.tag-finance {
-      background: $finance-tag-gradient;
-    }
-    &.tag-bitcoin {
-      background: $bitcoin-tag-gradient;
-    }
-    &.tag-best-practices {
-      background: $best-practices-tag-gradient;
-    }
-    &.tag-testing {
-      background: $testing-tag-gradient;
-    }
-}
-
-@mixin tag-styling-plain {
-    min-width: fit-content;
-    
-    &.tag-default-plain {
-        background-color: $default-tag-plain;
-    }
-    &.tag-recommended-plain {
-        background-color: $recommended-tag-plain;
-    }
-    &.tag-for-beginners-plain {
-        background-color: $for-beginners-tag-plain;
-    }
-
-    &.tag-frontend-plain {
-        background-color: $frontend-tag-plain;
-    }
-    &.tag-backend-plain {
-        background-color: $backend-tag-plain;
-    }
-    &.tag-architecture-plain {
-        background-color: $architecture-tag-plain;
-    }
-
-    &.tag-finance-plain {
-      background-color: $finance-tag-plain;
-    }
-    &.tag-bitcoin-plain {
-      background-color: $bitcoin-tag-plain;
-    }
-    &.tag-best-practices-plain {
-      background-color: $best-practices-tag-plain;
-    }
-    &.tag-testing-plain {
-      background-color: $testing-tag-plain;
-    }
-}
-
-// Breakpoints map for responsive mixins
-$breakpoints: (
-  'sm': $break-small,
-  'md': $break-medium,
-  'lg': $break-large,
-  'xl': $break-extra-large
-);
-
-// Mixin for min-width breakpoints
+// Mobile-first media query: @include respond-to('md') { ... }
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (min-width: map-get($breakpoints, $breakpoint)) {
@@ -118,4 +7,56 @@ $breakpoints: (
   } @else {
     @warn "Breakpoint '#{$breakpoint}' not found in \$breakpoints map.";
   }
+}
+
+// The opposite: below a breakpoint.
+@mixin below($breakpoint) {
+  @media (max-width: map-get($breakpoints, $breakpoint) - 0.02px) {
+    @content;
+  }
+}
+
+// Hover styles only where a real pointer can hover, so taps don't stick.
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Small uppercase monospace label: eyebrows, metadata, counters.
+@mixin mono-label($size: 0.72rem) {
+  font-family: $font-mono;
+  font-size: $size;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+// Raised surface with a hairline border, the base of every card.
+@mixin surface($radius: var(--radius)) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: $radius;
+}
+
+// Clamp text to N lines.
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

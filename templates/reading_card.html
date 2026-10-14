@@ -1,30 +1,29 @@
-{% macro reading_card(page) %}
-  <div class="reading-card">
+{# One book on the readings page: cover, rating, blurb and key insights.
+   Insights sit in a native <details>, so they open without JS. #}
+{% macro reading_card(page, lang) %}
+  <article class="book" data-book>
     {% if page.extra and page.extra.cover_image %}
-      <div class="reading-card-cover">
-        <img src="{{ page.extra.cover_image }}" alt="Cover of {{ page.title }}" width="300" height="450" decoding="async">
-        <div class="reading-date-badge">
-            {% if lang == "es" %}
-                {{ page.date | date(format="%-d %B %Y", locale="es_ES") }}
-            {% else %}
-                {{ page.date | date(format="%B %-d, %Y") }}
-            {% endif %}
+      <div class="book-cover">
+        <div class="book-cover-3d">
+          <img src="{{ page.extra.cover_image }}" alt="{% if lang == 'es' %}Portada de{% else %}Cover of{% endif %} {{ page.title }}" width="300" height="450" loading="lazy" decoding="async">
         </div>
+        <time class="book-date mono" datetime="{{ page.date | date(format='%Y-%m-%d') }}">
+          {% if lang == "es" %}{{ page.date | date(format="%b %Y", locale="es_ES") }}{% else %}{{ page.date | date(format="%b %Y") }}{% endif %}
+        </time>
       </div>
     {% endif %}
-    
-    <div class="reading-card-content">
+
+    <div class="book-body">
       {% if page.extra and page.extra.rating %}
-        <div class="reading-rating">
-          <span class="reading-stars" tabindex="0" aria-label="{{ page.extra.rating }}/5. {{ trans(key="rating_label_" ~ page.extra.rating, lang=lang) }}">
-            {% for i in range(end=page.extra.rating) %}
-              <span class="star">⭐</span>
-            {% endfor %}
+        <div class="book-rating">
+          <span class="book-stars" tabindex="0"
+                aria-label="{{ page.extra.rating }}/5. {{ trans(key='rating_label_' ~ page.extra.rating, lang=lang) }}">
+            {% for i in range(end=5) %}<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" class="{% if i < page.extra.rating %}is-on{% endif %}"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg>{% endfor %}
           </span>
           <div class="rating-tooltip{% if not page.extra.rating_note %} is-compact{% endif %}" role="tooltip">
             <span class="rating-tooltip-title">
-              <span class="rating-tooltip-score">{{ page.extra.rating }}/5</span>
-              <span class="rating-tooltip-label">{{ trans(key="rating_label_" ~ page.extra.rating, lang=lang) }}</span>
+              <span class="rating-tooltip-score mono">{{ page.extra.rating }}/5</span>
+              <span>{{ trans(key="rating_label_" ~ page.extra.rating, lang=lang) }}</span>
             </span>
             {% if page.extra.rating_note %}
               <span class="rating-tooltip-text">{{ page.extra.rating_note }}</span>
@@ -33,37 +32,27 @@
           </div>
         </div>
       {% endif %}
-      
-      <h3 class="reading-title">{{ page.title }}</h3>
-      
+
+      <h2 class="book-title">{{ page.title }}</h2>
       {% if page.extra and page.extra.author %}
-        <p class="reading-author"> {{ trans(key="by", lang=lang) }} {{ page.extra.author }}</p>
+        <p class="book-author">{{ trans(key="by", lang=lang) }} {{ page.extra.author }}</p>
       {% endif %}
-      
       {% if page.description %}
-        <p class="reading-description">{{ page.description }}</p>
+        <p class="book-desc">{{ page.description }}</p>
       {% endif %}
-      
-      <button class="read-more-btn">
-        <span class="read-more-text"> {{ trans(key="show_more", lang=lang) }}</span>
-        <svg class="read-more-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
-      
-      <!-- Expandable content (hidden by default) -->
-      <div class="reading-expanded-content">
-        {% if page.extra.key_insights %}
-        <div class="reading-insights">
-          <h4>{{ trans(key="key_insights", lang=lang) }}</h4>
-          <ul>
-            {% for insight in page.extra.key_insights %}
-              <li>{{ insight }}</li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-      </div>
+
+      {% if page.extra.key_insights %}
+        <details class="book-insights">
+          <summary>
+            <span>{{ trans(key="key_insights", lang=lang) }}</span>
+            <span class="book-insights-count mono">{{ page.extra.key_insights | length }}</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <ol>
+            {% for insight in page.extra.key_insights %}<li>{{ insight }}</li>{% endfor %}
+          </ol>
+        </details>
+      {% endif %}
     </div>
-  </div>
+  </article>
 {% endmacro %}

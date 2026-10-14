@@ -1,217 +1,238 @@
 {% extends "base.html" %}
+{% import "post-macros.html" as posts %}
 
 {% block title %}
   {{ trans(key="home", lang=lang) }} | Cosme
 {% endblock %}
 
+{% block body_class %}page-home{% endblock %}
+
 {% block styles %}
-    <link rel="stylesheet" href="{{ get_url(path="index.css") | safe }}">
+  <link rel="stylesheet" href="{{ get_url(path='index.css') | safe }}">
+  <link rel="preload" href="{{ get_url(path='images/home/portrait.jpg') }}" as="image">
 {% endblock %}
 
 {% block content %}
-{# The CV section is the single source for projects. #}
+{# The CV section is the single source for projects; blog and readings feed
+   the other blocks, so the home page never needs editing by hand. #}
 {% set cv = get_section(path="cv/_index.md", lang=lang) %}
-<div class="home-container">
-    <div class="profile-section">
-        <div class="portrait-wrapper">
-            <div class="profile-glow"></div>
-            <img class="portrait-index" src="{{ get_url(path='images/home/portrait.jpg') }}" alt="Portrait" />
-        </div>
+{% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
+{% set readings_section = get_section(path="readings/_index.md", lang=lang) %}
+{% set known_tags = config.extra.blog_post_tags %}
+{% set prefix = "" %}
+{% if lang == "es" %}{% set prefix = "/es" %}{% endif %}
+
+{# Years since the oldest experience entry started ("04/2022 – ..."). #}
+{% set first_job = cv.extra.experience | last %}
+{% set first_year = first_job.period | split(pat=" – ") | first | split(pat="/") | last | int %}
+{% set this_year = now() | date(format="%Y") | int %}
+{% set years = this_year - first_year %}
+
+{# ===== Hero ===== #}
+<section class="hero container">
+  <div class="hero-copy">
+    <p class="hero-status" data-reveal>
+      <span class="status-dot" aria-hidden="true"></span>
+      <span>{{ trans(key="working_for", lang=lang) }} <a target="_blank" rel="noopener" href="https://www.gmv.com/en-es">GMV</a> {{ trans(key="in_the", lang=lang) }} <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)">{{ trans(key="galileo_project", lang=lang) }}</a></span>
+    </p>
+
+    <p class="hero-hello" data-reveal>{{ trans(key="hello", lang=lang) }} {{ trans(key="i_am", lang=lang) }}</p>
+    <h1 class="hero-title" data-reveal>
+      <span class="hero-name">Cosme Valera</span>
+      <span class="hero-role serif">{{ trans(key="home_role", lang=lang) }}<span class="hero-caret" aria-hidden="true"></span></span>
+    </h1>
+
+    <p class="hero-desc" data-reveal>
+      {{ trans(key="description_home", lang=lang) }}
+      <mark>{{ trans(key="clean_code", lang=lang) }}</mark>
+      {{ trans(key="description_middle", lang=lang) }}
+      <mark>{{ trans(key="ai_agents", lang=lang) }}</mark>
+      {{ trans(key="description_suffix", lang=lang) }}
+    </p>
+
+    <div class="hero-actions" data-reveal>
+      <a href="{{ cv.permalink | safe }}#projects" class="btn btn-primary">
+        {{ trans(key="browse_projects", lang=lang) }}
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="{{ prefix }}/blog/" class="btn btn-ghost">{{ trans(key="check_latest_posts", lang=lang) }}</a>
     </div>
-    <div class="content-section">
-        <div class="status-badge">
-            <i class="fas fa-star"></i> <span>{{ trans(key="working_for", lang=lang) }} <a target="_blank" href="https://www.gmv.com/en-es">GMV</a> {{ trans(key="in_the", lang=lang) }} <a target="_blank" href="https://en.wikipedia.org/wiki/Galileo_(satellite_navigation)">{{ trans(key="galileo_project", lang=lang) }}</a></span>
-        </div>
-        
-        <p class="presentation">{{ trans(key="hello", lang=lang) }} {{ trans(key="i_am", lang=lang) }} <span class="highlight">Cosme</span></p>
-        <h1 class="presentation-title">{{ trans(key="home_role", lang=lang) }}</h1>
 
-        <p class="description">
-            {{ trans(key="description_home", lang=lang) }} <span class="highlight-text text-blue">{{ trans(key="clean_code", lang=lang) }}</span> {{ trans(key="description_middle", lang=lang) }} <span class="highlight-text text-green">{{ trans(key="ai_agents", lang=lang) }}</span> {{ trans(key="description_suffix", lang=lang) }}
-        </p>
-
-        <div class="action-buttons">
-            <a href="{{ cv.permalink | safe }}#projects" class="btn btn-primary">
-                {{ trans(key="browse_projects", lang=lang) }} <i class="fas fa-arrow-right"></i>
+    <div class="hero-social" data-reveal>
+      <span class="eyebrow">{{ trans(key="connect_with_me", lang=lang) }}</span>
+      <ul>
+        {% for link in config.extra.links %}
+          <li>
+            <a rel="me noopener" href="{{ link.url }}" target="_blank" class="icon-btn" aria-label="{{ link.title }}" title="{{ link.title }}">
+              <i class="{{ link.iconset | default(value='fab') }} fa-{{ link.icon }}" aria-hidden="true"></i>
             </a>
-            {% if lang == "es" %}
-            <a href="/es/blog/" class="btn btn-secondary">
-                {{ trans(key="check_latest_posts", lang=lang) }}
-            </a>
-            {% else %}
-            <a href="{{ get_url(path='blog') | safe }}" class="btn btn-secondary">
-                {{ trans(key="check_latest_posts", lang=lang) }}
-            </a>
-            {% endif %}
-        </div>
-
-        {% if config.extra.links %}
-            <div class="social-links">
-                <p class="connect-text">{{ trans(key="connect_with_me", lang=lang) }}</p>
-                <div class="social-icons">
-                    {% for link in config.extra.links %}
-                        <a rel="me" href="{{ link.url }}" title="{{ link.title }}" target="_blank" class="social-icon">
-                            {% if link.iconset %}
-                                <span class="{{ link.iconset }} {{ 'fa-' ~ link.icon }}"></span>
-                            {% else %}
-                                <span class="fab {{ 'fa-' ~ link.icon }}"></span>
-                            {% endif %}
-                        </a>
-                    {% endfor %}
-                    {# Entry point into the CV page, sitting at the end of the social row. #}
-                    <span class="social-divider" aria-hidden="true"></span>
-                    <a href="{{ cv.permalink | safe }}" title="{{ trans(key="see_my_cv", lang=lang) }}" class="cv-link">
-                        <i class="fas fa-file-lines"></i>
-                        <span>{{ trans(key="see_my_cv", lang=lang) }}</span>
-                    </a>
-                </div>
-            </div>
-        {% endif %}
-    </div>
-</div>
-
-<section class="home-section home-featured-projects" aria-labelledby="featured-projects-heading">
-    <div class="home-section-header">
-        <h2 id="featured-projects-heading" class="home-section-title">{{ trans(key="featured_projects", lang=lang) }}</h2>
-        <p class="home-section-desc">{{ trans(key="featured_projects_desc", lang=lang) }}</p>
-    </div>
-    
-
-    {# Cards come from the CV entries marked `home = true`: the flagship one is
-       the hero, the rest stack beside it. Each links to its full entry on the CV. #}
-    {% set home_projects = cv.extra.projects | filter(attribute="home", value=true) %}
-    <div class="home-projects-grid">
-
-        {% for project in home_projects %}
-            {% if project.flagship is defined %}
-                <a href="{{ cv.permalink | safe }}#{{ project.name | slugify }}" class="home-project-card home-project-card--hero">
-                    <div class="home-project-image">
-                        <img src="{{ get_url(path=project.screenshots | first) | safe }}" alt="{{ project.name }}" width="800" height="450" decoding="async">
-                    </div>
-                    <div class="home-project-body">
-                        <span class="home-project-badge"><i class="fas fa-star"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
-                        <h3 class="home-project-title">{{ project.name }}</h3>
-                        <p class="home-project-desc">{{ project.tagline }}</p>
-                        <span class="home-project-cta">{{ trans(key="read_more", lang=lang) }} <i class="fas fa-arrow-right"></i></span>
-                    </div>
-                </a>
-            {% endif %}
+          </li>
         {% endfor %}
-
-        <div class="home-projects-side">
-            {% for project in home_projects %}
-                {% if project.flagship is not defined %}
-                    <a href="{{ cv.permalink | safe }}#{{ project.name | slugify }}" class="home-project-card home-project-card--compact">
-                        <div class="home-project-image">
-                            <img src="{{ get_url(path=project.screenshots | first) | safe }}" alt="{{ project.name }}" width="400" height="220" decoding="async">
-                        </div>
-                        <div class="home-project-body">
-                            <h3 class="home-project-title">{{ project.name }}</h3>
-                            <p class="home-project-desc">{{ project.tagline }}</p>
-                        </div>
-                    </a>
-                {% endif %}
-            {% endfor %}
-        </div>
+        <li>
+          <a href="{{ cv.permalink | safe }}" class="hero-cv-link">
+            <i class="fas fa-file-lines" aria-hidden="true"></i>{{ trans(key="see_my_cv", lang=lang) }}
+          </a>
+        </li>
+      </ul>
     </div>
+  </div>
 
-    <div class="home-section-footer">
-        <a href="{{ cv.permalink | safe }}#projects" class="home-section-link">{{ trans(key="view_all_projects", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
+  <figure class="hero-portrait" data-reveal>
+    <div class="portrait-frame">
+      <img src="{{ get_url(path='images/home/portrait.jpg') }}" alt="Cosme Valera" width="460" height="460" fetchpriority="high">
+      <span class="portrait-corner portrait-corner--tl" aria-hidden="true"></span>
+      <span class="portrait-corner portrait-corner--br" aria-hidden="true"></span>
     </div>
+    <figcaption>
+      <span>{{ trans(key="based_in", lang=lang) }}</span>
+      <span class="mono">40.42°N · 3.70°W</span>
+    </figcaption>
+    <svg class="hero-orbit" viewBox="0 0 400 400" aria-hidden="true">
+      <circle cx="200" cy="200" r="196" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 6"/>
+      <g class="hero-orbit-sat"><circle cx="200" cy="4" r="5"/></g>
+    </svg>
+  </figure>
 </section>
 
-<section class="home-section home-latest-posts" aria-labelledby="latest-posts-heading">
-    <div class="home-section-header">
-        <h2 id="latest-posts-heading" class="home-section-title">{{ trans(key="latest_posts", lang=lang) }}</h2>
-        <p class="home-section-desc">{{ trans(key="latest_posts_desc", lang=lang) }}</p>
-    </div>
+{# ===== Numbers ===== #}
+<section class="container stats" aria-label="Stats">
+  <dl class="stats-grid" data-reveal>
+    <div class="stat"><dt>{{ trans(key="stat_years", lang=lang) }}</dt><dd>{{ years }}<span>+</span></dd></div>
+    <div class="stat"><dt>{{ trans(key="stat_projects", lang=lang) }}</dt><dd>{{ cv.extra.projects | length }}</dd></div>
+    <div class="stat"><dt>{{ trans(key="stat_posts", lang=lang) }}</dt><dd>{{ blog_section.pages | length }}</dd></div>
+    <div class="stat"><dt>{{ trans(key="stat_books", lang=lang) }}</dt><dd>{{ readings_section.pages | length }}</dd></div>
+  </dl>
+</section>
 
-    {# Two newest technical posts first, then the newest Bitcoin/finance one:
-       a recruiter skimming the page should meet the engineering writing first. #}
-    {% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
-    {% set technical_posts = [] %}
-    {% set other_posts = [] %}
-    {% for post in blog_section.pages %}
-        {% set first_tag = "" %}
-        {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
-            {% set first_tag = post.taxonomies.tags | first | slugify %}
-        {% endif %}
-        {% if first_tag in ["bitcoin", "finance"] %}
-            {% set_global other_posts = other_posts | concat(with=post) %}
-        {% else %}
-            {% set_global technical_posts = technical_posts | concat(with=post) %}
-        {% endif %}
-    {% endfor %}
-    {% set newest_other = other_posts | slice(end=1) %}
-    {% set home_posts = technical_posts | slice(end=2) | concat(with=newest_other) %}
-    <div class="home-posts-grid">
-        {% for post in home_posts %}
-            {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
-            {% set now_numeric = now() | date(format="%Y%m%d") | int %}
-            {% if post_date_numeric > now_numeric %}
-                {% if lang == "es" %}
-                    {% set post_date_display = now() | date(format="%-d %B %Y", locale="es_ES") %}
-                {% else %}
-                    {% set post_date_display = now() | date(format="%B %-d, %Y") %}
-                {% endif %}
-                {% set post_date_iso = now() | date(format="%Y-%m-%d") %}
-            {% else %}
-                {% if lang == "es" %}
-                    {% set post_date_display = post.date | date(format="%-d %B %Y", locale="es_ES") %}
-                {% else %}
-                    {% set post_date_display = post.date | date(format="%B %-d, %Y") %}
-                {% endif %}
-                {% set post_date_iso = post.date | date(format="%Y-%m-%d") %}
-            {% endif %}
-
-            {% set has_tags = post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
-            {% set main_tag_class = "" %}
-            {% set main_tag_slug = "" %}
-            {% if has_tags %}
-                {% set main_tag_slug = post.taxonomies.tags[0] | slugify %}
-                {% if main_tag_slug in config.extra.blog_post_tags %}
-                    {% set main_tag_class = " tag-" ~ main_tag_slug %}
-                {% endif %}
-            {% endif %}
-
-            <a href="{{ post.permalink }}" class="home-post-card{{ main_tag_class }}">
-                <article>
-                    {% if post.extra.cover_image %}
-                        <div class="home-post-cover">
-                            <img src="{{ post.extra.cover_image }}" alt="Cover for {{ post.title }}" width="400" height="220" decoding="async">
-                        </div>
-                    {% endif %}
-                    <div class="home-post-body">
-                        {% if has_tags and main_tag_slug in config.extra.blog_post_tags %}
-                            <span class="home-post-tag tag-{{ main_tag_slug }}">
-                                {{ trans(key=main_tag_slug|replace(from="-", to="_"), lang=lang) }}
-                            </span>
-                        {% endif %}
-                        <h3 class="home-post-title">{{ post.title }}</h3>
-                        <p class="home-post-desc">{{ post.description }}</p>
-                        <footer class="home-post-meta">
-                            <time datetime="{{ post_date_iso }}">{{ post_date_display }}</time>
-                            <span class="home-post-reading">
-                                <i class="fas fa-clock"></i>
-                                {% if post.extra.custom_reading_time %}
-                                    {{ post.extra.custom_reading_time }}{{ trans(key="min_read", lang=lang) }}
-                                {% else %}
-                                    {{ post.reading_time | default(value="3") }}{{ trans(key="min_read", lang=lang) }}
-                                {% endif %}
-                            </span>
-                        </footer>
-                    </div>
-                </article>
-            </a>
+{# ===== Stack marquee: every skill from the CV, scrolling. The second copy
+   only exists to make the loop seamless. ===== #}
+<section class="marquee" aria-label="{{ trans(key='daily_stack', lang=lang) }}">
+  <div class="marquee-track">
+    {% for copy in [1, 2] %}
+      <ul class="marquee-list"{% if copy == 2 %} aria-hidden="true"{% endif %}>
+        {% for group in cv.extra.skills %}
+          {% for item in group.items %}<li>{{ item }}</li>{% endfor %}
         {% endfor %}
-    </div>
+      </ul>
+    {% endfor %}
+  </div>
+</section>
 
-    <div class="home-section-footer">
-        {% if lang == "es" %}
-            <a href="/es/blog/" class="home-section-link">{{ trans(key="view_all_posts", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
-        {% else %}
-            <a href="{{ get_url(path='blog') | safe }}" class="home-section-link">{{ trans(key="view_all_posts", lang=lang) }} <i class="fas fa-arrow-right"></i></a>
-        {% endif %}
-    </div>
+{# ===== Selected work: CV entries marked `home = true`. The flagship one is
+   the hero card, the rest follow. Each links to its full CV entry. ===== #}
+{% set home_projects = cv.extra.projects | filter(attribute="home", value=true) %}
+<section class="home-section container" aria-labelledby="work-heading">
+  <header class="section-head" data-reveal>
+    <p class="eyebrow"><span class="eyebrow-index">01</span>{{ trans(key="featured_projects", lang=lang) }}</p>
+    <h2 id="work-heading" class="section-title">{{ trans(key="featured_projects_desc", lang=lang) }}</h2>
+    <a href="{{ cv.permalink | safe }}#projects" class="arrow-link">{{ trans(key="view_all_projects", lang=lang) }}<span aria-hidden="true">→</span></a>
+  </header>
+
+  <div class="work-grid">
+    {% for project in home_projects %}
+      {% set is_flagship = project.flagship is defined %}
+      <a href="{{ cv.permalink | safe }}#{{ project.name | slugify }}" class="work-card{% if is_flagship %} work-card--flagship{% endif %}" data-reveal>
+        <div class="work-card-media">
+          <div class="browser-chrome" aria-hidden="true"><span></span><span></span><span></span>
+            {% if project.url is defined %}<em>{{ project.url | replace(from="https://", to="") | trim_end_matches(pat="/") }}</em>{% endif %}
+          </div>
+          <img src="{{ get_url(path=project.screenshots | first) | safe }}" alt="{{ project.name }}" width="800" height="500" decoding="async">
+        </div>
+        <div class="work-card-body">
+          <div class="work-card-top">
+            {% if is_flagship %}
+              <span class="work-badge"><i class="fas fa-star" aria-hidden="true"></i>{{ trans(key="flagship_project", lang=lang) }}</span>
+            {% endif %}
+            {% if project.period is defined %}<span class="work-period mono">{{ project.period }}</span>{% endif %}
+          </div>
+          <h3 class="work-title">{{ project.name }}</h3>
+          <p class="work-tagline">{{ project.tagline }}</p>
+          {% if project.tech is defined %}
+            <ul class="work-tech">
+              {% for item in project.tech | slice(end=4) %}<li>{{ item }}</li>{% endfor %}
+            </ul>
+          {% endif %}
+          <span class="work-cta">{{ trans(key="read_more", lang=lang) }}<span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{# ===== Writing: the two newest technical posts first, then the newest
+   Bitcoin/finance one, so a recruiter meets the engineering writing first. ===== #}
+{% set technical_posts = [] %}
+{% set other_posts = [] %}
+{% for post in blog_section.pages %}
+  {% set first_tag = "" %}
+  {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
+    {% set first_tag = post.taxonomies.tags | first | slugify %}
+  {% endif %}
+  {% if first_tag in ["bitcoin", "finance"] %}
+    {% set_global other_posts = other_posts | concat(with=post) %}
+  {% else %}
+    {% set_global technical_posts = technical_posts | concat(with=post) %}
+  {% endif %}
+{% endfor %}
+{% set home_posts = technical_posts | slice(end=2) | concat(with=other_posts | slice(end=1)) %}
+
+<section class="home-section container" aria-labelledby="writing-heading">
+  <header class="section-head" data-reveal>
+    <p class="eyebrow"><span class="eyebrow-index">02</span>{{ trans(key="latest_posts", lang=lang) }}</p>
+    <h2 id="writing-heading" class="section-title">{{ trans(key="latest_posts_desc", lang=lang) }}</h2>
+    <a href="{{ prefix }}/blog/" class="arrow-link">{{ trans(key="view_all_posts", lang=lang) }}<span aria-hidden="true">→</span></a>
+  </header>
+
+  <ol class="writing-list">
+    {% for post in home_posts %}
+      {% set main_tag = "default" %}
+      {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags[0] | slugify in known_tags %}
+        {% set main_tag = post.taxonomies.tags[0] | slugify %}
+      {% endif %}
+      <li data-reveal>
+        <a href="{{ post.permalink | safe }}" class="writing-row tag-{{ main_tag }}">
+          <span class="writing-index mono">0{{ loop.index }}</span>
+          <span class="writing-main">
+            <span class="writing-meta">
+              {% if main_tag != "default" %}<span class="tag-pill tag-{{ main_tag }}">{{ posts::tag_label(tag=main_tag, lang=lang, known_tags=known_tags) }}</span>{% endif %}
+              <time datetime="{{ posts::iso_date(date=post.date) }}">{{ posts::display_date(date=post.date, lang=lang) }}</time>
+              <span aria-hidden="true">·</span>
+              <span>{{ posts::reading_time(post=post, lang=lang) }}</span>
+            </span>
+            <span class="writing-title">{{ post.title }}</span>
+            <span class="writing-desc">{{ post.description }}</span>
+          </span>
+          {% if post.extra.cover_image %}
+            <span class="writing-thumb"><img src="{{ post.extra.cover_image }}" alt="" width="320" height="180" loading="lazy" decoding="async"></span>
+          {% endif %}
+          <span class="writing-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# ===== Bookshelf: the six most recently read books. ===== #}
+{% set shelf = readings_section.pages | sort(attribute="date") | reverse | slice(end=6) %}
+<section class="home-section container" aria-labelledby="shelf-heading">
+  <header class="section-head" data-reveal>
+    <p class="eyebrow"><span class="eyebrow-index">03</span>{{ trans(key="on_the_shelf", lang=lang) }}</p>
+    <h2 id="shelf-heading" class="section-title">{{ trans(key="on_the_shelf_desc", lang=lang) }}</h2>
+    <a href="{{ prefix }}/readings/" class="arrow-link">{{ trans(key="view_all_readings", lang=lang) }}<span aria-hidden="true">→</span></a>
+  </header>
+
+  <ul class="shelf" data-reveal>
+    {% for book in shelf %}
+      <li class="shelf-book">
+        <a href="{{ prefix }}/readings/" aria-label="{{ book.title }}, {{ book.extra.author }}">
+          <span class="shelf-cover"><img src="{{ book.extra.cover_image }}" alt="" width="200" height="300" loading="lazy" decoding="async"></span>
+          <span class="shelf-title">{{ book.title }}</span>
+          <span class="shelf-author">{{ book.extra.author }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 </section>
 {% endblock content %}

@@ -1,0 +1,79 @@
+{# Sticky top bar: brand, main navigation, language + theme switches.
+   Below md the links move into the full-screen #mobile-menu panel. #}
+{% set path = current_path | default(value="/") %}
+{% set prefix = "" %}
+{% if lang == "es" %}{% set prefix = "/es" %}{% endif %}
+
+{# The same page in the other language: strip or add the /es prefix. #}
+{% if lang == "es" %}
+  {% set other_lang_path = path | trim_start_matches(pat="/es") %}
+  {% if other_lang_path == "" %}{% set other_lang_path = "/" %}{% endif %}
+{% else %}
+  {% set other_lang_path = "/es" ~ path %}
+{% endif %}
+
+{% set nav_items = ["cv", "blog", "readings"] %}
+
+<header class="site-header" data-header>
+  <div class="container site-header-inner">
+    <a class="brand" href="{{ prefix }}/" aria-label="Cosme Valera, {{ trans(key='home', lang=lang) }}">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1.25" stroke-dasharray="2 3"/><circle cx="16" cy="16" r="9" fill="none" stroke="currentColor" stroke-width="1.25"/><circle class="brand-sat" cx="16" cy="1" r="2.5"/></svg>
+      </span>
+      <span class="brand-name">Cosme Valera</span>
+    </a>
+
+    <nav class="site-nav" aria-label="{{ trans(key='main_navigation', lang=lang) }}">
+      <ul>
+        <li>
+          <a href="{{ prefix }}/" class="nav-link"{% if path == prefix ~ "/" %} aria-current="page"{% endif %}>
+            <span class="nav-index">00</span>{{ trans(key="home", lang=lang) }}
+          </a>
+        </li>
+        {% for item in nav_items %}
+          <li>
+            <a href="{{ prefix }}/{{ item }}/" class="nav-link"{% if path is starting_with(prefix ~ "/" ~ item) %} aria-current="page"{% endif %}>
+              <span class="nav-index">0{{ loop.index }}</span>{{ trans(key=item, lang=lang) }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="header-tools">
+      <a class="lang-switch" href="{{ other_lang_path }}" hreflang="{% if lang == 'es' %}en{% else %}es{% endif %}"
+         aria-label="{{ trans(key='switch_language', lang=lang) }}"
+         title="{% if lang == 'es' %}Switch to English{% else %}Cambiar a Español{% endif %}">
+        <span{% if lang != "es" %} class="is-active"{% endif %}>EN</span>
+        <span{% if lang == "es" %} class="is-active"{% endif %}>ES</span>
+      </a>
+
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="{{ trans(key='toggle_theme', lang=lang) }}" title="{{ trans(key='toggle_theme', lang=lang) }}">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </button>
+
+      <button class="icon-btn menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu"
+              aria-label="{{ trans(key='menu', lang=lang) }}" data-label-open="{{ trans(key='menu', lang=lang) }}" data-label-close="{{ trans(key='close_menu', lang=lang) }}">
+        <span class="menu-toggle-lines" aria-hidden="true"><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+  <nav class="mobile-menu-inner container" aria-label="{{ trans(key='main_navigation', lang=lang) }}">
+    <ol class="mobile-menu-list">
+      <li><a href="{{ prefix }}/"{% if path == prefix ~ "/" %} aria-current="page"{% endif %}><span class="nav-index">00</span>{{ trans(key="home", lang=lang) }}</a></li>
+      {% for item in nav_items %}
+        <li><a href="{{ prefix }}/{{ item }}/"{% if path is starting_with(prefix ~ "/" ~ item) %} aria-current="page"{% endif %}><span class="nav-index">0{{ loop.index }}</span>{{ trans(key=item, lang=lang) }}</a></li>
+      {% endfor %}
+    </ol>
+    <div class="mobile-menu-foot">
+      {% for link in config.extra.links %}
+        <a href="{{ link.url }}" target="_blank" rel="me noopener">{{ link.title }}</a>
+      {% endfor %}
+      <a href="{{ prefix }}/sponsor/">{{ trans(key="footer_sponsor", lang=lang) }}</a>
+    </div>
+  </nav>
+</div>

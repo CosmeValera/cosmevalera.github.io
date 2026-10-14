@@ -1,10 +1,10 @@
 // Console Easter Egg
 (function() {
   var styles = {
-    banner: 'color: #4ff5f5; font-size: 14px; font-family: monospace; line-height: 1.4;',
-    welcome: 'background: linear-gradient(135deg, #0b1116, #151b21); color: #4ff5f5; font-size: 16px; padding: 12px 20px; border-radius: 8px; font-weight: bold; border: 1px solid #4ff5f5;',
-    info: 'color: #40d060; font-size: 12px;',
-    link: 'color: #4ff5f5; font-size: 12px; text-decoration: underline;'
+    banner: 'color: #c8f04a; font-size: 14px; font-family: monospace; line-height: 1.4;',
+    welcome: 'background: linear-gradient(135deg, #0b0c0a, #151713); color: #c8f04a; font-size: 16px; padding: 12px 20px; border-radius: 8px; font-weight: bold; border: 1px solid #c8f04a;',
+    info: 'color: #a9ada1; font-size: 12px;',
+    link: 'color: #c8f04a; font-size: 12px; text-decoration: underline;'
   };
 
   console.log('%c\n'

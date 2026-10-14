@@ -1,556 +1,949 @@
-@import 'main';
-@import 'utils/translucent-fab-icon';
-@import 'utils/blog-post-toc';
-@import 'utils/blog-post-theme-and-language-toggle';
+// Blog post: header, long-form prose, sticky TOC (desktop) / TOC sheet
+// (mobile), author card and prev/next navigation.
+@import 'variables';
+@import 'utils/mixins';
 
-.blog-post {
-    max-width: 700px;
-    margin: 0 1.5rem;
+// ---------------------------------------------------------------------------
+// Reading progress (scaled by js/blog-post.js)
+// ---------------------------------------------------------------------------
+.reading-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 60;
+  height: 2px;
+  pointer-events: none;
+
+  span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--tag, var(--accent)), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Header
+// ---------------------------------------------------------------------------
+.post-header {
+  display: grid;
+  justify-items: start;
+  gap: 1.25rem;
+  max-width: calc(#{$prose} + 2 * var(--gutter));
+  padding-top: clamp(2rem, 6vw, 4rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+
+  @include respond-to('xl') {
+    // Line the header up with the prose column (aside 220px + gap 4rem).
+    max-width: calc(#{$container} + 2 * var(--gutter));
+    padding-left: calc(var(--gutter) + 220px + 4rem);
+  }
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.post-title {
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.post-lead {
+  max-width: 40rem;
+  font-size: clamp(1.25rem, 2.6vw, 1.55rem);
+  line-height: 1.35;
+  color: var(--text-2);
+  text-wrap: pretty;
+}
+
+.post-byline {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  width: 100%;
+}
+
+.post-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line-2);
+}
+
+.post-byline-text {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.post-author {
+  font-weight: 500;
+}
+
+.post-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+}
+
+// ---------------------------------------------------------------------------
+// Layout: TOC aside + prose
+// ---------------------------------------------------------------------------
+.post-layout {
+  @include respond-to('xl') {
+    display: grid;
+    grid-template-columns: 220px minmax(0, $prose);
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+.post-aside {
+  display: none;
+
+  @include respond-to('xl') {
+    &:not([hidden]) {
+      display: block;
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+      max-height: calc(100vh - var(--header-h) - 4rem);
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+  }
+}
+
+.toc-title {
+  margin-bottom: 0.85rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.toc-list {
+  display: grid;
+  gap: 0.1rem;
+  border-left: 1px solid var(--line);
+
+  a {
     position: relative;
-    
+    display: block;
+    padding: 0.4rem 0 0.4rem 1rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-3);
+    transition: color 0.2s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: 0.35rem;
+      bottom: 0.35rem;
+      width: 2px;
+      border-radius: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.3s $ease-out;
+    }
+
+    @include hover {
+      color: var(--text);
+    }
+
+    &.is-active {
+      color: var(--text);
+
+      &::before {
+        transform: scaleY(1);
+      }
+    }
+  }
+}
+
+.post-content {
+  max-width: $prose;
+  margin-inline: auto;
+
+  @include respond-to('xl') {
+    margin-inline: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Prose
+// ---------------------------------------------------------------------------
+.prose {
+  font-size: 1.075rem;
+  line-height: 1.75;
+  color: var(--text-2);
+
+  > * + * {
+    margin-top: 1.35em;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  strong,
+  b {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  // Posts use raw <h4> as their section headings.
+  h2,
+  h3,
+  h4 {
+    position: relative;
+    margin-top: 2.6em;
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    scroll-margin-top: calc(var(--header-h) + 1.5rem);
+
+    + * {
+      margin-top: 0.9em;
+    }
+
+    @include hover {
+      .heading-anchor {
+        opacity: 1;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 1.85rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: clamp(1.4rem, 3vw, 1.7rem);
+  }
+
+  h5,
+  h6 {
+    margin-top: 2em;
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .heading-anchor {
+    margin-left: 0.4rem;
+    font-family: $font-mono;
+    font-size: 0.75em;
+    color: var(--accent-text);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    &:focus-visible {
+      opacity: 1;
+    }
+
+    @media (hover: none) {
+      display: none;
+    }
+  }
+
+  a:not(.heading-anchor):not(.btn) {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent-text) 60%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+
+    @include hover {
+      color: var(--accent-text);
+      text-decoration-color: currentColor;
+    }
+  }
+
+  ul,
+  ol {
+    display: grid;
+    gap: 0.45em;
+    padding-left: 1.4em;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 1.25em;
+
+    > li {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -1.05em;
+        top: 0.75em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--tag, var(--accent-text));
+        opacity: 0.8;
+      }
+    }
+  }
+
+  ol {
+    list-style: decimal;
+
+    > li::marker {
+      font-family: $font-mono;
+      font-size: 0.85em;
+      color: var(--text-3);
+    }
+  }
+
+  li > ul,
+  li > ol {
+    margin-top: 0.45em;
+  }
+
+  blockquote {
+    position: relative;
+    padding: 1.1rem 1.35rem 1.1rem 1.5rem;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    background: color-mix(in srgb, var(--tag, var(--accent)) 7%, var(--surface));
+    border-left: 3px solid var(--tag, var(--accent));
+    color: var(--text);
+
+    > * + * {
+      margin-top: 0.75em;
+    }
+  }
+
+  hr {
+    height: 1px;
+    margin-block: 3em;
+    border: 0;
+    background: linear-gradient(90deg, transparent, var(--line-2), transparent);
+  }
+
+  img {
+    border-radius: var(--radius);
+  }
+
+  // The cover lives inside the Markdown as ![blog-cover](...).
+  p:has(> img[alt='blog-cover']) {
+    margin-bottom: 2.5em;
+
+    img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  th,
+  td {
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+
+  th {
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+
+  // Inline code
+  :not(pre) > code {
+    padding: 0.12em 0.4em;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface-2);
+    font-family: $font-mono;
+    font-size: 0.86em;
+    color: var(--text);
+  }
+
+  h4 code.solid-principles-tag {
+    margin-left: 0.4rem;
+    padding: 0.2rem 0.55rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-size: 0.5em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  // Code blocks. Zola's Monokai highlighting sets an inline background; the
+  // block always sits on our own dark code surface instead.
+  pre {
+    overflow-x: auto;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--code-bg) !important;
+    font-family: $font-mono;
+    font-size: 0.86rem;
+    line-height: 1.65;
+    tab-size: 2;
+    scrollbar-width: thin;
+
+    code {
+      font-family: inherit;
+      background: none;
+    }
+  }
+}
+
+// Wrapper added by js/blog-post.js: language label + copy button.
+.code-block {
+  position: relative;
+
+  pre {
+    padding-top: 2.75rem;
+  }
+}
+
+.code-block-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.25rem;
+  padding: 0 0.5rem 0 1.1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: $font-mono;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(236, 238, 230, 0.45);
+  pointer-events: none;
+}
+
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(236, 238, 230, 0.75);
+  font: inherit;
+  letter-spacing: 0.06em;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+  }
+
+  &.is-copied {
+    border-color: rgba(200, 240, 74, 0.4);
+    color: #c8f04a;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Post-body components (HTML written inside the Markdown)
+// ---------------------------------------------------------------------------
+.prose {
+  .link-text {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .post-figure {
+    display: grid;
+    justify-items: center;
+    gap: 0.75rem;
+
+    img {
+      width: auto;
+      max-width: min(100%, 26rem);
+      height: auto;
+      border: 1px solid var(--line);
+    }
+
+    figcaption {
+      font-size: 0.85rem;
+      color: var(--text-3);
+      text-align: center;
+    }
+  }
+
+  .phone-images-row {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+
+    > a,
+    > img {
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+    }
+  }
+
+  .phone-image {
+    width: clamp(9.5rem, 30%, 13rem);
+    height: auto;
+    border: 1px solid var(--line-2);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .exchange-toggle-container {
+    padding: 0.5rem;
+    @include surface(var(--radius-lg));
+
+    > * + * {
+      margin-top: 0;
+    }
+  }
+
+  .exchange-toggle {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: var(--radius);
+    background: var(--surface-2);
+  }
+
+  .toggle-option {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-2);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+
+    @include hover {
+      color: var(--text);
+    }
+
+    &.active {
+      background: var(--bg-raised);
+      color: var(--text);
+      box-shadow: var(--shadow-sm), inset 0 0 0 1px var(--line);
+    }
+  }
+
+  .exchange-container {
+    padding: 1.25rem 1rem 0.75rem;
+  }
+
+  .exchange-content {
+    display: none;
+
+    &.active {
+      display: block;
+      animation: fade-in 0.3s ease;
+    }
+
+    > * + * {
+      margin-top: 1.1em;
+    }
+  }
+
+  .expandable-info {
+    @include surface(var(--radius));
+    overflow: hidden;
+
+    summary {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 1rem 1.25rem;
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+      transition: background-color 0.2s ease;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      i {
+        color: var(--accent-text);
+      }
+
+      &::after {
+        content: '+';
+        margin-left: auto;
+        font-family: $font-mono;
+        font-size: 1.1rem;
+        color: var(--text-3);
+        transition: transform 0.3s $ease-out;
+      }
+
+      @include hover {
+        background: var(--surface-2);
+      }
+    }
+
+    &[open] summary {
+      border-bottom: 1px solid var(--line);
+
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .expandable-content {
+    display: grid;
+    gap: 1em;
+    padding: 1.25rem;
+    animation: fade-in 0.35s ease;
+  }
+
+  .seasonal-image-container img {
+    width: 100%;
+    border: 1px solid var(--line);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Footer: author + prev/next
+// ---------------------------------------------------------------------------
+.post-footer {
+  display: grid;
+  gap: 2rem;
+  max-width: calc(#{$prose} + 2 * var(--gutter));
+  padding-top: clamp(3rem, 8vw, 5rem);
+
+  @include respond-to('xl') {
+    max-width: calc(#{$container} + 2 * var(--gutter));
+    padding-left: calc(var(--gutter) + 220px + 4rem);
+
+    > * {
+      max-width: $prose;
+    }
+  }
+}
+
+.author-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  @include surface(var(--radius-lg));
+
+  > img {
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.author-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.author-bio {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: var(--text-2);
+}
+
+.author-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+
+  li:last-child {
+    margin-left: 0.5rem;
+  }
+}
+
+.post-nav-group {
+  display: grid;
+  gap: 1rem;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.post-nav-card {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.25rem 1.4rem;
+  @include surface(var(--radius-lg));
+  transition: border-color 0.2s ease, transform 0.35s $ease-out, background-color 0.2s ease;
+
+  @include hover {
+    border-color: var(--line-2);
+    background: var(--surface-2);
+    transform: translateY(-2px);
+
+    .post-nav-label {
+      color: var(--accent-text);
+    }
+  }
+
+  &--next {
+    text-align: right;
+
     @include respond-to('md') {
-        margin: 0 auto;
+      grid-column: 2;
+    }
+  }
+}
+
+.post-nav-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  transition: color 0.2s ease;
+}
+
+.post-nav-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  @include line-clamp(2);
+}
+
+// ---------------------------------------------------------------------------
+// Mobile TOC: progress-ring button + bottom sheet
+// ---------------------------------------------------------------------------
+.toc-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--bg-raised) 85%, transparent);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-lg);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.3s $ease-spring;
+
+  &[hidden] {
+    display: none;
+  }
+
+  @include hover {
+    transform: scale(1.06);
+  }
+
+  @include respond-to('xl') {
+    display: none !important;
+  }
+
+  svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  circle {
+    fill: none;
+    stroke-width: 2;
+  }
+}
+
+.toc-fab-track {
+  stroke: var(--line);
+}
+
+.toc-fab-ring {
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-dasharray: 131.9;
+  stroke-dashoffset: 131.9;
+}
+
+.toc-fab-icon {
+  display: grid;
+  gap: 3px;
+
+  span {
+    display: block;
+    width: 14px;
+    height: 1.5px;
+    border-radius: 2px;
+    background: currentColor;
+
+    &:nth-child(2) {
+      width: 10px;
     }
 
-    // TOC desktop wrapper: Positioned at content start with JavaScript
-    .toc-desktop-wrapper {
-        @include respond-to('xl') {
-            // Position wrapper to the left of centered content (700px wide)
-            // Formula: center of viewport (50%) - half content width (350px) - TOC width (200px) - gap (30px)
-            // Top and height will be set by JavaScript to align with post-content start and match post-content height
-            position: absolute;
-            left: calc(50% - 350px - 230px);
-            width: 200px;
-        }
+    &:nth-child(3) {
+      width: 12px;
     }
+  }
+}
 
-    .back-link {
-        display: block;
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        margin-bottom: 2rem;
-        font-size: clamp(.8rem, 2vw, 1rem);
-        transition: color 0.2s;
-        min-width: fit-content;
+.toc-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
 
-        &:hover {
-            color: white;
-        }
-    }
+  &[hidden] {
+    display: none;
+  }
+}
 
-    .tags {
-        margin-bottom: 1rem;
-        display: flex;
-        gap: 0.5rem;
+.toc-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  animation: fade 0.25s ease;
+}
 
-        .tag {
-            display: inline-block;
-            padding: 0.35rem 1.25rem;
-            border-radius: 999px;
-            font-size: clamp(.725rem, 1.75vw, .875rem);
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.2s ease;
+.toc-sheet-panel {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  max-height: min(75vh, 36rem);
+  padding: 0.75rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom));
+  border: 1px solid var(--line-2);
+  border-bottom: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-lg);
+  animation: sheet-up 0.4s $ease-out;
 
-            @include tag-styling-plain;
-        }
-    }
+  &::before {
+    content: '';
+    justify-self: center;
+    width: 2.5rem;
+    height: 4px;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    background: var(--line-2);
+  }
 
-    .blog-post-title {
-        margin-top: 0.5rem;
-        margin: 1rem 0;
-        font-size: calc(min(3rem, 6vw));
-        line-height: 1.2;
-        color: white;
-        font-weight: 600;
-        text-wrap: balance;
-    }
+  .toc-list {
+    overflow-y: auto;
+    overscroll-behavior: contain;
 
-    .post-metadata {
-        display: flex;
-        justify-content: space-between;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 2rem;
-        font-size: clamp(.725rem, 1.75vw, .875rem);
-    }
-
-    .presentation-text {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: clamp(.9rem, 2.2vw, 1.1rem);
-        line-height: 1.6;
-        margin: 1.5rem 0;
-        text-wrap: balance;
-        text-align: center;
-    }
-
-    .link-text {
-        text-align: center;
-        margin-bottom: 2rem;
-        text-wrap: balance;
-        color: $accent-color;
-        border-bottom: 2px solid transparent;
-        transition: border-bottom 0.2s ease;
-        
-        &:hover {
-            border-bottom: 1px solid $accent-color;
-        }
-    }
-
-    //// Images ////
-    .seasonal-image-container img {
-        max-width: 100%;
-        text-align: center;
-        margin: 0 0 1rem;
-        border-radius: 20px;
-    }
-
-    p:has(img[alt=blog-cover]) {
-        text-align: center;
-
-        img[alt=blog-cover] {
-            max-width: 100%;
-            margin: 1rem 0;
-            border-radius: 20px;
-        }
-    }
-
-    .post-figure {
-        max-width: 560px;
-        margin: 2rem auto;
-        text-align: center;
-
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-        }
-
-        figcaption {
-            margin-top: 0.75rem;
-            color: rgba($text-color, 0.72);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-    }
-
-    .phone-images-row {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        margin: 2rem 0;
-        flex-wrap: wrap;
-
-        @include respond-to('sm') {
-            gap: 0.5rem;
-        }
-
-        a {
-            display: block;
-            flex-shrink: 0;
-            width: 80%;
-            border-radius: 20px;
-            text-decoration: none !important;
-
-            @include respond-to('sm') {
-                width: 31%;
-            }
-
-            img.phone-image {
-                width: 100%;
-                cursor: pointer;
-
-                &:hover {
-                    transform: translateY(-8px);
-                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-                }
-            }
-        }
-
-        img.phone-image {
-            flex-shrink: 0;
-            border-radius: 20px;
-            width: 80%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            
-            @include respond-to('sm') {
-                width: 31%;
-            }
-        }
-    }
-    //// END: Images ////
-
-    // Exchange toggle system
-    .exchange-toggle-container {
-        margin: 2rem 0;
-        
-        .exchange-toggle {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            background: rgba($tertiary-bg, 0.3);
-            border-radius: 12px;
-            padding: 0.5rem;
-            border: 1px solid rgba($accent-color, 0.2);
-            
-            .toggle-option {
-                flex: 1;
-                padding: 0.75rem 1.5rem;
-                text-align: center;
-                cursor: pointer;
-                border-radius: 8px;
-                transition: all 0.3s ease;
-                font-weight: 500;
-                font-size: clamp(0.9rem, 2.2vw, 1rem);
-                color: rgba(255, 255, 255, 0.7);
-                position: relative;
-                
-                &.active {
-                    background: linear-gradient(145deg, rgba($accent-color, 0.2), rgba($active-color, 0.1));
-                    color: $accent-color;
-                    border: 1px solid rgba($accent-color, 0.3);
-                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                }
-                
-                &:hover:not(.active) {
-                    color: rgba(255, 255, 255, 0.9);
-                    background: rgba($tertiary-bg, 0.2);
-                }
-            }
-        }
-
-        .exchange-container {
-            .exchange-content {
-                display: none;
-                
-                &.active {
-                    display: block;
-                }
-            }
-        }
-    }
-
-    // Expandable content system (details/summary)
-    .expandable-info {
-        margin: 2rem 0;
-        background: rgba($tertiary-bg, 0.4);
-        border: 1px solid rgba($accent-color, 0.3);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-        &:hover {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px);
-        }
-
-        summary {
-            padding: 1.1rem 1.5rem;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: 700;
-            color: $accent-color;
-            background: linear-gradient(90deg, rgba($tertiary-bg, 0.1), rgba($tertiary-bg, 0.3));
-            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
-            user-select: none;
-            
-            &::-webkit-details-marker {
-                display: none;
-            }
-
-            &:hover {
-                background: linear-gradient(90deg, rgba($tertiary-bg, 0.2), rgba($tertiary-bg, 0.4));
-            }
-
-            &::after {
-                content: '\f078'; // fa-chevron-down
-                font-family: 'Font Awesome 6 Free';
-                font-weight: 900;
-                font-size: 0.9rem;
-                transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                color: rgba($accent-color, 0.7);
-            }
-            
-            i {
-                margin-right: 0.75rem;
-                font-size: 1rem;
-            }
-        }
-
-        &[open] {
-            summary {
-                border-bottom: 1px solid rgba($accent-color, 0.2);
-                margin-bottom: 0.5rem;
-                &::after {
-                    transform: rotate(180deg);
-                }
-            }
-        }
-
-        .expandable-content {
-            padding: 1.5rem;
-            animation: slideDown 0.4s ease-out;
-            
-            p:last-child {
-                margin-bottom: 0;
-            }
-
-            iframe {
-                border-radius: 12px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    }
-
-    // Common headings styling
-    h1, h2, h3, h4 {
-        margin-bottom: 1rem;
-    }
-    
-    h1 {
-        font-weight: bold;
-    }
-    
     a {
-        color: $accent-color;
-        text-wrap: balance;
-        text-decoration: underline;
-        text-decoration-color: transparent;
-        text-underline-offset: 3px;
-        transition: text-decoration-color 0.15s ease;
-    
-        &:hover {
-            text-decoration-color: $accent-color;
-        }
+      padding-block: 0.6rem;
+      font-size: 0.95rem;
     }
+  }
+}
 
-    ///////////////
-    //   CODE    //
-    ///////////////
-    // MULTIPLE LINE CODE (CSS Selector: pre -> code)
-    pre {
-        border: 1px solid $tertiary-bg;
-        border-radius: 1rem;
-        padding: 1rem;
-        margin: 10px 0;
-        background-color: rgba($tertiary-bg, 0.8);
-        color: $text-color;
-        overflow-x: auto;
-    
-        // Ensures code inside inherits proper styling
-        code {
-            font-style: italic;
-            white-space: pre-wrap; // Allows long lines to wrap
-        }
-    }
+.toc-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
 
-    // INLINE CODE (CSS Selector: code)
-    :not(pre) > code {
-        color: $accent-color;
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 0.2rem 0.4rem;
-        border-radius: 0.25rem;
-        font-family: 'Courier New', Courier, monospace;
+  .toc-title {
+    margin: 0;
+  }
+}
 
-        &.solid-principles-tag {
-            font-size: 0.8rem;
-        }
-    }
-    
-    // Code executed when using this: '>'
-    blockquote {
-        border-left: 6px solid $accent-color;
-        padding-left: 1rem;
-        font-style: italic;
-        opacity: 0.9;
-    }
-    ///////////////
-    // END: CODE //
-    ///////////////
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
 
-    ////////////////////////////
-    //   RELATED-CONTAINER    //
-    ////////////////////////////
-    .related-container {
-        margin: 1rem auto;
-        display: flex;
-        text-align: center;
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
 
-        .nav-normal, .nav-series {
-            display: contents;
-        }
-    
-        .link {
-            flex: 1;
-            padding: 1rem;
-            box-sizing: border-box;
-            // Remove width: 50% since flex: 1 already handles the width distribution
-            
-            display: flex;
-            flex-direction: column;
-            justify-content: center; // Centers content vertically
-            align-items: center; // Centers content horizontally
-            // Remove flex-wrap: wrap since it might cause unexpected behavior
-            
-            span {
-                font-style: italic;
-                font-size: 1rem;
-            }
-        }
-    }
-
-    // Add spacing for horizontal rules
-    hr {
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        margin: 2rem 0;
-
-        &.footer-rule {
-            margin-top: 4rem;
-            background-color: $tertiary-bg;
-            border: 2px $accent-color dashed;
-            opacity: 0.35;
-        }
-        &.footer-rule-2 {
-            background-color: $tertiary-bg;
-            border: 2px $accent-color dashed;
-            opacity: 0.35;
-        }
-    }
-    ////////////////////////////
-    // END: RELATED-CONTAINER //
-    ////////////////////////////
-
-    // Bright theme styles
-    body.bright-theme & {
-        // Global links inside post content
-        a {
-            color: $accent-color-bright;
-
-            &:hover {
-                text-decoration-color: $accent-color-bright;
-            }
-        }
-
-        // Back link at top
-        .back-link {
-            color: rgba($text-color-bright, 0.7);
-
-            &:hover {
-                color: $text-color-bright;
-            }
-        }
-
-        // Main post title
-        .blog-post-title {
-            color: $text-color-bright;
-        }
-
-        // Metadata row
-        .post-metadata {
-            color: rgba($text-color-bright, 0.7);
-        }
-
-        // Intro / presentation text
-        .presentation-text {
-            color: rgba($text-color-bright, 0.9);
-        }
-
-        pre {
-            border: 1px solid $tertiary-bg-bright;
-            background-color: rgba($tertiary-bg-bright, 0.8);
-            color: $text-color-bright;
-        }
-
-        :not(pre) > code {
-            color: $accent-color-bright;
-            background-color: rgba($accent-color-bright, 0.1);
-        }
-
-        blockquote {
-            border-left: 6px solid $accent-color-bright;
-        }
-
-        .post-figure figcaption {
-            color: rgba($text-color-bright, 0.72);
-        }
-
-        hr {
-            border: 1px solid rgba($text-color-bright, 0.2);
-
-            &.footer-rule,
-            &.footer-rule-2 {
-                background-color: $tertiary-bg-bright;
-                border: 2px $accent-color-bright dashed;
-            }
-        }
-
-        .exchange-toggle-container {
-            .exchange-toggle {
-                background: rgba(255, 255, 255, 0.95);
-                border: 1px solid rgba($accent-color-bright, 0.3);
-                box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-
-                .toggle-option {
-                    color: rgba($text-color-bright, 0.85);
-                    background: transparent;
-
-                    &.active {
-                        background: linear-gradient(145deg, rgba($accent-color-bright, 0.12), rgba($active-color-bright, 0.09));
-                        color: $accent-color-bright;
-                        border: 1px solid rgba($accent-color-bright, 0.14);
-                        box-shadow: 0 2px 8px rgba($accent-color-bright, 0.06);
-                    }
-
-                    &:hover:not(.active) {
-                        color: $text-color-bright;
-                        background: rgba(255,255,255,0.6);
-                    }
-                }
-            }
-        }
-
-        .expandable-info {
-            background: rgba($tertiary-bg-bright, 0.5);
-            border-color: rgba($accent-color-bright, 0.3);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            
-            &:hover {
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            }
-            
-            summary {
-                color: $accent-color-bright;
-                background: linear-gradient(90deg, rgba($tertiary-bg-bright, 0.1), rgba($tertiary-bg-bright, 0.3));
-                
-                &::after {
-                    color: rgba($accent-color-bright, 0.7);
-                }
-                
-                &:hover {
-                    background: linear-gradient(90deg, rgba($tertiary-bg-bright, 0.2), rgba($tertiary-bg-bright, 0.4));
-                }
-            }
-            
-            &[open] summary {
-                border-bottom-color: rgba($accent-color-bright, 0.15);
-            }
-        }
-    }
+@media print {
+  .reading-progress,
+  .toc-fab,
+  .toc-sheet,
+  .post-aside,
+  .post-nav,
+  .copy-btn {
+    display: none !important;
+  }
 }

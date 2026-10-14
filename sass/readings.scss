@@ -1,170 +1,342 @@
+// Readings: stats, search and the book cards.
 @import 'variables';
 @import 'utils/mixins';
-@import 'components/reading-card';
-@import 'utils/readings-actions-menu';
 
-//////////////////////
-////// Readings //////
-.readings {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    width: 100%;
-
-    .reading-library-icon {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        
-        svg {
-            width: 3rem;
-            height: 3rem;
-            color: $accent-color;
-            opacity: 0.8;
-        }
-    }
-
-    h1 {
-        text-align: center;
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: $text-color;
-        letter-spacing: -0.02em;
-    }
-
-    .readings-intro {
-        max-width: 75vw;
-        text-wrap: balance;
-        margin: 0 auto 2rem;
-        text-align: center;
-        color: $text-color;
-        opacity: 0.9;
-        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-        line-height: 1.6;
-        font-style: italic;
-    }
-
-    .readings-meta {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        margin-bottom: 3rem;
-        flex-wrap: wrap;
-
-        .book-counter {
-            font-size: 0.95rem;
-            color: $accent-color;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-
-            .counter-number {
-                font-weight: 700;
-                font-size: 1.1rem;
-            }
-        }
-
-        .readings-search {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-
-            .search-icon {
-                position: absolute;
-                left: 1rem;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 1.2rem;
-                height: 1.2rem;
-                color: $text-color;
-                opacity: 0.5;
-                pointer-events: none;
-            }
-
-            input {
-                width: 100%;
-                padding: 0.75rem 1rem 0.75rem 2.75rem;
-                border-radius: 999px;
-                border: 1px solid rgba($accent-color, 0.2);
-                background: rgba($secondary-bg, 0.5);
-                color: $text-color;
-                font-size: 0.9rem;
-                transition: all 0.3s ease;
-
-                &::placeholder {
-                    color: rgba($text-color, 0.5);
-                }
-
-                &:focus {
-                    outline: none;
-                    border-color: rgba($accent-color, 0.5);
-                    background: rgba($secondary-bg, 0.7);
-                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                }
-            }
-        }
-    }
-
-    // Bright theme
-    body.bright-theme & {
-        h1 {
-            color: $text-color-bright;
-        }
-
-        .reading-library-icon svg {
-            color: $accent-color-bright;
-        }
-
-        .readings-intro {
-            color: $text-color-bright;
-            font-weight: 500;
-        }
-
-        .readings-meta {
-            .book-counter {
-                color: $accent-color-bright;
-            }
-
-            .readings-search {
-                .search-icon {
-                    color: $text-color-bright;
-                }
-
-                input {
-                    border-color: rgba($accent-color-bright, 0.3);
-                    background: rgba($secondary-bg-bright, 0.5);
-                    color: $text-color-bright;
-
-                    &::placeholder {
-                        color: rgba($text-color-bright, 0.5);
-                    }
-
-                    &:focus {
-                        border-color: rgba($accent-color-bright, 0.6);
-                        background: rgba($secondary-bg-bright, 0.8);
-                    }
-                }
-            }
-        }
-    }
-
-    .readings-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin: 0 clamp(.5rem, 2vw, 10rem);
-        max-width: 900px;
-        
-        @include respond-to('sm') {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
-        @include respond-to('md') {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
+.readings-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
 }
-////// END: Readings //////
-///////////////////////////
+
+.readings-stats {
+  display: flex;
+  gap: 2.5rem;
+
+  > div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.2rem;
+  }
+
+  dt {
+    @include mono-label(0.64rem);
+    color: var(--text-3);
+  }
+
+  dd {
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1;
+
+    span {
+      font-size: 0.6em;
+      color: var(--text-3);
+    }
+  }
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 24rem;
+  min-width: min(100%, 16rem);
+
+  svg {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-3);
+    pointer-events: none;
+  }
+
+  kbd {
+    position: absolute;
+    right: 0.9rem;
+    pointer-events: none;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.8rem 3rem 0.8rem 2.75rem;
+    @include surface(999px);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::placeholder {
+      color: var(--text-3);
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-text);
+      box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+  }
+}
+
+.book-grid {
+  display: grid;
+  gap: 1.25rem;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('xl') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  align-items: start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  @include surface(var(--radius-lg));
+  transition: border-color 0.3s ease, transform 0.4s $ease-out;
+
+  @include respond-to('sm') {
+    grid-template-columns: 8.5rem 1fr;
+    gap: 1.5rem;
+  }
+
+  @include hover {
+    border-color: var(--line-2);
+
+    .book-cover-3d {
+      transform: perspective(900px) rotateY(-18deg) translateX(4px);
+      box-shadow: 18px 14px 28px -12px rgba(0, 0, 0, 0.65);
+    }
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.book-cover {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.book-cover-3d {
+  position: relative;
+  border-radius: 3px 8px 8px 3px;
+  overflow: hidden;
+  box-shadow: 6px 8px 20px -10px rgba(0, 0, 0, 0.6);
+  transform: perspective(900px);
+  transform-origin: left center;
+  transition: transform 0.6s $ease-out, box-shadow 0.6s ease;
+
+  img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0, rgba(255, 255, 255, 0.2) 3%, transparent 8%, transparent 90%, rgba(0, 0, 0, 0.15));
+    pointer-events: none;
+  }
+}
+
+.book-date {
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.book-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.book-title {
+  font-size: 1.15rem;
+  letter-spacing: -0.025em;
+}
+
+.book-author {
+  font-size: 0.85rem;
+  color: var(--text-3);
+}
+
+.book-desc {
+  font-size: 0.9rem;
+  color: var(--text-2);
+}
+
+// Stars + tooltip
+.book-rating {
+  position: relative;
+  align-self: flex-start;
+}
+
+.book-stars {
+  display: inline-flex;
+  gap: 2px;
+  padding: 0.2rem 0;
+  border-radius: 4px;
+  cursor: help;
+
+  svg {
+    fill: var(--surface-3);
+
+    &.is-on {
+      fill: #f2b631;
+    }
+  }
+
+  &:hover + .rating-tooltip,
+  &:focus-visible + .rating-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.rating-tooltip {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  z-index: 10;
+  display: grid;
+  gap: 0.4rem;
+  width: max-content;
+  max-width: min(18rem, 70vw);
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.85rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.rating-tooltip-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.rating-tooltip-score {
+  color: #f2b631;
+  font-size: 0.8rem;
+}
+
+.rating-tooltip-text {
+  color: var(--text-2);
+}
+
+.rating-tooltip-scale {
+  font-size: 0.75rem;
+  color: var(--text-3);
+}
+
+// Key insights
+.book-insights {
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--line);
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.85rem;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-2);
+    transition: color 0.2s ease;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    svg {
+      margin-left: auto;
+      transition: transform 0.3s $ease-out;
+    }
+
+    @include hover {
+      color: var(--text);
+    }
+  }
+
+  &[open] summary svg {
+    transform: rotate(180deg);
+  }
+
+  ol {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 0.85rem;
+    counter-reset: insight;
+    animation: insights-in 0.4s $ease-out;
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.75rem;
+    font-size: 0.88rem;
+    color: var(--text-2);
+    counter-increment: insight;
+
+    &::before {
+      content: counter(insight, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      font-family: $font-mono;
+      font-size: 0.66rem;
+      color: var(--accent-text);
+    }
+  }
+}
+
+.book-insights-count {
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.68rem;
+  color: var(--text-3);
+}
+
+@keyframes insights-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.empty-state {
+  padding: 4rem 1rem;
+  text-align: center;
+  font-size: 1.75rem;
+  color: var(--text-3);
+}

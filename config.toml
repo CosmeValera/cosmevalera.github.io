@@ -28,6 +28,7 @@ nav = [
 ]
 
 favicon = "favicon.jpg"
+email = "cosmevalerareales@gmail.com"
 
 default_language = "en"
 
@@ -75,7 +76,7 @@ see_my_cv = "Ver mi CV"
 
 # Blog
 blog_intro = "Escribo sobre temas que encuentro interesantes y merecen ser compartidos."
-back_to_posts = "← Todas las publicaciones"
+back_to_posts = "Todas las publicaciones"
 go_to_series = "Series"
 filter_blog_posts = "Filtrar publicaciones"
 hover_to_preview = "Pasa ratón encima"
@@ -142,7 +143,7 @@ cv_month = "mes"
 cv_months = "meses"
 
 # Tags pages
-see_all_tags = "← Ver todas las etiquetas"
+see_all_tags = "Ver todas las etiquetas"
 posts_tagged = "Publicaciones sobre"
 highly_recommended = "Lectura muy recomendada"
 great_for_beginners = "Ideal para principiantes"
@@ -168,6 +169,49 @@ footer_sponsor = "Colabora"
 
 # Language
 switch_language = "Cambiar idioma"
+
+# Header, footer and shared chrome
+menu = "Menú"
+close_menu = "Cerrar menú"
+toggle_theme = "Cambiar tema"
+skip_to_content = "Saltar al contenido"
+main_navigation = "Navegación principal"
+footer_cta_label = "Contacto"
+footer_cta_title = "¿Construimos algo"
+footer_cta_title_em = "que merezca la pena?"
+footer_cta_desc = "Abierto a buenas conversaciones sobre software, producto y equipos. Escríbeme."
+footer_sitemap = "Mapa"
+footer_elsewhere = "En la red"
+footer_support = "Apoyo"
+footer_built = "Hecho a mano con Zola, JS puro y SCSS."
+back_to_top = "Volver arriba"
+currently = "Ahora"
+
+# Home (redesign)
+based_in = "Desde Madrid, España"
+stat_years = "años construyendo software"
+stat_projects = "proyectos propios"
+stat_posts = "artículos escritos"
+stat_books = "libros reseñados"
+daily_stack = "Stack diario"
+on_the_shelf = "En la estantería"
+on_the_shelf_desc = "Los libros que más me han marcado últimamente."
+view_all_readings = "Ver todas las lecturas"
+
+# Blog and posts (redesign)
+all_posts = "Todas"
+posts_label = "publicaciones"
+copy_code = "Copiar"
+copied = "Copiado"
+written_by = "Escrito por"
+author_bio = "Desarrollador de software en GMV, en el programa Galileo. Escribo sobre lo que aprendo construyendo: arquitectura, buenas prácticas, IA y Bitcoin."
+chapters = "capítulos"
+start_series = "Empezar la serie"
+link_to_section = "Enlace a esta sección"
+
+# Readings (redesign)
+avg_rating = "valoración media"
+no_results = "Ningún libro coincide con tu búsqueda."
 
 # Default language (English) translations
 [translations]
@@ -204,7 +248,7 @@ view_all_projects = "View all projects"
 see_my_cv = "See my CV"
 # Blog
 blog_intro = "I enjoy writing about topics that I find exciting and are worth sharing."
-back_to_posts = "← Back to all posts"
+back_to_posts = "Back to all posts"
 go_to_series = "Series"
 filter_blog_posts = "Filter Blog Posts"
 hover_to_preview = "Hover to preview"
@@ -269,7 +313,7 @@ cv_month = "mo"
 cv_months = "mos"
 
 # Tags pages
-see_all_tags = "← See all tags"
+see_all_tags = "See all tags"
 posts_tagged = "Posts tagged"
 highly_recommended = "Highly recommended read"
 great_for_beginners = "Great for beginners"
@@ -293,3 +337,46 @@ support_bitcoin_desc = "By using Lightning, you're helping build the future of d
 footer_sponsor = "Sponsor"
 # Language
 switch_language = "Switch language"
+
+# Header, footer and shared chrome
+menu = "Menu"
+close_menu = "Close menu"
+toggle_theme = "Toggle theme"
+skip_to_content = "Skip to content"
+main_navigation = "Main navigation"
+footer_cta_label = "Contact"
+footer_cta_title = "Let's build something"
+footer_cta_title_em = "worth keeping."
+footer_cta_desc = "Open to good conversations about software, product and teams. Drop me a line."
+footer_sitemap = "Sitemap"
+footer_elsewhere = "Elsewhere"
+footer_support = "Support"
+footer_built = "Handmade with Zola, vanilla JS and SCSS."
+back_to_top = "Back to top"
+currently = "Currently"
+
+# Home (redesign)
+based_in = "Based in Madrid, Spain"
+stat_years = "years building software"
+stat_projects = "side projects shipped"
+stat_posts = "posts written"
+stat_books = "books reviewed"
+daily_stack = "Daily stack"
+on_the_shelf = "On the shelf"
+on_the_shelf_desc = "The books that left the deepest marks lately."
+view_all_readings = "View all readings"
+
+# Blog and posts (redesign)
+all_posts = "All"
+posts_label = "posts"
+copy_code = "Copy"
+copied = "Copied"
+written_by = "Written by"
+author_bio = "Software developer at GMV on the Galileo programme. I write about what I learn while building: architecture, good practices, AI and Bitcoin."
+chapters = "chapters"
+start_series = "Start the series"
+link_to_section = "Link to this section"
+
+# Readings (redesign)
+avg_rating = "average rating"
+no_results = "No books match your search."

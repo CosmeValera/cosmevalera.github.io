@@ -4,67 +4,58 @@
   {{ trans(key="sponsor", lang=lang) }} | Cosme
 {% endblock %}
 
+{% block body_class %}page-sponsor{% endblock %}
+
 {% block styles %}
-    <link rel="stylesheet" href="{{ get_url(path="sponsor.css") | safe }}">
+  <link rel="stylesheet" href="{{ get_url(path='sponsor.css') | safe }}">
 {% endblock %}
 
 {% block content %}
-<div class="sponsor">
-    <div id="sponsor-inner">
-        <h1 id="sponsor-title">{{ trans(key="become_sponsor", lang=lang) }}</h1>
-        <section id="section-contribution">
-            <!-- Lightning Network Donations Section -->
-            <div class="contribution">
-                <h2 class="contribution-title">
-                    <i class="fa-solid fa-bolt"></i>&nbsp;&nbsp; {{ trans(key="lightning_donation", lang=lang) }}
-                </h2>
-                <p class="contribution-subtitle">
-                    {{ trans(key="support_work", lang=lang) }}
-                </p>
-                <p class="contribution-description">
-                    {{ trans(key="lightning_description", lang=lang) }}
-                </p>
-                <div class="donation-options">
-                    <a
-                    class="btn-donate lightning"
-                    target="_blank"
-                    href="https://getalby.com/p/cosmevalerareales"
-                    title="Bitcoin Lightning Network"
-                    >
-                        <i class="fa-solid fa-bolt"></i> {{ trans(key="send_bitcoin", lang=lang) }}
-                    </a>
-                </div>
-            </div>
-        </section>
+<header class="page-head container">
+  <p class="eyebrow" data-reveal><span class="eyebrow-index">⚡</span>{{ trans(key="sponsor", lang=lang) }}</p>
+  <h1 class="page-title" data-reveal>{{ trans(key="become_sponsor", lang=lang) }}</h1>
+  <p class="page-lead" data-reveal>{{ trans(key="support_work", lang=lang) }}</p>
+</header>
 
-        <section id="section-reasons-sponsor">
-            <h2 class="sponsor-title">{{ trans(key="why_sponsor", lang=lang) }}</h2>
-            <div class="sponsor-features">
-                <div class="sponsor-feature">
-                    <h1>💓</h1>
-                    <h3 class="feature-title">{{ trans(key="support_opensource", lang=lang) }}</h3>
-                    <p>
-                    {{ trans(key="help_maintain", lang=lang) }}
-                    <a target="_blank" href="https://rabbithole.cosmevalera.dev/">RabbitHole</a>
-                    {{ trans(key="and", lang=lang) }} <a target="_blank" href="https://devopslab.cosmevalera.dev/">DevOpsLab</a>.
-                    </p>
-                </div>
-                <div class="sponsor-feature">
-                    <h1>⭐</h1>
-                    <h3 class="feature-title">{{ trans(key="direct_access", lang=lang) }}</h3>
-                    <p>
-                    {{ trans(key="direct_access_desc", lang=lang) }}
-                    </p>
-                </div>
-                <div class="sponsor-feature">
-                    <h1>⚡</h1>
-                    <h3 class="feature-title">{{ trans(key="support_bitcoin", lang=lang) }}</h3>
-                    <p>
-                    {{ trans(key="support_bitcoin_desc", lang=lang) }}
-                    </p>
-                </div>
-            </div>
-        </section>
+<div class="container sponsor">
+  <section class="lightning-card" aria-labelledby="lightning-title" data-reveal>
+    <div class="lightning-bolt" aria-hidden="true">
+      <svg viewBox="0 0 64 64" width="64" height="64"><path d="M36 4 12 36h18l-4 24 26-34H34z" fill="currentColor"/></svg>
     </div>
+    <div class="lightning-body">
+      <h2 id="lightning-title" class="lightning-title">{{ trans(key="lightning_donation", lang=lang) }}</h2>
+      <p class="lightning-desc">{{ trans(key="lightning_description", lang=lang) }}</p>
+      <a class="btn btn-primary btn-lg" target="_blank" rel="noopener" href="https://getalby.com/p/cosmevalerareales" title="Bitcoin Lightning Network">
+        <i class="fa-solid fa-bolt" aria-hidden="true"></i>{{ trans(key="send_bitcoin", lang=lang) }}
+      </a>
+    </div>
+  </section>
+
+  <section class="reasons" aria-labelledby="reasons-title">
+    <header class="section-head" data-reveal>
+      <h2 id="reasons-title" class="section-title">{{ trans(key="why_sponsor", lang=lang) }}</h2>
+    </header>
+    <div class="reason-grid">
+      <article class="reason" data-reveal>
+        <span class="reason-icon" aria-hidden="true"><i class="fas fa-code-branch"></i></span>
+        <h3 class="reason-title">{{ trans(key="support_opensource", lang=lang) }}</h3>
+        <p>
+          {{ trans(key="help_maintain", lang=lang) }}
+          <a target="_blank" rel="noopener" href="https://rabbithole.cosmevalera.dev/">RabbitHole</a>
+          {{ trans(key="and", lang=lang) }} <a target="_blank" rel="noopener" href="https://devopslab.cosmevalera.dev/">DevOpsLab</a>.
+        </p>
+      </article>
+      <article class="reason" data-reveal>
+        <span class="reason-icon" aria-hidden="true"><i class="fas fa-comments"></i></span>
+        <h3 class="reason-title">{{ trans(key="direct_access", lang=lang) }}</h3>
+        <p>{{ trans(key="direct_access_desc", lang=lang) }}</p>
+      </article>
+      <article class="reason" data-reveal>
+        <span class="reason-icon" aria-hidden="true"><i class="fab fa-bitcoin"></i></span>
+        <h3 class="reason-title">{{ trans(key="support_bitcoin", lang=lang) }}</h3>
+        <p>{{ trans(key="support_bitcoin_desc", lang=lang) }}</p>
+      </article>
+    </div>
+  </section>
 </div>
 {% endblock content %}

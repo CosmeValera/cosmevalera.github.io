@@ -1,99 +1,44 @@
-@import 'main';
+// All tags, as a cloud of pills with post counts.
+@import 'variables';
+@import 'utils/mixins';
 
-//////////////////
-////// Tags //////
-.tag-list {
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-
-    .back-link {
-        display: block;
-        color: rgba(255, 255, 255, 0.7);
-        text-decoration: none;
-        margin: 0 0 2rem 1.5rem;
-        font-size: clamp(.8rem, 2vw, 1rem);
-        transition: color 0.2s;
-        min-width: fit-content;
-
-        &:hover {
-            color: white;
-        }
-    }
-
-    h1.tags-list-title {
-        color: white;
-        margin-bottom: 1rem;
-        font-size: clamp(1.75rem, 6vw, 3rem);
-        font-weight: 600;
-        text-align: left;
-        margin-left: 2rem;
-    }
-
-    .tags-description {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-        line-height: 1.5;
-        margin-bottom: 2rem;
-        text-align: left;
-        margin-left: 2rem;
-    }
-
-    .tags-cloud {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 2rem 2rem 2rem;
-        gap: 0.75rem;
-        justify-content: flex-start;
-
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 1.25rem;
-            border-radius: 999px;
-            font-size: clamp(.725rem, 1.75vw, .875rem);
-            font-weight: 500;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.2s ease;
-            
-            @include tag-styling-plain;
-
-            .tag-count {
-                background: rgba(255, 255, 255, 0.2);
-                color: white;
-                padding: 0.1rem 0.5rem;
-                border-radius: 999px;
-                font-size: 0.75rem;
-            }
-
-            &:hover {
-                transform: translateY(-2px);
-            }
-        }
-    }
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
-// Bright theme styles for tag list page
-body.bright-theme {
-    .tag-list {
-        .back-link {
-            color: rgba($text-color-bright, 0.7);
+.tag-cloud-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 0.85rem 0.75rem 1.1rem;
+  @include surface(999px);
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: transform 0.3s $ease-out, border-color 0.2s ease, background-color 0.2s ease;
 
-            &:hover {
-                color: $text-color-bright;
-            }
-        }
-
-        h1.tags-list-title {
-            color: $text-color-bright;
-        }
-
-        .tags-description {
-            color: rgba($text-color-bright, 0.85);
-        }
-    }
+  @include hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--tag) 50%, transparent);
+    background: color-mix(in srgb, var(--tag) 10%, var(--surface));
+  }
 }
-////// END: Tags //////
-///////////////////////
+
+.tag-cloud-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--tag);
+  box-shadow: 0 0 10px var(--tag);
+}
+
+.tag-cloud-count {
+  min-width: 1.8rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--text-2);
+}

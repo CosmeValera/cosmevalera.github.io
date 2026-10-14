@@ -1,75 +1,44 @@
-// Variables
-$primary-bg: #0b1116; // Dark Blue/Black
-$secondary-bg: #151b21; // Slightly lighter for menu/cards
-$tertiary-bg: #1f2933;
+// Design tokens that Sass needs at compile time. Colours live as CSS custom
+// properties in _base.scss so the light/dark themes can swap them at runtime;
+// only values used in media queries, maps or math stay here.
 
-$menu-item-bg: #151b21;
+// Type
+$font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+$font-serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+$font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
-$text-color: #ffffff;
-$accent-color: #4ff5f5; // Cyan/Teal glow
-$active-color: #4ff5f5;
-$active-color-tealish: #40d060;
-
-// Dark theme variables (Default is dark now)
-$primary-bg-dark: #0b1116;
-$text-color-dark: #ffffff;
-$accent-color-dark: #4ff5f5;
-
-// Bright theme variables
-$primary-bg-bright: #f0f8ff; // Light Blueish White
-$secondary-bg-bright: #ffffff;
-$tertiary-bg-bright: #e6f7f8;
-$menu-item-bg-bright: #ffffff;
-$text-color-bright: #1a3a3a;
-$accent-color-bright: #00b8b8; // Darker teal for contrast
-$active-color-bright: #00b8b8;
-
-////////////////
-// Tag colors //
-$default-tag-plain: #5b5b5b;
-$default-tag-gradient: linear-gradient(145deg, #666, rgba(#444, 0.45));
-
-$recommended-tag-plain: #2D8295;
-$recommended-tag-gradient: linear-gradient(145deg, #2D8295, rgba(#2D8295, 0.45));
-
-$for-beginners-tag-plain: #C6317B;
-$for-beginners-tag-gradient: linear-gradient(145deg, #C6317B, rgba(#C6317B, 0.45));
-
-$frontend-tag-plain: #6644C4;
-$frontend-tag-gradient: linear-gradient(145deg, #3c2fb3, rgba(#9a5dd4, 0.45));
-
-$backend-tag-plain: #2d9b6b;
-$backend-tag-gradient: linear-gradient(145deg, #398b4c, rgba(#18a7ca, 0.45));
-
-$architecture-tag-plain: #A5439F;
-$architecture-tag-gradient: linear-gradient(145deg, #7b3eb0, rgba(#f94d7e, 0.5));
-
-
-$finance-tag-plain: #82a819;
-$finance-tag-gradient: linear-gradient(145deg, #af8720, rgba(#1ff108, 0.45));
-
-$bitcoin-tag-plain: #f7931a;
-$bitcoin-tag-gradient: linear-gradient(145deg, #f7931a, rgba(#f7931a, 0.45));
-
-$best-practices-tag-plain: #0ea5e9;
-$best-practices-tag-gradient: linear-gradient(145deg, #0284c7, rgba(#38bdf8, 0.45));
-
-$testing-tag-plain: #e11d48;
-$testing-tag-gradient: linear-gradient(145deg, #be123c, rgba(#fb7185, 0.45));
-// END: Tag colors //
-/////////////////////
-
-// Fonts
-$sans-serif: 'Inter', Montserrat, 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
-
-@mixin transition($args...) {
-  -webkit-transition: $args;
-     -moz-transition: $args;
-          transition: $args;
-}
-
-// Responsive breaks
+// Breakpoints (min-width)
 $break-small: 576px;
 $break-medium: 768px;
 $break-large: 992px;
 $break-extra-large: 1200px;
+
+$breakpoints: (
+  'sm': $break-small,
+  'md': $break-medium,
+  'lg': $break-large,
+  'xl': $break-extra-large
+);
+
+// Layout
+$container: 1180px;
+$prose: 70ch;
+
+// Motion
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+// Blog tag colours. Each one becomes `.tag-<name>` (and the legacy
+// `.tag-<name>-plain`) setting `--tag`, which pills, cards and chips read.
+$tag-colors: (
+  'default': #8a8f84,
+  'recommended': #2bb5c9,
+  'for-beginners': #e2559b,
+  'frontend': #8b6cf0,
+  'backend': #34c08a,
+  'architecture': #d05bc7,
+  'finance': #9cc21e,
+  'bitcoin': #f7931a,
+  'best-practices': #2fa6e8,
+  'testing': #f0476b
+);
