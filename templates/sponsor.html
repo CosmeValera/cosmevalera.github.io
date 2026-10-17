@@ -138,6 +138,16 @@
         </div>
     </section>
 
+    <!-- What stays free -->
+    <section class="sponsor-block stats" aria-labelledby="stats-title">
+        <h2 class="block-label" id="stats-title">{{ trans(key="what_stays_free", lang=lang) }}</h2>
+        <dl class="stats-grid">
+            <div class="stat"><dt>{{ trans(key="stat_projects", lang=lang) }}</dt><dd>{{ cv.extra.projects | length }}</dd></div>
+            <div class="stat"><dt>{{ trans(key="stat_posts", lang=lang) }}</dt><dd>{{ blog_section.pages | length }}</dd></div>
+            <div class="stat"><dt>{{ trans(key="stat_books", lang=lang) }}</dt><dd>{{ readings_section.pages | length }}</dd></div>
+        </dl>
+    </section>
+
     <!-- Thank you -->
     <section class="thanks-card">
         <p class="thanks-title">{{ trans(key="thanks_title", lang=lang) }}</p>
@@ -147,16 +157,6 @@
             <li><a href="{{ link.url }}" target="_blank" rel="me noopener"><i class="fab fa-{{ link.icon }}" aria-hidden="true"></i>{{ link.title }}</a></li>
             {% endfor %}
         </ul>
-    </section>
-
-    <!-- What stays free -->
-    <section class="sponsor-block stats" aria-labelledby="stats-title">
-        <h2 class="block-label" id="stats-title">{{ trans(key="what_stays_free", lang=lang) }}</h2>
-        <dl class="stats-grid">
-            <div class="stat"><dt>{{ trans(key="stat_projects", lang=lang) }}</dt><dd>{{ cv.extra.projects | length }}</dd></div>
-            <div class="stat"><dt>{{ trans(key="stat_posts", lang=lang) }}</dt><dd>{{ blog_section.pages | length }}</dd></div>
-            <div class="stat"><dt>{{ trans(key="stat_books", lang=lang) }}</dt><dd>{{ readings_section.pages | length }}</dd></div>
-        </dl>
     </section>
 </div>
 {% endblock content %}

@@ -63,6 +63,8 @@ body.bright-theme {
   margin-top: clamp(4rem, 10vw, 7rem);
   border-top: 1px solid var(--line);
   overflow: hidden;
+  // The wordmark sizes against this box, which excludes the scrollbar (vw does not).
+  container-type: inline-size;
 
   ul,
   p {
@@ -154,7 +156,8 @@ body.bright-theme {
 
 .footer-wordmark {
   margin-bottom: -0.2em !important;
-  font-size: 19vw;
+  font-size: 16.5vw;
+  font-size: 16.5cqi;
   font-weight: 700;
   letter-spacing: -0.07em;
   line-height: 0.8;

@@ -23,7 +23,9 @@ function toggleMobileMenu() {
 
 // Handle screen resize
 function handleResize() {
-    if (window.innerWidth >= 768) { // $break-medium
+    // Blog posts switch to the desktop pill at $break-large, other pages at $break-medium
+    const desktopWidth = document.body.classList.contains('blog-post-page') ? 992 : 768;
+    if (window.innerWidth >= desktopWidth) {
         // Remove active states when transitioning to desktop
         if (lateralMenuPill) lateralMenuPill.classList.remove('active');
         if (mobileMenuToggle) {
