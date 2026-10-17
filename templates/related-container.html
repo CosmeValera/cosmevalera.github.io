@@ -1,6 +1,6 @@
 
 {% macro container(page,orderDesc=true) %}
-<div class="related-container">
+<nav class="related-container" aria-label="{{ trans(key='more_posts', lang=lang) }}">
 
   {# ========================================== #}
   {# 1. NORMAL NAVIGATION (Default)             #}
@@ -8,17 +8,17 @@
   {# This block is always rendered. JS will hide it if mode=series is active. #}
   <div class="nav-normal">
       {% if page.higher %}
-      <div class="link">
-        <span>{% if orderDesc %} {{ trans(key="previous_post", lang=lang) }}{% else %} {{ trans(key="next_post", lang=lang) }}{% endif %}</span>
-        <a href="{{ page.higher.permalink }}">{{ page.higher.title }}</a>
-      </div>
+      <a class="link {% if orderDesc %}link--prev{% else %}link--next{% endif %}" href="{{ page.higher.permalink }}">
+        <span class="link-label">{% if orderDesc %}← {{ trans(key="previous_post", lang=lang) }}{% else %}{{ trans(key="next_post", lang=lang) }} →{% endif %}</span>
+        <span class="link-title">{{ page.higher.title }}</span>
+      </a>
       {% endif %}
 
       {% if page.lower %}
-      <div class="link">
-        <span>{% if orderDesc %} {{ trans(key="next_post", lang=lang) }}{% else %} {{ trans(key="previous_post", lang=lang) }}{% endif %}</span>
-        <a href="{{ page.lower.permalink }}">{{ page.lower.title }}</a>
-      </div>
+      <a class="link {% if orderDesc %}link--next{% else %}link--prev{% endif %}" href="{{ page.lower.permalink }}">
+        <span class="link-label">{% if orderDesc %}{{ trans(key="next_post", lang=lang) }} →{% else %}← {{ trans(key="previous_post", lang=lang) }}{% endif %}</span>
+        <span class="link-title">{{ page.lower.title }}</span>
+      </a>
       {% endif %}
   </div>
 
@@ -26,7 +26,7 @@
   {# 2. SERIES NAVIGATION (Hidden by default)   #}
   {# ========================================== #}
   {# Only rendered if this is a series post. JS will show it if mode=series is active. #}
-  
+
   {% set is_bitcoin_series = false %}
   {% set custom_prev = false %}
   {% set custom_next = false %}
@@ -59,24 +59,23 @@
   {% endif %}
 
   {% if is_bitcoin_series %}
-  <div class="nav-series" style="display: none;">
+  <div class="nav-series" hidden>
       {% if custom_prev %}
-      <div class="link">
-        <span>{% if orderDesc %} {{ trans(key="previous_post", lang=lang) }}{% else %} {{ trans(key="next_post", lang=lang) }}{% endif %}</span>
-        {# Append ?mode=series to keep the user in the loop #}
-        <a href="{{ custom_prev.permalink }}?mode=series">{{ custom_prev.title }}</a>
-      </div>
+      {# Append ?mode=series to keep the user in the loop #}
+      <a class="link link--prev" href="{{ custom_prev.permalink }}?mode=series">
+        <span class="link-label">← {{ trans(key="previous_post", lang=lang) }}</span>
+        <span class="link-title">{{ custom_prev.title }}</span>
+      </a>
       {% endif %}
 
       {% if custom_next %}
-      <div class="link">
-        <span>{% if orderDesc %} {{ trans(key="next_post", lang=lang) }}{% else %} {{ trans(key="previous_post", lang=lang) }}{% endif %}</span>
-        {# Append ?mode=series to keep the user in the loop #}
-        <a href="{{ custom_next.permalink }}?mode=series">{{ custom_next.title }}</a>
-      </div>
+      <a class="link link--next" href="{{ custom_next.permalink }}?mode=series">
+        <span class="link-label">{{ trans(key="next_post", lang=lang) }} →</span>
+        <span class="link-title">{{ custom_next.title }}</span>
+      </a>
       {% endif %}
   </div>
   {% endif %}
 
-</div>
+</nav>
 {% endmacro %}

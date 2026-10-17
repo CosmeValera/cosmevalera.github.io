@@ -1,0 +1,42 @@
+{# Site footer: sitemap / elsewhere / support columns, a bottom bar and the
+   oversized name wordmark fading into the page edge. #}
+{% set prefix = "" %}
+{% if lang == "es" %}{% set prefix = "/es" %}{% endif %}
+
+<footer class="site-footer" id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <p class="footer-heading">{{ trans(key="footer_sitemap", lang=lang) }}</p>
+        <ul>
+          <li><a href="{{ prefix }}/">{{ trans(key="home", lang=lang) }}</a></li>
+          <li><a href="{{ prefix }}/cv/">{{ trans(key="cv", lang=lang) }}</a></li>
+          <li><a href="{{ prefix }}/blog/">{{ trans(key="blog", lang=lang) }}</a></li>
+          <li><a href="{{ prefix }}/readings/">{{ trans(key="readings", lang=lang) }}</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">{{ trans(key="footer_elsewhere", lang=lang) }}</p>
+        <ul>
+          {% for link in config.extra.links %}
+            <li><a href="{{ link.url }}" target="_blank" rel="me noopener"><i class="fab fa-{{ link.icon }}" aria-hidden="true"></i>{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">{{ trans(key="footer_support", lang=lang) }}</p>
+        <ul>
+          <li><a href="{{ prefix }}/sponsor/"><i class="fa-solid fa-bolt" aria-hidden="true"></i>{{ trans(key="footer_sponsor", lang=lang) }}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {{ now() | date(format="%Y") }} Cosme Valera Reales</span>
+      <span class="footer-built">{{ trans(key="footer_built", lang=lang) }}</span>
+      <a class="footer-top" href="#">{{ trans(key="back_to_top", lang=lang) }} <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+
+  <p class="footer-wordmark" aria-hidden="true">Cosme Valera</p>
+</footer>

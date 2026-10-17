@@ -385,57 +385,168 @@
     // END: CODE //
     ///////////////
 
-    ////////////////////////////
-    //   RELATED-CONTAINER    //
-    ////////////////////////////
-    .related-container {
-        margin: 1rem auto;
-        display: flex;
-        text-align: center;
-
-        .nav-normal, .nav-series {
-            display: contents;
-        }
-    
-        .link {
-            flex: 1;
-            padding: 1rem;
-            box-sizing: border-box;
-            // Remove width: 50% since flex: 1 already handles the width distribution
-            
-            display: flex;
-            flex-direction: column;
-            justify-content: center; // Centers content vertically
-            align-items: center; // Centers content horizontally
-            // Remove flex-wrap: wrap since it might cause unexpected behavior
-            
-            span {
-                font-style: italic;
-                font-size: 1rem;
-            }
-        }
-    }
-
     // Add spacing for horizontal rules
     hr {
         border: 1px solid rgba(255, 255, 255, 0.2);
         margin: 2rem 0;
+    }
 
-        &.footer-rule {
-            margin-top: 4rem;
-            background-color: $tertiary-bg;
-            border: 2px $accent-color dashed;
-            opacity: 0.35;
+    ////////////////////////////////////////////
+    //   POST FOOTER: author card + prev/next  //
+    ////////////////////////////////////////////
+    // Colours come from the theme tokens in _base.scss, so these blocks need
+    // no bright-theme overrides. Links reset the post's underlined accent style.
+    .post-footer {
+        display: grid;
+        gap: 1.25rem;
+        margin-top: 4rem;
+
+        a {
+            text-decoration: none;
         }
-        &.footer-rule-2 {
-            background-color: $tertiary-bg;
-            border: 2px $accent-color dashed;
-            opacity: 0.35;
+
+        p,
+        ul {
+            margin: 0;
+            padding: 0;
         }
     }
-    ////////////////////////////
-    // END: RELATED-CONTAINER //
-    ////////////////////////////
+
+    .author-card {
+        display: grid;
+        gap: 1.25rem;
+        padding: clamp(1.5rem, 4vw, 2.25rem);
+        @include surface(24px);
+
+        @include respond-to('sm') {
+            grid-template-columns: auto 1fr;
+            gap: 1.75rem;
+        }
+
+        img {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            object-fit: cover;
+        }
+    }
+
+    .author-eyebrow {
+        @include mono-label(0.68rem);
+        color: var(--fg-3);
+    }
+
+    .author-name {
+        margin-top: 0.4rem !important;
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--fg);
+    }
+
+    .author-bio {
+        margin-top: 0.6rem !important;
+        color: var(--fg-2);
+        line-height: 1.65;
+    }
+
+    .author-links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.25rem !important;
+        list-style: none;
+
+        .icon-btn {
+            width: 2.75rem;
+            height: 2.75rem;
+            color: var(--fg-2);
+
+            @include hover {
+                color: var(--fg);
+            }
+        }
+
+        .arrow-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-left: 0.6rem;
+            font-weight: 500;
+            color: var(--fg-2);
+            transition: color 0.2s ease;
+
+            span {
+                transition: transform 0.3s $ease-out;
+            }
+
+            @include hover {
+                color: var(--accent);
+
+                span {
+                    transform: translateX(3px);
+                }
+            }
+        }
+    }
+
+    .related-container {
+        display: grid;
+        gap: 1.25rem;
+
+        @include respond-to('md') {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .nav-normal,
+        .nav-series:not([hidden]) {
+            display: contents;
+        }
+
+        .link {
+            display: grid;
+            align-content: start;
+            gap: 0.6rem;
+            padding: 1.5rem 1.75rem;
+            @include surface(24px);
+            transition: transform 0.4s $ease-out, border-color 0.3s ease;
+
+            @include hover {
+                transform: translateY(-3px);
+                border-color: var(--line-2);
+
+                .link-title {
+                    color: var(--accent);
+                }
+            }
+        }
+
+        .link--next {
+            text-align: right;
+
+            @include respond-to('md') {
+                grid-column: 2;
+            }
+        }
+
+        .link-label {
+            @include mono-label(0.68rem);
+            color: var(--fg-3);
+        }
+
+        .link-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--fg);
+            text-wrap: balance;
+            transition: color 0.2s ease;
+        }
+    }
+    ///////////////////////////
+    //   END: POST FOOTER     //
+    ///////////////////////////
 
     // Bright theme styles
     body.bright-theme & {
@@ -493,12 +604,6 @@
 
         hr {
             border: 1px solid rgba($text-color-bright, 0.2);
-
-            &.footer-rule,
-            &.footer-rule-2 {
-                background-color: $tertiary-bg-bright;
-                border: 2px $accent-color-bright dashed;
-            }
         }
 
         .exchange-toggle-container {

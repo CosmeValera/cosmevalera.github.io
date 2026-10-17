@@ -101,6 +101,31 @@
     }
 }
 
+// Hover styles only on devices that can actually hover (no sticky taps).
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Small uppercase monospace label: eyebrows, metadata, counters.
+@mixin mono-label($size: 0.72rem) {
+  font-family: $mono;
+  font-size: $size;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+// Raised card with a hairline border; colours come from the theme tokens.
+@mixin surface($radius: 20px) {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: $radius;
+}
+
 // Breakpoints map for responsive mixins
 $breakpoints: (
   'sm': $break-small,

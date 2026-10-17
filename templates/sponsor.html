@@ -9,62 +9,154 @@
 {% endblock %}
 
 {% block content %}
-<div class="sponsor">
-    <div id="sponsor-inner">
-        <h1 id="sponsor-title">{{ trans(key="become_sponsor", lang=lang) }}</h1>
-        <section id="section-contribution">
-            <!-- Lightning Network Donations Section -->
-            <div class="contribution">
-                <h2 class="contribution-title">
-                    <i class="fa-solid fa-bolt"></i>&nbsp;&nbsp; {{ trans(key="lightning_donation", lang=lang) }}
-                </h2>
-                <p class="contribution-subtitle">
-                    {{ trans(key="support_work", lang=lang) }}
-                </p>
-                <p class="contribution-description">
-                    {{ trans(key="lightning_description", lang=lang) }}
-                </p>
-                <div class="donation-options">
-                    <a
-                    class="btn-donate lightning"
-                    target="_blank"
-                    href="https://getalby.com/p/cosmevalerareales"
-                    title="Bitcoin Lightning Network"
-                    >
-                        <i class="fa-solid fa-bolt"></i> {{ trans(key="send_bitcoin", lang=lang) }}
-                    </a>
-                </div>
-            </div>
-        </section>
+{# Projects and counters come from the CV, blog and readings sections, so this
+   page never needs editing when a project, post or book is added. #}
+{% set cv = get_section(path="cv/_index.md", lang=lang) %}
+{% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
+{% set readings_section = get_section(path="readings/_index.md", lang=lang) %}
+{% set prefix = "" %}
+{% if lang == "es" %}{% set prefix = "/es" %}{% endif %}
+{% set github = config.extra.links | filter(attribute="icon", value="github") | first %}
+{% set linkedin = config.extra.links | filter(attribute="icon", value="linkedin") | first %}
 
-        <section id="section-reasons-sponsor">
-            <h2 class="sponsor-title">{{ trans(key="why_sponsor", lang=lang) }}</h2>
-            <div class="sponsor-features">
-                <div class="sponsor-feature">
-                    <h1>💓</h1>
-                    <h3 class="feature-title">{{ trans(key="support_opensource", lang=lang) }}</h3>
-                    <p>
-                    {{ trans(key="help_maintain", lang=lang) }}
-                    <a target="_blank" href="https://rabbithole.cosmevalera.dev/">RabbitHole</a>
-                    {{ trans(key="and", lang=lang) }} <a target="_blank" href="https://devopslab.cosmevalera.dev/">DevOpsLab</a>.
-                    </p>
-                </div>
-                <div class="sponsor-feature">
-                    <h1>⭐</h1>
-                    <h3 class="feature-title">{{ trans(key="direct_access", lang=lang) }}</h3>
-                    <p>
-                    {{ trans(key="direct_access_desc", lang=lang) }}
-                    </p>
-                </div>
-                <div class="sponsor-feature">
-                    <h1>⚡</h1>
-                    <h3 class="feature-title">{{ trans(key="support_bitcoin", lang=lang) }}</h3>
-                    <p>
-                    {{ trans(key="support_bitcoin_desc", lang=lang) }}
-                    </p>
-                </div>
+<div class="sponsor">
+    <header class="sponsor-head">
+        <p class="sponsor-eyebrow"><i class="fa-solid fa-bolt" aria-hidden="true"></i>{{ trans(key="sponsor", lang=lang) }}</p>
+        <h1 class="sponsor-title">{{ trans(key="become_sponsor", lang=lang) }}</h1>
+        <p class="sponsor-lead">{{ trans(key="sponsor_lead", lang=lang) }}</p>
+    </header>
+
+    <!-- Ways to help that cost nothing -->
+    <section class="sponsor-block" aria-labelledby="free-help-title">
+        <h2 class="block-label" id="free-help-title">{{ trans(key="costs_nothing", lang=lang) }}</h2>
+        <ul class="help-grid">
+            <li>
+                <a class="help-card" href="{{ github.url }}?tab=repositories" target="_blank" rel="noopener">
+                    <i class="fa-regular fa-star" aria-hidden="true"></i>
+                    <span class="help-title">{{ trans(key="help_star", lang=lang) }}</span>
+                    <span class="help-desc">{{ trans(key="help_star_desc", lang=lang) }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="help-card" href="{{ prefix }}/blog/">
+                    <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                    <span class="help-title">{{ trans(key="help_share", lang=lang) }}</span>
+                    <span class="help-desc">{{ trans(key="help_share_desc", lang=lang) }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="help-card" href="{{ github.url }}?tab=repositories" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-pen" aria-hidden="true"></i>
+                    <span class="help-title">{{ trans(key="help_fix", lang=lang) }}</span>
+                    <span class="help-desc">{{ trans(key="help_fix_desc", lang=lang) }}</span>
+                </a>
+            </li>
+            <li>
+                <a class="help-card" href="{{ linkedin.url }}" target="_blank" rel="noopener">
+                    <i class="fa-regular fa-comment" aria-hidden="true"></i>
+                    <span class="help-title">{{ trans(key="help_connect", lang=lang) }}</span>
+                    <span class="help-desc">{{ trans(key="help_connect_desc", lang=lang) }}</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Lightning Network Donations Section -->
+    <section class="sponsor-block" aria-labelledby="lightning-title">
+        <h2 class="block-label">{{ trans(key="prefer_money", lang=lang) }}</h2>
+        <div class="lightning-card">
+            <div class="lightning-bolt" aria-hidden="true">
+                <svg viewBox="0 0 64 64" width="64" height="64"><path d="M36 4 12 36h18l-4 24 26-34H34z" fill="currentColor"/></svg>
             </div>
-        </section>
-    </div>
+            <div class="lightning-body">
+                <h3 id="lightning-title" class="lightning-title">{{ trans(key="lightning_donation", lang=lang) }}</h3>
+                <p class="lightning-desc">{{ trans(key="lightning_description", lang=lang) }}</p>
+                <a class="btn-lightning" target="_blank" rel="noopener" href="https://getalby.com/p/cosmevalerareales" title="Bitcoin Lightning Network">
+                    <i class="fa-solid fa-bolt" aria-hidden="true"></i>{{ trans(key="send_bitcoin", lang=lang) }}
+                </a>
+            </div>
+        </div>
+        <p class="money-note">
+            {{ trans(key="no_paywall", lang=lang) }}<br>
+            {{ trans(key="pays_for", lang=lang) }}
+        </p>
+    </section>
+
+    <!-- Reasons -->
+    <section class="sponsor-block" aria-labelledby="reasons-title">
+        <h2 class="section-title" id="reasons-title">{{ trans(key="why_sponsor", lang=lang) }}</h2>
+        <div class="reason-grid">
+            <article class="reason">
+                <span class="reason-icon" aria-hidden="true"><i class="fas fa-code-branch"></i></span>
+                <h3 class="reason-title">{{ trans(key="support_opensource", lang=lang) }}</h3>
+                <p>
+                    {{ trans(key="help_maintain", lang=lang) }}
+                    <a target="_blank" rel="noopener" href="https://rabbithole.cosmevalera.dev/">RabbitHole</a>
+                    {{ trans(key="and", lang=lang) }} <a target="_blank" rel="noopener" href="https://devopslab.cosmevalera.dev/">DevOpsLab</a>.
+                </p>
+            </article>
+            <article class="reason">
+                <span class="reason-icon" aria-hidden="true"><i class="fas fa-comments"></i></span>
+                <h3 class="reason-title">{{ trans(key="direct_access", lang=lang) }}</h3>
+                <p>{{ trans(key="direct_access_desc", lang=lang) }}</p>
+            </article>
+            <article class="reason">
+                <span class="reason-icon" aria-hidden="true"><i class="fab fa-bitcoin"></i></span>
+                <h3 class="reason-title">{{ trans(key="support_bitcoin", lang=lang) }}</h3>
+                <p>{{ trans(key="support_bitcoin_desc", lang=lang) }}</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Open source projects, straight from the CV -->
+    <section class="sponsor-block" aria-labelledby="projects-title">
+        <h2 class="section-title" id="projects-title">{{ trans(key="open_source_projects", lang=lang) }}</h2>
+        <div class="project-list">
+            {% for project in cv.extra.projects %}
+            <article class="project-card">
+                <div class="project-body">
+                    <h3 class="project-name">{{ project.name }}</h3>
+                    <p class="project-tagline">{{ project.tagline }}</p>
+                    <p class="project-desc">{{ project.description | join(sep=" ") }}</p>
+                    {% if project.tech is defined %}
+                    <ul class="project-tech">
+                        {% for item in project.tech | slice(end=6) %}<li>{{ item }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="project-links">
+                        {% if project.url is defined %}
+                        <a href="{{ project.url }}" target="_blank" rel="noopener">{{ trans(key="visit_site", lang=lang) }} <span aria-hidden="true">↗</span></a>
+                        {% endif %}
+                        <a href="{{ project.repo }}" target="_blank" rel="noopener">{{ trans(key="contribute", lang=lang) }} <span aria-hidden="true">↗</span></a>
+                    </div>
+                </div>
+                <a class="project-shot" href="{{ cv.permalink | safe }}#{{ project.name | slugify }}" aria-label="{{ project.name }}, {{ trans(key='cv', lang=lang) }}">
+                    <img src="{{ get_url(path=project.screenshots | first) }}" alt="" loading="lazy" decoding="async">
+                </a>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Thank you -->
+    <section class="thanks-card">
+        <p class="thanks-title">{{ trans(key="thanks_title", lang=lang) }}</p>
+        <p class="thanks-desc">{{ trans(key="thanks_desc", lang=lang) }}</p>
+        <ul class="thanks-links">
+            {% for link in config.extra.links %}
+            <li><a href="{{ link.url }}" target="_blank" rel="me noopener"><i class="fab fa-{{ link.icon }}" aria-hidden="true"></i>{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <!-- What stays free -->
+    <section class="sponsor-block stats" aria-labelledby="stats-title">
+        <h2 class="block-label" id="stats-title">{{ trans(key="what_stays_free", lang=lang) }}</h2>
+        <dl class="stats-grid">
+            <div class="stat"><dt>{{ trans(key="stat_projects", lang=lang) }}</dt><dd>{{ cv.extra.projects | length }}</dd></div>
+            <div class="stat"><dt>{{ trans(key="stat_posts", lang=lang) }}</dt><dd>{{ blog_section.pages | length }}</dd></div>
+            <div class="stat"><dt>{{ trans(key="stat_books", lang=lang) }}</dt><dd>{{ readings_section.pages | length }}</dd></div>
+        </dl>
+    </section>
 </div>
 {% endblock content %}

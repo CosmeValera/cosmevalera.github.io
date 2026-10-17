@@ -136,9 +136,25 @@
         {{ page.content | safe }}
     </div>
     
-    <hr class="footer-rule" />
-    {{ related::container(page=page,orderDesc=true) }}
-    <hr class="footer-rule-2" />
-    
+    {% if lang == "es" %}{% set prefix = "/es" %}{% else %}{% set prefix = "" %}{% endif %}
+    <footer class="post-footer">
+      <div class="author-card">
+        <img src="{{ get_url(path='images/home/portrait.jpg') }}" alt="" width="72" height="72" loading="lazy">
+        <div>
+          <p class="author-eyebrow">{{ trans(key="written_by", lang=lang) }}</p>
+          <p class="author-name">Cosme Valera</p>
+          <p class="author-bio">{{ trans(key="author_bio", lang=lang) }}</p>
+          <ul class="author-links">
+            {% for link in config.extra.links %}
+              <li><a href="{{ link.url }}" target="_blank" rel="me noopener" class="icon-btn" aria-label="{{ link.title }}"><i class="fab fa-{{ link.icon }}" aria-hidden="true"></i></a></li>
+            {% endfor %}
+            <li><a href="{{ prefix }}/cv/" class="arrow-link">{{ trans(key="see_my_cv", lang=lang) }}<span aria-hidden="true">→</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      {{ related::container(page=page,orderDesc=true) }}
+    </footer>
+
   </div>
 {% endblock content %}

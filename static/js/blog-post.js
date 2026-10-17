@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const navSeries = document.querySelector('.nav-series');
         if (navSeries) {
             if (navNormal) navNormal.style.display = 'none';
-            // Use 'contents' to allow children to participate in the parent flex container
-            navSeries.style.display = 'contents'; 
+            // The CSS lays out an unhidden .nav-series with display: contents,
+            // so its cards join the parent grid
+            navSeries.hidden = false;
         }
     }
     const postContent = document.querySelector('.post-content');
