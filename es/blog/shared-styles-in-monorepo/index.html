@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estilos Compartidos en Monorepos | Cosme</title>
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+      
+      
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    <meta name="description" content="Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo">
+    <link rel="canonical" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">
+
+    
+    <meta property="og:title" content="Estilos Compartidos en Monorepos | Cosme">
+    <meta property="og:description" content="Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo">
+    <meta property="og:url" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp">
+    <meta property="og:site_name" content="Cosme Valera">
+    <meta property="og:locale" content="es_ES">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Estilos Compartidos en Monorepos | Cosme">
+    <meta name="twitter:description" content="Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo">
+    <meta name="twitter:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp">
+
+    
+    
+      
+        
+        
+        <link rel="alternate" hreflang="en" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">
+        <link rel="alternate" hreflang="es" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">
+        <link rel="alternate" hreflang="x-default" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;">
+      
+    
+    
+    
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+        window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+        cronitor('config', { clientKey: '482ce2f6e9775eb3b28794266710e6e6' });
+    </script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2024-09-01-shared-styles-in-monorepo&#x2F;cover-webp.webp" as="image" fetchpriority="high">
+  
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Estilos Compartidos en Monorepos",
+    "description": "Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo",
+    "image": "https://cosmevalera.dev/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp",
+    "datePublished": "2024-09-01",
+    "dateModified": "2024-09-01",
+    "author": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cosmevalera.dev/es/blog/shared-styles-in-monorepo/"
+    },
+    "inLanguage": "es",
+    "keywords": "frontend, architecture"
+  }
+  </script>
+
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher: EN | ES pill, the current language filled -->
+        
+            
+            
+        
+        <a href="&#x2F;blog&#x2F;shared-styles-in-monorepo&#x2F;"
+           class="lang-switch"
+           hreflang="en"
+           aria-label="Cambiar idioma"
+           title="Switch to English">
+            <span>EN</span>
+            <span class="is-active">ES</span>
+        </a>
+        <button id="theme-toggle" class="icon-btn theme-toggle" type="button"
+                aria-label="Cambiar tema" title="Cambiar tema">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background"></div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/cv" class="menu-item " aria-label="CV">
+      <i class="fas fa-id-card"></i>
+      <span class="menu-text">CV</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+        
+      
+    
+
+    
+    <a href="/es/blog" class="back-link">← Todas las publicaciones</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/architecture/" class="tag tag-architecture-plain">
+              Arquitectura
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Estilos Compartidos en Monorepos</h1>
+    <h3 class="presentation-text">Cómo mantener estilos consistentes entre múltiples proyectos en un monorepo</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">1 septiembre 2024</span>
+      <span class="reading-time">
+        
+          2m lectura • 357 palabras
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Índice</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">En esta página</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2024-09-01-shared-styles-in-monorepo/cover-webp.webp" alt="blog-cover" /></p>
+<h4><b>🤔 Resumen</b></h4>
+<p>En proyectos a gran escala, mantener estilos consistentes entre múltiples aplicaciones es crucial. Aquí tienes dos enfoques para gestionar estilos compartidos:</p>
+<ol>
+<li>📦 Crear una librería de estilos compartida como un <b>paquete npm</b>.</li>
+<li>🔗 Importar estilos directamente desde <b>un directorio centralizado</b> dentro del monorepo.</li>
+</ol>
+<hr />
+<h4><b>📦 1. Crear una Librería de Estilos con npm</b></h4>
+<p><b>Resumen:</b> Este enfoque consiste en crear una librería de estilos dedicada y publicarla como un paquete npm. Los estilos se pueden importar después en cualquier proyecto que los necesite.</p>
+<p><b>Implementación:</b> Por ejemplo, si estás trabajando con estilos de temas personalizados claro/oscuro para PrimeReact, puedes crear tus estilos en una librería y exportarlos usando un archivo <code>index.js</code> así:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>module.exports = {
+</span><span> theme: require(</span><span style="color:#e6db74;">&#39;./style/themes/my-theme/theme.scss&#39;</span><span>),
+</span><span>}</span><span style="color:#f92672;">;
+</span></code></pre>
+<p>Después de publicar el paquete, puedes instalarlo en tus proyectos con:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>npm i my-theme
+</span></code></pre>
+<p>Luego, simplemente importa los estilos en tu punto de entrada JavaScript principal:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>import </span><span style="color:#e6db74;">&#39;my-theme&#39;</span><span style="color:#f92672;">;
+</span></code></pre>
+<p><b>Ventajas:</b>
+Control de versiones centralizado de estilos.
+Fácil de actualizar y distribuir entre múltiples proyectos.</p>
+<p><b>Desventajas:</b>
+Requiere publicar y versionar con cada cambio.</p>
+<h4><b>🔗 2. Importación Directa desde un Directorio Centralizado</b></h4>
+<p><b>Resumen:</b> Si estás usando una configuración de monorepo, puedes almacenar tus estilos en un directorio central e importarlos directamente en cada proyecto.</p>
+<p><b>Implementación:</b> Coloca tus estilos en una carpeta a nivel raíz, en paralelo a tus apps, e impórtalos en tus proyectos:</p>
+<pre data-lang="sh" style="background-color:#272822;color:#f8f8f2;" class="language-sh "><code class="language-sh" data-lang="sh"><span>import </span><span style="color:#e6db74;">&#39;../style/themes/my-theme/theme.scss&#39;</span><span style="color:#f92672;">;
+</span></code></pre>
+<p><b>Ventajas:</b>
+No hace falta publicar ni gestionar versiones.
+Acceso inmediato a los últimos estilos sin pasos adicionales.</p>
+<p><b>Desventajas:</b>
+Riesgo de cambios accidentales que rompan funcionalidad si los estilos se actualizan.
+Necesitas tener una estructura de monorepo; no funciona si los proyectos están en repositorios separados.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>10</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><h4><b>❓ Qué Elegir</b></h4>
+<ul>
+<li>Usa un <b>paquete npm</b> si quieres tener control de versiones estricto o no tienes todos tus proyectos en la misma carpeta.</li>
+<li>Usa importación directa desde <b>un directorio centralizado</b> si prefieres una solución más simple y tu estructura de código lo permite.</li>
+</ul>
+
+    </div>
+    
+    
+    <footer class="post-footer">
+      <div class="author-card">
+        <img src="https://cosmevalera.dev/images/home/portrait.jpg" alt="" width="72" height="72" loading="lazy">
+        <div>
+          <p class="author-eyebrow">Escrito por</p>
+          <p class="author-name">Cosme Valera</p>
+          <p class="author-bio">Desarrollador full stack en GMV, en el programa Galileo. Escribo sobre lo que aprendo construyendo: arquitectura, buenas prácticas, IA y Bitcoin.</p>
+          <ul class="author-links">
+            
+              <li><a href="https:&#x2F;&#x2F;github.com&#x2F;CosmeValera" target="_blank" rel="me noopener" class="icon-btn" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+            
+              <li><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cosmevalera&#x2F;" target="_blank" rel="me noopener" class="icon-btn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+            
+            <li><a href="&#x2F;es/cv/" class="arrow-link">Ver mi CV<span aria-hidden="true">→</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+<nav class="related-container" aria-label="Más publicaciones">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+
+      
+      <a class="link link--next" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;optimizing-microfrontends-with-turborepo&#x2F;">
+        <span class="link-label">Siguiente publicación →</span>
+        <span class="link-title">Impulsa tus Microfrontends con Turborepo</span>
+      </a>
+      
+  </div>
+
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+
+  
+
+</nav>
+
+    </footer>
+
+  </div>
+
+      </main>
+
+      
+
+
+
+<footer class="site-footer" id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <p class="footer-heading">Mapa del sitio</p>
+        <ul>
+          <li><a href="&#x2F;es/">Inicio</a></li>
+          <li><a href="&#x2F;es/cv/">CV</a></li>
+          <li><a href="&#x2F;es/blog/">Blog</a></li>
+          <li><a href="&#x2F;es/readings/">Lecturas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">En otros sitios</p>
+        <ul>
+          
+            <li><a href="https:&#x2F;&#x2F;github.com&#x2F;CosmeValera" target="_blank" rel="me noopener"><i class="fab fa-github" aria-hidden="true"></i>GitHub</a></li>
+          
+            <li><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cosmevalera&#x2F;" target="_blank" rel="me noopener"><i class="fab fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Apoyo</p>
+        <ul>
+          <li><a href="&#x2F;es/sponsor/"><i class="fa-solid fa-bolt" aria-hidden="true"></i>Colabora</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Cosme Valera Reales</span>
+      <span class="footer-built">Hecho con Zola, JS y SCSS.</span>
+      <a class="footer-top" href="#">Volver arriba <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+
+  <p class="footer-wordmark" aria-hidden="true">Cosme Valera</p>
+</footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    <script src="https://cosmevalera.dev/js/easter-egg.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>
