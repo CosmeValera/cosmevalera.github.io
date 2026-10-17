@@ -130,10 +130,11 @@ $bitcoin-orange: #f7931a;
   color: var(--fg-2);
 }
 
-// ----- Lightning card -----
-.lightning-card {
+// ----- Bitcoin (on-chain) card -----
+.btc-card {
   position: relative;
   display: grid;
+  justify-items: center;
   gap: 2rem;
   padding: clamp(1.75rem, 5vw, 3.5rem);
   @include surface(28px);
@@ -142,6 +143,7 @@ $bitcoin-orange: #f7931a;
 
   @include respond-to('md') {
     grid-template-columns: auto 1fr;
+    justify-items: stretch;
     align-items: center;
     gap: 3rem;
   }
@@ -157,52 +159,160 @@ $bitcoin-orange: #f7931a;
   }
 }
 
-.lightning-bolt {
-  display: grid;
-  place-items: center;
-  width: 7rem;
-  height: 7rem;
-  border-radius: 28px;
-  background: linear-gradient(145deg, $bitcoin-orange, #f2c14e);
-  color: #1a1206;
-  box-shadow: 0 20px 50px -15px rgba($bitcoin-orange, 0.65);
-  animation: bolt-float 4s ease-in-out infinite;
+// The QR keeps a white tile in both themes so every wallet can scan it.
+.btc-qr {
+  position: relative;
+  overflow: hidden;
+  padding: 0.6rem;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 20px 50px -15px rgba($bitcoin-orange, 0.55);
 
-  svg {
-    width: 3.25rem;
-    height: 3.25rem;
+  img {
+    display: block;
+    width: 11rem;
+    height: 11rem;
+    image-rendering: pixelated;
+    transition: filter 0.35s $ease-out;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    animation: none;
+  // The tile stays white in both themes, so its button text is fixed dark.
+  .reveal-btn {
+    background: rgba(255, 255, 255, 0.55);
+    color: #111;
+
+    @include hover {
+      color: $bitcoin-orange;
+    }
   }
 }
 
-@keyframes bolt-float {
-  50% {
-    transform: translateY(-6px) rotate(-3deg);
-  }
-}
-
-.lightning-body {
+.btc-body {
   display: grid;
   justify-items: start;
   gap: 1rem;
+  min-width: 0;
 }
 
-.lightning-title {
+.btc-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: clamp(1.6rem, 3.5vw, 2.25rem);
   font-weight: 600;
   letter-spacing: -0.04em;
+
+  i {
+    color: $bitcoin-orange;
+  }
 }
 
-.lightning-desc {
+.btc-desc {
   max-width: 40rem;
   line-height: 1.6;
   color: var(--fg-2);
 }
 
-.btn-lightning {
+.btc-address {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 100%;
+
+  code {
+    min-width: 0;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface-2);
+    font-family: $mono;
+    font-size: 0.85rem;
+    color: var(--fg);
+    overflow-wrap: anywhere;
+    user-select: all;
+  }
+}
+
+// QR and address start blurred behind reveal buttons; any of them makes
+// sponsor.js add .is-revealed to the [data-reveal-scope] card, unblurring both.
+.address-reveal {
+  position: relative;
+  display: inline-grid;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 12px;
+
+  code {
+    transition: filter 0.35s $ease-out;
+  }
+}
+
+[data-reveal-scope]:not(.is-revealed) {
+  .address-reveal code {
+    filter: blur(5px);
+    user-select: none;
+  }
+
+  .btc-qr img {
+    filter: blur(7px);
+  }
+}
+
+[data-reveal-scope].is-revealed .reveal-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.reveal-btn {
+  position: absolute;
+  inset: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--fg);
+  cursor: pointer;
+  transition: opacity 0.25s ease, color 0.2s ease;
+
+  @include hover {
+    color: var(--accent);
+  }
+}
+
+.btn-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--fg-2);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+
+  @include hover {
+    color: var(--fg);
+    border-color: var(--line-2);
+    background: var(--surface-2);
+  }
+
+  &.is-copied {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+.btn-wallet {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;

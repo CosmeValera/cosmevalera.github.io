@@ -61,18 +61,34 @@
         </ul>
     </section>
 
-    <!-- Lightning Network Donations Section -->
-    <section class="sponsor-block" aria-labelledby="lightning-title">
+    <!-- Bitcoin on-chain donations. static/images/sponsor/btc-qr.svg encodes
+         "bitcoin:<address>", so regenerate it whenever the address changes. -->
+    {% set btc_address = "bc1qstwcv90nualk29p7052pfwqfmw3g2yd37df286" %}
+    <section class="sponsor-block" aria-labelledby="btc-title">
         <h2 class="block-label">{{ trans(key="prefer_money", lang=lang) }}</h2>
-        <div class="lightning-card">
-            <div class="lightning-bolt" aria-hidden="true">
-                <svg viewBox="0 0 64 64" width="64" height="64"><path d="M36 4 12 36h18l-4 24 26-34H34z" fill="currentColor"/></svg>
+        <div class="btc-card" data-reveal-scope>
+            <div class="btc-qr">
+                <img src="{{ get_url(path='images/sponsor/btc-qr.svg') }}" alt="{{ trans(key='btc_qr_alt', lang=lang) }}" width="200" height="200">
+                <button type="button" class="reveal-btn">
+                    <i class="fa-regular fa-eye" aria-hidden="true"></i>{{ trans(key="reveal_qr", lang=lang) }}
+                </button>
             </div>
-            <div class="lightning-body">
-                <h3 id="lightning-title" class="lightning-title">{{ trans(key="lightning_donation", lang=lang) }}</h3>
-                <p class="lightning-desc">{{ trans(key="lightning_description", lang=lang) }}</p>
-                <a class="btn-lightning" target="_blank" rel="noopener" href="https://getalby.com/p/cosmevalerareales" title="Bitcoin Lightning Network">
-                    <i class="fa-solid fa-bolt" aria-hidden="true"></i>{{ trans(key="send_bitcoin", lang=lang) }}
+            <div class="btc-body">
+                <h3 id="btc-title" class="btc-title"><i class="fab fa-bitcoin" aria-hidden="true"></i>{{ trans(key="btc_donation", lang=lang) }}</h3>
+                <p class="btc-desc">{{ trans(key="btc_description", lang=lang) }}</p>
+                <div class="btc-address">
+                    <span class="address-reveal">
+                        <code id="btc-address">{{ btc_address }}</code>
+                        <button type="button" class="reveal-btn" aria-controls="btc-address">
+                            <i class="fa-regular fa-eye" aria-hidden="true"></i>{{ trans(key="reveal_address", lang=lang) }}
+                        </button>
+                    </span>
+                    <button type="button" class="btn-copy" data-copy="{{ btc_address }}" data-copied-label="{{ trans(key='copied', lang=lang) }}">
+                        <i class="fa-regular fa-copy" aria-hidden="true"></i><span>{{ trans(key="copy_address", lang=lang) }}</span>
+                    </button>
+                </div>
+                <a class="btn-wallet" href="bitcoin:{{ btc_address }}">
+                    <i class="fa-solid fa-wallet" aria-hidden="true"></i>{{ trans(key="open_in_wallet", lang=lang) }}
                 </a>
             </div>
         </div>
@@ -160,3 +176,7 @@
     </section>
 </div>
 {% endblock content %}
+
+{% block scripts %}
+    <script src="{{ get_url(path="js/sponsor.js") | safe }}"></script>
+{% endblock %}
