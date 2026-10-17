@@ -198,7 +198,7 @@ footer_sponsor = "Colabora"
 footer_sitemap = "Mapa del sitio"
 footer_elsewhere = "En otros sitios"
 footer_support = "Apoyo"
-footer_built = "Hecho a mano con Zola, JS y SCSS."
+footer_built = "Hecho con Zola, JS y SCSS."
 back_to_top = "Volver arriba"
 
 # Language
@@ -359,7 +359,7 @@ footer_sponsor = "Sponsor"
 footer_sitemap = "Sitemap"
 footer_elsewhere = "Elsewhere"
 footer_support = "Support"
-footer_built = "Handmade with Zola, vanilla JS and SCSS."
+footer_built = "Made with Zola, vanilla JS and SCSS."
 back_to_top = "Back to top"
 # Language
 switch_language = "Switch language"

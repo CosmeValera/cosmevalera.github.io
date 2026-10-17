@@ -93,8 +93,18 @@ body.bright-theme {
   gap: 2.5rem 1.5rem;
   padding-block: 3rem;
 
+  // Two columns on phones: the sitemap fills the left one, while Elsewhere and
+  // Support stack on the right, so both sides have a similar height.
+  > .footer-col:first-child {
+    grid-row: span 2;
+  }
+
   @include respond-to('md') {
     grid-template-columns: repeat(3, 1fr);
+
+    > .footer-col:first-child {
+      grid-row: auto;
+    }
   }
 }
 

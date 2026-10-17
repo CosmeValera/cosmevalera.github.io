@@ -2,6 +2,15 @@
 .theme-and-language-toggle-container {
     transition: background 0.3s ease, opacity 0.3s ease;
 
+    // On phones the mobile TOC sits top-left: match its top edge and height
+    // (header plus 1px borders) so the TOC and both switches share one line.
+    @media (max-width: $break-medium - 0.02px) {
+        top: 20px;
+        right: 1rem;
+        height: calc(#{$toc-header-height} + 2px);
+        gap: 0.45rem;
+    }
+
     &.scrolling-down {
         .lang-switch,
         .theme-toggle {

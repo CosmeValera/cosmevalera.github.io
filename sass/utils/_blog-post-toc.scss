@@ -1,3 +1,6 @@
+// Height of the mobile TOC header; the language and theme switches align to it
+$toc-header-height: 2.75rem;
+
 // Enhanced TOC - Mobile: sticky top, Desktop: fixed top-left
 .toc-mobile {
     // Mobile styles (fixed - out of layout to avoid glitches at threshold)
@@ -6,7 +9,7 @@
     left: 1rem;
 
     right: auto;
-    width: calc(100% - 9.5rem); // Avoid overlapping with theme buttons 
+    width: calc(100% - 11rem); // Leave room for the language and theme switches on the right
     z-index: 10;
     background: rgba($primary-bg-dark, 0.85);
     backdrop-filter: blur(12px);
@@ -71,9 +74,11 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        // Fixed height so the switches beside it can center on the same line
+        height: $toc-header-height;
         background: linear-gradient(135deg, rgba($accent-color, 0.1), rgba($active-color, 0.05));
         border: 0;
-        padding: 0.75rem 1rem;
+        padding: 0 1rem;
         color: white;
         font-weight: 600;
         font-size: clamp(1rem, 2.8vw, 1.1rem);
