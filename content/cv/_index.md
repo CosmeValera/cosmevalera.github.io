@@ -18,7 +18,7 @@ github = "https://github.com/CosmeValera"
 github_label = "github.com/CosmeValera"
 website = "https://cosmevalera.dev"
 website_label = "cosmevalera.dev"
-pdf = "assets/CV-Cosme_Valera_Reales-2026-10-18.pdf"
+pdf = "assets/CV-Cosme_Valera_Reales-2026-10-19.pdf"
 about = [
   "Over four years building web applications. Right now I work at GMV on Galileo, Europe's satellite navigation system, across the whole stack: React and TypeScript interfaces, the Node and Java (Spring) services behind them, and the Kubernetes releases that ship them.",
   "AI is part of how I work every day. I've built projects with Claude Code, Codex and Cursor, and I go well past the chat box into agents, skills, rules and MCP servers. I follow the space closely and keep whatever survives contact with a real project, which is also how RabbitHole got built.",
@@ -35,7 +35,7 @@ current = true
 summary = "Contributed to the development and delivery of web applications to meet ESA's needs in the Galileo project. Galileo is Europe's global satellite navigation system."
 bullets = [
   "Developed and maintained 5+ web applications using React, TypeScript, Node and Java (Spring), improving usability and consistency across Galileo applications.",
-  "Designed and built from scratch, with my team, the backend of an internal web application in a Turborepo monorepo: Node, TypeScript, Express and Sequelize, with the data models and the REST endpoints its frontend consumes.",
+  "Designed and built from scratch, with my team, the backend of a web application in a Turborepo monorepo: Node, TypeScript, Express and Sequelize, with the data models and the REST endpoints its frontend consumes.",
   "Volunteered to lead the team's move to Kubernetes: learned Kubernetes, Kustomize and Helm, then moved our Dockerized apps to Helm releases across 2 environments, reducing manual steps.",
   "Automated monthly deployments of applications across environments using Jenkins.",
   "Worked with ESA engineers in a Scrum team to clarify requirements, gather feedback and turn operational needs into user stories and features.",

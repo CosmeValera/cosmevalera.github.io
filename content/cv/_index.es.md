@@ -18,7 +18,7 @@ github = "https://github.com/CosmeValera"
 github_label = "github.com/CosmeValera"
 website = "https://cosmevalera.dev"
 website_label = "cosmevalera.dev"
-pdf = "assets/CV-Cosme_Valera_Reales-2026-10-18.pdf"
+pdf = "assets/CV-Cosme_Valera_Reales-2026-10-19.pdf"
 about = [
   "Más de cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, trabajando en todo el stack: interfaces con React y TypeScript, los servicios en Node y Java (Spring) que hay detrás y los despliegues en Kubernetes que los ponen en marcha.",
   "La IA forma parte de mi día a día. He construido proyectos con Claude Code, Codex y Cursor, y voy bastante más allá del chat: agentes, skills, reglas y servidores MCP. Sigo el tema de cerca y me quedo con lo que aguanta el contacto con un proyecto real, que es también como salió RabbitHole.",
@@ -35,7 +35,7 @@ current = true
 summary = "Participo en el desarrollo y la entrega de aplicaciones web para cubrir las necesidades de la ESA en el proyecto Galileo, el sistema global de navegación por satélite de Europa."
 bullets = [
   "Desarrollo y mantenimiento de más de 5 aplicaciones web con React, TypeScript, Node y Java (Spring), mejorando la usabilidad y la consistencia entre las aplicaciones de Galileo.",
-  "Diseño y construcción desde cero, junto a mi equipo, del backend de una aplicación web interna en un monorepo de Turborepo: Node, TypeScript, Express y Sequelize, con los modelos de datos y los endpoints REST que consume su frontend.",
+  "Diseño y construcción desde cero, junto a mi equipo, del backend de una aplicación web en un monorepo de Turborepo: Node, TypeScript, Express y Sequelize, con los modelos de datos y los endpoints REST que consume su frontend.",
   "Me ofrecí a liderar la migración del equipo a Kubernetes: aprendí Kubernetes, Kustomize y Helm, y pasé nuestras apps dockerizadas a releases de Helm en 2 entornos, reduciendo pasos manuales.",
   "Automatización de los despliegues mensuales de aplicaciones entre entornos con Jenkins.",
   "Trabajo con ingenieros de la ESA en un equipo Scrum para aclarar requisitos, recoger feedback y traducir necesidades operativas en historias de usuario y funcionalidades.",
