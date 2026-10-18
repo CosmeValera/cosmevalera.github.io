@@ -18,7 +18,7 @@ github = "https://github.com/CosmeValera"
 github_label = "github.com/CosmeValera"
 website = "https://cosmevalera.dev"
 website_label = "cosmevalera.dev"
-pdf = "assets/CV-Cosme_Valera_Reales-2026-10-17.pdf"
+pdf = "assets/CV-Cosme_Valera_Reales-2026-10-18.pdf"
 about = [
   "Más de cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, donde la mayor parte del día es React y TypeScript, y el resto es Node, Java y llevar las cosas hasta Kubernetes.",
   "La IA forma parte de mi día a día. He construido proyectos con Claude Code, Codex y Cursor, y voy bastante más allá del chat: agentes, skills, reglas y servidores MCP. Sigo el tema de cerca y me quedo con lo que aguanta el contacto con un proyecto real, que es también como salió RabbitHole.",
