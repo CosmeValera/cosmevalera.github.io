@@ -1,5 +1,5 @@
 +++
-title = "BTC 102: How to Buy Bitcoin"
+title = ""
 template = "blog-post.html"
 description = "Future blog post ideas"
 date = 2025-10-14
@@ -10,8 +10,8 @@ tags = ["bitcoin", "finance"]
 cover_image = "/images/blog/2025-07-25-bitcoin/bitcoin.webp"
 +++
 
-- **RabbitHole: an AI curiosity wiki** (this one is optional, or could be integrated with the next one, Building RabbitHole)
-Short 3-4 min post about what the app is about, inspired on this: 'https://jesusvalera.dev/introducing-narrale/'
+<!-- - **RabbitHole: an AI curiosity wiki** (this one is optional, or could be integrated with the next one, Building RabbitHole)
+Short 3-4 min post about what the app is about, inspired on this: 'https://jesusvalera.dev/introducing-narrale/' -->
 - **Building RabbitHole**
 From AquaMesh to a complete AI learning product
 - **RabbitHole: The Post-Mortem**

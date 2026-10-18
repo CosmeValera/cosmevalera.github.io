@@ -1,5 +1,5 @@
 +++
-title = "BTC 102: How to Buy Bitcoin"
+title = ""
 template = "blog-post.html"
 description = "Learn how to buy bitcoins from exchanges, how to store them and the difference between hot and cold storage."
 date = 2025-10-14
