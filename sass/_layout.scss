@@ -62,6 +62,7 @@ body.bright-theme {
   z-index: 1;
   margin-top: clamp(4rem, 10vw, 7rem);
   border-top: 1px solid var(--line);
+  background: var(--bg);
   overflow: hidden;
   // The wordmark sizes against this box, which excludes the scrollbar (vw does not).
   container-type: inline-size;
