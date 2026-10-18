@@ -91,7 +91,7 @@ period = "2023 – 2026"
 flagship = true
 home = true
 description = [
-  "My flagship product, designed, built and run by me over 6+ months of focused work spread across the last three years. One prompt becomes a multi-page guide with lessons and exercises, explained through the background knowledge the reader picks, and it keeps growing on demand through an AI chat with web sources. Any guide turns into a quiz, flashcards or a two-voice podcast in one click, and it all runs on the AI you choose: hosted, your own API key, or a local model on your machine.",
+  "Designed, built and run by me over 6+ months of focused work spread across the last three years. One prompt becomes a multi-page guide with lessons and exercises, explained through the background knowledge the reader picks, and it keeps growing on demand through an AI chat with web sources. Any guide turns into a quiz, flashcards or a two-voice podcast in one click, and it all runs on the AI you choose: hosted, your own API key, or a local model on your machine.",
 ]
 tech = ["React", "TypeScript", "Turborepo", "Serverless", "Supabase", "Stripe", "Vitest", "Playwright"]
 video = "videos/projects/rabbithole-demo.mp4"
