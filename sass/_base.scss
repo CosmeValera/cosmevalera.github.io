@@ -1,3 +1,9 @@
+// Crossfade between pages on same-site navigation (e.g. EN | ES), so a switch
+// feels like an in-place change. Browsers without support just navigate.
+@view-transition {
+    navigation: auto;
+}
+
 // Theme tokens for the newer components (footer, header toggles, post footer,
 // sponsor page). Dark is the default; body.bright-theme swaps the values, so
 // those components never need a separate bright-theme block.

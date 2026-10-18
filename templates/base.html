@@ -98,6 +98,12 @@
     {% endif %}
     
     {% block styles%} {% endblock %}
+
+    <!-- Prerender the other-language page when the EN | ES pill is hovered or
+         pressed, so the switch feels instant. Browsers without support ignore it. -->
+    <script type="speculationrules">
+    {"prerender": [{"where": {"selector_matches": ".lang-switch"}, "eagerness": "moderate"}]}
+    </script>
   </head>
   <body{% if current_path and current_path is matching("^/blog/.+") %} class="blog-post-page"{% endif %}>
     <!-- Theme & Language Toggle (Top Right) -->
@@ -145,6 +151,7 @@
     <script src="{{ get_url(path="js/lateralMenu.js") | safe }}"></script>
     <script src="{{ get_url(path="js/themeToggle.js") | safe }}"></script>
     <script src="{{ get_url(path="js/easter-egg.js") | safe }}"></script>
+    <script src="{{ get_url(path="js/langScroll.js") | safe }}"></script>
     {% block scripts%} {% endblock %}
     <!-- END: SCRIPTS -->
   </body>
