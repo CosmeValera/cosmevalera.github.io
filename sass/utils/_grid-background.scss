@@ -1,9 +1,19 @@
 // Static grid background. Keep this paint-cheap: no fixed animated blur layers.
+// The layer is fixed, so the static mask below is painted once and never
+// repaints on scroll: it fades the grid from the upper middle of the viewport
+// out to the edges, instead of tiling it evenly everywhere.
 .grid-background {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, #000 25%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 35%, #000 25%, transparent 100%);
+
+  // Long reads stay calm: the grid is fainter behind blog posts.
+  body.blog-post-page & {
+    opacity: 0.5;
+  }
 
   &::before {
     content: '';
