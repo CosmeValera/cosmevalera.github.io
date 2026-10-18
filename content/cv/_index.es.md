@@ -87,11 +87,11 @@ name = "RabbitHole"
 tagline = "Aprende cualquier cosa a través de lo que ya sabes."
 url = "https://rabbithole.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/RabbitHole"
-period = "2023 – 2026"
+period = "2024 – 2026"
 flagship = true
 home = true
 description = [
-  "Diseñado, construido y mantenido por mí en más de 6 meses de trabajo intenso repartidos en los últimos tres años. Un prompt se convierte en una guía de varias páginas con lecciones y ejercicios, explicada a través de los conocimientos previos que elige quien lee, y sigue creciendo cuando quieras con un chat de IA con fuentes web. Cualquier guía se convierte en un test, flashcards o un pódcast a dos voces con un clic, y todo funciona con la IA que elijas: alojada, tu propia clave de API o un modelo local en tu máquina.",
+  "Diseñado, construido y mantenido por mí en más de 6 meses de trabajo intenso repartidos durante dos años. Un prompt se convierte en una guía de varias páginas con lecciones y ejercicios, explicada a través de los conocimientos previos que elige quien lee, y sigue creciendo cuando quieras con un chat de IA con fuentes web. Cualquier guía se convierte en un test, flashcards o un pódcast a dos voces con un clic, y todo funciona con la IA que elijas: alojada, tu propia clave de API o un modelo local en tu máquina.",
 ]
 tech = ["React", "TypeScript", "Turborepo", "Serverless", "Supabase", "Stripe", "Vitest", "Playwright"]
 video = "videos/projects/rabbithole-demo.mp4"
