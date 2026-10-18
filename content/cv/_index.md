@@ -1,7 +1,7 @@
 +++
 title = "CV"
 template = "cv.html"
-description = "CV of Cosme Valera Reales, software developer at GMV on ESA's Galileo programme. Full-stack with TypeScript, Node, Spring, Docker and AI tooling. Madrid, Spain."
+description = "CV of Cosme Valera Reales, software engineer at GMV on ESA's Galileo programme. Full stack with TypeScript, Node, Spring, Docker and AI tooling. Madrid, Spain."
 # The projects page was folded into the CV; keep its old URL working.
 aliases = ["/projects/"]
 
@@ -9,7 +9,7 @@ aliases = ["/projects/"]
 # because it is content, not UI chrome. Section titles are the chrome and stay
 # in config.toml as cv_* keys. templates/cv.html only loops over these tables.
 [extra]
-role = "Software Developer"
+role = "Software Engineer"
 location = "Madrid, Spain"
 email = "cosmevalerareales@gmail.com"
 linkedin = "https://www.linkedin.com/in/cosmevalera/"
@@ -20,7 +20,7 @@ website = "https://cosmevalera.dev"
 website_label = "cosmevalera.dev"
 pdf = "assets/CV-Cosme_Valera_Reales-2026-10-18.pdf"
 about = [
-  "Over four years building web applications. Right now I work at GMV on Galileo, Europe's satellite navigation system, where most of my day is React and TypeScript and the rest is Node, Java and getting things deployed to Kubernetes.",
+  "Over four years building web applications. Right now I work at GMV on Galileo, Europe's satellite navigation system, across the whole stack: React and TypeScript interfaces, the Node and Java (Spring) services behind them, and the Kubernetes releases that ship them.",
   "AI is part of how I work every day. I've built projects with Claude Code, Codex and Cursor, and I go well past the chat box into agents, skills, rules and MCP servers. I follow the space closely and keep whatever survives contact with a real project, which is also how RabbitHole got built.",
   "That raised the bar for the basics instead of lowering it. A lot of what I ship now starts as agent output, so reviews, tests and refactoring are what keep it honest, and a clear codebase is the one an agent gets right on the first try. The standard does not change because the author is not human.",
 ]
@@ -28,37 +28,36 @@ about = [
 [[extra.experience]]
 company = "GMV"
 company_url = "https://www.gmv.com/en-es"
-role = "Mid-Level Full Stack Developer"
+role = "Mid-Level Full Stack Engineer"
 period = "10/2023 – Present"
 location = "Madrid, Spain"
 current = true
 summary = "Contributed to the development and delivery of web applications to meet ESA's needs in the Galileo project. Galileo is Europe's global satellite navigation system."
 bullets = [
-  "Developed and maintained 5+ frontend applications using React, TypeScript and CSS, improving usability and consistency across Galileo applications.",
-  "Built and deployed containerized applications across 2 Kubernetes environments using Docker, Helm and Kustomize, reducing manual deployment steps by moving configuration values into Helm.",
+  "Developed and maintained 5+ web applications using React, TypeScript, Node and Java (Spring), improving usability and consistency across Galileo applications.",
+  "Designed and built from scratch, with my team, the backend of an internal web application in a Turborepo monorepo: Node, TypeScript, Express and Sequelize, with the data models and the REST endpoints its frontend consumes.",
+  "Volunteered to lead the team's move to Kubernetes: learned Kubernetes, Kustomize and Helm, then moved our Dockerized apps to Helm releases across 2 environments, reducing manual steps.",
   "Automated monthly deployments of applications across environments using Jenkins.",
-  "Contributed to backend services using Node and Java (Spring).",
-  "Worked with ESA engineers to clarify requirements, gather feedback and translate operational needs into user stories and features.",
+  "Worked with ESA engineers in a Scrum team to clarify requirements, gather feedback and turn operational needs into user stories and features.",
   "Improved maintainability through code reviews, pair programming, refactoring and clean code principles.",
-  "Engaged in Agile events (stand-ups, planning, retrospectives) and defined project needs and user stories.",
 ]
-tech = ["React", "TypeScript", "CSS", "Node", "PostgreSQL", "Docker", "Kubernetes", "Helm", "AWS", "Jenkins", "Git", "Scrum"]
+tech = ["React", "TypeScript", "CSS", "Node", "Express", "Sequelize", "Java (Spring)", "PostgreSQL", "Docker", "Kubernetes", "Helm", "AWS", "Jenkins", "Claude Code", "Git", "Scrum"]
 
 [[extra.experience]]
 company = "Seanchas Research"
-role = "Junior Full Stack Developer"
+role = "Junior Full Stack Engineer"
 period = "04/2023 – 07/2023"
 location = "Cork, Ireland"
 summary = "Very enriching Erasmus+ experience working full-time in English in Ireland."
 bullets = [
-  "Developed and updated 2 web applications: one full-stack application using Angular, TypeScript, CSS, Java and MySQL, and one WordPress-based website.",
+  "Developed and updated 2 web applications: one full stack application using Angular, TypeScript, CSS, Java and MySQL, and one WordPress-based website.",
   "Used Git and GitHub Actions to support version control and deployment workflows.",
 ]
 tech = ["Angular", "TypeScript", "CSS", "Java", "MySQL", "WordPress", "Git", "GitHub Actions"]
 
 [[extra.experience]]
 company = "Capgemini"
-role = "Junior Full Stack Developer"
+role = "Junior Full Stack Engineer"
 period = "04/2022 – 04/2023"
 location = "Murcia, Spain"
 bullets = [
@@ -96,12 +95,12 @@ screenshots = ["images/projects/rabbithole-subjunctive.webp", "images/projects/r
 
 [[extra.projects]]
 name = "DevOps Lab"
-tagline = "One full-stack app, deployed with Docker, Kubernetes and a Jenkins pipeline on AWS."
+tagline = "One full stack app, deployed with Docker, Kubernetes and a Jenkins pipeline on AWS."
 url = "https://devopslab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/DevOpsLab"
 home = true
 description = [
-  "A hands-on lab that takes the same full-stack application through every common way of shipping it: Docker Compose, Kubernetes with Kustomize and Helm, and a Jenkins CI/CD pipeline, each with its own tutorial. The live version runs on AWS (S3 and CloudFront for the frontend, Lambda for the API, Jenkins on EC2) and shows the real status of its Jenkins pipeline.",
+  "A hands-on lab that takes the same full stack application through every common way of shipping it: Docker Compose, Kubernetes with Kustomize and Helm, and a Jenkins CI/CD pipeline, each with its own tutorial. The live version runs on AWS (S3 and CloudFront for the frontend, Lambda for the API, Jenkins on EC2) and shows the real status of its Jenkins pipeline.",
 ]
 tech = ["React", "TypeScript", "Node", "Express", "Docker", "Kubernetes", "Helm", "Kustomize", "Jenkins", "AWS"]
 video = "videos/projects/devopslab-demo.mp4"

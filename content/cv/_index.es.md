@@ -1,7 +1,7 @@
 +++
 title = "CV"
 template = "cv.html"
-description = "CV de Cosme Valera Reales, desarrollador de software en GMV en el programa Galileo de la ESA. Full-stack con TypeScript, Node, Spring, Docker e IA. Madrid, España."
+description = "CV de Cosme Valera Reales, ingeniero de software en GMV en el programa Galileo de la ESA. Full stack con TypeScript, Node, Spring, Docker e IA. Madrid, España."
 # La página de proyectos se integró en el CV; su URL antigua sigue funcionando.
 aliases = ["/es/projects/"]
 
@@ -9,7 +9,7 @@ aliases = ["/es/projects/"]
 # [translations], porque es contenido, no interfaz. Los títulos de sección sí
 # son interfaz y siguen en config.toml como claves cv_*.
 [extra]
-role = "Desarrollador de Software"
+role = "Ingeniero de Software"
 location = "Madrid, España"
 email = "cosmevalerareales@gmail.com"
 linkedin = "https://www.linkedin.com/in/cosmevalera/"
@@ -20,7 +20,7 @@ website = "https://cosmevalera.dev"
 website_label = "cosmevalera.dev"
 pdf = "assets/CV-Cosme_Valera_Reales-2026-10-18.pdf"
 about = [
-  "Más de cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, donde la mayor parte del día es React y TypeScript, y el resto es Node, Java y llevar las cosas hasta Kubernetes.",
+  "Más de cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, trabajando en todo el stack: interfaces con React y TypeScript, los servicios en Node y Java (Spring) que hay detrás y los despliegues en Kubernetes que los ponen en marcha.",
   "La IA forma parte de mi día a día. He construido proyectos con Claude Code, Codex y Cursor, y voy bastante más allá del chat: agentes, skills, reglas y servidores MCP. Sigo el tema de cerca y me quedo con lo que aguanta el contacto con un proyecto real, que es también como salió RabbitHole.",
   "Eso ha subido el listón de lo básico en vez de bajarlo. Buena parte de lo que entrego ahora empieza siendo la salida de un agente, así que las revisiones, los tests y la refactorización son lo que mantiene el código honesto, y una base de código clara es la que un agente acierta a la primera. El estándar no cambia porque quien escribe no sea humano.",
 ]
@@ -28,37 +28,36 @@ about = [
 [[extra.experience]]
 company = "GMV"
 company_url = "https://www.gmv.com/es-es"
-role = "Desarrollador Full Stack (Mid-Level)"
+role = "Ingeniero Full Stack (Mid-Level)"
 period = "10/2023 – Actualidad"
 location = "Madrid, España"
 current = true
 summary = "Participo en el desarrollo y la entrega de aplicaciones web para cubrir las necesidades de la ESA en el proyecto Galileo, el sistema global de navegación por satélite de Europa."
 bullets = [
-  "Desarrollo y mantenimiento de más de 5 aplicaciones frontend con React, TypeScript y CSS, mejorando la usabilidad y la consistencia entre las aplicaciones de Galileo.",
-  "Construcción y despliegue de aplicaciones contenerizadas en 2 entornos de Kubernetes con Docker, Helm y Kustomize, reduciendo pasos manuales de despliegue al mover la configuración a Helm.",
+  "Desarrollo y mantenimiento de más de 5 aplicaciones web con React, TypeScript, Node y Java (Spring), mejorando la usabilidad y la consistencia entre las aplicaciones de Galileo.",
+  "Diseño y construcción desde cero, junto a mi equipo, del backend de una aplicación web interna en un monorepo de Turborepo: Node, TypeScript, Express y Sequelize, con los modelos de datos y los endpoints REST que consume su frontend.",
+  "Me ofrecí a liderar la migración del equipo a Kubernetes: aprendí Kubernetes, Kustomize y Helm, y pasé nuestras apps dockerizadas a releases de Helm en 2 entornos, reduciendo pasos manuales.",
   "Automatización de los despliegues mensuales de aplicaciones entre entornos con Jenkins.",
-  "Contribución a servicios de backend con Node y Java (Spring).",
-  "Trabajo con ingenieros de la ESA para aclarar requisitos, recoger feedback y traducir necesidades operativas en historias de usuario y funcionalidades.",
+  "Trabajo con ingenieros de la ESA en un equipo Scrum para aclarar requisitos, recoger feedback y traducir necesidades operativas en historias de usuario y funcionalidades.",
   "Mejora de la mantenibilidad mediante revisiones de código, pair programming, refactorización y principios de código limpio.",
-  "Participación en eventos ágiles (dailies, plannings, retrospectivas) y definición de las necesidades del proyecto y las historias de usuario.",
 ]
-tech = ["React", "TypeScript", "CSS", "Node", "PostgreSQL", "Docker", "Kubernetes", "Helm", "AWS", "Jenkins", "Git", "Scrum"]
+tech = ["React", "TypeScript", "CSS", "Node", "Express", "Sequelize", "Java (Spring)", "PostgreSQL", "Docker", "Kubernetes", "Helm", "AWS", "Jenkins", "Claude Code", "Git", "Scrum"]
 
 [[extra.experience]]
 company = "Seanchas Research"
-role = "Desarrollador Full Stack Junior"
+role = "Ingeniero Full Stack Junior"
 period = "04/2023 – 07/2023"
 location = "Cork, Irlanda"
 summary = "Experiencia Erasmus+ muy enriquecedora, trabajando a jornada completa en inglés en Irlanda."
 bullets = [
-  "Desarrollo y actualización de 2 aplicaciones web: una aplicación full-stack con Angular, TypeScript, CSS, Java y MySQL, y un sitio basado en WordPress.",
+  "Desarrollo y actualización de 2 aplicaciones web: una aplicación full stack con Angular, TypeScript, CSS, Java y MySQL, y un sitio basado en WordPress.",
   "Uso de Git y GitHub Actions para dar soporte al control de versiones y a los flujos de despliegue.",
 ]
 tech = ["Angular", "TypeScript", "CSS", "Java", "MySQL", "WordPress", "Git", "GitHub Actions"]
 
 [[extra.experience]]
 company = "Capgemini"
-role = "Desarrollador Full Stack Junior"
+role = "Ingeniero Full Stack Junior"
 period = "04/2022 – 04/2023"
 location = "Murcia, España"
 bullets = [
@@ -96,12 +95,12 @@ screenshots = ["images/projects/rabbithole-subjunctive.webp", "images/projects/r
 
 [[extra.projects]]
 name = "DevOps Lab"
-tagline = "Una app full-stack desplegada con Docker, Kubernetes y un pipeline de Jenkins en AWS."
+tagline = "Una app full stack desplegada con Docker, Kubernetes y un pipeline de Jenkins en AWS."
 url = "https://devopslab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/DevOpsLab"
 home = true
 description = [
-  "Un laboratorio práctico que lleva la misma aplicación full-stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins, cada una con su propio tutorial. La versión en vivo corre en AWS (S3 y CloudFront para el frontend, Lambda para la API y Jenkins en EC2) y muestra el estado real de su pipeline de Jenkins.",
+  "Un laboratorio práctico que lleva la misma aplicación full stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins, cada una con su propio tutorial. La versión en vivo corre en AWS (S3 y CloudFront para el frontend, Lambda para la API y Jenkins en EC2) y muestra el estado real de su pipeline de Jenkins.",
 ]
 tech = ["React", "TypeScript", "Node", "Express", "Docker", "Kubernetes", "Helm", "Kustomize", "Jenkins", "AWS"]
 video = "videos/projects/devopslab-demo.mp4"
