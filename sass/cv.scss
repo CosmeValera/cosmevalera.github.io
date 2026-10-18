@@ -158,6 +158,33 @@
   }
 }
 
+// Recommendation under the About text
+.cv-quote {
+  margin: 1.5rem 0 0;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid rgba($accent-color, 0.6);
+  border-radius: 0 10px 10px 0;
+  background: rgba($accent-color, 0.05);
+
+  blockquote {
+    margin: 0;
+
+    p {
+      margin: 0;
+      font-style: italic;
+      line-height: 1.6;
+      color: rgba($text-color, 0.85);
+    }
+  }
+
+  figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba($text-color, 0.55);
+  }
+}
+
 /* ===== Timeline (experience + education) ===== */
 .cv-timeline {
   position: relative;
@@ -816,6 +843,19 @@ body.bright-theme {
     color: rgba($text-color-bright, 0.85);
   }
 
+  .cv-quote {
+    border-left-color: rgba($accent-color-bright, 0.6);
+    background: rgba($accent-color-bright, 0.06);
+
+    blockquote p {
+      color: rgba($text-color-bright, 0.85);
+    }
+
+    figcaption {
+      color: rgba($text-color-bright, 0.6);
+    }
+  }
+
   .cv-project-tagline {
     color: rgba($text-color-bright, 0.7);
   }
@@ -938,6 +978,8 @@ body.bright-theme {
   .cv-contact a,
   .cv-contact i,
   .cv-summary p,
+  .cv-quote p,
+  .cv-quote figcaption,
   .cv-subrole-role,
   .cv-entry-summary,
   .cv-project-desc p,

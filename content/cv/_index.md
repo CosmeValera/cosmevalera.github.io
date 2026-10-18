@@ -24,6 +24,11 @@ about = [
   "AI is part of how I work every day. I've built projects with Claude Code, Codex and Cursor, and I go well past the chat box into agents, skills, rules and MCP servers. I follow the space closely and keep whatever survives contact with a real project, which is also how RabbitHole got built.",
   "That raised the bar for the basics instead of lowering it. A lot of what I ship now starts as agent output, so reviews, tests and refactoring are what keep it honest, and a clear codebase is the one an agent gets right on the first try. The standard does not change because the author is not human.",
 ]
+# A recommendation shown under the About text (from LinkedIn).
+[extra.quote]
+text = "I consider Cosme to be a serious professional, focused on continuous learning while also encouraging a positive work environment."
+author = "Cristóbal Seco Fiastre"
+role = "Tech Lead at Capgemini"
 
 [[extra.experience]]
 company = "GMV"

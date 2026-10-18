@@ -49,6 +49,12 @@
     <div class="cv-summary">
       {% for paragraph in cv.about %}<p>{{ paragraph }}</p>{% endfor %}
     </div>
+    {% if cv.quote is defined %}
+    <figure class="cv-quote">
+      <blockquote><p>“{{ cv.quote.text }}”</p></blockquote>
+      <figcaption>— {{ cv.quote.author }}, {{ cv.quote.role }}</figcaption>
+    </figure>
+    {% endif %}
   </section>
 
   {# ===== Experience ===== #}
