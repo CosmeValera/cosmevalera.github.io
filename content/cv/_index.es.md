@@ -21,7 +21,7 @@ website_label = "cosmevalera.dev"
 pdf = "assets/CV-Cosme_Valera_Reales-2026-10-19.pdf"
 about = [
   "Más de cuatro años construyendo aplicaciones web. Ahora mismo trabajo en GMV en Galileo, el sistema de navegación por satélite de Europa, trabajando en todo el stack: interfaces con React y TypeScript, los servicios en Node y Java (Spring) que hay detrás y los despliegues en Kubernetes que los ponen en marcha.",
-  "La IA forma parte de mi día a día. He construido proyectos con Claude Code, Codex y Cursor, y voy bastante más allá del chat: agentes, skills, reglas y servidores MCP. Sigo el tema de cerca y me quedo con lo que aguanta el contacto con un proyecto real, que es también como salió RabbitHole.",
+  "La IA forma parte de mi día a día. He construido proyectos con Claude Code, Codex y Cursor, y voy bastante más allá del chat: agentes, skills, reglas y servidores MCP. Sigo el tema de cerca y me quedo con lo que aguanta el contacto con un proyecto real, que es también como salió [RabbitHole](#rabbithole).",
   "Eso ha subido el listón de lo básico en vez de bajarlo. Buena parte de lo que entrego ahora empieza siendo la salida de un agente, así que las revisiones, los tests y la refactorización son lo que mantiene el código honesto, y una base de código clara es la que un agente acierta a la primera. El estándar no cambia porque quien escribe no sea humano.",
 ]
 # Una recomendación que se muestra bajo el texto de Sobre mí (de LinkedIn).

@@ -156,6 +156,17 @@
       margin-bottom: 0;
     }
   }
+
+  a {
+    color: $accent-color;
+    text-decoration: underline;
+    text-decoration-color: rgba($accent-color, 0.4);
+    text-underline-offset: 3px;
+
+    &:hover {
+      text-decoration-color: $accent-color;
+    }
+  }
 }
 
 // Recommendation under the About text
@@ -835,6 +846,15 @@ body.bright-theme {
 
   .cv-section-title {
     border-bottom-color: rgba($accent-color-bright, 0.3);
+  }
+
+  .cv-summary a {
+    color: $accent-color-bright;
+    text-decoration-color: rgba($accent-color-bright, 0.4);
+
+    &:hover {
+      text-decoration-color: $accent-color-bright;
+    }
   }
 
   .cv-summary p,

@@ -47,7 +47,7 @@
       <i class="fas fa-user" aria-hidden="true"></i>{{ trans(key="cv_about", lang=lang) }}
     </h2>
     <div class="cv-summary">
-      {% for paragraph in cv.about %}<p>{{ paragraph }}</p>{% endfor %}
+      {% for paragraph in cv.about %}<p>{{ paragraph | markdown(inline=true) | safe }}</p>{% endfor %}
     </div>
     {% if cv.quote is defined %}
     <figure class="cv-quote">
