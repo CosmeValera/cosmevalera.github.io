@@ -1,7 +1,7 @@
 +++
 title = "Building RabbitHole"
 template = "blog-post.html"
-description = "From AquaMesh to a complete AI learning product: two years, three names and one rabbit"
+description = "How I built my own AI learning product alone, from a first prototype to launch: two years, three names and one rabbit."
 [taxonomies]
 tags = ["frontend", "backend"]
 [extra]
