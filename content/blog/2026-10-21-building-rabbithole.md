@@ -140,7 +140,7 @@ cover_image = "/images/blog/2026-10-18-building-rabbithole/cover.webp"
 
 <p>That loop is the whole product in one picture. <b>Every guide you finish makes the next one easier to understand.</b></p>
 
-<p>The rest followed the name, as these things do. The interface got a new page, the dolphin became a rabbit with a headset and a green bandana, and Study Credits became <b>carrots</b>.</p>
+<p>The rest followed the name, as these things do. The interface was redesigned, the dolphin became a rabbit with a headset and a green bandana, and Study Credits became <b>carrots</b>.</p>
 
 <figure class="post-figure">
   <img src="/images/blog/2026-10-18-building-rabbithole/carrots.webp" alt="Carrot balance, the cost of each action and three carrot packs" width="931" height="728">
