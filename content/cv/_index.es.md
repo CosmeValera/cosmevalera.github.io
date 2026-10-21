@@ -85,7 +85,7 @@ tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "F
 #   flagship     opcional, la insignia + la tarjeta grande de la home
 [[extra.projects]]
 name = "RabbitHole"
-tagline = "Aprende cualquier cosa a través de lo que ya sabes."
+tagline = "Aprende cualquier cosa a partir de lo que ya sabes."
 url = "https://rabbithole.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/RabbitHole"
 post = "/es/blog/building-rabbithole/?mode=series"
@@ -93,7 +93,7 @@ period = "2024 – 2026"
 flagship = true
 home = true
 description = [
-  "Diseñado, construido y mantenido por mí en más de 6 meses de trabajo intenso repartidos durante dos años. Un prompt se convierte en una guía de varias páginas con lecciones y ejercicios, explicada a través de los conocimientos previos que elige quien lee, y sigue creciendo cuando quieras con un chat de IA con fuentes web. Cualquier guía se convierte en un test, flashcards o un pódcast a dos voces con un clic, y todo funciona con la IA que elijas: alojada, tu propia clave de API o un modelo local en tu máquina.",
+  "Más de 6 meses de trabajo intenso repartidos en dos años diseñando, desarrollando y manteniendo este proyecto. A partir de un prompt genera una guía de varias páginas con lecciones y ejercicios, explicada con analogías de un tema que tú eliges y ya dominas, y puedes ampliarla cuando quieras con un chat de IA que busca en la web. Con un clic, cualquier guía se convierte en un quiz, en flashcards o en un pódcast a dos voces. Y funciona con la IA que prefieras: IA alojada, tu propia clave de API o un modelo local en tu ordenador.",
 ]
 tech = ["React", "TypeScript", "Turborepo", "Serverless", "Supabase", "Stripe", "Vitest", "Playwright"]
 video = "videos/projects/rabbithole-demo.mp4"
@@ -107,7 +107,7 @@ url = "https://devopslab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/DevOpsLab"
 home = true
 description = [
-  "Un laboratorio práctico que lleva la misma aplicación full stack por las formas habituales de desplegarla: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins, cada una con su propio tutorial. La versión en vivo corre en AWS (S3 y CloudFront para el frontend, Lambda para la API y Jenkins en EC2) y muestra el estado real de su pipeline de Jenkins.",
+  "Un laboratorio práctico en el que la misma aplicación full stack se despliega de todas las formas habituales: Docker Compose, Kubernetes con Kustomize y Helm, y un pipeline de CI/CD en Jenkins, cada una con su propio tutorial. La versión online corre en AWS (S3 y CloudFront para el frontend, Lambda para la API y Jenkins en EC2) y muestra en directo el estado de su pipeline.",
 ]
 tech = ["React", "TypeScript", "Node", "Express", "Docker", "Kubernetes", "Helm", "Kustomize", "Jenkins", "AWS"]
 video = "videos/projects/devopslab-demo.mp4"
@@ -116,12 +116,12 @@ screenshots = ["images/projects/devopslab-jenkins.webp", "images/projects/devops
 
 [[extra.projects]]
 name = "Sympho"
-tagline = "Compón, guarda y reproduce partituras, en la web o como app de escritorio."
+tagline = "Compón, guarda y reproduce partituras desde el navegador o como app de escritorio."
 url = "https://sympho.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/Sympho"
 home = true
 description = [
-  "Un editor de partituras que funciona en el navegador o como app de escritorio: escribe notas y silencios de cualquier duración, añade alteraciones y puntillos, define título, instrumento y tempo, y reprodúcela. Inicia sesión con Google para guardar partituras en un repositorio privado o publicarlas en uno público que cualquiera puede explorar.",
+  "Un editor de partituras para el navegador o el escritorio: escribe notas y silencios de cualquier duración, añade alteraciones y puntillos, ponle título, instrumento y tempo, y escucha cómo suena. Inicia sesión con Google para guardar tus partituras en un repositorio privado o publicarlas en uno público que cualquiera puede consultar.",
 ]
 tech = ["JavaScript", "Node", "VexFlow", "Electron", "Kubernetes"]
 video = "videos/projects/sympho-demo.mp4"
@@ -130,12 +130,12 @@ screenshots = ["images/projects/sympho-editor.webp", "images/projects/sympho-lib
 
 [[extra.projects]]
 name = "Bitcoin Finance Lab"
-tagline = "Bitcoin frente a las acciones e índices que lo tienen, en gráficas."
+tagline = "Bitcoin, en gráficas, frente a las empresas e índices que lo tienen en cartera."
 url = "https://bitcoin-finance-lab.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/bitcoin-finance-lab"
 home = true
 description = [
-  "Una herramienta financiera que pone Bitcoin junto a empresas con Bitcoin en tesorería como Strategy y Metaplanet, las acciones preferentes de Strategy, índices amplios como SPY y QQQ, o cualquier ticker que añadas. El constructor de carteras combina pesos en rentabilidad, volatilidad y caída máxima, la vista de benchmark normaliza rentabilidades en una tabla de métricas ordenable, y un simulador de DCA muestra qué habría pasado comprando de forma periódica.",
+  "Una herramienta financiera que compara Bitcoin con empresas que lo tienen en tesorería, como Strategy y Metaplanet, con las acciones preferentes de Strategy, con índices como SPY y QQQ o con cualquier ticker que añadas. El constructor de carteras reparte pesos entre activos y calcula rentabilidad, volatilidad y caída máxima; la comparativa normaliza las rentabilidades en una tabla de métricas ordenable; y un simulador de DCA muestra cuánto tendrías hoy si hubieras comprado de forma periódica.",
 ]
 tech = ["Vue 3", "TypeScript", "Pinia", "Chart.js", "Vite", "Yahoo Finance"]
 video = "videos/projects/bitcoin-finance-lab-demo.mp4"
