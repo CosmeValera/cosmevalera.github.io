@@ -6,6 +6,7 @@ draft = true
 [taxonomies]
 tags = ["best-practices"]
 [extra]
+series = "rabbithole"
 cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.webp"
 +++
 

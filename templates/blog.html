@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "series-card.html" as series %}
 
 {% block title %}
   {{ trans(key="blog", lang=lang) }} | Cosme
@@ -289,6 +290,8 @@
   </section>
   
   {#- SERIES LOGIC -#}
+  {#- Bitcoin: posts whose title starts with "BTC 1", in title order.
+      Others: posts with extra.series set to the series key, oldest first. -#}
   {% set bitcoin_series_list = [] %}
   {% for page in section.pages %}
     {% if page.title is starting_with("BTC 1") %}
@@ -296,8 +299,9 @@
     {% endif %}
   {% endfor %}
   {% set bitcoin_series_list = bitcoin_series_list | sort(attribute="title") %}
+  {% set rabbithole_series_list = section.pages | filter(attribute="extra.series", value="rabbithole") | sort(attribute="date") %}
 
-  {% if bitcoin_series_list | length > 0 %}
+  {% if bitcoin_series_list | length > 0 or rabbithole_series_list | length > 0 %}
   <section class="blog-series" aria-labelledby="blog-series">
     <header class="blog-series-header" id="blog-series">
         <h1 id="blog-series-heading">{{ trans(key="series_section_title", lang=lang) }}</h1>
@@ -305,28 +309,12 @@
     </header>
 
     <div class="blog-series-carousel">
-        <article class="series-card">
-           <div class="series-image">
-               <img src="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp" alt="Bitcoin Series">
-           </div>
-           <div class="series-content">
-               <span class="series-badge">{{ trans(key="series", lang=lang) }}</span>
-               <h2>{{ trans(key="bitcoin_series_title", lang=lang) }}</h2>
-               <p>{{ trans(key="bitcoin_series_desc", lang=lang) }}</p>
-
-               <nav class="series-chapters" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}">
-                   {% for post in bitcoin_series_list %}
-                      <a href="{{ post.permalink }}?mode=series" class="chapter-link">
-                          <span class="chapter-number">{{ loop.index }}</span>
-                          <span class="chapter-title">{{ post.title | replace(from="BTC 10" ~ loop.index ~ ": ", to="") }}</span>
-                          <i class="fas fa-arrow-right"></i>
-                      </a>
-                   {% endfor %}
-               </nav>
-           </div>
-           {# Make the whole card clickable, linking to the first post #}
-           <a href="{{ bitcoin_series_list[0].permalink }}?mode=series" class="series-card-link" aria-label="{{ trans(key='bitcoin_series_title', lang=lang) }}"></a>
-        </article>
+        {% if rabbithole_series_list | length > 0 %}
+          {{ series::card(posts=rabbithole_series_list, cover="/images/blog/2026-10-18-building-rabbithole/cover.webp", title_key="rabbithole_series_title", desc_key="rabbithole_series_desc", lang=lang) }}
+        {% endif %}
+        {% if bitcoin_series_list | length > 0 %}
+          {{ series::card(posts=bitcoin_series_list, cover="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp", title_key="bitcoin_series_title", desc_key="bitcoin_series_desc", lang=lang, strip="BTC 10") }}
+        {% endif %}
     </div>
   </section>
   {% endif %}

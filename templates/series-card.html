@@ -1,0 +1,27 @@
+{#- One series in the blog page's Series section. `posts` must already be in
+    reading order; `strip` is a title prefix to drop in the chapter list
+    (e.g. "BTC 10"), followed by the chapter number and ": ". -#}
+{% macro card(posts, cover, title_key, desc_key, lang, strip="") %}
+<article class="series-card">
+   <div class="series-image">
+       <img src="{{ cover }}" alt="{{ trans(key=title_key, lang=lang) }}">
+   </div>
+   <div class="series-content">
+       <span class="series-badge">{{ trans(key="series", lang=lang) }}</span>
+       <h2>{{ trans(key=title_key, lang=lang) }}</h2>
+       <p>{{ trans(key=desc_key, lang=lang) }}</p>
+
+       <nav class="series-chapters" aria-label="{{ trans(key=title_key, lang=lang) }}">
+           {% for post in posts %}
+              <a href="{{ post.permalink }}?mode=series" class="chapter-link">
+                  <span class="chapter-number">{{ loop.index }}</span>
+                  <span class="chapter-title">{% if strip %}{{ post.title | replace(from=strip ~ loop.index ~ ": ", to="") }}{% else %}{{ post.title }}{% endif %}</span>
+                  <i class="fas fa-arrow-right"></i>
+              </a>
+           {% endfor %}
+       </nav>
+   </div>
+   {# Make the whole card clickable, linking to the first post #}
+   <a href="{{ posts[0].permalink }}?mode=series" class="series-card-link" aria-label="{{ trans(key=title_key, lang=lang) }}"></a>
+</article>
+{% endmacro %}

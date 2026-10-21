@@ -5,6 +5,7 @@ description = "How I built my own AI learning product alone, from a first protot
 [taxonomies]
 tags = ["frontend", "backend"]
 [extra]
+series = "rabbithole"
 cover_image = "/images/blog/2026-10-18-building-rabbithole/cover.webp"
 +++
 

@@ -27,12 +27,12 @@
   {# ========================================== #}
   {# Only rendered if this is a series post. JS will show it if mode=series is active. #}
 
-  {% set is_bitcoin_series = false %}
+  {% set is_series = false %}
   {% set custom_prev = false %}
   {% set custom_next = false %}
 
   {% if "bitcoin-101" in page.relative_path %}
-      {% set is_bitcoin_series = true %}
+      {% set is_series = true %}
       {% if lang == "es" %}
           {% set custom_next = get_page(path="blog/2025-10-19-bitcoin-102.es.md") %}
       {% else %}
@@ -40,7 +40,7 @@
       {% endif %}
 
   {% elif "bitcoin-102" in page.relative_path %}
-      {% set is_bitcoin_series = true %}
+      {% set is_series = true %}
       {% if lang == "es" %}
           {% set custom_prev = get_page(path="blog/2025-07-25-bitcoin-101.es.md") %}
           {% set custom_next = get_page(path="blog/2026-02-04-bitcoin-103.es.md") %}
@@ -50,15 +50,34 @@
       {% endif %}
 
   {% elif "bitcoin-103" in page.relative_path %}
-      {% set is_bitcoin_series = true %}
+      {% set is_series = true %}
       {% if lang == "es" %}
           {% set custom_prev = get_page(path="blog/2025-10-19-bitcoin-102.es.md") %}
       {% else %}
           {% set custom_prev = get_page(path="blog/2025-10-19-bitcoin-102.md") %}
       {% endif %}
+
+  {#- Series tagged with extra.series: neighbours by date within that series -#}
+  {% elif page.extra.series %}
+      {% set blog = get_section(path="blog/_index.md", lang=lang) %}
+      {% set series_pages = blog.pages | filter(attribute="extra.series", value=page.extra.series) | sort(attribute="date") %}
+      {% set found = false %}
+      {% set last = false %}
+      {% for p in series_pages %}
+          {% if found and not custom_next %}
+              {% set_global custom_next = p %}
+          {% endif %}
+          {% if p.permalink == page.permalink %}
+              {% set_global custom_prev = last %}
+              {% set_global found = true %}
+          {% endif %}
+          {% set_global last = p %}
+      {% endfor %}
+      {#- A lone post has no neighbours: keep the normal navigation -#}
+      {% set is_series = custom_prev or custom_next %}
   {% endif %}
 
-  {% if is_bitcoin_series %}
+  {% if is_series %}
   <div class="nav-series" hidden>
       {% if custom_prev %}
       {# Append ?mode=series to keep the user in the loop #}

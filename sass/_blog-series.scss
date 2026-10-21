@@ -36,22 +36,14 @@
 }
 
 .blog-series-carousel {
+  // One card per series, stacked: newest series first, set in templates/blog.html
   width: 100%;
   max-width: 900px;
   margin: 2rem auto 0;
   padding: 1rem 1rem 2rem 1rem; // increased bottom padding to prevent shadow clipping
-  overflow-x: auto;
   display: flex;
-  gap: 1.5rem;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none; // Hide scrollbar for cleaner look
-  
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  // To center the single card if there's only one
-  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 
   @include respond-to('md') {
      padding: 1rem 0 2rem 0; // consistent padding for desktop
@@ -60,9 +52,8 @@
 
 .series-card {
   cursor: pointer; // Ensure visual feedback
-  flex: 0 0 100%; // Mobile: full width
+  flex: none;
   min-width: 0;
-  scroll-snap-align: center;
   background: linear-gradient(145deg, rgba($secondary-bg, 0.9), rgba($primary-bg, 0.95));
   border: 1px solid rgba($accent-color, 0.3);
   border-radius: 24px;
