@@ -81,12 +81,14 @@ tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "F
 #   video        vídeo demo opcional dentro de static/, primero en el carrusel;
 #                video_poster es su miniatura (la home sigue usando la primera captura)
 #   url          web en vivo, opcional: sin url no hay enlace "Visitar web"
+#   post         post del blog sobre el proyecto, opcional: añade el enlace "Cómo lo hice"
 #   flagship     opcional, la insignia + la tarjeta grande de la home
 [[extra.projects]]
 name = "RabbitHole"
 tagline = "Aprende cualquier cosa a través de lo que ya sabes."
 url = "https://rabbithole.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/RabbitHole"
+post = "/es/blog/building-rabbithole/?mode=series"
 period = "2024 – 2026"
 flagship = true
 home = true

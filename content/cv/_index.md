@@ -81,12 +81,14 @@ tech = ["Angular", "TypeScript", "CSS", "Java (Spring)", "PostgreSQL", "Git", "F
 #   video        optional demo video under static/, shown first in the carousel;
 #                video_poster is its thumbnail (the home page keeps the first screenshot)
 #   url          live site, optional: no url, no "Visit site" link
+#   post         blog post about the project, optional: adds a "How I built it" link
 #   flagship     optional, the badge + big card on the home page
 [[extra.projects]]
 name = "RabbitHole"
 tagline = "Learn anything through what you already know."
 url = "https://rabbithole.cosmevalera.dev/"
 repo = "https://github.com/CosmeValera/RabbitHole"
+post = "/blog/building-rabbithole/?mode=series"
 period = "2024 – 2026"
 flagship = true
 home = true
