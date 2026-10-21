@@ -104,7 +104,7 @@ bitcoin_series_desc = "Comienza tu viaje en Bitcoin desde cero."
 rabbithole_series_title = "La historia de RabbitHole"
 rabbithole_series_desc = "Dos años creando en solitario un producto de aprendizaje con IA, y lo que pasó tras el lanzamiento."
 series_section_title = "Series"
-series_section_desc = "Guías completas para profundizar en un tema."
+series_section_desc = "Historias y guías contadas en varias publicaciones."
 
 # Readings
 readings_intro = "Los libros que me dejaron algo: software, mentalidad de producto, Bitcoin y ser mejor persona. Lo que leo solo por entretenimiento se queda fuera."
@@ -270,7 +270,7 @@ bitcoin_series_desc = "Start your journey into Bitcoin from zero to hero."
 rabbithole_series_title = "The RabbitHole Story"
 rabbithole_series_desc = "Two years building an AI learning product solo, and what happened after launch."
 series_section_title = "Series"
-series_section_desc = "In-depth guides on specific topics."
+series_section_desc = "Stories and guides told across several posts."
 # Readings
 readings_intro = "The books that left something behind: software, product mindset, Bitcoin and being a better human. What I read purely for entertainment stays out."
 books_with_reflections = "books with reflections"
