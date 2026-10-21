@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo construí RabbitHole | Cosme</title>
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+      
+      
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    <meta name="description" content="Cómo construí en solitario un producto de aprendizaje con IA, del primer prototipo al lanzamiento: dos años, tres nombres y un conejo.">
+    <link rel="canonical" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;building-rabbithole&#x2F;">
+
+    
+    <meta property="og:title" content="Cómo construí RabbitHole | Cosme">
+    <meta property="og:description" content="Cómo construí en solitario un producto de aprendizaje con IA, del primer prototipo al lanzamiento: dos años, tres nombres y un conejo.">
+    <meta property="og:url" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;building-rabbithole&#x2F;">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;cover.webp">
+    <meta property="og:site_name" content="Cosme Valera">
+    <meta property="og:locale" content="es_ES">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cómo construí RabbitHole | Cosme">
+    <meta name="twitter:description" content="Cómo construí en solitario un producto de aprendizaje con IA, del primer prototipo al lanzamiento: dos años, tres nombres y un conejo.">
+    <meta name="twitter:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;cover.webp">
+
+    
+    
+      
+        
+        
+        <link rel="alternate" hreflang="en" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;building-rabbithole&#x2F;">
+        <link rel="alternate" hreflang="es" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;building-rabbithole&#x2F;">
+        <link rel="alternate" hreflang="x-default" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;building-rabbithole&#x2F;">
+      
+    
+    
+    
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+        window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+        cronitor('config', { clientKey: '482ce2f6e9775eb3b28794266710e6e6' });
+    </script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;cover.webp" as="image" fetchpriority="high">
+  
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Cómo construí RabbitHole",
+    "description": "Cómo construí en solitario un producto de aprendizaje con IA, del primer prototipo al lanzamiento: dos años, tres nombres y un conejo.",
+    "image": "https://cosmevalera.dev/images/blog/2026-10-18-building-rabbithole/cover.webp",
+    "datePublished": "2026-10-21",
+    "dateModified": "2026-10-21",
+    "author": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cosmevalera.dev/es/blog/building-rabbithole/"
+    },
+    "inLanguage": "es",
+    "keywords": "frontend, backend"
+  }
+  </script>
+
+
+    <!-- Prerender the other-language page when the EN | ES pill is hovered or
+         pressed, so the switch feels instant. Browsers without support ignore it. -->
+    <script type="speculationrules">
+    {"prerender": [{"where": {"selector_matches": ".lang-switch"}, "eagerness": "moderate"}]}
+    </script>
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher: EN | ES pill, the current language filled -->
+        
+            
+            
+        
+        <a href="&#x2F;blog&#x2F;building-rabbithole&#x2F;"
+           class="lang-switch"
+           hreflang="en"
+           aria-label="Cambiar idioma"
+           title="Switch to English">
+            <span>EN</span>
+            <span class="is-active">ES</span>
+        </a>
+        <button id="theme-toggle" class="icon-btn theme-toggle" type="button"
+                aria-label="Cambiar tema" title="Cambiar tema">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background"></div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/cv" class="menu-item " aria-label="CV">
+      <i class="fas fa-id-card"></i>
+      <span class="menu-text">CV</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+        
+      
+    
+
+    
+    <a href="/es/blog" class="back-link">← Todas las publicaciones</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/frontend/" class="tag tag-frontend-plain">
+              Frontend
+            </a>
+          
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/backend/" class="tag tag-backend-plain">
+              Backend
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">Cómo construí RabbitHole</h1>
+    <h3 class="presentation-text">Cómo construí en solitario un producto de aprendizaje con IA, del primer prototipo al lanzamiento: dos años, tres nombres y un conejo.</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">21 octubre 2026</span>
+      <span class="reading-time">
+        
+          13m lectura • 2569 palabras
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Índice</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">En esta página</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2026-10-18-building-rabbithole/cover.webp" alt="blog-cover" /></p>
+<blockquote>
+<p><strong>TL;DR</strong></p>
+<ul>
+<li><strong>RabbitHole</strong> es una wiki con IA para curiosos: escribes un tema y recibes una guía estructurada de varias páginas, explicada a partir de lo que <strong>ya sabes</strong>.</li>
+<li>Cada guía termina con un quiz, flashcards, un podcast y unas cuantas madrigueras nuevas en las que meterte después.</li>
+<li>Me costó unos <strong>dos años y tres nombres</strong> llegar hasta aquí: AquaMesh, luego StudyMesh y, al final, RabbitHole.</li>
+<li>Puedes <a target="_blank" href="https://rabbithole.cosmevalera.dev/try">probar una guía de ejemplo</a> sin crearte una cuenta.</li>
+</ul>
+</blockquote>
+<hr />
+<p>RabbitHole empezó siendo un submarino.</p>
+<p>No uno de verdad. Un dashboard verde oscuro lleno de botones de sónar y controles de profundidad, que hice en septiembre de 2024 por un único motivo: <b>quería demostrar que era capaz de construir algo serio con React</b>. No había usuarios, ni un problema que resolver, ni más plan que "que quede bonito".</p>
+<p>Dos años después, ese mismo repositorio es un SaaS completo con guías generadas por IA, sistema de pagos, landing page, tráiler y un conejo con cascos que responde a tus preguntas. En este post te cuento cómo pasé de una cosa a la otra y qué ideas solo surgieron porque seguí construyendo.</p>
+<hr />
+<h4>Qué es RabbitHole</h4>
+<p>Si alguna vez has intentado aprender algo complejo en un chat, ya sabes cómo va. Haces una pregunta, te llega un muro de texto, preguntas otra cosa, te llega otro muro y, veinte minutos después, lo útil está enterrado en algún punto de la conversación. Yo llegaba a copiar las respuestas de la IA en mi app de notas solo para no perderlas.</p>
+<p>RabbitHole recibe un prompt y te devuelve una <b>guía</b> en lugar de una respuesta: unas pocas páginas cortas, cada una apoyada en la anterior, con una barra lateral para moverte entre ellas y un chat de IA que solo habla de lo que hay en la página.</p>
+<p>De lo que más orgulloso estoy es de un detalle pequeño que pasa fácilmente desapercibido. Antes de empezar, le cuentas a RabbitHole <b>lo que ya sabes</b>: Docker, cocina, fútbol, Java, lo que sea. A partir de ahí, cada tema nuevo se explica a través de eso.</p>
+<figure class="post-figure post-figure--narrow">
+  <img src="/images/blog/2026-10-18-building-rabbithole/what-you-already-know.webp" alt="El panel 'What you already know' con Docker, Node, Java y React añadidos" width="421" height="680">
+  <figcaption>La lista de la que RabbitHole saca sus analogías.</figcaption>
+</figure>
+<p>Así, si sabes Docker y preguntas "¿Qué es Kubernetes?", la guía arranca con un <b>Quick Start</b> que parte de los contenedores que ya entiendes, y solo después explica qué cambia cuando por debajo hay todo un clúster de máquinas. Incluso te dice dónde cojea la analogía.</p>
+<figure class="post-figure post-figure--wide">
+  <img src="/images/blog/2026-10-18-building-rabbithole/quick-start-analogy.webp" alt="Quick Start de una guía de Kubernetes, explicado a través de Docker" width="1005" height="624">
+  <figcaption>Kubernetes, explicado para alguien que conoce Docker.</figcaption>
+</figure>
+<p>La <b>Key idea</b> se lee en 20 segundos, el <b>Quick summary</b> en unos 60, y solo después vienen las páginas completas. Tú decides hasta dónde bajar.</p>
+<p>Ese es el producto hoy. El camino hasta aquí fue bastante menos ordenado.</p>
+<hr />
+<h4>AquaMesh: la época del submarino</h4>
+<p>La primera versión se llamaba <b>AquaMesh</b>, y la temática acuática llegaba hasta el último rincón. La idea era una app de organización: tenías <b>Dashboards</b> y, dentro de cada uno, colocabas cajas llamadas <b>Widgets</b> que podías mover y redimensionar. En la captura de abajo, toda la pantalla es un dashboard y cada panel que hay dentro es un widget.</p>
+<figure class="post-figure post-figure--wide">
+  <img src="/images/blog/2026-10-18-building-rabbithole/aquamesh.webp" alt="AquaMesh: un dashboard con dos widgets, Control Flow y System Lens" width="1400" height="660">
+  <figcaption>AquaMesh: un dashboard (1 en rojo) con dos widgets, Control Flow y System Lens (1 y 2 en morado).</figcaption>
+</figure>
+<p>Al principio solo había un par de widgets predefinidos, así que era más un escaparate que una herramienta. Así que en la segunda versión añadí un <b>Widget Editor</b>: una página de arrastrar y soltar donde podías montar tus propios widgets con textos, campos, botones, interruptores y gráficas. Algo así como HTML y CSS, pero sin código. Hasta había un login de mentira con distintos roles, porque una app de dashboards sin roles no me parecía lo bastante real.</p>
+<figure class="post-figure post-figure--wide">
+  <video class="post-video" src="/images/blog/2026-10-18-building-rabbithole/aquamesh-live-demo.mp4" aria-label="Creando un widget en el Widget Editor de AquaMesh" width="1600" height="754" autoplay loop muted playsinline></video>
+  <figcaption>El Widget Editor: creas un widget una vez y lo colocas en cualquier dashboard.</figcaption>
+</figure>
+<p>Estaba contento con el resultado, así que se lo enseñé a unos amigos. Su veredicto fue educado y certero: <b>buena idea, poco práctica</b>. Nadie supo decirme para qué lo usaría de verdad, y yo tampoco.</p>
+<p>Así que AquaMesh se quedó unos meses en un cajón.</p>
+<hr />
+<h4>StudyMesh: llega la IA</h4>
+<p>En septiembre de 2025 quise añadir el proyecto a mi CV, pero no tal y como estaba. Necesitaba una idea nueva que justificara volver a abrirlo. La candidata obvia era la IA: en lugar de construir cada widget a mano, <b>¿y si pudieras pedírselos?</b></p>
+<p>Esa pregunta le dio al proyecto su primer usuario real, aunque solo existiera en mi cabeza: <b>un estudiante</b>. Un estudiante organiza sus asignaturas en carpetas (Matemáticas, Anatomía, Literatura), cada carpeta contiene dashboards y cada dashboard mezcla widgets con una imagen, un PDF, un vídeo de YouTube o unos apuntes. Encima de todo eso, dos botones nuevos: <b>Create Study Pack</b>, que generaba un dashboard a partir de una foto o un texto, y <b>Create Study Path</b>, que generaba varios en orden.</p>
+<p>También pasé el diseño a blanco, sobre todo para que pareciera profesional. El logo seguía diciendo AquaMesh, pero en espíritu ya era StudyMesh.</p>
+<figure class="post-figure post-figure--wide">
+  <video class="post-video" src="/images/blog/2026-10-18-building-rabbithole/studymesh-first-ai.mp4" aria-label="Un dashboard de Matemáticas con widgets sobre derivadas generados por IA" width="1280" height="608" autoplay loop muted playsinline></video>
+  <figcaption><b>Create Study Pack:</b> a partir de un texto o una imagen, genera markdown, datos clave y quizzes.</figcaption>
+</figure>
+<p>Funcionaba, pero era rudimentario. Recibías algo de markdown, unos cuantos datos clave y un quiz, metidos con calzador en widgets pensados para algo completamente distinto.</p>
+<p>La siguiente iteración ya estrenó nombre y logo de verdad. Los dashboards pasaron a una <b>Library</b>, y la pantalla se asentó en tres columnas: lo que puedes crear a la izquierda, lo que has creado en el centro y, a la derecha, un chat de IA que solo responde sobre lo del centro. El study pack se dividió en cuatro opciones más rápidas (quiz, flashcards, apuntes en limpio y "crear a partir de material"), y lo que se estaba generando pasó a aparecer como pequeñas etiquetas en una cola, abajo del todo, para que pudieras seguir trabajando mientras la IA estaba ocupada.</p>
+<figure class="post-figure post-figure--wide">
+  <div class="post-mosaic">
+    <img src="/images/blog/2026-10-18-building-rabbithole/studymesh-three-panels.webp" alt="StudyMesh con tres paneles: menú de creación, contenido de estudio y chat de IA" width="1400" height="696">
+    <video class="post-video post-video--tile" src="/images/blog/2026-10-18-building-rabbithole/studymesh-phone-video.mp4" poster="/images/blog/2026-10-18-building-rabbithole/studymesh-phone-poster.webp" data-label="Móvil" aria-label="StudyMesh en el móvil" width="382" height="850" preload="none" loop muted playsinline></video>
+    <video class="post-video post-video--tile post-video--left" src="/images/blog/2026-10-18-building-rabbithole/studymesh-dark-video.mp4" poster="/images/blog/2026-10-18-building-rabbithole/studymesh-dark-poster.webp" data-label="Generando" data-sublabel="en modo oscuro" aria-label="StudyMesh en modo oscuro, con la cola de generación" width="1280" height="640" preload="none" loop muted playsinline></video>
+  </div>
+  <figcaption>StudyMesh: creas a la izquierda, lees en el centro y preguntas a la derecha. Toca las miniaturas para verlo en el móvil o generando material en modo oscuro.</figcaption>
+</figure>
+<p>Ojalá pudiera decirte que este diseño salió de un plan claro. Pues no. Iba aprendiendo mientras construía: probaba cosas, me quedaba con lo que funcionaba, borraba lo que no y comprobaba en el móvil todo el rato que nada se rompiera en una pantalla pequeña. Mucho de lo que hice en esa época ya no existe, y no pasa nada; así descubrí lo que el producto no debía ser.</p>
+<hr />
+<h4>De proyecto a producto</h4>
+<p>Hasta aquí, StudyMesh era una app. Lo que la convirtió en un <b>producto</b> fue todo el trabajo aburrido e invisible que la rodea:</p>
+<ul>
+<li><strong>Cuentas reales</strong>, con inicio de sesión con Google y los datos en Supabase.</li>
+<li><strong>Una landing page</strong>, que tuvo una segunda versión completa unos meses después.</li>
+<li><strong>Tres modos de IA</strong>: <em>Hosted</em>, en el que yo pago el modelo y tú me pagas con créditos; <em>Local</em>, que ejecuta un modelo en tu propio ordenador; y <em>BYOK</em> (bring your own key, "trae tu propia clave"), para quien ya paga una API key.</li>
+<li><strong>Pagos</strong> con Stripe y una moneda propia, los Study Credits: una guía costaba 3, todo lo demás 1, y un pack de 2 € te daba 150.</li>
+<li><strong>Podcasts</strong>, para escuchar una guía en el autobús.</li>
+<li><strong>Una mascota de IA</strong>, porque, sin una cara, el chat resultaba frío. Empezó siendo un delfín y acabó convirtiéndose en un pequeño elenco entre el que elegir: una abeja, un delfín y un loro.</li>
+</ul>
+<div class="phone-images-row">
+  <img class="phone-image" src="/images/blog/2026-10-18-building-rabbithole/studymesh-landing-phone.webp" alt="Landing page de StudyMesh en un móvil"></img>
+  <img class="phone-image" src="/images/blog/2026-10-18-building-rabbithole/studymesh-pet-phone.webp" alt="Chat de IA de StudyMesh con la mascota delfín en un móvil"></img>
+</div>
+<p>Ninguna de estas funciones es lo que un usuario recuerda. Todas son lo que un usuario necesita antes de confiarte su email, y no digamos su tarjeta. Si solo has hecho proyectos personales, esta es la parte que te sorprende: <b>hacer la app me llevó meses, y convertirla en producto, otros tantos</b>.</p>
+<hr />
+<h4>RabbitHole: la idea que lo cambió todo</h4>
+<p>En junio de 2026, una sola función le dio la vuelta a todo lo demás: la lista de <b>"What you already know"</b> del principio de este post.</p>
+<p>Cuando las guías pudieron explicarse a partir de lo que ya sabías, dejaron de ser material de estudio. Un desarrollador que aprende Kubernetes, un cocinero con curiosidad por la fermentación, un aficionado al fútbol leyendo sobre teoría de juegos: ninguno está estudiando para un examen. Están siguiendo su curiosidad, enlace a enlace. De repente, el nombre "StudyMesh" sonaba a deberes.</p>
+<p>Así fue como pasó a llamarse <b>RabbitHole</b> (en inglés, <i>caer en un rabbit hole</i> es perderse durante horas en un tema, saltando de uno a otro). Y el nombre colocó la última pieza que faltaba: qué pasa cuando termina una guía. Ahora la última página te pone un quiz y, después, un puñado de <b>nuevas madrigueras</b>: temas que parten del que acabas de terminar. Un botón más, <b>Add to what I know</b>, añade el tema a tu lista, para que la siguiente guía pueda usarlo como analogía.</p>
+<figure class="post-figure post-figure--wide">
+  <img src="/images/blog/2026-10-18-building-rabbithole/end-of-guide.webp" alt="Resultados del quiz con 'Add to what I know' y guías sugeridas para seguir" width="1117" height="872">
+  <figcaption>El final de una guía es el principio de la siguiente.</figcaption>
+</figure>
+<p>Ese ciclo es el producto entero en una sola imagen. <b>Cada guía que terminas hace que la siguiente sea más fácil de entender.</b></p>
+<p>El resto vino con el nombre, como suele pasar. La interfaz se rediseñó, el delfín se convirtió en un conejo con cascos y pañuelo verde, y los Study Credits pasaron a ser <b>zanahorias</b>.</p>
+<figure class="post-figure">
+  <img src="/images/blog/2026-10-18-building-rabbithole/carrots.webp" alt="Saldo de zanahorias, el coste de cada acción y tres packs de zanahorias" width="931" height="728">
+  <figcaption>La tienda de zanahorias. Un par de guías al día son gratis; a partir de ahí, zanahorias.</figcaption>
+</figure>
+<figure class="post-figure post-figure--wide">
+  <img src="/images/blog/2026-10-18-building-rabbithole/rabbithole-workspace.webp" alt="Espacio de trabajo de RabbitHole con páginas, una guía de Kubernetes y el chat de IA del conejo" width="1400" height="666">
+  <figcaption>RabbitHole hoy: las páginas a la izquierda, la guía en el centro y el conejo a la derecha.</figcaption>
+</figure>
+<hr />
+<h4>Bajo el capó</h4>
+<p>Para los desarrolladores que estéis leyendo: RabbitHole es una app de <b>React + TypeScript</b> dentro de un monorepo con <b>Turborepo</b>, con funciones serverless en <b>Vercel</b> como backend. <b>Supabase</b> guarda los datos y las cuentas, <b>Stripe</b> se encarga de las zanahorias, y las guías las escriben modelos de <b>OpenAI</b>, <b>Gemini</b> y <b>Cerebras</b>. Los tests van con <b>Vitest</b> para la lógica y <b>Playwright</b> para los E2E.</p>
+<details class="expandable-info">
+    <summary><i class="fas fa-info-circle"></i> Todos los servicios externos que usa RabbitHole</summary>
+    <div class="expandable-content">
+        <p><b>Vercel</b>: hosting y funciones serverless.<br/>
+        <b>Supabase</b>: base de datos y autenticación.<br/>
+        <b>Google Auth</b>: inicio de sesión con un clic.<br/>
+        <b>Stripe</b>: pagos de los packs de zanahorias.<br/>
+        <b>OpenAI, Gemini y Cerebras</b>: los modelos detrás de las guías, los quizzes, las flashcards y el chat.<br/>
+        <b>Unreal Speech</b>: las voces de los podcasts.<br/>
+        <b>Tavily</b>: búsqueda web dentro del chat de IA.</p>
+        <p>El código es público en <a class="link-text" target="_blank" href="https://github.com/CosmeValera/RabbitHole"><b>GitHub</b></a>.</p>
+    </div>
+</details>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>10</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><p>AquaMesh nació para demostrar que sabía programar en React. RabbitHole me demostró algo más útil: que soy capaz de llevar un repositorio vacío hasta un producto con cuentas, pagos, landing page y una idea propia.</p>
+<p>Si fue un <b>buen</b> producto ya es otra historia, y los números lo tienen bastante claro. Eso queda para el próximo post: <a class="link-text" href="/es/blog/rabbithole-post-mortem/"><b>RabbitHole: el post-mortem</b></a>.</p>
+<p>Mientras tanto, el conejo sigue respondiendo preguntas. <a class="link-text" target="_blank" href="https://rabbithole.cosmevalera.dev/try"><b>Elige un tema y métete en la madriguera</b></a>.</p>
+
+    </div>
+    
+    
+    <footer class="post-footer">
+      <div class="author-card">
+        <img src="https://cosmevalera.dev/images/home/portrait.jpg" alt="" width="72" height="72" loading="lazy">
+        <div>
+          <p class="author-eyebrow">Escrito por</p>
+          <p class="author-name">Cosme Valera</p>
+          <p class="author-bio">Ingeniero full stack en GMV, en el programa Galileo. Escribo sobre lo que aprendo construyendo: arquitectura, buenas prácticas, IA y Bitcoin.</p>
+          <ul class="author-links">
+            
+              <li><a href="https:&#x2F;&#x2F;github.com&#x2F;CosmeValera" target="_blank" rel="me noopener" class="icon-btn" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+            
+              <li><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cosmevalera&#x2F;" target="_blank" rel="me noopener" class="icon-btn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+            
+            <li><a href="&#x2F;es/cv/" class="arrow-link">Ver mi CV<span aria-hidden="true">→</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+<nav class="related-container" aria-label="Más publicaciones">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <a class="link link--prev" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;ssg-vs-spas-meta-frameworks&#x2F;">
+        <span class="link-label">← Anterior publicación</span>
+        <span class="link-title">SPAs vs SSGs vs Meta frameworks</span>
+      </a>
+      
+
+      
+  </div>
+
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+      
+      
+      
+      
+      
+          
+          
+              
+              
+          
+          
+      
+  
+
+  
+
+</nav>
+
+    </footer>
+
+  </div>
+
+      </main>
+
+      
+
+
+
+<footer class="site-footer" id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <p class="footer-heading">Mapa del sitio</p>
+        <ul>
+          <li><a href="&#x2F;es/">Inicio</a></li>
+          <li><a href="&#x2F;es/cv/">CV</a></li>
+          <li><a href="&#x2F;es/blog/">Blog</a></li>
+          <li><a href="&#x2F;es/readings/">Lecturas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">En otros sitios</p>
+        <ul>
+          
+            <li><a href="https:&#x2F;&#x2F;github.com&#x2F;CosmeValera" target="_blank" rel="me noopener"><i class="fab fa-github" aria-hidden="true"></i>GitHub</a></li>
+          
+            <li><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cosmevalera&#x2F;" target="_blank" rel="me noopener"><i class="fab fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Apoyo</p>
+        <ul>
+          <li><a href="&#x2F;es/sponsor/"><i class="fa-solid fa-bolt" aria-hidden="true"></i>Colabora</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Cosme Valera Reales</span>
+      <span class="footer-built">Hecho con Zola, JS y SCSS.</span>
+      <a class="footer-top" href="#">Volver arriba <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+
+  <p class="footer-wordmark" aria-hidden="true">Cosme Valera</p>
+</footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    <script src="https://cosmevalera.dev/js/easter-egg.js"></script>
+    <script src="https://cosmevalera.dev/js/langScroll.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script src="https://cosmevalera.dev/js/post-video.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>

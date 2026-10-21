@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Home | Cosme - backend</title>
+    <link rel="self" type="application/atom+xml" href="https://cosmevalera.dev/tags/backend/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://cosmevalera.dev/"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-10-21T00:00:00+00:00</updated>
+    <id>https://cosmevalera.dev/tags/backend/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Building RabbitHole</title>
+        <published>2026-10-21T00:00:00+00:00</published>
+        <updated>2026-10-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://cosmevalera.dev/blog/building-rabbithole/"/>
+        <id>https://cosmevalera.dev/blog/building-rabbithole/</id>
+        
+        <content type="html" xml:base="https://cosmevalera.dev/blog/building-rabbithole/">&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;cover.webp&quot; alt=&quot;blog-cover&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;RabbitHole&lt;&#x2F;strong&gt; is an AI curiosity wiki: you type a topic and get a structured, multi-page guide, explained through the things you &lt;strong&gt;already know&lt;&#x2F;strong&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;Every guide ends with a quiz, flashcards, a podcast and a few new rabbit holes to fall into next.&lt;&#x2F;li&gt;
+&lt;li&gt;It took me about &lt;strong&gt;two years and three names&lt;&#x2F;strong&gt; to get there: AquaMesh, then StudyMesh, then RabbitHole.&lt;&#x2F;li&gt;
+&lt;li&gt;You can &lt;a target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;rabbithole.cosmevalera.dev&#x2F;try&quot;&gt;try a sample guide&lt;&#x2F;a&gt; without creating an account.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;RabbitHole started its life as a submarine.&lt;&#x2F;p&gt;
+&lt;p&gt;Not a real one. A dark green dashboard full of sonar buttons and depth controls, built in September 2024 for one reason only: &lt;b&gt;I wanted to prove I could build something serious with React&lt;&#x2F;b&gt;. There was no user, no problem to solve and no plan beyond &quot;make it look good&quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;Two years later that same repository is a full SaaS with AI guides, a billing system, a landing page, a trailer, and a rabbit with headphones that answers your questions. This post is the story of how one turned into the other, and of the ideas that only appeared because I kept building.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;What RabbitHole is&lt;&#x2F;h4&gt;
+&lt;p&gt;If you have ever tried to learn something complex in a chat window, you know how it goes. You ask a question, get a wall of text, ask a follow-up, get another wall, and twenty minutes later the useful part is buried somewhere above you. I used to copy AI answers into my notes app just to keep them.&lt;&#x2F;p&gt;
+&lt;p&gt;RabbitHole takes a prompt and gives you a &lt;b&gt;guide&lt;&#x2F;b&gt; instead of an answer: a few short pages, each one building on the previous, with a sidebar to move between them and an AI chat that only talks about what is on the page.&lt;&#x2F;p&gt;
+&lt;p&gt;The part I am most proud of is small and easy to miss. Before you start, you tell RabbitHole &lt;b&gt;what you already know&lt;&#x2F;b&gt;: Docker, cooking, football, Java, whatever. Then every new topic gets explained through it.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure post-figure--narrow&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;what-you-already-know.webp&quot; alt=&quot;The &#x27;What you already know&#x27; panel with Docker, Node, Java and React added&quot; width=&quot;421&quot; height=&quot;680&quot;&gt;
+  &lt;figcaption&gt;The list RabbitHole uses to pick its analogies.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;So if you know Docker and ask &quot;What is Kubernetes?&quot;, the guide opens with a &lt;b&gt;Quick Start&lt;&#x2F;b&gt; that starts from the containers you already understand and only then explains what changes when there is a whole cluster of machines underneath. It even tells you where the analogy breaks.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure post-figure--wide&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;quick-start-analogy.webp&quot; alt=&quot;Quick Start of a Kubernetes guide, explained through Docker&quot; width=&quot;1005&quot; height=&quot;624&quot;&gt;
+  &lt;figcaption&gt;Kubernetes, explained to someone who knows Docker.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;The &lt;b&gt;Key idea&lt;&#x2F;b&gt; is a 20-second skim, the &lt;b&gt;Quick summary&lt;&#x2F;b&gt; a 60-second version, and only then come the full pages. You choose how deep to go.&lt;&#x2F;p&gt;
+&lt;p&gt;That is the product today. Getting there was much less tidy.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;AquaMesh: the submarine era&lt;&#x2F;h4&gt;
+&lt;p&gt;The first version was called &lt;b&gt;AquaMesh&lt;&#x2F;b&gt;, and the water theme went all the way down. The idea was an organisation app: you had &lt;b&gt;Dashboards&lt;&#x2F;b&gt;, and inside each dashboard you placed boxes called &lt;b&gt;Widgets&lt;&#x2F;b&gt;, which you could move around and resize. In the screenshot below, the whole screen is a dashboard and each panel inside it is a widget.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure post-figure--wide&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;aquamesh.webp&quot; alt=&quot;AquaMesh: a dashboard with two widgets, Control Flow and System Lens&quot; width=&quot;1400&quot; height=&quot;660&quot;&gt;
+  &lt;figcaption&gt;AquaMesh: one dashboard (red 1) with two widgets, Control Flow and System Lens (purple 1 and 2).&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;At first there were only a couple of predefined widgets, which made it more of a showroom than a tool. So the second version added a &lt;b&gt;Widget Editor&lt;&#x2F;b&gt;: a drag-and-drop page where you could build your own widgets out of text, fields, buttons, switches and charts. Something like HTML and CSS, minus the code. There was even a mock login with different roles, because a dashboard app without roles did not feel real enough.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure post-figure--wide&quot;&gt;
+  &lt;video class=&quot;post-video&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;aquamesh-live-demo.mp4&quot; aria-label=&quot;Building a widget in the AquaMesh Widget Editor&quot; width=&quot;1600&quot; height=&quot;754&quot; autoplay loop muted playsinline&gt;&lt;&#x2F;video&gt;
+  &lt;figcaption&gt;The Widget Editor: build a widget once, then drop it into any dashboard.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;I was happy with it, so I showed it to some friends. Their verdict was polite and accurate: &lt;b&gt;nice idea, not very practical&lt;&#x2F;b&gt;. Nobody could tell me what they would actually use it for, and neither could I.&lt;&#x2F;p&gt;
+&lt;p&gt;So AquaMesh went into a drawer for a few months.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;StudyMesh: the AI arrives&lt;&#x2F;h4&gt;
+&lt;p&gt;In September 2025 I wanted to add the project to my CV, and I did not want to add it as it was. I needed one new idea that made the whole thing worth opening. The obvious candidate was AI: instead of building every widget by hand, &lt;b&gt;what if you could ask for them?&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;That question gave the project its first real user in my head: &lt;b&gt;a student&lt;&#x2F;b&gt;. A student keeps their subjects in folders (Mathematics, Anatomy, Literature), each folder holds dashboards, and each dashboard mixes widgets with an image, a PDF, a YouTube video or some notes. On top of that, two new buttons: &lt;b&gt;Create Study Pack&lt;&#x2F;b&gt;, which generated one dashboard from a photo or a piece of text, and &lt;b&gt;Create Study Path&lt;&#x2F;b&gt;, which generated several of them in order.&lt;&#x2F;p&gt;
+&lt;p&gt;I also switched the design to white, mostly so it would look professional. The logo still said AquaMesh, but it was already StudyMesh in spirit.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure post-figure--wide&quot;&gt;
+  &lt;video class=&quot;post-video&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-first-ai.mp4&quot; aria-label=&quot;A Mathematics dashboard with AI-generated widgets about derivatives&quot; width=&quot;1280&quot; height=&quot;608&quot; autoplay loop muted playsinline&gt;&lt;&#x2F;video&gt;
+  &lt;figcaption&gt;&lt;b&gt;Create Study Pack:&lt;&#x2F;b&gt; from text or image generate markdown, key facts and quizzes.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;It worked, but it was rudimentary. You got some markdown, a few key facts and a quiz, glued into widgets that had been designed for something else entirely.&lt;&#x2F;p&gt;
+&lt;p&gt;The next iteration got the name and a new logo for real. Dashboards moved into a &lt;b&gt;Library&lt;&#x2F;b&gt;, and the screen settled into three columns: what you can create on the left, what you created in the middle, and an AI chat on the right that only answers about the middle. The study pack split into four quicker options (quiz, flashcards, clear notes and &quot;create from material&quot;), and generations now appeared as pills in a queue at the bottom, so you could keep working while the AI was busy.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure post-figure--wide&quot;&gt;
+  &lt;div class=&quot;post-mosaic&quot;&gt;
+    &lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-three-panels.webp&quot; alt=&quot;StudyMesh with three panels: creation menu, study content and AI chat&quot; width=&quot;1400&quot; height=&quot;696&quot;&gt;
+    &lt;video class=&quot;post-video post-video--tile&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-phone-video.mp4&quot; poster=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-phone-poster.webp&quot; data-label=&quot;Phone&quot; aria-label=&quot;StudyMesh on a phone&quot; width=&quot;382&quot; height=&quot;850&quot; preload=&quot;none&quot; loop muted playsinline&gt;&lt;&#x2F;video&gt;
+    &lt;video class=&quot;post-video post-video--tile post-video--left&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-dark-video.mp4&quot; poster=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-dark-poster.webp&quot; data-label=&quot;Generating&quot; data-sublabel=&quot;in dark mode&quot; aria-label=&quot;StudyMesh in dark mode, with the generation queue&quot; width=&quot;1280&quot; height=&quot;640&quot; preload=&quot;none&quot; loop muted playsinline&gt;&lt;&#x2F;video&gt;
+  &lt;&#x2F;div&gt;
+  &lt;figcaption&gt;StudyMesh: create on the left, read in the middle, ask on the right. Tap the small ones to see it on a phone, and generating material in dark mode.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;I would love to tell you this layout came from a clear plan. It didn&#x27;t. I was learning while building, trying things, keeping what worked and deleting what didn&#x27;t, and checking on my phone the whole time that nothing broke on a small screen. A lot of what I built in that period no longer exists, and that is fine; it is how I found out what the product should not be.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;From a project to a product&lt;&#x2F;h4&gt;
+&lt;p&gt;Up to this point StudyMesh was an app. What turned it into a &lt;b&gt;product&lt;&#x2F;b&gt; was all the boring, invisible work around it:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Real accounts&lt;&#x2F;strong&gt;, with Google sign-in and the data in Supabase.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;A landing page&lt;&#x2F;strong&gt;, which got a full second version a few months later.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Three AI modes&lt;&#x2F;strong&gt;: &lt;em&gt;Hosted&lt;&#x2F;em&gt;, where I pay for the model and you pay me in credits; &lt;em&gt;Local&lt;&#x2F;em&gt;, which runs a model on your own machine; and &lt;em&gt;BYOK&lt;&#x2F;em&gt; (bring your own key), for people who already pay for an API key.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Billing&lt;&#x2F;strong&gt; with Stripe and a currency of its own, Study Credits: a guide cost 3, everything else 1, and a €2 pack gave you 150 of them.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Podcasts&lt;&#x2F;strong&gt;, so you can listen to a guide on the bus.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;An AI pet&lt;&#x2F;strong&gt;, because the chat felt cold without a face. It started as a single dolphin and ended up as a small cast to pick from: a bee, a dolphin and a parrot.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;div class=&quot;phone-images-row&quot;&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-landing-phone.webp&quot; alt=&quot;StudyMesh landing page on a phone&quot;&gt;&lt;&#x2F;img&gt;
+  &lt;img class=&quot;phone-image&quot; src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;studymesh-pet-phone.webp&quot; alt=&quot;StudyMesh AI chat with the dolphin pet on a phone&quot;&gt;&lt;&#x2F;img&gt;
+&lt;&#x2F;div&gt;
+&lt;p&gt;None of these features is what a user remembers. All of them are what a user needs before they can trust you with an email address, let alone a card number. If you have only built side projects, this is the part that surprises you: &lt;b&gt;the app took months, and making it a product took about as long again&lt;&#x2F;b&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;RabbitHole: finding the one idea&lt;&#x2F;h4&gt;
+&lt;p&gt;In June 2026 one feature changed the shape of everything else: the &lt;b&gt;&quot;What you already know&quot;&lt;&#x2F;b&gt; list from the beginning of this post.&lt;&#x2F;p&gt;
+&lt;p&gt;Once guides could be explained through your own knowledge, they stopped being study material. A developer learning Kubernetes, a cook curious about fermentation, a football fan reading about game theory: none of them is studying for an exam. They are following their curiosity, one link at a time. The name &quot;StudyMesh&quot; suddenly sounded like homework.&lt;&#x2F;p&gt;
+&lt;p&gt;That is how it became &lt;b&gt;RabbitHole&lt;&#x2F;b&gt;. And the name pulled the last missing piece into place: what happens when a guide ends. Now the final page gives you a quiz, and after it, a handful of &lt;b&gt;new rabbit holes&lt;&#x2F;b&gt;, topics that build on the one you just finished. One more button, &lt;b&gt;Add to what I know&lt;&#x2F;b&gt;, puts the topic into your list, so the next guide can use it as an analogy.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure post-figure--wide&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;end-of-guide.webp&quot; alt=&quot;Quiz results with &#x27;Add to what I know&#x27; and suggested follow-up guides&quot; width=&quot;1117&quot; height=&quot;872&quot;&gt;
+  &lt;figcaption&gt;The end of a guide is the start of the next one.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;p&gt;That loop is the whole product in one picture. &lt;b&gt;Every guide you finish makes the next one easier to understand.&lt;&#x2F;b&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The rest followed the name, as these things do. The interface was redesigned, the dolphin became a rabbit with a headset and a green bandana, and Study Credits became &lt;b&gt;carrots&lt;&#x2F;b&gt;.&lt;&#x2F;p&gt;
+&lt;figure class=&quot;post-figure&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;carrots.webp&quot; alt=&quot;Carrot balance, the cost of each action and three carrot packs&quot; width=&quot;931&quot; height=&quot;728&quot;&gt;
+  &lt;figcaption&gt;The carrot shop. A couple of guides a day are free; after that, carrots.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;figure class=&quot;post-figure post-figure--wide&quot;&gt;
+  &lt;img src=&quot;&#x2F;images&#x2F;blog&#x2F;2026-10-18-building-rabbithole&#x2F;rabbithole-workspace.webp&quot; alt=&quot;RabbitHole workspace with pages, a Kubernetes guide and the rabbit AI chat&quot; width=&quot;1400&quot; height=&quot;666&quot;&gt;
+  &lt;figcaption&gt;RabbitHole today: pages on the left, the guide in the middle, the rabbit on the right.&lt;&#x2F;figcaption&gt;
+&lt;&#x2F;figure&gt;
+&lt;hr &#x2F;&gt;
+&lt;h4&gt;Under the hood&lt;&#x2F;h4&gt;
+&lt;p&gt;For the developers reading: RabbitHole is a &lt;b&gt;React + TypeScript&lt;&#x2F;b&gt; app inside a &lt;b&gt;Turborepo&lt;&#x2F;b&gt; monorepo, with serverless functions on &lt;b&gt;Vercel&lt;&#x2F;b&gt; as the backend. &lt;b&gt;Supabase&lt;&#x2F;b&gt; holds the data and the accounts, &lt;b&gt;Stripe&lt;&#x2F;b&gt; handles the carrots, and the guides themselves are written by models from &lt;b&gt;OpenAI&lt;&#x2F;b&gt;, &lt;b&gt;Gemini&lt;&#x2F;b&gt; and &lt;b&gt;Cerebras&lt;&#x2F;b&gt;. Tests run with &lt;b&gt;Vitest&lt;&#x2F;b&gt; for the logic and &lt;b&gt;Playwright&lt;&#x2F;b&gt; for the E2E.&lt;&#x2F;p&gt;
+&lt;details class=&quot;expandable-info&quot;&gt;
+    &lt;summary&gt;&lt;i class=&quot;fas fa-info-circle&quot;&gt;&lt;&#x2F;i&gt; Every external service RabbitHole uses&lt;&#x2F;summary&gt;
+    &lt;div class=&quot;expandable-content&quot;&gt;
+        &lt;p&gt;&lt;b&gt;Vercel&lt;&#x2F;b&gt;: hosting and serverless functions.&lt;br&#x2F;&gt;
+        &lt;b&gt;Supabase&lt;&#x2F;b&gt;: database and authentication.&lt;br&#x2F;&gt;
+        &lt;b&gt;Google Auth&lt;&#x2F;b&gt;: one-click sign-in.&lt;br&#x2F;&gt;
+        &lt;b&gt;Stripe&lt;&#x2F;b&gt;: payments for carrot packs.&lt;br&#x2F;&gt;
+        &lt;b&gt;OpenAI, Gemini and Cerebras&lt;&#x2F;b&gt;: the models behind guides, quizzes, flashcards and chat.&lt;br&#x2F;&gt;
+        &lt;b&gt;Unreal Speech&lt;&#x2F;b&gt;: the voices in the podcasts.&lt;br&#x2F;&gt;
+        &lt;b&gt;Tavily&lt;&#x2F;b&gt;: web search inside the AI chat.&lt;&#x2F;p&gt;
+        &lt;p&gt;The code is public on &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;CosmeValera&#x2F;RabbitHole&quot;&gt;&lt;b&gt;GitHub&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+    &lt;&#x2F;div&gt;
+&lt;&#x2F;details&gt;
+&lt;hr &#x2F;&gt;
+&lt;!-- Visual break before conclusion - changes based on time of year --&gt;
+&lt;div class=&quot;seasonal-image-container&quot;&gt;
+  
+  
+  &lt;!-- &lt;p&gt;10&lt;&#x2F;p&gt; --&gt;
+  
+  
+  
+    
+  
+  
+  
+  
+    &lt;img
+      src=&quot;https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;general&#x2F;tree-autumn-winter-webp.webp&quot; 
+      alt=&quot;Autumn&amp;amp;#x2F;Winter seasonal image&quot;
+      loading=&quot;lazy&quot;
+      decoding=&quot;async&quot;&gt;
+  
+&lt;&#x2F;div&gt;&lt;p&gt;AquaMesh was built to prove I could write React. RabbitHole proved something more useful to me: that I can take an empty repository all the way to a product with accounts, payments, a landing page and an idea of its own.&lt;&#x2F;p&gt;
+&lt;p&gt;Whether it was a &lt;b&gt;good&lt;&#x2F;b&gt; product is a different question, and the numbers have a clear opinion about it. That is the next post: &lt;a class=&quot;link-text&quot; href=&quot;&#x2F;blog&#x2F;rabbithole-post-mortem&#x2F;&quot;&gt;&lt;b&gt;RabbitHole: The Post-Mortem&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;In the meantime, the rabbit is still answering questions. &lt;a class=&quot;link-text&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;rabbithole.cosmevalera.dev&#x2F;try&quot;&gt;&lt;b&gt;Pick a topic and fall in&lt;&#x2F;b&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
