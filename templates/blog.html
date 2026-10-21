@@ -310,7 +310,7 @@
 
     <div class="blog-series-carousel">
         {% if rabbithole_series_list | length > 0 %}
-          {{ series::card(posts=rabbithole_series_list, cover="/images/blog/2026-10-18-building-rabbithole/cover.webp", title_key="rabbithole_series_title", desc_key="rabbithole_series_desc", lang=lang) }}
+          {{ series::card(posts=rabbithole_series_list, cover="/images/blog/2026-10-18-building-rabbithole/series-cover.webp", title_key="rabbithole_series_title", desc_key="rabbithole_series_desc", lang=lang) }}
         {% endif %}
         {% if bitcoin_series_list | length > 0 %}
           {{ series::card(posts=bitcoin_series_list, cover="/images/blog/2025-07-25-bitcoin/bitcoin-100-series-cover.webp", title_key="bitcoin_series_title", desc_key="bitcoin_series_desc", lang=lang, strip="BTC 10") }}
