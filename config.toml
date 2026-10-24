@@ -193,7 +193,7 @@ stat_books = "Libros reseñados"
 
 # Blog post footer
 written_by = "Escrito por"
-author_bio = "Ingeniero full stack en GMV, en el programa Galileo. Escribo sobre lo que aprendo construyendo: arquitectura, buenas prácticas, IA y Bitcoin."
+author_bio = "Ingeniero full stack en GMV, en el programa Galileo. Escribo sobre lo que aprendo construyendo: arquitectura, buenas prácticas e IA."
 more_posts = "Más publicaciones"
 
 # Footer
@@ -358,7 +358,7 @@ stat_posts = "Posts written"
 stat_books = "Books reviewed"
 # Blog post footer
 written_by = "Written by"
-author_bio = "Full stack engineer at GMV on the Galileo programme. I write about what I learn while building: architecture, good practices, AI and Bitcoin."
+author_bio = "Full stack engineer at GMV on the Galileo programme. I write about what I learn while building: architecture, good practices and AI."
 more_posts = "More posts"
 # Footer
 footer_sponsor = "Sponsor"
