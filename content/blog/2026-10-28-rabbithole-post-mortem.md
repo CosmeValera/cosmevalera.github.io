@@ -32,7 +32,6 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <figure class="post-figure post-figure--narrow">
   <img src="/images/blog/2026-10-25-rabbithole-post-mortem/linkedin-post.webp" alt="LinkedIn post announcing RabbitHole with the trailer video" width="499" height="802">
-  <figcaption>The launch post. #buildinpublic, as one does.</figcaption>
 </figure>
 
 <p>Here is the result:</p>
@@ -101,7 +100,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 5. **Validate with people who match the target user**, not only with friends and family.
 6. **Care about the "why" as much as the "how".** Why would someone use this instead of what they already use?
 
-<p>That last point is the one I'm working on now. Engineering taught me <b>how</b> to build things; it never forced me to ask <b>why</b> anyone would want them. That's why I'm reading <a class="link-text" target="_blank" href="/readings/"><b>Escaping the Build Trap</b></a> by Melissa Perri. The "build trap" is what happens when a team measures success by the features it ships instead of the value it delivers, and reading it after RabbitHole has been slightly uncomfortable, in a good way. I was a one-person team, stuck in the trap.</p>
+<p>That last point is the one I'm working on now. Engineering taught me <b>how</b> to build things; it never forced me to ask <b>why</b> anyone would want them. That's why I read <a class="link-text" target="_blank" href="/readings/"><b>Escaping the Build Trap</b></a> by Melissa Perri. The "build trap" is what happens when a team measures success by the features it ships instead of the value it delivers, and reading it after RabbitHole has been slightly uncomfortable, in a good way. I was a one-person team, stuck in the trap.</p>
 
 ---
 
