@@ -126,24 +126,9 @@
         <p class="home-section-desc">{{ trans(key="latest_posts_desc", lang=lang) }}</p>
     </div>
 
-    {# Two newest technical posts first, then the newest Bitcoin/finance one:
-       a recruiter skimming the page should meet the engineering writing first. #}
+    {# The three newest posts; drafts never reach section.pages. #}
     {% set blog_section = get_section(path="blog/_index.md", lang=lang) %}
-    {% set technical_posts = [] %}
-    {% set other_posts = [] %}
-    {% for post in blog_section.pages %}
-        {% set first_tag = "" %}
-        {% if post.taxonomies and post.taxonomies.tags and post.taxonomies.tags | length > 0 %}
-            {% set first_tag = post.taxonomies.tags | first | slugify %}
-        {% endif %}
-        {% if first_tag in ["bitcoin", "finance"] %}
-            {% set_global other_posts = other_posts | concat(with=post) %}
-        {% else %}
-            {% set_global technical_posts = technical_posts | concat(with=post) %}
-        {% endif %}
-    {% endfor %}
-    {% set newest_other = other_posts | slice(end=1) %}
-    {% set home_posts = technical_posts | slice(end=2) | concat(with=newest_other) %}
+    {% set home_posts = blog_section.pages | slice(end=3) %}
     <div class="home-posts-grid">
         {% for post in home_posts %}
             {% set post_date_numeric = post.date | date(format="%Y%m%d") | int %}
