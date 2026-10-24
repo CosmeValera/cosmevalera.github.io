@@ -3,7 +3,7 @@ title = "Building RabbitHole"
 template = "blog-post.html"
 description = "How I built my own AI learning product alone, from a first prototype to launch: two years, three names and one rabbit."
 [taxonomies]
-tags = ["frontend", "backend"]
+tags = ["product", "ai"]
 [extra]
 series = "rabbithole"
 cover_image = "/images/blog/2026-10-18-building-rabbithole/cover.webp"

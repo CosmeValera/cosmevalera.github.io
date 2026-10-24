@@ -2,9 +2,8 @@
 title = "RabbitHole: The Post-Mortem"
 template = "blog-post.html"
 description = "What launching my first SaaS taught me about product development"
-draft = true
 [taxonomies]
-tags = ["best-practices"]
+tags = ["product"]
 [extra]
 series = "rabbithole"
 cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"

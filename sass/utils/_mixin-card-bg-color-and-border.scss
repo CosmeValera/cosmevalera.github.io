@@ -50,6 +50,20 @@
         #123434 65%, 
         #123434);
   }
+  &.tag-product {
+    background: 
+      linear-gradient(-90deg, 
+        mix($product-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
+  &.tag-ai {
+    background: 
+      linear-gradient(-90deg, 
+        mix($ai-tag-plain, #123434, 10%), 
+        #123434 65%, 
+        #123434);
+  }
 }
 // END: BLOG-CARD BG COLOR EFFECT WHEN HOVERED //////
 
@@ -104,6 +118,20 @@
         $primary-bg-bright 60%, 
         $secondary-bg-bright);
   }
+  &.tag-product {
+    background: 
+      linear-gradient(-90deg, 
+        mix($product-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
+  &.tag-ai {
+    background: 
+      linear-gradient(-90deg, 
+        mix($ai-tag-plain, $primary-bg-bright, 8%), 
+        $primary-bg-bright 60%, 
+        $secondary-bg-bright);
+  }
 }
 // END: BLOG-CARD BG COLOR EFFECT WHEN HOVERED (BRIGHT THEME) //////
 /////////////////////////////////////////////////////
@@ -152,6 +180,18 @@
       0 0 0 2px rgba($testing-tag-plain, 0.6),
       0 4px 8px rgba(0, 0, 0, 0.3);
     animation: pulse-border-testing 2s ease-in-out infinite;
+  }
+  &.tag-product {
+    box-shadow: 
+      0 0 0 2px rgba($product-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-product 2s ease-in-out infinite;
+  }
+  &.tag-ai {
+    box-shadow: 
+      0 0 0 2px rgba($ai-tag-plain, 0.6),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: pulse-border-ai 2s ease-in-out infinite;
   }
 }
 
@@ -245,6 +285,32 @@
       0 4px 8px rgba(0, 0, 0, 0.3);
   }
 }
+
+@keyframes pulse-border-product {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($product-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($product-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes pulse-border-ai {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 1px rgba($ai-tag-plain, 0.3),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px rgba($ai-tag-plain, 0.8),
+      0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
 // END: BLOG-CARD BORDER COLOR FOR ICONS WHEN HOVERED //////
 ////////////////////////////////////////////////////////////
 
@@ -271,6 +337,12 @@
   }
   &.tag-testing {
     box-shadow: 0 0 0 2px rgba($testing-tag-plain, 0.6);
+  }
+  &.tag-product {
+    box-shadow: 0 0 0 2px rgba($product-tag-plain, 0.6);
+  }
+  &.tag-ai {
+    box-shadow: 0 0 0 2px rgba($ai-tag-plain, 0.6);
   }
 }
 // END: BLOG-CARD ICON BORDER COLOR WHEN HOVERED ///////////

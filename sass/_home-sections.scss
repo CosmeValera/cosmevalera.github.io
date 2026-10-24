@@ -160,6 +160,8 @@
     &.tag-bitcoin       { background: rgba($bitcoin-tag-plain, 0.18);       color: $bitcoin-tag-plain; }
     &.tag-best-practices{ background: rgba($best-practices-tag-plain, 0.18);color: lighten($best-practices-tag-plain, 10%); }
     &.tag-testing       { background: rgba($testing-tag-plain, 0.18);       color: lighten($testing-tag-plain, 15%); }
+    &.tag-product       { background: rgba($product-tag-plain, 0.18);       color: lighten($product-tag-plain, 15%); }
+    &.tag-ai       { background: rgba($ai-tag-plain, 0.18);       color: lighten($ai-tag-plain, 15%); }
 }
 
 .home-post-title,

@@ -62,6 +62,12 @@
     &.tag-testing {
       background: $testing-tag-gradient;
     }
+    &.tag-product {
+      background: $product-tag-gradient;
+    }
+    &.tag-ai {
+      background: $ai-tag-gradient;
+    }
 }
 
 @mixin tag-styling-plain {
@@ -98,6 +104,12 @@
     }
     &.tag-testing-plain {
       background-color: $testing-tag-plain;
+    }
+    &.tag-product-plain {
+      background-color: $product-tag-plain;
+    }
+    &.tag-ai-plain {
+      background-color: $ai-tag-plain;
     }
 }
 
