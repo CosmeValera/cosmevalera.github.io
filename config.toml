@@ -14,7 +14,12 @@ highlight_code = true
 highlight_theme = "monokai"
 
 [extra]
-blog_post_tags = ["recommended", "for-beginners", "frontend", "backend", "architecture", "finance", "bitcoin", "best-practices", "testing", "product", "ai"]
+blog_post_tags = ["recommended", "for-beginners", "frontend", "backend", "architecture", "finance", "best-practices", "testing", "product", "ai", "bitcoin"]
+# Blog filter bar: these tags fill the first row, in this order. Every other
+# topic tag with published posts goes in a second row behind a "+N" button,
+# in blog_post_tags order.
+blog_filters = ["best-practices", "product", "architecture", "frontend", "finance"]
+blog_filter_icons = { "best-practices" = "fas fa-check-circle", product = "fas fa-rocket", architecture = "fas fa-sitemap", frontend = "fas fa-laptop-code", finance = "fas fa-chart-line", bitcoin = "fab fa-bitcoin", testing = "fas fa-vial", ai = "fas fa-robot", backend = "fas fa-server" }
 
 links = [
     { title = "GitHub", url = "https://github.com/CosmeValera", icon = "github" },

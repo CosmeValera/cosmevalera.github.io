@@ -290,7 +290,7 @@
         border-radius: 0;
         align-items: center; // Ensure vertical centering
         flex-wrap: wrap; // Allow wrapping
-        gap: 10px; // Consistent spacing
+        gap: 8px; // Consistent spacing
         // max-width: 700px; // Force earlier wrap for balance
         margin: 0 auto; // Center the container itself
 
@@ -304,7 +304,7 @@
         .filter-button {
           border: none;
           cursor: pointer;
-          padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+          padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 0.85rem);
           margin: 0; // Handled by gap
           font-size: 0.9rem;
           font-weight: bold;
@@ -339,7 +339,7 @@
         .series-link-button {
            // Base styles copied from .filter-button but made independent
            cursor: pointer;
-           padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 1rem);
+           padding: clamp(0.25rem, 1vw, 0.5rem) clamp(0.5rem, 2vw, 0.85rem);
            margin: 0; // Handled by gap
            font-size: 0.9rem;
            font-size: 0.9rem;
@@ -364,7 +364,33 @@
               transform: translateY(-1px);
            }
         }
+
+        // "+N" toggle reuses .filter-button; the extra tags wrap onto their own row.
+        .filter-more-toggle i {
+          margin-right: 4px;
+        }
+
+        .filter-more-row {
+          display: flex;
+          flex-basis: 100%;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+
+          &[hidden] {
+            display: none;
+          }
+        }
       }
+    }
+  }
+
+  // Wide screens: let the filter bar overflow the blog column a little, so
+  // five filters, the "+N" toggle and Series fit on one row.
+  @include respond-to('xl') {
+    .filter-buttons-desktop {
+      margin-left: -100px;
+      margin-right: -100px;
     }
   }
 

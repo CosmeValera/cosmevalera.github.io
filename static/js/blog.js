@@ -110,7 +110,9 @@ function initBlogFilters() {
   const modal = document.querySelector('#filter-modal');
   const modalClose = document.querySelector('#filter-modal-close');
   const modalOptions = Array.from(document.querySelectorAll('.filter-modal-option'));
-  const desktopButtons = Array.from(document.querySelectorAll('.filter-button'));
+  const desktopButtons = Array.from(document.querySelectorAll('.filter-button:not(.filter-more-toggle)'));
+  const moreToggle = document.querySelector('.filter-more-toggle');
+  const moreRow = document.querySelector('#filter-more-row');
 
   function applyFilter(selectedFilter) {
     cards.forEach(function(card) {
@@ -192,6 +194,26 @@ function initBlogFilters() {
       setSelected(desktopButtons, button, button.getAttribute('data-filter'));
     });
   });
+
+  // "+N" toggle: shows the second row of filters. Closing it while one of
+  // those filters is active clears it, so no hidden filter stays applied.
+  if (moreToggle && moreRow) {
+    moreToggle.addEventListener('click', function() {
+      const isOpen = moreRow.hidden;
+      moreRow.hidden = !isOpen;
+      moreToggle.setAttribute('aria-expanded', String(isOpen));
+      moreToggle.title = moreToggle.getAttribute(isOpen ? 'data-label-less' : 'data-label-more');
+      const icon = moreToggle.querySelector('i');
+      icon.classList.toggle('fa-plus', !isOpen);
+      icon.classList.toggle('fa-minus', isOpen);
+
+      const hiddenSelected = !isOpen && moreRow.querySelector('.selected-filter');
+      if (hiddenSelected) {
+        hiddenSelected.classList.remove('selected-filter');
+        applyFilter();
+      }
+    });
+  }
 }
 
 function managePreviewHintAnimation() {

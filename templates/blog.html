@@ -26,51 +26,42 @@
   <p class="blog-intro">{{ trans(key="blog_intro", lang=lang) }}</p>
 
   <!-- FILTER (Desktop Only) -->
+  {# First row: config.extra.blog_filters, in that order. Second row: every other
+     topic tag that has published posts, behind a "+N" toggle. #}
+  {% set main_filters = config.extra.blog_filters %}
+  {% set helper_tags = ["recommended", "for-beginners"] %}
+  {% set tag_taxonomy = get_taxonomy(kind="tags", lang=lang, required=false) %}
+  {% set_global used_tags = [] %}
+  {% if tag_taxonomy %}
+    {% for term in tag_taxonomy.items %}
+      {% set_global used_tags = used_tags | concat(with=term.slug) %}
+    {% endfor %}
+  {% endif %}
+  {# Second-row order follows config.extra.blog_post_tags. #}
+  {% set_global more_filters = [] %}
+  {% for slug in config.extra.blog_post_tags %}
+    {% if slug in used_tags and slug not in main_filters and slug not in helper_tags %}
+      {% set_global more_filters = more_filters | concat(with=slug) %}
+    {% endif %}
+  {% endfor %}
+  {% set all_filters = main_filters | concat(with=more_filters) %}
+
   <div class="filter-buttons-desktop">
     <div class="filter-dropdown-desktop">
-      <!-- <button class="filter-button" data-filter="recommended">
-        <i class="fas fa-star"></i>
-        Recommended
+      {% for slug in main_filters %}
+      <button class="filter-button" data-filter="{{ slug }}">
+        <i class="{{ config.extra.blog_filter_icons[slug] }}"></i>
+        {{ trans(key=slug | replace(from="-", to="_"), lang=lang) }}
       </button>
+      {% endfor %}
 
-      <button class="filter-button" data-filter="for-beginners">
-        <i class="fas fa-book"></i>
-        Beginners
-      </button> -->
-      <button class="filter-button" data-filter="frontend">
-        <i class="fas fa-laptop-code"></i>
-        {{ trans(key="frontend", lang=lang) }}
+      {% if more_filters | length > 0 %}
+      <button class="filter-button filter-more-toggle" type="button" aria-expanded="false" aria-controls="filter-more-row"
+              title="{{ trans(key='show_more', lang=lang) }}"
+              data-label-more="{{ trans(key='show_more', lang=lang) }}" data-label-less="{{ trans(key='show_less', lang=lang) }}">
+        <i class="fas fa-plus" aria-hidden="true"></i>{{ more_filters | length }}
       </button>
-
-      <button class="filter-button" data-filter="best-practices">
-        <i class="fas fa-check-circle"></i>
-        {{ trans(key="best_practices", lang=lang) }}
-      </button>
-
-      <!-- <button class="filter-button" data-filter="backend">
-        <i class="fas fa-server"></i>
-        Backend
-      </button> -->
-
-      <button class="filter-button" data-filter="architecture">
-        <i class="fas fa-sitemap"></i>
-        {{ trans(key="architecture", lang=lang) }}
-      </button>
-
-      <!-- <button class="filter-button" data-filter="testing">
-        <i class="fas fa-vial"></i>
-        {{ trans(key="testing", lang=lang) }}
-      </button> -->
-
-      <button class="filter-button" data-filter="finance">
-        <i class="fas fa-chart-line"></i>
-        {{ trans(key="finance", lang=lang) }}
-      </button>
-
-      <button class="filter-button" data-filter="bitcoin">
-        <i class="fab fa-bitcoin"></i>
-        {{ trans(key="bitcoin", lang=lang) }}
-      </button>
+      {% endif %}
 
       <div class="filter-separator"></div>
 
@@ -78,6 +69,17 @@
         <i class="fas fa-layer-group"></i>
         {{ trans(key="go_to_series", lang=lang) }}
       </a>
+
+      {% if more_filters | length > 0 %}
+      <div class="filter-more-row" id="filter-more-row" hidden>
+        {% for slug in more_filters %}
+        <button class="filter-button" data-filter="{{ slug }}">
+          <i class="{{ config.extra.blog_filter_icons[slug] }}"></i>
+          {{ trans(key=slug | replace(from="-", to="_"), lang=lang) }}
+        </button>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
   </div>
   <!-- END: FILTER (Desktop Only) -->
@@ -101,30 +103,12 @@
           </button>
         </div>
         <div class="filter-modal-body">
-          <button class="filter-modal-option" data-filter="frontend">
-            <i class="fas fa-laptop-code"></i>
-            {{ trans(key="frontend", lang=lang) }}
+          {% for slug in all_filters %}
+          <button class="filter-modal-option" data-filter="{{ slug }}">
+            <i class="{{ config.extra.blog_filter_icons[slug] }}"></i>
+            {{ trans(key=slug | replace(from="-", to="_"), lang=lang) }}
           </button>
-          <button class="filter-modal-option" data-filter="best-practices">
-            <i class="fas fa-check-circle"></i>
-            {{ trans(key="best_practices", lang=lang) }}
-          </button>
-          <button class="filter-modal-option" data-filter="architecture">
-            <i class="fas fa-sitemap"></i>
-            {{ trans(key="architecture", lang=lang) }}
-          </button>
-          <!-- <button class="filter-modal-option" data-filter="testing">
-            <i class="fas fa-vial"></i>
-            {{ trans(key="testing", lang=lang) }}
-          </button> -->
-          <button class="filter-modal-option" data-filter="finance">
-            <i class="fas fa-chart-line"></i>
-            {{ trans(key="finance", lang=lang) }}
-          </button>
-          <button class="filter-modal-option" data-filter="bitcoin">
-            <i class="fab fa-bitcoin"></i>
-            {{ trans(key="bitcoin", lang=lang) }}
-          </button>
+          {% endfor %}
         </div>
       </div>
 
