@@ -12,7 +12,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 ![blog-cover](/images/blog/2026-10-25-rabbithole-post-mortem/cover.png)
 
 > **TL;DR**
-> - Lancé RabbitHole en LinkedIn con una promoción de **35 €**. Llegó a **12.091** impresiones, algunas personas lo probaron y **nadie compró ni una zanahoria**.
+> - Lancé RabbitHole en LinkedIn con una promoción de **35 €**. Llegó a **12.091** impresiones, algunas personas lo probaron y **nadie compró ni una zanahoria** (los créditos de la app).
 > - El problema no fue la parte técnica, sino las decisiones de producto: un usuario objetivo difuso, un MVP de dos años, cero métricas de conversión y una validación que solo venía de amigos.
 > - La próxima vez: un usuario, un problema, una hipótesis y medirlo todo desde el primer día.
 
@@ -41,7 +41,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
   <figcaption>12.091 impresiones, 10 reacciones, 3 comentarios, 2 veces compartido.</figcaption>
 </figure>
 
-<p>Doce mil personas vieron el post. Algunas abrieron la app y la probaron. <b>Nadie compró zanahorias.</b></p>
+<p>Doce mil personas vieron el post. Algunas abrieron la app. ¿Cuántas? No lo sé, y eso acabó siendo uno de los cuatro errores. <b>Nadie compró zanahorias.</b></p>
 
 ---
 
@@ -51,7 +51,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <p><b>Construí un SaaS completo yo solo.</b> Cuentas, base de datos, tres modos de IA, pagos, pódcasts, una landing, una demo pública y una batería de tests. Hace dos años tenía un dashboard en React con botones tipo sonar. Por el camino aprendí más sobre integración de IA, UI/UX y pagos de lo que me habría enseñado cualquier curso, porque cada lección venía con un bug que tenía que arreglar yo.</p>
 
-<p>Y ahora el proyecto está en mi CV (jeje).</p>
+<p>Y ahora el proyecto está en mi CV, que no esta mal.</p>
 
 ---
 
@@ -81,13 +81,18 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <p>No medí el embudo de conversión: <b>visita a la landing → registro → primera guía creada</b>. Sin eso, 12.091 impresiones son solo un número. ¿La gente vio el post y no hizo clic? ¿Hizo clic, vio la landing y se fue? ¿Se registró y nunca creó una guía? ¿Creó una y no volvió? Cada caso tiene una solución completamente distinta, y <b>no tengo ni idea de cuál fue</b>.</p>
 
+<figure class="post-figure">
+  <img src="/images/blog/2026-10-25-rabbithole-post-mortem/funnel-es.svg" alt="Embudo con 12.091 impresiones arriba, 0 compras abajo y, entre medias, visitas a la landing, registros y primeras guías marcados como sin medir" width="640" height="376">
+  <figcaption>Medí el principio y el final. Todo lo de en medio es una interrogación.</figcaption>
+</figure>
+
 <p>Doce mil impresiones, y lo único que he aprendido de ellas es que debería haberlas medido.</p>
 
 <b>4. Validación a golpe de WhatsApp</b>
 
 <p>Mi feedback venía de un grupo de WhatsApp: mis tres hermanos, todos desarrolladores, y seis o siete amigos. Son listos, sinceros y generosos con su tiempo. Pero <b>no eran el usuario objetivo</b>, y la gente que te quiere no es la más indicada para decirte que tu producto no hace falta.</p>
 
-<p>Echando la vista atrás, el feedback más valioso que recibí fue el primero, sobre AquaMesh: <i>buena idea, pero poco práctica</i>. Respondí cambiándole el nombre al producto y añadiéndole IA. Lo que debería haber hecho es sentarme con estudiantes de verdad, preguntarles cómo estudian realmente y construir lo mínimo que les ayudara con eso.</p>
+<p>Echando la vista atrás, el feedback más valioso que recibí fue el primero, sobre AquaMesh (la versión previa de todo esto): <i>buena idea, pero poco práctica</i>. Respondí cambiándole el nombre al producto y añadiéndole IA. Lo que debería haber hecho es sentarme con estudiantes de verdad, preguntarles cómo estudian realmente y construir lo mínimo que les ayudara con eso.</p>
 
 ---
 

@@ -12,7 +12,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 ![blog-cover](/images/blog/2026-10-25-rabbithole-post-mortem/cover.png)
 
 > **TL;DR**
-> - I launched RabbitHole on LinkedIn with a **€35** promotion. It reached **12,091** impressions, a few people tried it, and **nobody bought a single carrot**.
+> - I launched RabbitHole on LinkedIn with a **€35** promotion. It reached **12,091** impressions, a few people tried it, and **nobody bought a single carrot** (the app's credits).
 > - The engineering was not the problem. The product decisions were: a vague target user, a two-year MVP, no funnel tracking and validation that only came from friends.
 > - Next time: one user, one problem, one hypothesis, and measure everything from the first day.
 
@@ -41,7 +41,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
   <figcaption>12,091 impressions, 10 reactions, 3 comments, 2 shares.</figcaption>
 </figure>
 
-<p>Twelve thousand people saw the post. A few of them opened the app and tried it. <b>Nobody bought carrots.</b></p>
+<p>Twelve thousand people saw the post. Some of them opened the app. How many? I don't know, and that turned out to be one of the four mistakes. <b>Nobody bought carrots.</b></p>
 
 ---
 
@@ -51,7 +51,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <p><b>I built a complete SaaS on my own.</b> Accounts, a database, three AI modes, billing, podcasts, a landing page, a public demo and a test suite. Two years ago I had a React dashboard with sonar buttons. Along the way I learned more about AI integration, UI/UX and payments than any course would have taught me, because every lesson came attached to a bug I had to fix myself.</p>
 
-<p>And the project is on my CV now (hehe).</p>
+<p>And the project is on my CV now, which is not a bad ending for a product that never sold.</p>
 
 ---
 
@@ -81,13 +81,18 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <p>I didn't track the funnel: <b>landing page visit → sign-up → first guide created</b>. Without it, 12,091 impressions is a number with nothing behind it. Did people see the post and not click? Click, look at the landing page and leave? Sign up and never create a guide? Create one and never come back? Each of those has a completely different fix, and <b>I have no idea which one happened</b>.</p>
 
+<figure class="post-figure">
+  <img src="/images/blog/2026-10-25-rabbithole-post-mortem/funnel.svg" alt="Funnel with 12,091 impressions at the top, 0 purchases at the bottom, and landing visits, sign-ups and first guides in between marked as not tracked" width="640" height="376">
+  <figcaption>I measured the top and the bottom. Everything in between is a question mark.</figcaption>
+</figure>
+
 <p>Twelve thousand impressions, and the only thing I learned from them is that I should have measured them.</p>
 
 <b>4. Validation by WhatsApp group</b>
 
 <p>My feedback came from a WhatsApp group: my three siblings, all developers, and six or seven friends. They are smart, honest and generous with their time. They were also <b>not the target user</b>, and people who love you are not the right people to tell you your product is unnecessary.</p>
 
-<p>Looking back, the most valuable feedback I ever got was the first one, about AquaMesh: <i>nice idea, but not very practical</i>. I answered it by renaming the product and adding AI. What I should have done is sit down with real students, ask how they actually study, and build the smallest thing that helped with that.</p>
+<p>Looking back, the most valuable feedback I ever got was the first one, about AquaMesh (the first version of all this): <i>nice idea, but not very practical</i>. I answered it by renaming the product and adding AI. What I should have done is sit down with real students, ask how they actually study, and build the smallest thing that helped with that.</p>
 
 ---
 
