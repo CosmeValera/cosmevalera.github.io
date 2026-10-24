@@ -7,10 +7,10 @@ draft = true
 tags = ["best-practices"]
 [extra]
 series = "rabbithole"
-cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.webp"
+cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 +++
 
-![blog-cover](/images/blog/2026-10-25-rabbithole-post-mortem/cover.webp)
+![blog-cover](/images/blog/2026-10-25-rabbithole-post-mortem/cover.png)
 
 > **TL;DR**
 > - I launched RabbitHole on LinkedIn with a **€35** promotion. It reached **12,091** impressions, a few people tried it, and **nobody bought a single carrot**.
