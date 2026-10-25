@@ -1,7 +1,7 @@
 +++
 title = "Cómo construí RabbitHole"
 template = "blog-post.html"
-description = "Cómo construí en solitario un producto de aprendizaje con IA, del primer prototipo al lanzamiento: dos años, tres nombres y un conejo."
+description = "Cómo construí en solitario un producto de aprendizaje con IA, del primer prototipo al lanzamiento: dos años, tres nombres y un conejo"
 [taxonomies]
 tags = ["product", "ai"]
 [extra]
@@ -179,6 +179,6 @@ cover_image = "/images/blog/2026-10-18-building-rabbithole/cover.webp"
 
 <p>AquaMesh nació para demostrar que sabía programar en React. RabbitHole me demostró algo más útil: que soy capaz de llevar un repositorio vacío hasta un producto con cuentas, pagos, landing page y una idea propia.</p>
 
-<p>Si fue un <b>buen</b> producto ya es otra historia, y los números lo tienen bastante claro. Eso queda para el próximo post: <a class="link-text" href="/es/blog/rabbithole-post-mortem/"><b>RabbitHole: el post-mortem</b></a>.</p>
+<p>Si fue un <b>buen</b> producto ya es otra historia, y los números lo tienen bastante claro. Eso queda para el próximo post: <a class="link-text" href="/es/blog/rabbithole-post-mortem/?mode=series"><b>RabbitHole: el post-mortem</b></a>.</p>
 
 <p>Mientras tanto, el conejo sigue respondiendo preguntas. <a class="link-text" target="_blank" href="https://rabbithole.cosmevalera.dev/try"><b>Elige un tema y métete en la madriguera</b></a>.</p>

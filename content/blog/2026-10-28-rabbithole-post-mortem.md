@@ -22,7 +22,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <p>A few weeks later I had twelve thousand impressions and zero euros.</p>
 
-<p>If you haven't read it yet, <a class="link-text" href="/blog/building-rabbithole/"><b>Building RabbitHole</b></a> tells how the product came to be. This one is about what happened once it met the real world, and about the mistakes I can only see now that it's over. I'm writing it down because post-mortems are useful exactly in proportion to how honest they are, and because I'd rather make each of these mistakes only once.</p>
+<p>If you haven't read it yet, <a class="link-text" href="/blog/building-rabbithole/?mode=series"><b>Building RabbitHole</b></a> tells how the product came to be. This one is about what happened once it met the real world, and about the mistakes I can only see now that it's over. I'm writing it down because post-mortems are useful exactly in proportion to how honest they are, and because I'd rather make each of these mistakes only once.</p>
 
 ---
 

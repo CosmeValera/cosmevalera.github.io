@@ -1,7 +1,7 @@
 +++
 title = "Building RabbitHole"
 template = "blog-post.html"
-description = "How I built my own AI learning product alone, from a first prototype to launch: two years, three names and one rabbit."
+description = "How I built my own AI learning product alone, from a first prototype to launch: two years, three names and one rabbit"
 [taxonomies]
 tags = ["product", "ai"]
 [extra]
@@ -179,6 +179,6 @@ cover_image = "/images/blog/2026-10-18-building-rabbithole/cover.webp"
 
 <p>AquaMesh was built to prove I could write React. RabbitHole proved something more useful to me: that I can take an empty repository all the way to a product with accounts, payments, a landing page and an idea of its own.</p>
 
-<p>Whether it was a <b>good</b> product is a different question, and the numbers have a clear opinion about it. That is the next post: <a class="link-text" href="/blog/rabbithole-post-mortem/"><b>RabbitHole: The Post-Mortem</b></a>.</p>
+<p>Whether it was a <b>good</b> product is a different question, and the numbers have a clear opinion about it. That is the next post: <a class="link-text" href="/blog/rabbithole-post-mortem/?mode=series"><b>RabbitHole: The Post-Mortem</b></a>.</p>
 
 <p>In the meantime, the rabbit is still answering questions. <a class="link-text" target="_blank" href="https://rabbithole.cosmevalera.dev/try"><b>Pick a topic and fall in</b></a>.</p>

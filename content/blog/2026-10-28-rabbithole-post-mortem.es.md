@@ -22,7 +22,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <p>Unas semanas después tenía doce mil impresiones y cero euros.</p>
 
-<p>Si aún no lo has leído, en <a class="link-text" href="/es/blog/building-rabbithole/"><b>Cómo construí RabbitHole</b></a> cuento cómo nació el producto. Este post va de lo que pasó cuando se topó con el mundo real, y de los errores que solo veo ahora que ha terminado. Lo escribo porque un post-mortem solo vale lo que vale su honestidad, y porque prefiero no cometer ninguno de estos errores dos veces.</p>
+<p>Si aún no lo has leído, en <a class="link-text" href="/es/blog/building-rabbithole/?mode=series"><b>Cómo construí RabbitHole</b></a> cuento cómo nació el producto. Este post va de lo que pasó cuando se topó con el mundo real, y de los errores que solo veo ahora que ha terminado. Lo escribo porque un post-mortem solo vale lo que vale su honestidad, y porque prefiero no cometer ninguno de estos errores dos veces.</p>
 
 ---
 
