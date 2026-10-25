@@ -22,3 +22,9 @@ What launching my first SaaS taught me about product development
 Also:
 - **First steps of the product mindset** (title to be decided): 
 Porduct mindset post, maybe relating it about the rabbithole post-mortem blog-post, and mentioning the book of Escaping the build trap or talking about it directly.
+- **Onboarding My Team to Agentic AI** (draft started: `2026-11-04-onboarding-my-team-to-agentic-ai.md`)
+The agentic AI workshop I gave my team (GitHub Copilot CLI), as a post: mental model, building blocks, plan vs build, permissions. Finish it after the workshop (27/10/2026) with my colleagues' questions and feedback, then the Spanish version.
+  - Publish the demo repo (constellation-board) as a public starter kit and link it from the post.
+  - Add it to /CV #projects, like RabbitHole: "Led my team's adoption of agentic AI".
+  - Before publishing: no internal policy details, project names, tenant URLs or colleague names.
+  - Follow-up idea: **Agentic AI, one month later**: who actually uses it, what stuck and what didn't.
