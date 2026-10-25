@@ -167,7 +167,7 @@
                   <a href="{{ project.url | safe }}" target="_blank" rel="noopener">{{ trans(key="visit_site", lang=lang) }}<i class="fas fa-arrow-up cv-link-arrow" aria-hidden="true"></i></a>
                 {% endif %}
                 {% if project.post is defined %}
-                  <a href="{{ get_url(path=project.post, trailing_slash=true) | safe }}"><i class="fas fa-book-open" aria-hidden="true"></i>{{ trans(key="project_post", lang=lang) }}</a>
+                  <a href="{{ get_url(path=project.post) | safe }}"><i class="fas fa-book-open" aria-hidden="true"></i>{{ trans(key="project_post", lang=lang) }}</a>
                 {% endif %}
               </p>
               {% if project.period is defined %}
