@@ -1,7 +1,7 @@
 +++
 title = "RabbitHole: The Post-Mortem"
 template = "blog-post.html"
-description = "What launching my first SaaS taught me about product development"
+description = "12,091 impressions, zero sales, and the four product mistakes behind them"
 [taxonomies]
 tags = ["product"]
 [extra]

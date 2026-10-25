@@ -1,7 +1,7 @@
 +++
 title = "RabbitHole: el post-mortem"
 template = "blog-post.html"
-description = "Lo que aprendí sobre desarrollo de producto lanzando mi primer SaaS"
+description = "12.091 impresiones, cero ventas y los cuatro errores de producto que hubo detrás"
 [taxonomies]
 tags = ["product"]
 [extra]
@@ -77,9 +77,9 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <b>3. Sin métricas no hay respuestas</b>
 
-<p>Esta es la que más me duele, porque era muy fácil de evitar.</p>
+<p>Esta es la que más me fastidia, porque era muy fácil de evitar.</p>
 
-<p>No medí el embudo de conversión: <b>visita a la landing → registro → primera guía creada</b>. Sin eso, 12.091 impresiones son solo un número. ¿La gente vio el post y no hizo clic? ¿Hizo clic, vio la landing y se fue? ¿Se registró y nunca creó una guía? ¿Creó una y no volvió? Cada caso tiene una solución completamente distinta, y <b>no tengo ni idea de cuál fue</b>.</p>
+<p>No medí el embudo de conversión: <b>visita a la landing → registro → primera guía creada</b>. Sin eso, 12.091 impresiones son solo un número. ¿La gente vio el post y no hizo clic? ¿Hizo clic, vio la landing y se fue? ¿Se registró y nunca creó una guía? ¿Creó una y no volvió? Cada caso tiene una solución completamente distinta, y <b>no tengo ni idea de dónde estuvo el problema</b>.</p>
 
 <figure class="post-figure">
   <img src="/images/blog/2026-10-25-rabbithole-post-mortem/funnel-es.svg" alt="Embudo con 12.091 impresiones arriba, 0 compras abajo y, entre medias, visitas a la landing, registros y primeras guías marcados como sin medir" width="640" height="376">
@@ -92,7 +92,7 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 
 <p>Mi feedback venía de un grupo de WhatsApp: mis tres hermanos, todos desarrolladores, y seis o siete amigos. Son listos, sinceros y generosos con su tiempo. Pero <b>no eran el usuario objetivo</b>, y la gente que te quiere no es la más indicada para decirte que tu producto no hace falta.</p>
 
-<p>Echando la vista atrás, el feedback más valioso que recibí fue el primero, sobre AquaMesh (la versión previa de todo esto): <i>buena idea, pero poco práctica</i>. Respondí cambiándole el nombre al producto y añadiéndole IA. Lo que debería haber hecho es sentarme con estudiantes de verdad, preguntarles cómo estudian realmente y construir lo mínimo que les ayudara con eso.</p>
+<p>Echando la vista atrás, el feedback más valioso que recibí fue el primero, sobre AquaMesh (la versión previa de todo esto): <i>buena idea, pero poco práctica</i>. Mi respuesta fue cambiarle el nombre al producto y añadirle IA. Lo que debería haber hecho es sentarme con estudiantes de verdad, preguntarles cómo estudian realmente y construir lo mínimo que les ayudara con ello.</p>
 
 ---
 
@@ -105,15 +105,15 @@ cover_image = "/images/blog/2026-10-25-rabbithole-post-mortem/cover.png"
 5. **Validar con gente que encaje con el usuario objetivo**, no solo con amigos y familia.
 6. **Preocuparme tanto por el "porqué" como por el "cómo".** ¿Por qué alguien usaría esto en lugar de lo que ya usa?
 
-<p>Ese último punto es en el que estoy trabajando ahora. La ingeniería me enseñó <b>cómo</b> construir cosas; nunca me obligó a preguntarme <b>por qué</b> alguien las querría. Por eso me leí <a class="link-text" target="_blank" href="/es/readings/"><b>Escaping the Build Trap</b></a>, de Melissa Perri. La "build trap" es lo que pasa cuando un equipo mide el éxito por las funcionalidades que lanza en lugar de por el valor que aporta, y leerlo después de RabbitHole ha sido un poco incómodo, en el buen sentido. Yo era un equipo de una sola persona metido de lleno en esa trampa.</p>
+<p>Ese último punto es en el que estoy trabajando ahora. El desarrollo de software me enseñó <b>cómo</b> construir cosas; nunca me obligó a preguntarme <b>por qué</b> alguien las querría. Por eso me leí <a class="link-text" target="_blank" href="/es/readings/"><b>Escaping the Build Trap</b></a>, de Melissa Perri. La "build trap" es lo que pasa cuando un equipo mide el éxito por las funcionalidades que lanza en lugar de por el valor que aporta, y leerlo después de RabbitHole ha sido un poco incómodo, en el buen sentido. Yo era un equipo de una sola persona metido de lleno en esa trampa.</p>
 
 ---
 
 <!-- Visual break before conclusion - changes based on time of year -->
 {{ seasonal_image() }}
 
-<p>RabbitHole no encontró a sus usuarios, pero a mí sí me ayudó a encontrar una forma mejor de trabajar: soy mejor desarrollador por haberlo construido, y tengo más visión de producto después de ver cómo no se vendía.</p>
+<p>RabbitHole no encontró a sus usuarios, pero a mí sí me ayudó a encontrar una forma mejor de trabajar: soy mejor desarrollador por haberlo construido, y tengo más visión de producto después de ver cómo no vendía.</p>
 
 <p>La app sigue online y el conejo sigue respondiendo preguntas. Si te pica la curiosidad, <a class="link-text" target="_blank" href="https://rabbithole.cosmevalera.dev/try"><b>prueba una guía</b></a>: no hace falta registrarte.</p>
 
-<p>Y la próxima vez, lo primero que construya no será el producto. Será la pregunta.</p>
+<p>Y la próxima vez, lo primero no será el producto. Será la pregunta.</p>
