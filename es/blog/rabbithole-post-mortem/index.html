@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RabbitHole: el post-mortem | Cosme</title>
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+      
+      
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    <meta name="description" content="12.091 impresiones, cero ventas y los cuatro errores de producto que hubo detrás">
+    <link rel="canonical" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;rabbithole-post-mortem&#x2F;">
+
+    
+    <meta property="og:title" content="RabbitHole: el post-mortem | Cosme">
+    <meta property="og:description" content="12.091 impresiones, cero ventas y los cuatro errores de producto que hubo detrás">
+    <meta property="og:url" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;rabbithole-post-mortem&#x2F;">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2026-10-25-rabbithole-post-mortem&#x2F;cover.png">
+    <meta property="og:site_name" content="Cosme Valera">
+    <meta property="og:locale" content="es_ES">
+
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RabbitHole: el post-mortem | Cosme">
+    <meta name="twitter:description" content="12.091 impresiones, cero ventas y los cuatro errores de producto que hubo detrás">
+    <meta name="twitter:image" content="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;images&#x2F;blog&#x2F;2026-10-25-rabbithole-post-mortem&#x2F;cover.png">
+
+    
+    
+      
+        
+        
+        <link rel="alternate" hreflang="en" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;rabbithole-post-mortem&#x2F;">
+        <link rel="alternate" hreflang="es" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;rabbithole-post-mortem&#x2F;">
+        <link rel="alternate" hreflang="x-default" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;blog&#x2F;rabbithole-post-mortem&#x2F;">
+      
+    
+    
+    
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Inter:wght@400;600;700&family=Raleway:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cosmevalera.dev/fonts.css">
+    <link rel="stylesheet" href="https://cosmevalera.dev/main.css">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTcviYwYZ8UA3.woff2" as="font" type="font/woff2" crossorigin>
+    <script src="https://kit.fontawesome.com/cfd779d106.js" crossorigin="anonymous" defer></script>
+
+    <!-- Cronitor RUM -->
+    <script async src="https://rum.cronitor.io/script.js"></script>
+    <script>
+        window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+        cronitor('config', { clientKey: '482ce2f6e9775eb3b28794266710e6e6' });
+    </script>
+    
+    
+    <link rel="icon" href="https://cosmevalera.dev/favicon.jpg" />
+    
+    
+    
+  <link rel="stylesheet" href="https://cosmevalera.dev/blog-post.css">
+  
+  <link rel="preload" href="&#x2F;images&#x2F;blog&#x2F;2026-10-25-rabbithole-post-mortem&#x2F;cover.png" as="image" fetchpriority="high">
+  
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "RabbitHole: el post-mortem",
+    "description": "12.091 impresiones, cero ventas y los cuatro errores de producto que hubo detrás",
+    "image": "https://cosmevalera.dev/images/blog/2026-10-25-rabbithole-post-mortem/cover.png",
+    "datePublished": "2026-10-28",
+    "dateModified": "2026-10-28",
+    "author": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Cosme Valera",
+      "url": "https://cosmevalera.dev/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://cosmevalera.dev/es/blog/rabbithole-post-mortem/"
+    },
+    "inLanguage": "es",
+    "keywords": "product"
+  }
+  </script>
+
+
+    <!-- Prerender the other-language page when the EN | ES pill is hovered or
+         pressed, so the switch feels instant. Browsers without support ignore it. -->
+    <script type="speculationrules">
+    {"prerender": [{"where": {"selector_matches": ".lang-switch"}, "eagerness": "moderate"}]}
+    </script>
+  </head>
+  <body>
+    <!-- Theme & Language Toggle (Top Right) -->
+    <div class="theme-and-language-toggle-container">
+        <!-- Language Switcher: EN | ES pill, the current language filled -->
+        
+            
+            
+        
+        <a href="&#x2F;blog&#x2F;rabbithole-post-mortem&#x2F;"
+           class="lang-switch"
+           hreflang="en"
+           aria-label="Cambiar idioma"
+           title="Switch to English">
+            <span>EN</span>
+            <span class="is-active">ES</span>
+        </a>
+        <button id="theme-toggle" class="icon-btn theme-toggle" type="button"
+                aria-label="Cambiar tema" title="Cambiar tema">
+            <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </button>
+    </div>
+
+    <!-- Grid Background - Consistent across all pages -->
+    <div class="grid-background"></div>
+        
+    <!-- Lateral Menu -->
+    <!-- Lateral Floating Menu -->
+<nav class="lateral-menu-pill">
+  
+    <a href="/es/" class="menu-item " aria-label="Inicio">
+      <i class="fas fa-home"></i>
+      <span class="menu-text">Inicio</span>
+    </a>
+    
+    <a href="/es/cv" class="menu-item " aria-label="CV">
+      <i class="fas fa-id-card"></i>
+      <span class="menu-text">CV</span>
+    </a>
+    
+    <a href="/es/blog" class="menu-item active" aria-label="Blog">
+      <i class="fas fa-file-alt"></i>
+      <span class="menu-text">Blog</span>
+    </a>
+    
+    <a href="/es/readings" class="menu-item menu-readings " aria-label="Lecturas">
+      <i class="fas fa-book-open"></i>
+      <span class="menu-text">Lecturas</span>
+    </a>
+  
+</nav>
+
+<!-- Mobile Toggle (Optional, can be hidden on desktop via CSS) -->
+<div class="mobile-menu-toggle">
+    <i class="fas fa-bars"></i>
+</div>
+
+    <!-- Page Content -->
+    <div class="page-wrapper">
+      <main>
+          
+  <div class="blog-post">
+    
+    
+    
+    
+      
+        
+      
+    
+
+    
+    <a href="/es/blog" class="back-link">← Todas las publicaciones</a>
+    
+    
+    
+      <div class="tags">
+        
+          
+            <a href="https://cosmevalera.dev/es/tags/product/" class="tag tag-product-plain">
+              Producto
+            </a>
+          
+        
+      </div>
+    
+
+    <h1 class="blog-post-title">RabbitHole: el post-mortem</h1>
+    <h3 class="presentation-text">12.091 impresiones, cero ventas y los cuatro errores de producto que hubo detrás</h3>
+    
+    <div class="post-metadata">
+      <span class="post-date">25 octubre 2026</span>
+      <span class="reading-time">
+        
+          8m lectura • 1512 palabras
+        
+      </span>
+    </div>
+    <!-- TOC for mobile - sticky top -->
+    <div class="toc-mobile" data-collapsed>
+      <button class="toc-header" type="button" aria-expanded="false" aria-controls="toc-list-mobile">
+        <span class="toc-title">Índice</span>
+        <span class="toc-chevron" aria-hidden="true"></span>
+      </button>
+      <ul id="toc-list-mobile" class="toc-list"></ul>
+      <div class="reading-progress" aria-hidden="true"></div>
+    </div>
+    <!-- TOC wrapper for desktop sticky behavior -->
+    <div class="toc-desktop-wrapper">
+      <!-- TOC for desktop - sticky left -->
+      <div class="toc-desktop" data-collapsed>
+        <div class="toc-desktop-title">En esta página</div>
+        <ul id="toc-list-desktop" class="toc-list"></ul>
+      </div>
+    </div>
+    <!-- Post content - centered independently -->
+    <div class="post-content">
+        <p><img src="/images/blog/2026-10-25-rabbithole-post-mortem/cover.png" alt="blog-cover" /></p>
+<blockquote>
+<p><strong>TL;DR</strong></p>
+<ul>
+<li>Lancé RabbitHole en LinkedIn con una promoción de <strong>35 €</strong>. Llegó a <strong>12.091</strong> impresiones, algunas personas lo probaron y <strong>nadie compró ni una zanahoria</strong> (los créditos de la app).</li>
+<li>El problema no fue la parte técnica, sino las decisiones de producto: un usuario objetivo difuso, un MVP de dos años, cero métricas de conversión y una validación que solo venía de amigos.</li>
+<li>La próxima vez: un usuario, un problema, una hipótesis y medirlo todo desde el primer día.</li>
+</ul>
+</blockquote>
+<hr />
+<p>El día del lanzamiento tenía una cuenta de Stripe, tres planes de precios, un tráiler y un conejo con cascos.</p>
+<p>Unas semanas después tenía doce mil impresiones y cero euros.</p>
+<p>Si aún no lo has leído, en <a class="link-text" href="/es/blog/building-rabbithole/?mode=series"><b>Cómo construí RabbitHole</b></a> cuento cómo nació el producto. Este post va de lo que pasó cuando se topó con el mundo real, y de los errores que solo veo ahora que ha terminado. Lo escribo porque un post-mortem solo vale lo que vale su honestidad, y porque prefiero no cometer ninguno de estos errores dos veces.</p>
+<hr />
+<h4>El lanzamiento</h4>
+<p>Anuncié RabbitHole en un post de LinkedIn: el problema (aprender en una ventana de chat infinita es un caos), la solución (guías estructuradas con analogías, flashcards, tests y pódcasts), el enlace y el tráiler de un minuto. Después pagué <b>35 €</b> para promocionarlo entre un público de habla inglesa en España.</p>
+<figure class="post-figure post-figure--narrow">
+  <img src="/images/blog/2026-10-25-rabbithole-post-mortem/linkedin-post.webp" alt="Post de LinkedIn que anuncia RabbitHole con el tráiler en vídeo" width="499" height="802">
+</figure>
+<p>Este fue el resultado:</p>
+<figure class="post-figure">
+  <img src="/images/blog/2026-10-25-rabbithole-post-mortem/linkedin-impressions.webp" alt="Estadísticas de LinkedIn: 10 reacciones, 3 comentarios, 2 veces compartido y 12.091 impresiones" width="496" height="206">
+  <figcaption>12.091 impresiones, 10 reacciones, 3 comentarios, 2 veces compartido.</figcaption>
+</figure>
+<p>Doce mil personas vieron el post. Algunas abrieron la app. ¿Cuántas? No lo sé, y eso acabó siendo uno de los cuatro errores. <b>Nadie compró zanahorias.</b></p>
+<hr />
+<h4>Lo que salió bien</h4>
+<p>Empiezo por lo bueno, porque lo hay, y no es poco.</p>
+<p><b>Construí un SaaS completo yo solo.</b> Cuentas, base de datos, tres modos de IA, pagos, pódcasts, una landing, una demo pública y una batería de tests. Hace dos años tenía un dashboard en React con botones tipo sonar. Por el camino aprendí más sobre integración de IA, UI/UX y pagos de lo que me habría enseñado cualquier curso, porque cada lección venía con un bug que tenía que arreglar yo.</p>
+<p>Y ahora el proyecto está en mi CV, que no esta mal.</p>
+<hr />
+<h4>Lo que salió mal</h4>
+<p>Como producto, no funcionó. Lo cual, todo sea dicho, es lo que les pasa a casi todos los primeros productos. Lo interesante no es si fracasó, sino <b>por qué</b>, y, tras varias semanas dándole vueltas, siempre acabo en las mismas cuatro razones.</p>
+<p><b>1. "Gente curiosa" no es un usuario objetivo</b></p>
+<p>RabbitHole era para gente curiosa. Suena a público objetivo, pero es un estado de ánimo. Todo el mundo siente curiosidad por algo, así que nadie en concreto se levanta por la mañana pensando "necesito RabbitHole".</p>
+<p>El producto estaba a medio camino entre <b>ChatGPT</b>, que es para todo el mundo, y <b>NotebookLM</b>, que es para estudiantes que trabajan con su propio material. Y a una persona normal le costaba imaginar el momento exacto en el que abriría RabbitHole en vez de preguntarle directamente a ChatGPT. Si yo no soy capaz de describir ese momento en una frase, alguien que está haciendo scroll en LinkedIn no lo va a adivinar por mí.</p>
+<p>Lo irónico es que StudyMesh, la versión anterior, tenía un público mucho más claro: <b>un estudiante a una semana de un examen</b>. Eso es una persona, con una fecha límite y un problema. Quise hacer la idea más grande abriéndola a todo el mundo, y lo único que conseguí fue que nadie la necesitara.</p>
+<p><b>2. Un MVP que tardó dos años</b></p>
+<p>Un MVP debería responder a una pregunta de la forma más barata posible: <i>¿alguien necesita esto?</i> El mío pasó dos años respondiendo a otra: <i>¿qué más puedo construir?</i></p>
+<p>Nunca puse por escrito una hipótesis. Cada versión salía de la anterior, a base de experimentar y de la idea que me tuviera enganchado ese mes: widgets con IA, luego rutas de estudio, luego mascotas, luego pódcasts. Durante largas temporadas no tenía nada concreto que validar, así que construía la siguiente funcionalidad. Y así es como el desarrollo deja de ser iteración validada y se convierte en experimentación sin rumbo.</p>
+<p>Todo lo que importa de RabbitHole (una guía explicada a partir de lo que ya sabes) se podría haber probado en <b>un par de meses</b>. Las zanahorias podían esperar.</p>
+<p><b>3. Sin métricas no hay respuestas</b></p>
+<p>Esta es la que más me fastidia, porque era muy fácil de evitar.</p>
+<p>No medí el embudo de conversión: <b>visita a la landing → registro → primera guía creada</b>. Sin eso, 12.091 impresiones son solo un número. ¿La gente vio el post y no hizo clic? ¿Hizo clic, vio la landing y se fue? ¿Se registró y nunca creó una guía? ¿Creó una y no volvió? Cada caso tiene una solución completamente distinta, y <b>no tengo ni idea de dónde estuvo el problema</b>.</p>
+<figure class="post-figure">
+  <img src="/images/blog/2026-10-25-rabbithole-post-mortem/funnel-es.svg" alt="Embudo con 12.091 impresiones arriba, 0 compras abajo y, entre medias, visitas a la landing, registros y primeras guías marcados como sin medir" width="640" height="376">
+  <figcaption>Medí el principio y el final. Todo lo de en medio es una interrogación.</figcaption>
+</figure>
+<p>Doce mil impresiones, y lo único que he aprendido de ellas es que debería haberlas medido.</p>
+<p><b>4. Validación a golpe de WhatsApp</b></p>
+<p>Mi feedback venía de un grupo de WhatsApp: mis tres hermanos, todos desarrolladores, y seis o siete amigos. Son listos, sinceros y generosos con su tiempo. Pero <b>no eran el usuario objetivo</b>, y la gente que te quiere no es la más indicada para decirte que tu producto no hace falta.</p>
+<p>Echando la vista atrás, el feedback más valioso que recibí fue el primero, sobre AquaMesh (la versión previa de todo esto): <i>buena idea, pero poco práctica</i>. Mi respuesta fue cambiarle el nombre al producto y añadirle IA. Lo que debería haber hecho es sentarme con estudiantes de verdad, preguntarles cómo estudian realmente y construir lo mínimo que les ayudara con ello.</p>
+<hr />
+<h4>Qué haría diferente</h4>
+<ol>
+<li><strong>Elegir un usuario concreto.</strong> No "gente curiosa", sino alguien con nombre y apellidos, un momento concreto y un problema.</li>
+<li><strong>Construir el MVP en semanas, no en años</strong>, y que valide un único problema central.</li>
+<li><strong>Escribir la hipótesis antes que el código.</strong> Si no hay una hipótesis clara, la siguiente funcionalidad probablemente sea una apuesta a ciegas.</li>
+<li><strong>Medir la conversión desde el primer día:</strong> visitas a la landing, registros y la primera acción real.</li>
+<li><strong>Validar con gente que encaje con el usuario objetivo</strong>, no solo con amigos y familia.</li>
+<li><strong>Preocuparme tanto por el "porqué" como por el "cómo".</strong> ¿Por qué alguien usaría esto en lugar de lo que ya usa?</li>
+</ol>
+<p>Ese último punto es en el que estoy trabajando ahora. El desarrollo de software me enseñó <b>cómo</b> construir cosas; nunca me obligó a preguntarme <b>por qué</b> alguien las querría. Por eso me leí <a class="link-text" target="_blank" href="/es/readings/"><b>Escaping the Build Trap</b></a>, de Melissa Perri. La "build trap" es lo que pasa cuando un equipo mide el éxito por las funcionalidades que lanza en lugar de por el valor que aporta, y leerlo después de RabbitHole ha sido un poco incómodo, en el buen sentido. Yo era un equipo de una sola persona metido de lleno en esa trampa.</p>
+<hr />
+<!-- Visual break before conclusion - changes based on time of year -->
+<div class="seasonal-image-container">
+  
+  
+  <!-- <p>10</p> -->
+  
+  
+  
+    
+  
+  
+  
+  
+    <img
+      src="https://cosmevalera.dev/images/blog/general/tree-autumn-winter-webp.webp" 
+      alt="Autumn&amp;#x2F;Winter seasonal image"
+      loading="lazy"
+      decoding="async">
+  
+</div><p>RabbitHole no encontró a sus usuarios, pero a mí sí me ayudó a encontrar una forma mejor de trabajar: soy mejor desarrollador por haberlo construido, y tengo más visión de producto después de ver cómo no vendía.</p>
+<p>La app sigue online y el conejo sigue respondiendo preguntas. Si te pica la curiosidad, <a class="link-text" target="_blank" href="https://rabbithole.cosmevalera.dev/try"><b>prueba una guía</b></a>: no hace falta registrarte.</p>
+<p>Y la próxima vez, lo primero no será el producto. Será la pregunta.</p>
+
+    </div>
+    
+    
+    <footer class="post-footer">
+      <div class="author-card">
+        <img src="https://cosmevalera.dev/images/home/portrait.jpg" alt="" width="72" height="72" loading="lazy">
+        <div>
+          <p class="author-eyebrow">Escrito por</p>
+          <p class="author-name">Cosme Valera</p>
+          <p class="author-bio">Ingeniero full stack en GMV, en el programa Galileo. Escribo sobre lo que aprendo construyendo: arquitectura, buenas prácticas e IA.</p>
+          <ul class="author-links">
+            
+              <li><a href="https:&#x2F;&#x2F;github.com&#x2F;CosmeValera" target="_blank" rel="me noopener" class="icon-btn" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+            
+              <li><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cosmevalera&#x2F;" target="_blank" rel="me noopener" class="icon-btn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+            
+            <li><a href="&#x2F;es/cv/" class="arrow-link">Ver mi CV<span aria-hidden="true">→</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+<nav class="related-container" aria-label="Más publicaciones">
+
+  
+  
+  
+  
+  <div class="nav-normal">
+      
+      <a class="link link--prev" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;building-rabbithole&#x2F;">
+        <span class="link-label">← Anterior publicación</span>
+        <span class="link-title">Cómo construí RabbitHole</span>
+      </a>
+      
+
+      
+  </div>
+
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+      
+      
+      
+      
+      
+          
+          
+          
+      
+          
+          
+              
+              
+          
+          
+      
+  
+
+  
+  <div class="nav-series" hidden>
+      
+      
+      <a class="link link--prev" href="https:&#x2F;&#x2F;cosmevalera.dev&#x2F;es&#x2F;blog&#x2F;building-rabbithole&#x2F;?mode=series">
+        <span class="link-label">← Anterior publicación</span>
+        <span class="link-title">Cómo construí RabbitHole</span>
+      </a>
+      
+
+      
+  </div>
+  
+
+</nav>
+
+    </footer>
+
+  </div>
+
+      </main>
+
+      
+
+
+
+<footer class="site-footer" id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <p class="footer-heading">Mapa del sitio</p>
+        <ul>
+          <li><a href="&#x2F;es/">Inicio</a></li>
+          <li><a href="&#x2F;es/cv/">CV</a></li>
+          <li><a href="&#x2F;es/blog/">Blog</a></li>
+          <li><a href="&#x2F;es/readings/">Lecturas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">En otros sitios</p>
+        <ul>
+          
+            <li><a href="https:&#x2F;&#x2F;github.com&#x2F;CosmeValera" target="_blank" rel="me noopener"><i class="fab fa-github" aria-hidden="true"></i>GitHub</a></li>
+          
+            <li><a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;cosmevalera&#x2F;" target="_blank" rel="me noopener"><i class="fab fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-heading">Apoyo</p>
+        <ul>
+          <li><a href="&#x2F;es/sponsor/"><i class="fa-solid fa-bolt" aria-hidden="true"></i>Colabora</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Cosme Valera Reales</span>
+      <span class="footer-built">Hecho con Zola, JS y SCSS.</span>
+      <a class="footer-top" href="#">Volver arriba <span aria-hidden="true">↑</span></a>
+    </div>
+  </div>
+
+  <p class="footer-wordmark" aria-hidden="true">Cosme Valera</p>
+</footer>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cosmevalera.dev/js/lateralMenu.js"></script>
+    <script src="https://cosmevalera.dev/js/themeToggle.js"></script>
+    <script src="https://cosmevalera.dev/js/easter-egg.js"></script>
+    <script src="https://cosmevalera.dev/js/langScroll.js"></script>
+    
+  <script src="https://cosmevalera.dev/js/exchange-toggle.js"></script>
+  <script src="https://cosmevalera.dev/js/blog-post.js"></script>
+  <script src="https://cosmevalera.dev/js/post-video.js"></script>
+  <script>
+    // Add lazy loading to all images in post content except the first (LCP)
+    document.addEventListener('DOMContentLoaded', function() {
+      const postImages = document.querySelectorAll('.post-content img');
+      postImages.forEach(function(img, index) {
+        if (index > 0) { // Skip first image (likely LCP)
+          img.setAttribute('loading', 'lazy');
+          img.setAttribute('decoding', 'async');
+        }
+      });
+    });
+  </script>
+
+    <!-- END: SCRIPTS -->
+  </body>
+</html>
