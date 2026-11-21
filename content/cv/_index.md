@@ -184,4 +184,8 @@ level = "C1 (Cambridge)"
 [[extra.languages]]
 name = "French"
 level = "B1"
+
+[[extra.languages]]
+name = "Italian"
+level = "B1"
 +++
